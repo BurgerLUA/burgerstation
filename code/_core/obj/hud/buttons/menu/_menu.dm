@@ -13,7 +13,7 @@
 /obj/hud/button/menu/selection
 	var/command_to_run
 
-/obj/hud/button/menu/selection/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/menu/selection/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -21,7 +21,7 @@
 		winset(caller.client,null,"command=[command_to_run]")
 
 
-/obj/hud/button/menu/selection/New(var/desired_loc)
+/obj/hud/button/menu/selection/New(desired_loc)
 	color = null
 	return ..()
 

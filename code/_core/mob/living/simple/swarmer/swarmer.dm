@@ -181,7 +181,7 @@
 	health = /health/construction
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-/obj/structure/interactive/swarmer/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/swarmer/on_destruction(damage = TRUE)
     . = ..()
     qdel(src)
 

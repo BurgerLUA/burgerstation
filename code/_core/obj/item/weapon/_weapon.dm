@@ -56,7 +56,7 @@
 	value = get_base_value()
 	return TRUE
 
-/obj/item/weapon/get_examine_list(var/mob/examiner)
+/obj/item/weapon/get_examine_list(mob/examiner)
 	. = ..()
 	if(upgrade_count >= 1)
 		if(upgrade_count >= 2)
@@ -64,13 +64,13 @@
 		else
 			. += div("rarity legendary","★")
 
-/obj/item/weapon/get_examine_details_list(var/mob/examiner)
+/obj/item/weapon/get_examine_details_list(mob/examiner)
 	. = ..()
 	if(enchantment)
 		. += div("notice","It is enchanted with <b>[enchantment.name] \Roman[enchantment.strength]</b>")
 		. += div("notice","The enchantment has [enchantment.charge] charge left ([FLOOR(enchantment.charge/enchantment.cost,1)] uses).")
 
-/obj/item/weapon/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/quick(mob/caller,atom/object,location,params)
 
 	if(!is_advanced(caller) || !is_inventory(src.loc))
 		return FALSE
@@ -92,7 +92,7 @@
 
 	. = CEILING(.,1)
 
-/obj/item/weapon/can_feed(var/mob/caller,var/atom/target)
+/obj/item/weapon/can_feed(mob/caller,atom/target)
 	return FALSE
 
 /obj/item/weapon/PostInitialize()
@@ -124,7 +124,7 @@
 
 	return ..()
 
-/obj/item/weapon/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
+/obj/item/weapon/on_unequip(obj/hud/inventory/old_inventory,silent=FALSE)
 	wielded = FALSE
 	if(old_inventory.child_inventory)
 		old_inventory.child_inventory.parent_inventory = null
@@ -159,7 +159,7 @@
 
 	. = ..()
 
-/obj/item/weapon/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/weapon/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
 	if(upgrade_count >= 1) .["upgrade_count"] = upgrade_count
@@ -173,7 +173,7 @@
 	if(stored_spellswap)
 		SAVEATOM("stored_spellswap")
 
-/obj/item/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/weapon/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
 	if(object_data["upgrade_count"]) upgrade_count = object_data["upgrade_count"]

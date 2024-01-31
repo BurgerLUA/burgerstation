@@ -24,17 +24,17 @@
 
 	var/next_regen = 0 //For ammo box restocking.
 
-/obj/item/bulletbox/get_examine_list(var/mob/examiner)
+/obj/item/bulletbox/get_examine_list(mob/examiner)
 	. = ..()
 	if(small == FALSE)
 		. += span("notice","Use to open and deploy, ALT+Click to pack up.")
 
-/obj/item/bulletbox/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/bulletbox/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("bullet_count")
 	SAVEPATH("stored_bullet")
 
-/obj/item/bulletbox/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/bulletbox/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADPATH("stored_bullet")
 	set_stored_bullet(stored_bullet)
@@ -58,12 +58,12 @@
 	if(stored_bullet)
 		. += bullet_count * SSbalance.stored_value[stored_bullet]
 
-/obj/item/bulletbox/get_examine_list(var/mob/caller)
+/obj/item/bulletbox/get_examine_list(mob/caller)
 	. = ..()
 	if(stored_bullet)
 		. += div("notice","It stores [initial(stored_bullet.name)] ([bullet_count]/[bullet_max] capacity).")
 
-/obj/item/bulletbox/click_self(var/mob/caller,location,control,params)
+/obj/item/bulletbox/click_self(mob/caller,location,control,params)
 
 	if(small || anchored)
 		return ..()
@@ -74,7 +74,7 @@
 	return TRUE
 
 
-/obj/item/bulletbox/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/bulletbox/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(istype(object,/obj/item/bullet_cartridge/))
 		INTERACT_CHECK
@@ -153,7 +153,7 @@
 
 	. = ..()
 
-/obj/item/bulletbox/proc/set_stored_bullet(var/desired_path)
+/obj/item/bulletbox/proc/set_stored_bullet(desired_path)
 
 	if(!desired_path) //Clear and remove.
 		stored_bullet = null
@@ -265,7 +265,7 @@
 	draw_bullet_on_box = FALSE
 	value = 10
 
-//obj/item/bulletbox/small/get_examine_list(var/mob/examiner)
+//obj/item/bulletbox/small/get_examine_list(mob/examiner)
 //	. = ..()
 //	. += span("notice","Use to open and deploy, ALT+Click to pack up.")
 

@@ -48,7 +48,7 @@
 	I3.appearance_flags = src.appearance_flags
 	add_overlay(I3)
 
-/obj/item/soapstone/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/soapstone/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT

@@ -53,7 +53,7 @@
 		FINALIZE(I)
 		stored_cells += I
 
-/obj/structure/interactive/power/smes/get_examine_list(var/mob/caller)
+/obj/structure/interactive/power/smes/get_examine_list(mob/caller)
 	. = ..()
 
 	. += div("notice","Power Input: [terminal.power_draw]w.")
@@ -69,7 +69,7 @@
 	return 0 //Handled in power process.
 
 
-/obj/structure/interactive/power/smes/power_process(var/power_multiplier=1)
+/obj/structure/interactive/power/smes/power_process(power_multiplier=1)
 
 	. = ..()
 

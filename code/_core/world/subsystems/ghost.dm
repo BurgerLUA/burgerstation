@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(ghost)
 	var/list/obj/item/emf/all_emf_trackers = list()
 	var/list/obj/emf/all_emfs = list()
 
-/subsystem/ghost/unclog(var/mob/caller)
+/subsystem/ghost/unclog(mob/caller)
 
 	for(var/k in all_emfs)
 		var/obj/emf/E = k

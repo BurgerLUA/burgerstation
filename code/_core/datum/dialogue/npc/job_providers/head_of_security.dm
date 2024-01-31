@@ -1,7 +1,7 @@
 /dialogue/npc/head_of_security/
 
 
-/dialogue/npc/head_of_security/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/head_of_security/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	. = list()
 
@@ -53,7 +53,7 @@
 		"job"
 	)
 
-/dialogue/npc/head_of_security/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/head_of_security/set_topic(mob/living/advanced/player/P,topic)
 
 	. = ..()
 

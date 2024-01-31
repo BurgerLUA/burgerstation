@@ -11,7 +11,7 @@
 	alpha = 0
 	mouse_opacity = 0
 
-/obj/emf/New(var/desired_loc,var/desired_level,var/desired_range)
+/obj/emf/New(desired_loc,desired_level,desired_range)
 	. = ..()
 	SSghost.all_emfs += src
 

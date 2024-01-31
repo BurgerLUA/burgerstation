@@ -1,4 +1,4 @@
-/mob/living/proc/remove_nutrition_mix(var/amount_to_remove=0)
+/mob/living/proc/remove_nutrition_mix(amount_to_remove=0)
 
 	. = 0
 
@@ -21,22 +21,22 @@
 
 	return .
 
-/mob/living/proc/add_hydration(var/amount)
+/mob/living/proc/add_hydration(amount)
 	var/amount_to_add = clamp(amount,-hydration,hydration_max-hydration)
 	hydration += amount_to_add
 	return amount_to_add
 
-/mob/living/proc/add_nutrition_normal(var/amount)
+/mob/living/proc/add_nutrition_normal(amount)
 	var/amount_to_add = clamp(amount,-nutrition_normal,nutrition_max_hard-nutrition_normal)
 	nutrition_normal += amount_to_add
 	return amount_to_add
 
-/mob/living/proc/add_nutrition_quality(var/amount)
+/mob/living/proc/add_nutrition_quality(amount)
 	var/amount_to_add = clamp(amount,-nutrition_quality,nutrition_max_hard-nutrition_quality)
 	nutrition_quality += amount_to_add
 	return amount_to_add
 
-/mob/living/proc/add_nutrition_fast(var/amount)
+/mob/living/proc/add_nutrition_fast(amount)
 	var/amount_to_add = clamp(amount,-nutrition_fast,nutrition_max_hard-nutrition_fast)
 	nutrition_fast += amount_to_add
 	return amount_to_add

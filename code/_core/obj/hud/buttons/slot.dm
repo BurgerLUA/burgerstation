@@ -27,7 +27,7 @@
 	stored_object = null
 	return ..()
 
-/obj/hud/button/slot/update_owner(var/mob/desired_owner)
+/obj/hud/button/slot/update_owner(mob/desired_owner)
 
 	if(owner && !desired_owner && is_advanced(owner))
 		var/mob/living/advanced/A = owner
@@ -39,7 +39,7 @@
 		var/mob/living/advanced/A = owner
 		A.slot_buttons[id] = src
 
-/obj/hud/button/slot/proc/activate_button(var/mob/living/advanced/caller)
+/obj/hud/button/slot/proc/activate_button(mob/living/advanced/caller)
 
 	if(!stored_object)
 		return FALSE
@@ -70,10 +70,10 @@
 	invisibility = 101
 	return TRUE
 
-/obj/hud/button/slot/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/slot/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	return TRUE
 
-/obj/hud/button/slot/proc/store_object(var/atom/object,location,control,params)
+/obj/hud/button/slot/proc/store_object(atom/object,location,control,params)
 
 	if(!object)
 		return FALSE

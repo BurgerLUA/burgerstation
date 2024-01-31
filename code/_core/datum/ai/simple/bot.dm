@@ -14,7 +14,7 @@
 	aggression = 0
 	assistance = 0
 
-/ai/bot/medical/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/bot/medical/New(desired_loc,mob/living/desired_owner)
 	. = ..()
 	next_idle_voice = world.time + rand(100,300)
 	owner_as_bot = owner
@@ -24,7 +24,7 @@
 	healing_target = null
 	return ..()
 
-/ai/bot/medical/proc/is_valid_healing_target(var/mob/living/L)
+/ai/bot/medical/proc/is_valid_healing_target(mob/living/L)
 	if(!L || L.qdeleting)
 		return FALSE
 	if(L == owner)

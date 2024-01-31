@@ -12,7 +12,7 @@
 	result = /obj/item/container/edible/stuffed_legion
 
 
-/cooking_recipe/plate/stuffed_legion/check_item_requirement(var/obj/item/I,var/triggering_id)
+/cooking_recipe/plate/stuffed_legion/check_item_requirement(obj/item/I,triggering_id)
 	. = ..()
 	switch(triggering_id)
 		if(/obj/item/container/edible/dynamic/meat)

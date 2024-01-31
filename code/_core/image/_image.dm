@@ -19,7 +19,7 @@
 	attached_object = null
 	. = ..()
 
-/image/overlay/proc/add_overlay(var/datum/overlay_to_add)
+/image/overlay/proc/add_overlay(datum/overlay_to_add)
 	overlays += overlay_to_add
 	return TRUE
 

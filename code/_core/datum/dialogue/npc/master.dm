@@ -1,6 +1,6 @@
 /dialogue/npc/master/
 
-/dialogue/npc/master/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/master/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	. = list()
 
@@ -46,7 +46,7 @@
 		"Enjoy your reward!",
 	)
 
-/dialogue/npc/master/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/master/set_topic(mob/living/advanced/player/P,topic)
 
 	. = ..()
 
@@ -100,7 +100,7 @@
 
 
 
-/dialogue/npc/master/proc/try_prestige(var/mob/living/advanced/player/P)
+/dialogue/npc/master/proc/try_prestige(mob/living/advanced/player/P)
 
 	var/list/valid_skills = list()
 

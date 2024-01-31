@@ -16,17 +16,17 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/cassette_player/get_examine_list(var/mob/examiner)
+/obj/item/cassette_player/get_examine_list(mob/examiner)
 	. = ..()
 	if(stored_tape)
 		. += div("notice","It currently holding [stored_tape.name] inside.")
 	. += div("notice","It is currently [playing ? "playing" : "not playing"].")
 
-/obj/item/cassette_player/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/cassette_player/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("stored_tape")
 
-/obj/item/cassette_player/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/cassette_player/load_item_data_post(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("stored_tape")
 
@@ -65,7 +65,7 @@
 	update_sprite()
 
 
-/obj/item/cassette_player/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/cassette_player/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
@@ -96,7 +96,7 @@
 
 	. = ..()
 
-/obj/item/cassette_player/click_self(var/mob/caller,var/atom/object)
+/obj/item/cassette_player/click_self(mob/caller,atom/object)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(20)
@@ -124,7 +124,7 @@
 
 	return TRUE
 
-/obj/item/cassette_player/post_move(var/atom/old_loc)
+/obj/item/cassette_player/post_move(atom/old_loc)
 	. = ..()
 	check_valid()
 
@@ -154,10 +154,10 @@
 		stored_track = pick(SStrack.all_tracks)
 		icon_state = "tape_blue"
 
-/obj/item/cassette_tape/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/cassette_tape/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEPATH("stored_track")
 
-/obj/item/cassette_tape/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/cassette_tape/load_item_data_post(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADPATH("stored_track")

@@ -25,7 +25,7 @@
 
 	var/precision = 0.1
 
-/obj/item/crafting_bench/filter/click_self(var/mob/caller,location,control,params)
+/obj/item/crafting_bench/filter/click_self(mob/caller,location,control,params)
 
 	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		var/current_setting
@@ -50,7 +50,7 @@
 
 	. = ..()
 
-/obj/item/crafting_bench/filter/attempt_to_craft(var/mob/living/advanced/caller)
+/obj/item/crafting_bench/filter/attempt_to_craft(mob/living/advanced/caller)
 
 	var/obj/item/container/C //Final slot container.
 

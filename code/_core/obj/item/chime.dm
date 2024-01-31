@@ -11,15 +11,15 @@
 
 	weight = 3
 
-/obj/item/chime/save_item_data(var/save_inventory = TRUE)
+/obj/item/chime/save_item_data(save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("stored_device")
 	
-/obj/item/chime/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/chime/load_item_data_pre(mob/living/advanced/player/P,list/object_data)
 	. = ..()
 	LOADATOM("stored_device")
 	
-/obj/item/chime/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/chime/trigger(mob/caller,atom/source,signal_freq,signal_code)
 
 	if(sound_to_play)
 		var/turf/T = get_turf(src)
@@ -36,12 +36,12 @@
 		FINALIZE(stored_device)
 	return ..()
 
-/obj/item/chime/click_self(var/mob/caller,location,control,params)
+/obj/item/chime/click_self(mob/caller,location,control,params)
 	if(stored_device)
 		return stored_device.click_self(caller,location,control,params)
 	return ..()
 
-/obj/item/chime/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/chime/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -68,7 +68,7 @@
 
 	return ..()
 
-/obj/item/chime/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/chime/on_mouse_wheel(mob/caller,delta_x,delta_y,location,control,params)
 
 	if(stored_device)
 		return stored_device.on_mouse_wheel(caller,delta_x,delta_y,location,control,params)

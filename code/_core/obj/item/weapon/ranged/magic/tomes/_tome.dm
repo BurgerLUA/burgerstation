@@ -7,7 +7,7 @@
 
 	weight = 6
 
-/obj/item/weapon/ranged/magic/tome/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
+/obj/item/weapon/ranged/magic/tome/get_shoot_delay(mob/caller,atom/target,location,params)
 
 	. = ..()
 
@@ -20,13 +20,13 @@
 /obj/item/weapon/ranged/magic/tome/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/magic/tome/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/magic/tome/get_skill_spread(mob/living/L)
 	return 0
 
-/obj/item/weapon/ranged/magic/tome/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/magic/tome/quick(mob/caller,atom/object,location,params)
 	return shoot(caller,object,location,params)
 
-/obj/item/weapon/ranged/magic/tome/proc/get_mana_cost(var/mob/living/caster)
+/obj/item/weapon/ranged/magic/tome/proc/get_mana_cost(mob/living/caster)
 	return cost_mana
 
 /obj/item/weapon/ranged/magic/tome/get_owner()
@@ -37,7 +37,7 @@
 
 	return null
 
-/obj/item/weapon/ranged/magic/tome/can_gun_shoot(var/mob/caller)
+/obj/item/weapon/ranged/magic/tome/can_gun_shoot(mob/caller)
 
 	if(get_ammo_count() < 1)
 		return FALSE
@@ -62,7 +62,7 @@
 	return owner && actual_mana_cost ? FLOOR(owner.health.mana_current / actual_mana_cost, 1) : 0
 
 
-/obj/item/weapon/ranged/magic/tome/handle_ammo(var/mob/caller,var/bullet_position=1)
+/obj/item/weapon/ranged/magic/tome/handle_ammo(mob/caller,bullet_position=1)
 
 	if(!is_advanced(caller))
 		return ..()
@@ -83,7 +83,7 @@
 
 
 /*
-/obj/item/weapon/ranged/magic/tome/do_automatic(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/magic/tome/do_automatic(mob/caller,atom/object,location,params)
 
 	if(!automatic || (object && object.plane >= PLANE_HUD) || !is_advanced(caller))
 		return TRUE
@@ -103,7 +103,7 @@
 */
 
 /*
-/obj/item/weapon/ranged/magic/tome/on_mouse_up(var/mob/caller,var/atom/object,location,control,params,var/secret_bypass=FALSE)
+/obj/item/weapon/ranged/magic/tome/on_mouse_up(mob/caller,atom/object,location,control,params,secret_bypass=FALSE)
 
 	if(!automatic || !is_advanced(caller))
 		return TRUE

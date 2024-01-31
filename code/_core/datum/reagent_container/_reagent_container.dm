@@ -61,7 +61,7 @@
 
 	return "It contains [english_list(formatted_list)]. The temperature reads [average_temperature] kelvin."
 
-/reagent_container/New(var/atom/desired_owner,var/desired_volume_max)
+/reagent_container/New(atom/desired_owner,desired_volume_max)
 
 	if(desired_owner)
 		owner = desired_owner
@@ -76,14 +76,14 @@
 	if(!(flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT) && volume_current)
 		SSreagent.all_temperature_reagent_containers += src
 
-/reagent_container/proc/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
+/reagent_container/proc/act_explode(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
 	. = FALSE
 	for(var/r_id in stored_reagents)
 		var/reagent/R = REAGENT(r_id)
 		if(R.act_explode(src,owner,source,epicenter,magnitude,desired_loyalty_tag))
 			. = TRUE
 
-/reagent_container/proc/metabolize(var/atom/movable/owner,var/multiplier=1) //Assumed that it is metabolism per second.
+/reagent_container/proc/metabolize(atom/movable/owner,multiplier=1) //Assumed that it is metabolism per second.
 
 	if(!volume_current)
 		return
@@ -203,7 +203,7 @@
 	else
 		. += T0C + 20
 
-/reagent_container/proc/process_temperature(var/debug=FALSE)
+/reagent_container/proc/process_temperature(debug=FALSE)
 
 	. = FALSE
 
@@ -299,7 +299,7 @@
 	return TRUE
 
 
-/reagent_container/proc/update_container(var/mob/caller,var/update_owner = TRUE,var/force=FALSE)
+/reagent_container/proc/update_container(mob/caller,update_owner = TRUE,force=FALSE)
 
 	if(!owner)
 		return FALSE
@@ -392,7 +392,7 @@
 	return TRUE
 
 
-/reagent_container/proc/process_recipes(var/mob/caller,var/from_temperature_change=FALSE)
+/reagent_container/proc/process_recipes(mob/caller,from_temperature_change=FALSE)
 
 	if(!allow_recipe_processing)
 		return FALSE
@@ -521,7 +521,7 @@
 
 	return TRUE
 
-/reagent_container/proc/add_reagent(var/reagent_type, var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
+/reagent_container/proc/add_reagent(reagent_type, amount=0, temperature = TNULL, should_update = TRUE,check_recipes = TRUE,mob/living/caller)
 
 	if(abs(amount) < REAGENT_ROUNDING)
 		if(amount > 0)
@@ -588,7 +588,7 @@
 	if(check_recipes)
 		process_recipes(caller)
 
-/reagent_container/proc/remove_reagents(var/amount=volume_current,var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
+/reagent_container/proc/remove_reagents(amount=volume_current,should_update = TRUE,check_recipes = TRUE,mob/living/caller)
 
 	var/total_volume = volume_current
 
@@ -611,7 +611,7 @@
 	update_container()
 	return TRUE
 
-/reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=src.volume_current,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller,var/include_abstract=FALSE) //Transfer all the reagents.
+/reagent_container/proc/transfer_reagents_to(reagent_container/target_container,amount=src.volume_current,should_update=TRUE,check_recipes = TRUE,mob/living/caller,include_abstract=FALSE) //Transfer all the reagents.
 
 	if(!target_container)
 		CRASH("Tried to transfer reagents from [owner], but there was no target_container!")
@@ -671,7 +671,7 @@
 
 	return total_amount_transfered
 
-/reagent_container/proc/get_reagent_volume(var/reagent_type)
+/reagent_container/proc/get_reagent_volume(reagent_type)
 	return stored_reagents[reagent_type] ? stored_reagents[reagent_type] : 0
 
 /reagent_container/proc/get_flavor()
@@ -715,7 +715,7 @@
 	return list(english_list(english_flavor_profile),flavor_flags,flavor_count)
 
 
-/reagent_container/proc/splash(var/mob/caller,var/atom/target,var/splash_amount = volume_current,var/silent = FALSE,var/strength_mod=1)
+/reagent_container/proc/splash(mob/caller,atom/target,splash_amount = volume_current,silent = FALSE,strength_mod=1)
 
 	if(!splash_amount || !volume_current)
 		if(!silent) caller?.to_chat(span("warning","There is nothing to splash!"))
@@ -731,7 +731,7 @@
 
 	return target.on_splash(caller,src,splash_amount,silent,strength_mod)
 
-/atom/proc/on_splash(var/mob/caller,var/reagent_container/source,var/splash_amount,var/silent = FALSE,var/strength_mod=1)
+/atom/proc/on_splash(mob/caller,reagent_container/source,splash_amount,silent = FALSE,strength_mod=1)
 
 	splash_amount = min(splash_amount,source.volume_current)
 
@@ -747,7 +747,7 @@
 
 	return FALSE
 
-/mob/living/on_splash(var/mob/caller,var/reagent_container/source,var/splash_amount,var/silent = FALSE,var/strength_mod=1)
+/mob/living/on_splash(mob/caller,reagent_container/source,splash_amount,silent = FALSE,strength_mod=1)
 
 	if(source.contains_lethal && caller != src && is_living(caller))
 		var/mob/living/L = caller
@@ -756,7 +756,7 @@
 
 	. = ..()
 
-/reagent_container/proc/consume(var/mob/caller,var/mob/living/consumer)
+/reagent_container/proc/consume(mob/caller,mob/living/consumer)
 
 	if(!owner)
 		CRASH("[src.get_debug_name()] had no owner!")

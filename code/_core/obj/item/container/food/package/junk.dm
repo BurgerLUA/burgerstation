@@ -104,7 +104,7 @@
 	return ..()
 
 
-/obj/item/container/edible/package/junkfood/halloween/unwrap(var/mob/caller,var/obj/hud/inventory/I)
+/obj/item/container/edible/package/junkfood/halloween/unwrap(mob/caller,obj/hud/inventory/I)
 
 	. = ..()
 

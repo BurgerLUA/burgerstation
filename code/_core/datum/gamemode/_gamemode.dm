@@ -159,7 +159,7 @@
 	//Can we even continue?
 	return TRUE
 
-/gamemode/proc/on_object_sold(var/atom/movable/M)
+/gamemode/proc/on_object_sold(atom/movable/M)
 
 	for(var/k in crew_active_objectives)
 		var/objective/O = k
@@ -172,7 +172,7 @@
 
 
 
-/gamemode/proc/add_objective(var/objective/O)
+/gamemode/proc/add_objective(objective/O)
 	O = new O
 
 	if(O.completion_state == IMPOSSIBLE)

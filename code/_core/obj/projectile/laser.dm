@@ -42,7 +42,7 @@
 /obj/projectile/bullet/laser/kinetic
 	icon_state = "kinetic"
 
-/obj/projectile/bullet/laser/kinetic/update_projectile(var/tick_rate=1)
+/obj/projectile/bullet/laser/kinetic/update_projectile(tick_rate=1)
 	. = ..()
 	if(.)
 		vel_x *= 0.95
@@ -61,7 +61,7 @@
 
 /* It also doesn't work that way so yeh
 //So it basically accelerates and then self-obliterates to act as some funny alternative to KA.
-/obj/projectile/bullet/laser/plasma_cutter/update_projectile(var/tick_rate=1)
+/obj/projectile/bullet/laser/plasma_cutter/update_projectile(tick_rate=1)
 	. = ..()
 
 	if(.)
@@ -82,7 +82,7 @@
 	icon = 'icons/obj/projectiles/spray.dmi'
 	icon_state = "flamer"
 
-/obj/projectile/bullet/flamer/update_projectile(var/tick_rate=1)
+/obj/projectile/bullet/flamer/update_projectile(tick_rate=1)
 	. = ..()
 	if(.)
 		vel_x *= 0.95

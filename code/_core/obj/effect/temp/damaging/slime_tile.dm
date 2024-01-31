@@ -61,7 +61,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/slime_tile/proc/heal(var/mob/living/L)
+/obj/structure/interactive/slime_tile/proc/heal(mob/living/L)
 
 	if(src.qdeleting || L.qdeleting)
 		return FALSE
@@ -99,6 +99,6 @@
 			play_sound('sound/effects/slimed.ogg',get_turf(src))
 			telegraph_delete()
 
-/obj/structure/interactive/slime_tile/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/slime_tile/on_destruction(damage = TRUE)
 	. = ..()
 	qdel(src)

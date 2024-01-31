@@ -1,7 +1,7 @@
 /ai/proc/attack_message()
 	return TRUE
 
-/ai/proc/do_attack(var/atom/target,var/left_click=FALSE)
+/ai/proc/do_attack(atom/target,left_click=FALSE)
 
 	if(!owner || !target)
 		return FALSE
@@ -54,7 +54,7 @@
 	spawn do_attack(objective_to_attack,prob(left_click_chance)) //The spawn here is important as attacking has its own sleeps and whatnot.
 	return TRUE
 
-/ai/proc/get_attack_score(var/atom/A) //Higher the score, the better.
+/ai/proc/get_attack_score(atom/A) //Higher the score, the better.
 
 	var/dist = get_dist(A.loc,owner.loc)
 
@@ -83,7 +83,7 @@
 
 	return -dist + -500 //Not a living being.
 
-/ai/proc/should_attack_mob(var/mob/living/L,var/aggression_check=TRUE)
+/ai/proc/should_attack_mob(mob/living/L,aggression_check=TRUE)
 
 	if(L == owner)
 		return FALSE
@@ -113,7 +113,7 @@
 
 	return TRUE
 
-/ai/proc/is_enemy(var/atom/A,var/safety_check=TRUE,var/aggression_check=TRUE)
+/ai/proc/is_enemy(atom/A,safety_check=TRUE,aggression_check=TRUE)
 
 	if(A.qdeleting || !A.finalized)
 		return FALSE
@@ -158,7 +158,7 @@
 
 	return TRUE
 
-/ai/proc/check_aggression(var/mob/living/target,var/aggression_override = src.aggression)
+/ai/proc/check_aggression(mob/living/target,aggression_override = src.aggression)
 
 	if(hunt_target)
 		return FALSE
@@ -180,7 +180,7 @@
 
 	return FALSE
 
-/ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/ai/proc/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	if(is_living(attacker) && !stealthy && attacker != objective_attack)
 		if(should_attack_mob(attacker,FALSE))

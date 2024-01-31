@@ -9,11 +9,11 @@
 	var/registered_squad = "none"
 	var/iff_tag = "none"
 
-/obj/item/organ/internal/implant/hand/left/iff/on_organ_add(var/mob/living/advanced/new_owner)
+/obj/item/organ/internal/implant/hand/left/iff/on_organ_add(mob/living/advanced/new_owner)
 	new_owner.set_iff_tag(iff_tag)
 	return ..()
 
-/obj/item/organ/internal/implant/hand/left/iff/on_organ_remove(var/mob/living/advanced/old_owner)
+/obj/item/organ/internal/implant/hand/left/iff/on_organ_remove(mob/living/advanced/old_owner)
 	old_owner.set_iff_tag(initial(old_owner.iff_tag))
 	return ..()
 

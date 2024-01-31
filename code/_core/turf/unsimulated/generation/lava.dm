@@ -8,7 +8,7 @@
 	icon_state = "lava_path"
 	density = FALSE
 
-/turf/unsimulated/generation/lava/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/lava/generate(size = WORLD_SIZE)
 
 	var/range_times_noise = round(VIEW_RANGE*noise,1)
 

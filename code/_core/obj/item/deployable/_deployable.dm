@@ -7,20 +7,20 @@
 	amount_max = 10
 	amount_max_icon = 3
 
-/obj/item/deployable/proc/get_deploy_time(var/mob/caller)
+/obj/item/deployable/proc/get_deploy_time(mob/caller)
 	return 3 SECONDS
 
-/obj/item/deployable/proc/pre_deploy(var/mob/caller,var/turf/T,var/obj/structure/S)
+/obj/item/deployable/proc/pre_deploy(mob/caller,turf/T,obj/structure/S)
 	S.dir = caller.dir
 	INITIALIZE(S)
 	FINALIZE(S)
 	return TRUE
 
-/obj/item/deployable/proc/post_deploy(var/mob/caller,var/turf/T,var/obj/structure/S)
+/obj/item/deployable/proc/post_deploy(mob/caller,turf/T,obj/structure/S)
 	caller.visible_message(span("notice","\The [caller.name] deploys \the [S.name]."),span("notice","You deploy \the [S.name]."))
 	return TRUE
 
-/obj/item/deployable/proc/deploy(var/mob/caller,var/turf/T)
+/obj/item/deployable/proc/deploy(mob/caller,turf/T)
 
 	var/obj/structure/S = new structure_to_deploy(T)
 	pre_deploy(caller,T,S)
@@ -29,7 +29,7 @@
 
 	return S
 
-/obj/item/deployable/proc/can_deploy_to(var/mob/caller,var/turf/T)
+/obj/item/deployable/proc/can_deploy_to(mob/caller,turf/T)
 
 	if(amount <= 0)
 		qdel(src)
@@ -37,7 +37,7 @@
 
 	return T.can_construct_on(caller,structure_to_deploy)
 
-/obj/item/deployable/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/deployable/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -86,13 +86,13 @@
 
 	size = SIZE_9
 
-/obj/item/deployable/mountable/browning/get_deploy_time(var/mob/caller)
+/obj/item/deployable/mountable/browning/get_deploy_time(mob/caller)
 	return 10 SECONDS
 
 /obj/item/deployable/mob
 	var/mob/living/mob_to_deploy
 
-/obj/item/deployable/mob/can_deploy_to(var/mob/caller,var/turf/T)
+/obj/item/deployable/mob/can_deploy_to(mob/caller,turf/T)
 
 	if(amount <= 0)
 		qdel(src)
@@ -108,17 +108,17 @@
 
 	return TRUE
 
-/obj/item/deployable/mob/pre_deploy(var/mob/caller,var/turf/T,var/mob/living/L)
+/obj/item/deployable/mob/pre_deploy(mob/caller,turf/T,mob/living/L)
 	L.dir = caller.dir
 	INITIALIZE(L)
 	FINALIZE(L)
 	return TRUE
 
-/obj/item/deployable/mob/post_deploy(var/mob/caller,var/turf/T,var/mob/living/L)
+/obj/item/deployable/mob/post_deploy(mob/caller,turf/T,mob/living/L)
 	caller.visible_message(span("notice","\The [caller.name] deploys \the [L.name]."),span("notice","You deploy \the [L.name]."))
 	return TRUE
 
-/obj/item/deployable/mob/deploy(var/mob/caller,var/turf/T)
+/obj/item/deployable/mob/deploy(mob/caller,turf/T)
 	var/mob/living/L = new mob_to_deploy(T)
 	pre_deploy(caller,T,L)
 	post_deploy(caller,T,L)
@@ -142,7 +142,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/deployable/mob/sentry/pre_deploy(var/mob/caller,var/turf/T,var/mob/living/L)
+/obj/item/deployable/mob/sentry/pre_deploy(mob/caller,turf/T,mob/living/L)
 
 	. = ..()
 
@@ -163,12 +163,12 @@
 		if(C.iff_tag)
 			TD.set_iff_tag(C.iff_tag)
 
-/obj/item/deployable/mob/sentry/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/deployable/mob/sentry/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("stored_battery")
 	SAVEATOM("stored_magazine")
 
-/obj/item/deployable/mob/sentry/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/deployable/mob/sentry/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("stored_battery")
 	LOADATOM("stored_magazine")

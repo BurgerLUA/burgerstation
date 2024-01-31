@@ -1,4 +1,4 @@
-/proc/get_value_text_for_debug(var/datum/D,var/key,var/value)
+/proc/get_value_text_for_debug(datum/D,key,value)
 
 	if(is_datum(value))
 		var/datum/VD = value
@@ -44,7 +44,7 @@ var/global/static/list/variable_names_to_ignore = list(
 	//"contents" = TRUE
 )
 
-/proc/check_garbage(var/datum/needle)
+/proc/check_garbage(datum/needle)
 
 	set background = 1
 
@@ -110,7 +110,7 @@ var/global/static/list/variable_names_to_ignore = list(
 
 	usr.to_chat(span("notice","Checked [length(checked_refs)] refs."))
 
-/proc/check_garbage_list(var/list/haystack,var/datum/needle,var/list/checked_refs,var/recursion_limit)
+/proc/check_garbage_list(list/haystack,datum/needle,list/checked_refs,recursion_limit)
 
 	if(recursion_limit <= 0)
 		return null
@@ -160,7 +160,7 @@ var/global/static/list/variable_names_to_ignore = list(
 	return null
 
 
-/proc/check_garbage_datum(var/datum/haystack,var/datum/needle,var/list/checked_refs,var/recursion_limit)
+/proc/check_garbage_datum(datum/haystack,datum/needle,list/checked_refs,recursion_limit)
 
 	if(recursion_limit <= 0)
 		return null

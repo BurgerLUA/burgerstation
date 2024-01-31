@@ -16,7 +16,7 @@
 
 	rarity = RARITY_LEGENDARY
 
-/obj/item/clothing/head/hat/crown/get_examine_details_list(var/mob/examiner)
+/obj/item/clothing/head/hat/crown/get_examine_details_list(mob/examiner)
 	. = ..()
 	if(winner_name)
 		if(is_player(examiner))
@@ -30,18 +30,18 @@
 		. += span("warning","The crown seems to be a fake...")
 
 
-/obj/item/clothing/head/hat/crown/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/clothing/head/hat/crown/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("winner_name")
 
-/obj/item/clothing/head/hat/crown/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/clothing/head/hat/crown/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("winner_name")
 
 
 var/list/vowel_shift = list("a","e","i","o","u")
 
-/proc/shift_vowels(var/text)
+/proc/shift_vowels(text)
 	var/final_string = ""
 	var/list/letters = splittext(text,"")
 	for(var/letter in letters)

@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(chunkclean)
 
 	return TRUE
 
-/subsystem/chunkclean/proc/process_entire_z(var/z)
+/subsystem/chunkclean/proc/process_entire_z(z)
 
 	if(!z)
 		return 0
@@ -75,7 +75,7 @@ SUBSYSTEM_DEF(chunkclean)
 					if(M.enable_chunk_clean)
 						. += M.on_chunk_clean()
 
-/proc/get_chunk_data(var/adjacent=FALSE)
+/proc/get_chunk_data(adjacent=FALSE)
 
 	. = list()
 
@@ -100,7 +100,7 @@ SUBSYSTEM_DEF(chunkclean)
 			.["[x+1],[y+1],[T.z]"] = TRUE
 			.["[x+1],[y],[T.z]"] = TRUE
 
-/proc/get_chunk(var/chunk_x,var/chunk_y,var/chunk_z)
+/proc/get_chunk(chunk_x,chunk_y,chunk_z)
 
 	var/min_x = max(1,1 + CHUNK_SIZE * (chunk_x-1))
 	var/min_y = max(1,1 + CHUNK_SIZE * (chunk_y-1))

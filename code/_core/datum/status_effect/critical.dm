@@ -8,7 +8,7 @@
 
 	affects_dead = FALSE
 
-/status_effect/critical/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/critical/on_effect_added(mob/living/owner,atom/source,magnitude,duration,stealthy)
 	owner.remove_status_effect(ADRENALINE)
 	if(is_advanced(owner) && !owner.horizontal)
 		owner.add_status_effect(DISARM,5,5,source = source,stealthy = TRUE)
@@ -24,7 +24,7 @@
 
 	affects_dead = FALSE
 
-/status_effect/paincrit/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/paincrit/on_effect_added(mob/living/owner,atom/source,magnitude,duration,stealthy)
 	if(is_advanced(owner) && !owner.horizontal)
 		owner.add_status_effect(DISARM,5,5,source = source,stealthy = TRUE)
 	return ..()
@@ -39,7 +39,7 @@
 
 	affects_dead = FALSE
 
-/status_effect/stamcrit/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/stamcrit/on_effect_added(mob/living/owner,atom/source,magnitude,duration,stealthy)
 	if(is_advanced(owner) && !owner.horizontal)
 		owner.add_status_effect(DISARM,5,5,source = source,stealthy = TRUE)
 	owner.remove_status_effect(ADRENALINE)

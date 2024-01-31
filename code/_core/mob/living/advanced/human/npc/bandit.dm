@@ -19,7 +19,7 @@
 	loyalty_tag = "Bandit"
 	iff_tag = "Bandit"
 
-/mob/living/advanced/npc/bandit/setup_appearance(var/set_default=FALSE)
+/mob/living/advanced/npc/bandit/setup_appearance(set_default=FALSE)
 
 	. = ..()
 

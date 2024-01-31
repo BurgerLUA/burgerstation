@@ -38,7 +38,7 @@
 
 	return ..()
 
-/obj/item/weapon/melee/energy/chainsaw/proc/can_start(var/mob/caller)
+/obj/item/weapon/melee/energy/chainsaw/proc/can_start(mob/caller)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
@@ -54,7 +54,7 @@
 	return TRUE
 
 
-/obj/item/weapon/melee/energy/chainsaw/proc/start(var/mob/caller)
+/obj/item/weapon/melee/energy/chainsaw/proc/start(mob/caller)
 	enabled = TRUE
 	START_THINKING(src)
 	damage_type = damage_type_on
@@ -62,7 +62,7 @@
 	update_sprite()
 	return TRUE
 
-/obj/item/weapon/melee/energy/chainsaw/proc/stop(var/mob/caller)
+/obj/item/weapon/melee/energy/chainsaw/proc/stop(mob/caller)
 	enabled = FALSE
 	STOP_THINKING(src)
 	damage_type = initial(damage_type)
@@ -70,7 +70,7 @@
 	update_sprite()
 	return TRUE
 
-/obj/item/weapon/melee/energy/chainsaw/proc/pull_chain(var/mob/caller)
+/obj/item/weapon/melee/energy/chainsaw/proc/pull_chain(mob/caller)
 
 	if(prob(25))
 		start(caller)
@@ -79,7 +79,7 @@
 
 	return TRUE
 
-/obj/item/weapon/melee/energy/chainsaw/proc/try_start(var/mob/caller)
+/obj/item/weapon/melee/energy/chainsaw/proc/try_start(mob/caller)
 	if(caller.is_busy())
 		caller.to_chat(span("warning","You're already busy with a task!"))
 		return FALSE
@@ -90,7 +90,7 @@
 
 	return TRUE
 
-/obj/item/weapon/melee/energy/chainsaw/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/energy/chainsaw/click_self(mob/caller,location,control,params)
 
 	if(is_living(caller))
 		var/mob/living/L = caller
@@ -111,7 +111,7 @@
 
 	return TRUE
 
-/obj/item/weapon/melee/energy/chainsaw/should_cleave(var/atom/attacker,var/atom/victim,var/list/params)
+/obj/item/weapon/melee/energy/chainsaw/should_cleave(atom/attacker,atom/victim,list/params)
 
 	if(enabled && wielded)
 		return TRUE

@@ -2,7 +2,7 @@
 	name = "Cult"
 	id = LANGUAGE_CULT
 
-/language/cult/process_text(var/speaker,var/text)
+/language/cult/process_text(speaker,text)
 
 	var/static/list/vowels = make_associative(list(
 		"y","'","u","x","v",

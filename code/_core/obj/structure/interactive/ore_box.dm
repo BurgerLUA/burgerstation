@@ -24,7 +24,7 @@
 		var/material/M = MATERIAL(k)
 		. += amount*1*M.value_per_unit
 
-/obj/structure/interactive/ore_box/proc/can_dump_some_ore(var/mob/caller)
+/obj/structure/interactive/ore_box/proc/can_dump_some_ore(mob/caller)
 
 	if(get_dist(caller,src) > 1)
 		return FALSE
@@ -36,7 +36,7 @@
 
 
 
-/obj/structure/interactive/ore_box/proc/dump_some_ore(var/mob/caller)
+/obj/structure/interactive/ore_box/proc/dump_some_ore(mob/caller)
 
 	var/turf/T = get_turf(caller)
 	if(!T)
@@ -60,7 +60,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/ore_box/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/ore_box/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/C = caller
@@ -82,7 +82,7 @@
 
 	. = ..()
 
-/obj/structure/interactive/ore_box/proc/stack(var/obj/item/material/ore/O)
+/obj/structure/interactive/ore_box/proc/stack(obj/item/material/ore/O)
 
 	if(!O.material_id)
 		return FALSE
@@ -95,7 +95,7 @@
 	qdel(O)
 	return TRUE
 
-/obj/structure/interactive/ore_box/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/ore_box/get_examine_list(mob/examiner)
 	. = ..()
 	var/total_value = 0
 	var/total_objects = 0

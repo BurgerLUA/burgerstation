@@ -57,7 +57,7 @@
 	update_sprite()
 
 
-/obj/item/weapon/ranged/bow/on_equip(var/atom/old_location,var/silent=FALSE)
+/obj/item/weapon/ranged/bow/on_equip(atom/old_location,silent=FALSE)
 	. = ..()
 	stage_max = initial(stage_max)
 	stage_per_decisecond = initial(stage_per_decisecond)
@@ -77,10 +77,10 @@
 /obj/item/weapon/ranged/bow/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bow/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bow/get_skill_spread(mob/living/L)
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bow/on_mouse_up(var/mob/caller as mob, var/atom/object,location,control,params) //Release. This fires the bow.
+/obj/item/weapon/ranged/bow/on_mouse_up(mob/caller as mob, atom/object,location,control,params) //Release. This fires the bow.
 	if(stage_current > 0 )
 		shoot(caller,object,location,params,max(stage_current/100,0.25))
 		stage_current = 0
@@ -90,7 +90,7 @@
 		update_sprite()
 	return TRUE
 
-/obj/item/weapon/ranged/bow/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/bow/click_on_object(mob/caller,atom/object,location,control,params)
 	if(object.plane >= PLANE_HUD)
 		return ..()
 	if(object.loc && object.loc.plane >= PLANE_HUD)
@@ -130,7 +130,7 @@
 
 	. = ..() || . //weirdest statement I ever wrote.
 
-/obj/item/weapon/ranged/bow/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bow/handle_ammo(mob/caller)
 
 	if(!is_advanced(caller))
 		return FALSE
@@ -153,7 +153,7 @@
 
 	return BC.spend_bullet(caller,0)
 
-/obj/item/weapon/ranged/bow/handle_empty(var/mob/caller)
+/obj/item/weapon/ranged/bow/handle_empty(mob/caller)
 	return FALSE
 
 /obj/item/weapon/ranged/bow/get_damage_per_hit(armor_to_use)
@@ -235,7 +235,7 @@
 	GENERATE(stored_arrow)
 	FINALIZE(stored_arrow)
 
-/obj/item/weapon/ranged/bow/hardlight/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bow/hardlight/handle_ammo(mob/caller)
 	. = ..()
 	if(!.) return stored_arrow
 

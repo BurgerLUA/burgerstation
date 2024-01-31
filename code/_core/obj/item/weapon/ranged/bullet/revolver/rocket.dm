@@ -50,9 +50,9 @@
 /obj/item/weapon/ranged/bullet/revolver/rocket/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/revolver/rocket/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/revolver/rocket/get_skill_spread(mob/living/L)
 	return max(0,0.03 - (0.12 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/revolver/rocket/use_condition(var/amount_to_use=1)
+/obj/item/weapon/ranged/bullet/revolver/rocket/use_condition(amount_to_use=1)
 	adjust_quality(-10)
 	return TRUE

@@ -13,11 +13,11 @@
 	QDEL_NULL(stored_magazine)
 	. = ..()
 
-/obj/item/weapon/ranged/bullet/magazine/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/weapon/ranged/bullet/magazine/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("stored_magazine")
 
-/obj/item/weapon/ranged/bullet/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/weapon/ranged/bullet/magazine/load_item_data_post(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("stored_magazine")
 	if(stored_magazine)
@@ -26,7 +26,7 @@
 /obj/item/weapon/ranged/bullet/magazine/proc/get_magazine()
 	return stored_magazine
 
-/obj/item/weapon/ranged/bullet/magazine/proc/get_cock_sound(var/direction="both")
+/obj/item/weapon/ranged/bullet/magazine/proc/get_cock_sound(direction="both")
 	switch(direction)
 		if("both")
 			return pick(
@@ -53,7 +53,7 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/ranged/bullet/magazine/click_self(mob/caller,location,control,params)
 
 	. = ..()
 
@@ -82,7 +82,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/caller as mob)
+/obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(mob/caller as mob)
 
 	if(!stored_magazine) CRASH("[caller.get_debug_name()] tried to eject a magazine from [src.get_debug_name()], but there was no stored_magazine!")
 
@@ -102,7 +102,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+/obj/item/weapon/ranged/bullet/magazine/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params) //The src was clicked on by the object
 
 	if(stored_magazine && !wielded && is_inventory(object) && is_inventory(src.loc) && !caller.attack_flags)
 		INTERACT_CHECK
@@ -119,7 +119,7 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/proc/load_new_bullet_from_magazine(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/proc/load_new_bullet_from_magazine(mob/caller)
 
 	var/obj/item/magazine/M = get_magazine()
 
@@ -146,7 +146,7 @@
 
 	return FALSE
 
-/obj/item/weapon/ranged/bullet/magazine/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/handle_ammo(mob/caller)
 
 	. = ..()
 
@@ -158,7 +158,7 @@
 
 
 
-/obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine(var/obj/item/magazine/M)
+/obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine(obj/item/magazine/M)
 
 	if(!istype(M))
 		return FALSE
@@ -168,7 +168,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
+/obj/item/weapon/ranged/bullet/magazine/play_shoot_sounds(mob/caller,list/shoot_sounds_to_use = list(),shoot_alert_to_use = ALERT_LEVEL_NONE)
 
 	. = ..()
 

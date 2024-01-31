@@ -5,7 +5,7 @@ var/global/icon/chat_toolbox = new('icons/hud/chat_toolbox_old.dmi')
 var/global/icon/chat_admin = new('icons/hud/chat_admin.dmi')
 
 /*
-/proc/format_language(var/speaker,var/text,var/language = LANGUAGE_BASIC) //Here lies a failed experiment
+/proc/format_language(speaker,text,language = LANGUAGE_BASIC) //Here lies a failed experiment
 	var/language/LA = SSlanguage.all_languages[language]
 	var/language_text = LA.process_text(speaker,text)
 	return tooltip(text,language_text)
@@ -50,7 +50,7 @@ proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequ
 
 	return html
 
-/proc/get_chat_icons(var/datum/speaker)
+/proc/get_chat_icons(datum/speaker)
 
 	. = ""
 
@@ -67,7 +67,7 @@ proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequ
 		if(C.permissions & FLAG_PERMISSION_ADMIN || C.permissions & FLAG_PERMISSION_MODERATOR)
 			. += ICON_TO_HTML(chat_admin.icon,"admin",20,13)
 
-/proc/get_ooc_color(var/datum/speaker) //WIP
+/proc/get_ooc_color(datum/speaker) //WIP
 
 	if(istype(speaker,/client/))
 		var/client/C = speaker

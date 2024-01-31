@@ -7,10 +7,10 @@
 	icon_state = "inventory"
 	value = 100
 
-/obj/item/analyzer/plant/can_be_scanned(var/mob/caller,var/atom/target)
+/obj/item/analyzer/plant/can_be_scanned(mob/caller,atom/target)
 	return istype(target,/obj/structure/interactive/plant)
 
-/obj/item/analyzer/plant/on_scan(var/mob/caller,var/atom/target,location,control,params)
+/obj/item/analyzer/plant/on_scan(mob/caller,atom/target,location,control,params)
 
 	var/obj/structure/interactive/plant/P = target
 

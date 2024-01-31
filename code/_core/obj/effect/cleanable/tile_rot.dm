@@ -11,7 +11,7 @@
 	plane = PLANE_FLOOR
 	layer = LAYER_FLOOR_DECAL + 1
 
-/obj/effect/cleanable/tile_rot/New(var/desired_location)
+/obj/effect/cleanable/tile_rot/New(desired_location)
 	color = rgb(114 + rand(-20,20),94 + rand(-20,20),67 + rand(-20,20))
 	alpha = rand(100,255)
 	. = ..()

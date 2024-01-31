@@ -1,6 +1,6 @@
 /dialogue/npc/taxman/
 
-/dialogue/npc/taxman/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/taxman/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	. = list()
 
@@ -46,7 +46,7 @@
 		however it may save you from being placed in a higher tax bracket if you didn't pay."
 	)
 
-/dialogue/npc/taxman/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/taxman/set_topic(mob/living/advanced/player/P,topic)
 
 	. = ..()
 

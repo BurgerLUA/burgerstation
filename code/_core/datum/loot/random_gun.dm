@@ -62,7 +62,7 @@
 
 	return TRUE
 
-/loot/random/gun/create_loot_single(var/type_to_spawn,var/spawn_loc,var/rarity=0)
+/loot/random/gun/create_loot_single(type_to_spawn,spawn_loc,rarity=0)
 
 	. = ..()
 
@@ -92,7 +92,7 @@
 						BC.amount = BC.amount_max
 					. += BC
 
-/loot/random/gun/pre_spawn(var/atom/movable/M)
+/loot/random/gun/pre_spawn(atom/movable/M)
 
 	if(istype(M,/obj/item/bullet_cartridge/))
 		var/obj/item/bullet_cartridge/B = M

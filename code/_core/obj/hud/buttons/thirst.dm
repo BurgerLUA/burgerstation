@@ -21,7 +21,7 @@
 	if(. && owner)
 		update_sprite()
 
-/obj/hud/button/thirst/get_examine_list(var/mob/caller)
+/obj/hud/button/thirst/get_examine_list(mob/caller)
 
 	. = ..()
 

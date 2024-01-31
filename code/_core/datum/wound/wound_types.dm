@@ -23,7 +23,7 @@
 	id = "bruise"
 	desc = ""
 
-/wound/bruise/New(var/mob/living/desired_owner,var/obj/item/organ/desired_location,var/atom/desired_inflictor,var/atom/desired_weapon,var/severity=1)
+/wound/bruise/New(mob/living/desired_owner,obj/item/organ/desired_location,atom/desired_inflictor,atom/desired_weapon,severity=1)
 
 	. = ..()
 

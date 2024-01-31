@@ -6,7 +6,7 @@
 	plane = PLANE_FLOOR
 	mouse_opacity = 1
 
-/obj/effect/footprint/New(var/newloc,var/desired_dir = 0)
+/obj/effect/footprint/New(newloc,desired_dir = 0)
 	set_dir(desired_dir)
 	. = ..()
 

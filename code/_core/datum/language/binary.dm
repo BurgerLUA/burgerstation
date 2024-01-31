@@ -2,7 +2,7 @@
 	name = "Binary"
 	id = LANGUAGE_BINARY
 
-/language/binary/process_text(var/speaker,var/text)
+/language/binary/process_text(speaker,text)
 
 	var/regex/R = regex("\[!,.?\]","g")
 	text = R.Replace(text,"")

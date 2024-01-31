@@ -17,7 +17,7 @@
 	QDEL_NULL(stored_radio)
 	. = ..()
 
-/obj/structure/interactive/intercom/New(var/desired_loc)
+/obj/structure/interactive/intercom/New(desired_loc)
 	stored_radio = new stored_radio(src) //Initialized somewhere else. Don't know where, though, honestly.
 	stored_radio.set_anchored(TRUE)
 	stored_radio.broadcasting = FALSE
@@ -39,7 +39,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/structure/interactive/intercom/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/structure/interactive/intercom/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(!stored_radio)
 		return ..()

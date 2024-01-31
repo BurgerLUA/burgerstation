@@ -11,7 +11,7 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/ping/New(var/desired_loc)
+/obj/hud/button/ping/New(desired_loc)
 	start_thinking(src)
 	return ..()
 

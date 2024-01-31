@@ -14,29 +14,29 @@
 	add_overlay(I)
 
 
-/obj/structure/interactive/crate/secure/open(var/mob/caller)
+/obj/structure/interactive/crate/secure/open(mob/caller)
 	if(locked)
 		return FALSE
 	. = ..()
 
-/obj/structure/interactive/crate/secure/close(var/mob/caller)
+/obj/structure/interactive/crate/secure/close(mob/caller)
 	if(locked)
 		return FALSE
 	. = ..()
 
-/obj/structure/interactive/crate/secure/proc/lock(var/mob/caller)
+/obj/structure/interactive/crate/secure/proc/lock(mob/caller)
 	locked = TRUE
 	caller?.to_chat(span("notice","You lock \the [src.name]."))
 	update_sprite()
 	return TRUE
 
-/obj/structure/interactive/crate/secure/proc/unlock(var/mob/caller)
+/obj/structure/interactive/crate/secure/proc/unlock(mob/caller)
 	locked = FALSE
 	caller?.to_chat(span("notice","You unlock \the [src.name]."))
 	update_sprite()
 	return TRUE
 
-/obj/structure/interactive/crate/secure/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/crate/secure/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		INTERACT_CHECK
@@ -56,7 +56,7 @@
 	var/credits_required
 
 
-/obj/structure/interactive/crate/secure/cargo/get_examine_details_list(var/mob/examiner)
+/obj/structure/interactive/crate/secure/cargo/get_examine_details_list(mob/examiner)
 
 	. = ..()
 
@@ -74,7 +74,7 @@
 	. += div("notice","It contains: [english_list(contents_to_display)].")
 
 
-/obj/structure/interactive/crate/secure/cargo/lock(var/mob/caller)
+/obj/structure/interactive/crate/secure/cargo/lock(mob/caller)
 
 	if(!owner_name)
 		return ..()
@@ -95,7 +95,7 @@
 	return ..()
 
 
-/obj/structure/interactive/crate/secure/cargo/unlock(var/mob/caller)
+/obj/structure/interactive/crate/secure/cargo/unlock(mob/caller)
 
 	if(!owner_name)
 		return ..()

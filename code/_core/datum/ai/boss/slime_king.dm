@@ -7,11 +7,11 @@
 	owner_as_slime_king = null
 	. = ..()
 
-/ai/boss/slime_king/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/boss/slime_king/New(desired_loc,mob/living/desired_owner)
 	owner_as_slime_king = desired_owner
 	. = ..()
 
-/ai/boss/slime_king/set_objective(var/atom/A)
+/ai/boss/slime_king/set_objective(atom/A)
 
 	var/had_previous_objective = objective_attack
 

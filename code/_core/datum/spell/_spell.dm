@@ -7,12 +7,12 @@
 	var/cast_delay = 0.5 SECONDS
 	var/cast_sound
 
-/spell/proc/on_cast(var/mob/caller,var/atom/target,location,control,params)
+/spell/proc/on_cast(mob/caller,atom/target,location,control,params)
 	if(cast_sound)
 		play_sound(cast_sound,get_turf(caller))
 	return TRUE
 
-/spell/proc/can_cast(var/mob/caller,var/atom/target,location,control,params)
+/spell/proc/can_cast(mob/caller,atom/target,location,control,params)
 	return TRUE
 
 
@@ -29,7 +29,7 @@
 	var/base_spread = 0
 	var/base_penetrations = 0
 
-/spell/projectile/on_cast(var/mob/caller,var/atom/target,location,control,params)
+/spell/projectile/on_cast(mob/caller,atom/target,location,control,params)
 
 	var/icon_pos_x = text2num(params[PARAM_ICON_X])
 	var/icon_pos_y = text2num(params[PARAM_ICON_Y])

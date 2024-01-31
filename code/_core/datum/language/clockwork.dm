@@ -2,7 +2,7 @@
 	name = "Ratvarian"
 	id = LANGUAGE_CLOCKWORK
 
-/language/clockwork/process_text(var/speaker,var/text)
+/language/clockwork/process_text(speaker,text)
 
 	var/static/list/vowels = make_associative(list(
 		"á", "é", "í", "ó", "ú", "ẃ", "ý"

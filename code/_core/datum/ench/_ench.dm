@@ -18,10 +18,10 @@
 	. = desc
 	. = replacetextEx(.,"#M",magnitude)
 
-/ench/proc/on_equipped(var/mob/living/L,var/obj/item/clothing/C)
+/ench/proc/on_equipped(mob/living/L,obj/item/clothing/C)
 	return TRUE
 
-/ench/proc/on_unequipped(var/mob/living/L,var/obj/item/clothing/C)
+/ench/proc/on_unequipped(mob/living/L,obj/item/clothing/C)
 	return TRUE
 
 /ench/suffix/

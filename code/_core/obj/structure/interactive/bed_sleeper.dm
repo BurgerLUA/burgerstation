@@ -69,7 +69,7 @@
 	I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
 	add_overlay(I)
 
-/obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/bed/sleeper/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(door_state == SLEEPER_CLOSING || door_state == SLEEPER_OPENING)
 		return TRUE
@@ -93,14 +93,14 @@
 
 	return FALSE
 
-/obj/structure/interactive/bed/sleeper/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
+/obj/structure/interactive/bed/sleeper/buckle(mob/living/victim,mob/caller,silent=FALSE)
 
 	if(door_state != SLEEPER_OPENED)
 		return FALSE
 
 	return ..()
 
-/obj/structure/interactive/bed/sleeper/unbuckle(var/mob/caller,var/silent=FALSE,var/force=FALSE)
+/obj/structure/interactive/bed/sleeper/unbuckle(mob/caller,silent=FALSE,force=FALSE)
 
 	if(force)
 		return ..()
@@ -113,14 +113,14 @@
 
 	return ..()
 
-/obj/structure/interactive/bed/sleeper/proc/open(var/mob/caller)
+/obj/structure/interactive/bed/sleeper/proc/open(mob/caller)
 	if(open_sound)
 		play_sound(open_sound,src.loc,range_max=VIEW_RANGE)
 	door_state = SLEEPER_OPENING
 	flick("opening",src)
 	CALLBACK("on_open_\ref[src]",open_time,src,src::on_open(),caller)
 
-/obj/structure/interactive/bed/sleeper/proc/on_open(var/mob/caller)
+/obj/structure/interactive/bed/sleeper/proc/on_open(mob/caller)
 	door_state = SLEEPER_OPENED
 	opened_time = 0
 	icon_state = "opened"
@@ -128,17 +128,17 @@
 	START_THINKING(src)
 	return TRUE
 
-/obj/structure/interactive/bed/sleeper/proc/on_close(var/mob/caller)
+/obj/structure/interactive/bed/sleeper/proc/on_close(mob/caller)
 	door_state = SLEEPER_CLOSED
 	opened_time = 0
 	icon_state = "closed"
 	check_collisions()
 	return TRUE
 
-/obj/structure/interactive/bed/sleeper/proc/can_buckle(var/mob/living/advanced/A,var/mob/caller)
+/obj/structure/interactive/bed/sleeper/proc/can_buckle(mob/living/advanced/A,mob/caller)
 	return TRUE
 
-/obj/structure/interactive/bed/sleeper/proc/close(var/mob/caller)
+/obj/structure/interactive/bed/sleeper/proc/close(mob/caller)
 	if(!buckled)
 		var/mob/living/advanced/A = locate() in get_turf(src)
 		if(A && can_buckle(A,caller))

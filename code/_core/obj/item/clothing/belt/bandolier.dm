@@ -27,14 +27,14 @@
 		var/v = stored_shells[k]
 		shell_count += v
 
-/obj/item/clothing/belt/bandolier/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/clothing/belt/bandolier/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	.["stored_shells"] = list()
 	for(var/k in stored_shells)
 		var/v = stored_shells[k]
 		.["stored_shells"][k] = v
 
-/obj/item/clothing/belt/bandolier/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/clothing/belt/bandolier/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	for(var/k in object_data["stored_shells"])
 		var/v = object_data["stored_shells"][k]
@@ -58,7 +58,7 @@
 		var/image/I = new/image(icon,"shell_[CEILING(shell_count/step,1)]")
 		add_overlay(I)
 
-/obj/item/clothing/belt/bandolier/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/clothing/belt/bandolier/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(istype(object,shell_type))
 		INTERACT_CHECK

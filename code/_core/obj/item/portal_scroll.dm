@@ -9,7 +9,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/portal_scroll/get_examine_list(var/mob/examiner)
+/obj/item/portal_scroll/get_examine_list(mob/examiner)
 	. = ..()
 	if(is_living(examiner))
 		var/mob/living/L = examiner
@@ -18,10 +18,10 @@
 			var/area/A = get_area(M)
 			if(A) . += span("notice","Using this will teleport you to \the [A.name].")
 
-/obj/item/portal_scroll/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/portal_scroll/quick(mob/caller,atom/object,location,params)
 	click_self(caller)
 
-/obj/item/portal_scroll/click_self(var/mob/caller,location,control,params)
+/obj/item/portal_scroll/click_self(mob/caller,location,control,params)
 
 	if(!is_player(caller) || !caller.client)
 		caller.to_chat(span("warning","You don't know how to use this..."))

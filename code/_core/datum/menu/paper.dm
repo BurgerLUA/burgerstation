@@ -4,7 +4,7 @@
 		"markdown.js" = 'html/markdown.js'
 	)
 
-/menu/paper/open(var/mob/user)
+/menu/paper/open(mob/user)
 	cache_resources(user)
 	winset(user, "map.paper","is-visible=true")
 
@@ -12,7 +12,7 @@
 
 	user << output(file_text, "map.paper")
 
-/menu/paper/on_load(var/mob/user)
+/menu/paper/on_load(mob/user)
 
 	if(!is_player(user))
 		return FALSE
@@ -31,12 +31,12 @@
 
 	set_text(P,P.active_paper.data[P.active_paper.last_page],P.active_paper.name,P.active_paper.last_page,length(P.active_paper.data),P.active_paper.editable)
 
-/menu/paper/close(var/mob/user)
+/menu/paper/close(mob/user)
 	winset(user,"map.paper","is-visible=false")
 	winset(user,"map.map","focus=true")
 	winset(user,"control.input","focus=false")
 
-/menu/paper/proc/set_text(var/mob/user,var/text,var/title,var/page_current,var/page_max,var/editable=FALSE)
+/menu/paper/proc/set_text(mob/user,text,title,page_current,page_max,editable=FALSE)
 
 	var/function_name = "set_text"
 	var/function_args = list2params(list(text,title,page_current,page_max,editable))
@@ -47,7 +47,7 @@
 		if(P.active_paper)
 			P.active_paper.last_page = page_current
 
-/menu/paper/run_function(var/mob/user, var/function_name,var/args)
+/menu/paper/run_function(mob/user, function_name,args)
 	user << output(args, "map.paper:[function_name]")
 
 /menu/paper/Topic(href,href_list)

@@ -134,7 +134,7 @@
 			var/desired_z = CEILING(world.maxz/2,1)
 			force_move(locate(desired_x,desired_y,desired_z))
 
-/mob/living/advanced/player/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+/mob/living/advanced/player/get_damage_received_multiplier(atom/attacker,atom/victim,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT)
 
 	if(attacker.is_player_controlled()) //PvP is always 0.5.
 		return 0.5
@@ -169,7 +169,7 @@
 	health.update_health_stats()
 	return TRUE
 
-/mob/living/advanced/player/is_safe_to_delete(var/check_loc = TRUE)
+/mob/living/advanced/player/is_safe_to_delete(check_loc = TRUE)
 	if(is_saving)
 		return FALSE
 	. = ..()
@@ -221,7 +221,7 @@
 
 	return TRUE
 
-/mob/living/advanced/player/proc/prestige(var/skill_id)
+/mob/living/advanced/player/proc/prestige(skill_id)
 	if(!prestige_count[skill_id])
 		prestige_count[skill_id] = 1
 	else

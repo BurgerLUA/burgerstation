@@ -19,7 +19,7 @@
 
 	return TRUE
 
-/mob/living/proc/add_trait(var/trait/trait_to_add,var/remove_existing_category=FALSE,var/messages=TRUE)
+/mob/living/proc/add_trait(trait/trait_to_add,remove_existing_category=FALSE,messages=TRUE)
 
 	var/trait/T = TRAIT(trait_to_add)
 	if(!T)
@@ -42,7 +42,7 @@
 
 	return TRUE
 
-/mob/living/proc/remove_trait(var/trait_to_remove)
+/mob/living/proc/remove_trait(trait_to_remove)
 	if(!traits[trait_to_remove])
 		return FALSE
 	var/trait/T = TRAIT(trait_to_remove)
@@ -53,12 +53,12 @@
 	T.on_remove(src)
 	return TRUE
 
-/mob/living/proc/get_trait_by_category(var/desired_category)
+/mob/living/proc/get_trait_by_category(desired_category)
 	if(!traits_by_category[desired_category])
 		return null
 	return TRAIT(traits_by_category[desired_category])
 
-/mob/living/proc/has_trait(var/trait_to_check)
+/mob/living/proc/has_trait(trait_to_check)
 	return traits[trait_to_check] ? TRUE : FALSE
 
 /proc/get_trait_limit(rarity)
@@ -77,7 +77,7 @@
 
 	return 0
 
-/mob/living/proc/can_add_trait(var/trait/trait_to_add,var/remove_existing_category=FALSE) //Set to true if you want it to remove existing traits before adding the new one. False means it will fail to add if it finds a similar trait.
+/mob/living/proc/can_add_trait(trait/trait_to_add,remove_existing_category=FALSE) //Set to true if you want it to remove existing traits before adding the new one. False means it will fail to add if it finds a similar trait.
 
 	if(!trait_to_add)
 		return FALSE

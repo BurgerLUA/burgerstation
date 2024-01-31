@@ -1,4 +1,4 @@
-/proc/text2path_safe(var/path_as_text,var/extra_check)
+/proc/text2path_safe(path_as_text,extra_check)
 	var/first = TRUE
 	while(TRUE)
 		var/result = text2path(path_as_text)
@@ -18,7 +18,7 @@
 			return null
 		first = FALSE
 
-/proc/ec_valid_item(var/obj/item/I)
+/proc/ec_valid_item(obj/item/I)
 	if(initial(I.value) < 0)
 		return null
 	return TRUE

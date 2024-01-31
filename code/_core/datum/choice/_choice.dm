@@ -8,7 +8,7 @@
 	var/mob/owner
 	var/choice_made = null
 
-/choice/New(var/mob/desired_owner)
+/choice/New(mob/desired_owner)
 
 	if(desired_owner)
 		owner = desired_owner

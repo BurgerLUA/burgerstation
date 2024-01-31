@@ -9,13 +9,13 @@
 	var/immune_system_mod = 10 //This value times stage is added to the owner's immune system.
 	var/immune_system_mod_starts_at_stage = 2 //Stage at which the immune system mod should kick in.
 
-/disease/proc/on_add(var/mob/living/owner)
+/disease/proc/on_add(mob/living/owner)
 	return TRUE
 
-/disease/proc/on_remove(var/mob/living/owner)
+/disease/proc/on_remove(mob/living/owner)
 	return TRUE
 
-/disease/proc/on_life(var/mob/living/owner)
+/disease/proc/on_life(mob/living/owner)
 	var/mul = (2 - owner.immune_system_strength/100)
 	var/stage_to_add = TICKS_TO_SECONDS(LIFE_TICK_SLOW)/(stage_per_minute*60)
 	stage = clamp(stage+(stage_to_add*mul),0,stage_max)
@@ -31,7 +31,7 @@
 	Symptoms include lethargy, trouble breathing and erratic eye movements."
 	var/inhale_switch = FALSE
 
-/disease/hrp/on_life(var/mob/living/owner)
+/disease/hrp/on_life(mob/living/owner)
 	. = ..()
 	if(prob(stage*10))
 		if(stage >= 1 && prob(40))

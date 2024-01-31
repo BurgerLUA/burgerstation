@@ -6,7 +6,7 @@
 
 	health_base = 50
 
-/obj/structure/interactive/construction/lattice/proc/can_construct_grille(var/mob/caller,var/obj/item/material/rod/R)
+/obj/structure/interactive/construction/lattice/proc/can_construct_grille(mob/caller,obj/item/material/rod/R)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(R)
@@ -22,12 +22,12 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/interactive/construction/lattice/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/construction/lattice/on_destruction(damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 1),material_id)
 	. = ..()
 	qdel(src)
 
-/obj/structure/interactive/construction/lattice/proc/construct_grille(var/mob/caller,var/obj/item/material/rod/R)
+/obj/structure/interactive/construction/lattice/proc/construct_grille(mob/caller,obj/item/material/rod/R)
 	var/obj/structure/interactive/construction/grille/G = new(src.loc)
 	G.material_id = R.material_id
 	G.color = R.color
@@ -39,7 +39,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/interactive/construction/lattice/proc/can_construct_reinf_wall(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/lattice/proc/can_construct_reinf_wall(mob/caller,obj/item/material/sheet/S)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(S)
@@ -55,7 +55,7 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/interactive/construction/lattice/proc/construct_floor_plating(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/lattice/proc/construct_floor_plating(mob/caller,obj/item/material/sheet/S)
 	var/turf/simulated/T = src.loc
 	T.change_turf(/turf/simulated/floor/plating/,TRUE)
 	T.color = S.color
@@ -65,7 +65,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/interactive/construction/lattice/proc/can_construct_floor_plating(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/lattice/proc/can_construct_floor_plating(mob/caller,obj/item/material/sheet/S)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(S)
@@ -81,7 +81,7 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/interactive/construction/lattice/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/construction/lattice/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object

@@ -93,7 +93,7 @@
 	. = ..()
 
 //prototyped from defib paddles
-/obj/item/browning_handle/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/browning_handle/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(is_inventory(object))
 		return ..()
@@ -124,7 +124,7 @@
 
 	return ..()
 
-/obj/item/browning_handle/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=TRUE)
+/obj/item/browning_handle/on_unequip(obj/hud/inventory/old_inventory,silent=TRUE)
 
 	. = ..()
 
@@ -145,7 +145,7 @@
 		CALLBACK("sit_down_\ref[src]",1 SECONDS,src,src::mount_your_ass(),O)
 
 
-/obj/structure/interactive/mountable/browning/proc/mount_your_ass(var/mob/living/L)
+/obj/structure/interactive/mountable/browning/proc/mount_your_ass(mob/living/L)
 
 	if(L.loc != src.loc)
 		return FALSE
@@ -154,7 +154,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/mountable/browning/proc/mag_check(var/structure/interactive/mountable/browning/M)
+/obj/structure/interactive/mountable/browning/proc/mag_check(structure/interactive/mountable/browning/M)
 	if(stored_magazine)
 		if(length(stored_magazine.get_ammo_count()) < 1)
 			icon_state = "empty"
@@ -167,7 +167,7 @@
 	return TRUE
 
 //pack 'em up, from turret
-/obj/structure/interactive/mountable/browning/proc/can_pack_up(var/mob/caller)
+/obj/structure/interactive/mountable/browning/proc/can_pack_up(mob/caller)
 
 	if(qdeleting)
 		return FALSE
@@ -180,7 +180,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/mountable/browning/proc/pack_up(var/mob/caller)
+/obj/structure/interactive/mountable/browning/proc/pack_up(mob/caller)
 
 	caller.visible_message(span("warning","\The [caller.name] packs up \the [src.name]."),span("notice","You pack up \the [src.name]."))
 
@@ -205,7 +205,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/mountable/browning/drop_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/mountable/browning/drop_on_object(mob/caller,atom/object,location,control,params)
 
 	if(caller != object)
 		return ..()
@@ -222,7 +222,7 @@
 	return TRUE
 
 //shows ammo count
-/obj/structure/interactive/mountable/browning/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/mountable/browning/get_examine_list(mob/examiner)
 	. = ..()
 	if(stored_magazine)
 		. += div("notice","It has a magazine latched on, with [stored_magazine.get_ammo_count()]/[stored_magazine.bullet_count_max] bullets left.")
@@ -230,7 +230,7 @@
 		. += div("warning","It is missing a magazine.")
 
 //clickies by player on the gun
-/obj/structure/interactive/mountable/browning/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/mountable/browning/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	if(istype(object,/obj/item/magazine/))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT

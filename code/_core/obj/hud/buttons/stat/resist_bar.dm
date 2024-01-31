@@ -21,7 +21,7 @@
 	QDEL_NULL(stored_line)
 	. = ..()
 
-/obj/hud/button/stat/resist_bar/New(var/desired_loc)
+/obj/hud/button/stat/resist_bar/New(desired_loc)
 	. = ..()
 	stored_line = new(src)
 	stored_line.icon = 'icons/hud/escape.dmi'

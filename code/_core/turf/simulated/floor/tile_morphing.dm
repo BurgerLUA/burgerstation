@@ -3,7 +3,7 @@
 	icon_state = "multi"
 	corner_icons = TRUE
 
-/turf/simulated/floor/tile/morphing/should_smooth_with(var/turf/T)
+/turf/simulated/floor/tile/morphing/should_smooth_with(turf/T)
 
 	if(istype(T,/turf/simulated/floor/tile/) && !istype(T,/turf/simulated/floor/tile/morphing))
 		return T

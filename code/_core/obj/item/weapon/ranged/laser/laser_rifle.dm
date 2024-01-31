@@ -80,10 +80,10 @@
 /obj/item/weapon/ranged/energy/rifle/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/energy/rifle/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/energy/rifle/get_skill_spread(mob/living/L)
 	return max(0,0.05 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/energy/rifle/New(var/desired_loc)
+/obj/item/weapon/ranged/energy/rifle/New(desired_loc)
 	. = ..()
 	update_sprite()
 

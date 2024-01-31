@@ -1,11 +1,11 @@
 /ai/clown/hulk
 	jokes = list(
 		"Are you a magician? Because whenever I look at you, everyone else disappears. BECAUSE EVERYONE ELSE IS DEAD.",
-		"I’m not a photographer, but I can picture me and you together. RIPPING YOU APART.",
+		"Iï¿½m not a photographer, but I can picture me and you together. RIPPING YOU APART.",
 		"They say Disneyland is the happiest place on earth. Well apparently, no one has ever been standing next to you RIPPING OUT YOUR ENTRAILS.",
 		"For some reason, I was feeling a little off today. But when you came along, you definitely turned me on IN THE MOOD FOR MURDER.",
 		"I seem to have lost my phone number. Can I have yours SO I CAN NOTIFY YOUR NEXT OF KIN.",
-		"I’m lost. Can you give me directions to your heart SO I CAN RIP IT OUT.",
+		"Iï¿½m lost. Can you give me directions to your heart SO I CAN RIP IT OUT.",
 		"Hi, how was heaven when you left it BECAUSE YOU'RE GOING BACK TO IT."
 	)
 
@@ -26,7 +26,7 @@
 		"What did the dentist say to the computer? THIS WON'T HURT A BYTE.",
 		"What did the dentist see at the North Pole? A MOLAR BEAR!",
 		"What does a dentist do on a roller coaster? HE BRACES HIMSELF.",
-		"Why didn’t the dentist ask his secretary out? HE WAS ALREADY TAKING OUT A TOOTH.",
+		"Why didnï¿½t the dentist ask his secretary out? HE WAS ALREADY TAKING OUT A TOOTH.",
 		"What does the dentist of the year get? A LITTLE PLAQUE."
 	)
 
@@ -51,7 +51,7 @@
 /ai/clown/mutant/
 	jokes = list()
 
-/ai/clown/mutant/New(var/desired_loc,var/mob/desired_owner)
+/ai/clown/mutant/New(desired_loc,mob/desired_owner)
 
 	. = ..()
 

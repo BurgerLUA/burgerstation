@@ -14,10 +14,10 @@
 
 	scale_sprite = FALSE
 
-/obj/item/container/edible/dynamic/meat/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/container/edible/dynamic/meat/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	return TRUE
 
-/obj/item/container/edible/dynamic/meat/click_self(var/mob/caller,location,control,params)
+/obj/item/container/edible/dynamic/meat/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
@@ -109,7 +109,7 @@
 	return TRUE
 
 
-/obj/item/container/edible/dynamic/meat/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/edible/dynamic/meat/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	if( (damage_table[BLADE] && !damage_table[BLUNT]) || damage_table[BLADE] > damage_table[BLUNT]) //Cut
 

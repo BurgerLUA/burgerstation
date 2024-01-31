@@ -17,7 +17,7 @@
 
 	var/falling = FALSE
 
-/obj/structure/interactive/coin_drop/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/coin_drop/get_examine_list(mob/examiner)
 	. = ..()
 	if(amount > 1) . += div("weightsize","Quantity: [amount].")
 
@@ -35,7 +35,7 @@
 		cached_sparkle = null
 	. = ..()
 
-/obj/structure/interactive/coin_drop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/coin_drop/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(3)
@@ -140,7 +140,7 @@
 	else
 		icon_state = "[clamp(amount,1,5)]_fall"
 
-/obj/structure/interactive/coin_drop/proc/fly(var/turf/from_turf)
+/obj/structure/interactive/coin_drop/proc/fly(turf/from_turf)
 
 	if(amount > 5)
 		return FALSE
@@ -174,7 +174,7 @@
 	update_sprite()
 	return TRUE
 
-/proc/create_gold_drop(var/turf/T,var/amount=5,var/list/valid_ckeys)
+/proc/create_gold_drop(turf/T,amount=5,list/valid_ckeys)
 
 	amount = min(amount,GOLD_DROP_AMOUNT_MAX) //Enforce a limit, just in case.
 

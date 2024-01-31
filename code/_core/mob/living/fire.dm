@@ -1,7 +1,7 @@
 #define MAX_FIRE_STACKS 300
 #define MIN_FIRE_STACKS -300
 
-/mob/living/proc/adjust_fire_stacks(var/added_fire_stacks = 10)
+/mob/living/proc/adjust_fire_stacks(added_fire_stacks = 10)
 
 	if(qdeleting)
 		return FALSE
@@ -23,7 +23,7 @@
 
 	return TRUE
 
-/mob/living/proc/ignite(var/added_fire_stacks = 0,var/atom/source)
+/mob/living/proc/ignite(added_fire_stacks = 0,atom/source)
 
 	if(qdeleting)
 		return FALSE

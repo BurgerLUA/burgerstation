@@ -1,20 +1,20 @@
 #define ADD_SORTED(list, A, cmp_proc) if(!list.len) {list.Add(A)} else {list.Insert(FindElementIndex(A, list, cmp_proc), A)}
 
-/proc/subtypesof(var/prototype)
+/proc/subtypesof(prototype)
 	return (typesof(prototype) - prototype)
 
-/proc/listclearnulls(var/list/L)
+/proc/listclearnulls(list/L)
 	var/start_len = L.len
 	var/list/N = new(start_len)
 	L -= N
 	return L.len < start_len
 
 
-/proc/list2text(var/list/L,var/Start=1,var/End=0,var/nothing_text = "nothing", var/and_text = " and ", var/comma_text = ", ", var/final_comma_text = "", var/quote = "")
+/proc/list2text(list/L,Start=1,End=0,nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "", quote = "")
 	. = L.Copy(Start,End)
 	return english_list(.,nothing_text,and_text,comma_text,final_comma_text,quote)
 
-/proc/english_list(var/list/input, var/nothing_text = "nothing", var/and_text = ", and ", var/comma_text = ", ", var/final_comma_text = "", var/quote = "")
+/proc/english_list(list/input, nothing_text = "nothing", and_text = ", and ", comma_text = ", ", final_comma_text = "", quote = "")
 	var/total = input.len
 	if (!total)
 		return "[nothing_text]"
@@ -35,7 +35,7 @@
 		return "[output][and_text][quote][input[index]][quote]"
 
 /* old shit that didn't work
-/proc/pickweight(var/list/L,var/rarity=0) //Credit to Nanako for some of this code. Rarity should be between 0 and 1. Higher rarities mean that lower weights are picked more.
+/proc/pickweight(list/L,rarity=0) //Credit to Nanako for some of this code. Rarity should be between 0 and 1. Higher rarities mean that lower weights are picked more.
 	if(!L) CRASH("pickweight() invalid list provided!")
 	rarity = clamp(rarity,0,1)
 	var/highest = 0
@@ -91,7 +91,7 @@
 	return null
 */
 
-/proc/pickweight(list/list_to_pick,var/rarity) //Stolen from /tg/ with changes by burger.
+/proc/pickweight(list/list_to_pick,rarity) //Stolen from /tg/ with changes by burger.
 	var/total = 0
 
 	var/item
@@ -122,7 +122,7 @@
 
 #define value_or_null(the_list,key) the_list[key] ? the_list[key] : null
 
-/proc/get_best_key(var/list/input)
+/proc/get_best_key(list/input)
 
 	var/best_key = null
 	var/best_value = null
@@ -140,7 +140,7 @@
 
 	return best_key
 
-/proc/get_last_value(var/list/L)
+/proc/get_last_value(list/L)
 
 	if(!L || !length(L))
 		return null
@@ -151,7 +151,7 @@
 
 	return null
 
-/proc/get_first_missing_value(var/list/L)
+/proc/get_first_missing_value(list/L)
 
 	if(!L || !length(L))
 		return FALSE
@@ -163,7 +163,7 @@
 	return FALSE
 
 
-/proc/get_best_key_assoc(var/list/L,var/highest = TRUE)
+/proc/get_best_key_assoc(list/L,highest = TRUE)
 
 	var/initialized = FALSE
 	var/best_key
@@ -190,14 +190,14 @@
 
 	return best_key
 
-/proc/text2numlist(var/text, var/delimiter="\n") //Stolen from Aurora
+/proc/text2numlist(text, delimiter="\n") //Stolen from Aurora
 	var/list/num_list = list()
 	for(var/x in jointext(text, delimiter))
 		num_list += text2num(x)
 	return num_list
 
 //Credit goes to AJX.
-/proc/sort_by_closest(var/list/L,var/atom/target)
+/proc/sort_by_closest(list/L,atom/target)
 	var/atom/A
 	var/atom/B
 
@@ -208,7 +208,7 @@
 			if(get_dist_real(target,A) > get_dist_real(target,B))
 				L.Swap(i,i+1)
 
-/proc/sort_by_closest_assoc(var/list/L,var/atom/target)
+/proc/sort_by_closest_assoc(list/L,atom/target)
 
 	var/atom/A
 	var/atom/B
@@ -223,7 +223,7 @@
 				L.Swap(i,i+1)
 
 
-/proc/is_assoc_list(var/list/L) //Credit to SpaceManiac for providing this
+/proc/is_assoc_list(list/L) //Credit to SpaceManiac for providing this
 
 	try
 		if(!islist(L) || !length(L))
@@ -238,17 +238,17 @@
 	catch()
 		return FALSE
 
-/proc/make_associative(var/list/flat_list)
+/proc/make_associative(list/flat_list)
 	. = list()
 	for(var/thing in flat_list)
 		.[thing] = TRUE
 
-/proc/make_associative_count(var/list/flat_list)
+/proc/make_associative_count(list/flat_list)
 	. = list()
 	for(var/thing in flat_list)
 		.[thing]++
 
-/proc/assoc_list_strip_value(var/list/input)
+/proc/assoc_list_strip_value(list/input)
 	var/list/ret = list()
 	for(var/key in input)
 		ret += key
@@ -276,7 +276,7 @@
 		inserted_list.Swap(i, rand(i, inserted_list.len))
 
 //replaces old reverseList ~Carnie
-/proc/reverseList(var/list/L, var/start=1, var/end=0)
+/proc/reverseList(list/L, start=1, end=0)
 	if(L.len)
 		start = start % L.len
 		end = end % (L.len+1)
@@ -292,7 +292,7 @@
 	return L
 
 
-/proc/get_real_length(var/list/L)
+/proc/get_real_length(list/L)
 
 	if(!L)
 		return 0

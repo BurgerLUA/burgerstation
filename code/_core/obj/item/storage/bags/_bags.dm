@@ -26,7 +26,7 @@
 	desc_extended = "A special bag that converts all plant matter into seeds when inserted into the bag."
 	icon_state = "botany_processor"
 
-/obj/item/storage/bags/botany/processor/click_self(var/mob/caller,location,control,params)
+/obj/item/storage/bags/botany/processor/click_self(mob/caller,location,control,params)
 
 	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		INTERACT_CHECK
@@ -36,7 +36,7 @@
 
 	return ..()
 
-/obj/item/storage/bags/botany/processor/proc/process_plants(var/mob/caller)
+/obj/item/storage/bags/botany/processor/proc/process_plants(mob/caller)
 
 	var/process_count = 0
 

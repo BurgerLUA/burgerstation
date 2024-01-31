@@ -1,4 +1,4 @@
-/turf/simulated/wall/proc/do_climb(var/mob/living/advanced/L,var/turf/actual_turf,var/turf/above_turf,var/turf/landing_turf)
+/turf/simulated/wall/proc/do_climb(mob/living/advanced/L,turf/actual_turf,turf/above_turf,turf/landing_turf)
 	L.force_move(landing_turf)
 	L.visible_message(
 		span("notice","\The [L.name] climbs up from \the [above_turf.name]."),
@@ -10,7 +10,7 @@
 	return TRUE
 
 
-/turf/simulated/wall/proc/can_climb(var/mob/living/advanced/L,var/turf/actual_turf,var/turf/above_turf,var/turf/landing_turf)
+/turf/simulated/wall/proc/can_climb(mob/living/advanced/L,turf/actual_turf,turf/above_turf,turf/landing_turf)
 
 	if(!actual_turf) //Huh.
 		return FALSE
@@ -41,7 +41,7 @@
 	return TRUE
 
 
-/turf/simulated/wall/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/turf/simulated/wall/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 
 	if(is_advanced(caller))

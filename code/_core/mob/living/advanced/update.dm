@@ -1,4 +1,4 @@
-/mob/living/advanced/proc/update_items(var/force=FALSE) //Sent when an item needs to update.
+/mob/living/advanced/proc/update_items(force=FALSE) //Sent when an item needs to update.
 
 	if(qdeleting) //Bandaid fix.
 		return FALSE

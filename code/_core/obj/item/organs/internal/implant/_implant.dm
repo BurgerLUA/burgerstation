@@ -6,7 +6,7 @@
 	attach_flag = BODY_TORSO
 	value_burgerbux = 1
 
-/obj/item/organ/internal/implant/on_organ_remove(var/mob/living/advanced/old_owner)
+/obj/item/organ/internal/implant/on_organ_remove(mob/living/advanced/old_owner)
 	. = ..()
 	if(!qdeleting)
 		qdel(src)

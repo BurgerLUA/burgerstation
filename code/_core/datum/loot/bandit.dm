@@ -7,7 +7,7 @@
 	quality_max = 75
 	quality_mod_min = 0.75
 
-/loot/bandit/pre_spawn(var/atom/movable/M)
+/loot/bandit/pre_spawn(atom/movable/M)
 
 	if(istype(M,/obj/item/clothing/))
 		var/obj/item/clothing/C = M
@@ -182,7 +182,7 @@
 	apply_poly = TRUE
 	chance_blood = 0
 
-/loot/bandit/back_storage/pre_spawn(var/atom/movable/M)
+/loot/bandit/back_storage/pre_spawn(atom/movable/M)
 	. = ..()
 	if(is_item(M))
 		var/obj/item/I = M

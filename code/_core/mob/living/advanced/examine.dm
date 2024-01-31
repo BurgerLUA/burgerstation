@@ -1,4 +1,4 @@
-/mob/living/advanced/get_damage_description(var/mob/examiner)
+/mob/living/advanced/get_damage_description(mob/examiner)
 
 	. = ..()
 
@@ -12,7 +12,7 @@
 			continue
 		. += "<br>[damage_description]"
 
-/mob/living/advanced/get_examine_details_list(var/mob/examiner)
+/mob/living/advanced/get_examine_details_list(mob/examiner)
 
 	var/pronoun = get_pronoun_he_she_it(src)
 
@@ -27,7 +27,7 @@
 	. += ..()
 
 
-/mob/living/advanced/proc/on_strip(var/obj/item/I,var/atom/old_loc)
+/mob/living/advanced/proc/on_strip(obj/item/I,atom/old_loc)
 
 	for(var/k in inventory_defers)
 		var/obj/hud/button/inventory_defer/ID = k

@@ -1,7 +1,7 @@
 /hazard/
 	var/id = null
 
-/hazard/proc/process_player_tick(var/mob/living/advanced/player/P)
+/hazard/proc/process_player_tick(mob/living/advanced/player/P)
 	return TRUE
 
 /hazard/cold
@@ -15,7 +15,7 @@
 	)
 
 /* rewrite
-/hazard/cold/process_player_tick(var/mob/living/advanced/player/P)
+/hazard/cold/process_player_tick(mob/living/advanced/player/P)
 
 	var/total_damage = 0
 	var/list/all_damaged_organs = list()

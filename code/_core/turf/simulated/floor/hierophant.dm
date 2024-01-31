@@ -8,7 +8,7 @@
 
 	footstep = /footstep/concrete
 
-/turf/simulated/floor/hierophant/New(var/desired_loc)
+/turf/simulated/floor/hierophant/New(desired_loc)
 
 	. = ..()
 

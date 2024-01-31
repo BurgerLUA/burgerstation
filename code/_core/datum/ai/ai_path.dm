@@ -1,4 +1,4 @@
-/ai/proc/set_path_fallback(var/turf/destination,var/atom/pathing_object)
+/ai/proc/set_path_fallback(turf/destination,atom/pathing_object)
 
 	if(master_ai)
 		return FALSE
@@ -33,7 +33,7 @@
 
 	return set_path_node(found_path,pathing_object=pathing_object)
 
-/ai/proc/set_path_node(var/list/obj/marker/map_node/desired_path,var/atom/pathing_object)
+/ai/proc/set_path_node(list/obj/marker/map_node/desired_path,atom/pathing_object)
 
 	if(!desired_path || !length(desired_path))
 		if(node_path_current)
@@ -82,7 +82,7 @@
 
 	return TRUE
 
-/ai/proc/set_path_astar(var/turf/destination,var/min_distance=0,var/atom/pathing_object)
+/ai/proc/set_path_astar(turf/destination,min_distance=0,atom/pathing_object)
 
 	if(!destination)
 		if(astar_path_current)

@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(reward)
 	return ..()
 
 
-/subsystem/reward/proc/check_code(var/client/C,var/desired_code)
+/subsystem/reward/proc/check_code(client/C,desired_code)
 
 	if(!reward_code_to_reward[desired_code])
 		C.to_chat(span("warning","Invalid reward code! Reward codes can be obtained and entered here upon completing special surveys or events."))

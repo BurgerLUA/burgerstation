@@ -16,7 +16,7 @@
 
 	can_attack = FALSE
 
-/ai/silicon_spawner/set_objective(var/atom/A)
+/ai/silicon_spawner/set_objective(atom/A)
 
 	. = ..()
 

@@ -17,11 +17,11 @@
 
 
 
-/obj/item/soulgem/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/soulgem/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("total_charge")
 
-/obj/item/soulgem/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/soulgem/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("total_charge")
 
@@ -46,7 +46,7 @@
 	. += (total_charge/16)**1.5
 	. = CEILING(.,1)
 
-/obj/item/soulgem/get_examine_list(var/mob/caller)
+/obj/item/soulgem/get_examine_list(mob/caller)
 	return ..() + span("notice","It has [total_charge] total charge.")
 
 /obj/item/soulgem/update_sprite()
@@ -97,7 +97,7 @@
 
 
 
-/obj/item/soulgem/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/soulgem/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(istype(object,/obj/effect/temp/soul))
 		if(total_charge != 0)

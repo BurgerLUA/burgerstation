@@ -19,12 +19,12 @@ var/global/list/obj/item/clothing/back/fulton/fulton_devices = list()
 	fulton_devices -= src
 	return ..()
 
-/obj/item/clothing/back/fulton/click_self(var/mob/caller)
+/obj/item/clothing/back/fulton/click_self(mob/caller)
 	enabled = !enabled
 	caller.to_chat("You [enabled ? "enable" : "disable"] \the [src].")
 	return TRUE
 
-/obj/item/clothing/back/fulton/proc/try_extract(var/turf/desired_turf)
+/obj/item/clothing/back/fulton/proc/try_extract(turf/desired_turf)
 
 	if(!enabled)
 		return FALSE

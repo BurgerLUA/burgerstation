@@ -19,12 +19,12 @@
 	QDEL_NULL(rcd_disk)
 	. = ..()
 
-/obj/item/rcd/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/rcd/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("rcd_disk")
 	SAVEVAR("matter_current")
 
-/obj/item/rcd/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/rcd/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("rcd_disk")
 	LOADVAR("matter_current")
@@ -38,12 +38,12 @@
 	matter_current = matter_max
 	return ..()
 
-/obj/item/rcd/proc/add_matter(var/matter_amount)
+/obj/item/rcd/proc/add_matter(matter_amount)
 	matter_current = min(matter_current + matter_amount,matter_max)
 	update_sprite()
 	return matter_current
 
-/obj/item/rcd/proc/spend_matter(var/matter_to_spend)
+/obj/item/rcd/proc/spend_matter(matter_to_spend)
 	if(matter_to_spend > matter_current)
 		return FALSE
 	matter_current -= matter_to_spend
@@ -60,7 +60,7 @@
 		add_overlay(I)
 
 
-/obj/item/rcd/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/rcd/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -113,7 +113,7 @@
 
 	return ..()
 
-/obj/item/rcd/proc/insert_disk(var/mob/caller,var/obj/item/disk/desired_disk,var/silent=FALSE)
+/obj/item/rcd/proc/insert_disk(mob/caller,obj/item/disk/desired_disk,silent=FALSE)
 	if(rcd_disk)
 		if(caller && !silent) caller.to_chat(span("warning","There is already a [rcd_disk.name] installed in \the [src.name]!"))
 		return null
@@ -122,7 +122,7 @@
 	if(caller && !silent) caller.visible_message(span("notice","\The [caller.name] inserts a disk into \the [src.name]."),span("notice","You insert \the [rcd_disk.name] into \the [src.name] and download the data onto the RCD."))
 	return rcd_disk
 
-/obj/item/rcd/proc/eject_disk(var/mob/caller,var/silent=FALSE)
+/obj/item/rcd/proc/eject_disk(mob/caller,silent=FALSE)
 	if(!rcd_disk)
 		caller.to_chat(span("warning","There is no disk to eject from \the [src.name]!"))
 		return null
@@ -131,7 +131,7 @@
 	. = rcd_disk
 	rcd_disk = null
 
-/obj/item/rcd/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+/obj/item/rcd/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params) //The src was clicked on by the object
 
 	if(is_inventory(object) && rcd_disk)
 		INTERACT_CHECK

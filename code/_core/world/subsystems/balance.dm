@@ -112,7 +112,7 @@ SUBSYSTEM_DEF(balance)
 		DIFFICULTY_NIGHTMARE = 6
 	)
 
-/subsystem/balance/proc/process_loadout_contents(var/obj/O)
+/subsystem/balance/proc/process_loadout_contents(obj/O)
 	//This allows gloves and medicine to be stored. It's shitcode, but it works.
 	//Don't need to create any more items from here because it's all already created.
 	for(var/k in O.contents)
@@ -130,7 +130,7 @@ SUBSYSTEM_DEF(balance)
 
 	return TRUE
 
-/subsystem/balance/proc/process_loadout(var/turf/T)
+/subsystem/balance/proc/process_loadout(turf/T)
 
 	for(var/k in subtypesof(/obj/structure/interactive/vending/))
 		var/obj/structure/interactive/vending/V = k
@@ -157,7 +157,7 @@ SUBSYSTEM_DEF(balance)
 		//We don't run initialize or anything here because we just need the initial types.
 		qdel(V)
 
-/subsystem/balance/proc/process_items(var/turf/T,var/list/everything_else)
+/subsystem/balance/proc/process_items(turf/T,list/everything_else)
 
 	for(var/k in everything_else)
 		var/obj/item/I = k
@@ -175,7 +175,7 @@ SUBSYSTEM_DEF(balance)
 		CHECK_TICK_HARD
 
 
-/subsystem/balance/proc/process_bullets(var/turf/T,var/list/bullet_subtypes)
+/subsystem/balance/proc/process_bullets(turf/T,list/bullet_subtypes)
 	. = list()
 	for(var/k in bullet_subtypes)
 		var/obj/item/bullet_cartridge/B = k
@@ -193,7 +193,7 @@ SUBSYSTEM_DEF(balance)
 		. += B
 		CHECK_TICK_HARD
 
-/subsystem/balance/proc/process_magazines(var/turf/T,var/list/magazine_subtypes)
+/subsystem/balance/proc/process_magazines(turf/T,list/magazine_subtypes)
 	. = list()
 	for(var/k in magazine_subtypes)
 		var/obj/item/magazine/M = k
@@ -214,7 +214,7 @@ SUBSYSTEM_DEF(balance)
 		. += M
 		CHECK_TICK_HARD
 
-/subsystem/balance/proc/process_weapons(var/turf/T,var/list/weapon_subtypes)
+/subsystem/balance/proc/process_weapons(turf/T,list/weapon_subtypes)
 	. = list()
 	for(var/k in weapon_subtypes)
 		var/obj/item/weapon/W = k

@@ -7,17 +7,17 @@
 		"tile.png" = 'html/tile.png',
 	)
 
-/menu/examine/open(var/user)
+/menu/examine/open(user)
 	user << output(file, "info.browser")
 
-/menu/examine/close(var/user)
+/menu/examine/close(user)
 
 
-/menu/examine/on_load(var/user)
+/menu/examine/on_load(user)
 	if(!is_player(user))
 		return FALSE
 
-/menu/examine/run_function(var/user, var/function_name,var/args)
+/menu/examine/run_function(user, function_name,args)
 	user << output("[function_name]([args]);", "info.browser:eval")
 
 /menu/examine/Topic(href,href_list)

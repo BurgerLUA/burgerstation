@@ -21,12 +21,12 @@
 	dir = EAST
 	screen_loc = "CENTER+2,TOP-3"
 
-/obj/hud/button/crafting/craft/New(var/desired_loc)
+/obj/hud/button/crafting/craft/New(desired_loc)
 	. = ..()
 	mouse_opacity = 0
 	alpha = 0
 
-/obj/hud/button/crafting/craft/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/crafting/craft/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -43,12 +43,12 @@
 	icon_state = "close_crafting"
 	screen_loc = "CENTER-2,TOP-3"
 
-/obj/hud/button/crafting/close/New(var/desired_loc)
+/obj/hud/button/crafting/close/New(desired_loc)
 	. = ..()
 	mouse_opacity = 0
 	alpha = 0
 
-/obj/hud/button/crafting/close/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/crafting/close/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

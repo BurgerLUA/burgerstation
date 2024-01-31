@@ -30,7 +30,7 @@
 	winshow(src,"browser([id])",TRUE)
 	src << output(html_to_send, "browser([id])")
 
-/client/verb/set_fps(var/desired_fps as num)
+/client/verb/set_fps(desired_fps as num)
 	set hidden = TRUE
 	var/old_fps = clamp(src.fps,FPS_SERVER,FPS_CLIENT)
 	desired_fps = clamp(desired_fps,FPS_SERVER,FPS_CLIENT)
@@ -40,7 +40,7 @@
 	src.fps = desired_fps
 	settings.change_setting("fps_client",desired_fps)
 
-/client/verb/set_view_range(var/desired_view_range as num)
+/client/verb/set_view_range(desired_view_range as num)
 	set hidden = TRUE
 	var/old_view_range = view
 	settings.change_setting("view_range",desired_view_range)
@@ -65,27 +65,27 @@
 		sleep(1)
 		winset(src,"main","is-maximized=true")
 
-/client/verb/set_volume_master(var/desired_volume as num)
+/client/verb/set_volume_master(desired_volume as num)
 	set hidden = TRUE
 	settings.change_setting("volume_master",desired_volume)
 	stop_sound()
 
-/client/verb/set_volume_fx(var/desired_volume as num)
+/client/verb/set_volume_fx(desired_volume as num)
 	set hidden = TRUE
 	settings.change_setting("volume_fx",desired_volume)
 	stop_sound()
 
-/client/verb/set_volume_ambient(var/desired_volume as num)
+/client/verb/set_volume_ambient(desired_volume as num)
 	set hidden = TRUE
 	settings.change_setting("volume_ambient",desired_volume)
 	stop_sound()
 
-/client/verb/set_volume_music(var/desired_volume as num)
+/client/verb/set_volume_music(desired_volume as num)
 	set hidden = TRUE
 	settings.change_setting("volume_music",desired_volume)
 	stop_sound()
 
-/client/verb/set_volume_footsteps(var/desired_volume as num)
+/client/verb/set_volume_footsteps(desired_volume as num)
 	set hidden = TRUE
 	settings.change_setting("volume_footsteps",desired_volume)
 	stop_sound()

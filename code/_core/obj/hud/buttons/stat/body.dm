@@ -17,7 +17,7 @@
 	labeled_overlays?.Cut()
 	. = ..()
 
-/obj/hud/button/stat/body/update_owner(var/mob/desired_owner)
+/obj/hud/button/stat/body/update_owner(mob/desired_owner)
 
 	. = ..()
 
@@ -46,7 +46,7 @@
 			add_vis_content(I)
 		update()
 
-/obj/hud/button/stat/body/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/stat/body/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_living(caller))
 		var/mob/living/L = caller
@@ -101,5 +101,5 @@
 	. = ..()
 
 
-/obj/hud/button/stat/body/get_examine_list(var/mob/examiner)
+/obj/hud/button/stat/body/get_examine_list(mob/examiner)
 	return examiner.get_examine_list(examiner)

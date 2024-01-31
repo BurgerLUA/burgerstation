@@ -12,14 +12,14 @@
 	var/electronics = FALSE
 	bullet_block_chance = 90
 
-/obj/structure/interactive/construction/machine_frame/proc/make_machine(var/mob/caller,var/obj/item/S,var/machine_to_make)
+/obj/structure/interactive/construction/machine_frame/proc/make_machine(mob/caller,obj/item/S,machine_to_make)
 	var/turf/T = src.loc
 	new machine_to_make(T)
 	S.add_item_count(-1)
 	qdel(src)
 	return TRUE
 
-/obj/structure/interactive/construction/machine_frame/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/construction/machine_frame/on_destruction(damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 1),material_id)
 	. = ..()
 	qdel(src)

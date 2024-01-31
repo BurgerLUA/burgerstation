@@ -48,7 +48,7 @@
 	return TRUE
 
 
-/mob/living/advanced/proc/setup_appearance(var/set_default=FALSE)
+/mob/living/advanced/proc/setup_appearance(set_default=FALSE)
 
 	if(sex == PLURAL)
 		sex = pick(MALE,FEMALE)
@@ -69,7 +69,7 @@
 	return TRUE
 
 
-/mob/living/advanced/proc/species_initialize(var/set_default=FALSE)
+/mob/living/advanced/proc/species_initialize(set_default=FALSE)
 
 	var/species/S = SPECIES(species)
 
@@ -103,7 +103,7 @@
 
 	return TRUE
 
-/mob/living/advanced/player/setup_appearance(var/set_default=FALSE)
+/mob/living/advanced/player/setup_appearance(set_default=FALSE)
 
 	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
 	if(set_default || !mobdata || !length(mobdata.loaded_data["organs"]))

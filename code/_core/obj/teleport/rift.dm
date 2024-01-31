@@ -9,7 +9,7 @@
 	..()
 	queue_delete(src,ITEM_DELETION_TIME_DROPPED)
 
-/obj/trigger/rift/on_trigger(var/atom/movable/triggerer)
+/obj/trigger/rift/on_trigger(atom/movable/triggerer)
 
 	if(!length(rift_markers))
 		return FALSE

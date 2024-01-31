@@ -23,7 +23,7 @@
 
 	return ..()
 
-/obj/hud/button/squad/main/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/squad/main/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -71,7 +71,7 @@
 				new_squad(P)
 
 
-/obj/hud/button/squad/main/proc/new_squad(var/mob/living/advanced/player/P)
+/obj/hud/button/squad/main/proc/new_squad(mob/living/advanced/player/P)
 	while(P.client)
 		var/squad_name = input("Please enter your squad name. Enter nothing to cancel.","Squad Creation",null) as text|null
 
@@ -124,11 +124,11 @@
 	tracked_mob = null
 	return ..()
 
-/obj/hud/button/squad/member/New(var/desired_loc,var/desired_tracked_mob)
+/obj/hud/button/squad/member/New(desired_loc,desired_tracked_mob)
 	tracked_mob = desired_tracked_mob
 	return ..()
 
-/obj/hud/button/squad/member/update_owner(var/desired_owner)
+/obj/hud/button/squad/member/update_owner(desired_owner)
 
 	. = ..()
 

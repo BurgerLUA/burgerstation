@@ -1,4 +1,4 @@
-/obj/item/weapon/proc/get_damage_per_hit(var/armor_to_use=0)
+/obj/item/weapon/proc/get_damage_per_hit(armor_to_use=0)
 
 	if(!damage_type)
 		log_error("Warning: [src.type] did not have a valid damage_type.")
@@ -11,7 +11,7 @@
 
 	return D.get_damage_per_hit(armor_to_use,200)
 
-/obj/item/weapon/melee/energy/get_damage_per_hit(var/armor_to_use=0)
+/obj/item/weapon/melee/energy/get_damage_per_hit(armor_to_use=0)
 
 	if(!damage_type_on)
 		log_error("Warning: [src.type] did not have a valid damage_type_on.")
@@ -24,7 +24,7 @@
 
 	return D.get_damage_per_hit(armor_to_use,200)
 
-/obj/item/weapon/ranged/get_damage_per_hit(var/armor_to_use=0)
+/obj/item/weapon/ranged/get_damage_per_hit(armor_to_use=0)
 
 	var/damagetype/damage_type_to_use = get_ranged_damage_type()
 
@@ -38,7 +38,7 @@
 
 	return D.get_damage_per_hit(armor_to_use,200) * bullet_count * damage_mod
 
-/obj/item/weapon/ranged/bullet/get_damage_per_hit(var/armor_to_use=0)
+/obj/item/weapon/ranged/bullet/get_damage_per_hit(armor_to_use=0)
 
 	if(!SSbalance.weapon_to_bullet[src.type])
 		log_error("Warning: [src.type] did not have a valid weapon_to_bullet.")

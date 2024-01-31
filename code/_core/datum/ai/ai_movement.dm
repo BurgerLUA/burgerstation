@@ -1,5 +1,5 @@
 
-/ai/proc/post_move(var/mob/living/L,args)
+/ai/proc/post_move(mob/living/L,args)
 
 	var/atom/old_loc = args[1]
 
@@ -16,7 +16,7 @@
 
 	return TRUE
 
-/ai/proc/set_move_objective(var/atom/desired_objective,var/distance=0,var/astar = FALSE,var/follow = FALSE) //Set follow to true if it should constantly follow the person.
+/ai/proc/set_move_objective(atom/desired_objective,distance=0,astar = FALSE,follow = FALSE) //Set follow to true if it should constantly follow the person.
 	if(desired_objective)
 		set_active(TRUE)
 	objective_move = desired_objective
@@ -317,7 +317,7 @@
 
 	return FALSE
 
-/ai/proc/Bump(var/atom/obstacle,var/trigger_other_bump=TRUE)
+/ai/proc/Bump(atom/obstacle,trigger_other_bump=TRUE)
 
 	if(!obstacle)
 		return TRUE

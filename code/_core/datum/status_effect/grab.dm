@@ -6,14 +6,14 @@
 	maximum = 20
 	default_duration = 20
 
-/status_effect/grab/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+/status_effect/grab/can_add_status_effect(atom/attacker,mob/living/victim)
 
 	if(victim.has_status_effect(GRAB))
 		return FALSE
 
 	. = ..()
 
-/status_effect/grab/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/grab/on_effect_added(mob/living/owner,atom/source,magnitude,duration,stealthy)
 
 	if(is_living(source))
 		var/mob/living/L = source

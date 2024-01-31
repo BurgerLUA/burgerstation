@@ -6,7 +6,7 @@
 	icon_state = "snow_caves_path"
 	density = FALSE
 
-/turf/unsimulated/generation/snow_cave/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/snow_cave/generate(size = WORLD_SIZE)
 
 	var/shitfix = path_only
 

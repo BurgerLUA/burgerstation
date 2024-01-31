@@ -17,7 +17,7 @@
 
 	alpha = 100
 
-/obj/structure/interactive/wire/New(var/desired_loc)
+/obj/structure/interactive/wire/New(desired_loc)
 	. = ..()
 	var/wire_count = 0
 	for(var/obj/structure/interactive/wire/W in src.loc.contents)
@@ -33,13 +33,13 @@
 
 	alpha = 255
 
-/obj/structure/interactive/wire/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/wire/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("notice","It is connected to [length(connections)] other wire(s).")
 	if(connected_machine)
 		. += div("notice","It is connected to \the [connected_machine].")
 
-/obj/structure/interactive/wire/proc/find_wire_connection(var/mob/caller)
+/obj/structure/interactive/wire/proc/find_wire_connection(mob/caller)
 
 	if(connected_machine)
 		caller?.to_chat(span("warning","\The [src.name] is already connected to \a [connected_machine.name]! Remove it first before adding a new connection."))
@@ -88,7 +88,7 @@
 	. = ..()
 	connections.Cut()
 
-/obj/structure/interactive/wire/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/wire/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -122,7 +122,7 @@
 		var/obj/structure/interactive/wire/W = k
 		power_network.add_wire(W)
 
-/obj/structure/interactive/wire/proc/get_new_connections(var/list/existing_list)
+/obj/structure/interactive/wire/proc/get_new_connections(list/existing_list)
 
 	if(!existing_list)
 		existing_list = list()
@@ -219,7 +219,7 @@
 	return FALSE
 
 
-/obj/structure/interactive/wire/proc/merge_networks(var/list/possible_power_networks)
+/obj/structure/interactive/wire/proc/merge_networks(list/possible_power_networks)
 
 	var/power_network/best_network
 	for(var/k in possible_power_networks)

@@ -90,11 +90,11 @@
 		return TRUE
 	. = ..()
 
-/mob/living/simple/can_man/proc/telegraph_special_minigun_sweep(var/atom/target)
+/mob/living/simple/can_man/proc/telegraph_special_minigun_sweep(atom/target)
 	play_sound('sound/mob/can_man/rev_start.ogg',get_turf(src))
 	CALLBACK("\ref[src]_minigun_sweep",10,src,src::do_special_minigun_sweep(),target,30,30)
 
-/mob/living/simple/can_man/proc/do_special_minigun_sweep(var/atom/target,var/shots_current,var/shots_max)
+/mob/living/simple/can_man/proc/do_special_minigun_sweep(atom/target,shots_current,shots_max)
 
 	if(dead || horizontal)
 		return FALSE
@@ -112,7 +112,7 @@
 
 	CALLBACK("\ref[src]_minigun_sweep",0.25 + max(0,shots_current/shots_max - 0.5),src,src::do_special_minigun_sweep(),target,shots_current,shots_max)
 
-/mob/living/simple/can_man/proc/shoot_minigun(var/atom/target,var/use_spread=FALSE)
+/mob/living/simple/can_man/proc/shoot_minigun(atom/target,use_spread=FALSE)
 
 	var/turf/T = get_turf(src)
 
@@ -153,7 +153,7 @@
 
 	minigun_delay = world.time + 0.5 + (health.health_current/health.health_max)*1.5
 
-/mob/living/simple/can_man/post_move(var/atom/old_loc)
+/mob/living/simple/can_man/post_move(atom/old_loc)
 	. = ..()
 	//Crush below turf and the contents.
 	if(!horizontal && ai && ai.objective_attack)

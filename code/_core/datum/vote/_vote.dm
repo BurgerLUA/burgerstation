@@ -12,7 +12,7 @@
 	//New is called when the vote is created.
 	//Destroy is called when the vote is destroyed.
 
-/vote/proc/show(var/client/C)
+/vote/proc/show(client/C)
 
 	. = "<h1>Vote</h1><h2>[name]</h2>"
 
@@ -45,23 +45,23 @@
 
 	return ..()
 
-/vote/proc/add_option(var/text)
+/vote/proc/add_option(text)
 	options += text
 	return TRUE
 
-/vote/proc/remove_option(var/text)
+/vote/proc/remove_option(text)
 	options -= text
 	return TRUE
 
-/vote/proc/set_vote(var/ckey,var/number)
+/vote/proc/set_vote(ckey,number)
 	votes[ckey] = number
 	return TRUE
 
-/vote/proc/unset_vote(var/ckey)
+/vote/proc/unset_vote(ckey)
 	votes -= ckey
 	return TRUE
 
-/vote/proc/on_result(var/winner,var/list/results)
+/vote/proc/on_result(winner,list/results)
 	return TRUE
 
 /vote/PreDestroy()

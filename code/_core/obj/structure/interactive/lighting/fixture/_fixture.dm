@@ -22,7 +22,7 @@
 	desired_light_color = color
 	return ..()
 
-/obj/structure/interactive/lighting/fixture/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/lighting/fixture/on_destruction(damage = TRUE)
 
 	var/turf/T = get_turf(src)
 

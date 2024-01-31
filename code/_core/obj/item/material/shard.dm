@@ -10,7 +10,7 @@
 
 	material_multiplier = 0.5
 
-/obj/item/material/shard/New(var/desired_loc)
+/obj/item/material/shard/New(desired_loc)
 	. = ..()
 	icon_state = "[initial(icon_state)]_[rand(1,3)]"
 	return ..()

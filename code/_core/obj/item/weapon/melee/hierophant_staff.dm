@@ -22,7 +22,7 @@
 
 	rarity = RARITY_MYTHICAL
 
-/obj/item/weapon/melee/hierophant_staff/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/melee/hierophant_staff/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()

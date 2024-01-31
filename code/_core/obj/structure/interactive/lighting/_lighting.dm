@@ -8,7 +8,7 @@
 	return CEILING(desired_light_power*desired_light_range*30,1)
 
 /*
-/obj/structure/interactive/lighting/update_power_draw(var/desired_power_draw,var/reset=FALSE)
+/obj/structure/interactive/lighting/update_power_draw(desired_power_draw,reset=FALSE)
 
 	var/area/A = get_area(src)
 

@@ -1,4 +1,4 @@
-/obj/item/proc/get_damage_type_text(var/mob/living/L)
+/obj/item/proc/get_damage_type_text(mob/living/L)
 
 	. = ""
 

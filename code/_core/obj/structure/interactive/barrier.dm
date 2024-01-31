@@ -17,6 +17,6 @@
 
 	health_base = 800
 
-/obj/structure/interactive/barrier/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/barrier/on_destruction(damage = TRUE)
 	. = ..()
 	qdel(src)

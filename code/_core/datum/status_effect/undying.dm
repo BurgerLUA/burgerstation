@@ -7,6 +7,6 @@
 	maximum = 30 SECONDS
 	default_duration = 10 SECONDS
 
-/status_effect/undying/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/undying/on_effect_added(mob/living/owner,atom/source,magnitude,duration,stealthy)
 	. = ..()
 	QUEUE_HEALTH_UPDATE(owner)

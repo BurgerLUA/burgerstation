@@ -25,7 +25,7 @@
 
 
 
-/obj/structure/interactive/ability_machine/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/ability_machine/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(caller.ckey && is_advanced(caller) && is_inventory(object))
 		INTERACT_CHECK

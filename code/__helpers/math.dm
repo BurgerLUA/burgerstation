@@ -1,11 +1,11 @@
-/proc/split_direction(var/input=0x0)
+/proc/split_direction(input=0x0)
 	. = list()
 	for(var/dir in DIRECTIONS_CARDINAL)
 		if(input & dir)
 			. += dir
 
 
-/proc/nice_number(var/input)
+/proc/nice_number(input)
 
 	var/absolute = abs(input)
 
@@ -20,7 +20,7 @@
 
 	return "[input]"
 
-/proc/rand_map(var/turf/T,var/n = 50,var/seed=1) //0 to 100.
+/proc/rand_map(turf/T,n = 50,seed=1) //0 to 100.
 
 	if(n <= 0)
 		return FALSE

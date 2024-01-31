@@ -9,7 +9,7 @@
 	map_color = COLOR_PINK
 	interior = TRUE
 
-/area/transit/New(var/desired_loc)
+/area/transit/New(desired_loc)
 	transit_areas[type] = src
 	return ..()
 

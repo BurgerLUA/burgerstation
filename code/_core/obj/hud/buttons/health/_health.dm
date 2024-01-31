@@ -20,7 +20,7 @@
 	labeled_overlays?.Cut()
 	. = ..()
 
-/obj/hud/button/stat/update_owner(var/mob/desired_owner)
+/obj/hud/button/stat/update_owner(mob/desired_owner)
 
 	if(owner && is_living(owner))
 		var/mob/living/L = owner
@@ -59,7 +59,7 @@
 		A.
 		update_vis_contents()
 
-/obj/hud/button/stat/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/stat/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_living(caller))
 		var/mob/living/L = caller
@@ -108,5 +108,5 @@
 	return TRUE
 
 
-/obj/hud/button/stat/get_examine_list(var/mob/examiner)
+/obj/hud/button/stat/get_examine_list(mob/examiner)
 	return examiner.get_examine_list(examiner)

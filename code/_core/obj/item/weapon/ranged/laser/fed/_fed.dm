@@ -7,7 +7,7 @@
 	var/fed_item = null
 	var/feed_delay = 1
 
-/obj/item/weapon/ranged/energy/fed/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/energy/fed/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		if(istype(object,fed_item))

@@ -25,7 +25,7 @@
 		if(O.armor == /armor/default_organic)
 			O.armor = /armor/roided_zombie
 
-/mob/living/advanced/npc/zombie/roided/on_unblocked_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/total_damage_dealt=0)
+/mob/living/advanced/npc/zombie/roided/on_unblocked_hit(atom/attacker,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT,total_damage_dealt=0)
 
 	. = ..()
 

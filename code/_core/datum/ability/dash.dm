@@ -13,7 +13,7 @@
 
 	category = "Dash"
 
-/ability/dash/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/dash/on_cast(mob/caller,atom/target,location,params)
 	var/mob/living/L = caller
 	L.dash_direction = L.move_dir ? L.move_dir : L.dir
 	L.dash_amount = dash_strength
@@ -30,7 +30,7 @@
 	cooldown = 5 SECONDS
 	cost = 50
 
-/ability/dash/controlled/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/dash/controlled/on_cast(mob/caller,atom/target,location,params)
 	var/mob/living/L = caller
 	L.dash_amount = dash_strength
 	play_sound('sound/effects/dodge.ogg',get_turf(caller))
@@ -48,7 +48,7 @@
 
 	category = "Dash"
 
-/ability/dash/targeted/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/dash/targeted/on_cast(mob/caller,atom/target,location,params)
 	var/mob/living/L = caller
 	L.dash_target = target
 	L.dash_amount = dash_strength
@@ -66,7 +66,7 @@
 
 	category = "Dash"
 
-/ability/dash/random/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/dash/random/on_cast(mob/caller,atom/target,location,params)
 	var/mob/living/L = caller
 	L.dash_direction = pick(DIRECTIONS_ALL)
 	L.dash_amount = dash_strength
@@ -84,7 +84,7 @@
 
 	category = "Dash"
 
-/ability/dash/fleeting/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/dash/fleeting/on_cast(mob/caller,atom/target,location,params)
 	var/mob/living/L = caller
 	L.dash_direction = get_dir(target,caller)
 	L.dash_amount = dash_strength

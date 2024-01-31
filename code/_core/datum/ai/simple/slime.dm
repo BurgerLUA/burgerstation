@@ -8,7 +8,7 @@
 	target_distribution_x = list(12,16,20)
 	target_distribution_y = list(4.8,12,16)
 
-/ai/slime/proc/can_absorb_slime(var/mob/living/simple/slime/S)
+/ai/slime/proc/can_absorb_slime(mob/living/simple/slime/S)
 
 	var/mob/living/simple/slime/self = owner
 
@@ -38,14 +38,14 @@
 
 	return TRUE
 
-/ai/slime/is_enemy(var/atom/A,var/safety_check=TRUE,var/aggression_check=TRUE)
+/ai/slime/is_enemy(atom/A,safety_check=TRUE,aggression_check=TRUE)
 
 	if(istype(A,/mob/living/simple/slime))
 		return can_absorb_slime(A)
 
 	. = ..()
 
-/ai/slime/do_attack(var/atom/atom_to_attack)
+/ai/slime/do_attack(atom/atom_to_attack)
 
 	if(!istype(atom_to_attack,/mob/living/simple/slime/) || !can_absorb_slime(atom_to_attack)) //Double check to be safe.
 		return ..()

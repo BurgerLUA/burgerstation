@@ -1,4 +1,4 @@
-/proc/smoke(var/turf/desired_turf,var/desired_power=20,var/desired_duration=100,var/reagent_container/container,var/mob/owner,var/alpha=255,var/list/optional_reagents)
+/proc/smoke(turf/desired_turf,desired_power=20,desired_duration=100,reagent_container/container,mob/owner,alpha=255,list/optional_reagents)
 	if(!desired_turf)
 		return FALSE
 	var/reagent_container/temp/smoke/T
@@ -55,17 +55,17 @@
 	blacklist_turfs?.Cut()
 	owner = null
 
-/obj/effect/temp/smoke/proc/try_splash(var/atom/A)
+/obj/effect/temp/smoke/proc/try_splash(atom/A)
 	var/amount_to_actually_splash = max(1,reagent_volume_original/max(1,smoke_volume_original)) * 0.2
 	container.splash(owner,A,amount_to_actually_splash,FALSE,5)
 	return TRUE
 
-/obj/effect/temp/smoke/Crossed(var/atom/movable/O)
+/obj/effect/temp/smoke/Crossed(atom/movable/O)
 	. = ..()
 	if(O.density && O.reagents && container && container.volume_current > 0)
 		try_splash(O)
 
-/obj/effect/temp/smoke/New(var/desired_location,var/desired_time,var/list/desired_blacklist_turfs,var/reagent_container/desired_container,var/mob/desired_owner,var/desired_volume=20,var/desired_alpha=255,var/original_smoke_volume,var/original_reagent_volume)
+/obj/effect/temp/smoke/New(desired_location,desired_time,list/desired_blacklist_turfs,reagent_container/desired_container,mob/desired_owner,desired_volume=20,desired_alpha=255,original_smoke_volume,original_reagent_volume)
 	. = ..()
 
 	CALLBACK("fade_out_\ref[src]",duration-fade_time,src,src::fade_out())

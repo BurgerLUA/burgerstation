@@ -149,7 +149,7 @@
 /gamemode/horde/boss_rush/get_wave_size()
 	return 1
 
-/gamemode/horde/boss_rush/create_horde_mob(var/desired_loc)
+/gamemode/horde/boss_rush/create_horde_mob(desired_loc)
 	var/mob/living/L = ..()
 	L.set_loyalty_tag("Boss")
 	L.set_iff_tag("Boss")

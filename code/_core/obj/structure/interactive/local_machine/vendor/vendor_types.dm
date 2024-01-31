@@ -37,13 +37,13 @@
 	is_free = TRUE
 	free_text = "choose"
 
-/obj/structure/interactive/vending/autolocker/can_purchase_item(var/mob/living/advanced/player/P,var/params,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
+/obj/structure/interactive/vending/autolocker/can_purchase_item(mob/living/advanced/player/P,params,obj/item/associated_item,item_value=0,obj/hud/inventory/I)
 	. = ..()
 	if(. && P && (P in equipped_players))
 		P.to_chat(span("notice","You already selected your equipment!"))
 		return FALSE
 
-/obj/structure/interactive/vending/autolocker/purchase_item(var/mob/living/advanced/player/P,var/params,var/obj/item/associated_item,var/item_value=0,var/obj/hud/inventory/I)
+/obj/structure/interactive/vending/autolocker/purchase_item(mob/living/advanced/player/P,params,obj/item/associated_item,item_value=0,obj/hud/inventory/I)
 	. = ..()
 	if(. && P && !(P in equipped_players))
 		equipped_players += P

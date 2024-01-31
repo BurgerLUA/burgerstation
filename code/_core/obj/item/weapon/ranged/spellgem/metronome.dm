@@ -25,7 +25,7 @@
 
 	value = 2700
 
-/obj/item/weapon/ranged/spellgem/metronome/pre_shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+/obj/item/weapon/ranged/spellgem/metronome/pre_shoot(mob/caller,atom/object,location,params,damage_multiplier=1)
 	ranged_damage_type = pick(damage_list)
 	projectile = pick(projectile_list)
 	shoot_delay = rand(8, 40) / 10

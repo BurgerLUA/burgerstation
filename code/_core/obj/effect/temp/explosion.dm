@@ -8,7 +8,7 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/temp/explosion/New(var/desired_location,var/desired_time,var/desired_color)
+/obj/effect/temp/explosion/New(desired_location,desired_time,desired_color)
 	. = ..()
 	var/matrix/M = get_base_transform()
 	if(desired_time > 2)
@@ -20,7 +20,7 @@
 	icon = 'icons/obj/effects/explosion.dmi'
 	icon_state = "explosion_particle"
 
-/obj/effect/temp/explosion_particle/New(var/desired_location,var/desired_time,var/desired_color,var/desired_dir)
+/obj/effect/temp/explosion_particle/New(desired_location,desired_time,desired_color,desired_dir)
 
 	if(desired_dir)
 		dir = desired_dir

@@ -45,7 +45,7 @@
 	attack_delay = 4
 	attack_delay_max = 10
 
-/damagetype/unarmed/slaughter/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/slaughter/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	. = ..()
 

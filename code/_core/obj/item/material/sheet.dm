@@ -23,7 +23,7 @@
 		color = M.color
 	return ..()
 
-/obj/item/material/sheet/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/material/sheet/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object

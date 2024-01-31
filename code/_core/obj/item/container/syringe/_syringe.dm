@@ -29,21 +29,21 @@
 
 	quality = 100
 
-/obj/item/container/syringe/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/container/syringe/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	if(adjustable)
 		SAVEVAR("inject_amount_desired")
 	if(can_inject && can_draw)
 		SAVEVAR("injecting")
 
-/obj/item/container/syringe/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/container/syringe/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	if(adjustable)
 		LOADVAR("inject_amount_desired")
 	if(can_inject && can_draw)
 		LOADVAR("injecting")
 
-/obj/item/container/syringe/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/container/syringe/mouse_wheel_on_object(mob/caller,delta_x,delta_y,location,control,params)
 
 	if(!adjustable)
 		return ..()
@@ -95,7 +95,7 @@
 
 	update_sprite()
 
-/obj/item/container/syringe/click_self(var/mob/caller,location,control,params)
+/obj/item/container/syringe/click_self(mob/caller,location,control,params)
 
 	if(can_inject && can_draw)
 		INTERACT_CHECK
@@ -106,7 +106,7 @@
 
 	. = ..()
 
-/obj/item/container/syringe/proc/can_inject(var/mob/caller,var/atom/target)
+/obj/item/container/syringe/proc/can_inject(mob/caller,atom/target)
 
 	if(!caller || !target)
 		return FALSE
@@ -158,7 +158,7 @@
 
 	return TRUE
 
-/obj/item/container/syringe/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/container/syringe/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -215,7 +215,7 @@
 
 	return TRUE
 
-/obj/item/container/syringe/proc/inject(var/mob/caller,var/atom/object,var/amount=5)
+/obj/item/container/syringe/proc/inject(mob/caller,atom/object,amount=5)
 
 	if(amount < 0) //Draw
 		if(is_organ(object)) //Targeting an organ.

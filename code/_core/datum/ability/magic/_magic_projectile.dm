@@ -19,7 +19,7 @@
 	var/shoot_alert_to_use = ALERT_LEVEL_CAUTION
 
 
-/ability/magic/projectile/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/magic/projectile/on_cast(mob/caller,atom/target,location,params)
 
 	var/icon_pos_x = params[PARAM_ICON_X]
 	var/icon_pos_y = params[PARAM_ICON_Y]

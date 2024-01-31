@@ -4,7 +4,7 @@
 	enchanting_phrase = "Woah Momma, Thats a spicy meatball!"
 	cost = 75
 
-/enchantment/fire/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/enchantment/fire/on_hit(atom/attacker,atom/victim,obj/item/weapon/weapon,atom/hit_object,atom/blamed,total_damage_dealt=0)
 	if(is_living(victim))
 		var/mob/living/L = victim
 		L.ignite(strength*5*(total_damage_dealt/80),attacker)
@@ -17,7 +17,7 @@
 	enchanting_phrase = "Oh fuck I slipped! Fucking nerf soap!"
 	cost = 100
 
-/enchantment/stagger/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/enchantment/stagger/on_hit(atom/attacker,atom/victim,obj/item/weapon/weapon,atom/hit_object,atom/blamed,total_damage_dealt=0)
 	if(is_living(victim) && prob(strength*5*min(1,total_damage_dealt/100)))
 		var/mob/living/L = victim
 		L.add_status_effect(STAGGER,3,3)
@@ -30,7 +30,7 @@
 	enchanting_phrase = "Fucking stunlockers are fucking noobs, Im tired of this shit!"
 	cost = 200
 
-/enchantment/stun/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/enchantment/stun/on_hit(atom/attacker,atom/victim,obj/item/weapon/weapon,atom/hit_object,atom/blamed,total_damage_dealt=0)
 	if(is_living(victim) && prob(strength*2.5*(total_damage_dealt/100)))
 		var/mob/living/L = victim
 		L.add_status_effect(STUN,10,10)
@@ -43,7 +43,7 @@
 	enchanting_phrase = "Why are my fucking hands made of butter?"
 	cost = 150
 
-/enchantment/disarm/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/enchantment/disarm/on_hit(atom/attacker,atom/victim,obj/item/weapon/weapon,atom/hit_object,atom/blamed,total_damage_dealt=0)
 	if(is_advanced(victim) && prob(strength*5*(total_damage_dealt/50)))
 		var/mob/living/advanced/L = victim
 		L.add_status_effect(DISARM,50,50)
@@ -55,7 +55,7 @@
 	enchanting_phrase = "Blood for the blood god!"
 	cost = 125
 
-/enchantment/blood_leech/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/enchantment/blood_leech/on_hit(atom/attacker,atom/victim,obj/item/weapon/weapon,atom/hit_object,atom/blamed,total_damage_dealt=0)
 	if(is_living(attacker) && is_living(victim))
 		var/mob/living/V = victim
 		var/mob/living/A = attacker
@@ -73,7 +73,7 @@
 	enchanting_phrase = "Gingers have souls!"
 	cost = 50
 
-/enchantment/soul_trap/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/enchantment/soul_trap/on_hit(atom/attacker,atom/victim,obj/item/weapon/weapon,atom/hit_object,atom/blamed,total_damage_dealt=0)
 	if(is_living(victim))
 		var/mob/living/L = victim
 		L.add_status_effect(SOULTRAP,10 + strength*30,10 + strength*30)

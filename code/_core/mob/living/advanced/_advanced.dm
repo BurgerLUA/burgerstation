@@ -117,12 +117,12 @@
 
 	. = ..()
 
-/mob/living/advanced/on_crush(var/message=TRUE)
+/mob/living/advanced/on_crush(message=TRUE)
 	if(driving)
 		return FALSE
 	. = ..()
 
-/mob/living/advanced/set_dir(var/desired_dir,var/force=FALSE)
+/mob/living/advanced/set_dir(desired_dir,force=FALSE)
 
 	if(!force && grabbing_hand)
 		desired_dir = dir
@@ -162,7 +162,7 @@
 
 	. = ..()
 
-/mob/living/advanced/proc/drop_all_items(var/atom/drop_location = get_turf(src), var/exclude_soulbound=FALSE,var/exclude_containers=TRUE)
+/mob/living/advanced/proc/drop_all_items(atom/drop_location = get_turf(src), exclude_soulbound=FALSE,exclude_containers=TRUE)
 
 	. = list()
 
@@ -181,7 +181,7 @@
 		var/obj/hud/inventory/I = inventories_by_id[k]
 		I.delete_objects()
 
-/mob/living/advanced/proc/equip_objects_in_list(var/list/clothing_list)
+/mob/living/advanced/proc/equip_objects_in_list(list/clothing_list)
 	for(var/k in clothing_list)
 		var/obj/item/clothing/C = k
 		C.quick_equip(src,silent=TRUE)
@@ -237,7 +237,7 @@ mob/living/advanced/Login()
 
 	return ..()
 
-/mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/params,var/silent=FALSE,var/debug=FALSE)
+/mob/living/advanced/proc/put_in_hands(obj/item/I,params,silent=FALSE,debug=FALSE)
 
 	if(client && client.selected_hand)
 		if(client.selected_hand == RIGHT_HAND && inventories_by_id[BODY_HAND_RIGHT_HELD] && inventories_by_id[BODY_HAND_RIGHT_HELD].can_slot_object(I,FALSE))
@@ -277,7 +277,7 @@ mob/living/advanced/Login()
 /mob/living/advanced/proc/get_held_right()
 	return inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
 
-/mob/living/advanced/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/mob/living/advanced/do_explosion_damage(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 	for(var/i=1,i<=5,i++)
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
@@ -287,7 +287,7 @@ mob/living/advanced/Login()
 		D.process_damage(source,src,source,object_to_damage,owner,magnitude*(1/5))
 	return TRUE
 
-/mob/living/advanced/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/mob/living/advanced/act_emp(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 
 	if(owner != src)
 		if(!allow_hostile_action(desired_loyalty_tag,src))
@@ -300,7 +300,7 @@ mob/living/advanced/Login()
 		if(O.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag))
 			. = TRUE
 
-/mob/living/advanced/gib(var/gib_direction=0x0,var/hard=FALSE)
+/mob/living/advanced/gib(gib_direction=0x0,hard=FALSE)
 	if(qdeleting)
 		return FALSE
 	if(gibbed)
@@ -312,7 +312,7 @@ mob/living/advanced/Login()
 	return FALSE
 
 
-/mob/living/advanced/proc/make_convincing_corpse(var/damage_organs=TRUE,var/damage_clothing=TRUE,var/bloody_clothing=TRUE,var/place_blood=TRUE)
+/mob/living/advanced/proc/make_convincing_corpse(damage_organs=TRUE,damage_clothing=TRUE,bloody_clothing=TRUE,place_blood=TRUE)
 
 	if(damage_organs)
 		var/total_loss_limit = (src.health.health_max*0.5)/length(organs)

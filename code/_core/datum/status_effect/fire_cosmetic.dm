@@ -9,7 +9,7 @@
 	maximum = 5 SECONDS
 	default_duration = 5 SECONDS
 
-/status_effect/fire/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/fire/on_effect_added(mob/living/owner,atom/source,magnitude,duration,stealthy)
 
 	. = ..()
 

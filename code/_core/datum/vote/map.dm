@@ -11,7 +11,7 @@
 	return ..()
 
 
-/vote/map/on_result(var/winner,var/list/results)
+/vote/map/on_result(winner,list/results)
 
 	if(!winner)
 		broadcast_to_clients(span("danger","Vote failed! Defaulting to Island..."))

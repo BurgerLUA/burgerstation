@@ -28,7 +28,7 @@
 	value = 10
 
 
-/obj/item/magazine/m13_762/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/magazine/m13_762/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(istype(object,/obj/item/weapon/ranged/bullet/magazine/rifle/m13))
 		var/obj/item/weapon/ranged/bullet/magazine/rifle/m13/W = object

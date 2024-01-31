@@ -1,4 +1,4 @@
-/obj/item/clothing/click_on_object(var/mob/caller,var/atom/object,location,control,params) //When we attack something with the clothes
+/obj/item/clothing/click_on_object(mob/caller,atom/object,location,control,params) //When we attack something with the clothes
 
 	if(is_advanced(caller) && caller == object) //Auto-equip.
 		//No interaction delay needed.
@@ -8,7 +8,7 @@
 	return ..()
 
 
-/obj/item/clothing/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/click_self(mob/caller,location,control,params)
 
 	if(length(additional_clothing_stored) && is_advanced(caller) && is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
@@ -20,7 +20,7 @@
 
 	. = ..()
 
-/obj/item/proc/quick_equip(var/mob/living/advanced/caller,var/ignore_hands = FALSE,var/ignore_worn=FALSE,var/ignore_held=FALSE,var/ignore_dynamic=FALSE,var/debug=FALSE,var/silent=FALSE)
+/obj/item/proc/quick_equip(mob/living/advanced/caller,ignore_hands = FALSE,ignore_worn=FALSE,ignore_held=FALSE,ignore_dynamic=FALSE,debug=FALSE,silent=FALSE)
 
 	var/obj/hud/inventory/best_inventory_wear
 	var/obj/hud/inventory/best_inventory_equip
@@ -56,7 +56,7 @@
 	return FALSE
 
 
-/obj/item/clothing/get_examine_list(var/mob/examiner)
+/obj/item/clothing/get_examine_list(mob/examiner)
 
 	. = ..()
 

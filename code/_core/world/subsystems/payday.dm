@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(payday)
 	tick_usage_max = 50
 
 
-/subsystem/payday/unclog(var/mob/caller)
+/subsystem/payday/unclog(mob/caller)
 	tick_rate = -1
 	. = ..()
 

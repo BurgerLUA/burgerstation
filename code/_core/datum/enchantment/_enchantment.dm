@@ -7,7 +7,7 @@
 	var/cost = 100
 	var/strength = 1
 
-/enchantment/proc/generate_stats(var/mob/living/caller,var/obj/item/weapon/desired_weapon,var/obj/item/soulgem/desired_soulgem)
+/enchantment/proc/generate_stats(mob/living/caller,obj/item/weapon/desired_weapon,obj/item/soulgem/desired_soulgem)
 	charge = desired_soulgem.total_charge
 	max_charge = desired_soulgem.total_charge
 	cost = initial(cost) * strength * (1 - caller.get_skill_power(SKILL_SUMMONING,0,1,1)*0.5)
@@ -15,5 +15,5 @@
 	strength = CEILING(strength,1)
 	return strength * cost * 0.1
 
-/enchantment/proc/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/enchantment/proc/on_hit(atom/attacker,atom/victim,obj/item/weapon/weapon,atom/hit_object,atom/blamed,total_damage_dealt=0)
 	return TRUE

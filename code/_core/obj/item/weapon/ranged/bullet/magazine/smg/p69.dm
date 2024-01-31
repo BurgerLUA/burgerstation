@@ -80,5 +80,5 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/p69/get_static_spread()
 	return 0.02
 
-/obj/item/weapon/ranged/bullet/magazine/smg/p69/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/smg/p69/get_skill_spread(mob/living/L)
 	return 0.02 - (0.04 * L.get_skill_power(SKILL_RANGED))

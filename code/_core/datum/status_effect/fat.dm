@@ -10,7 +10,7 @@
 
 	affects_dead = TRUE
 
-/status_effect/fat/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/fat/on_effect_added(mob/living/owner,atom/source,magnitude,duration,stealthy)
 
 	. = ..()
 
@@ -21,7 +21,7 @@
 		T.handle_overlays(A,worn=TRUE,update=TRUE)
 
 
-/status_effect/fat/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
+/status_effect/fat/on_effect_removed(mob/living/owner,magnitude,duration)
 
 	. = ..()
 

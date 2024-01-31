@@ -5,7 +5,7 @@
 	return ATTACK_TYPE_MAGIC
 
 
-/damagetype/ranged/magic/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
+/damagetype/ranged/magic/get_attack_damage(atom/attacker,atom/victim,atom/weapon,atom/hit_object,damage_multiplier=1)
 
 	. = ..()
 

@@ -18,7 +18,7 @@
 	var/maxconstructions = 5
 	var/currentconstructions = list()
 
-/ai/swarmer/builder/New(var/desired_loc,var/mob/living/constructor)
+/ai/swarmer/builder/New(desired_loc,mob/living/constructor)
 	parent_drone = constructor
 	return ..()
 
@@ -89,7 +89,7 @@
 //swarmer structures
 /ai/swarmer/console
 
-/ai/swarmer/console/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/swarmer/console/New(desired_loc,mob/living/desired_owner)
 	parent_console = desired_owner
 	return ..()
 
@@ -116,7 +116,7 @@
 
 
 //communication
-/ai/swarmer/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
+/ai/swarmer/on_alert_level_changed(old_alert_level,new_alert_level,atom/alert_source)
 
 	. = ..()
 
@@ -163,7 +163,7 @@
 			owner.do_say(pick(responses),language_to_use = owner.default_language)
 			next_talk = world.time + 5 SECONDS
 
-/ai/swarmer/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/ai/swarmer/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	. = ..()
 

@@ -1,12 +1,12 @@
 var/global/allow_loading = TRUE
 
 
-/savedata/client/mob/proc/get_proper_id_from_filepath(var/file_string)
+/savedata/client/mob/proc/get_proper_id_from_filepath(file_string)
 	var/file_name = get_filename(file_string)
 	return replacetext(replacetext(file_name,"character_",""),".json","")
 
 
-/savedata/client/mob/proc/get_proper_id_from_filename(var/file_string)
+/savedata/client/mob/proc/get_proper_id_from_filename(file_string)
 	return replacetext(replacetext(file_string,"character_",""),".json","")
 
 
@@ -49,7 +49,7 @@ var/global/allow_loading = TRUE
 		return "[best_number]"
 
 
-/savedata/client/mob/proc/load_json_data_from_id(var/character_id)
+/savedata/client/mob/proc/load_json_data_from_id(character_id)
 
 	var/filename = get_file(character_id)
 	var/data = rustg_file_read(filename)
@@ -61,7 +61,7 @@ var/global/allow_loading = TRUE
 	return json_decode(data)
 
 
-/savedata/client/mob/proc/write_json_data_to_id(var/character_id,var/json_data)
+/savedata/client/mob/proc/write_json_data_to_id(character_id,json_data)
 	json_data["id"] = character_id
 	json_data["last_saved_date"] = get_date()
 	json_data["last_saved_time"] = get_time()
@@ -71,7 +71,7 @@ var/global/allow_loading = TRUE
 	return TRUE
 
 
-/savedata/client/mob/proc/create_new_character(var/character_id)
+/savedata/client/mob/proc/create_new_character(character_id)
 
 	var/client/owner = CLIENT(ckey)
 
@@ -98,7 +98,7 @@ var/global/allow_loading = TRUE
 	return TRUE
 
 
-/savedata/client/mob/proc/save_character(var/mob/living/advanced/player/A,var/save_inventory = TRUE,var/died=FALSE)
+/savedata/client/mob/proc/save_character(mob/living/advanced/player/A,save_inventory = TRUE,died=FALSE)
 
 	if(!A)
 		usr?.to_chat(span("danger","<h2>Save failed. Tried to save NULL. Please contact the server owner with error code: 1000.</h2>"))
@@ -157,7 +157,7 @@ var/global/allow_loading = TRUE
 	A.is_saving = FALSE
 
 
-/savedata/client/mob/proc/delete_character(var/mob/living/advanced/player/A)
+/savedata/client/mob/proc/delete_character(mob/living/advanced/player/A)
 
 	if(!A || !A.ckey || !A.client)
 		return

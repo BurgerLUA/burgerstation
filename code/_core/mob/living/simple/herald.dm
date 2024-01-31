@@ -56,7 +56,7 @@
 	level = 35
 
 
-/mob/living/simple/herald/get_damage_type(var/atom/attacker,var/atom/victim)
+/mob/living/simple/herald/get_damage_type(atom/attacker,atom/victim)
 
 	if( (next_teleport - world.time) >= 2 SECONDS )
 		return /damagetype/unarmed/cqc/sleeping_carp/crashing_wave_kick
@@ -95,7 +95,7 @@
 
 	return TRUE
 
-/mob/living/simple/herald/proc/teleport_target(var/atom/target)
+/mob/living/simple/herald/proc/teleport_target(atom/target)
 
 	if(!target)
 		return FALSE

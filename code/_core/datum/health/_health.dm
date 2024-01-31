@@ -35,7 +35,7 @@
 	owner = null
 	return ..()
 
-/health/proc/get_damage_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/health/proc/get_damage_multiplier(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	. = damage_multiplier
 
@@ -48,7 +48,7 @@
 
 	return .
 
-/health/New(var/desired_owner)
+/health/New(desired_owner)
 	owner = desired_owner
 	return ..()
 
@@ -75,7 +75,7 @@
 	update_health()
 	return TRUE
 
-/health/proc/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/organic=TRUE,var/robotic=TRUE,var/update=TRUE)
+/health/proc/adjust_loss_smart(brute,burn,tox,oxy,fatigue,pain,rad,sanity,mental,organic=TRUE,robotic=TRUE,update=TRUE)
 
 	//Living beings don't use the code below.
 	//They get their own custom thing.
@@ -103,7 +103,7 @@
 	if(update && should_update)
 		update_health()
 
-/health/proc/adjust_loss(var/loss_type,var/value)
+/health/proc/adjust_loss(loss_type,value)
 	if(isnum(resistance[loss_type]) && value > 0)
 		value *= resistance[loss_type]
 	var/old_value = damage[loss_type]
@@ -118,7 +118,7 @@
 	health_current = get_overall_health()
 	return TRUE
 
-/health/proc/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
+/health/proc/get_defense(atom/attacker,atom/hit_object,ignore_luck=FALSE)
 	var/armor/A = ARMOR(armor)
 	if(!A)
 		return list()
@@ -126,7 +126,7 @@
 	.["deflection"] = A.deflection
 	return
 
-/health/proc/adjust_mana(var/adjust_value)
+/health/proc/adjust_mana(adjust_value)
 	var/old_value = mana_current
 	var/new_value = clamp(mana_current + adjust_value,0,mana_max)
 	new_value = FLOOR(new_value,HEALTH_PRECISION)
@@ -135,7 +135,7 @@
 		return new_value - old_value
 	return 0
 
-/health/proc/adjust_stamina(var/adjust_value)
+/health/proc/adjust_stamina(adjust_value)
 	var/old_value = stamina_current
 	var/new_value = clamp(stamina_current + adjust_value,0,stamina_max)
 	new_value = FLOOR(new_value,HEALTH_PRECISION)
@@ -145,5 +145,5 @@
 	return 0
 
 
-/health/proc/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/health/proc/act_emp(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 	return FALSE

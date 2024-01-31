@@ -21,26 +21,26 @@
 
 	sight = SEE_THRU | SEE_PIXELS
 
-/mob/abstract/observer/on_left_click(var/atom/object,location,control,params)
+/mob/abstract/observer/on_left_click(atom/object,location,control,params)
 	if(src.click_on_object(src,object,location,control,params))
 		return TRUE
 	if(object.clicked_on_by_object(src,src,location,control,params))
 		return TRUE
 	return ..()
 
-/mob/abstract/observer/on_right_click(var/atom/object,location,control,params)
+/mob/abstract/observer/on_right_click(atom/object,location,control,params)
 	return on_left_click(object,location,control,params)
 
-/mob/abstract/observer/on_right_down(var/atom/object,location,control,params)
+/mob/abstract/observer/on_right_down(atom/object,location,control,params)
 	return on_left_click(object,location,control,params)
 
-/mob/abstract/observer/on_left_down(var/atom/object,location,control,params)
+/mob/abstract/observer/on_left_down(atom/object,location,control,params)
 	return on_left_click(object,location,control,params)
 
-/mob/abstract/observer/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+/mob/abstract/observer/can_attack(atom/attacker,atom/victim,atom/weapon,params,damagetype/damage_type)
 	return FALSE
 
-/mob/abstract/observer/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/mob/abstract/observer/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	return FALSE
 
 /mob/abstract/observer/Logout()

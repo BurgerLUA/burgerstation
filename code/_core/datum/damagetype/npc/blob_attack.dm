@@ -21,7 +21,7 @@
 
 	crit_multiplier = 8 //Crits only when it hits walls.
 
-/damagetype/blob_attack/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/blob_attack/get_critical_hit_condition(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	if(!is_living(victim) && !istype(victim,/obj/structure/interactive/blob))
 		return TRUE

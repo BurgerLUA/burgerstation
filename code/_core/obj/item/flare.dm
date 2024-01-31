@@ -22,13 +22,13 @@
 	QDEL_NULL(stored_cap)
 	. = ..()
 
-/obj/item/flare/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/flare/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("stored_cap")
 	SAVEVAR("ignited")
 	SAVEVAR("has_fuel")
 
-/obj/item/flare/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/flare/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("stored_cap")
 	LOADVAR("ignited")
@@ -38,7 +38,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/flare/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/flare/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(istype(object,/obj/item/flare_cap/))
 		INTERACT_CHECK
@@ -68,7 +68,7 @@
 
 	. = ..()
 
-/obj/item/flare/post_move(var/atom/old_loc)
+/obj/item/flare/post_move(atom/old_loc)
 
 	. = ..()
 
@@ -76,7 +76,7 @@
 		update_sprite()
 
 
-/obj/item/flare/proc/ignite(var/mob/caller)
+/obj/item/flare/proc/ignite(mob/caller)
 
 	if(!has_fuel)
 		caller.to_chat(span("warning","\The [src.name] is spent!"))

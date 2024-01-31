@@ -67,7 +67,7 @@
 	. += 18000
 
 
-/obj/item/clothing/mask/voice_of_god/get_examine_details_list(var/mob/caller)
+/obj/item/clothing/mask/voice_of_god/get_examine_details_list(mob/caller)
 	. = ..()
 	. += div("notice bold underline","Available commands:")
 	. += div("notice","<b>Stop, Halt, Hold</b>: Paralyzes all enemies in range for 2 seconds.")
@@ -79,7 +79,7 @@
 	. += div("notice","<b>Burn, Fire, Heat</b>: Ignites all enemies in range for 6 seconds.")
 	. += div("notice","All commands share a cooldown of 8 seconds, and require 50 mana and stamina to cast.")
 
-/obj/item/clothing/mask/voice_of_god/on_equip(var/atom/old_location,var/silent=FALSE)
+/obj/item/clothing/mask/voice_of_god/on_equip(atom/old_location,silent=FALSE)
 	. = ..()
 	var/obj/hud/inventory/I = loc
 	if(I.worn && I.item_slot & SLOT_FACE)
@@ -88,7 +88,7 @@
 			A.voice_modifiers = list()
 		A.voice_modifiers[src] = nameof(src::search_for_voice())
 
-/obj/item/clothing/mask/voice_of_god/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
+/obj/item/clothing/mask/voice_of_god/on_unequip(obj/hud/inventory/old_inventory,silent=FALSE)
 	. = ..()
 	if(old_inventory.worn && old_inventory.item_slot & SLOT_FACE)
 		var/mob/living/advanced/A = old_inventory.owner
@@ -97,7 +97,7 @@
 		if(!length(A.voice_modifiers))
 			A.voice_modifiers = null
 
-/obj/item/clothing/mask/voice_of_god/proc/search_for_voice(var/atom/speaker, var/atom/source, var/text_to_say, var/raw_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/obj/item/clothing/mask/voice_of_god/proc/search_for_voice(atom/speaker, atom/source, text_to_say, raw_text_to_say, text_type, frequency, language = LANGUAGE_BASIC,talk_range=TALK_RANGE)
 
 	if(next_voice > world.time)
 		return text_to_say
@@ -132,7 +132,7 @@
 
 	return text_to_say
 
-/obj/item/clothing/mask/voice_of_god/proc/do_voice_effect(var/mob/living/advanced/caller,var/proc_effect,var/harmful=FALSE)
+/obj/item/clothing/mask/voice_of_god/proc/do_voice_effect(mob/living/advanced/caller,proc_effect,harmful=FALSE)
 
 	for(var/k in viewers(VIEW_RANGE,caller))
 		var/mob/M = k
@@ -148,28 +148,28 @@
 			if(!allow_hostile_action(caller.loyalty_tag,L))
 				call(src,proc_effect)(caller,L)
 
-/obj/item/clothing/mask/voice_of_god/proc/power_word_stop(var/mob/living/advanced/caller,var/mob/living/victim)
+/obj/item/clothing/mask/voice_of_god/proc/power_word_stop(mob/living/advanced/caller,mob/living/victim)
 	return victim.add_status_effect(PARALYZE,20,20,source=caller)
 
-/obj/item/clothing/mask/voice_of_god/proc/power_word_drop(var/mob/living/advanced/caller,var/mob/living/victim)
+/obj/item/clothing/mask/voice_of_god/proc/power_word_drop(mob/living/advanced/caller,mob/living/victim)
 	return victim.add_status_effect(STUN,40,40,source=caller)
 
-/obj/item/clothing/mask/voice_of_god/proc/power_word_heal(var/mob/living/advanced/caller,var/mob/living/victim)
+/obj/item/clothing/mask/voice_of_god/proc/power_word_heal(mob/living/advanced/caller,mob/living/victim)
 	return victim.add_status_effect(TEMP_REGEN,5,100,source=caller) //5 health per second for 10 seconds.
 
-/obj/item/clothing/mask/voice_of_god/proc/power_word_harm(var/mob/living/advanced/caller,var/mob/living/victim)
+/obj/item/clothing/mask/voice_of_god/proc/power_word_harm(mob/living/advanced/caller,mob/living/victim)
 	var/damagetype/DT = SSdamagetype.all_damage_types[/damagetype/voice_of_god/harm]
 	var/atom/object_to_damage = victim.get_object_to_damage(caller,src,damage_type,null,TRUE,TRUE)
 	return DT.process_damage(caller,victim,src,object_to_damage,caller,1)
 
-/obj/item/clothing/mask/voice_of_god/proc/power_word_kill(var/mob/living/advanced/caller,var/mob/living/victim)
+/obj/item/clothing/mask/voice_of_god/proc/power_word_kill(mob/living/advanced/caller,mob/living/victim)
 	if(victim.dead || !victim.has_status_effect(CRIT))
 		return FALSE
 	var/damagetype/DT = SSdamagetype.all_damage_types[/damagetype/voice_of_god/kill]
 	var/atom/object_to_damage = victim.get_object_to_damage(caller,src,damage_type,null,TRUE,TRUE)
 	return DT.process_damage(caller,victim,src,object_to_damage,caller,1)
 
-/obj/item/clothing/mask/voice_of_god/proc/power_word_bleed(var/mob/living/advanced/caller,var/mob/living/victim)
+/obj/item/clothing/mask/voice_of_god/proc/power_word_bleed(mob/living/advanced/caller,mob/living/victim)
 	if(!victim.blood_type)
 		return FALSE
 	var/bleed_amount = 50
@@ -180,6 +180,6 @@
 	QUEUE_HEALTH_UPDATE(victim)
 	return TRUE
 
-/obj/item/clothing/mask/voice_of_god/proc/power_word_burn(var/mob/living/advanced/caller,var/mob/living/victim)
+/obj/item/clothing/mask/voice_of_god/proc/power_word_burn(mob/living/advanced/caller,mob/living/victim)
 	victim.ignite(60,source=caller)
 	return TRUE

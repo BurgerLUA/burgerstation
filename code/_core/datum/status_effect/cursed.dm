@@ -7,7 +7,7 @@
 	maximum = 300 SECONDS
 	default_duration = 60 SECONDS
 
-/status_effect/cursed/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+/status_effect/cursed/can_add_status_effect(atom/attacker,mob/living/victim)
 
 	. = ..()
 
@@ -24,7 +24,7 @@
 
 	return TRUE
 
-/status_effect/cursed/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+/status_effect/cursed/on_effect_life(mob/living/owner,magnitude,duration)
 	. = ..()
 	owner.brute_regen_buffer -= 5 * TICKS_TO_SECONDS(LIFE_TICK)
 

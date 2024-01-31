@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(delete)
 
 	var/list/cleaning_log = list()
 
-/subsystem/delete/unclog(var/mob/caller)
+/subsystem/delete/unclog(mob/caller)
 
 	for(var/k in src.objects_to_delete)
 		var/datum/D = k
@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(delete)
 
 	return TRUE
 
-/subsystem/delete/proc/should_delete(var/datum/D)
+/subsystem/delete/proc/should_delete(datum/D)
 
 	if(!is_atom(D))
 		log_error("Warning: Tried safe deleting a non-atom! ([D.get_debug_name()]).")

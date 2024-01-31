@@ -1,7 +1,7 @@
 #define CAMERA_RECOIL_SPEED 16
 #define CAMERA_PUNCH_SPEED 6
 
-/client/proc/update_zoom(var/desired_zoom_level = 2)
+/client/proc/update_zoom(desired_zoom_level = 2)
 
 	if(!mob || !eye || eye != mob)
 		zoom_level = initial(zoom_level)
@@ -12,7 +12,7 @@
 
 	return TRUE
 
-/client/proc/spectate(var/atom/A)
+/client/proc/spectate(atom/A)
 
 	if(A == mob)
 		A = null
@@ -39,7 +39,7 @@
 
 	return TRUE
 
-/client/proc/update_camera_offset(var/desired_x_offset=0,var/desired_y_offset=0)
+/client/proc/update_camera_offset(desired_x_offset=0,desired_y_offset=0)
 	var/zoom_mul = 1
 	if(is_advanced(mob))
 		var/mob/living/advanced/A = mob

@@ -19,7 +19,7 @@
 	var/leveled_effect = 0
 
 
-/obj/item/weapon/melee/sacred_flame/click_self(var/mob/caller)
+/obj/item/weapon/melee/sacred_flame/click_self(mob/caller)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

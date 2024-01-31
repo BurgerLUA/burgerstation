@@ -27,7 +27,7 @@
 	dry()
 	. = ..()
 
-/obj/effect/cleanable/blood/New(var/desired_location,var/desired_color)
+/obj/effect/cleanable/blood/New(desired_location,desired_color)
 
 	if(desired_color) color = desired_color
 
@@ -41,7 +41,7 @@
 	update_blood_level(null,loc)
 	. = ..()
 
-/obj/effect/cleanable/blood/proc/update_blood_level(var/turf/simulated/new_loc,var/turf/simulated/old_loc)
+/obj/effect/cleanable/blood/proc/update_blood_level(turf/simulated/new_loc,turf/simulated/old_loc)
 
 
 
@@ -74,7 +74,7 @@
 /obj/effect/cleanable/blood/splatter/grease
 	color = "#955746"
 
-/obj/effect/cleanable/blood/splatter/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
+/obj/effect/cleanable/blood/splatter/New(desired_location,desired_color,desired_x,desired_y)
 	icon_state = "splatter_[rand(1,12)]"
 	return ..()
 
@@ -83,7 +83,7 @@
 	icon_state = "gib_1"
 	blood_level = 20
 
-/obj/effect/cleanable/blood/gib/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
+/obj/effect/cleanable/blood/gib/New(desired_location,desired_color,desired_x,desired_y)
 	icon_state = "gib_[rand(1,10)]"
 	return ..()
 
@@ -102,7 +102,7 @@
 
 	randomize_angle = FALSE
 
-/obj/effect/cleanable/blood/line/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
+/obj/effect/cleanable/blood/line/New(desired_location,desired_color,desired_x,desired_y)
 	icon_state = "trail_[rand(1,4)]"
 	return ..()
 

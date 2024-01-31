@@ -1,4 +1,4 @@
-/mob/verb/say(var/text_to_say as text)
+/mob/verb/say(text_to_say as text)
 	set name = "Say"
 	set category = "Communication"
 
@@ -16,12 +16,12 @@
 
 	do_say(text_to_say)
 
-/mob/verb/emote(var/emote as text,var/mob/target in view(VIEW_RANGE,src))
+/mob/verb/emote(emote as text,mob/target in view(VIEW_RANGE,src))
 	set name = "Emote"
 	set category = "Communication"
 	do_emote(text,target)
 
-/mob/verb/me(var/emote_text as text)
+/mob/verb/me(emote_text as text)
 	set name = "Me"
 	set category = "Communication"
 
@@ -39,7 +39,7 @@
 
 	visible_message("\The <b>[src.name]</b> [emote_text]")
 
-/mob/verb/whisper(var/text_to_say as text)
+/mob/verb/whisper(text_to_say as text)
 	set name = "Whisper"
 	set category = "Communication"
 
@@ -48,7 +48,7 @@
 
 	do_say(text_to_say,talk_range = WHISPER_RANGE)
 
-/mob/verb/looc(var/text_to_say as text)
+/mob/verb/looc(text_to_say as text)
 
 	set name = "LOOC"
 	set category = "Communication"

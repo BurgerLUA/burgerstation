@@ -6,7 +6,7 @@
 	icon = 'icons/obj/markers/random.dmi'
 	icon_state = "random"
 
-/obj/marker/random/New(var/desired_loc)
+/obj/marker/random/New(desired_loc)
 
 	if(loot_to_spawn && all_loot[loot_to_spawn])
 		var/loot/L = all_loot[loot_to_spawn]

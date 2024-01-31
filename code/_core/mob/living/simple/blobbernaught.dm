@@ -39,7 +39,7 @@
 
 	level = 12
 
-/mob/living/simple/blobbernaught/New(loc,desired_client,desired_level_multiplier,var/obj/structure/interactive/blob/node/desired_node)
+/mob/living/simple/blobbernaught/New(loc,desired_client,desired_level_multiplier,obj/structure/interactive/blob/node/desired_node)
 
 	if(desired_node)
 		linked_node = desired_node

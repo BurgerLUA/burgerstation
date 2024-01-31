@@ -16,5 +16,5 @@ SUBSYSTEM_DEF(maps)
 	for(var/i=1,i<=length(map_files),i++)
 		map_2_zlevel[map_files[i]] = i
 
-/proc/get_z_level(var/z_level)
+/proc/get_z_level(z_level)
 	return map_2_zlevel[z_level]

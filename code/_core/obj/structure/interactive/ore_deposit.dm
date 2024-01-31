@@ -33,7 +33,7 @@
 		M.Turn(pick(90,180,270))
 		transform = M
 
-/obj/structure/interactive/ore_deposit/proc/create_ore(var/atom/caller,var/atom/drop_location,var/ore_to_create = 1)
+/obj/structure/interactive/ore_deposit/proc/create_ore(atom/caller,atom/drop_location,ore_to_create = 1)
 
 	ore_to_create = CEILING(ore_to_create,1) //Round up.
 	ore_to_create = min(ore_to_create,ore_amount) //Don't make more than what is possible.
@@ -80,7 +80,7 @@
 	if(.)
 		update_alpha()
 
-/obj/structure/interactive/ore_deposit/floor/create_ore(var/atom/caller,var/atom/drop_location,var/ore_to_create = 1)
+/obj/structure/interactive/ore_deposit/floor/create_ore(atom/caller,atom/drop_location,ore_to_create = 1)
 	. = ..()
 	if(.)
 		update_alpha()

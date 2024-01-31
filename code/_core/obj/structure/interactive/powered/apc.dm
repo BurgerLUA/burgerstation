@@ -14,7 +14,7 @@
 	wire_powered = TRUE
 
 
-/obj/structure/interactive/powered/apc/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/powered/apc/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("notice","\The [cell.name] has [cell.charge_current] out of [cell.charge_max] charge remaining.")
 
@@ -68,7 +68,7 @@
 /obj/structure/interactive/powered/apc/get_power_draw()
 	return cell ? min(CEILING(cell.charge_max*0.01,1),cell.charge_max - cell.charge_current) : 0
 
-/obj/structure/interactive/powered/apc/power_process(var/power_multiplier=1)
+/obj/structure/interactive/powered/apc/power_process(power_multiplier=1)
 	. = ..()
 	cell.charge_current += FLOOR(power_draw*power_multiplier,1)
 	update_power_draw(get_power_draw())

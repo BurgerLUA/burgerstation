@@ -6,7 +6,7 @@
 	plane = PLANE_SPACE
 	dynamic_lighting = TRUE
 
-/turf/simulated/space/New(var/desired_loc)
+/turf/simulated/space/New(desired_loc)
 	. = ..()
 	icon = null
 	icon_state = null

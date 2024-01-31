@@ -1,4 +1,4 @@
-/ai/proc/set_hunt_target(var/atom/A)
+/ai/proc/set_hunt_target(atom/A)
 
 	if(!owner || owner.qdeleting)
 		return FALSE
@@ -27,7 +27,7 @@
 
 	return TRUE
 
-/ai/proc/set_objective(var/atom/A)
+/ai/proc/set_objective(atom/A)
 
 	if(!owner || owner.qdeleting)
 		return FALSE
@@ -95,7 +95,7 @@
 
 	return TRUE
 
-/ai/proc/handle_current_objectives(var/tick_rate)
+/ai/proc/handle_current_objectives(tick_rate)
 
 	if(objective_attack.qdeleting || !objective_attack.health) //Object destroyed.
 		set_objective(null)
@@ -261,7 +261,7 @@
 		.[L] = detection_level
 		CHECK_TICK(75,FPS_SERVER)
 
-/ai/proc/try_investigate(var/atom/desired_target,var/cooldown=reaction_time,var/force_if_on_cooldown=FALSE)
+/ai/proc/try_investigate(atom/desired_target,cooldown=reaction_time,force_if_on_cooldown=FALSE)
 
 	if(!desired_target)
 		return FALSE
@@ -286,7 +286,7 @@
 
 	return TRUE
 
-/ai/proc/investigate(var/atom/desired_target)
+/ai/proc/investigate(atom/desired_target)
 
 	if(!desired_target)
 		return FALSE

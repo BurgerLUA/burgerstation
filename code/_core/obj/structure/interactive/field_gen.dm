@@ -26,13 +26,13 @@
 	set_active(FALSE,force=TRUE)
 	. = ..()
 
-/obj/structure/interactive/field_generator/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/field_generator/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 	set_active(!active)
 	return TRUE
 
-/obj/structure/interactive/field_generator/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/field_generator/on_destruction(damage = TRUE)
 	. = ..()
 	qdel(src)
 
@@ -43,7 +43,7 @@
 	. = ..()
 	set_active(active,force=TRUE)
 
-/obj/structure/interactive/field_generator/proc/set_active(var/desired_active,var/force=FALSE,var/mob/caller) //caller is optional.
+/obj/structure/interactive/field_generator/proc/set_active(desired_active,force=FALSE,mob/caller) //caller is optional.
 
 	if(!force && desired_active == active)
 		return FALSE
@@ -73,14 +73,14 @@
 
 	return TRUE
 
-/obj/structure/interactive/field_generator/set_anchored(var/desired_anchored=TRUE,var/force=FALSE)
+/obj/structure/interactive/field_generator/set_anchored(desired_anchored=TRUE,force=FALSE)
 	. = ..()
 	if(. && !desired_anchored)
 		clear_linkages()
 		if(active)
 			set_active(FALSE)
 
-/obj/structure/interactive/field_generator/post_move(var/atom/old_loc)
+/obj/structure/interactive/field_generator/post_move(atom/old_loc)
 	. = ..()
 	if(. && anchored) //Must be a shuttle or something special
 		clear_linkages()
@@ -93,7 +93,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/field_generator/proc/clear_linkage(var/d) //d is a num.
+/obj/structure/interactive/field_generator/proc/clear_linkage(d) //d is a num.
 
 	var/rd = turn(d,180)
 	var/obj/structure/interactive/field_generator/FG = src.linked_field_gens["[d]"]
@@ -132,7 +132,7 @@
 				W.alpha = 0
 				W.set_density(0)
 
-/obj/structure/interactive/field_generator/proc/setup_barrier_chain(var/obj/structure/interactive/field_generator/FG,var/d) //FG is the target FG
+/obj/structure/interactive/field_generator/proc/setup_barrier_chain(obj/structure/interactive/field_generator/FG,d) //FG is the target FG
 
 	var/turf/T = get_turf(src)
 	var/limit = get_dist(FG,src) + 2
@@ -219,7 +219,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/field_generator/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/structure/interactive/field_generator/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 	. = ..()
 	if(istype(weapon,/obj/structure/interactive/emitter))
 		emitter_hit()

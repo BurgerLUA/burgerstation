@@ -1,4 +1,4 @@
-/client/verb/adminhelp(var/text_to_say as message)
+/client/verb/adminhelp(text_to_say as message)
 	set name = "Adminhelp"
 	set category = "Admin"
 
@@ -26,7 +26,7 @@
 	var/ticket/T = new
 	T.open(src,text_to_say,TRUE)
 
-/client/verb/bwoink(var/ckey_to_bwoink as text, var/bwoink_message as message)
+/client/verb/bwoink(ckey_to_bwoink as text, bwoink_message as message)
 	set name = "Bwoink"
 	set category = "Admin"
 
@@ -117,7 +117,7 @@
 
 	return TRUE
 
-/client/proc/ban_raw(var/target_ckey as text,var/ban_duration_minutes = -1 as num, var/ban_reason = "No reason given." as message)
+/client/proc/ban_raw(target_ckey as text,ban_duration_minutes = -1 as num, ban_reason = "No reason given." as message)
 
 	ban_duration_minutes = text2num(ban_duration_minutes)
 
@@ -142,7 +142,7 @@
 
 	return TRUE
 
-/client/verb/change_variable(var/datum/object as anything, var/desired_varable_key as text, var/desired_varable_value as anything)
+/client/verb/change_variable(datum/object as anything, desired_varable_key as text, desired_varable_value as anything)
 	set name = "Change Variable"
 	set category = "Admin"
 	set hidden = TRUE
@@ -170,7 +170,7 @@
 		object.vars[desired_varable_key] = desired_varable_value
 		var_edit(object)
 
-/client/verb/var_edit(var/object as anything in view())
+/client/verb/var_edit(object as anything in view())
 	set name = "VarEdit"
 	set category = "Admin"
 
@@ -195,7 +195,7 @@
 		src << browse("<head><style>[STYLESHEET]</style></head><body style='font-size:75%'>[span("debug",returning_text)]</body>","window=help")
 
 
-/client/verb/add_new_wikibot_entry(var/wikibot_question as text,var/wikibot_answer as text)
+/client/verb/add_new_wikibot_entry(wikibot_question as text,wikibot_answer as text)
 	set category = "Admin"
 	set name = "Add New Wikibot Entry"
 

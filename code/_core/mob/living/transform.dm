@@ -23,7 +23,7 @@
 		return PLANE_MOVABLE_STEALTH
 	return initial(plane)
 
-/mob/living/proc/handle_transform(var/force=FALSE)
+/mob/living/proc/handle_transform(force=FALSE)
 
 	.  = FALSE
 

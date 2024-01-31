@@ -1,7 +1,7 @@
 /holiday/
 	var/name = "Holiday Name"
 
-/holiday/proc/horde_post_death(var/mob/living/L)
+/holiday/proc/horde_post_death(mob/living/L)
 	return TRUE
 
 
@@ -10,7 +10,7 @@
 
 
 
-/holiday/halloween/horde_post_death(var/mob/living/L)
+/holiday/halloween/horde_post_death(mob/living/L)
 
 	if(prob(25))
 		var/turf/T = get_turf(L)

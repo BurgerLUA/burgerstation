@@ -8,7 +8,7 @@
 
 	alpha = 100
 
-/obj/structure/interactive/disposals/pipe/New(var/desired_loc)
+/obj/structure/interactive/disposals/pipe/New(desired_loc)
 	plane = PLANE_FLOOR
 	. = ..()
 	alpha = 255

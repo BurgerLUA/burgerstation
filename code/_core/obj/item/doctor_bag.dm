@@ -25,7 +25,7 @@
 
 	quality = 100
 
-/obj/item/doctor_bag/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/doctor_bag/click_on_object(mob/caller,atom/object,location,control,params)
 
 
 	if(is_living(object) && is_living(caller))
@@ -53,7 +53,7 @@
 	. = ..()
 
 
-/obj/item/doctor_bag/proc/can_be_treated(var/mob/caller,var/atom/target)
+/obj/item/doctor_bag/proc/can_be_treated(mob/caller,atom/target)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
@@ -78,7 +78,7 @@
 
 
 
-/obj/item/doctor_bag/proc/treat(var/mob/living/caller,var/atom/A)
+/obj/item/doctor_bag/proc/treat(mob/living/caller,atom/A)
 
 	var/medicine_power = caller.get_skill_power(SKILL_MEDICINE,0,1,2) * (src.quality/100)
 

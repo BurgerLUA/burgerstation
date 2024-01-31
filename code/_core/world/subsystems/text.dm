@@ -44,14 +44,14 @@ SUBSYSTEM_DEF(text)
 
 	return ..()
 
-/subsystem/text/proc/check_duplicate_name(var/name) //For mobs.
+/subsystem/text/proc/check_duplicate_name(name) //For mobs.
 	if(name_count[name])
 		name_count[name]++
 		return "[name] ([name_count[name]])"
 	name_count[name] = rand(1,999) //One funny thing is that you can tell at least how many of this type exists by starting it at 1, so it's random.
 	return "[name] ([name_count[name]])"
 
-/subsystem/text/proc/check_duplicate_player_name(var/name,var/ckey) //For players.
+/subsystem/text/proc/check_duplicate_player_name(name,ckey) //For players.
 	var/length_of_duplicate_names = length(player_names[name])
 	if(!length_of_duplicate_names)
 		player_names[name] = list()

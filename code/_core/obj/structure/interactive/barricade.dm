@@ -41,7 +41,7 @@
 		return TRUE
 	return ..()
 
-/obj/structure/interactive/barricade/proc/can_climb_over(var/mob/caller)
+/obj/structure/interactive/barricade/proc/can_climb_over(mob/caller)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
@@ -56,7 +56,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/barricade/proc/climb_over(var/mob/caller)
+/obj/structure/interactive/barricade/proc/climb_over(mob/caller)
 
 	climbers[caller] = TRUE
 
@@ -70,7 +70,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/barricade/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/barricade/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_advanced(caller) && is_inventory(object) && can_climb_over(caller))
 		INTERACT_CHECK
@@ -87,7 +87,7 @@ obj/structure/interactive/barricade/Finalize()
 	. = ..()
 	update_sprite()
 
-/obj/structure/interactive/barricade/set_dir(var/desired_dir,var/force=FALSE)
+/obj/structure/interactive/barricade/set_dir(desired_dir,force=FALSE)
 
 	. = ..()
 
@@ -115,7 +115,7 @@ obj/structure/interactive/barricade/Finalize()
 
 
 
-/obj/structure/interactive/barricade/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/barricade/on_destruction(damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 2),/material/steel)
 	. = ..()
 	qdel(src)

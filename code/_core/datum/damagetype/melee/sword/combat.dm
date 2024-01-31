@@ -32,8 +32,8 @@
 
 	crit_multiplier = 4
 
-/damagetype/melee/sword/combat_knife/get_crit_chance(var/mob/living/L)
+/damagetype/melee/sword/combat_knife/get_crit_chance(mob/living/L)
 	return 0
 
-/damagetype/melee/sword/combat_knife/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/melee/sword/combat_knife/get_critical_hit_condition(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return attacker.dir == victim.dir

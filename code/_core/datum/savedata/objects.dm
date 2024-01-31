@@ -1,4 +1,4 @@
-/proc/load_and_create_object(var/list/object_data,var/atom/loc)
+/proc/load_and_create_object(list/object_data,atom/loc)
 
 	if(!object_data)
 		log_error("Tried to create an object with a blank object_data list!")
@@ -169,7 +169,7 @@
 
 	return O
 
-/proc/get_inventory_data(var/obj/hud/inventory/I)
+/proc/get_inventory_data(obj/hud/inventory/I)
 	if(!I)
 		return list()
 
@@ -189,7 +189,7 @@
 
 	return returning_list
 
-/proc/get_item_data(var/obj/I,var/save_inventory = TRUE)
+/proc/get_item_data(obj/I,save_inventory = TRUE)
 
 	try
 		if(!I || !I.should_save)

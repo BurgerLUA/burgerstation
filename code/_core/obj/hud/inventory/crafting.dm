@@ -10,7 +10,7 @@
 	drag_to_take = FALSE
 
 
-/obj/hud/inventory/crafting/obj/hud/inventory/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
+/obj/hud/inventory/crafting/obj/hud/inventory/can_slot_object(obj/item/I,messages = FALSE,bypass=FALSE)
 
 	if(!bypass && length(I.inventories))
 		owner?.to_chat(span("notice","\The [I.name] cannot be fit inside \the [src.name]!"))

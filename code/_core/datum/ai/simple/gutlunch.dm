@@ -9,7 +9,7 @@
 	roaming_distance = VIEW_RANGE*2
 
 
-/ai/gutlunch/should_attack_mob(var/mob/living/L,var/aggression_check=TRUE)
+/ai/gutlunch/should_attack_mob(mob/living/L,aggression_check=TRUE)
 
 	if(!L.dead)
 		return ..()

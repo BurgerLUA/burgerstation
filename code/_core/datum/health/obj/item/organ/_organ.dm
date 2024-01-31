@@ -7,7 +7,7 @@
 		var/mob/living/advanced/A = owner.loc
 		A.queue_organ_health_update[owner] = TRUE
 
-/health/obj/item/organ/adjust_loss(var/loss_type,var/value)
+/health/obj/item/organ/adjust_loss(loss_type,value)
 	. = ..()
 	if(. && is_organ(owner) && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
@@ -58,7 +58,7 @@
 	if(should_update_overlay)
 		A.update_overlay_tracked("\ref[O]")
 
-/health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/organic=TRUE,var/robotic=TRUE,var/update=TRUE)
+/health/obj/item/organ/adjust_loss_smart(brute,burn,tox,oxy,fatigue,pain,rad,sanity,mental,organic=TRUE,robotic=TRUE,update=TRUE)
 
 	if(src.organic && !organic)
 		return 0
@@ -107,12 +107,12 @@
 	resistance = list(PAIN=0,TOX=0)
 	organic = FALSE
 
-/health/obj/item/organ/synthetic/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/health/obj/item/organ/synthetic/act_emp(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 	adjust_loss_smart(burn=magnitude,organic=FALSE,robotic=TRUE)
 	return TRUE
 
 /health/obj/item/organ/dummy
 	organic = FALSE
 
-/health/obj/item/organ/dummy/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/organic=TRUE,var/robotic=TRUE,var/update=TRUE)
+/health/obj/item/organ/dummy/adjust_loss_smart(brute,burn,tox,oxy,fatigue,pain,rad,sanity,mental,organic=TRUE,robotic=TRUE,update=TRUE)
 	return brute + burn + tox + oxy + fatigue + pain + rad + sanity + mental // + L + plundered + no wenches + marooned + you have scurvy

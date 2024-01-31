@@ -39,7 +39,7 @@
 	. = ..()
 	start_advanced_thinking(src)
 
-/proc/is_seen_by(var/atom/A,var/mob/living/L) //For SCP stuff.
+/proc/is_seen_by(atom/A,mob/living/L) //For SCP stuff.
 	if(L.dead)
 		return FALSE
 	if(!L.ai && !L.client)

@@ -58,7 +58,7 @@
 
 	var/use_unlock_requirements = TRUE
 
-/obj/structure/interactive/vending/proc/vend_random(var/count=1) //For malfunctions/hacking/destruction
+/obj/structure/interactive/vending/proc/vend_random(count=1) //For malfunctions/hacking/destruction
 
 	if(!length(stored_objects))
 		return FALSE
@@ -78,7 +78,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/vending/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/vending/on_destruction(damage = TRUE)
 	. = ..()
 	if(!broken)
 		create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),/material/glass)
@@ -121,7 +121,7 @@
 	QDEL_NULL(accepts_item)
 	. = ..()
 
-/obj/structure/interactive/vending/proc/spend_currency(var/mob/living/advanced/player/P,var/amount=0)
+/obj/structure/interactive/vending/proc/spend_currency(mob/living/advanced/player/P,amount=0)
 
 	if(accepts_item)
 		var/success = FALSE
@@ -142,10 +142,10 @@
 
 	return TRUE
 
-/obj/structure/interactive/vending/proc/modify_item(var/obj/item/I,var/obj/item/base_item)
+/obj/structure/interactive/vending/proc/modify_item(obj/item/I,obj/item/base_item)
 	return TRUE
 
-/obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/caller,var/params,var/obj/item/associated_item,var/item_value=0)
+/obj/structure/interactive/vending/proc/purchase_item(mob/living/advanced/player/caller,params,obj/item/associated_item,item_value=0)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(3)
@@ -194,14 +194,14 @@
 
 	. = ..()
 
-/obj/structure/interactive/vending/proc/create_item(var/obj/item/item_path,var/turf/turf_spawn) //Create item for the vendor (in initialization only).
+/obj/structure/interactive/vending/proc/create_item(obj/item/item_path,turf/turf_spawn) //Create item for the vendor (in initialization only).
 	var/obj/item/I = new item_path(turf_spawn)
 	INITIALIZE(I)
 	GENERATE(I)
 	FINALIZE(I)
 	return I
 
-/obj/structure/interactive/vending/proc/get_bullshit_price(var/desired_price)
+/obj/structure/interactive/vending/proc/get_bullshit_price(desired_price)
 
 	if(accepts_item)
 		return CEILING(desired_price,1)
@@ -258,7 +258,7 @@
 
 	update_sprite()
 
-/obj/structure/interactive/vending/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/vending/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!caller.client || !powered || !is_player(caller) && !is_inventory(object))
 		return ..()
@@ -276,7 +276,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/vending/proc/show_buttons_to(var/mob/living/advanced/A)
+/obj/structure/interactive/vending/proc/show_buttons_to(mob/living/advanced/A)
 
 	var/stored_objects_length = length(stored_objects)
 
@@ -308,7 +308,7 @@
 	CV.update_owner(A)
 	CV.update_sprite()
 
-/obj/structure/interactive/vending/proc/hide_buttons_from(var/mob/living/advanced/A)
+/obj/structure/interactive/vending/proc/hide_buttons_from(mob/living/advanced/A)
 
 	for(var/obj/hud/button/vendor/V in A.buttons)
 		V.update_owner(null)
@@ -316,17 +316,17 @@
 	for(var/obj/hud/button/close_vendor/V in A.buttons)
 		V.update_owner(null)
 
-/obj/structure/interactive/vending/on_active(var/mob/living/advanced/player/P)
+/obj/structure/interactive/vending/on_active(mob/living/advanced/player/P)
 	show_buttons_to(P)
 	return ..()
 
-/obj/structure/interactive/vending/on_inactive(var/mob/living/advanced/player/P)
+/obj/structure/interactive/vending/on_inactive(mob/living/advanced/player/P)
 	hide_buttons_from(P)
 	return ..()
 
 /obj/structure/interactive/vending/get_power_draw()
 	return 180
 
-/obj/structure/interactive/vending/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/vending/get_examine_list(mob/examiner)
 	. = ..()
 	. += span("notice","To buy from a vendor, simply left or right click any of the available items in the vendor menu.<br>Credits will be automatically deducted from your account, but special currencies such as dosh or gold coins must be held in one of your hands to use.")

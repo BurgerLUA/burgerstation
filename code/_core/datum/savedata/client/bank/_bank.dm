@@ -3,10 +3,10 @@
 /savedata/client/bank
 	loaded_data = list()
 
-/savedata/client/bank/get_file(var/file_id)
+/savedata/client/bank/get_file(file_id)
 	return "bank.json"
 
-/savedata/client/bank/New(var/desired_ckey)
+/savedata/client/bank/New(desired_ckey)
 
 	. = ..()
 

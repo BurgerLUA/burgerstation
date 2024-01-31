@@ -24,7 +24,7 @@
 	can_draw = FALSE
 	can_inject = TRUE
 
-/obj/item/container/syringe/hypospray/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/syringe/hypospray/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!object.reagents)
 		return ..()

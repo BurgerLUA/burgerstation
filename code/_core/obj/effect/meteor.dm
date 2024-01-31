@@ -7,7 +7,7 @@
 
 	var/meteor_time = 3 SECONDS
 
-/obj/effect/falling_meteor/New(var/desired_location)
+/obj/effect/falling_meteor/New(desired_location)
 
 	alpha = 0
 	pixel_z = TILE_SIZE*VIEW_RANGE*2
@@ -43,7 +43,7 @@
 	var/meteor_time = 2 SECONDS
 	var/stored_loyalty_tag = "Ash Drake"
 
-/obj/effect/falling_fireball/New(var/desired_location)
+/obj/effect/falling_fireball/New(desired_location)
 
 	alpha = 0
 	pixel_z = TILE_SIZE*VIEW_RANGE*2

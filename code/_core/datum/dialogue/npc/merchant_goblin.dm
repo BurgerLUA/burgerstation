@@ -1,6 +1,6 @@
 /dialogue/npc/goblin_merchant/
 
-/dialogue/npc/goblin_merchant/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/goblin_merchant/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	. = list()
 
@@ -31,7 +31,7 @@
 	.["*access your bank"] = list("...")
 
 
-/dialogue/npc/goblin_merchant/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/goblin_merchant/set_topic(mob/living/advanced/player/P,topic)
 
 	. = ..()
 

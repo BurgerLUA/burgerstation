@@ -18,21 +18,21 @@
 	last_caller = null
 	return ..()
 
-/obj/item/device/fuse/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/device/fuse/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("time_set")
 
-/obj/item/device/fuse/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/device/fuse/load_item_data_post(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("time_set")
 
-/obj/item/device/fuse/click_self(var/mob/caller,location,control,params)
+/obj/item/device/fuse/click_self(mob/caller,location,control,params)
 	INTERACT_CHECK
 	SPAM_CHECK(5)
 	trigger(caller,src,-1,-1)
 	return TRUE
 
-/obj/item/device/fuse/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/device/fuse/trigger(mob/caller,atom/source,signal_freq,signal_code)
 	last_caller = caller
 	START_THINKING(src)
 	active = TRUE

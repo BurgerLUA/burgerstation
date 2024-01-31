@@ -25,7 +25,7 @@
 
 	screen_loc = "CENTER+1,CENTER-1"
 
-/obj/hud/button/exchange/sell/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/exchange/sell/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	. = ..()
 
 	if(is_player(caller))
@@ -76,7 +76,7 @@
 
 	screen_loc = "CENTER+3,CENTER"
 
-/obj/hud/button/exchange/close/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/exchange/close/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -100,11 +100,11 @@
 
 	screen_loc = "CENTER,CENTER"
 
-/obj/hud/button/exchange/base/update_owner(var/mob/desired_owner)
+/obj/hud/button/exchange/base/update_owner(mob/desired_owner)
 	set_stored_object(null)
 	. = ..()
 
-/obj/hud/button/exchange/base/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/exchange/base/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(stored_object)
 		set_stored_object(null)
@@ -118,7 +118,7 @@
 
 	. = ..()
 
-/obj/hud/button/exchange/base/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/exchange/base/dropped_on_by_object(mob/caller,atom/object,location,control,params)
 
 	DEFER_OBJECT
 
@@ -129,13 +129,13 @@
 
 	. = ..()
 
-/obj/hud/button/exchange/base/proc/stored_object_post_move(var/atom/movable/M)
+/obj/hud/button/exchange/base/proc/stored_object_post_move(atom/movable/M)
 	HOOK_REMOVE("post_move","stored_object_post_move_\ref[src]",M)
 	if(M == stored_object)
 		set_stored_object(null)
 	return TRUE
 
-/obj/hud/button/exchange/base/proc/set_stored_object(var/obj/item/I)
+/obj/hud/button/exchange/base/proc/set_stored_object(obj/item/I)
 	stored_object = I
 	calculate_value()
 	update_sprite()

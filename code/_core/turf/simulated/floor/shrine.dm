@@ -4,7 +4,7 @@
 	icon_state = "0"
 
 
-/turf/simulated/floor/shrine/New(var/desired_loc)
+/turf/simulated/floor/shrine/New(desired_loc)
 	. = ..()
 	if(prob(25))
 		icon_state = "[rand(1,4)]"

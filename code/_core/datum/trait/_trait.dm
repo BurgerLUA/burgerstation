@@ -11,7 +11,7 @@
 
 	var/trait_tag = TRAIT_NEUTRAL
 
-/trait/proc/on_add(var/mob/living/L,var/messages=TRUE)
+/trait/proc/on_add(mob/living/L,messages=TRUE)
 
 	if(messages)
 		if(add_message)
@@ -22,7 +22,7 @@
 
 	return TRUE
 
-/trait/proc/on_remove(var/mob/living/L,var/messages=TRUE)
+/trait/proc/on_remove(mob/living/L,messages=TRUE)
 
 
 	if(messages)

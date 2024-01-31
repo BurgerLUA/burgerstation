@@ -25,7 +25,7 @@ var/global/regex/tiles_regex = regex(@'"[^"]+"')
 
 
 
-/proc/parse_map(var/map_file,var/base_x=0,var/base_y=0,var/base_z = world.maxz+1,var/angle_offset=0,var/map_tag)
+/proc/parse_map(map_file,base_x=0,base_y=0,base_z = world.maxz+1,angle_offset=0,map_tag)
 
 	set background = 1
 

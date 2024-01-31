@@ -34,8 +34,8 @@
 
 	crit_multiplier = 4
 
-/damagetype/melee/sword/rev_bayonet/get_crit_chance(var/mob/living/L)
+/damagetype/melee/sword/rev_bayonet/get_crit_chance(mob/living/L)
 	return 0
 
-/damagetype/melee/sword/rev_bayonet/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/melee/sword/rev_bayonet/get_critical_hit_condition(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return get_true_4dir(attacker.dir) == get_true_4dir(victim.dir)

@@ -16,7 +16,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/currency/can_transfer_stacks_to(var/obj/item/target)
+/obj/item/currency/can_transfer_stacks_to(obj/item/target)
 
 	if(target == src) //Self-stacking.
 		return FALSE

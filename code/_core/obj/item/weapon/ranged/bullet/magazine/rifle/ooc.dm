@@ -74,7 +74,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/ooc/get_static_spread()
 	return 0.0075
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/ooc/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/ooc/get_skill_spread(mob/living/L)
 	return max(0,0.04 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ooc/Generate()

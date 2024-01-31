@@ -8,7 +8,7 @@
 	plane = PLANE_FLOOR_ATTACHMENT
 	layer = LAYER_FLOOR_WEATHER
 
-/obj/effect/crack/New(var/desired_loc)
+/obj/effect/crack/New(desired_loc)
 	. = ..()
 	icon_state = "[rand(1,9)]"
 
@@ -23,7 +23,7 @@
 	plane = PLANE_FLOOR_ATTACHMENT
 	layer = LAYER_FLOOR_CARPET
 
-/obj/effect/moss/New(var/desired_loc)
+/obj/effect/moss/New(desired_loc)
 	. = ..()
 	color = rgb(0,rand(115,140),0)
 	icon_state = "[rand(1,3)]"

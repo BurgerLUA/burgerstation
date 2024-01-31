@@ -36,7 +36,7 @@
 	attack_delay = 12*0.5
 	attack_delay_max = 12
 
-/damagetype/unarmed/fists/shock_touch/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/fists/shock_touch/do_attack_sound(atom/attacker,atom/victim,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	. = ..()
 

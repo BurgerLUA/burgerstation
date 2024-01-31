@@ -15,6 +15,6 @@
 	open_time = 3.8
 	close_time = 3.8
 
-/obj/structure/interactive/door/alarm/New(var/desired_loc)
+/obj/structure/interactive/door/alarm/New(desired_loc)
 	alpha = 255
 	. = ..()

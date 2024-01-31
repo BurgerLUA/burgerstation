@@ -63,7 +63,7 @@
 	return 0
 
 
-/reagent/New(var/desired_loc)
+/reagent/New(desired_loc)
 
 	if(metabolism_stomach > 0 && metabolism_stomach < REAGENT_ROUNDING)
 		log_error("Warning: [src.type] had too low of a metabolism_stomach value ([metabolism_stomach]) and was adjusted to [REAGENT_ROUNDING].")
@@ -79,10 +79,10 @@
 
 	. = ..()
 
-/reagent/proc/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
+/reagent/proc/on_add(reagent_container/container,amount_added=0,current_volume=0,mob/living/caller)
 	return amount_added
 
-/reagent/proc/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
+/reagent/proc/on_add_living(mob/living/L,reagent_container/container,amount_added=0,current_volume=0,mob/living/caller)
 
 	if(addiction && is_advanced(L))
 		var/mob/living/advanced/A = L
@@ -102,32 +102,32 @@
 
 	return amount_added
 
-/reagent/proc/on_remove(var/reagent_container/container)
+/reagent/proc/on_remove(reagent_container/container)
 	return TRUE
 
-/reagent/proc/on_remove_living(var/mob/living/L,var/reagent_container/container)
+/reagent/proc/on_remove_living(mob/living/L,reagent_container/container)
 	return TRUE
 
-/reagent/proc/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/proc/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	return amount_to_metabolize
 
-/reagent/proc/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/proc/on_metabolize_plant(obj/structure/interactive/plant/plant,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	return amount_to_metabolize
 
-/reagent/proc/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/proc/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	return amount_to_metabolize
 
-/reagent/proc/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/proc/on_metabolize_skin(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	return amount_to_metabolize
 
-/reagent/proc/on_overdose(var/mob/living/owner,var/reagent_container/container,var/metabolism_amount=0,var/starting_volume=0,var/multiplier=1)
+/reagent/proc/on_overdose(mob/living/owner,reagent_container/container,metabolism_amount=0,starting_volume=0,multiplier=1)
 	return 0 //This is the amount to actually remove.
 
-/reagent/proc/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+/reagent/proc/on_splash(reagent_container/container,mob/caller,atom/target,volume_to_splash,strength_mod=1)
 	return TRUE
 
-/reagent/proc/act_explode(var/reagent_container/container,var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
+/reagent/proc/act_explode(reagent_container/container,atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
 	return TRUE
 
-/reagent/proc/on_temperature_change(var/reagent_container/container,var/atom/owner)
+/reagent/proc/on_temperature_change(reagent_container/container,atom/owner)
 	return TRUE

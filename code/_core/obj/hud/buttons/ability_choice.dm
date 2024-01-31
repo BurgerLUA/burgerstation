@@ -1,4 +1,4 @@
-/proc/show_ability_choices(var/mob/living/advanced/A,var/obj/structure/interactive/ability_machine/machine)
+/proc/show_ability_choices(mob/living/advanced/A,obj/structure/interactive/ability_machine/machine)
 
 	var/list/categorized_abilities = list()
 
@@ -120,13 +120,13 @@
 		color = initial(color)
 
 
-/obj/hud/button/ability_choice/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/ability_choice/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	caller.to_chat(span("notice","Click and drag to an ability slot at the top left to slot this ability."))
 	return TRUE
 
 
 
-/obj/hud/button/ability_choice/proc/can_slot_ability(var/mob/caller,var/ability/ability_to_replace)
+/obj/hud/button/ability_choice/proc/can_slot_ability(mob/caller,ability/ability_to_replace)
 
 	if(!is_advanced(owner))
 		return FALSE
@@ -156,7 +156,7 @@
 	return TRUE
 
 
-/obj/hud/button/ability_choice/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
+/obj/hud/button/ability_choice/drop_on_object(mob/caller,atom/object,location,control,params) //Src is dragged to object
 
 	if(istype(object,/obj/hud/button/ability))
 		var/obj/hud/button/ability/B = object
@@ -192,7 +192,7 @@
 	icon_state = "close"
 
 
-/obj/hud/button/close_ability_choice/update_owner(var/mob/desired_owner)
+/obj/hud/button/close_ability_choice/update_owner(mob/desired_owner)
 
 	if(owner)
 		HOOK_REMOVE("post_move","\ref[src]_check_distance",owner)
@@ -213,12 +213,12 @@
 	. = ..()
 	linked_buttons.Cut()
 
-/obj/hud/button/close_ability_choice/update_owner(var/mob/desired_owner)
+/obj/hud/button/close_ability_choice/update_owner(mob/desired_owner)
 	for(var/k in linked_buttons)
 		var/obj/hud/button/B = k
 		B.update_owner(desired_owner)
 	. = ..()
 
-/obj/hud/button/close_ability_choice/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/close_ability_choice/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	. = ..()
 	update_owner(null)

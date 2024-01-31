@@ -53,11 +53,11 @@
 	update()
 	return ..()
 
-/objective/kill_boss/proc/kill_boss_destroy(var/mob/living/L,args)
+/objective/kill_boss/proc/kill_boss_destroy(mob/living/L,args)
 	update()
 	return TRUE
 
-/objective/kill_boss/proc/kill_boss_post_death(var/mob/living/L,args)
+/objective/kill_boss/proc/kill_boss_post_death(mob/living/L,args)
 
 	if(L.dead || L.qdeleting)
 		update()

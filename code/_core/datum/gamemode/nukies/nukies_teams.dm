@@ -48,7 +48,7 @@
 		else
 			move_to_team(k,"Syndicate")
 
-/gamemode/nuke_ops/proc/give_loadout(var/mob/living/advanced/A)
+/gamemode/nuke_ops/proc/give_loadout(mob/living/advanced/A)
 
 	if(length(team_loadouts[A.loyalty_tag]))
 		var/loadout/L = pick(team_loadouts[A.loyalty_tag])
@@ -57,7 +57,7 @@
 
 	return FALSE
 
-/gamemode/nuke_ops/proc/move_to_team(var/mob/living/L,var/desired_team)
+/gamemode/nuke_ops/proc/move_to_team(mob/living/L,desired_team)
 
 	if(L.loyalty_tag && teams[L.loyalty_tag])
 		teams[L.loyalty_tag] -= L

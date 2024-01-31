@@ -28,7 +28,7 @@
 
 	return ..()
 
-/obj/structure/interactive/fountain/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/fountain/get_examine_list(mob/examiner)
 
 	. = ..()
 
@@ -74,7 +74,7 @@
 	return ..()
 
 
-/obj/structure/interactive/fountain/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/fountain/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	var/mob/living/L = caller
 

@@ -17,7 +17,7 @@
 	maptext_height = 160
 	maptext_width = 160
 
-/obj/hud/screen_blood/New(var/desired_loc,var/desired_direction=NORTHWEST)
+/obj/hud/screen_blood/New(desired_loc,desired_direction=NORTHWEST)
 
 	if(is_living(desired_loc))
 		var/mob/living/L = desired_loc

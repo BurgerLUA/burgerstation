@@ -1,7 +1,7 @@
 /dialogue/npc/hop/
 
 
-/dialogue/npc/hop/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/hop/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	. = list()
 
@@ -65,7 +65,7 @@
 	)
 
 
-/dialogue/npc/hop/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/hop/set_topic(mob/living/advanced/player/P,topic)
 
 	if(topic == "*Yes, retire and spend out the rest of your days being miserable over the fact that you don't have a job.")
 		var/menu/M = get_menu(/menu/dialogue/)

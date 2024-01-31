@@ -17,7 +17,7 @@
 
 	value = 200
 
-/obj/item/weapon/ranged/magic/tome/chaos/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
+/obj/item/weapon/ranged/magic/tome/chaos/get_projectile_offset(initial_offset_x,initial_offset_y,bullet_num,bullet_num_max,accuracy)
 
 	var/num = bullet_num/bullet_num_max
 

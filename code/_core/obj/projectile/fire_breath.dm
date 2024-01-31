@@ -10,7 +10,7 @@
 
 	ignore_living = TRUE
 
-/obj/projectile/fire_breath/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/fire_breath/on_enter_tile(turf/old_loc,turf/new_loc)
 
 	. = ..()
 
@@ -25,7 +25,7 @@
 		)
 
 
-/obj/projectile/fire_breath/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/fire_breath/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 
 	. = ..()
 

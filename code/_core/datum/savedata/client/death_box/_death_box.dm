@@ -65,7 +65,7 @@
 		var/savedata/client/death_box/DB = k
 		DB.save()
 
-/proc/load_deathbox(var/mob/living/advanced/player/P,var/atom/A)
+/proc/load_deathbox(mob/living/advanced/player/P,atom/A)
 
 	if(!P || P.dead || P.qdeleting)
 		P?.to_chat(span("warning","You can't do this while dead!"))
@@ -153,10 +153,10 @@
 /savedata/client/death_box
 	loaded_data = list()
 
-/savedata/client/death_box/get_file(var/file_id)
+/savedata/client/death_box/get_file(file_id)
 	return "death_box.json"
 
-/savedata/client/death_box/New(var/desired_ckey)
+/savedata/client/death_box/New(desired_ckey)
 
 	. = ..()
 

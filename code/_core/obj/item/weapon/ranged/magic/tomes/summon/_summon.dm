@@ -7,7 +7,7 @@
 	var/atom/movable/object_to_summon
 	var/duration = 300 SECONDS //In deciseconds. Only applies to summoning mobs.
 
-/obj/item/weapon/ranged/magic/tome/summon/on_projectile_hit(var/obj/projectile/P,var/atom/hit_atom)
+/obj/item/weapon/ranged/magic/tome/summon/on_projectile_hit(obj/projectile/P,atom/hit_atom)
 
 	if(istype(P,/obj/projectile/bullet/thrown/))
 		return ..()

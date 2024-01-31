@@ -12,7 +12,7 @@
 
 	weight = 1
 
-/obj/item/emf/proc/set_emf_level(var/desired_level)
+/obj/item/emf/proc/set_emf_level(desired_level)
 
 	if(desired_level == emf_level)
 		return FALSE
@@ -72,7 +72,7 @@
 	return TRUE
 
 
-/obj/item/emf/New(var/desired_loc)
+/obj/item/emf/New(desired_loc)
 	. = ..()
 	SSghost.all_emf_trackers += src
 	return
@@ -81,7 +81,7 @@
 	SSghost.all_emf_trackers -= src
 	return ..()
 
-/obj/item/emf/click_self(var/mob/caller,location,control,params)
+/obj/item/emf/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

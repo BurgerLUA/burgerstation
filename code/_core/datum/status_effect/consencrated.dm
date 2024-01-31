@@ -8,7 +8,7 @@
 	default_duration = 60 SECONDS
 
 
-/status_effect/consencrated/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+/status_effect/consencrated/can_add_status_effect(atom/attacker,mob/living/victim)
 
 	. = ..()
 
@@ -25,6 +25,6 @@
 
 	return TRUE
 
-/status_effect/consencrated/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+/status_effect/consencrated/on_effect_life(mob/living/owner,magnitude,duration)
 	. = ..()
 	owner.burn_regen_buffer -= 1 * TICKS_TO_SECONDS(LIFE_TICK)

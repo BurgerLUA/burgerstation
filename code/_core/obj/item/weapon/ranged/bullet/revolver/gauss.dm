@@ -43,5 +43,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_static_spread()
 	return 0.03
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_skill_spread(mob/living/L)
 	return max(0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))

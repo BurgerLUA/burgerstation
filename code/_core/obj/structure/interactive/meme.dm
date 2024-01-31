@@ -22,7 +22,7 @@
 	check_look() //I mean, it's an admin item. Who care if it's intensive?
 	. = ..()
 
-/obj/structure/interactive/dont_look/post_move(var/atom/old_loc)
+/obj/structure/interactive/dont_look/post_move(atom/old_loc)
 	. = ..()
 	if(is_turf(src.loc) && !is_turf(old_loc))
 		START_THINKING(src)

@@ -38,7 +38,7 @@ obj/structure/interactive/shower/PreDestroy()
 	CALLBACK_REMOVE("\ref[src]_shower")
 	. = ..()
 
-/obj/structure/interactive/shower/proc/set_active(var/desired_active=TRUE)
+/obj/structure/interactive/shower/proc/set_active(desired_active=TRUE)
 
 	if(desired_active)
 		showers_left = 40

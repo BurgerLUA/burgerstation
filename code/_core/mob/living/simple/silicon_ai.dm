@@ -34,7 +34,7 @@
 		hit_directions["[d]"] = 0
 		linked_shield_walls["[d]"] = list()
 
-/mob/living/simple/silicon/ai/handle_transform(var/force=FALSE)
+/mob/living/simple/silicon/ai/handle_transform(force=FALSE)
 	. = ..()
 	if(.)
 		update_icon()
@@ -56,7 +56,7 @@
 	else if(ai && ai.objective_attack)
 		icon_state = "living"
 
-/mob/living/simple/silicon/ai/death(var/silent=TRUE)
+/mob/living/simple/silicon/ai/death(silent=TRUE)
 	. = ..()
 	if(.)
 		for(var/k in linked_spawners)
@@ -78,7 +78,7 @@
 			qdel(SW)
 			linked_shield_walls[d_text] -= k
 
-/mob/living/simple/silicon/ai/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/simple/silicon/ai/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	. = ..()
 
@@ -152,7 +152,7 @@
 
 	next_cyborg_spawn_time = max(next_cyborg_spawn_time,world.time + VIEW_RANGE*10)
 
-/mob/living/simple/silicon/ai/proc/create_turf_destruction(var/turf/T)
+/mob/living/simple/silicon/ai/proc/create_turf_destruction(turf/T)
 	new /obj/effect/gabber_turf_destruction(T,force_turf=/turf/simulated/floor/circuit/red)
 	return TRUE
 

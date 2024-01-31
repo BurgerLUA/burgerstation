@@ -33,7 +33,7 @@
 
 	size = SIZE_0
 
-/obj/item/container/cigarette/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/cigarette/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	if(!lit)
 		var/damagetype/DT = SSdamagetype.all_damage_types[object.get_damage_type(caller,src)]
 		if(DT.attack_damage_base[HEAT] || DT.attack_damage_base[LASER])
@@ -41,14 +41,14 @@
 			return TRUE
 	. = ..()
 
-/obj/item/container/cigarette/feed(var/mob/caller,var/mob/living/target)
+/obj/item/container/cigarette/feed(mob/caller,mob/living/target)
 	return FALSE
 
-/obj/item/container/cigarette/get_damage_type(var/atom/attacker,var/atom/victim)
+/obj/item/container/cigarette/get_damage_type(atom/attacker,atom/victim)
 	if(lit) return /damagetype/melee/club/lighter/on
 	return ..()
 
-/obj/item/container/cigarette/proc/set_lit(var/desired_lit=TRUE)
+/obj/item/container/cigarette/proc/set_lit(desired_lit=TRUE)
 
 	if(lit == desired_lit)
 		return FALSE
@@ -94,7 +94,7 @@
 		add_overlay(I)
 	. = ..()
 
-/obj/item/container/cigarette/proc/consume(var/multiplier=1)
+/obj/item/container/cigarette/proc/consume(multiplier=1)
 	if(istype(src.loc,/obj/hud/inventory/organs/face))
 		var/obj/hud/inventory/organs/face/I = src.loc
 		if(I.owner && I.owner.reagents)

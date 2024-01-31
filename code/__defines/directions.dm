@@ -8,8 +8,8 @@
 #define DOWN 16
 #define UP 32
 
-/proc/is_cardinal_dir(var/dir)
+/proc/is_cardinal_dir(dir)
 	return dir && (dir == NORTH || dir == SOUTH || dir == EAST || dir == WEST)
 
-/proc/is_intercardinal_dir(var/dir)
+/proc/is_intercardinal_dir(dir)
 	return dir && (dir == NORTHEAST || dir == SOUTHEAST || dir == SOUTHWEST || dir == NORTHWEST)

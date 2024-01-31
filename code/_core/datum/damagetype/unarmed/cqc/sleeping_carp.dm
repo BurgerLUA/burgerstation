@@ -1,4 +1,4 @@
-/damagetype/unarmed/cqc/sleeping_carp/damagetype/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/unarmed/cqc/sleeping_carp/damagetype/get_critical_hit_condition(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
@@ -47,7 +47,7 @@
 	attack_delay = 20
 	attack_delay_max = 30
 
-/damagetype/unarmed/cqc/sleeping_carp/crashing_wave_kick/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/cqc/sleeping_carp/crashing_wave_kick/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	if(is_living(victim))
 		var/list/offsets = get_directional_offsets(attacker,victim)
@@ -102,7 +102,7 @@
 	attack_delay_max = 15
 
 
-/damagetype/unarmed/cqc/sleeping_carp/keelhaul/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/cqc/sleeping_carp/keelhaul/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	if(is_living(victim))
 		var/mob/living/L = victim

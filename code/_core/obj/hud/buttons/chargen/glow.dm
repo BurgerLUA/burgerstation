@@ -20,7 +20,7 @@ mob/living/advanced/proc/handle_glow_chargen(var/desired_color,var/update_blends
 
 	chargen_flags = CHARGEN_GLOW
 
-/obj/hud/button/chargen/glow/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/glow/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

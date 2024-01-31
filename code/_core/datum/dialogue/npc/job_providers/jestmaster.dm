@@ -1,6 +1,6 @@
 /dialogue/npc/jestmaster
 
-/dialogue/npc/jestmaster/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/jestmaster/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	. = list()
 
@@ -47,7 +47,7 @@
 		"Her"
 	)
 
-/dialogue/npc/jestmaster/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/jestmaster/set_topic(mob/living/advanced/player/P,topic)
 
 	. = ..()
 

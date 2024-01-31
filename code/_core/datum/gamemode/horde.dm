@@ -33,7 +33,7 @@
 		else
 			world.end(WORLD_END_NANOTRASEN_VICTORY)
 
-/gamemode/horde/proc/create_horde_mob(var/desired_loc)
+/gamemode/horde/proc/create_horde_mob(desired_loc)
 	var/mob/living/L = pickweight(enemy_types_to_spawn)
 	L = new L(desired_loc)
 	INITIALIZE(L)
@@ -301,7 +301,7 @@
 /gamemode/horde/proc/get_enemy_types_to_spawn()
 	return enemy_types_to_spawn
 
-/gamemode/horde/proc/on_killed_enemy(var/mob/living/L,var/args)
+/gamemode/horde/proc/on_killed_enemy(mob/living/L,args)
 
 	for(var/k in SSholiday.holidays)
 		var/holiday/H = SSholiday.holidays[k]

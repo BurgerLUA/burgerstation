@@ -18,7 +18,7 @@
 	maptext_width = TILE_SIZE*5
 	maptext_height = TILE_SIZE*2
 
-/obj/hud/examine/New(var/desired_loc)
+/obj/hud/examine/New(desired_loc)
 
 	if(ismob(desired_loc))
 		screen_loc = "CENTER-2,TOP - 2"

@@ -32,12 +32,12 @@
 	. = ..()
 
 
-/obj/structure/interactive/enchantment_circle/New(var/desired_loc)
+/obj/structure/interactive/enchantment_circle/New(desired_loc)
 	color = random_color()
 	alpha = rand(200,255)
 	return ..()
 
-/obj/structure/interactive/enchantment_circle/proc/store_item(var/obj/item/I)
+/obj/structure/interactive/enchantment_circle/proc/store_item(obj/item/I)
 	if(!stored_book && istype(I,/obj/item/paper/book/enchanting/))
 		stored_book = I
 	stored_items += I
@@ -46,7 +46,7 @@
 		I.visible_message(span("notice","\The [I.name] glows faintly..."))
 	return TRUE
 
-/obj/structure/interactive/enchantment_circle/proc/unstore_item(var/obj/item/I)
+/obj/structure/interactive/enchantment_circle/proc/unstore_item(obj/item/I)
 	if(I == stored_book)
 		stored_book = null
 	stored_items -= I
@@ -56,7 +56,7 @@
 		I.visible_message(span("warning","\The [I.name] stops glowing..."))
 	return TRUE
 
-/obj/structure/interactive/enchantment_circle/proc/set_active(var/desired_active=TRUE)
+/obj/structure/interactive/enchantment_circle/proc/set_active(desired_active=TRUE)
 
 	if(active == desired_active)
 		return FALSE
@@ -85,7 +85,7 @@
 	icon_state = "[active]"
 	return ..()
 
-/obj/structure/interactive/enchantment_circle/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/structure/interactive/enchantment_circle/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
@@ -107,7 +107,7 @@
 		if(I) . += I
 
 
-/obj/structure/interactive/enchantment_circle/proc/try_enchant(var/mob/living/caller)
+/obj/structure/interactive/enchantment_circle/proc/try_enchant(mob/living/caller)
 
 	var/obj/item/soulgem/soulgem = locate() in stored_items
 	var/obj/item/weapon/weapon_to_enchant = locate() in stored_items
@@ -142,7 +142,7 @@
 
 
 
-/obj/structure/interactive/enchantment_circle/on_listen(var/atom/speaker,var/datum/source,var/text,var/raw_text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/obj/structure/interactive/enchantment_circle/on_listen(atom/speaker,datum/source,text,raw_text,language_text,talk_type,frequency, language = LANGUAGE_BASIC,talk_range=TALK_RANGE)
 
 	if(is_living(speaker) && active && stored_book && raw_text)
 

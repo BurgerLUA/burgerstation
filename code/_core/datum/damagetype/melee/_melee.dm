@@ -19,14 +19,14 @@
 
 	can_be_parried = TRUE
 
-/damagetype/melee/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/melee/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 	. = ..()
 	if(condition_on_hit && is_item(weapon))
 		var/obj/item/I = weapon
 		I.use_condition(1)
 
 
-/damagetype/melee/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
+/damagetype/melee/get_attack_damage(atom/attacker,atom/victim,atom/weapon,atom/hit_object,damage_multiplier=1)
 
 	if(victim && is_living(victim))
 		var/mob/living/L = victim

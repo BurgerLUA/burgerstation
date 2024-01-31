@@ -54,12 +54,12 @@
 	CALLBACK("\ref[src]_delete",5,src,/datum/proc/delete)
 
 
-/obj/effect/gabber_slam/proc/get_params(var/atom/victim)
+/obj/effect/gabber_slam/proc/get_params(atom/victim)
 	. = list()
 	.[PARAM_ICON_X] = 16
 	.[PARAM_ICON_Y] = 16
 
-/obj/effect/gabber_slam/proc/do_damage(var/atom/victim)
+/obj/effect/gabber_slam/proc/do_damage(atom/victim)
 
 	if(is_living(victim) && is_living(owner) && owner != victim)
 		var/mob/living/L = victim

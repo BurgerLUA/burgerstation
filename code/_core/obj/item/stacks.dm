@@ -1,4 +1,4 @@
-/obj/item/proc/can_transfer_stacks_to(var/obj/item/target) //General all-purpose code.
+/obj/item/proc/can_transfer_stacks_to(obj/item/target) //General all-purpose code.
 
 	if(target == src)
 		return FALSE
@@ -14,7 +14,7 @@
 
 	return TRUE
 
-/obj/item/proc/transfer_amount_to(var/obj/item/target,var/amount_to_transfer = amount)
+/obj/item/proc/transfer_amount_to(obj/item/target,amount_to_transfer = amount)
 	if(!amount_to_transfer) return 0
 	if(amount_to_transfer < 0)
 		return target.transfer_amount_to(src,-amount_to_transfer)
@@ -36,7 +36,7 @@
 
 //Credit goes to Unknown Person
 
-/proc/copy(var/atom/A)
+/proc/copy(atom/A)
 
 	var/static/list/denyvar = make_associative(
 		list(
@@ -80,7 +80,7 @@
 
 	return N
 
-/obj/item/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(try_transfer_reagents(caller,object,location,control,params))
 		return TRUE
@@ -114,7 +114,7 @@
 
 	return ..()
 
-/obj/item/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(object == src || amount <= 1 || !is_inventory(object) || !is_inventory(src.loc) || get_dist(src,object) > 1)
 		return ..()

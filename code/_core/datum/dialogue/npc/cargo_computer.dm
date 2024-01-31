@@ -1,6 +1,6 @@
 /dialogue/npc/cargo_computer/
 
-/dialogue/npc/cargo_computer/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/cargo_computer/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	. = list()
 
@@ -66,7 +66,7 @@
 		"*main menu"
 	)
 
-/dialogue/npc/cargo_computer/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/cargo_computer/set_topic(mob/living/advanced/player/P,topic)
 
 	. = ..()
 

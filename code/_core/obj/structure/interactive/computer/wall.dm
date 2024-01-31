@@ -50,7 +50,7 @@ obj/structure/interactive/computer/wall/dorms
 	desired_shuttle_controller = locate(desired_shuttle_controller) in world
 	return ..()
 
-/obj/structure/interactive/computer/wall/remote_flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/computer/wall/remote_flight/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
@@ -79,7 +79,7 @@ obj/structure/interactive/computer/wall/dorms
 	desc = "Beep boop."
 	desc_extended = "Operates things, depending on what the console is. This one controls a shuttle."
 
-/obj/structure/interactive/computer/wall/flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/computer/wall/flight/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT

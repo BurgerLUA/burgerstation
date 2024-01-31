@@ -1,2 +1,2 @@
-/client/proc/post_move(var/atom/old_loc,var/atom/new_loc)
+/client/proc/post_move(atom/old_loc,atom/new_loc)
 	return TRUE

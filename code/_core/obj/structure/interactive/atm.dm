@@ -28,7 +28,7 @@
 	I.plane = PLANE_LIGHTING_EFFECT
 	add_overlay(I)
 
-/obj/structure/interactive/atm/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/atm/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(5)

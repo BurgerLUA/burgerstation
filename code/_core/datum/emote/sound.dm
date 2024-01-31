@@ -2,13 +2,13 @@
 	var/list/sounds_male = list()
 	var/list/sounds_female = list()
 
-/emote/sound/on_emote(var/atom/emoter,var/atom/target)
+/emote/sound/on_emote(atom/emoter,atom/target)
 	. = ..()
 	if(.)
 		var/sound_to_play = get_sound_to_play(emoter,target)
 		if(sound_to_play) play_sound(sound_to_play,get_turf(emoter),range_max=VIEW_RANGE)
 
-/emote/sound/proc/get_sound_to_play(var/atom/emoter,var/atom/target)
+/emote/sound/proc/get_sound_to_play(atom/emoter,atom/target)
 	if(is_living(emoter))
 		var/mob/living/L = emoter
 		return L.get_emote_sound(id)

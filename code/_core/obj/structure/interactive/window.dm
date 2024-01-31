@@ -25,7 +25,7 @@
 
 	var/no_queue = FALSE
 
-/obj/structure/window/should_smooth_with(var/turf/T)
+/obj/structure/window/should_smooth_with(turf/T)
 
 	. = ..()
 
@@ -59,7 +59,7 @@
 				I.appearance_flags = T.appearance_flags | RESET_COLOR | RESET_ALPHA | KEEP_APART
 				add_overlay(I)
 
-/obj/structure/window/on_destruction(var/damage = TRUE)
+/obj/structure/window/on_destruction(damage = TRUE)
 	if(damage)
 		create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),material_id)
 		no_queue = TRUE
@@ -136,7 +136,7 @@
 	. = ..()
 	set_dir(dir,force=TRUE)
 
-/obj/structure/window/directional/set_dir(var/desired_dir,var/force = FALSE)
+/obj/structure/window/directional/set_dir(desired_dir,force = FALSE)
 
 	if(force_corner)
 		switch(desired_dir)

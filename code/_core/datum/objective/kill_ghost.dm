@@ -45,7 +45,7 @@
 	update()
 	return ..()
 
-/objective/kill_ghost/proc/kill_ghost_post_death(var/mob/living/L,args)
+/objective/kill_ghost/proc/kill_ghost_post_death(mob/living/L,args)
 
 	if(L.dead || L.qdeleting)
 		update()

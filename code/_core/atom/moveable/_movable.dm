@@ -112,7 +112,7 @@
 
 	return TRUE
 
-/atom/movable/set_dir(var/desired_dir,var/force = FALSE)
+/atom/movable/set_dir(desired_dir,force = FALSE)
 
 	. = ..()
 
@@ -123,11 +123,11 @@
 				continue
 			LS.set_dir(desired_dir,force)
 
-/atom/movable/New(var/desired_loc)
+/atom/movable/New(desired_loc)
 	light_sprite_sources = list()
 	. = ..()
 
-/atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/force = FALSE)
+/atom/movable/proc/update_collisions(normal,bullet,c_dir,force = FALSE)
 
 	. = FALSE
 
@@ -143,7 +143,7 @@
 		collision_dir = c_dir
 		. = TRUE
 
-/atom/movable/proc/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
+/atom/movable/proc/can_be_grabbed(atom/grabber,messages=TRUE)
 
 	if(grabber == src)
 		if(messages && is_living(grabber))
@@ -181,7 +181,7 @@
 
 	value = get_base_value()
 
-/proc/is_valid_dir(var/direction)
+/proc/is_valid_dir(direction)
 
 	/*
 	if(!direction || (direction & EAST && direction & WEST) || (direction & NORTH && direction & SOUTH))
@@ -205,7 +205,7 @@
 	return "[src.name]([src.type])[location_info]"
 
 
-/atom/movable/proc/set_anchored(var/desired_anchored=TRUE,var/force=FALSE)
+/atom/movable/proc/set_anchored(desired_anchored=TRUE,force=FALSE)
 
 	if(anchored == desired_anchored && !force)
 		return FALSE
@@ -219,14 +219,14 @@
 	return FALSE
 
 
-/atom/movable/proc/dust(var/atom/source)
+/atom/movable/proc/dust(atom/source)
 	return FALSE
 
-/atom/movable/proc/gib(var/gib_direction=0x0,var/hard=FALSE)
+/atom/movable/proc/gib(gib_direction=0x0,hard=FALSE)
 	qdel(src)
 	return TRUE
 
-/atom/movable/proc/is_safe_to_delete(var/check_loc = TRUE)
+/atom/movable/proc/is_safe_to_delete(check_loc = TRUE)
 
 	if(check_loc && loc && !src.z) //This means we're in something that isn't a turf.
 		return FALSE
@@ -241,7 +241,7 @@
 
 	return TRUE
 
-/atom/movable/set_density(var/desired_density=TRUE,var/force=FALSE)
+/atom/movable/set_density(desired_density=TRUE,force=FALSE)
 
 	. = ..()
 

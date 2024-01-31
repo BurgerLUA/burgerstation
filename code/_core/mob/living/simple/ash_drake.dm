@@ -78,12 +78,12 @@
 
 	var/next_special_move = 0
 
-/mob/living/simple/ash_drake/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+/mob/living/simple/ash_drake/can_attack(atom/attacker,atom/victim,atom/weapon,params,damagetype/damage_type)
 	if(boss_state)
 		return FALSE
 	. = ..()
 
-/mob/living/simple/ash_drake/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/mob/living/simple/ash_drake/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	if(boss_state)
 		return FALSE
 	. = ..()
@@ -196,7 +196,7 @@
 		play_sound('sound/mob/ash_drake/death.ogg',get_turf(src))
 
 
-/mob/living/simple/ash_drake/proc/start_fire_breath(var/atom/desired_target)
+/mob/living/simple/ash_drake/proc/start_fire_breath(atom/desired_target)
 
 	if(has_status_effect(PARALYZE))
 		return FALSE
@@ -210,7 +210,7 @@
 	CALLBACK("\ref[src]_do_fire_breath",20,src,src::do_fire_breath(),desired_target,stored_turf)
 
 
-/mob/living/simple/ash_drake/proc/do_fire_breath(var/atom/desired_target,var/turf/fallback_turf)
+/mob/living/simple/ash_drake/proc/do_fire_breath(atom/desired_target,turf/fallback_turf)
 
 	var/do_bonus = FALSE
 
@@ -247,7 +247,7 @@
 		add_status_effect(PARALYZE,duration=20,magnitude=-1,stealthy=TRUE)
 		CALLBACK("\ref[src]_do_bonus_dash",21,src,src::do_bonus_dash(),fallback_turf)
 
-/mob/living/simple/ash_drake/proc/do_bonus_dash(var/atom/desired_dash_target)
+/mob/living/simple/ash_drake/proc/do_bonus_dash(atom/desired_dash_target)
 	dash_target = desired_dash_target
 	dash_amount = min(VIEW_RANGE,get_dist(src,dash_target))
 	return TRUE

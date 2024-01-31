@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 50
 
-/obj/item/consumable/fertilizer/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/consumable/fertilizer/click_on_object(mob/caller as mob,atom/object,location,control,params)
 	if (!istype(object,/obj/structure/interactive/plant))
 		return
 

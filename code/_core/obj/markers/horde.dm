@@ -5,7 +5,7 @@ var/global/list/obj/marker/horde/all_horde_markers = list()
 	icon = 'icons/obj/markers/markers.dmi'
 	icon_state = "horde"
 
-/obj/marker/horde/New(var/desired_loc)
+/obj/marker/horde/New(desired_loc)
 	. = ..()
 	all_horde_markers += src
 

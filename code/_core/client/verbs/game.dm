@@ -117,7 +117,7 @@
 
 	return TRUE
 
-/client/verb/examine_atom(var/atom/A as anything)
+/client/verb/examine_atom(atom/A as anything)
 	set name = "Examine"
 	set category = "Game"
 	if(!A) return

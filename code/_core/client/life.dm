@@ -73,7 +73,7 @@
 	return TRUE
 
 
-/client/proc/set_zoom(var/desired_zoom)
+/client/proc/set_zoom(desired_zoom)
 	is_zoomed = desired_zoom
 	/*
 	if(desired_zoom)

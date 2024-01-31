@@ -55,7 +55,7 @@ var/global/list/atom/movable/possible_abnormalities = list(
 		return COMPLETED
 	return ..()
 
-/objective/abnormality/proc/abnormality_post_move(var/atom/movable/M,args)
+/objective/abnormality/proc/abnormality_post_move(atom/movable/M,args)
 	if(!completed)
 		var/area/A = get_area(M)
 		if(istype(A,/area/burgerstation/science/containment))
@@ -65,7 +65,7 @@ var/global/list/atom/movable/possible_abnormalities = list(
 
 	return TRUE
 
-/objective/abnormality/proc/abnormality_Destroy(var/atom/movable/M,args)
+/objective/abnormality/proc/abnormality_Destroy(atom/movable/M,args)
 	if(!completed)
 		failed = TRUE
 		update()

@@ -1,4 +1,4 @@
-/obj/item/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(is_container)
 		var/turf/found_turf
@@ -31,7 +31,7 @@
 
 	. = ..()
 
-/obj/item/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+/obj/item/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params) //The src was clicked on by the object
 
 	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		return src.click_self(caller,location,control,params)
@@ -54,7 +54,7 @@
 	. = ..()
 
 
-/obj/item/click_self(var/mob/caller,location,control,params)
+/obj/item/click_self(mob/caller,location,control,params)
 
 	if(!length(inventories))
 		return FALSE
@@ -74,7 +74,7 @@
 	return FALSE
 
 
-/obj/item/proc/can_interact_with_inventory(var/mob/living/advanced/caller)
+/obj/item/proc/can_interact_with_inventory(mob/living/advanced/caller)
 
 	if(inventory_user && inventory_user != caller)
 		caller.to_chat(span("warning","\The [inventory_user.name] is using \the [src.name]!"))
@@ -82,7 +82,7 @@
 
 	return TRUE
 
-/obj/item/proc/open_inventory(var/mob/living/advanced/A)
+/obj/item/proc/open_inventory(mob/living/advanced/A)
 
 	if(loot_to_generate)
 		var/rarity = 0
@@ -142,7 +142,7 @@
 
 	return TRUE
 
-/obj/item/proc/close_inventory(var/mob/living/advanced/A)
+/obj/item/proc/close_inventory(mob/living/advanced/A)
 
 	if(inventory_user)
 		inventory_user.using_inventories -= src
@@ -158,7 +158,7 @@
 
 	return TRUE
 
-/obj/item/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
+/obj/item/drop_on_object(mob/caller,atom/object,location,control,params) //Src is dragged to object
 
 	if(!can_be_dragged(caller))
 		return TRUE
@@ -185,13 +185,13 @@
 
 	. = ..()
 
-/obj/item/proc/can_be_dragged(var/mob/caller)
+/obj/item/proc/can_be_dragged(mob/caller)
 	if(additional_clothing_parent)
 		return FALSE
 	return TRUE
 
 
-/obj/item/proc/dump_single_content(var/mob/caller,var/obj/item/I,var/turf/target_turf)
+/obj/item/proc/dump_single_content(mob/caller,obj/item/I,turf/target_turf)
 
 	if(!caller || !target_turf || !I)
 		return FALSE
@@ -209,7 +209,7 @@
 
 	return TRUE
 
-/obj/item/proc/can_dump_contents(var/mob/caller,var/turf/target_turf)
+/obj/item/proc/can_dump_contents(mob/caller,turf/target_turf)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target_turf)
@@ -217,7 +217,7 @@
 	return TRUE
 
 
-/obj/item/proc/dump_contents(var/mob/caller,var/turf/target_turf)
+/obj/item/proc/dump_contents(mob/caller,turf/target_turf)
 
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
@@ -232,7 +232,7 @@
 	return TRUE
 
 
-/obj/item/proc/drop_item(var/atom/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE) //Should be used in place of forcemove when possible.
+/obj/item/proc/drop_item(atom/new_location,pixel_x_offset = 0,pixel_y_offset = 0,silent=FALSE) //Should be used in place of forcemove when possible.
 
 	if(drop_sound && !silent && new_location && !qdeleting)
 		if(is_turf(new_location))

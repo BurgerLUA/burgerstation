@@ -20,7 +20,7 @@ proc/time_x_newer_than_y(var/x_date,var/x_time,var/y_date,var/y_time)
 	return FALSE
 
 
-/proc/get_nice_time(var/seconds)
+/proc/get_nice_time(seconds)
 
 	var/time_list = list()
 
@@ -47,7 +47,7 @@ proc/time_x_newer_than_y(var/x_date,var/x_time,var/y_date,var/y_time)
 #define FORMAT_MINUTE 0x2
 #define FORMAT_SECOND 0x4
 
-/proc/get_clock_time(var/seconds,var/format_type = FORMAT_MINUTE | FORMAT_SECOND)
+/proc/get_clock_time(seconds,format_type = FORMAT_MINUTE | FORMAT_SECOND)
 
 	if(seconds < 0)
 		seconds = 0

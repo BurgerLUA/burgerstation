@@ -67,7 +67,7 @@
 
 	return .
 
-/obj/item/organ/hand/get_damage_type(var/atom/attacker,var/atom/victim)
+/obj/item/organ/hand/get_damage_type(atom/attacker,atom/victim)
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
@@ -271,7 +271,7 @@
 
 	armor = /armor/beefman
 
-/obj/item/organ/hand/beefman/get_damage_type(var/atom/attacker,var/atom/victim)
+/obj/item/organ/hand/beefman/get_damage_type(atom/attacker,atom/victim)
 	return damage_type
 
 /obj/item/organ/hand/beefman/left
@@ -299,7 +299,7 @@
 /obj/item/organ/hand/stand
 	name = "right fast hand"
 
-/obj/item/organ/hand/stand/get_damage_type(var/atom/attacker,var/atom/victim)
+/obj/item/organ/hand/stand/get_damage_type(atom/attacker,atom/victim)
 	return /damagetype/unarmed/fists/stand
 
 /obj/item/organ/hand/stand/left
@@ -392,7 +392,7 @@
 /obj/item/organ/hand/zombie
 	name = "right zombie hand"
 
-/obj/item/organ/hand/zombie/get_damage_type(var/atom/attacker,var/atom/victim)
+/obj/item/organ/hand/zombie/get_damage_type(atom/attacker,atom/victim)
 
 	if(!is_living(victim))
 		return /damagetype/unarmed/claw

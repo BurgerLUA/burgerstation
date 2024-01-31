@@ -4,10 +4,10 @@
 /savedata/proc/reset_data()
 	loaded_data = list()
 
-/savedata/proc/get_folder(var/folder_id)
+/savedata/proc/get_folder(folder_id)
 	return ""
 
-/savedata/proc/get_file(var/file_id)
+/savedata/proc/get_file(file_id)
 	return ""
 
 /savedata/proc/get_files()

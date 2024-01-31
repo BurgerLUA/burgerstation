@@ -118,7 +118,7 @@ Some code modified to work with Burgerstation.
 
 
 
-/proc/AStar_Circle_node(var/obj/marker/map_node/start, var/obj/marker/map_node/goal, var/atom/movable/walker, min_dist=0, maxtraverse=100,var/debug=FALSE)
+/proc/AStar_Circle_node(obj/marker/map_node/start, obj/marker/map_node/goal, atom/movable/walker, min_dist=0, maxtraverse=100,debug=FALSE)
 
 	var/list/obj/marker/map_node/closedSet = list()
 	var/list/obj/marker/map_node/openSet = list(start)

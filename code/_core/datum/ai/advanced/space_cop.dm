@@ -28,7 +28,7 @@ var/global/list/space_cop_tag_shitlist = list()
 
 	return ..()
 
-/ai/advanced/space_cop/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/ai/advanced/space_cop/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	. = ..()
 
@@ -37,7 +37,7 @@ var/global/list/space_cop_tag_shitlist = list()
 		if(L.loyalty_tag && L.loyalty_tag != owner.loyalty_tag && !space_cop_tag_shitlist[L.loyalty_tag])
 			space_cop_tag_shitlist[L.loyalty_tag] = TRUE
 
-/ai/advanced/space_cop/is_enemy(var/atom/A,var/safety_check=TRUE)
+/ai/advanced/space_cop/is_enemy(atom/A,safety_check=TRUE)
 	if(is_living(A))
 		var/mob/living/L = A
 		if(L.loyalty_tag && space_cop_tag_shitlist[L.loyalty_tag])

@@ -12,7 +12,7 @@
 
 	bullet_block_chance = 90
 
-/obj/structure/interactive/construction/reinf_girder/proc/can_construct_reinf_wall(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/reinf_girder/proc/can_construct_reinf_wall(mob/caller,obj/item/material/sheet/S)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(S)
@@ -28,7 +28,7 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/interactive/construction/reinf_girder/proc/construct_reinf_wall(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/reinf_girder/proc/construct_reinf_wall(mob/caller,obj/item/material/sheet/S)
 	var/turf/T = src.loc
 	T.change_turf(/turf/simulated/wall/metal/reinforced)
 	caller?.visible_message(span("notice","\The [caller.name] places \the [T.name]."),span("notice","You place \the [T.name]."))
@@ -36,7 +36,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/interactive/construction/reinf_girder/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/construction/reinf_girder/on_destruction(damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 2),material_id)
 	. = ..()
 	qdel(src)

@@ -19,7 +19,7 @@
 
 	container_priority = -20
 
-/obj/item/storage/pouch/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/storage/pouch/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(caller == object && is_advanced(caller))
 		INTERACT_CHECK
@@ -30,7 +30,7 @@
 
 	return ..()
 
-/obj/item/storage/pouch/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/storage/pouch/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_inventory(object)) //Roughly pockets only.
 		var/obj/hud/inventory/I = object

@@ -4,7 +4,7 @@ var/global/list/all_antag_markers = list()
 	name = "antag marker"
 	var/spawn_type
 
-/obj/marker/antag/New(var/desired_loc)
+/obj/marker/antag/New(desired_loc)
 
 	if(spawn_type && name)
 		if(!all_antag_markers[name])

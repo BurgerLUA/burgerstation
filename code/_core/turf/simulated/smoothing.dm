@@ -1,4 +1,4 @@
-/turf/simulated/proc/should_smooth_with(var/turf/simulated/T)
+/turf/simulated/proc/should_smooth_with(turf/simulated/T)
 
 	if(!is_simulated(T))
 		return null
@@ -10,7 +10,7 @@
 
 	return null
 
-/turf/simulated/wall/should_smooth_with(var/turf/simulated/T)
+/turf/simulated/wall/should_smooth_with(turf/simulated/T)
 
 	. = ..()
 

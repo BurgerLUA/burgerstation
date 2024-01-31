@@ -26,7 +26,7 @@
 
 	. = ..()
 
-/obj/structure/interactive/disposals/machine/outlet/Entered(var/atom/A,var/oldloc)
+/obj/structure/interactive/disposals/machine/outlet/Entered(atom/A,oldloc)
 
 	if(istype(A,/obj/disposals_container/))
 

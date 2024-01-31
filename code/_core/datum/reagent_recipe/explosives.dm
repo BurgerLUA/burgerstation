@@ -13,7 +13,7 @@
 
 	results = list()
 
-/reagent_recipe/explosion/emp/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+/reagent_recipe/explosion/emp/on_react(mob/caller,reagent_container/container,magnitude)
 
 	var/tag_to_use
 	if(is_living(caller))
@@ -38,7 +38,7 @@
 
 	secret = TRUE
 
-/reagent_recipe/explosion/holy_water_potassium/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+/reagent_recipe/explosion/holy_water_potassium/on_react(mob/caller,reagent_container/container,magnitude)
 
 	var/turf/explosion_location = get_turf(container.owner)
 
@@ -78,7 +78,7 @@
 
 	results = list()
 
-/reagent_recipe/explosion/water_potassium/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+/reagent_recipe/explosion/water_potassium/on_react(mob/caller,reagent_container/container,magnitude)
 
 	var/turf/explosion_location = get_turf(container.owner)
 
@@ -115,7 +115,7 @@
 	)
 	results = list()
 
-/reagent_recipe/explosion/smoke/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+/reagent_recipe/explosion/smoke/on_react(mob/caller,reagent_container/container,magnitude)
 	var/turf/T = get_turf(container.owner)
 	smoke(
 		T,
@@ -162,7 +162,7 @@
 	)
 	results = list()
 
-/reagent_recipe/explosion/oxygen_phoron_reaction/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+/reagent_recipe/explosion/oxygen_phoron_reaction/on_react(mob/caller,reagent_container/container,magnitude)
 	container.average_temperature += 1000 //1000 regardless.
 	container.process_temperature() //Will turn it into a fireball.
 	return TRUE

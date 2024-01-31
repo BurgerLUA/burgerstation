@@ -1,4 +1,4 @@
-/proc/mobs_in_range(var/range = VIEW_RANGE,var/atom/A = usr)
+/proc/mobs_in_range(range = VIEW_RANGE,atom/A = usr)
 	. = list()
 	var/turf/T = get_turf(A)
 	for(var/k in SSliving.all_mobs)

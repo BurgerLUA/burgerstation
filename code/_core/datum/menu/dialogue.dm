@@ -2,7 +2,7 @@
 	file = 'html/dialogue.html'
 	resources = list()
 
-/menu/dialogue/open(var/mob/user)
+/menu/dialogue/open(mob/user)
 
 	if(!is_player(user))
 		return FALSE
@@ -27,7 +27,7 @@
 
 	user << output(file_text, "map.dialogue")
 
-/menu/dialogue/on_load(var/mob/user)
+/menu/dialogue/on_load(mob/user)
 
 	if(!is_player(user))
 		return FALSE
@@ -53,12 +53,12 @@
 
 	P.dialogue_loading = FALSE
 
-/menu/dialogue/close(var/mob/user)
+/menu/dialogue/close(mob/user)
 	winset(user, "map.dialogue","is-visible=false")
 	winset(user,"map.map","focus=true")
 	winset(user,"control.input","focus=false")
 
-/menu/dialogue/run_function(var/mob/user, var/function_name,var/args)
+/menu/dialogue/run_function(mob/user, function_name,args)
 	user << output("[function_name]([args]);", "map.dialogue:eval")
 
 /menu/dialogue/Topic(href,href_list)

@@ -30,7 +30,7 @@
 
 
 
-/obj/item/container/spray/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/container/spray/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()

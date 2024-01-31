@@ -81,7 +81,7 @@
 	linked_active_slimes = null
 	. = ..()
 
-/mob/living/simple/slime_king/proc/create_slime(var/turf/T)
+/mob/living/simple/slime_king/proc/create_slime(turf/T)
 
 	var/mob/living/simple/slime/S = new(T)
 	S.color = src.color
@@ -157,7 +157,7 @@
 	I.appearance_flags = src.appearance_flags | RESET_COLOR | KEEP_APART
 	add_overlay(I)
 
-/mob/living/simple/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/simple/slime_king/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	. = ..()
 
@@ -204,7 +204,7 @@
 /mob/living/simple/slime_king/proc/delete_self()
 	qdel(src)
 
-/mob/living/simple/slime_king/proc/shoot_slime_ball(var/atom/target)
+/mob/living/simple/slime_king/proc/shoot_slime_ball(atom/target)
 
 	if(slime_balls_left <= 0)
 		return FALSE
@@ -245,7 +245,7 @@
 
 	return TRUE
 
-/mob/living/simple/slime_king/proc/slime_wave(var/target_direction=dir)
+/mob/living/simple/slime_king/proc/slime_wave(target_direction=dir)
 
 	if(has_status_effect(PARALYZE))
 		return FALSE
@@ -290,7 +290,7 @@
 	next_slime_wave = world.time + 10 SECONDS
 	next_special_attack = world.time + 10 SECONDS
 
-/mob/living/simple/slime_king/proc/create_slime_tile(var/turf/T,var/should_create_slime=FALSE)
+/mob/living/simple/slime_king/proc/create_slime_tile(turf/T,should_create_slime=FALSE)
 	var/obj/structure/interactive/slime_wall/SW = locate() in T.contents
 	if(SW) return FALSE
 	var/obj/structure/interactive/slime_tile/ST = locate() in T.contents
@@ -304,7 +304,7 @@
 		create_slime(T)
 	return TRUE
 
-/mob/living/simple/slime_king/proc/create_slime_wall(var/turf/T)
+/mob/living/simple/slime_king/proc/create_slime_wall(turf/T)
 	var/obj/structure/interactive/slime_tile/ST = locate() in T.contents
 	if(ST)
 		qdel(ST)
@@ -359,7 +359,7 @@
 	next_slime_bomb = world.time + 30 SECONDS
 	next_special_attack = world.time + 10 + 3 + 60
 
-/mob/living/simple/slime_king/proc/throw_bomb(var/turf/T,var/throw_time=40)
+/mob/living/simple/slime_king/proc/throw_bomb(turf/T,throw_time=40)
 	var/obj/item/slime_bomb/B = new(T)
 	B.owner = src
 	B.loyalty_tag = src.loyalty_tag
@@ -375,13 +375,13 @@
 	CALLBACK("\ref[B]_arm",throw_time*0.75,src,src::arm_bomb(),B)
 	play_sound('sound/effects/splort.ogg',get_turf(src))
 
-/mob/living/simple/slime_king/proc/arm_bomb(var/obj/item/slime_bomb/B)
+/mob/living/simple/slime_king/proc/arm_bomb(obj/item/slime_bomb/B)
 	B.anchored = FALSE
 	B.mouse_opacity = initial(B.mouse_opacity)
 	B.light()
 	return TRUE
 
-/mob/living/simple/slime_king/proc/build_a_house(var/size=4,var/build_walls=TRUE)
+/mob/living/simple/slime_king/proc/build_a_house(size=4,build_walls=TRUE)
 
 	if(has_status_effect(PARALYZE))
 		return FALSE
@@ -407,7 +407,7 @@
 	next_slime_house = world.time + 60 SECONDS
 	next_special_attack = world.time + 10 + size*2*3*2
 
-/mob/living/simple/slime_king/proc/absorb_slimes(var/absorbs_left=20)
+/mob/living/simple/slime_king/proc/absorb_slimes(absorbs_left=20)
 
 	if(dead)
 		return FALSE

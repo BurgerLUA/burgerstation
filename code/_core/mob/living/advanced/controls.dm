@@ -94,7 +94,7 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)  //T
 	return FALSE
 
 
-/mob/living/advanced/on_left_drop(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
+/mob/living/advanced/on_left_drop(atom/src_object,atom/over_object,src_location,over_location,src_control,over_control,params)
 
 	if(!can_use_controls(src_object,src_location,src_control,params))
 		return FALSE
@@ -107,7 +107,7 @@ mob/living/advanced/on_right_click(var/atom/object,location,control,params)  //T
 
 	return FALSE
 
-/mob/living/advanced/on_right_drop(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
+/mob/living/advanced/on_right_drop(atom/src_object,atom/over_object,src_location,over_location,src_control,over_control,params)
 
 	if(!can_use_controls(src_object,src_location,src_control,params))
 		return FALSE

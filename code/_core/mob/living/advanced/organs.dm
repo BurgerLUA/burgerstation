@@ -1,4 +1,4 @@
-/mob/living/advanced/proc/remove_all_organs(var/do_delete=TRUE,var/turf/T)
+/mob/living/advanced/proc/remove_all_organs(do_delete=TRUE,turf/T)
 
 	for(var/k in organs)
 		var/obj/item/organ/O = k
@@ -12,12 +12,12 @@
 
 	return TRUE
 
-/mob/living/advanced/proc/add_organ(var/obj/item/organ/O)
+/mob/living/advanced/proc/add_organ(obj/item/organ/O)
 	O = new O(src)
 	if(!health) O.health = null
 	return attach_organ(O)
 
-/mob/living/advanced/proc/attach_organ(var/obj/item/organ/O,var/initialize=TRUE)
+/mob/living/advanced/proc/attach_organ(obj/item/organ/O,initialize=TRUE)
 
 	if(labeled_organs[O.attach_flag])
 		var/obj/item/organ/A = labeled_organs[O.attach_flag]
@@ -37,7 +37,7 @@
 
 	return O
 
-/obj/item/clothing/back/wings/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
+/obj/item/clothing/back/wings/handle_overlays(mob/living/advanced/A,add=FALSE,remove=FALSE,update=FALSE,worn=FALSE,icon_state_override)
 
 	if(remove)
 		A.remove_overlay("\ref[src]_behind")
@@ -74,7 +74,7 @@
 			A.update_overlay_tracked("\ref[src]_front",desired_color=src.color)
 
 
-/obj/item/organ/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
+/obj/item/organ/handle_overlays(mob/living/advanced/A,add=FALSE,remove=FALSE,update=FALSE,worn=FALSE,icon_state_override)
 
 	if(remove)
 		A.remove_overlay("\ref[src]")
@@ -96,7 +96,7 @@
 
 	return TRUE
 
-/obj/item/organ/antennae/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
+/obj/item/organ/antennae/handle_overlays(mob/living/advanced/A,add=FALSE,remove=FALSE,update=FALSE,worn=FALSE,icon_state_override)
 
 	if(remove)
 		A.remove_overlay("\ref[src]_behind")
@@ -126,7 +126,7 @@
 
 	return TRUE
 
-/obj/item/organ/wings/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
+/obj/item/organ/wings/handle_overlays(mob/living/advanced/A,add=FALSE,remove=FALSE,update=FALSE,worn=FALSE,icon_state_override)
 
 	if(remove)
 		A.remove_overlay("\ref[src]_behind")
@@ -157,7 +157,7 @@
 
 	return TRUE
 
-/obj/item/organ/tail/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
+/obj/item/organ/tail/handle_overlays(mob/living/advanced/A,add=FALSE,remove=FALSE,update=FALSE,worn=FALSE,icon_state_override)
 
 	if(remove)
 		A.remove_overlay("\ref[src]_behind")
@@ -184,7 +184,7 @@
 
 	return TRUE
 
-/mob/living/advanced/proc/remove_organ(var/obj/item/organ/O,var/turf/T,var/do_delete = FALSE)
+/mob/living/advanced/proc/remove_organ(obj/item/organ/O,turf/T,do_delete = FALSE)
 
 	for(var/k in O.inventories)
 		var/obj/hud/inventory/I = k

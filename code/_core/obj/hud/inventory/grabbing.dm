@@ -1,4 +1,4 @@
-/obj/hud/inventory/proc/grab_object(var/mob/caller as mob,var/atom/movable/object,location,control,params)
+/obj/hud/inventory/proc/grab_object(mob/caller as mob,atom/movable/object,location,control,params)
 
 	if(caller == object)
 		caller.to_chat(span("notice","You cannot grab yourself, ERP is against the rules!"))
@@ -81,7 +81,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/release_object(var/mob/caller)
+/obj/hud/inventory/proc/release_object(mob/caller)
 	if(!grabbed_object)
 		return FALSE
 	if(caller && owner)
@@ -105,7 +105,7 @@
 	if(owner) HOOK_CALL_ADV("grab_changed",owner,args)
 	return TRUE
 
-/obj/hud/inventory/proc/can_grab(var/mob/caller,var/atom/movable/object)
+/obj/hud/inventory/proc/can_grab(mob/caller,atom/movable/object)
 
 	if(!object || !caller)
 		return FALSE
@@ -118,7 +118,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/reinforce_grab(var/mob/living/caller,var/force=FALSE)
+/obj/hud/inventory/proc/reinforce_grab(mob/living/caller,force=FALSE)
 
 	if(!grabbed_object)
 		CRASH("Tried calling reinforce_grab without a grabbed object!")

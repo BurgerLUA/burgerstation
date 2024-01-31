@@ -1,10 +1,10 @@
-/mob/living/proc/add_stat_element(var/obj/hud/button/stat/H)
+/mob/living/proc/add_stat_element(obj/hud/button/stat/H)
 	stat_elements[H.id] = H
 	if(client)
 		client.screen += H
 	sync_stat_elements()
 
-/mob/living/proc/remove_stat_element(var/obj/hud/button/stat/H)
+/mob/living/proc/remove_stat_element(obj/hud/button/stat/H)
 	stat_elements -= H.id //H.id is important
 	if(client)
 		client.screen -= H

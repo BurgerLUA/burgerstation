@@ -34,15 +34,15 @@
 	QDEL_NULL(stored_cell)
 	. = ..()
 
-/obj/item/clothing/glasses/nightvision/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/clothing/glasses/nightvision/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("stored_cell")
 
-/obj/item/clothing/glasses/nightvision/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/clothing/glasses/nightvision/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("stored_cell")
 
-/obj/item/clothing/glasses/nightvision/get_examine_list(var/mob/examiner)
+/obj/item/clothing/glasses/nightvision/get_examine_list(mob/examiner)
 	. = ..()
 	if(stored_cell)
 		. += div("notice","There is \a [stored_cell] installed.")
@@ -50,7 +50,7 @@
 	else
 		. += div("notice","There is no power cell installed.")
 
-/obj/item/clothing/glasses/nightvision/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/clothing/glasses/nightvision/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -107,7 +107,7 @@
 		icon_state = "[icon_state]_off"
 		icon_state_worn = "[icon_state_worn]_off"
 
-/obj/item/clothing/glasses/nightvision/proc/drain_power(var/mob/caller)
+/obj/item/clothing/glasses/nightvision/proc/drain_power(mob/caller)
 
 	if(!active)
 		return FALSE
@@ -130,7 +130,7 @@
 
 	return TRUE
 
-/obj/item/clothing/glasses/nightvision/proc/set_active(var/mob/caller,var/desired_active=TRUE)
+/obj/item/clothing/glasses/nightvision/proc/set_active(mob/caller,desired_active=TRUE)
 
 	if(active == desired_active)
 		return FALSE
@@ -168,7 +168,7 @@
 	return TRUE
 
 
-/obj/item/clothing/glasses/nightvision/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/glasses/nightvision/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -178,7 +178,7 @@
 	return TRUE
 
 
-/obj/item/clothing/glasses/nightvision/on_equip(var/atom/old_location,var/silent=FALSE)
+/obj/item/clothing/glasses/nightvision/on_equip(atom/old_location,silent=FALSE)
 	. = ..()
 	var/obj/hud/inventory/I = loc
 	if(I.worn && I.item_slot & SLOT_FACE && is_living(I.owner))
@@ -189,7 +189,7 @@
 		else if(L.ai)
 			set_active(L,TRUE)
 
-/obj/item/clothing/glasses/nightvision/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+/obj/item/clothing/glasses/nightvision/on_unequip(obj/hud/inventory/old_inventory,silent=FALSE) //When the object is dropped from the old_inventory
 	. = ..()
 	if(active && old_inventory.worn && old_inventory.item_slot & SLOT_FACE && is_living(old_inventory.owner))
 		var/mob/living/L = old_inventory.owner

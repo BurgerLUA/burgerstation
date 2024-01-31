@@ -1,4 +1,4 @@
-/client/proc/to_chat(var/text,var/chat_type=CHAT_TYPE_INFO)
+/client/proc/to_chat(text,chat_type=CHAT_TYPE_INFO)
 
 	if(!text || !chat_type)
 		return FALSE

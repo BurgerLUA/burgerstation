@@ -19,7 +19,7 @@
 
 	value_burgerbux = 1
 
-/obj/item/tempering/magazine/bluespace/can_temper(var/mob/caller,var/obj/item/magazine/I)
+/obj/item/tempering/magazine/bluespace/can_temper(mob/caller,obj/item/magazine/I)
 
 	if(!istype(I,/obj/item/magazine))
 		return FALSE
@@ -30,7 +30,7 @@
 
 	return ..()
 
-/obj/item/tempering/magazine/bluespace/on_temper(var/mob/caller,var/obj/item/magazine/I)
+/obj/item/tempering/magazine/bluespace/on_temper(mob/caller,obj/item/magazine/I)
 	I.bluespaced = TRUE
 	I.bullet_count_max *= 5
 	return ..()
@@ -47,7 +47,7 @@
 
 	value_burgerbux = 1
 
-/obj/item/tempering/magazine/refiller/can_temper(var/mob/caller,var/obj/item/magazine/I)
+/obj/item/tempering/magazine/refiller/can_temper(mob/caller,obj/item/magazine/I)
 	if(!istype(I,/obj/item/magazine))
 		return FALSE
 
@@ -57,7 +57,7 @@
 
 	return ..()
 
-/obj/item/tempering/magazine/refiller/on_temper(var/mob/caller,var/obj/item/magazine/I)
+/obj/item/tempering/magazine/refiller/on_temper(mob/caller,obj/item/magazine/I)
 	I.regenerate = TRUE
 	return ..()
 
@@ -76,13 +76,13 @@
 	var/new_damage_type = /damagetype
 	var/new_sound = list('sound/weapons/magic/chaos.ogg')
 
-/obj/item/tempering/magazine/spellswap/can_temper(var/mob/caller,var/obj/item/magazine/I)
+/obj/item/tempering/magazine/spellswap/can_temper(mob/caller,obj/item/magazine/I)
 	if(!istype(I,/obj/item/magazine))
 		return FALSE
 
 	return ..()
 
-/obj/item/tempering/magazine/spellswap/on_temper(var/mob/caller,var/obj/item/magazine/I)
+/obj/item/tempering/magazine/spellswap/on_temper(mob/caller,obj/item/magazine/I)
 	if(length(I.stored_bullets))
 		//TODO: get this working so you have to use magic to level magic?
 		//var/D = new_damage_type

@@ -25,7 +25,7 @@
 /obj/item/container/edible/get_display_value()
 	return get_value()
 
-/obj/item/container/edible/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/container/edible/quick(mob/caller,atom/object,location,params)
 	return try_transfer_reagents(caller,caller,location,null,params)
 
 /obj/item/container/edible/Finalize()
@@ -48,12 +48,12 @@
 	. = ..()
 	transform = get_base_transform()
 
-/obj/item/container/edible/proc/on_consumed(var/mob/caller,var/mob/living/target) //When there are no reagents left.
+/obj/item/container/edible/proc/on_consumed(mob/caller,mob/living/target) //When there are no reagents left.
 	if(delete_on_no_reagents)
 		qdel(src)
 	return TRUE
 
-/obj/item/container/edible/feed(var/mob/caller,var/mob/living/target)
+/obj/item/container/edible/feed(mob/caller,mob/living/target)
 
 	. = ..()
 
@@ -61,10 +61,10 @@
 		src.on_consumed(caller,target)
 
 
-/obj/item/container/edible/proc/get_calculated_bites(var/mob/living/caller,var/total_reagents = 1)
+/obj/item/container/edible/proc/get_calculated_bites(mob/living/caller,total_reagents = 1)
 	return CEILING(total_reagents/get_consume_size(caller),1)
 
-/obj/item/container/edible/get_reagents_to_consume(var/mob/living/consumer)
+/obj/item/container/edible/get_reagents_to_consume(mob/living/consumer)
 
 	var/total_reagents = reagents.volume_current
 

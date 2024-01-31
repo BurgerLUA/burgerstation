@@ -12,11 +12,11 @@
 /obj/item/weapon/melee/energy/can_parry()
 	return enabled
 
-/obj/item/weapon/melee/energy/get_examine_details_list(var/mob/examiner)
+/obj/item/weapon/melee/energy/get_examine_details_list(mob/examiner)
 	. = ..()
 	if(enabled) . += span("notice","It is active.")
 
-/obj/item/weapon/melee/energy/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/energy/click_self(mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(3)
 	enabled = !enabled
@@ -55,7 +55,7 @@
 	return ..()
 
 
-/obj/item/weapon/melee/energy/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/weapon/melee/energy/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params)
 
 
 

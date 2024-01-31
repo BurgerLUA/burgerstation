@@ -19,7 +19,7 @@
 	placing_turf = null
 	. = ..()
 
-/obj/structure/interactive/recycler/New(var/desired_loc)
+/obj/structure/interactive/recycler/New(desired_loc)
 
 	var/image/I1b = new/image(icon,"grinder_bottom")
 	I1b.pixel_x = -TILE_SIZE
@@ -43,7 +43,7 @@
 	recycle(O)
 	. = ..()
 
-/obj/structure/interactive/recycler/proc/recycle(var/atom/movable/O,var/process = TRUE)
+/obj/structure/interactive/recycler/proc/recycle(atom/movable/O,process = TRUE)
 
 	if(is_item(O))
 		var/obj/item/I = O

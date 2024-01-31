@@ -18,10 +18,10 @@
 		"show_debug_messages" = 1
 	)
 
-/savedata/client/settings/get_file(var/file_id)
+/savedata/client/settings/get_file(file_id)
 	return "settings.json"
 
-/savedata/client/settings/New(var/desired_ckey)
+/savedata/client/settings/New(desired_ckey)
 
 	. = ..()
 
@@ -63,7 +63,7 @@
 
 	owner.update_window()
 
-/savedata/client/settings/proc/change_setting(var/setting_id,var/setting_value)
+/savedata/client/settings/proc/change_setting(setting_id,setting_value)
 	loaded_data[setting_id] = setting_value
 	save()
 	return TRUE

@@ -14,7 +14,7 @@
 /obj/item/weapon/ranged/temporary/handle_empty()
 	Destroy()
 
-/obj/item/weapon/ranged/temporary/can_gun_shoot(var/mob/caller)
+/obj/item/weapon/ranged/temporary/can_gun_shoot(mob/caller)
 
 	if(total_charge < cost_charge)
 		handle_empty()
@@ -22,10 +22,10 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/temporary/get_examine_list(var/mob/caller)
+/obj/item/weapon/ranged/temporary/get_examine_list(mob/caller)
 	return ..() + div("notice","[get_ammo_count()] uses left.")
 
-/obj/item/weapon/ranged/temporary/handle_ammo(var/mob/caller,var/bullet_position=1)
+/obj/item/weapon/ranged/temporary/handle_ammo(mob/caller,bullet_position=1)
 	var/charge_to_remove = cost_charge
 	total_charge -= charge_to_remove
 	update_sprite()
@@ -63,5 +63,5 @@
 /obj/item/weapon/ranged/temporary/revolver/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/temporary/revolver/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/temporary/revolver/get_skill_spread(mob/living/L)
 	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))

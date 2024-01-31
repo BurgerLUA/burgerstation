@@ -11,7 +11,7 @@
 	enabled = FALSE
 	set_enabled(old_enabled,TRUE)
 
-/obj/structure/table/cooking/proc/set_enabled(var/desired_enabled=TRUE,var/force=FALSE)
+/obj/structure/table/cooking/proc/set_enabled(desired_enabled=TRUE,force=FALSE)
 
 	if(enabled == desired_enabled && !force)
 		return FALSE
@@ -31,11 +31,11 @@
 
 	return TRUE
 
-/obj/structure/table/cooking/get_examine_details_list(var/mob/examiner)
+/obj/structure/table/cooking/get_examine_details_list(mob/examiner)
 	. = ..()
 	. += span("notice","It is currently [enabled ? "on" : "off"].")
 
-/obj/structure/table/cooking/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/table/cooking/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		INTERACT_CHECK
@@ -56,7 +56,7 @@
 
 	. = ..()
 
-/obj/structure/table/cooking/post_move(var/atom/old_loc)
+/obj/structure/table/cooking/post_move(atom/old_loc)
 
 	. = ..()
 

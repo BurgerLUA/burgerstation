@@ -23,14 +23,14 @@
 
 	no_drop = TRUE
 
-/obj/item/clothing/head/helmet/full/blob_spore/can_be_dragged(var/mob/caller)
+/obj/item/clothing/head/helmet/full/blob_spore/can_be_dragged(mob/caller)
 	return FALSE
 
-/obj/item/clothing/head/helmet/full/blob_spore/proc/can_remove_blob(var/mob/caller)
+/obj/item/clothing/head/helmet/full/blob_spore/proc/can_remove_blob(mob/caller)
 	INTERACT_CHECK_NO_DELAY(src)
 	return TRUE
 
-/obj/item/clothing/head/helmet/full/blob_spore/proc/remove_blob(var/mob/caller,var/messsage=TRUE)
+/obj/item/clothing/head/helmet/full/blob_spore/proc/remove_blob(mob/caller,messsage=TRUE)
 	if(messsage && caller) caller.visible_message(span("notice","\The [caller.name] successfully removes \the [src.name]!"),span("notice","You sucessfully remove \the [src.name]!"))
 	var/turf/T = get_turf(caller ? caller : src)
 	if(T)
@@ -46,7 +46,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/item/clothing/head/helmet/full/blob_spore/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/head/helmet/full/blob_spore/click_self(mob/caller,location,control,params)
 	PROGRESS_BAR(caller,src,1 SECONDS,src::remove_blob(),caller)
 	PROGRESS_BAR_CONDITIONS(caller,src,src::can_remove_blob(),caller)
 	return TRUE
@@ -103,7 +103,7 @@
 
 
 
-/obj/item/clothing/head/helmet/full/blob_spore/pre_equip(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/clothing/head/helmet/full/blob_spore/pre_equip(atom/old_location,obj/hud/inventory/new_location)
 
 	. = ..()
 

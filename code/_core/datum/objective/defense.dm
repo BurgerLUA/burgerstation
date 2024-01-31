@@ -64,7 +64,7 @@
 
 	return ..()
 
-/objective/defense/proc/defense_Destroy(var/obj/structure/interactive/supermatter/S,args)
+/objective/defense/proc/defense_Destroy(obj/structure/interactive/supermatter/S,args)
 	update()
 	return TRUE
 

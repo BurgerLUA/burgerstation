@@ -17,7 +17,7 @@ var/global/static/list/obj/hud/button/color_scheme_buttons = list(
 
 	has_quick_function = FALSE
 
-/obj/hud/button/close_color_scheme/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/close_color_scheme/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -35,7 +35,7 @@ var/global/static/list/obj/hud/button/color_scheme_buttons = list(
 
 	has_quick_function = FALSE
 
-/obj/hud/button/default_color_scheme/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/default_color_scheme/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -72,7 +72,7 @@ var/global/static/list/obj/hud/button/color_scheme_buttons = list(
 
 	has_quick_function = FALSE
 
-/obj/hud/button/color_scheme/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/color_scheme/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

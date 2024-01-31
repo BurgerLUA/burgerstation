@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(vote)
 
 	var/list/active_votes = list()
 
-/subsystem/vote/unclog(var/mob/caller)
+/subsystem/vote/unclog(mob/caller)
 
 	for(var/k in active_votes)
 		var/vote/V = k
@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(vote)
 
 	. = ..()
 
-/subsystem/vote/proc/proces_vote(var/vote/V)
+/subsystem/vote/proc/proces_vote(vote/V)
 	if(V.time_to_end > world.time)
 		return FALSE
 	active_votes -= V
@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(vote)
 
 	return TRUE
 
-/subsystem/vote/proc/create_vote(var/vote/desired_vote_type)
+/subsystem/vote/proc/create_vote(vote/desired_vote_type)
 	var/vote/V = new desired_vote_type
 	active_votes += V
 	V.time_to_end = world.time + (V.time_limit) SECONDS

@@ -30,7 +30,7 @@
 	location = null
 	return ..()
 
-/wound/New(var/mob/living/desired_owner,var/obj/item/organ/desired_location,var/atom/desired_inflictor,var/atom/desired_weapon,var/severity=1)
+/wound/New(mob/living/desired_owner,obj/item/organ/desired_location,atom/desired_inflictor,atom/desired_weapon,severity=1)
 
 	. = ..()
 
@@ -71,10 +71,10 @@
 	name = replacetext(get_infection_name(),"%",name)
 	name = replacetext(get_bleed_name(),"%",name)
 
-/wound/proc/get_examine_text(var/mob/examiner)
+/wound/proc/get_examine_text(mob/examiner)
 	span("warning","It has \a [src]...")
 
-/wound/proc/get_simple_examine_text(var/mob/examiner)
+/wound/proc/get_simple_examine_text(mob/examiner)
 
 	var/returning = src.name
 

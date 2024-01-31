@@ -30,7 +30,7 @@
 		name = "[name] - [item_cost] crystals"
 	..()
 
-/obj/structure/interactive/shop_holder/get_examine_text(var/mob/examiner)
+/obj/structure/interactive/shop_holder/get_examine_text(mob/examiner)
 
 	var/returning_text = stored_item.get_examine_text(examiner)
 

@@ -22,7 +22,7 @@
 	health_base = 200
 
 
-/turf/simulated/floor/colored/snow/New(var/desired_loc)
+/turf/simulated/floor/colored/snow/New(desired_loc)
 	. = ..()
 	if(depth == 0)
 		depth = MAX_DEPTH

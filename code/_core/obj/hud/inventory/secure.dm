@@ -43,7 +43,7 @@
 	priority = -101
 
 
-/obj/hud/inventory/dynamic/secure/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
+/obj/hud/inventory/dynamic/secure/can_slot_object(obj/item/I,messages = FALSE,bypass=FALSE)
 
 	if(!bypass)
 		if(length(I.inventories) && I.size >= SIZE_2)

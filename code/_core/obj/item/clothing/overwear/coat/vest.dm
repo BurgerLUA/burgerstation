@@ -18,7 +18,7 @@
 
 	value = 90
 
-/obj/item/clothing/overwear/coat/vest/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/clothing/overwear/coat/vest/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_inventory(object)) //TODO: Move this to clothing?
 		INTERACT_CHECK

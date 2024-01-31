@@ -53,7 +53,7 @@
 	)
 
 
-/obj/item/clothing/on_equip(var/atom/old_location,var/silent=FALSE)
+/obj/item/clothing/on_equip(atom/old_location,silent=FALSE)
 	. = ..()
 	var/obj/hud/inventory/IN = loc
 	if(IN.worn && is_living(IN.owner))
@@ -63,7 +63,7 @@
 		for(var/k in mob_values_mul)
 			L.add_mob_value("\ref[src]",k,mob_values_mul[k],MULTIPLICATION)
 
-/obj/item/clothing/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+/obj/item/clothing/on_unequip(obj/hud/inventory/old_inventory,silent=FALSE) //When the object is dropped from the old_inventory
 	. = ..()
 	if(old_inventory.worn && is_living(old_inventory.owner))
 		var/mob/living/L = old_inventory.owner
@@ -77,7 +77,7 @@
 	QDEL_CUT(additional_clothing_stored)
 	. = ..()
 
-/obj/item/clothing/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/clothing/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
 
@@ -90,7 +90,7 @@
 	*/
 
 
-/obj/item/clothing/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/clothing/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
 	/*
@@ -101,7 +101,7 @@
 			clothing_enchantments += E
 	*/
 
-/obj/item/clothing/New(var/desired_loc)
+/obj/item/clothing/New(desired_loc)
 	additional_clothing_stored = list()
 	. = ..()
 
@@ -120,5 +120,5 @@
 
 	. = ..()
 
-/obj/item/clothing/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+/obj/item/clothing/proc/get_footsteps(list/original_footsteps,enter=TRUE)
 	return original_footsteps

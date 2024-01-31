@@ -6,7 +6,7 @@
 
 	health_base = 25
 
-/obj/structure/interactive/construction/frame/proc/can_construct_girder(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/frame/proc/can_construct_girder(mob/caller,obj/item/material/sheet/S)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(S)
@@ -22,12 +22,12 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/interactive/construction/frame/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/construction/frame/on_destruction(damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 1),material_id)
 	. = ..()
 	qdel(src)
 
-/obj/structure/interactive/construction/frame/proc/construct_girder(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/frame/proc/construct_girder(mob/caller,obj/item/material/sheet/S)
 	var/obj/structure/interactive/construction/girder/G = new(src.loc)
 	G.material_id = S.material_id
 	G.color = S.color
@@ -38,7 +38,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/interactive/construction/frame/proc/can_construct_lattice(var/mob/caller,var/obj/item/material/rod/R)
+/obj/structure/interactive/construction/frame/proc/can_construct_lattice(mob/caller,obj/item/material/rod/R)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(R)
@@ -51,7 +51,7 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/interactive/construction/frame/proc/construct_lattice(var/mob/caller,var/obj/item/material/rod/R)
+/obj/structure/interactive/construction/frame/proc/construct_lattice(mob/caller,obj/item/material/rod/R)
 	var/obj/structure/interactive/construction/lattice/L = new(src.loc)
 	L.material_id = R.material_id
 	L.color = R.color
@@ -63,7 +63,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/interactive/construction/frame/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/construction/frame/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object

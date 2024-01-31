@@ -21,7 +21,7 @@
 
 	return TRUE
 
-/ai/proc/on_life(var/tick_rate=1)
+/ai/proc/on_life(tick_rate=1)
 
 	//Safeties.
 	if(objective_attack && !objective_attack.z)

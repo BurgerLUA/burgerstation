@@ -7,7 +7,7 @@
 	maximum = 300 SECONDS
 	default_duration = 60 SECONDS
 
-/status_effect/blighted/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+/status_effect/blighted/on_effect_life(mob/living/owner,magnitude,duration)
 	. = ..()
 	//Force all regenerations to be 0 or lower.
 	owner.brute_regen_buffer = min(owner.brute_regen_buffer,0)

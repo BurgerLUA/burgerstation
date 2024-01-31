@@ -1,4 +1,4 @@
-/proc/check_spam(var/client/C,var/text_to_check)
+/proc/check_spam(client/C,text_to_check)
 
 	if(!text_to_check)
 		C.spam_protection_chat += 1
@@ -13,12 +13,12 @@
 
 	return TRUE
 
-/mob/proc/mod_speech(var/text)
+/mob/proc/mod_speech(text)
 	return text
 
 var/regex/vowels = new("\[aeiou\]", "ig")
 
-/mob/living/mod_speech(var/text)
+/mob/living/mod_speech(text)
 
 	if(intoxication >= 200)
 		var/list/exploded_words = splittext(text," ")
@@ -47,7 +47,7 @@ var/regex/vowels = new("\[aeiou\]", "ig")
 
 	return ..()
 
-/mob/proc/to_chat(var/text,var/chat_type = CHAT_TYPE_INFO)
+/mob/proc/to_chat(text,chat_type = CHAT_TYPE_INFO)
 
 	if(client)
 		client.to_chat(text,chat_type)
@@ -55,20 +55,20 @@ var/regex/vowels = new("\[aeiou\]", "ig")
 
 	return FALSE
 
-/proc/tooltip(var/text,var/tooltip)
+/proc/tooltip(text,tooltip)
 	if(!tooltip)
 		return text
 	return div("tooltip","[text][div("tooltip_text",tooltip)]")
 
 /*
-/mob/proc/to_chat_language(var/text, var/chat_type=CHAT_TYPE_INFO, var/language = LANGUAGE_BASIC, var/language_text = "Blah blah blah.")
+/mob/proc/to_chat_language(text, chat_type=CHAT_TYPE_INFO, language = LANGUAGE_BASIC, language_text = "Blah blah blah.")
 	if(!length(known_languages) || !known_languages[language])
 		return to_chat(language_text,chat_type)
 	return to_chat(tooltip(text,language_text),chat_type)
 */
 
 
-/mob/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE,var/language_to_use=null)
+/mob/do_say(text_to_say, should_sanitize = TRUE, talk_type_to_use = TEXT_TALK,talk_range=TALK_RANGE,language_to_use=null)
 
 	if(!text_to_say)
 		return FALSE
@@ -166,7 +166,7 @@ var/regex/vowels = new("\[aeiou\]", "ig")
 
 	return text_to_say
 
-/mob/proc/do_emote(var/emote_text,var/atom/target,var/messages = TRUE)
+/mob/proc/do_emote(emote_text,atom/target,messages = TRUE)
 
 	if(world.time <= next_emote)
 		return FALSE
@@ -193,7 +193,7 @@ var/regex/vowels = new("\[aeiou\]", "ig")
 
 	return TRUE
 
-/mob/living/do_emote(var/emote_text,var/atom/target)
+/mob/living/do_emote(emote_text,atom/target)
 
 	if(dead)
 		return FALSE
@@ -201,7 +201,7 @@ var/regex/vowels = new("\[aeiou\]", "ig")
 	return ..()
 
 
-/mob/on_listen(var/atom/speaker,var/datum/source,var/text,var/raw_text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/mob/on_listen(atom/speaker,datum/source,text,raw_text,language_text,talk_type,frequency, language = LANGUAGE_BASIC,talk_range=TALK_RANGE)
 
 	if(client)
 		var/knows_language = length(known_languages) && known_languages[language]

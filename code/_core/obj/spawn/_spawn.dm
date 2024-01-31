@@ -15,14 +15,14 @@
 	enable_chunk_clean = TRUE
 	enable_chunk_handling = TRUE
 
-/obj/marker/mob_spawn/New(var/loc,var/mob/living/desired_mob_stored)
+/obj/marker/mob_spawn/New(loc,mob/living/desired_mob_stored)
 	. = ..()
 	mob_stored = desired_mob_stored
 	mob_type = desired_mob_stored.type
 	time_to_respawn = desired_mob_stored.respawn_time
 	force_spawn = desired_mob_stored.force_spawn
 
-/obj/marker/mob_spawn/proc/do_spawn(var/turf/T)
+/obj/marker/mob_spawn/proc/do_spawn(turf/T)
 	var/mob/living/L = new mob_type(T)
 	INITIALIZE(L)
 	GENERATE(L)

@@ -18,11 +18,11 @@
 	weight = 0.1
 
 
-/obj/item/weapon/ranged/magic/scroll/save_item_data(var/save_inventory = TRUE)
+/obj/item/weapon/ranged/magic/scroll/save_item_data(save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("scroll_count")
 
-/obj/item/weapon/ranged/magic/scroll/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/weapon/ranged/magic/scroll/load_item_data_pre(mob/living/advanced/player/P,list/object_data)
 	. = ..()
 	LOADVAR("scroll_count")
 
@@ -30,11 +30,11 @@
 	. = ..()
 	. *= (1 + scroll_count)
 
-/obj/item/weapon/ranged/magic/scroll/quick(var/mob/caller as mob,var/atom/object,location,params)
+/obj/item/weapon/ranged/magic/scroll/quick(mob/caller as mob,atom/object,location,params)
 	shoot(caller,object,location,params)
 	return TRUE
 
-/obj/item/weapon/ranged/magic/scroll/click_self(var/mob/caller)
+/obj/item/weapon/ranged/magic/scroll/click_self(mob/caller)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 	open = !open
@@ -42,7 +42,7 @@
 	update_sprite()
 	return TRUE
 
-/obj/item/weapon/ranged/magic/scroll/can_gun_shoot(var/mob/caller)
+/obj/item/weapon/ranged/magic/scroll/can_gun_shoot(mob/caller)
 
 	if(!open)
 		caller.to_chat(span("notice","You need to unravel the scroll before firing it!"))
@@ -69,14 +69,14 @@
 
 	..()
 
-/obj/item/weapon/ranged/magic/scroll/handle_empty(var/mob/caller)
+/obj/item/weapon/ranged/magic/scroll/handle_empty(mob/caller)
 	if(!open)
 		caller.to_chat(span("warning","You must unravel the scroll before using it!"))
 	else
 		caller.to_chat(span("warning","This scroll is blank and void of magic!"))
 	return TRUE //No melee
 
-/obj/item/weapon/ranged/magic/scroll/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/magic/scroll/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	object = object.defer_click_on_object(location,control,params)
 
@@ -113,7 +113,7 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/magic/scroll/handle_ammo(var/mob/caller,var/bullet_position=1)
+/obj/item/weapon/ranged/magic/scroll/handle_ammo(mob/caller,bullet_position=1)
 	scroll_count--
 	update_sprite()
 	return ..()

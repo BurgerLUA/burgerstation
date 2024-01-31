@@ -14,16 +14,16 @@
 	invisibility = 0
 	mouse_opacity = 1
 
-/obj/trigger/debug_message/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/trigger/debug_message/clicked_on_by_object(mob/caller,object,location,control,params)
 	if(is_player(caller))
 		talk_to(caller)
 	return TRUE
 
-/obj/trigger/debug_message/proc/talk_to(var/mob/living/advanced/player/P)
+/obj/trigger/debug_message/proc/talk_to(mob/living/advanced/player/P)
 	P.known_debug_messages[id] = TRUE
 	return P.to_chat(span("debug_message",message))
 
-/obj/trigger/debug_message/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/trigger/debug_message/Crossed(atom/movable/O,atom/new_loc,atom/old_loc)
 	if(is_player(O) && id)
 		var/mob/living/advanced/player/P = O
 		if(!P.known_debug_messages[id])

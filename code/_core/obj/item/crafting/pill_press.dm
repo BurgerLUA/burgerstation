@@ -21,7 +21,7 @@
 
 	size = SIZE_4
 
-/obj/item/crafting_bench/pill_press/attempt_to_craft(var/mob/living/advanced/caller)
+/obj/item/crafting_bench/pill_press/attempt_to_craft(mob/living/advanced/caller)
 
 	var/obj/hud/inventory/crafting/result/product_slot
 	var/obj/item/product_container

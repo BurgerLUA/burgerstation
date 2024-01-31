@@ -43,16 +43,16 @@
 
 	alert_on_impact = ALERT_LEVEL_CAUTION
 
-/damagetype/ranged/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/ranged/get_block_power_penetration(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return 0.5
 
 /damagetype/ranged/get_attack_type()
 	return ATTACK_TYPE_RANGED
 
-/damagetype/ranged/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/ranged/do_attack_animation(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return FALSE
 
-/damagetype/ranged/process_damage_group(var/atom/attacker,var/list/atom/victims,var/atom/weapon,var/atom/blamed,var/damage_multiplier=1)
+/damagetype/ranged/process_damage_group(atom/attacker,list/atom/victims,atom/weapon,atom/blamed,damage_multiplier=1)
 
 	if(allow_glancing_blows && is_living(attacker))
 		var/mob/living/L = attacker
@@ -63,7 +63,7 @@
 	. = ..()
 
 
-/damagetype/ranged/do_attack_visuals(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/total_damage_dealt=0)
+/damagetype/ranged/do_attack_visuals(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,total_damage_dealt=0)
 
 	if(hit_effect)
 		new hit_effect(victim_turf)
@@ -81,23 +81,23 @@
 
 
 /*
-/damagetype/ranged/get_attack_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/ranged/get_attack_message_3rd(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	if(hit_object == victim)
 		return span("warning","\The [victim] is hit by \the [src.name]!")
 	else
 		return span("warning","\The [victim] is hit in \the [hit_object.name] by the [src.name]!")
 
-/damagetype/ranged/get_attack_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/ranged/get_attack_message_1st(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	if(hit_object == victim)
 		return span("danger","You are hit by \the [src.name]!")
 	else
 		return span("danger","You are hit in \the [hit_object.name] by the [src.name]!")
 
-/damagetype/ranged/get_attack_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/ranged/get_attack_message_sound(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return span("danger","You hear an impact.")
 
 
-/damagetype/ranged/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/ranged/display_hit_message(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	if(!ismob(victim))
 		return FALSE
@@ -108,7 +108,7 @@
 		get_attack_message_sound(attacker,victim,weapon,hit_object)\
 	)
 
-/damagetype/ranged/display_miss_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/miss_text = "misses!")
+/damagetype/ranged/display_miss_message(atom/attacker,atom/victim,atom/weapon,atom/hit_object,miss_text = "misses!")
 
 	if(!ismob(victim))
 		return FALSE
@@ -119,10 +119,10 @@
 		replacetext(get_miss_message_sound(attacker,victim,weapon,hit_object),"#REASON",miss_text)\
 	)
 
-/damagetype/ranged/get_miss_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/ranged/get_miss_message_3rd(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return span("warning","\The [victim] #REASON the [src.name]!")
 
-/damagetype/ranged/get_miss_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/ranged/get_miss_message_1st(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return span("warning","You #REASON the [src.name]!")
 
 */

@@ -2,7 +2,7 @@
 
 	var/obj/item/item_to_summon
 
-/ability/magic/summon_item/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/magic/summon_item/on_cast(mob/caller,atom/target,location,params)
 
 	. = ..()
 

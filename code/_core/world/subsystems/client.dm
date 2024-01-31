@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(client)
 
 	var/list/all_clients = list() //Assoc list
 
-/subsystem/client/unclog(var/mob/caller)
+/subsystem/client/unclog(mob/caller)
 	for(var/ckey in SSclient.all_clients) //This should never be tick checked.
 		var/client/C = SSclient.all_clients[ckey]
 		if(!C)

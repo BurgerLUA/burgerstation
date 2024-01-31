@@ -118,7 +118,7 @@
 	if(charge_steps > 0)
 		. = AI_TICK_FAST
 
-/mob/living/simple/bubblegum/post_move(var/atom/old_loc)
+/mob/living/simple/bubblegum/post_move(atom/old_loc)
 
 	if(!horizontal) play_sound('sound/effects/impacts/meteor_impact.ogg',get_turf(src),volume = charge_steps ? 50 : 25)
 

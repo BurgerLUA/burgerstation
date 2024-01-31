@@ -42,7 +42,7 @@
 
 	. = CEILING(.,1)
 
-/obj/item/weapon/melee/shield/get_examine_list(var/mob/examiner)
+/obj/item/weapon/melee/shield/get_examine_list(mob/examiner)
 	. = ..()
 	for(var/k in block_defense)
 		var/v = block_defense[k]

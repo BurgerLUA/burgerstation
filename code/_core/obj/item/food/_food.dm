@@ -13,11 +13,11 @@
 	has_quick_function = TRUE
 	quick_function_type =  FLAG_QUICK_INSTANT
 
-/obj/item/consumable/food/quick(var/mob/living/advanced/caller,var/atom/object,location,control,params)
+/obj/item/consumable/food/quick(mob/living/advanced/caller,atom/object,location,control,params)
 	click_on_object(caller,caller)
 	return TRUE
 
-/obj/item/consumable/food/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/consumable/food/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(get_dist(caller,object) > 1)
 		return FALSE
@@ -48,7 +48,7 @@
 
 	return TRUE
 
-/obj/item/consumable/food/proc/consume(var/mob/living/consumer)
+/obj/item/consumable/food/proc/consume(mob/living/consumer)
 
 	if(heal_amount_health)
 		consumer.health_regen_buffer += heal_amount_health
@@ -68,7 +68,7 @@
 
 	return TRUE
 
-/obj/item/consumable/food/get_examine_text(var/mob/examiner)
+/obj/item/consumable/food/get_examine_text(mob/examiner)
 
 	. = ..()
 	if(uses_left)

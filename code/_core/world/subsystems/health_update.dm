@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(healthupdate)
 
 	var/list/queued_mobs = list()
 
-/subsystem/healthupdate/unclog(var/mob/caller)
+/subsystem/healthupdate/unclog(mob/caller)
 	queued_mobs.Cut()
 	. = ..()
 

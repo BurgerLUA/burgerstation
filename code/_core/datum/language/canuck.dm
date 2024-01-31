@@ -50,7 +50,7 @@
 
 	. = ..()
 
-/language/canuck/process_text(var/speaker,var/text)
+/language/canuck/process_text(speaker,text)
 
 	text = periodize(text) //Always add punctuation.
 

@@ -43,11 +43,11 @@
 
 	tier = 1
 
-/obj/item/weapon/ranged/bullet/magazine/misc/sentry/handle_empty(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/misc/sentry/handle_empty(mob/caller)
 	next_shoot_time = max(next_shoot_time,world.time + 20)
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/misc/sentry/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/misc/sentry/handle_ammo(mob/caller)
 	if(!chambered_bullet) load_new_bullet_from_magazine(caller)
 	return ..()
 
@@ -64,10 +64,10 @@
 /obj/item/weapon/ranged/bullet/magazine/misc/sentry/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/misc/sentry/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/misc/sentry/get_skill_spread(mob/living/L)
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/misc/sentry/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/bullet/magazine/misc/sentry/can_owner_shoot(mob/caller,atom/object,location,params)
 	if(caller.is_player_controlled())
 		return FALSE
 	return ..()

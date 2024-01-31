@@ -81,7 +81,7 @@
 
 
 
-/loot/proc/do_spawn(var/atom/spawn_loc,var/rarity) //Use this to spawn the loot. rarity is optional.
+/loot/proc/do_spawn(atom/spawn_loc,rarity) //Use this to spawn the loot. rarity is optional.
 
 	if(!spawn_loc) CRASH("Invalid spawn_loc!")
 
@@ -113,7 +113,7 @@
 			L.post_spawn(I)
 
 
-/loot/proc/create_loot_single(var/type_to_spawn,var/spawn_loc,var/rarity) //Don't use this. Use do_spawn to spawn loot. Not providing a spawn_loc will just return the types.
+/loot/proc/create_loot_single(type_to_spawn,spawn_loc,rarity) //Don't use this. Use do_spawn to spawn loot. Not providing a spawn_loc will just return the types.
 
 	. = list()
 
@@ -144,13 +144,13 @@
 		else
 			. += type_to_spawn
 
-/loot/proc/pre_spawn(var/atom/movable/M)
+/loot/proc/pre_spawn(atom/movable/M)
 	return TRUE
 
-/loot/proc/post_spawn(var/atom/movable/M)
+/loot/proc/post_spawn(atom/movable/M)
 	return TRUE
 
-/loot/proc/create_loot_table(var/atom/spawn_loc,var/rarity) //rarity is optional.
+/loot/proc/create_loot_table(atom/spawn_loc,rarity) //rarity is optional.
 
 	. = list()
 

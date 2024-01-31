@@ -24,14 +24,14 @@
 		if(found_value > 0)
 			. += amount*found_value
 
-/obj/item/clothing/belt/belt_quiver/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/clothing/belt/belt_quiver/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	.["stored_arrows"] = list()
 	for(var/k in stored_arrows)
 		var/v = stored_arrows[k]
 		.["stored_arrows"][k] = v
 
-/obj/item/clothing/belt/belt_quiver/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/clothing/belt/belt_quiver/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	for(var/k in object_data["stored_arrows"])
 		var/v = object_data["stored_arrows"][k]
@@ -69,7 +69,7 @@
 		add_overlay(I)
 
 
-/obj/item/clothing/belt/belt_quiver/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/clothing/belt/belt_quiver/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(istype(object,/obj/item/bullet_cartridge/arrow))
 		INTERACT_CHECK
@@ -106,7 +106,7 @@
 	. = ..()
 
 
-/obj/item/clothing/belt/belt_quiver/proc/take_arrow(var/mob/caller,var/obj/hud/inventory/I)
+/obj/item/clothing/belt/belt_quiver/proc/take_arrow(mob/caller,obj/hud/inventory/I)
 	if(!length(stored_arrows))
 		caller.to_chat(span("warning","There are no arrows left!"))
 		return FALSE

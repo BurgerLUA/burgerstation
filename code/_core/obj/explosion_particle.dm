@@ -7,7 +7,7 @@
 
 	density = FALSE
 
-/obj/effect/explosion_particle/New(var/desired_loc)
+/obj/effect/explosion_particle/New(desired_loc)
 	. = ..()
 	animate(src,alpha=0,time=5)
 	queue_delete(src,10)

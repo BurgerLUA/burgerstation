@@ -1,4 +1,4 @@
-/proc/convert_langage_to_lizard(var/text)
+/proc/convert_langage_to_lizard(text)
 
 	var/static/list/vowels = make_associative(list(
 		"a","e","i","o"

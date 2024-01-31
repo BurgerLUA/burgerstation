@@ -62,7 +62,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 
 	return 0.25 + clamp(1-result,0.25,1)*0.75
 
-/obj/item/weapon/ranged/bullet/proc/accept_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/B,var/silent=FALSE)
+/obj/item/weapon/ranged/bullet/proc/accept_bullet(mob/caller as mob,obj/item/bullet_cartridge/B,silent=FALSE)
 
 	if(can_load_chamber(caller,B))
 		if(B.amount <= 1)
@@ -112,7 +112,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 
 
 
-/obj/item/weapon/ranged/bullet/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/weapon/ranged/bullet/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 
 	RUN_PARENT_SAFE
 
@@ -125,7 +125,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 			if(B) .["stored_bullets"][i] = B.type
 
 
-/obj/item/weapon/ranged/bullet/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/weapon/ranged/bullet/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 
 	RUN_PARENT_SAFE
 
@@ -147,7 +147,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 
 
 
-/obj/item/weapon/ranged/bullet/get_examine_list(var/mob/examiner)
+/obj/item/weapon/ranged/bullet/get_examine_list(mob/examiner)
 
 	. = ..()
 
@@ -158,7 +158,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	return chambered_bullet ? chambered_bullet.damage_type : null
 
 
-/obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(var/mob/caller,var/atom/new_loc,var/play_sound=FALSE)
+/obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(mob/caller,atom/new_loc,play_sound=FALSE)
 
 	if(!chambered_bullet)
 		return FALSE
@@ -191,7 +191,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/proc/eject_stored_bullet(var/mob/caller,var/obj/item/bullet_cartridge/bullet_to_remove,var/new_loc,var/play_sound=FALSE)
+/obj/item/weapon/ranged/bullet/proc/eject_stored_bullet(mob/caller,obj/item/bullet_cartridge/bullet_to_remove,new_loc,play_sound=FALSE)
 
 	if(!(bullet_to_remove in stored_bullets))
 		return FALSE
@@ -212,7 +212,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	return bullet_to_remove
 
 
-/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets(var/mob/caller,var/new_loc,var/play_sound=FALSE)
+/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets(mob/caller,new_loc,play_sound=FALSE)
 
 	for(var/k in stored_bullets)
 		if(!k) continue
@@ -221,7 +221,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets_spent(var/mob/caller,var/new_loc,var/play_sound=FALSE)
+/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets_spent(mob/caller,new_loc,play_sound=FALSE)
 
 	for(var/k in stored_bullets)
 		if(!k) continue
@@ -232,7 +232,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/proc/spend_chambered_bullet(var/mob/caller)
+/obj/item/weapon/ranged/bullet/proc/spend_chambered_bullet(mob/caller)
 
 	if(!chambered_bullet || chambered_bullet.is_spent)
 		return FALSE
@@ -249,7 +249,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 		chambered_bullet = null
 
 
-/obj/item/weapon/ranged/bullet/proc/spend_stored_bullet(var/mob/caller,var/bullet_position = 1)
+/obj/item/weapon/ranged/bullet/proc/spend_stored_bullet(mob/caller,bullet_position = 1)
 
 	if(!length(stored_bullets) || !stored_bullets[bullet_position])
 		return FALSE
@@ -267,7 +267,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	if(. && B.qdeleting)
 		stored_bullets[bullet_position] = null
 
-/obj/item/weapon/ranged/bullet/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bullet/handle_ammo(mob/caller)
 	return spend_chambered_bullet(caller)
 
 /obj/item/weapon/ranged/bullet/New()
@@ -283,7 +283,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 /obj/item/weapon/ranged/bullet/get_ammo_count()
 	return chambered_bullet ? 1 : 0
 
-/obj/item/weapon/ranged/bullet/proc/can_load_chamber(var/mob/caller,var/obj/item/bullet_cartridge/B) //B can be a type or a path.
+/obj/item/weapon/ranged/bullet/proc/can_load_chamber(mob/caller,obj/item/bullet_cartridge/B) //B can be a type or a path.
 
 	if(chambered_bullet)
 		caller?.to_chat(span("warning","There is already a chambered bullet inside \the [src.name]!"))
@@ -295,7 +295,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/proc/can_fit_bullet(var/obj/item/bullet_cartridge/B) //B can be a type or a path
+/obj/item/weapon/ranged/bullet/proc/can_fit_bullet(obj/item/bullet_cartridge/B) //B can be a type or a path
 
 	if(!B)
 		return FALSE
@@ -318,7 +318,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	return TRUE
 
 
-/obj/item/weapon/ranged/bullet/proc/can_load_stored(var/mob/caller,var/obj/item/bullet_cartridge/B)
+/obj/item/weapon/ranged/bullet/proc/can_load_stored(mob/caller,obj/item/bullet_cartridge/B)
 
 	if(!stored_bullets || !length(stored_bullets))
 		return FALSE

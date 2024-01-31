@@ -4,11 +4,11 @@
 	var/registered_squad = "none"
 	var/loyalty_tag = "none"
 
-/obj/item/organ/internal/implant/head/loyalty/on_organ_add(var/mob/living/advanced/new_owner)
+/obj/item/organ/internal/implant/head/loyalty/on_organ_add(mob/living/advanced/new_owner)
 	new_owner.set_loyalty_tag(loyalty_tag)
 	return ..()
 
-/obj/item/organ/internal/implant/head/loyalty/on_organ_remove(var/mob/living/advanced/old_owner)
+/obj/item/organ/internal/implant/head/loyalty/on_organ_remove(mob/living/advanced/old_owner)
 	old_owner.set_loyalty_tag(initial(old_owner.loyalty_tag))
 	return ..()
 

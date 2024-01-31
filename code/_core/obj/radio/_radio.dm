@@ -20,12 +20,12 @@
 	value = 10
 
 
-/obj/radio/click_self(var/mob/caller,location,control,params)
+/obj/radio/click_self(mob/caller,location,control,params)
 	broadcasting = !broadcasting
 	caller.to_chat(span("notice","You toggle the receiver to <b>[broadcasting ? "always broadcast." : "only broadcast when pressed."]</b>"))
 	return TRUE
 
-/obj/radio/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/radio/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params)
 	if(!is_inventory(object))
 		return ..()
 	receiving = !receiving
@@ -33,7 +33,7 @@
 	return TRUE
 
 
-/obj/radio/on_mouse_wheel(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/radio/on_mouse_wheel(mob/caller,delta_x,delta_y,location,control,params)
 
 	var/fixed_delta = delta_y > 0 ? 1 : -1
 
@@ -59,7 +59,7 @@
 	return TRUE
 
 
-/obj/radio/New(var/desired_loc)
+/obj/radio/New(desired_loc)
 	all_radios += src
 	return ..()
 

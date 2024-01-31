@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(bossai)
 	var/list/active_ai_by_z = list()
 	var/list/inactive_ai_by_z = list()
 
-/subsystem/bossai/unclog(var/mob/caller)
+/subsystem/bossai/unclog(mob/caller)
 
 	for(var/z in active_ai_by_z)
 		for(var/k in active_ai_by_z[z])

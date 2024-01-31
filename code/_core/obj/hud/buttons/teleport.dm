@@ -33,7 +33,7 @@
 
 	return ..()
 
-/obj/hud/button/teleport/teleport_here/update_owner(var/mob/desired_owner)
+/obj/hud/button/teleport/teleport_here/update_owner(mob/desired_owner)
 
 	. = ..()
 
@@ -48,7 +48,7 @@
 			name = known_locations[map_number]
 
 
-/obj/hud/button/teleport/teleport_here/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/teleport/teleport_here/clicked_on_by_object(mob/caller,object,location,control,params)
 
 	if(icon_state && all_wishgranters[icon_state] && is_player(caller))
 
@@ -71,7 +71,7 @@
 
 
 
-/obj/hud/button/teleport/teleport_here/proc/cycle_map(var/mob/living/advanced/A,var/desired_direction = EAST)
+/obj/hud/button/teleport/teleport_here/proc/cycle_map(mob/living/advanced/A,desired_direction = EAST)
 
 	var/list/known_locations = A.known_wishgranters - "main"
 
@@ -91,7 +91,7 @@
 /obj/hud/button/teleport/cycle/
 	icon_state = "arrow"
 
-/obj/hud/button/teleport/cycle/clicked_on_by_object(var/mob/caller,object,location,control,params)
+/obj/hud/button/teleport/cycle/clicked_on_by_object(mob/caller,object,location,control,params)
 
 	if(!is_advanced(caller))
 		return FALSE

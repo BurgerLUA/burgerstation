@@ -67,7 +67,7 @@
 	icon_state = "dead"
 	update_sprite()
 
-/mob/living/simple/goblin_king/proc/summon_goblins(var/angered = FALSE)
+/mob/living/simple/goblin_king/proc/summon_goblins(angered = FALSE)
 	var/spawn_amount = (((angered ? 2 : 1)*length(players_fighting_boss))+2)
 	spawn_amount = min(spawn_amount, 10)
 	do_say("Come to us our brethren, we are being slain!")
@@ -81,7 +81,7 @@
 		GENERATE(spawnGoblin)
 		FINALIZE(spawnGoblin)
 
-/mob/living/simple/goblin_king/proc/summon_totems(var/angered = FALSE)
+/mob/living/simple/goblin_king/proc/summon_totems(angered = FALSE)
 	var/spawn_amount = angered ? 3 : 1
 	do_say("We refuse to die, the totems will aid us!")
 	var/turf/T = get_turf(src)
@@ -102,7 +102,7 @@
 		GENERATE(summoned_totem)
 		FINALIZE(summoned_totem)
 
-/mob/living/simple/goblin_king/proc/screech(var/angered = FALSE)
+/mob/living/simple/goblin_king/proc/screech(angered = FALSE)
 	do_say("Suffer our wraith invaders, suffer!")
 	play_sound('sound/voice/xeno/queen_screech.ogg',get_turf(src), range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
 	var/stun_time = angered ? 40 : 20

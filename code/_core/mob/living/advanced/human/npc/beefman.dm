@@ -26,7 +26,7 @@
 
 	level = 14
 
-/mob/living/advanced/npc/beefman/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/advanced/npc/beefman/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	if(damage_amount > 20 & luck(src,20 + damage_amount,FALSE))
 		play_sound('sound/weapons/unarmed/beef/beef_grab.ogg',get_turf(atom_damaged),range_max=VIEW_RANGE)
@@ -55,7 +55,7 @@
 		return PLANE_MOVABLE_DEAD
 	return PLANE_MOVABLE_STEALTH //Always stealth.
 
-/mob/living/advanced/npc/beefman/post_move(var/atom/old_loc)
+/mob/living/advanced/npc/beefman/post_move(atom/old_loc)
 	. = ..()
 	if(is_simulated(old_loc))
 		var/turf/simulated/S = old_loc

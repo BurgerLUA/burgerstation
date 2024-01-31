@@ -41,7 +41,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	return ..()
 
 
-/obj/effect/temp/hazard/proc/do_cross_damage(var/mob/living/L)
+/obj/effect/temp/hazard/proc/do_cross_damage(mob/living/L)
 
 	if(!cross_hazard || !enabled || !L || L.loc != src.loc)
 		return FALSE
@@ -61,12 +61,12 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 		do_cross_damage(O)
 	return ..()
 
-/obj/effect/temp/hazard/proc/get_params(var/atom/victim)
+/obj/effect/temp/hazard/proc/get_params(atom/victim)
 	. = list()
 	.[PARAM_ICON_X] = rand(0,32)
 	.[PARAM_ICON_Y] = rand(0,32)
 
-/obj/effect/temp/hazard/proc/do_damage(var/atom/victim)
+/obj/effect/temp/hazard/proc/do_damage(atom/victim)
 	var/damagetype/DT = SSdamagetype.all_damage_types[damage_type]
 	var/list/params = get_params()
 	if(!victim.can_be_attacked(owner,src,params,DT))
@@ -181,7 +181,7 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	plane = PLANE_BLOOD
 	layer = LAYER_FLOOR_EFFECTS
 
-/obj/effect/temp/hazard/lava/get_params(var/atom/victim)
+/obj/effect/temp/hazard/lava/get_params(atom/victim)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
@@ -204,14 +204,14 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	plane = PLANE_BLOOD
 	layer = LAYER_FLOOR_EFFECTS
 
-/obj/effect/temp/hazard/curse/New(var/desired_location,var/desired_time,var/desired_owner)
+/obj/effect/temp/hazard/curse/New(desired_location,desired_time,desired_owner)
 
 	if(istype(desired_location,/turf/simulated/wall/))
 		icon_state = "wallglow_strong"
 
 	return ..()
 
-/obj/effect/temp/hazard/curse/get_params(var/atom/victim)
+/obj/effect/temp/hazard/curse/get_params(atom/victim)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
@@ -233,7 +233,7 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	plane = PLANE_BLOOD
 	layer = LAYER_FLOOR_EFFECTS
 
-/obj/effect/temp/hazard/flamethrowerfire/get_params(var/atom/victim)
+/obj/effect/temp/hazard/flamethrowerfire/get_params(atom/victim)
 
 	if(is_living(victim))
 		var/mob/living/L = victim

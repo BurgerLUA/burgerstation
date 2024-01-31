@@ -75,7 +75,7 @@
 				return FALSE
 
 
-/obj/hud/button/research/board/proc/add_points(var/points_to_add)
+/obj/hud/button/research/board/proc/add_points(points_to_add)
 	level = 1 + FLOOR(points/5,1)
 	time_left += (points_to_add)*10 //In Deciseconds
 	if(points_to_add >= 2)
@@ -112,7 +112,7 @@
 
 	return ..()
 
-/obj/hud/button/research/board/update_owner(var/desired_owner)
+/obj/hud/button/research/board/update_owner(desired_owner)
 
 	. = ..()
 

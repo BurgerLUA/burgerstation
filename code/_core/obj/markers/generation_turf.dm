@@ -8,7 +8,7 @@ var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 /obj/marker/smart_clear_turf/large
 	checks_allowed = 80
 
-/obj/marker/smart_clear_turf/New(var/desired_loc)
+/obj/marker/smart_clear_turf/New(desired_loc)
 	smart_clear_turfs += src
 	. = ..()
 

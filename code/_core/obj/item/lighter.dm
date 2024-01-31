@@ -15,7 +15,7 @@
 
 	value = 80
 
-/obj/item/lighter/click_self(var/mob/caller,location,control,params)
+/obj/item/lighter/click_self(mob/caller,location,control,params)
 	set_lit(!lit,caller)
 	return TRUE
 
@@ -32,7 +32,7 @@
 		set_light_sprite(FALSE)
 	return TRUE
 
-/obj/item/lighter/proc/set_lit(var/desired_lit,var/mob/caller)
+/obj/item/lighter/proc/set_lit(desired_lit,mob/caller)
 
 	if(desired_lit == lit)
 		return FALSE
@@ -48,7 +48,7 @@
 	return TRUE
 
 
-/obj/item/lighter/get_damage_type(var/atom/attacker,var/atom/victim)
+/obj/item/lighter/get_damage_type(atom/attacker,atom/victim)
 
 	if(lit)
 		return /damagetype/melee/club/lighter/on

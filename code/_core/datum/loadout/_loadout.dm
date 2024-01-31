@@ -11,10 +11,10 @@
 /loadout/proc/get_spawning_items()
 	return spawning_items.Copy() //Copy is needed.
 
-/loadout/proc/pre_add(var/mob/living/advanced/A,var/obj/item/I) //added before initialize and spawn
+/loadout/proc/pre_add(mob/living/advanced/A,obj/item/I) //added before initialize and spawn
 	return TRUE
 
-/loadout/proc/on_add(var/mob/living/advanced/A,var/obj/item/I) //added after initialize and spawn
+/loadout/proc/on_add(mob/living/advanced/A,obj/item/I) //added after initialize and spawn
 
 	. = TRUE
 
@@ -57,7 +57,7 @@
 
 	return .
 
-/loadout/proc/post_add(var/mob/living/advanced/A,var/list/added_items = list()) //Added after everything is added.
+/loadout/proc/post_add(mob/living/advanced/A,list/added_items = list()) //Added after everything is added.
 
 	for(var/obj/item/weapon/ranged/W in added_items) //So bullet weapons don't spawn empty.
 		if(SSbalance.weapon_to_bullet[W.type])

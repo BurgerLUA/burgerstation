@@ -31,7 +31,7 @@
 
 	throw_mul = 1
 
-/damagetype/ranged/ling_tentacle/pull/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/ranged/ling_tentacle/pull/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	if(is_living(victim))
 		var/list/offsets = get_directional_offsets(attacker,victim)
@@ -77,7 +77,7 @@
 
 	throw_mul = 1
 
-/damagetype/ranged/ling_tentacle/warp/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/ranged/ling_tentacle/warp/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 	//Make sure to thank Burger.
 	if(is_living(victim))
 		var/mob/living/L = victim

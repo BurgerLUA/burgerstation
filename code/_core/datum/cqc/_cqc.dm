@@ -6,14 +6,14 @@
 	var/priority = 0 //Lower values get more priority. Automatically assigned based on combo length
 	var/category
 
-/cqc/New(var/desired_loc)
+/cqc/New(desired_loc)
 
 	if(!priority)
 		priority = 1000 - length(combo)
 
 	 . = ..()
 
-/cqc/proc/should_apply(var/mob/living/advanced/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+/cqc/proc/should_apply(mob/living/advanced/attacker,atom/victim,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT)
 
 	var/combo_length = length(combo)
 

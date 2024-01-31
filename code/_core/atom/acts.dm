@@ -1,4 +1,4 @@
-/atom/proc/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/atom/proc/act_explode(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 
 	var/damagetype/D = SSdamagetype.all_damage_types[/damagetype/explosion]
 
@@ -14,7 +14,7 @@
 	return TRUE
 
 
-/atom/proc/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/atom/proc/act_emp(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 
 	var/damagetype/D = SSdamagetype.all_damage_types[/damagetype/explosion]
 

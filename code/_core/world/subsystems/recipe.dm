@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(recipe)
 
 	return ..()
 
-/proc/generate_crafting_table(var/mob/living/advanced/caller,var/obj/item/crafting_bench/C)
+/proc/generate_crafting_table(mob/living/advanced/caller,obj/item/crafting_bench/C)
 
 	var/list/item_table = list()
 
@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(recipe)
 	return item_table
 
 
-/proc/get_plate_recipe(var/list/list_contents)
+/proc/get_plate_recipe(list/list_contents)
 
 	if(!length(list_contents))
 		return null

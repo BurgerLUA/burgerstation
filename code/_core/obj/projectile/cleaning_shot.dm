@@ -3,7 +3,7 @@
 	icon = 'icons/obj/projectiles/bullet.dmi'
 	icon_state = "bullet_large"
 
-/obj/projectile/bullet/cleaning_shot/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/bullet/cleaning_shot/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 
 	. = ..()
 

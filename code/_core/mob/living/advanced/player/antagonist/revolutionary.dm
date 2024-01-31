@@ -19,6 +19,6 @@
 	name = "Comrade [real_name]"
 	return TRUE
 
-/mob/living/advanced/player/antagonist/revolutionary/species_initialize(var/set_default=FALSE)
+/mob/living/advanced/player/antagonist/revolutionary/species_initialize(set_default=FALSE)
 	. = ..()
 	known_languages[LANGUAGE_SLAVIC] = TRUE

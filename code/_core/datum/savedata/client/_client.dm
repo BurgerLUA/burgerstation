@@ -2,7 +2,7 @@
 	var/ckey
 	var/bot_controlled = FALSE
 
-/savedata/client/New(var/desired_ckey)
+/savedata/client/New(desired_ckey)
 
 	var/client/owner = CLIENT(desired_ckey)
 
@@ -13,7 +13,7 @@
 
 	return ..()
 
-/savedata/client/get_folder(var/folder_id)
+/savedata/client/get_folder(folder_id)
 	return replacetext(CKEY_PATH_FORMAT,"%CKEY",folder_id)
 
 /savedata/client/get_files()

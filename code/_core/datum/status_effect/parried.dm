@@ -9,14 +9,14 @@
 	affects_dead = FALSE
 
 
-/status_effect/parried/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+/status_effect/parried/can_add_status_effect(atom/attacker,mob/living/victim)
 
 	if(!attacker || victim.horizontal || victim.anchored)
 		return FALSE
 
 	. = ..()
 
-/status_effect/parried/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/parried/on_effect_added(mob/living/owner,atom/source,magnitude,duration,stealthy)
 
 	. = ..()
 

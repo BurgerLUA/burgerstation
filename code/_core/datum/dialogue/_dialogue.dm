@@ -3,10 +3,10 @@
 
 /dialogue/
 
-/dialogue/proc/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/proc/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 	return list()
 
-/dialogue/proc/set_topic(var/mob/living/advanced/player/P,var/topic) //When you click on a dialogue option. topic var should be unsanitized
+/dialogue/proc/set_topic(mob/living/advanced/player/P,topic) //When you click on a dialogue option. topic var should be unsanitized
 
 	if(!topic)
 		CRASH("No topic arg presented!")

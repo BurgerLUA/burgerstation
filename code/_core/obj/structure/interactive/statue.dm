@@ -30,7 +30,7 @@
 	. = ..()
 	color = "#FFFFFF"
 
-/obj/structure/interactive/statue/proc/set_stored_object(var/atom/A)
+/obj/structure/interactive/statue/proc/set_stored_object(atom/A)
 	stored_object = A
 	update_sprite()
 	return TRUE
@@ -75,7 +75,7 @@
 /obj/structure/interactive/statue/debug/
 	color = "#FFCC69"
 
-/obj/structure/interactive/statue/debug/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/statue/debug/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	. = ..()
 	offset_x = 0
 	offset_y = 17

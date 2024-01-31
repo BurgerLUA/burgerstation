@@ -4,7 +4,7 @@
 var/global/list/tracked_errors = list()
 var/global/list/tracker_errors_spam = list()
 
-/world/Error(var/exception/e)
+/world/Error(exception/e)
 
 	if(SSreport)
 		SSreport.runtime_count += 1

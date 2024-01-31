@@ -1,7 +1,7 @@
 /ai/advanced/cult
 
 
-/ai/advanced/cult/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/ai/advanced/cult/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	. = ..()
 
@@ -14,7 +14,7 @@
 		)
 		owner.do_say(pick(responses),language_to_use = LANGUAGE_CULT)
 
-/ai/advanced/cult/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
+/ai/advanced/cult/on_alert_level_changed(old_alert_level,new_alert_level,atom/alert_source)
 
 	. = ..()
 

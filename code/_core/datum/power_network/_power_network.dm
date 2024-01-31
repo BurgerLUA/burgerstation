@@ -7,7 +7,7 @@
 	var/power_draw = 0
 	var/id = 0
 
-/power_network/New(var/desired_loc)
+/power_network/New(desired_loc)
 	. = ..()
 	SSpower.all_power_networks += src
 	id = SSpower.power_id
@@ -38,7 +38,7 @@
 		W.connected_machine.power_process(power_multiplier)
 
 //Handling wires.
-/power_network/proc/add_wire(var/obj/structure/interactive/wire/wire)
+/power_network/proc/add_wire(obj/structure/interactive/wire/wire)
 
 	if(src.qdeleting)
 		CRASH("Tried adding a wire to a qdeleting power network!")
@@ -58,7 +58,7 @@
 
 	return TRUE
 
-/power_network/proc/remove_wire(var/obj/structure/interactive/wire/wire)
+/power_network/proc/remove_wire(obj/structure/interactive/wire/wire)
 
 	if(wire.connected_machine)
 		wire.connected_machine.update_power_draw(0)

@@ -19,7 +19,7 @@
 		hostile = reagents.contains_lethal
 
 
-/obj/projectile/spray/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/spray/on_enter_tile(turf/old_loc,turf/new_loc)
 	. = ..()
 	if(. && new_loc && reagents)
 		reagents.splash(owner,new_loc,2.5,TRUE,0.25)
@@ -27,12 +27,12 @@
 			on_projectile_hit(new_loc)
 			return FALSE
 
-/obj/projectile/spray/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/spray/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 	. = ..()
 	if(. && hit_atom && reagents.volume_current > 0)
 		reagents.splash(owner,hit_atom,reagents.volume_current,TRUE,0.5)
 
-/obj/projectile/spray/update_projectile(var/tick_rate=1)
+/obj/projectile/spray/update_projectile(tick_rate=1)
 	. = ..()
 	if(.)
 		vel_x *= 0.9
@@ -57,7 +57,7 @@
 	hit_target_turf = TRUE
 	hit_laying = TRUE
 
-/obj/projectile/extinguisher_spray/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/extinguisher_spray/on_enter_tile(turf/old_loc,turf/new_loc)
 	. = ..()
 	if(. && new_loc && reagents)
 		reagents.splash(owner,new_loc,1,TRUE,0.25)
@@ -65,13 +65,13 @@
 			on_projectile_hit(new_loc)
 			return FALSE
 
-/obj/projectile/extinguisher_spray/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/extinguisher_spray/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 	. = ..()
 	if(. && hit_atom && reagents.volume_current)
 		reagents.splash(owner,hit_atom,reagents.volume_current,TRUE,0.5)
 
 
-/obj/projectile/extinguisher_spray/update_projectile(var/tick_rate=1)
+/obj/projectile/extinguisher_spray/update_projectile(tick_rate=1)
 	. = ..()
 	if(.)
 		vel_x *= 0.95

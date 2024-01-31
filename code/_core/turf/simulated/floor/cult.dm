@@ -15,7 +15,7 @@
 
 	wet_floor_icon_state = "tile"
 
-/turf/simulated/floor/cult/New(var/desired_loc)
+/turf/simulated/floor/cult/New(desired_loc)
 
 	icon_state = "floor[rand(1,4)]"
 

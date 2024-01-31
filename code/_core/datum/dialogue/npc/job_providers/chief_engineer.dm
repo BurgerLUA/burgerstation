@@ -1,7 +1,7 @@
 /dialogue/npc/chief_engineer/
 
 
-/dialogue/npc/chief_engineer/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/chief_engineer/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	. = list()
 
@@ -66,7 +66,7 @@
 		"job"
 	)
 
-/dialogue/npc/chief_engineer/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/chief_engineer/set_topic(mob/living/advanced/player/P,topic)
 
 	. = ..()
 

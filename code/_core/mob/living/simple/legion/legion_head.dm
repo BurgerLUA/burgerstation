@@ -54,7 +54,7 @@
 		parent_legion = null
 
 
-/mob/living/simple/legionare_head/proc/convert(var/mob/living/advanced/A)
+/mob/living/simple/legionare_head/proc/convert(mob/living/advanced/A)
 
 	if(!can_convert || !A.dead || A.qdeleting || src.qdeleting || !is_turf(A.loc) )
 		return FALSE

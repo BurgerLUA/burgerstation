@@ -1,4 +1,4 @@
-/health/mob/living/vehicle/mech/modular/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
+/health/mob/living/vehicle/mech/modular/get_defense(atom/attacker,atom/hit_object,ignore_luck=FALSE)
 
 	. = ..()
 

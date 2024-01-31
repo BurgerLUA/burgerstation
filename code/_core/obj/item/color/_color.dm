@@ -11,14 +11,14 @@
 	var/list/type_blacklist = list()
 	var/list/type_whitelist = list()
 
-/obj/item/color/New(var/desired_loc)
+/obj/item/color/New(desired_loc)
 	..()
 	selected_color = possible_colors[1]
 
 /obj/item/color/proc/get_selected_color()
 	return selected_color
 
-/obj/item/color/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/color/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(get_dist(caller,object) > 1)
 		caller.to_chat(span("notice","You're too far away!"))

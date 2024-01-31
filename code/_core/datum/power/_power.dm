@@ -6,23 +6,23 @@
 	var/add_message
 	var/remove_message
 
-/power/proc/on_add(var/mob/living/owner)
+/power/proc/on_add(mob/living/owner)
 	if(add_message) owner.to_chat(add_message)
 	return TRUE
 
 
-/power/proc/on_remove(var/mob/living/owner)
+/power/proc/on_remove(mob/living/owner)
 	if(remove_message) owner.to_chat(remove_message)
 	return TRUE
 
 /power/resist/
 	var/list/bonus_defense = list()
 
-/power/resist/on_add(var/mob/living/owner)
+/power/resist/on_add(mob/living/owner)
 	owner.defense_bonuses["\ref[src]"] = bonus_defense
 	return ..()
 
-/power/resist/on_remove(var/mob/living/owner)
+/power/resist/on_remove(mob/living/owner)
 	owner.defense_bonuses -= "\ref[src]"
 	return ..()
 

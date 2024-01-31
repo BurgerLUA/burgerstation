@@ -1,4 +1,4 @@
-/mob/living/advanced/player/proc/set_job(var/job/desired_job) //Setjob is only called when the player takes a new job.
+/mob/living/advanced/player/proc/set_job(job/desired_job) //Setjob is only called when the player takes a new job.
 
 	if(!desired_job)
 		job = null

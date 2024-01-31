@@ -72,7 +72,7 @@
 
 	return TRUE
 
-/turf/unsimulated/generation/proc/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/proc/generate(size = WORLD_SIZE)
 	return TRUE
 
 /*

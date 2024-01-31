@@ -21,7 +21,7 @@
 	. = ..()
 	reagents.add_reagent(/reagent/nutrition/dough/flour/processed,30)
 
-/obj/item/container/edible/dynamic/bread/click_self(var/mob/caller,location,control,params)
+/obj/item/container/edible/dynamic/bread/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
@@ -40,7 +40,7 @@
 
 	return TRUE
 
-/obj/item/container/edible/dynamic/bread/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/edible/dynamic/bread/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(icon_state == raw_icon_state && istype(object,/obj/item/container/edible/dynamic/bread)) //IT'S RAW.
 		var/obj/item/container/edible/dynamic/bread/B = object
@@ -63,7 +63,7 @@
 
 	return ..()
 
-/obj/item/container/edible/dynamic/bread/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/edible/dynamic/bread/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	var/original_volume = reagents.volume_current
 
@@ -148,7 +148,7 @@
 
 	return TRUE
 
-/obj/item/container/edible/dynamic/bread/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/container/edible/dynamic/bread/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	return TRUE
 
 

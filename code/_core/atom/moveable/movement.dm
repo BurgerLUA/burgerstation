@@ -1,9 +1,9 @@
-/atom/movable/proc/get_movement_delay(var/include_stance=TRUE)
+/atom/movable/proc/get_movement_delay(include_stance=TRUE)
 	return movement_delay
 
 
 /*
-/atom/movable/proc/can_enter_turf(var/turf/T,var/loc_overide = src.loc)
+/atom/movable/proc/can_enter_turf(turf/T,loc_overide = src.loc)
 
 	if(!T.has_dense_atom)
 		return TRUE
@@ -21,7 +21,7 @@
 
 
 
-/atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks
+/atom/movable/proc/handle_movement(adjust_delay = 1) //Measured in ticks
 
 	if(anchored || CALLBACK_EXISTS("momentum_\ref[src]"))
 		is_moving = FALSE
@@ -142,7 +142,7 @@
 
 	return is_moving
 
-/atom/movable/proc/force_move(var/atom/new_loc)
+/atom/movable/proc/force_move(atom/new_loc)
 
 	var/atom/old_loc = loc
 
@@ -180,7 +180,7 @@
 /atom/movable/proc/get_max_acceleration_value()
 	return 100
 
-/atom/movable/proc/post_move(var/atom/old_loc)
+/atom/movable/proc/post_move(atom/old_loc)
 
 	if(grabbing_hand)
 		grabbing_hand.check_grab()
@@ -205,7 +205,7 @@
 	HOOK_CALL("post_move")
 	return TRUE
 
-/atom/movable/proc/on_chunk_cross(var/chunk/old_chunk,var/chunk/new_chunk)
+/atom/movable/proc/on_chunk_cross(chunk/old_chunk,chunk/new_chunk)
 
 	if(enable_chunk_clean)
 		if(new_chunk) new_chunk.cleanables += src
@@ -225,7 +225,7 @@
 
 
 
-/atom/movable/Move(var/atom/NewLoc,var/Dir=0x0,var/step_x=0,var/step_y=0)
+/atom/movable/Move(atom/NewLoc,Dir=0x0,step_x=0,step_y=0)
 
 	var/atom/OldLoc = loc
 
@@ -313,11 +313,11 @@
 
 	return TRUE
 
-/atom/movable/proc/on_fall(var/turf/old_turf)
+/atom/movable/proc/on_fall(turf/old_turf)
 	return TRUE
 
 /*
-/atom/movable/proc/start_momentum(var/desired_momentum_speed=0,var/desired_momentum_dir=0x0)
+/atom/movable/proc/start_momentum(desired_momentum_speed=0,desired_momentum_dir=0x0)
 
 	if(!desired_momentum_speed || !desired_momentum_dir)
 		return FALSE
@@ -337,7 +337,7 @@
 
 	return TRUE
 
-/atom/movable/proc/process_momentum(var/no_move=FALSE)
+/atom/movable/proc/process_momentum(no_move=FALSE)
 
 	if(momentum_speed <= 0 || !momentum_dir)
 		return FALSE

@@ -26,7 +26,7 @@
 
 	var/light_turf = FALSE
 
-/turf/simulated/floor/basalt/setup_turf_light(var/sunlight_freq)
+/turf/simulated/floor/basalt/setup_turf_light(sunlight_freq)
 	if(light_turf) src.set_light(4,0.5,"#FF8300")
 	return TRUE
 

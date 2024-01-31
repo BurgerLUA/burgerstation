@@ -35,7 +35,7 @@
 	return ATTACK_TYPE_UNARMED
 
 /*
-/damagetype/unarmed/do_wound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
+/damagetype/unarmed/do_wound(atom/attacker,atom/victim,atom/weapon,atom/hit_object,damage_dealt)
 
 	if(is_organ(hit_object))
 		new/wound/bruise/(victim,hit_object,attacker,weapon,damage_dealt/20)

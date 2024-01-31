@@ -47,7 +47,7 @@
 	if(prob(rest_chance))
 		add_status_effect(REST,-1,-2, force = TRUE)
 
-/mob/living/advanced/npc/zombie/get_emote_sound(var/emote_id)
+/mob/living/advanced/npc/zombie/get_emote_sound(emote_id)
 
 	switch(emote_id)
 		if("pain")

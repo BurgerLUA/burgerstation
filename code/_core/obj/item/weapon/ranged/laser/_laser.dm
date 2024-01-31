@@ -25,11 +25,11 @@
 	. = ..()
 	if(battery) . += battery.get_value()
 
-/obj/item/weapon/ranged/energy/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/weapon/ranged/energy/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("battery")
 
-/obj/item/weapon/ranged/energy/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/weapon/ranged/energy/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("battery")
 
@@ -60,7 +60,7 @@
 
 	charge_cost = get_charge_cost()
 
-/obj/item/weapon/ranged/energy/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/energy/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 
 
@@ -119,7 +119,7 @@
 
 	return battery
 
-/obj/item/weapon/ranged/energy/New(var/desired_loc)
+/obj/item/weapon/ranged/energy/New(desired_loc)
 	charge_cost = FLOOR(charge_cost, 1)
 	return ..()
 
@@ -129,13 +129,13 @@
 		return 0
 	return FLOOR(battery.charge_current/charge_cost, 1)
 
-/obj/item/weapon/ranged/energy/handle_ammo(var/mob/caller,var/bullet_position=1)
+/obj/item/weapon/ranged/energy/handle_ammo(mob/caller,bullet_position=1)
 	var/obj/item/powercell/PC = get_battery()
 	if(istype(PC))
 		PC.charge_current -= charge_cost
 	return null
 
-/obj/item/weapon/ranged/energy/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
+/obj/item/weapon/ranged/energy/can_gun_shoot(mob/caller,atom/object,location,params,check_time=TRUE,messages=TRUE)
 
 	if(!..())
 		return FALSE
@@ -152,7 +152,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/energy/get_examine_list(var/mob/caller)
+/obj/item/weapon/ranged/energy/get_examine_list(mob/caller)
 
 	. = ..()
 

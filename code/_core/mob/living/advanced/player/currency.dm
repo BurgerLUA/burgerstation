@@ -1,4 +1,4 @@
-/mob/living/advanced/player/proc/adjust_currency(var/currency_to_add,var/tax=FALSE,var/silent=FALSE)
+/mob/living/advanced/player/proc/adjust_currency(currency_to_add,tax=FALSE,silent=FALSE)
 	if(!currency_to_add)
 		return FALSE
 	var/old_currency = currency
@@ -15,7 +15,7 @@
 
 	return difference
 
-/mob/living/advanced/player/proc/spend_currency(var/currency_to_spend)
+/mob/living/advanced/player/proc/spend_currency(currency_to_spend)
 	if(currency < currency_to_spend)
 		return FALSE
 	return -adjust_currency(-currency_to_spend)
@@ -25,7 +25,7 @@
 	. = ..()
 	adjust_currency(CONFIG("CHARGEN_STARTING_CREDITS",10000))
 
-/mob/living/advanced/player/proc/adjust_burgerbux(var/currency_to_add,var/silent=FALSE)
+/mob/living/advanced/player/proc/adjust_burgerbux(currency_to_add,silent=FALSE)
 	if(!currency_to_add)
 		return FALSE
 	if(!client)
@@ -41,7 +41,7 @@
 
 	return difference
 
-/mob/living/advanced/player/proc/spend_burgerbux(var/currency_to_spend)
+/mob/living/advanced/player/proc/spend_burgerbux(currency_to_spend)
 	if(currency < currency_to_spend)
 		return FALSE
 	return -adjust_burgerbux(-currency_to_spend)

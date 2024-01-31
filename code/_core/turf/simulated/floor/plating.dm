@@ -87,7 +87,7 @@
 /turf/simulated/floor/landing/is_safe()
 	return FALSE
 
-/turf/simulated/floor/landing/New(var/desired_loc)
+/turf/simulated/floor/landing/New(desired_loc)
 	. = ..()
 	icon_state = "[rand(1,10)]"
 

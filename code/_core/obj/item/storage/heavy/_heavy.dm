@@ -10,6 +10,6 @@
 
 	anchored = TRUE
 
-/obj/item/storage/heavy/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+/obj/item/storage/heavy/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params) //The src was clicked on by the object
 	click_self(caller,location,control,params)
 	return TRUE

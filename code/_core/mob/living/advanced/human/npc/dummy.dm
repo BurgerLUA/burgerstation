@@ -20,7 +20,7 @@
 	. = ..()
 	add_status_effect(IMMORTAL)
 
-/mob/living/advanced/npc/dummy/add_organ(var/obj/item/organ/O)
+/mob/living/advanced/npc/dummy/add_organ(obj/item/organ/O)
 	O = new O(src)
 	O.health = /health/obj/item/organ/dummy
 	return attach_organ(O)

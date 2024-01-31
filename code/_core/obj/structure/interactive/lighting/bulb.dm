@@ -27,7 +27,7 @@
 
 	lightswitch = TRUE
 
-/obj/structure/interactive/lighting/bulb/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/lighting/bulb/on_destruction(mob/caller,damage = FALSE)
 
 	var/turf/T = get_turf(src)
 

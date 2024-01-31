@@ -20,23 +20,23 @@
 	last_caller = null
 	return ..()
 
-/obj/item/device/proximity/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/device/proximity/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("time_set")
 	SAVEVAR("range_set")
 
-/obj/item/device/proximity/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/device/proximity/load_item_data_post(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("time_set")
 	LOADVAR("range_set")
 
-/obj/item/device/proximity/click_self(var/mob/caller,location,control,params)
+/obj/item/device/proximity/click_self(mob/caller,location,control,params)
 	INTERACT_CHECK
 	SPAM_CHECK(5)
 	trigger(caller,src,-1,-1)
 	return TRUE
 
-/obj/item/device/proximity/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/device/proximity/trigger(mob/caller,atom/source,signal_freq,signal_code)
 	last_caller = caller
 	START_THINKING(src)
 	active = TRUE
@@ -67,7 +67,7 @@
 
 	return active
 
-/obj/item/device/proximity/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/device/proximity/mouse_wheel_on_object(mob/caller,delta_x,delta_y,location,control,params)
 
 	var/fixed_delta = clamp(delta_y,-1,1)
 
@@ -93,7 +93,7 @@
 
 	return TRUE
 
-/obj/item/device/proximity/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/device/proximity/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(istype(object,/obj/item/weapon/melee/tool/multitool))
 		INTERACT_CHECK
@@ -110,7 +110,7 @@
 
 	return ..()
 
-/obj/item/device/proximity/get_examine_list(var/mob/examiner)
+/obj/item/device/proximity/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("notice","The timer is set at [time_set] deciseconds.")
 	. += div("notice","The range is set at [range_set] tiles.")

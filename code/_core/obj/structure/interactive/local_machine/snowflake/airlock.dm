@@ -38,21 +38,21 @@
 
 	return TRUE
 
-/obj/structure/interactive/localmachine/snowflake/airlock/proc/open_for(var/mob/M)
+/obj/structure/interactive/localmachine/snowflake/airlock/proc/open_for(mob/M)
 	mob_to_door_state[M] = DOOR_STATE_OPENING_01
 	set_icon_state_mob(M,"opening")
 	spawn(open_time)
 		mob_to_door_state[M] = DOOR_STATE_OPENED
 		set_icon_state_mob(M,"open")
 
-/obj/structure/interactive/localmachine/snowflake/airlock/proc/close_for(var/mob/M)
+/obj/structure/interactive/localmachine/snowflake/airlock/proc/close_for(mob/M)
 	mob_to_door_state[M] = DOOR_STATE_CLOSING_01
 	set_icon_state_mob(M,"closing")
 	spawn(close_time)
 		mob_to_door_state[M] = DOOR_STATE_CLOSED
 		set_icon_state_mob(M,"closed")
 
-/obj/structure/interactive/localmachine/snowflake/airlock/proc/bolt_for(var/mob/M)
+/obj/structure/interactive/localmachine/snowflake/airlock/proc/bolt_for(mob/M)
 
 	if(mob_to_door_state[M] == DOOR_STATE_OPENED)
 		mob_to_door_state[M] = DOOR_STATE_CLOSING_01
@@ -65,7 +65,7 @@
 		mob_to_door_state[M] = DOOR_STATE_LOCKED
 		set_icon_state_mob(M,"closed")
 
-/obj/structure/interactive/localmachine/snowflake/airlock/Cross(var/atom/movable/O,var/atom/NewLoc,var/atom/OldLoc)
+/obj/structure/interactive/localmachine/snowflake/airlock/Cross(atom/movable/O,atom/NewLoc,atom/OldLoc)
 
 	if(!ismob(O))
 		return ..()
@@ -91,7 +91,7 @@
 
 var/global/list/obj/structure/interactive/localmachine/snowflake/airlock/external/tutorial_dock/tutorial_docks = list()
 
-/obj/structure/interactive/localmachine/snowflake/airlock/external/tutorial_dock/New(var/desired_loc)
+/obj/structure/interactive/localmachine/snowflake/airlock/external/tutorial_dock/New(desired_loc)
 	. = ..()
 	tutorial_docks += src
 	

@@ -12,7 +12,7 @@
 	owner_as_queen = null
 	return ..()
 
-/ai/boss/xeno_queen/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/boss/xeno_queen/New(desired_loc,mob/living/desired_owner)
 	owner_as_queen = desired_owner
 	return ..()
 
@@ -44,7 +44,7 @@
 			next_spit = world.time + 4 SECONDS
 			return TRUE
 
-/ai/boss/xeno_queen/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/ai/boss/xeno_queen/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 	. = ..()
 
 	if(!owner_as_queen.dead && owner_as_queen.health && owner_as_queen.health.health_current <= owner_as_queen.health.health_max*0.5 && owner_as_queen.next_screech <= world.time)

@@ -48,14 +48,14 @@
 	all_subsystems += src
 	return TRUE
 
-/subsystem/proc/unclog(var/mob/caller)
+/subsystem/proc/unclog(mob/caller)
 	if(caller.ckey)
 		broadcast_to_clients("SHITTERS CLOGGED: Subsystem [name] has been restarted by [caller.ckey].")
 	else
 		broadcast_to_clients("SHITTERS CLOGGED: Subsystem [name] has been restarted automatically by the server's failsafe.")
 	return TRUE
 
-/subsystem/New(var/desired_loc)
+/subsystem/New(desired_loc)
 	if(tick_rate > 0)
 		tick_rate = FLOOR(tick_rate,1)
 		if(!tick_rate)

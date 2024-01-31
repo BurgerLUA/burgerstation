@@ -38,7 +38,7 @@
 
 	var/turf/simulated/attached_to //The simulated turf this object is attached to.
 
-/obj/structure/proc/try_attach_to(var/desired_direction=0x0)
+/obj/structure/proc/try_attach_to(desired_direction=0x0)
 
 	var/turf/simulated/T = get_step(src,desired_direction)
 	if(!T || !is_simulated(T))
@@ -66,7 +66,7 @@
 		I.alpha = 100
 		add_overlay(I)
 
-/obj/structure/on_crush(var/message=TRUE)
+/obj/structure/on_crush(message=TRUE)
 	. = ..()
 	if(message) loc.visible_message(span("warning","\The [src.name] is crushed under \the [src.loc.name]!"))
 	qdel(src)
@@ -116,13 +116,13 @@
 		pixel_y = (TILE_SIZE - I.Height())/2 + initial(pixel_y)
 
 
-/obj/structure/proc/on_active(var/mob/living/advanced/player/P)
+/obj/structure/proc/on_active(mob/living/advanced/player/P)
 	return TRUE
 
-/obj/structure/proc/on_inactive(var/mob/living/advanced/player/P)
+/obj/structure/proc/on_inactive(mob/living/advanced/player/P)
 	return TRUE
 
-/obj/structure/proc/buckle(var/mob/living/victim,var/mob/caller,var/silent = FALSE)
+/obj/structure/proc/buckle(mob/living/victim,mob/caller,silent = FALSE)
 
 	if(victim.anchored)
 		if(caller && !silent) caller.to_chat(span("notice","You cannot buckle \the [victim.name] to \the [src.name]!"))
@@ -142,7 +142,7 @@
 
 	return TRUE
 
-/obj/structure/proc/unbuckle(var/mob/caller,var/silent=FALSE,var/force=FALSE)
+/obj/structure/proc/unbuckle(mob/caller,silent=FALSE,force=FALSE)
 
 	if(!buckled)
 		return FALSE
@@ -174,7 +174,7 @@
 
 	return TRUE
 
-/obj/structure/Uncross(var/atom/movable/O,atom/newloc)
+/obj/structure/Uncross(atom/movable/O,atom/newloc)
 
 	if(!O || O.collision_flags & src.collision_flags)
 		var/direction = get_dir(src,newloc)
@@ -186,7 +186,7 @@
 	return TRUE
 
 
-/obj/structure/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/structure/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 
 	if(!creator_ckey)
 		var/area/A = get_area(src)

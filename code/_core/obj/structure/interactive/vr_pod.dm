@@ -76,7 +76,7 @@
 	else
 		icon_state = "open"
 
-/obj/structure/interactive/vr_pod/Entered(var/atom/movable/enterer,var/atom/oldloc)
+/obj/structure/interactive/vr_pod/Entered(atom/movable/enterer,atom/oldloc)
 	if(is_player(enterer))
 		var/mob/living/advanced/player/P = enterer
 		if(P.client)
@@ -85,7 +85,7 @@
 			update_sprite()
 	. = ..()
 
-/obj/structure/interactive/vr_pod/Exited(var/atom/movable/exiter,var/atom/newloc)
+/obj/structure/interactive/vr_pod/Exited(atom/movable/exiter,atom/newloc)
 	if(exiter == user)
 		remove_buttons()
 		exit_virtual_reality()
@@ -99,7 +99,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/interactive/vr_pod/proc/can_enter_pod(var/mob/caller)
+/obj/structure/interactive/vr_pod/proc/can_enter_pod(mob/caller)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
@@ -114,12 +114,12 @@
 
 	return TRUE
 
-/obj/structure/interactive/vr_pod/proc/enter_pod(var/mob/living/advanced/player/P)
+/obj/structure/interactive/vr_pod/proc/enter_pod(mob/living/advanced/player/P)
 	force_eject_user() //Just in case.
 	P.Move(src)
 	return TRUE
 
-/obj/structure/interactive/vr_pod/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/vr_pod/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 

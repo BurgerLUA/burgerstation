@@ -1,10 +1,10 @@
 /*
-/proc/broadcast(var/text_to_say as text, var/text_type = TEXT_OOC)
+/proc/broadcast(text_to_say as text, text_type = TEXT_OOC)
 	for(var/mob/object in world)
 		object.to_chat(text_to_say)
 */
 
-/proc/broadcast_to_clients(var/text_to_say as text, var/text_type = TEXT_OOC)
+/proc/broadcast_to_clients(text_to_say as text, text_type = TEXT_OOC)
 	for(var/k in all_clients)
 		var/client/C = all_clients[k]
 		C.to_chat(text_to_say,text_type)
@@ -188,7 +188,7 @@ proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var
 			new/obj/effect/chat_text(source,text_to_say)
 
 
-/atom/proc/visible_message(var/third_person_text,var/first_person_text,var/blind_text,var/view_range=VIEW_RANGE)
+/atom/proc/visible_message(third_person_text,first_person_text,blind_text,view_range=VIEW_RANGE)
 
 	var/turf/T = get_turf(src)
 

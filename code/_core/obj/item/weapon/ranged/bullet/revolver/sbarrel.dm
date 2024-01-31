@@ -48,7 +48,7 @@
 /obj/item/weapon/ranged/bullet/revolver/sbarrel/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/bullet/revolver/sbarrel/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/revolver/sbarrel/get_skill_spread(mob/living/L)
 	return max(0,0.02 - (0.08 * L.get_skill_power(SKILL_RANGED)))
 
 

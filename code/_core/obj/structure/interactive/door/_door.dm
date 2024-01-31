@@ -114,14 +114,14 @@ obj/structure/interactive/door/proc/close(var/mob/caller,var/lock = FALSE,var/fo
 		door_state = DOOR_STATE_CLOSED
 		update_sprite()
 
-/obj/structure/interactive/door/proc/unlock(var/mob/caller,var/force = FALSE)
+/obj/structure/interactive/door/proc/unlock(mob/caller,force = FALSE)
 	locked = FALSE
 	if(initial(allow_path))
 		allow_path = TRUE
 	update_sprite()
 	return TRUE
 
-/obj/structure/interactive/door/proc/lock(var/mob/caller,var/force = FALSE)
+/obj/structure/interactive/door/proc/lock(mob/caller,force = FALSE)
 	locked = TRUE
 	allow_path = FALSE
 	update_sprite()
@@ -156,7 +156,7 @@ obj/structure/interactive/door/metal
 	return 10
 
 /*
-/obj/structure/interactive/door/update_power_draw(var/desired_power_draw,var/reset=FALSE)
+/obj/structure/interactive/door/update_power_draw(desired_power_draw,reset=FALSE)
 
 	var/area/A = get_area(src)
 

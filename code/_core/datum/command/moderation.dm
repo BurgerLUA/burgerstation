@@ -4,7 +4,7 @@
 	id = "kick"
 	permission = FLAG_PERMISSION_MODERATOR
 
-/command/kick/run_command(var/mob/user,var/list/params)
+/command/kick/run_command(mob/user,list/params)
 
 	. = ..()
 

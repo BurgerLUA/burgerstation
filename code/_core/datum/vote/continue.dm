@@ -4,7 +4,7 @@
 	time_limit = 60 //In seconds.
 
 
-/vote/continue_round/on_result(var/winner,var/list/results)
+/vote/continue_round/on_result(winner,list/results)
 
 	if(winner == "No")
 		world.end(WORLD_END_NANOTRASEN_VICTORY)

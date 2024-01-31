@@ -77,7 +77,7 @@ obj/structure/interactive/proc/link_power(var/area/A,var/link=TRUE)
 
 	. = ..()
 
-/obj/structure/interactive/post_move(var/atom/old_loc)
+/obj/structure/interactive/post_move(atom/old_loc)
 	. = ..()
 
 	if(connected_wire)
@@ -173,7 +173,7 @@ obj/structure/interactive/clicked_on_by_object(var/mob/caller,var/atom/object,lo
 
 	return ..()
 
-/obj/structure/interactive/proc/power_process(var/power_multiplier=1)
+/obj/structure/interactive/proc/power_process(power_multiplier=1)
 	return TRUE
 
 obj/structure/interactive/proc/check_interactables(var/mob/caller,var/atom/object,location,control,params)
@@ -207,7 +207,7 @@ obj/structure/interactive/proc/check_interactables(var/mob/caller,var/atom/objec
 
 
 
-/obj/structure/interactive/proc/update_power_draw(var/desired_power_draw,var/reset=FALSE)
+/obj/structure/interactive/proc/update_power_draw(desired_power_draw,reset=FALSE)
 
 	var/area/A = null
 
@@ -238,7 +238,7 @@ obj/structure/interactive/proc/check_interactables(var/mob/caller,var/atom/objec
 
 	return TRUE
 
-/obj/structure/interactive/proc/update_power_supply(var/desired_power_supply,var/reset=FALSE)
+/obj/structure/interactive/proc/update_power_supply(desired_power_supply,reset=FALSE)
 
 	if(!wire_powered)
 		power_supply = 0

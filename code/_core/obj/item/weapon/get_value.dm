@@ -1,4 +1,4 @@
-/obj/item/weapon/proc/get_recommended_value(var/debug=FALSE)
+/obj/item/weapon/proc/get_recommended_value(debug=FALSE)
 
 	var/reliability = min(1,0.25 + get_reliability())
 

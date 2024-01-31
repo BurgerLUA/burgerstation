@@ -22,7 +22,7 @@
 	linked_destination = locate() in world
 	return ..()
 
-/obj/item/herald_mirror/click_self(var/mob/caller,location,control,params)
+/obj/item/herald_mirror/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -45,7 +45,7 @@
 
 	return TRUE
 
-/obj/item/herald_mirror/proc/can_teleport(var/mob/living/advanced/A)
+/obj/item/herald_mirror/proc/can_teleport(mob/living/advanced/A)
 
 	var/mob/caller = A //reeee shitcode
 
@@ -67,7 +67,7 @@
 	return TRUE
 
 
-/obj/item/herald_mirror/proc/do_teleport(var/mob/living/advanced/A)
+/obj/item/herald_mirror/proc/do_teleport(mob/living/advanced/A)
 
 	var/area/A2 = get_area(A)
 

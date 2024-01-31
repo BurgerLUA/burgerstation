@@ -6,7 +6,7 @@
 	duration = 3
 	alpha = 150
 
-/obj/effect/temp/impact/blood/New(var/desired_loc,var/desired_time,var/desired_color)
+/obj/effect/temp/impact/blood/New(desired_loc,desired_time,desired_color)
 	icon_state = "splatter_[rand(1,12)]"
 	color = desired_color
 	alpha = 0

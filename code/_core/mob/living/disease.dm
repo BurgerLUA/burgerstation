@@ -1,4 +1,4 @@
-/mob/living/proc/add_disease(var/disease/disease_to_add)
+/mob/living/proc/add_disease(disease/disease_to_add)
 
 	if(length(diseases) && diseases[disease_to_add])
 		return FALSE
@@ -10,7 +10,7 @@
 
 	return TRUE
 
-/mob/living/proc/remove_disease(var/disease/disease_to_remove)
+/mob/living/proc/remove_disease(disease/disease_to_remove)
 
 	if(!length(diseases) || !diseases[disease_to_remove])
 		return FALSE

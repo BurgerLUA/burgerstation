@@ -3,10 +3,10 @@
 	//this is stored twice for a reason so players can confirm these are the settings they want with the new keys
 	//prevents situations where people unbind escape or something and they can't quit out
 
-/savedata/client/controls/get_file(var/file_id)
+/savedata/client/controls/get_file(file_id)
 	return "controls.json"
 
-/savedata/client/controls/New(var/desired_ckey)
+/savedata/client/controls/New(desired_ckey)
 
 	. = ..()
 

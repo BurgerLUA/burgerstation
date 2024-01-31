@@ -14,7 +14,7 @@
 		add_overlay(I)
 
 
-/obj/item/clothing/head/light/initialize_worn_blends(var/desired_icon_state)
+/obj/item/clothing/head/light/initialize_worn_blends(desired_icon_state)
 
 	. = ..()
 
@@ -29,7 +29,7 @@
 		desired_layer = worn_layer + 0.1
 	)
 
-/obj/item/clothing/head/light/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/head/light/click_self(mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 	enabled = !enabled

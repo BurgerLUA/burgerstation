@@ -27,14 +27,14 @@
 		else if(owner.movement_flags & MOVEMENT_RUNNING && prob(5))
 			owner.movement_flags &= ~MOVEMENT_RUNNING
 
-/ai/simple/karma_borg/get_attack_score(var/mob/living/L)
+/ai/simple/karma_borg/get_attack_score(mob/living/L)
 
 	if(L == true_target)
 		return 1000
 
 	return ..()
 
-/ai/simple/karma_borg/should_attack_mob(var/mob/living/L)
+/ai/simple/karma_borg/should_attack_mob(mob/living/L)
 
 	if(L == true_target)
 		return TRUE

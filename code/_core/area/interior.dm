@@ -11,7 +11,7 @@
 
 
 
-/area/interior/cave/lava/setup_sunlight(var/turf/T)
+/area/interior/cave/lava/setup_sunlight(turf/T)
 
 	if(istype(T,/turf/simulated/floor/lava/))
 

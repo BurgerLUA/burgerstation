@@ -31,7 +31,7 @@
 
 	value = 0
 
-/obj/item/container/edible/plant/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/container/edible/plant/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 
 	SAVEPATH("plant_type")
@@ -49,7 +49,7 @@
 
 	SAVEVAR("sliced")
 
-/obj/item/container/edible/plant/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/container/edible/plant/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 
 	LOADPATH("plant_type")
@@ -105,10 +105,10 @@
 	if(sliced)
 		icon = 'icons/obj/item/consumable/food/sliced.dmi'
 
-/obj/item/container/edible/plant/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/container/edible/plant/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	return health && !sliced
 
-/obj/item/container/edible/plant/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/edible/plant/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	if(!sliced && ((damage_table[BLADE] && !damage_table[BLUNT]) || damage_table[BLADE] > damage_table[BLUNT])) //Cut
 		var/original_volume = reagents.volume_current

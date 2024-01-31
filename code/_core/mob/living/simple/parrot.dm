@@ -38,7 +38,7 @@
 	post_move(src.loc)
 	return ..()
 
-/mob/living/simple/parrot/post_move(var/atom/old_loc)
+/mob/living/simple/parrot/post_move(atom/old_loc)
 
 	if(dead || !src.z)
 		return ..()
@@ -72,7 +72,7 @@
 
 	return ..()
 
-/mob/living/simple/parrot/on_listen(var/atom/speaker,var/datum/source,var/text,var/raw_text,var/language_text,var/talk_type,var/frequency,var/language =LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/mob/living/simple/parrot/on_listen(atom/speaker,datum/source,text,raw_text,language_text,talk_type,frequency,language =LANGUAGE_BASIC,talk_range=TALK_RANGE)
 
 	if(!CALLBACK_EXISTS("\ref[src]_parrot") && length(text) <= 30 && speaker != src && prob(5))
 		var/desired_text = text

@@ -22,12 +22,12 @@ SUBSYSTEM_DEF(wikibot)
 
 	return ..()
 
-/subsystem/wikibot/proc/add_new_wikibot_key(var/list/keywords,var/answer)
+/subsystem/wikibot/proc/add_new_wikibot_key(list/keywords,answer)
 	wikibot_list += list(list("keywords" = keywords, "answer" = answer))
 	rustg_file_write(json_encode(wikibot_list),WIKIBOT)
 	return TRUE
 
-/subsystem/wikibot/proc/process_string(var/asker,var/string_to_process)
+/subsystem/wikibot/proc/process_string(asker,string_to_process)
 
 	var/best_score = 0
 	var/best_answer = null

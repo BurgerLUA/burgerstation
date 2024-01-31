@@ -20,12 +20,12 @@
 
 	value = 20
 
-/obj/item/device/signaller/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/device/signaller/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("frequency_current")
 	SAVEVAR("signal_current")
 
-/obj/item/device/signaller/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/device/signaller/load_item_data_post(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("frequency_current")
 	LOADVAR("signal_current")
@@ -34,7 +34,7 @@
 	frequency_current = RADIO_FREQ_DOOR
 	signal_current = 1
 
-/obj/item/device/signaller/New(var/desired_loc)
+/obj/item/device/signaller/New(desired_loc)
 	SSradio.all_signalers += src
 	return ..()
 
@@ -42,11 +42,11 @@
 	SSradio.all_signalers -= src
 	return ..()
 
-/obj/item/device/signaller/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
+/obj/item/device/signaller/attack(atom/attacker,atom/victim,list/params=list(),atom/blamed,ignore_distance = FALSE, precise = FALSE,damage_multiplier=1,damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
 	trigger(attacker,src,-1,-1)
 	return TRUE
 
-/obj/item/device/signaller/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/device/signaller/trigger(mob/caller,atom/source,signal_freq,signal_code)
 
 	if(signal_freq == -1 && signal_code == -1)
 		for(var/k in SSradio.all_signalers)
@@ -62,7 +62,7 @@
 
 	return TRUE
 
-/obj/item/device/signaller/click_self(var/mob/caller,location,control,params)
+/obj/item/device/signaller/click_self(mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 	mode = !mode
@@ -70,7 +70,7 @@
 	spam_fix_time = 0
 	return TRUE
 
-/obj/item/device/signaller/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/device/signaller/mouse_wheel_on_object(mob/caller,delta_x,delta_y,location,control,params)
 
 	var/fixed_delta = clamp(delta_y,-1,1)
 

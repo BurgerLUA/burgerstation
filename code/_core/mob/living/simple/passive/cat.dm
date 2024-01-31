@@ -28,7 +28,7 @@
 
 	level = 2
 
-/mob/living/simple/cat/post_move(var/atom/old_loc)
+/mob/living/simple/cat/post_move(atom/old_loc)
 
 	var/old_sitting = sitting
 

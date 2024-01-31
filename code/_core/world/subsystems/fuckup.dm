@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(fuckup)
 
 	. = ..()
 
-/subsystem/fuckup/proc/apply_fuckup(var/fuckup/FU)
+/subsystem/fuckup/proc/apply_fuckup(fuckup/FU)
 
 	allow_loading = FALSE
 

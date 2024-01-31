@@ -1,6 +1,6 @@
 /dialogue/npc/wizard_ambassador/
 
-/dialogue/npc/wizard_ambassador/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/wizard_ambassador/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	. = list()
 

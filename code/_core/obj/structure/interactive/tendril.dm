@@ -37,7 +37,7 @@
 		/mob/living/simple/watcher
 	)
 
-/obj/structure/interactive/tendril/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/tendril/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("notice","\The [src.name] has [max(deaths_until_loot,0)] spawns left, with [length(tracked_mobs_length)] monsters protecting it...")
 

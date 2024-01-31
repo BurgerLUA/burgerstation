@@ -13,7 +13,7 @@
 	return FALSE //Returning false means remove it from update. Returning true means keep it updating.
 
 
-/obj/hud/button/stat/update_owner(var/mob/desired_owner)
+/obj/hud/button/stat/update_owner(mob/desired_owner)
 
 	if(owner && is_living(owner))
 		var/mob/living/L = owner

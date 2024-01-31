@@ -58,21 +58,21 @@
 
 	var/list/obj/effect/fog_of_war/tracked_fogs = list()
 
-/virtual_reality/team/nuke_ops/proc/on_kill_player(var/mob/living/advanced/player/owner,args)
+/virtual_reality/team/nuke_ops/proc/on_kill_player(mob/living/advanced/player/owner,args)
 	owner.adjust_currency(1000)
 	return TRUE
 
-/virtual_reality/team/nuke_ops/on_player_join(var/mob/living/L) //What happens when a player joins virtual reality.
+/virtual_reality/team/nuke_ops/on_player_join(mob/living/L) //What happens when a player joins virtual reality.
 	. = ..()
 	if(is_player(L))
 		HOOK_ADD("on_kill_player","\ref[L]_on_kill_player",L,src,src::on_kill_player())
 
-/virtual_reality/team/nuke_ops/on_player_leave(var/mob/living/L) //What happens when a player leaves virtual reality.
+/virtual_reality/team/nuke_ops/on_player_leave(mob/living/L) //What happens when a player leaves virtual reality.
 	. = ..()
 	if(is_player(L))
 		HOOK_REMOVE("on_kill_player","\ref[L]_on_kill_player",L)
 
-/virtual_reality/team/nuke_ops/proc/give_loadout(var/mob/living/advanced/A)
+/virtual_reality/team/nuke_ops/proc/give_loadout(mob/living/advanced/A)
 
 	if(length(team_loadouts[A.loyalty_tag]))
 		var/loadout/L = pick(team_loadouts[A.loyalty_tag])
@@ -98,7 +98,7 @@
 		var/obj/item/I = k
 		qdel(I)
 
-/virtual_reality/team/nuke_ops/proc/setup_player(var/mob/living/L,var/turf/T)
+/virtual_reality/team/nuke_ops/proc/setup_player(mob/living/L,turf/T)
 	L.force_move(T)
 	L.rejuvenate()
 	if(L.client)
@@ -155,7 +155,7 @@
 		setup_player(L,T)
 
 
-/virtual_reality/team/nuke_ops/move_to_team(var/mob/living/L,var/desired_team)
+/virtual_reality/team/nuke_ops/move_to_team(mob/living/L,desired_team)
 
 	. = ..()
 
@@ -371,7 +371,7 @@
 
 	. = ..()
 
-/virtual_reality/team/nuke_ops/proc/set_winner(var/desired_team)
+/virtual_reality/team/nuke_ops/proc/set_winner(desired_team)
 
 	if(state == 6 || state == 7)
 		return FALSE
@@ -433,6 +433,6 @@
 		return TRUE
 
 
-/virtual_reality/team/nuke_ops/player_post_death(var/mob/living/advanced/player/virtual/P)
+/virtual_reality/team/nuke_ops/player_post_death(mob/living/advanced/player/virtual/P)
 	. = ..()
 	check_gamemode_win()

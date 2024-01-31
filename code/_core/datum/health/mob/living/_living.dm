@@ -8,7 +8,7 @@
 	QUEUE_HEALTH_UPDATE(L)
 	return TRUE
 
-/health/mob/living/get_damage_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/health/mob/living/get_damage_multiplier(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	. = ..()
 
@@ -20,7 +20,7 @@
 	if(L.has_status_effect(STRESSED))
 		. += 0.5
 
-/health/mob/living/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
+/health/mob/living/get_defense(atom/attacker,atom/hit_object,ignore_luck=FALSE)
 
 	. = ..()
 
@@ -147,7 +147,7 @@
 
 	QUEUE_HEALTH_UPDATE(L)
 
-/health/mob/living/adjust_loss(var/loss_type,var/value)
+/health/mob/living/adjust_loss(loss_type,value)
 	. = ..()
 	if(. && is_living(owner))
 		var/mob/living/L = owner
@@ -155,7 +155,7 @@
 			L.health_regen_delay = max(L.health_regen_delay,60 SECONDS)
 		QUEUE_HEALTH_UPDATE(L)
 
-/health/mob/living/adjust_mana(var/adjust_value)
+/health/mob/living/adjust_mana(adjust_value)
 	. = ..()
 	if(.)
 		var/mob/living/L = owner
@@ -163,7 +163,7 @@
 			L.mana_regen_delay = max(L.mana_regen_delay,4 SECONDS)
 		QUEUE_HEALTH_UPDATE(L)
 
-/health/mob/living/adjust_stamina(var/adjust_value)
+/health/mob/living/adjust_stamina(adjust_value)
 	. = ..()
 	if(.)
 		var/mob/living/L = owner
@@ -173,7 +173,7 @@
 		QUEUE_HEALTH_UPDATE(L)
 
 
-/health/mob/living/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/organic=TRUE,var/robotic=TRUE,var/update=TRUE)
+/health/mob/living/adjust_loss_smart(brute,burn,tox,oxy,fatigue,pain,rad,sanity,mental,organic=TRUE,robotic=TRUE,update=TRUE)
 
 	. = 0
 

@@ -13,7 +13,7 @@
 
 	var/has_ore = FALSE
 
-/turf/simulated/floor/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/turf/simulated/floor/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 
 	if(!damage_type || !damage_type.target_floors)
 		return FALSE
@@ -48,7 +48,7 @@
 */
 
 
-/turf/simulated/floor/Exited(var/atom/movable/O,var/atom/new_loc)
+/turf/simulated/floor/Exited(atom/movable/O,atom/new_loc)
 
 	. = ..()
 
@@ -57,7 +57,7 @@
 
 
 
-/turf/simulated/floor/can_construct_on(var/atom/caller,var/obj/structure/structure_to_make = null)
+/turf/simulated/floor/can_construct_on(atom/caller,obj/structure/structure_to_make = null)
 
 	if(!is_living(caller))
 		return FALSE

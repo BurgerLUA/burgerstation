@@ -1,4 +1,4 @@
-/mob/living/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE,var/language_to_use=null)
+/mob/living/do_say(text_to_say, should_sanitize = TRUE, talk_type_to_use = TEXT_TALK,talk_range=TALK_RANGE,language_to_use=null)
 
 	if(dead)
 		if(!client) return FALSE
@@ -14,7 +14,7 @@
 	if(.)
 		do_type(TALK_TYPE_EXCLAIMATION)
 
-/mob/living/proc/do_type(var/type_type)
+/mob/living/proc/do_type(type_type)
 	talk_duration = 4 SECONDS
 	if(chat_overlay)
 		chat_overlay.icon_state = type_type

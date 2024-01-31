@@ -29,7 +29,7 @@
 		tracked_instance_ckeys = list()
 
 
-/obj/structure/interactive/storage/proc/examine_storage(var/mob/living/advanced/caller) //caller wants to see inside src
+/obj/structure/interactive/storage/proc/examine_storage(mob/living/advanced/caller) //caller wants to see inside src
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -63,7 +63,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/storage/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/storage/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_inventory(object) && is_advanced(caller))
 		examine_storage(caller)
@@ -84,7 +84,7 @@
 
 	var/chance_none = 0
 
-/obj/structure/interactive/storage/trash_pile/New(var/desired_loc)
+/obj/structure/interactive/storage/trash_pile/New(desired_loc)
 
 	if(prob(chance_none))
 		qdel(src)
@@ -108,7 +108,7 @@
 	if(prob(50))
 		stored_threat = TRUE
 
-/obj/structure/interactive/storage/trash_pile/station/examine_storage(var/mob/living/advanced/caller)
+/obj/structure/interactive/storage/trash_pile/station/examine_storage(mob/living/advanced/caller)
 
 	. = ..()
 
@@ -144,7 +144,7 @@
 
 	var/chance_none = 70
 
-/obj/structure/interactive/storage/safe/New(var/desired_loc)
+/obj/structure/interactive/storage/safe/New(desired_loc)
 
 	if(prob(chance_none))
 		qdel(src)
@@ -152,7 +152,7 @@
 
 	. = ..()
 
-/obj/structure/interactive/storage/safe/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/storage/safe/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

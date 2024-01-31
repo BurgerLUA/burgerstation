@@ -17,7 +17,7 @@
 
 	layer = LAYER_HUD_TOOLTIP
 
-/obj/hud/button/tooltip/proc/set_text(var/desired_text,var/desired_screen_loc)
+/obj/hud/button/tooltip/proc/set_text(desired_text,desired_screen_loc)
 
 	if(!desired_text || !desired_screen_loc)
 		animate(src,alpha=0,flags=ANIMATION_PARALLEL,time=2)
@@ -29,7 +29,7 @@
 
 	return TRUE
 
-/obj/hud/button/tooltip/update_owner(var/mob/desired_owner)
+/obj/hud/button/tooltip/update_owner(mob/desired_owner)
 
 	var/mob/old_owner = owner
 

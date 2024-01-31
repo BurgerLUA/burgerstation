@@ -7,7 +7,7 @@
 
 
 
-/ability/magic/wrath/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/magic/wrath/on_cast(mob/caller,atom/target,location,params)
 
 	. = ..()
 

@@ -22,7 +22,7 @@
 
 	falloff = VIEW_RANGE*1
 
-/damagetype/ranged/bullet/fiendish_resilience/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/ranged/bullet/fiendish_resilience/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	if(is_living(attacker) && is_living(victim))
 		var/mob/living/V = victim

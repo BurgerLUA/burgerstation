@@ -64,7 +64,7 @@
 	if(wet_level > 0)
 		add_wet(-wet_level)
 
-/turf/simulated/proc/destroy_attachments(var/delete=TRUE)
+/turf/simulated/proc/destroy_attachments(delete=TRUE)
 	if(!length(linked_attachments))
 		return FALSE
 	for(var/k in linked_attachments)
@@ -74,7 +74,7 @@
 			qdel(O)
 	return TRUE
 
-/turf/simulated/proc/attach(var/obj/structure/O)
+/turf/simulated/proc/attach(obj/structure/O)
 	if(!linked_attachments)
 		linked_attachments = list()
 	if(linked_attachments[O])
@@ -88,7 +88,7 @@
 		O.density = 0
 	O.set_anchored(2)
 
-/turf/simulated/proc/unattach(var/obj/structure/O)
+/turf/simulated/proc/unattach(obj/structure/O)
 	if(!linked_attachments) //No point.
 		return FALSE
 	O.attached_to = null
@@ -96,7 +96,7 @@
 	O.set_anchored(initial(O.anchored))
 	return TRUE
 
-/turf/simulated/can_move_to(var/check_contents=TRUE)
+/turf/simulated/can_move_to(check_contents=TRUE)
 
 	if(collision_flags & FLAG_COLLISION_WALKING)
 		return FALSE
@@ -110,10 +110,10 @@
 
 	return ..()
 
-/turf/simulated/proc/get_slip_strength(var/mob/living/L)
+/turf/simulated/proc/get_slip_strength(mob/living/L)
 	return (wet_level > 0 ? 1 : 0) + (wet_level/100)*slip_factor
 
-/turf/simulated/proc/add_wet(var/wet_to_add)
+/turf/simulated/proc/add_wet(wet_to_add)
 	var/old_wet = wet_level
 	wet_level = clamp(wet_to_add + wet_level,0,100)
 	if(old_wet <= 0)
@@ -135,7 +135,7 @@
 
 	return TRUE
 
-/turf/simulated/proc/add_blood_level(var/amount_to_add,var/minimus=0,var/desired_color)
+/turf/simulated/proc/add_blood_level(amount_to_add,minimus=0,desired_color)
 	if(desired_color && desired_color != blood_color)
 		if(!blood_level || !blood_color)
 			blood_color = desired_color
@@ -144,11 +144,11 @@
 	blood_level = max(0,minimus,blood_level+amount_to_add)
 	return TRUE
 
-/turf/simulated/proc/add_blood_level_hard(var/amount_to_add,var/minimus=0)
+/turf/simulated/proc/add_blood_level_hard(amount_to_add,minimus=0)
 	blood_level_hard = max(0,minimus,blood_level_hard+amount_to_add)
 	return TRUE
 
-/turf/simulated/on_destruction(var/damage = TRUE)
+/turf/simulated/on_destruction(damage = TRUE)
 
 	for(var/obj/effect/temp/impact/I in src.contents)
 		I.alpha = 0
@@ -244,7 +244,7 @@
 		add_overlay(I)
 
 
-/turf/simulated/proc/set_exposed(var/desired_exposed = FALSE,var/force=FALSE)
+/turf/simulated/proc/set_exposed(desired_exposed = FALSE,force=FALSE)
 
 	if(desired_exposed == exposed && !force)
 		return FALSE
@@ -259,7 +259,7 @@
 
 	return TRUE
 
-/turf/simulated/proc/do_footstep(var/mob/living/source,var/enter=FALSE)
+/turf/simulated/proc/do_footstep(mob/living/source,enter=FALSE)
 
 	var/list/returning_footsteps = source.get_footsteps(footstep ? list(footstep) : list(),enter)
 	if(length(returning_footsteps))

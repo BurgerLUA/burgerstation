@@ -20,7 +20,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/clothing/mask/paper/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/mask/paper/click_self(mob/caller,location,control,params)
 	var/mob/C = caller
 	if(C.attack_flags & CONTROL_MOD_DISARM && istype(src.loc,/obj/hud/inventory/organs/))
 		INTERACT_CHECK

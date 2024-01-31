@@ -6,7 +6,7 @@
 	var/list/mob_to_image = list()
 
 
-/obj/structure/interactive/localmachine/snowflake/clear_existing_images(var/mob/M)
+/obj/structure/interactive/localmachine/snowflake/clear_existing_images(mob/M)
 
 	. = ..()
 
@@ -17,7 +17,7 @@
 			mob_to_image[M] = null
 
 
-/obj/structure/interactive/localmachine/snowflake/proc/set_icon_state_mob(var/mob/M,var/icon_state)
+/obj/structure/interactive/localmachine/snowflake/proc/set_icon_state_mob(mob/M,icon_state)
 
 	clear_existing_images(M)
 
@@ -29,7 +29,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/localmachine/snowflake/update_for_mob(var/mob/M)
+/obj/structure/interactive/localmachine/snowflake/update_for_mob(mob/M)
 
 	if(mob_to_image[M])
 		M << mob_to_image[M]

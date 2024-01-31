@@ -19,11 +19,11 @@
 	maptext_x = 4
 	var/weapon_slot = 1
 
-/obj/hud/button/vehicle/weapon/proc/set_map_text(var/desired_text)
+/obj/hud/button/vehicle/weapon/proc/set_map_text(desired_text)
 	maptext = desired_text
 	return TRUE
 
-/obj/hud/button/vehicle/weapon/update_owner(var/mob/desired_owner)
+/obj/hud/button/vehicle/weapon/update_owner(mob/desired_owner)
 
 	. = ..()
 
@@ -42,7 +42,7 @@
 	maptext_x = 4
 	weapon_slot = 2
 
-/obj/hud/button/vehicle/weapon/right/set_map_text(var/desired_text)
+/obj/hud/button/vehicle/weapon/right/set_map_text(desired_text)
 	maptext = "<div style='text-align:right'>[desired_text]</div>"
 	return TRUE
 
@@ -52,7 +52,7 @@
 	icon_state = "eject"
 	screen_loc = "RIGHT,BOTTOM:12+2"
 
-/obj/hud/button/vehicle/eject/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/vehicle/eject/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -68,7 +68,7 @@
 	var/weapon_slot = 1
 	screen_loc = "CENTER-1.4,BOTTOM:12+0.5"
 
-/obj/hud/button/vehicle/ammo_display/proc/set_map_text(var/desired_text)
+/obj/hud/button/vehicle/ammo_display/proc/set_map_text(desired_text)
 	maptext = desired_text
 	return TRUE
 
@@ -85,7 +85,7 @@
 	weapon_slot = 2
 	screen_loc = "CENTER+1.4,BOTTOM:12+0.5"
 
-/obj/hud/button/vehicle/ammo_display/right/set_map_text(var/desired_text)
+/obj/hud/button/vehicle/ammo_display/right/set_map_text(desired_text)
 	maptext = "<div style='text-align:right'>[desired_text]</div>"
 	return TRUE
 */

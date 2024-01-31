@@ -22,7 +22,7 @@
 	if(.)
 		icon_state = "dead"
 
-/mob/living/simple/bot/cleaner/post_move(var/atom/old_loc)
+/mob/living/simple/bot/cleaner/post_move(atom/old_loc)
 
 	. = ..()
 

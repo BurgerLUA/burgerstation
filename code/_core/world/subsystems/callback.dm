@@ -8,12 +8,12 @@ SUBSYSTEM_DEF(callback)
 	tick_usage_max = 100
 
 
-/subsystem/callback/unclog(var/mob/caller)
+/subsystem/callback/unclog(mob/caller)
 	for(var/callback_id in src.all_callbacks)
 		all_callbacks -= callback_id
 	. = ..()
 
-/subsystem/callback/proc/try_call(var/datum/stored_object,var/stored_proc,var/stored_args)
+/subsystem/callback/proc/try_call(datum/stored_object,stored_proc,stored_args)
 	if(stored_object)
 		if(is_datum(stored_object) && stored_object.qdeleting)
 			return FALSE
@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(callback)
 
 	return TRUE
 
-/subsystem/callback/proc/add_callback(var/desired_id,var/desired_time,var/desired_object,var/desired_proc,...)
+/subsystem/callback/proc/add_callback(desired_id,desired_time,desired_object,desired_proc,...)
 	all_callbacks[desired_id] = list(
 		"object" = desired_object,
 		"proc" = desired_proc,
@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(callback)
 	)
 	return TRUE
 
-/subsystem/callback/proc/remove_callback(var/desired_id)
+/subsystem/callback/proc/remove_callback(desired_id)
 	if(all_callbacks[desired_id])
 		all_callbacks -= desired_id
 		return TRUE

@@ -20,7 +20,7 @@
 			. = M
 			//No break here as ckey_last needs a priority.
 
-/client/proc/make_ghost(var/turf/desired_loc)
+/client/proc/make_ghost(turf/desired_loc)
 
 	if(!desired_loc && mob)
 		desired_loc = get_turf(mob)
@@ -38,7 +38,7 @@
 	INITIALIZE(O)
 	FINALIZE(O)
 
-/client/proc/make_observer(var/turf/desired_loc)
+/client/proc/make_observer(turf/desired_loc)
 
 	if(mob)
 		mob.ckey_last = null
@@ -49,7 +49,7 @@
 
 	return TRUE
 
-/client/proc/control_mob(var/mob/M,var/delete_last_mob = FALSE)
+/client/proc/control_mob(mob/M,delete_last_mob = FALSE)
 
 	if(!M)
 		return FALSE
@@ -84,7 +84,7 @@
 
 	update_statpanel = TRUE
 
-/client/proc/clear_mob(var/mob/M,var/hard = FALSE) //This is called when the client no longer controls this mob.
+/client/proc/clear_mob(mob/M,hard = FALSE) //This is called when the client no longer controls this mob.
 
 	known_inventory?.Cut()
 	known_buttons?.Cut()
@@ -106,7 +106,7 @@
 		mob = null
 
 
-/client/proc/load(var/savedata/client/mob/U,var/file_num)
+/client/proc/load(savedata/client/mob/U,file_num)
 
 	if(restricted)
 		src.to_chat(span("danger",restricted))

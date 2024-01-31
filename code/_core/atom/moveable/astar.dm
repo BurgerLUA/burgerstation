@@ -1,4 +1,4 @@
-/proc/get_astar_path(var/atom/movable/mover,var/turf/source,var/turf/destination,var/needed_distance)
+/proc/get_astar_path(atom/movable/mover,turf/source,turf/destination,needed_distance)
 
 	set background = 1
 

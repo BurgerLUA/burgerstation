@@ -10,7 +10,7 @@
 		/obj/item/clothing/back/storage/backpack/explorer/black,
 	)
 
-/loot/revolutionary/back_storage/pre_spawn(var/atom/movable/M)
+/loot/revolutionary/back_storage/pre_spawn(atom/movable/M)
 	. = ..()
 	if(is_item(M))
 		var/obj/item/I = M

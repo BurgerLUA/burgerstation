@@ -23,7 +23,7 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/boss_health/New(var/desired_loc)
+/obj/hud/button/boss_health/New(desired_loc)
 	. = ..()
 	alpha = 0
 	mouse_opacity = 0

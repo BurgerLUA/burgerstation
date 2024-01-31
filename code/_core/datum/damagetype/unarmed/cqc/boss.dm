@@ -34,7 +34,7 @@
 	attack_delay = 7.5
 	attack_delay_max = 15
 
-/damagetype/unarmed/cqc/boss/fast_grab/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/cqc/boss/fast_grab/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	if(is_advanced(attacker) && ismovable(victim) && is_turf(victim.loc))
 		var/mob/living/advanced/A = attacker
@@ -88,7 +88,7 @@
 	attack_delay = 40
 	attack_delay_max = 60
 
-/damagetype/unarmed/cqc/boss/grab_slam/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/cqc/boss/grab_slam/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	if(is_living(victim) && is_living(attacker))
 		var/mob/living/L = victim
@@ -147,7 +147,7 @@
 	attack_delay = 10
 	attack_delay_max = 15
 
-/damagetype/unarmed/cqc/boss/staggering_punch/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/cqc/boss/staggering_punch/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
@@ -201,7 +201,7 @@
 	attack_delay = 30
 	attack_delay_max = 45
 
-/damagetype/unarmed/cqc/boss/stunning_punch/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/cqc/boss/stunning_punch/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	if(is_living(victim) && is_living(attacker))
 		var/mob/living/L = victim
@@ -248,7 +248,7 @@
 	attack_delay = 8
 	attack_delay_max = 16
 
-/damagetype/unarmed/cqc/boss/disarm_theft/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/cqc/boss/disarm_theft/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	if(is_advanced(attacker) && is_advanced(victim))
 		var/mob/living/advanced/A = attacker
@@ -311,7 +311,7 @@
 	attack_delay = 40
 	attack_delay_max = 60
 
-/damagetype/unarmed/cqc/boss/tactical_hug/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/cqc/boss/tactical_hug/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	if(is_advanced(attacker) && is_advanced(victim))
 		var/mob/living/advanced/V = victim

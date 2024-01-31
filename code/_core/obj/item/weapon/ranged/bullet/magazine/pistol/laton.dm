@@ -68,7 +68,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/get_static_spread()
 	return 0.002
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/laton/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/pistol/laton/get_skill_spread(mob/living/L)
 	return max(0,0.005 - (0.02 * L.get_skill_power(SKILL_RANGED)) )
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/prototype
@@ -134,20 +134,20 @@
 	rarity = RARITY_UNCOMMON
 
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
+/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/play_shoot_sounds(mob/caller,list/shoot_sounds_to_use = list(),shoot_alert_to_use = ALERT_LEVEL_NONE)
 	. = ..()
 	if(.)
 		caller.do_say("BANG!")
 		CALLBACK("kitchen_gun_slogan_\ref[caller]",2 SECONDS,src,src::say_slogan(),caller)
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/proc/say_slogan(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/proc/say_slogan(mob/caller)
 	var/slogan_to_say = kitchen_gun_slogans[slogan_number]
 	caller.do_say(slogan_to_say)
 	slogan_number += 1
 	if(slogan_number > length(kitchen_gun_slogans))
 		slogan_number = 1
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/on_projectile_hit(var/obj/projectile/P,var/atom/hit_atom)
+/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/on_projectile_hit(obj/projectile/P,atom/hit_atom)
 
 	if(istype(P,/obj/projectile/thrown/))
 		return ..()
@@ -159,7 +159,7 @@
 
 	. = ..()
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
+/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/shoot_projectile(atom/caller,atom/target,location,params,obj/projectile/projectile_to_use,damage_type_to_use,icon_pos_x=0,icon_pos_y=0,accuracy_loss=0,projectile_speed_to_use=0,bullet_count_to_use=1,bullet_color="#FFFFFF",view_punch=0,damage_multiplier=1,desired_iff_tag,desired_loyalty_tag,desired_inaccuracy_modifier=1,base_spread = get_base_spread(),penetrations_left=0)
 
 	. = ..()
 

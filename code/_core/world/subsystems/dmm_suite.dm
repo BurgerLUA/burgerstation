@@ -300,7 +300,7 @@ SUBSYSTEM_DEF(dmm_suite)
 	return ..()
 
 
-/subsystem/dmm_suite/proc/is_pvp_coord(var/x,var/y,var/z,var/distance=0)
+/subsystem/dmm_suite/proc/is_pvp_coord(x,y,z,distance=0)
 
 	if(!pvp_y)
 		return FALSE
@@ -326,7 +326,7 @@ SUBSYSTEM_DEF(dmm_suite)
 //Here lies dead code.
 //Annoying to work with and I don't have time to spend 6 months on this.
 /*
-/subsystem/dmm_suite/proc/generate_world(var/z=0)
+/subsystem/dmm_suite/proc/generate_world(z=0)
 
 	log_subsystem(name,"Generating world [z]...")
 

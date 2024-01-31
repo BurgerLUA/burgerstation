@@ -2,13 +2,13 @@
 	id = "paper"
 	file = 'html/control_customization.html'
 
-/menu/controls/open(var/user)
+/menu/controls/open(user)
 	cache_resources(user)
 	winset(user, "map.paper","is-visible=true")
 	sleep(1)
 	user << output(file, "map.paper")
 
-/menu/controls/on_load(var/user)
+/menu/controls/on_load(user)
 
 	run_function(usr,"set_reference","'\ref[src]'")
 
@@ -20,12 +20,12 @@
 	if(P.active_paper && length(P.active_paper.data))
 		set_text(P,P.active_paper.data[1],P.active_paper.name,P.active_paper.last_page,length(P.active_paper.data))
 
-/menu/controls/close(var/user)
+/menu/controls/close(user)
 	winset(user, "map.paper","is-visible=false")
 	winset(user,"map.map","focus=true")
 	winset(user,"main.input","focus=false")
 
-/menu/controls/proc/set_text(var/user,var/text,var/title,var/page_current,var/page_max)
+/menu/controls/proc/set_text(user,text,title,page_current,page_max)
 	var/function_name = "set_text"
 	var/function_args = "\"[proper_url_encode(text)]\",\"[proper_url_encode(title)]\",[page_current],[page_max]"
 
@@ -36,7 +36,7 @@
 		if(P.active_paper)
 			P.active_paper.last_page = page_current
 
-/menu/controls/run_function(var/user, var/function_name,var/args)
+/menu/controls/run_function(user, function_name,args)
 	user << output("[function_name]([args]);", "map.paper:eval")
 
 /menu/controls/Topic(href,href_list)

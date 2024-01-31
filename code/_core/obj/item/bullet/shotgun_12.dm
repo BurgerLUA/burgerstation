@@ -32,7 +32,7 @@
 	. = ..()
 	. *= 0.5
 
-/obj/item/bullet_cartridge/shotgun_12/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
+/obj/item/bullet_cartridge/shotgun_12/can_be_worn(mob/living/advanced/owner,obj/hud/inventory/I,messages=FALSE)
 	return TRUE
 
 /obj/item/bullet_cartridge/shotgun_12/slug

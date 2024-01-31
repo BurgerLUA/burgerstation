@@ -64,6 +64,6 @@
 
 	level = 60
 
-/mob/living/advanced/npc/rev/commander/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+/mob/living/advanced/npc/rev/commander/get_damage_received_multiplier(atom/attacker,atom/victim,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT)
 	. = ..()
 	. *= 0.5

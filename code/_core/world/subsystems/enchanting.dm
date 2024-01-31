@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(enchanting)
 
 	return ..()
 
-/proc/get_random_enchantment(var/ench_type=ENCH_ANY,var/list/whitelist,var/list/blacklist)
+/proc/get_random_enchantment(ench_type=ENCH_ANY,list/whitelist,list/blacklist)
 
 	var/list/possible_enchantments = list()
 

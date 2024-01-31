@@ -4,7 +4,7 @@
 	opacity = 0
 	plane = PLANE_SPACE
 
-/turf/bluespace/New(var/desired_loc)
+/turf/bluespace/New(desired_loc)
 	. = ..()
 	icon = null
 	icon_state = null

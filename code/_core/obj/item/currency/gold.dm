@@ -55,7 +55,7 @@
 
 
 
-/obj/item/currency/gold_coin/proc/fly(var/turf/from_turf)
+/obj/item/currency/gold_coin/proc/fly(turf/from_turf)
 
 	if(amount > 5)
 		return FALSE
@@ -88,7 +88,7 @@
 	return TRUE
 
 
-/proc/create_gold_drop(var/turf/T,var/amount=5)
+/proc/create_gold_drop(turf/T,amount=5)
 
 	amount = min(amount,GOLD_DROP_AMOUNT_MAX) //Enforce a limit, just in case.
 

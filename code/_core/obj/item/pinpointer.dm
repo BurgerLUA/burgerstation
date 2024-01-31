@@ -21,14 +21,14 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/pinpointer/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/pinpointer/quick(mob/caller,atom/object,location,params)
 	return click_self(caller)
 
 /obj/item/pinpointer/Destroy()
 	tracked_atom = null
 	. = ..()
 
-/obj/item/pinpointer/get_examine_list(var/mob/caller)
+/obj/item/pinpointer/get_examine_list(mob/caller)
 
 	. = ..()
 
@@ -41,7 +41,7 @@
 		. += div("notice","It's off.")
 
 
-/obj/item/pinpointer/proc/can_track(var/atom/A)
+/obj/item/pinpointer/proc/can_track(atom/A)
 
 	if(!A)
 		return FALSE
@@ -119,7 +119,7 @@
 
 	value = 30
 
-/obj/item/pinpointer/custom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/pinpointer/custom/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(scan_mode && object)
 		INTERACT_CHECK
@@ -135,7 +135,7 @@
 
 	return ..()
 
-/obj/item/pinpointer/custom/click_self(var/mob/caller,location,control,params)
+/obj/item/pinpointer/custom/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -165,7 +165,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/pinpointer/crew/click_self(var/mob/caller,location,control,params)
+/obj/item/pinpointer/crew/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -215,7 +215,7 @@
 	desc_extended = "Use this to track and locate objects. This is used to exclusively track corpses of NanoTrasen Crew."
 	value = 100
 
-/obj/item/pinpointer/crew/death/can_track(var/atom/A)
+/obj/item/pinpointer/crew/death/can_track(atom/A)
 
 	var/mob/living/advanced/player/P = A
 	if(!istype(P))
@@ -252,7 +252,7 @@
 
 	value = 10
 
-/obj/item/pinpointer/landmark/click_self(var/mob/caller,location,control,params)
+/obj/item/pinpointer/landmark/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -305,7 +305,7 @@
 
 	value = 20
 
-/obj/item/pinpointer/objective/click_self(var/mob/caller,location,control,params)
+/obj/item/pinpointer/objective/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -353,7 +353,7 @@
 
 	value = 100
 
-/obj/item/pinpointer/boss/click_self(var/mob/caller,location,control,params)
+/obj/item/pinpointer/boss/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -400,7 +400,7 @@
 	contraband = TRUE
 	unreliable = TRUE
 
-/obj/item/pinpointer/deathmatch/click_self(var/mob/caller,location,control,params)
+/obj/item/pinpointer/deathmatch/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -451,7 +451,7 @@
 
 	rarity = RARITY_MYTHICAL
 
-/obj/item/pinpointer/mobs/click_self(var/mob/caller, var/mob/living/advanced/npc/a, var/mob/living/simple/a)
+/obj/item/pinpointer/mobs/click_self(mob/caller, mob/living/advanced/npc/a, mob/living/simple/a)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 

@@ -1,4 +1,4 @@
-/mob/living/advanced/proc/perform_specieschange(var/desired_species,var/keep_clothes,var/chargen)
+/mob/living/advanced/proc/perform_specieschange(desired_species,keep_clothes,chargen)
 
 	if(changing)
 		return FALSE
@@ -17,7 +17,7 @@
 
 	post_perform_change(keep_clothes,chargen,kept_clothes)
 
-/mob/living/advanced/proc/perform_sexchange(var/desired_sex,var/keep_clothes,var/chargen)
+/mob/living/advanced/proc/perform_sexchange(desired_sex,keep_clothes,chargen)
 
 	if(changing)
 		return FALSE
@@ -33,7 +33,7 @@
 
 	return TRUE
 
-/mob/living/advanced/proc/pre_perform_change(var/keep_items)
+/mob/living/advanced/proc/pre_perform_change(keep_items)
 
 	changing = TRUE
 
@@ -54,7 +54,7 @@
 
 	return kept_items
 
-/mob/living/advanced/proc/post_perform_change(var/keep_items,var/chargen,var/list/kept_items = list())
+/mob/living/advanced/proc/post_perform_change(keep_items,chargen,list/kept_items = list())
 
 	if(chargen) add_chargen_buttons()
 

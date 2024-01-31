@@ -30,7 +30,7 @@
 	return ..()
 
 
-/obj/item/weapon/ranged/magic/spellblade/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/ranged/magic/spellblade/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -46,7 +46,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/magic/spellblade/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
+/obj/item/weapon/ranged/magic/spellblade/shoot(mob/caller,atom/object,location,params,damage_multiplier=1,click_called=FALSE)
 
 	if(get_dist(caller,object) <= 1)
 		return FALSE
@@ -60,7 +60,7 @@
 		src.attack_next = world.time + shoot_delay
 
 
-/obj/item/weapon/ranged/magic/spellblade/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
+/obj/item/weapon/ranged/magic/spellblade/can_gun_shoot(mob/caller,atom/object,location,params,check_time=TRUE,messages=TRUE)
 	if(caller.attack_next > world.time)
 		return FALSE
 	if(!active)

@@ -1,13 +1,13 @@
-/proc/get_area(var/datum/A)
+/proc/get_area(datum/A)
 	if(is_area(A)) return A
 	var/turf/T = get_turf(A)
 	return T ? T.loc : null
 
-/proc/get_dist_real(var/atom/A1,var/atom/A2) //More intensive than get_dist, but more accurate.
+/proc/get_dist_real(atom/A1,atom/A2) //More intensive than get_dist, but more accurate.
 	return sqrt( ((A1.x - A2.x)**2) + ((A1.y - A2.y)**2) )
 
 /*
-/proc/get_dist_advanced(var/atom/A1,var/atom/A2)
+/proc/get_dist_advanced(atom/A1,atom/A2)
 
 	var/best_distance = get_dist(A1,A2)
 
@@ -33,7 +33,7 @@
 */
 
 
-/proc/get_dist_advanced(var/atom/A1,var/atom/A2)
+/proc/get_dist_advanced(atom/A1,atom/A2)
 
 	if(!A1 || !A2)
 		return max(world.maxx,world.maxy)

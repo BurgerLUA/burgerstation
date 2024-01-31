@@ -19,7 +19,7 @@
 
 	crit_multiplier = 10
 
-/damagetype/ranged/laser/chronogun/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/ranged/laser/chronogun/get_critical_hit_condition(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	if(SSbadnames.all_badnames[lowertext(victim.name)])
 		return TRUE

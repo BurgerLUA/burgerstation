@@ -19,7 +19,7 @@
 	SSshuttle.all_shuttle_landing_consoles += src
 	. = ..()
 
-/obj/structure/interactive/computer/console/shuttle_landing/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/computer/console/shuttle_landing/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	var/mob/living/L = caller
 
@@ -177,7 +177,7 @@
 
 	anchored = 2
 
-/obj/marker/shuttle_landing/proc/set_reserved(var/desired_reserved=TRUE)
+/obj/marker/shuttle_landing/proc/set_reserved(desired_reserved=TRUE)
 
 	if(reserved_by_shuttle == desired_reserved)
 		CRASH("Tried setting [src.get_debug_name()] reserved var to [desired_reserved], but it was already [desired_reserved]!")

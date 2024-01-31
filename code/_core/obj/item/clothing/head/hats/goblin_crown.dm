@@ -17,13 +17,13 @@
 	rarity = RARITY_LEGENDARY
 
 
-/obj/item/clothing/head/hat/goblin_crown/on_equip(var/atom/old_location,var/silent=FALSE)
+/obj/item/clothing/head/hat/goblin_crown/on_equip(atom/old_location,silent=FALSE)
 	. = ..()
 	var/obj/hud/inventory/I = loc
 	if(I.worn)
 		START_THINKING(src)
 
-/obj/item/clothing/head/hat/goblin_crown/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+/obj/item/clothing/head/hat/goblin_crown/on_unequip(obj/hud/inventory/old_inventory,silent=FALSE) //When the object is dropped from the old_inventory
 	. = ..()
 	STOP_THINKING(src)
 

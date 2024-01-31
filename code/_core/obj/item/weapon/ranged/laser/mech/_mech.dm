@@ -26,7 +26,7 @@
 	plane = PLANE_ABSTRACT
 	value_burgerbux = -1
 
-/obj/item/weapon/ranged/energy/mech/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/energy/mech/can_owner_shoot(mob/caller,atom/object,location,params)
 
 	if(!istype(loc?.loc,/mob/living/vehicle/))
 		caller?.to_chat(span("warning","This weapon can only be fired in a vehicle!"))
@@ -73,7 +73,7 @@
 /obj/item/weapon/ranged/energy/mech/smg/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/energy/mech/smg/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/energy/mech/smg/get_skill_spread(mob/living/L)
 	return 0
 
 /obj/item/weapon/ranged/energy/mech/lmg
@@ -105,7 +105,7 @@
 /obj/item/weapon/ranged/energy/mech/lmg/get_static_spread()
 	return 0.002
 
-/obj/item/weapon/ranged/energy/mech/lmg/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/energy/mech/lmg/get_skill_spread(mob/living/L)
 	return 0
 
 
@@ -139,7 +139,7 @@
 /obj/item/weapon/ranged/energy/mech/laser/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/energy/mech/laser/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/energy/mech/laser/get_skill_spread(mob/living/L)
 	return 0
 
 
@@ -175,7 +175,7 @@
 /obj/item/weapon/ranged/energy/mech/ion/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/energy/mech/ion/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/energy/mech/ion/get_skill_spread(mob/living/L)
 	return 0
 
 
@@ -210,5 +210,5 @@
 /obj/item/weapon/ranged/energy/mech/missile_pod/get_static_spread()
 	return 0.01
 
-/obj/item/weapon/ranged/energy/mech/missile_pod/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/energy/mech/missile_pod/get_skill_spread(mob/living/L)
 	return 0

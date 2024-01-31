@@ -8,6 +8,6 @@
 /obj/item/weapon/ranged/energy/mech/smg/get_static_spread() //Base spread
 	return 0.005
 
-/obj/item/weapon/ranged/energy/mech/smg/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/energy/mech/smg/get_skill_spread(mob/living/L) //Base spread
 	return 0
 

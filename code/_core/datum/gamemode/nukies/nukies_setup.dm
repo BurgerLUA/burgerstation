@@ -1,4 +1,4 @@
-/gamemode/nuke_ops/proc/setup_player(var/mob/living/L,var/turf/T)
+/gamemode/nuke_ops/proc/setup_player(mob/living/L,turf/T)
 	L.force_move(T)
 	L.rejuvenate()
 	if(L.client)
@@ -34,7 +34,7 @@
 
 	return TRUE
 
-/gamemode/nuke_ops/proc/on_player_join(var/mob/living/L) //What happens when a player joins
+/gamemode/nuke_ops/proc/on_player_join(mob/living/L) //What happens when a player joins
 	active_players |= L
 	if(base_loadout && is_advanced(L))
 		var/mob/living/advanced/A = L
@@ -44,7 +44,7 @@
 	move_to_team(L,"Lobby")
 	return TRUE
 
-/gamemode/nuke_ops/proc/set_message(var/desired_message) //TODO: Make this better.
+/gamemode/nuke_ops/proc/set_message(desired_message) //TODO: Make this better.
 
 	for(var/mob/living/advanced/A in active_players)
 		if(!A.client)
@@ -53,7 +53,7 @@
 			M.set_text(desired_message)
 
 
-/gamemode/nuke_ops/proc/on_player_leave(var/mob/living/L) //What happens when a player leaves virtual reality.
+/gamemode/nuke_ops/proc/on_player_leave(mob/living/L) //What happens when a player leaves virtual reality.
 	active_players -= L
 	move_to_team(L,null)
 	return TRUE

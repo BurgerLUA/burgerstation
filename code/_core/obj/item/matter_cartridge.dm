@@ -9,7 +9,7 @@
 	weight = 5
 
 
-/obj/item/matter_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/matter_cartridge/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 
 

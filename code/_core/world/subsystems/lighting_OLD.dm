@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(lighting)
 	for(var/zlevel = 1 to world.maxz)
 		create_lighting_overlays_zlevel(zlevel)
 
-/proc/turf_has_lighting(var/turf/T)
+/proc/turf_has_lighting(turf/T)
 	if(!T.dynamic_lighting)
 		return FALSE
 
@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(lighting)
 
 	return TRUE
 
-/proc/create_lighting_overlays_zlevel(var/zlevel)
+/proc/create_lighting_overlays_zlevel(zlevel)
 
 	ASSERT(zlevel)
 

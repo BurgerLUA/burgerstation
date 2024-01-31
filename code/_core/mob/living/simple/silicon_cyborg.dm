@@ -102,7 +102,7 @@
 	update_sprite()
 
 
-/mob/living/simple/silicon/cyborg/death(var/silent=FALSE)
+/mob/living/simple/silicon/cyborg/death(silent=FALSE)
 	. = ..()
 	if(.)
 		if(silent)
@@ -110,7 +110,7 @@
 		else
 			gib()
 
-/mob/living/simple/silicon/cyborg/post_move(var/atom/old_loc)
+/mob/living/simple/silicon/cyborg/post_move(atom/old_loc)
 	. = ..()
 	if(. && !module && loc && !qdeleting && !dead)
 		do_transform()

@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(bosses)
 
 	var/list/tracked_rogue_crewmembers = list()
 
-/subsystem/bosses/unclog(var/mob/caller)
+/subsystem/bosses/unclog(mob/caller)
 
 	. = ..()
 
@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(bosses)
 		L.gib()
 
 
-/subsystem/bosses/proc/check_boss(var/mob/living/L)
+/subsystem/bosses/proc/check_boss(mob/living/L)
 
 	if(L.dead || L.qdeleting)
 		for(var/v in L.players_fighting_boss)
@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(bosses)
 			B.target_bosses |= src
 			B.update_stats()
 
-/mob/living/proc/add_player_to_boss(var/mob/living/advanced/player/P)
+/mob/living/proc/add_player_to_boss(mob/living/advanced/player/P)
 	if(P in src.players_fighting_boss)
 		return FALSE
 	players_fighting_boss += P
@@ -77,7 +77,7 @@ SUBSYSTEM_DEF(bosses)
 		B.target_bosses |= src
 		B.update_stats()
 
-/mob/living/proc/remove_player_from_boss(var/mob/living/advanced/player/P)
+/mob/living/proc/remove_player_from_boss(mob/living/advanced/player/P)
 	if(!(P in src.players_fighting_boss))
 		return FALSE
 	players_fighting_boss -= P

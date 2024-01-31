@@ -20,7 +20,7 @@
 
 	has_quick_function = TRUE
 
-/obj/hud/button/quick(var/mob/living/advanced/caller,var/atom/object,location,params)
+/obj/hud/button/quick(mob/living/advanced/caller,atom/object,location,params)
 
 	if(alpha == 0)
 		return FALSE
@@ -35,7 +35,7 @@
 	if(bad_delete) CRASH("[src.get_debug_name()] was deleted incorrectly!")
 
 
-/obj/hud/button/proc/show(var/should_show=TRUE,var/draw_speed=1 SECONDS)
+/obj/hud/button/proc/show(should_show=TRUE,draw_speed=1 SECONDS)
 	if(should_show)
 		animate(src,alpha= initial(alpha),time=draw_speed)
 		mouse_opacity = initial(mouse_opacity)
@@ -43,6 +43,6 @@
 		animate(src,alpha=0,time=draw_speed SECONDS)
 		mouse_opacity = 0
 
-/obj/hud/button/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	play_sound_target('sound/ui/tap-muted.ogg',caller, sound_setting = SOUND_SETTING_UI)
 	return TRUE

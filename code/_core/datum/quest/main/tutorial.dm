@@ -12,7 +12,7 @@
 		"cult" = "Defeat the cultists."
 	)
 
-/quest/main/tutorial/on_stage_changed(var/previous_stage)
+/quest/main/tutorial/on_stage_changed(previous_stage)
 	switch(stage)
 		if(1)
 			set_objective_displayed("clothes")

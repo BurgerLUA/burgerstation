@@ -20,7 +20,7 @@
 
 	return ..()
 
-/ai/artificer/proc/remove_tracked_mob(var/mob/living/L,var/args)
+/ai/artificer/proc/remove_tracked_mob(mob/living/L,args)
 	tracked_mobs -= L
 
 

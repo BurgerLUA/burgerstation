@@ -19,10 +19,10 @@
 
 	scale_sprite = FALSE
 
-/obj/item/container/edible/pill/get_consume_size(var/mob/living/L)
+/obj/item/container/edible/pill/get_consume_size(mob/living/L)
 	return reagents.volume_current
 
-/obj/item/container/edible/pill/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/container/edible/pill/quick(mob/caller,atom/object,location,params)
 	return try_transfer_reagents(caller,caller,location,null,params)
 
 /obj/item/container/edible/pill/get_consume_verb()

@@ -1,6 +1,6 @@
 /dialogue/npc/hostage/
 
-/dialogue/npc/hostage/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/hostage/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	var/mob/living/L = P.dialogue_target
 
@@ -37,7 +37,7 @@
 				"You already have someone with you."
 			)
 
-/dialogue/npc/hostage/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/hostage/set_topic(mob/living/advanced/player/P,topic)
 
 	. = ..()
 

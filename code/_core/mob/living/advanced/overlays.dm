@@ -1,4 +1,4 @@
-/mob/living/advanced/proc/add_overlay_tracked(var/k,var/atom/object,var/desired_plane,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0, var/desired_transform)
+/mob/living/advanced/proc/add_overlay_tracked(k,atom/object,desired_plane,desired_layer,desired_icon,desired_icon_state,desired_color,desired_additional_blends,desired_never_blend = FALSE, desired_no_initial = FALSE, desired_pixel_x = 0, desired_pixel_y = 0, desired_transform)
 
 	if(!k)
 		k = "\ref[object]_[src.type]"
@@ -61,7 +61,7 @@ mob/living/advanced/proc/remove_overlay(var/k)
 	return TRUE
 */
 
-/mob/living/advanced/proc/update_overlay_tracked(var/k,var/desired_layer,var/desired_plane,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend,var/desired_no_initial,var/desired_pixel_x,var/desired_pixel_y,var/desired_alpha,var/desired_transform,var/force)
+/mob/living/advanced/proc/update_overlay_tracked(k,desired_layer,desired_plane,desired_icon,desired_icon_state,desired_color,desired_additional_blends,desired_never_blend,desired_no_initial,desired_pixel_x,desired_pixel_y,desired_alpha,desired_transform,force)
 
 	var/image/overlay/O = overlays_assoc[k]
 
@@ -105,7 +105,7 @@ mob/living/advanced/proc/remove_overlay(var/k)
 
 	return TRUE
 
-/mob/living/advanced/proc/change_organ_visual(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/should_update,var/debug_message)
+/mob/living/advanced/proc/change_organ_visual(desired_id, desired_icon,desired_icon_state,desired_color,desired_blend, desired_type,desired_layer,should_update,debug_message)
 	. = FALSE
 	for(var/k in organs)
 		var/obj/item/organ/O = k

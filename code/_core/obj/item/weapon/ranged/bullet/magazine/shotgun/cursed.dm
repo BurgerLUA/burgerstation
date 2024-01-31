@@ -20,7 +20,7 @@
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/cursed/get_ranged_damage_type()
     return /damagetype/ranged/magic/chaos
 
-/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/cursed/spend_chambered_bullet(var/mob/caller) //magazine/shotgun/bulldog/cursed/
+/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/cursed/spend_chambered_bullet(mob/caller) //magazine/shotgun/bulldog/cursed/
     //remove a bullet from the chamber, but make a new one to return.
     if(!chambered_bullet || chambered_bullet.is_spent)
         return FALSE

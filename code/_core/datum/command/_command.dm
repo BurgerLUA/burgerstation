@@ -4,7 +4,7 @@
 	id = null
 	var/permission = 0
 
-/command/proc/run_command(var/mob/user,var/list/params)
+/command/proc/run_command(mob/user,list/params)
 
 	if(!user.client)
 		return FALSE

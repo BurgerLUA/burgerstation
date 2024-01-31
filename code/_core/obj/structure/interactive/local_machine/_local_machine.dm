@@ -28,7 +28,7 @@
 	SSclient.local_machines += src
 	update_sprite()
 
-/obj/structure/interactive/localmachine/proc/update_for_mob(var/mob/M)
+/obj/structure/interactive/localmachine/proc/update_for_mob(mob/M)
 
 	if(M in disallowed_mobs)
 		return
@@ -45,7 +45,7 @@
 		var/mob/M = k
 		update_for_mob(M)
 
-/obj/structure/interactive/localmachine/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/localmachine/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(ismob(caller))
 		INTERACT_CHECK
@@ -59,7 +59,7 @@
 	return ..()
 
 
-/obj/structure/interactive/localmachine/proc/clear_existing_images(var/mob/M)
+/obj/structure/interactive/localmachine/proc/clear_existing_images(mob/M)
 
 	if(!M.client)
 		return

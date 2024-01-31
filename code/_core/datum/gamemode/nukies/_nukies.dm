@@ -53,7 +53,7 @@
 	return TRUE
 
 
-/gamemode/nuke_ops/proc/player_post_death(var/mob/living/advanced/player/virtual/P)
+/gamemode/nuke_ops/proc/player_post_death(mob/living/advanced/player/virtual/P)
 	. = ..()
 	check_gamemode_win()
 
@@ -62,7 +62,7 @@
 	QDEL_NULL(tracked_disk)
 	return TRUE
 
-/gamemode/nuke_ops/proc/set_winner(var/desired_team)
+/gamemode/nuke_ops/proc/set_winner(desired_team)
 
 	if(game_state == 6 || game_state == 7)
 		return FALSE

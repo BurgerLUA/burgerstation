@@ -15,7 +15,7 @@
 
 	flags_hud = FLAG_HUD_MOB
 
-/obj/hud/button/hunger/get_examine_list(var/mob/examiner)
+/obj/hud/button/hunger/get_examine_list(mob/examiner)
 	. = ..()
 
 	if(is_living(examiner))

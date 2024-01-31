@@ -56,7 +56,7 @@
 		for(var/i=1,i<=4,i++)
 			. += SSweapons.weapon_to_magazine[chosen_secondary]
 
-/loadout/deathsquad/pre_add(var/mob/living/advanced/A,var/obj/item/I)
+/loadout/deathsquad/pre_add(mob/living/advanced/A,obj/item/I)
 
 	if(istype(I,/obj/item/weapon/ranged/))
 		var/obj/item/weapon/ranged/R = I

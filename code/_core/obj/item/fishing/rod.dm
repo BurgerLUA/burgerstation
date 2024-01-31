@@ -53,13 +53,13 @@
 
 
 
-/obj/item/fishing/rod/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/fishing/rod/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("lure")
 	SAVEATOM("line")
 	SAVEATOM("bait")
 
-/obj/item/fishing/rod/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/fishing/rod/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("lure")
 	LOADATOM("line")
@@ -79,7 +79,7 @@
 		I.color = L.color
 		add_overlay(I)
 
-/obj/item/fishing/rod/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/fishing/rod/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(fishing_turf) //Don't do anything while fishing.
 		return ..()
@@ -201,7 +201,7 @@
 	return ..()
 
 
-/obj/item/fishing/rod/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/fishing/rod/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 
 	INTERACT_CHECK
@@ -281,7 +281,7 @@
 
 	return ..()
 
-/obj/item/fishing/rod/get_examine_list(var/mob/living/advanced/caller)
+/obj/item/fishing/rod/get_examine_list(mob/living/advanced/caller)
 
 	. = ..()
 
@@ -303,7 +303,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/fishing/rod/telescopic/click_self(var/mob/caller,location,control,params)
+/obj/item/fishing/rod/telescopic/click_self(mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
 	if(fishing_turf)
@@ -313,11 +313,11 @@
 	play_sound('sound/items/drop/accessory.ogg',get_turf(src),range_max=VIEW_RANGE*0.2)
 	return TRUE
 
-/obj/item/fishing/rod/telescopic/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/fishing/rod/telescopic/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("compact")
 
-/obj/item/fishing/rod/telescopic/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/fishing/rod/telescopic/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("compact")
 

@@ -12,7 +12,7 @@
 /obj/item/weapon/ranged/energy/pump/get_charge_cost()
 	return initial(charge_cost)
 
-/obj/item/weapon/ranged/energy/pump/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/ranged/energy/pump/click_self(mob/caller,location,control,params)
 
 	if(next_shoot_time > world.time + 1)
 		return TRUE
@@ -26,7 +26,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/energy/pump/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/energy/pump/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -42,7 +42,7 @@
 
 	. = ..()
 
-/obj/item/weapon/ranged/energy/pump/proc/pump(var/mob/caller,var/silent=FALSE)
+/obj/item/weapon/ranged/energy/pump/proc/pump(mob/caller,silent=FALSE)
 
 	var/turf/T = get_turf(src)
 

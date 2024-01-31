@@ -50,10 +50,10 @@
 /obj/item/weapon/ranged/energy/abductor/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/energy/abductor/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/energy/abductor/get_skill_spread(mob/living/L)
 	return max(0,0.05 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/energy/abductor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/energy/abductor/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object

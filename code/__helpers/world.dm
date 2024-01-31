@@ -71,7 +71,7 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 		D.finalized = TRUE;																														\
 	}
 
-/proc/CREATE(var/atom/A,var/atom/desired_loc)
+/proc/CREATE(atom/A,atom/desired_loc)
 	A = new A(desired_loc)
 	INITIALIZE(A)
 	GENERATE(A)

@@ -6,7 +6,7 @@
 
 	value = 300
 
-/obj/item/mech_attachment/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/mech_attachment/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(!is_inventory(src.loc))
 		return attached_item.click_on_object(caller,object,location,control,params)
@@ -14,7 +14,7 @@
 	return ..()
 
 
-/obj/item/mech_attachment/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/mech_attachment/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	object = object.defer_click_on_object(location,control,params)
 
@@ -49,7 +49,7 @@
 		name = "[name] ([attached_item.name])"
 
 
-/obj/item/mech_attachment/proc/attach(var/mob/caller,var/obj/item/I)
+/obj/item/mech_attachment/proc/attach(mob/caller,obj/item/I)
 	if(attached_item)
 		caller?.to_chat(span("warning","There is already a [attached_item.name] attached to \the [src.name]!"))
 		return FALSE
@@ -59,7 +59,7 @@
 	update_sprite()
 	return TRUE
 
-/obj/item/mech_attachment/proc/unattach(var/mob/caller)
+/obj/item/mech_attachment/proc/unattach(mob/caller)
 	if(!attached_item)
 		caller?.to_chat(span("warning","There is nothing to detach from \the [src.name]!"))
 		return FALSE

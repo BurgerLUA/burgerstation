@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(ball) //Finally. A subsystem dedicated to BALLS.
 
 	var/list/all_balls = list()
 
-/subsystem/ball/unclog(var/mob/caller)
+/subsystem/ball/unclog(mob/caller)
 	for(var/k in all_balls)
 		var/obj/item/ball/B = k
 		if(!B || B.qdeleting)

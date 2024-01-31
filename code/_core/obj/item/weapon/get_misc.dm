@@ -16,10 +16,10 @@
 	return initial(BC.projectile_count)
 
 
-/obj/item/weapon/proc/get_stopping_power(var/armor_to_use=0)
+/obj/item/weapon/proc/get_stopping_power(armor_to_use=0)
 	return get_damage_per_hit(armor_to_use)/200
 
-/obj/item/weapon/proc/get_shots_to_kill(var/armor_to_use=0)
+/obj/item/weapon/proc/get_shots_to_kill(armor_to_use=0)
 	var/damage_per_hit = get_damage_per_hit(armor_to_use)
 	if(damage_per_hit <= 1)
 		return INFINITY
@@ -27,7 +27,7 @@
 	. = CEILING(.,1)
 	return
 
-/obj/item/weapon/proc/get_kill_time(var/armor_to_use=0) //In seconds.
+/obj/item/weapon/proc/get_kill_time(armor_to_use=0) //In seconds.
 
 	var/hits_per_second = get_hits_per_second()
 
@@ -40,7 +40,7 @@
 /obj/item/weapon/proc/get_accuracy()
 	return 1
 
-/obj/item/weapon/ranged/get_accuracy(var/armor_to_use=0) //lower is more accurate.
+/obj/item/weapon/ranged/get_accuracy(armor_to_use=0) //lower is more accurate.
 	return get_static_spread() + heat_max*(1-max(1,get_stopping_power(armor_to_use)))
 
 

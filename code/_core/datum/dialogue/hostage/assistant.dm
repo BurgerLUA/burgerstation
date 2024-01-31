@@ -1,6 +1,6 @@
 /dialogue/npc/hostage/assistant
 
-/dialogue/npc/hostage/assistant/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/hostage/assistant/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	var/mob/living/advanced/npc/unique/hostage/L = P.dialogue_target
 

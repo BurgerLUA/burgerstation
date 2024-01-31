@@ -19,7 +19,7 @@
 /reagent/fuel/get_flammability()
 	return fire_strength_per_unit
 
-/reagent/fuel/on_temperature_change(var/reagent_container/container)
+/reagent/fuel/on_temperature_change(reagent_container/container)
 
 	. = ..()
 
@@ -50,14 +50,14 @@
 		src.act_explode(container,I.last_interacted,container.owner,T,1,loyalty_tag)
 
 
-/reagent/fuel/New(var/desired_loc)
+/reagent/fuel/New(desired_loc)
 	//Automatically set value.
 	value = (explosion_strength_per_unit + flash_strength_per_unit*0.1 + bang_strength_per_unit*0.1 + fire_strength_per_unit*0.5)*0.3
 	. = ..()
 	value = CEILING(value,0.01)
 
 
-/reagent/fuel/act_explode(var/reagent_container/container,var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
+/reagent/fuel/act_explode(reagent_container/container,atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
 
 	var/turf/T = get_turf(container.owner)
 

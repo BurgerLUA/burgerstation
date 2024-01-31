@@ -29,29 +29,29 @@
 
 	rarity = RARITY_MYTHICAL
 
-/obj/item/clothing/belt/damage_deferal_shield/use_condition(var/amount_to_use=1)
+/obj/item/clothing/belt/damage_deferal_shield/use_condition(amount_to_use=1)
 	if(!CALLBACK_EXISTS("\ref[src]_disable_shield"))
 		return FALSE
 	. = ..()
 
 
-/obj/item/clothing/belt/damage_deferal_shield/on_equip(var/atom/old_location,var/silent=FALSE)
+/obj/item/clothing/belt/damage_deferal_shield/on_equip(atom/old_location,silent=FALSE)
 	. = ..()
 	var/obj/hud/inventory/I = loc
 	if(I.worn && is_advanced(I.owner))
 		HOOK_ADD("post_move","\ref[src]_shield_post_move",I.owner,src,src::owner_post_move())
 
-/obj/item/clothing/belt/damage_deferal_shield/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+/obj/item/clothing/belt/damage_deferal_shield/on_unequip(obj/hud/inventory/old_inventory,silent=FALSE) //When the object is dropped from the old_inventory
 	. = ..()
 	if(old_inventory.worn && is_advanced(old_inventory.owner))
 		HOOK_REMOVE("post_move","\ref[src]_shield_post_move",old_inventory.owner)
 
-/obj/item/clothing/belt/damage_deferal_shield/proc/owner_post_move(var/mob/living/advanced/owner,var/atom/old_loc)
+/obj/item/clothing/belt/damage_deferal_shield/proc/owner_post_move(mob/living/advanced/owner,atom/old_loc)
 	shield_overlay.glide_size = owner.glide_size
 	shield_overlay.force_move(owner.loc)
 	return TRUE
 
-/obj/item/clothing/belt/damage_deferal_shield/New(var/desired_loc)
+/obj/item/clothing/belt/damage_deferal_shield/New(desired_loc)
 	. = ..()
 	shield_overlay = new(src)
 	shield_overlay.mouse_opacity = 0
@@ -66,7 +66,7 @@
 	QDEL_NULL(shield_overlay)
 	. = ..()
 
-/obj/item/clothing/belt/damage_deferal_shield/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/belt/damage_deferal_shield/click_self(mob/caller,location,control,params)
 
 	if(CALLBACK_EXISTS("\ref[src]_disable_shield"))
 		caller.to_chat(span("notice","You toggle \the [src.name] off and manually cycle the shield."))
@@ -114,7 +114,7 @@
 	update_sprite()
 	return TRUE
 
-/obj/item/clothing/belt/damage_deferal_shield/negate_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_dealt=0)
+/obj/item/clothing/belt/damage_deferal_shield/negate_damage(atom/attacker,atom/victim,atom/weapon,atom/hit_object,atom/blamed,damage_dealt=0)
 
 	if(damage_dealt <= 0) //The damage doesn't exist for some reason.
 		return FALSE

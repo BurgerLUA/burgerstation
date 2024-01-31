@@ -1,6 +1,6 @@
 
 
-/proc/recursive_find_item(var/obj/item/I,var/desired_obj,var/desired_proc)
+/proc/recursive_find_item(obj/item/I,desired_obj,desired_proc)
 
 	if(!I)
 		CRASH("recursive_find_mob not supplied with an item!")
@@ -27,7 +27,7 @@
 	return FALSE
 
 
-/proc/recursive_find_mob(var/mob/living/advanced/A,var/desired_obj,var/desired_proc)
+/proc/recursive_find_mob(mob/living/advanced/A,desired_obj,desired_proc)
 
 	if(!A)
 		CRASH("recursive_find_mob not supplied with an advanced mob!")

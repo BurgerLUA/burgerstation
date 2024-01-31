@@ -6,7 +6,7 @@
 
 	level = 20
 
-/mob/living/advanced/npc/zombie/armored/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/mob/living/advanced/npc/zombie/armored/act_explode(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 
 	if(owner == src)
 		gib()

@@ -41,7 +41,7 @@
 	experience_power = 1
 	experience_multiplier = 2
 
-/experience/attribute/vitality/on_level_up(var/old_level,var/new_level)
+/experience/attribute/vitality/on_level_up(old_level,new_level)
 	if(owner && owner.health)
 		owner.health.update_health_stats()
 	return ..()
@@ -83,7 +83,7 @@
 	experience_power = 1
 	experience_multiplier = 2
 
-/experience/attribute/endurance/on_level_up(var/old_level,var/new_level)
+/experience/attribute/endurance/on_level_up(old_level,new_level)
 	if(owner && owner.health)
 		owner.health.update_health_stats()
 	return ..()
@@ -126,7 +126,7 @@
 	experience_power = 1
 	experience_multiplier = 2
 
-/experience/attribute/wisdom/on_level_up(var/old_level,var/new_level)
+/experience/attribute/wisdom/on_level_up(old_level,new_level)
 	if(owner && owner.health)
 		owner.health.update_health_stats()
 	return ..()
@@ -150,7 +150,7 @@
 	default_level = 50
 	counts_towards_level = FALSE
 
-/experience/attribute/luck/set_level(var/level)
+/experience/attribute/luck/set_level(level)
 	. = ..()
 	if(.)
 		owner.luck = clamp(level,1,src.get_max_level())

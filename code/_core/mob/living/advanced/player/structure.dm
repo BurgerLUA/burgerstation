@@ -1,4 +1,4 @@
-/mob/living/advanced/player/proc/set_structure_active(var/obj/structure/S)
+/mob/living/advanced/player/proc/set_structure_active(obj/structure/S)
 
 	if(S == active_structure)
 		return FALSE

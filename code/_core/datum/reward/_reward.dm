@@ -8,7 +8,7 @@
 
 	var/flags_reward = FLAG_REWARD_NONE
 
-/reward/proc/can_reward(var/client/C)
+/reward/proc/can_reward(client/C)
 
 	if(flags_reward & FLAG_REWARD_ONCE)
 		var/savedata/client/globals/GD = GLOBALDATA(C.ckey)
@@ -23,7 +23,7 @@
 
 	return TRUE
 
-/reward/proc/on_reward(var/client/C)
+/reward/proc/on_reward(client/C)
 
 	if(flags_reward & FLAG_REWARD_ONCE)
 		var/savedata/client/globals/GD = GLOBALDATA(C.ckey)
@@ -38,7 +38,7 @@
 
 	return TRUE
 
-/reward/proc/on_fail(var/client/C)
+/reward/proc/on_fail(client/C)
 	return TRUE
 
 /reward/credits/
@@ -47,7 +47,7 @@
 
 	var/credits_to_give = 0
 
-/reward/credits/can_reward(var/client/C)
+/reward/credits/can_reward(client/C)
 	if(is_player(C.mob))
 		var/mob/living/advanced/player/P = C.mob
 		if(P.allow_save)
@@ -56,7 +56,7 @@
 	return FALSE
 
 
-/reward/credits/on_reward(var/client/C)
+/reward/credits/on_reward(client/C)
 	var/mob/living/advanced/player/P = C.mob
 	P.adjust_currency(credits_to_give)
 	return ..()
@@ -68,7 +68,7 @@
 
 	var/burgerbux_to_give = 0
 
-/reward/burgerbux/can_reward(var/client/C)
+/reward/burgerbux/can_reward(client/C)
 	if(is_player(C.mob))
 		var/mob/living/advanced/player/P = C.mob
 		if(P.allow_save)
@@ -76,7 +76,7 @@
 	C.to_chat(span("danger","You cannot receive this reward as a non-player! Redeem this reward as a player to receive it!"))
 	return FALSE
 
-/reward/burgerbux/on_reward(var/client/C)
+/reward/burgerbux/on_reward(client/C)
 	var/mob/living/advanced/player/P = C.mob
 	P.adjust_burgerbux(burgerbux_to_give)
 	return ..()

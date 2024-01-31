@@ -3,7 +3,7 @@
 	icon = 'icons/obj/effects/stand.dmi'
 	icon_state = "menacing"
 
-/obj/effect/temp/menacing/New(var/desired_location,var/desired_time,var/offset_x = 0,var/offset_y=0)
+/obj/effect/temp/menacing/New(desired_location,desired_time,offset_x = 0,offset_y=0)
 
 	. = ..()
 

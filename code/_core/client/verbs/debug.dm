@@ -519,7 +519,7 @@ var/global/static/list/destroy_everything_whitelist = list(
 
 	return TRUE
 
-/client/verb/set_attribute(var/mob/mob as mob)
+/client/verb/set_attribute(mob/mob as mob)
 
 	set name = "Set Attribute Level"
 	set category = "Debug"
@@ -552,7 +552,7 @@ var/global/static/list/destroy_everything_whitelist = list(
 	log_admin("[src.get_debug_name()] set [L.get_debug_name()]'s  [chosen_attribute] from [old_level] to [chosen_value].")
 
 
-/client/verb/set_skill(var/mob/mob as mob)
+/client/verb/set_skill(mob/mob as mob)
 
 	set name = "Set Skill Level"
 	set category = "Debug"

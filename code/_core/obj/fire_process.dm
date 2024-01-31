@@ -60,7 +60,7 @@
 
 	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
-/obj/fire_process/proc/do_damage(var/atom/movable/victim,var/distance_check=0)
+/obj/fire_process/proc/do_damage(atom/movable/victim,distance_check=0)
 
 	if(!victim || !victim.z || !src.z || victim.z != src.z)
 		return FALSE
@@ -144,7 +144,7 @@
 	initial_turf = null
 	. = ..()
 
-/obj/fire_process/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/obj/fire_process/act_explode(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 	. = ..()
 	var/found_direction = get_dir(source,src)
 	if(get_dir(source,src) > 0)
@@ -250,7 +250,7 @@
 	return TRUE
 
 
-/obj/fire_process/proc/get_params(var/atom/victim)
+/obj/fire_process/proc/get_params(atom/victim)
 	. = list()
 	if(is_living(victim))
 		var/mob/living/L = victim

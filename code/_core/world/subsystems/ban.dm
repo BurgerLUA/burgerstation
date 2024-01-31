@@ -86,7 +86,7 @@ SUBSYSTEM_DEF(ban)
 
 	return TRUE
 
-/subsystem/ban/proc/is_banned(var/key,var/address,var/computer_id,var/type)
+/subsystem/ban/proc/is_banned(key,address,computer_id,type)
 
 	var/ckey_sanitized = ckey(key)
 
@@ -117,7 +117,7 @@ SUBSYSTEM_DEF(ban)
 
 	return SSban.is_banned(key,address,computer_id,type)
 
-/subsystem/ban/proc/add_ckey_ban(var/desired_ckey,var/admin_ckey = "SERVER",var/reason = "No reason specified.",var/expires = world.realtime + 86400)
+/subsystem/ban/proc/add_ckey_ban(desired_ckey,admin_ckey = "SERVER",reason = "No reason specified.",expires = world.realtime + 86400)
 
 	bans_keys[desired_ckey] = list("admin" = admin_ckey, "reason" = reason, "expires" = expires)
 	rustg_file_write(json_encode(bans_keys),BANLIST_KEYS_DIR)
@@ -145,7 +145,7 @@ SUBSYSTEM_DEF(ban)
 
 	return TRUE
 
-/subsystem/ban/proc/remove_ckey_ban(var/ckey,admin_ckey)
+/subsystem/ban/proc/remove_ckey_ban(ckey,admin_ckey)
 	if(bans_keys[ckey])
 		bans_keys -= ckey
 		log_admin("[ckey] was removed from the ckey banlist by [admin_ckey].")

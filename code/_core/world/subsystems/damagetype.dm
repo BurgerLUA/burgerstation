@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(damagetype)
 	return ..()
 
 /*
-/subsystem/damagetype/proc/add_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1,var/damagetype/DT)
+/subsystem/damagetype/proc/add_damage(atom/attacker,atom/victim,atom/weapon,atom/hit_object,atom/blamed,damage_multiplier=1,damagetype/DT)
 
 	var/reference_id = "\ref[weapon]_\ref[hit_object]"
 

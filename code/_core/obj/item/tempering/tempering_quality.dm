@@ -5,7 +5,7 @@
 	has_quick_function = TRUE
 	var/item_type_name = "items"
 
-/obj/item/tempering/quality/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/tempering/quality/quick(mob/caller,atom/object,location,params)
 
 	if(!is_advanced(caller) || !is_inventory(src.loc))
 		return FALSE
@@ -14,7 +14,7 @@
 
 	return A.put_in_hands(src,params)
 
-/obj/item/tempering/quality/can_temper(var/mob/caller,var/obj/item/I)
+/obj/item/tempering/quality/can_temper(mob/caller,obj/item/I)
 
 	if(I.quality <= -1)
 		caller.to_chat(span("warning","\The [I.name] cannot be improved!"))
@@ -26,11 +26,11 @@
 
 	return ..()
 
-/obj/item/tempering/quality/get_examine_list(var/mob/examiner)
+/obj/item/tempering/quality/get_examine_list(mob/examiner)
 	. = ..()
 	. += span("notice","Increases the quality of [item_type_name] by [increase]%, up to [maximum]%, with a minimum of [minimum]%.")
 
-/obj/item/tempering/quality/on_temper(var/mob/caller,var/obj/item/I)
+/obj/item/tempering/quality/on_temper(mob/caller,obj/item/I)
 	I.quality = clamp(I.quality + increase,minimum,maximum)
 	. = ..()
 

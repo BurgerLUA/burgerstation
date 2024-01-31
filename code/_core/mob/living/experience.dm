@@ -1,66 +1,66 @@
 //Skills
-/mob/living/proc/get_skill(var/id,var/error_on_null = TRUE)
+/mob/living/proc/get_skill(id,error_on_null = TRUE)
 	if(!skills[id])
 		if(error_on_null) log_error("Warning! Tried getting skill of [id], but it didn't exist for [src.get_debug_name()]!")
 		return null
 	return skills[id]
 
-/mob/living/proc/get_skill_level(var/id)
+/mob/living/proc/get_skill_level(id)
 	var/experience/skill/S = get_skill(id)
 	if(!S)
 		log_error("Warning! Tried getting skill level of [id], but it didn't exist for [src.get_debug_name()]!")
 		return 25
 	return S.get_current_level()
 
-/mob/living/proc/get_skill_power(var/id,var/min_power=0.25,var/max_power=1,var/absolute_max_power)
+/mob/living/proc/get_skill_power(id,min_power=0.25,max_power=1,absolute_max_power)
 	var/experience/skill/S = get_skill(id)
 	if(!S)
 		log_error("Warning! Tried getting skill power of [id], but it didn't exist for [src.get_debug_name()]!")
 		return 0.25
 	return S.get_power(min_power,max_power,absolute_max_power)
 
-/mob/living/proc/set_skill_level(var/id,var/desired_level)
+/mob/living/proc/set_skill_level(id,desired_level)
 	var/experience/skill/S = get_skill(id)
 	return S.set_level(desired_level)
 
-/mob/living/proc/set_skill_xp(var/id,var/desired_xp)
+/mob/living/proc/set_skill_xp(id,desired_xp)
 	var/experience/skill/S = get_skill(id)
 	return S.set_xp(desired_xp)
 
-/mob/living/proc/add_skill_xp(var/id,var/xp_to_add,var/difficulty_multiplier=TRUE)
+/mob/living/proc/add_skill_xp(id,xp_to_add,difficulty_multiplier=TRUE)
 	var/experience/skill/S = get_skill(id)
 	return S.add_xp(xp_to_add,difficulty_multiplier=difficulty_multiplier)
 
 //Attributes
-/mob/living/proc/get_attribute(var/id,var/error_on_null = TRUE) //TODO: Find out if error_on_null is needed.
+/mob/living/proc/get_attribute(id,error_on_null = TRUE) //TODO: Find out if error_on_null is needed.
 	if(!attributes[id])
 		if(error_on_null) log_error("Warning! Tried getting attribute of [id], but it didn't exist for [src.get_debug_name()]!")
 		return null
 	return attributes[id]
 
-/mob/living/proc/get_attribute_level(var/id)
+/mob/living/proc/get_attribute_level(id)
 	var/experience/attribute/A = get_attribute(id)
 	if(!A)
 		log_error("Warning! Tried getting attribute level of [id], but it didn't exist for [src.get_debug_name()]!")
 		return 25
 	return A.get_current_level()
 
-/mob/living/proc/get_attribute_power(var/id,var/min_power=0.25,var/max_power=1,var/absolute_max_power)
+/mob/living/proc/get_attribute_power(id,min_power=0.25,max_power=1,absolute_max_power)
 	var/experience/attribute/A = get_attribute(id)
 	if(!A)
 		log_error("Warning! Tried getting attribute power of [id], but it didn't exist for [src.get_debug_name()]!")
 		return 0.25
 	return A.get_power(min_power,max_power,absolute_max_power)
 
-/mob/living/proc/set_attribute_level(var/id,var/desired_level)
+/mob/living/proc/set_attribute_level(id,desired_level)
 	var/experience/attribute/A = get_attribute(id)
 	return A.set_level(desired_level)
 
-/mob/living/proc/set_attribute_xp(var/id,var/desired_xp)
+/mob/living/proc/set_attribute_xp(id,desired_xp)
 	var/experience/attribute/A = get_attribute(id)
 	return A.set_xp(desired_xp)
 
-/mob/living/proc/add_attribute_xp(var/id,var/xp_to_add,var/difficulty_multiplier=TRUE)
+/mob/living/proc/add_attribute_xp(id,xp_to_add,difficulty_multiplier=TRUE)
 	var/experience/attribute/A = get_attribute(id)
 	return A.add_xp(xp_to_add,difficulty_multiplier=difficulty_multiplier)
 
@@ -103,7 +103,7 @@
 			E.update_experience(E.level_to_xp(E.default_level))
 		skills[E.id] = E
 
-/mob/living/proc/update_level(var/first=FALSE)
+/mob/living/proc/update_level(first=FALSE)
 
 	var/old_level = level
 
@@ -143,10 +143,10 @@
 	return old_level != level
 
 
-/mob/living/proc/on_add_xp(var/experience/E,var/added_xp)
+/mob/living/proc/on_add_xp(experience/E,added_xp)
 	return TRUE
 
-/mob/living/proc/on_level_up(var/experience/E,var/old_level,var/new_level)
+/mob/living/proc/on_level_up(experience/E,old_level,new_level)
 
 	var/decrease = old_level > new_level
 

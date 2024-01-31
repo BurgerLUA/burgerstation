@@ -45,14 +45,14 @@
 	pixel_x = 6
 	pixel_y = -1
 
-/obj/item/container/edible/dynamic/pizza/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/container/edible/dynamic/pizza/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	return !sliced
 
 /obj/item/container/edible/dynamic/pizza/PreDestroy()
 	QDEL_NULL(reagents_toppings)
 	. = ..()
 
-/obj/item/container/edible/dynamic/pizza/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/container/edible/dynamic/pizza/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("sliced")
 	SAVEVAR("color_sauce")
@@ -62,7 +62,7 @@
 	if(reagents_toppings && length(reagents_toppings.stored_reagents))
 		.["reagents_toppings"] = reagents.stored_reagents
 
-/obj/item/container/edible/dynamic/pizza/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/container/edible/dynamic/pizza/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("sliced")
 	LOADVAR("color_sauce")
@@ -70,7 +70,7 @@
 	LOADLIST("topping_data")
 	LOADLIST("offsets")
 
-/obj/item/container/edible/dynamic/pizza/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/container/edible/dynamic/pizza/load_item_data_post(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	if(length(object_data["reagents_toppings"]))
 		for(var/r_id in object_data["reagents_toppings"])
@@ -98,7 +98,7 @@
 		var/icon/I = new/icon(initial(icon),"slice_mask")
 		filters += filter(type="alpha",icon=I)
 
-/obj/item/container/edible/dynamic/pizza/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/edible/dynamic/pizza/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	. = ..()
 
@@ -117,7 +117,7 @@
 			FINALIZE(P)
 		qdel(src)
 
-/obj/item/container/edible/dynamic/pizza/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/edible/dynamic/pizza/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!sliced && istype(object,/obj/item/container) && object.reagents && object.reagents.volume_current && !istype(object,/obj/item/container/edible/dynamic/pizza))
 		var/valid = FALSE
@@ -228,7 +228,7 @@
 	add_underlay(raw)
 
 
-/obj/item/container/edible/dynamic/pizza/get_reagents_to_consume(var/mob/living/consumer) //I know its shitcode to do this but what can you do.
+/obj/item/container/edible/dynamic/pizza/get_reagents_to_consume(mob/living/consumer) //I know its shitcode to do this but what can you do.
 
 	var/total_reagents = max(reagents_toppings.volume_current,reagents.volume_current)
 

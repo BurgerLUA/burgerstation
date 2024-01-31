@@ -19,7 +19,7 @@ var/global/mob/abstract/melee_checker
 	see_in_dark  = 1e6 // Literally arbitrary.
 	density = TRUE
 
-/mob/abstract/melee_checker/New(var/desired_loc)
+/mob/abstract/melee_checker/New(desired_loc)
 	melee_checker = src
 	return ..()
 

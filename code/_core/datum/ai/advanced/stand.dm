@@ -16,18 +16,18 @@
 /ai/advanced/stand/handle_movement_roaming()
 	return FALSE
 
-/ai/advanced/stand/set_objective(var/mob/living/L)
+/ai/advanced/stand/set_objective(mob/living/L)
 	. = ..()
 	owner.set_dir(owner.dir,TRUE)
 
-/ai/advanced/stand/is_enemy(var/atom/A,var/safety_check=TRUE)
+/ai/advanced/stand/is_enemy(atom/A,safety_check=TRUE)
 	if(is_living(A))
 		var/mob/living/L = A
 		if(L.stand && L.stand.linked_stand == owner)
 			return FALSE
 	return ..()
 
-/ai/advanced/stand/should_attack_mob(var/mob/living/L)
+/ai/advanced/stand/should_attack_mob(mob/living/L)
 
 	if(L.dead)
 		return FALSE
@@ -44,7 +44,7 @@
 	return TRUE
 
 
-/ai/advanced/stand/is_enemy(var/atom/A,var/safety_check=TRUE)
+/ai/advanced/stand/is_enemy(atom/A,safety_check=TRUE)
 	if(A == owner)
 		return FALSE
 	if(!safety_check)
@@ -57,7 +57,7 @@
 				return TRUE
 	return FALSE
 
-/ai/advanced/stand/get_attack_score(var/mob/living/L)
+/ai/advanced/stand/get_attack_score(mob/living/L)
 	. = ..()
 	if(istype(L,/mob/living/advanced/stand/))
 		. += 10

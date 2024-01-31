@@ -9,6 +9,6 @@ var/global/list/shuttle_markers = list()
 	mouse_opacity = 2
 	alpha = 255
 
-/obj/marker/shuttle/New(var/desired_loc)
+/obj/marker/shuttle/New(desired_loc)
 	. = ..()
 	shuttle_markers += src

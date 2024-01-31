@@ -1,4 +1,4 @@
-/atom/movable/proc/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = VIEW_RANGE,var/desired_loyalty_tag,var/damage_multiplier=1)
+/atom/movable/proc/throw_self(atom/thrower,atom/desired_target,target_x,target_y,vel_x,vel_y,lifetime = -1, steps_allowed = VIEW_RANGE,desired_loyalty_tag,damage_multiplier=1)
 
 	if(!thrower)
 		CRASH("No thrower exists!")
@@ -49,5 +49,5 @@
 	src.force_move(P) //Move it to contents.
 	return P
 
-/atom/movable/proc/on_thrown(var/atom/owner,var/atom/hit_atom) //What happens after the person is thrown and it hits an object.
+/atom/movable/proc/on_thrown(atom/owner,atom/hit_atom) //What happens after the person is thrown and it hits an object.
 	return TRUE

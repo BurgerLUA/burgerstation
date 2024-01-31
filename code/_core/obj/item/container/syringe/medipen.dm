@@ -52,10 +52,10 @@
 		I.color = reagents.color
 		add_underlay(I)
 
-/obj/item/container/syringe/medipen/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/container/syringe/medipen/mouse_wheel_on_object(mob/caller,delta_x,delta_y,location,control,params)
 	return
 
-/obj/item/container/syringe/medipen/click_self(var/mob/caller,location,control,params)
+/obj/item/container/syringe/medipen/click_self(mob/caller,location,control,params)
 	return
 
 /obj/item/container/syringe/medipen/adminomnizine

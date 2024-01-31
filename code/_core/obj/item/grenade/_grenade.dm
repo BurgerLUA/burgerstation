@@ -35,7 +35,7 @@
 		. *= 0.1
 	. = CEILING(.,1)
 
-/obj/item/grenade/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
+/obj/item/grenade/get_projectile_offset(initial_offset_x,initial_offset_y,bullet_num,bullet_num_max,accuracy)
 
 	var/num = bullet_num/bullet_num_max
 
@@ -55,7 +55,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/grenade/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/grenade/quick(mob/caller,atom/object,location,params)
 
 	if(!is_living(caller) || !object)
 		return FALSE
@@ -91,21 +91,21 @@
 
 	return TRUE
 
-/obj/item/grenade/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/grenade/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("open")
 	SAVEVAR("spent")
 	SAVEATOM("stored_trigger")
 	SAVELISTATOM("stored_containers")
 
-/obj/item/grenade/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/grenade/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("open")
 	LOADVAR("spent")
 	LOADATOM("stored_trigger")
 	LOADLISTATOM("stored_containers")
 
-/obj/item/grenade/post_move(var/atom/old_loc)
+/obj/item/grenade/post_move(atom/old_loc)
 
 	. = ..()
 
@@ -120,7 +120,7 @@
 			SSai.tracked_avoidance_by_z["[loc.z]"] += src
 
 
-/obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/obj/item/grenade/act_explode(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 
 	if(alpha == 0) //Already gone.
 		return FALSE
@@ -135,7 +135,7 @@
 	mouse_opacity = 0
 	anchored = 2
 
-/obj/item/grenade/New(var/desired_loc)
+/obj/item/grenade/New(desired_loc)
 	. = ..()
 	update_sprite()
 
@@ -173,7 +173,7 @@
 
 	return ..()
 
-/obj/item/grenade/click_self(var/mob/caller,location,control,params)
+/obj/item/grenade/click_self(mob/caller,location,control,params)
 
 	if(spent)
 		return ..()
@@ -189,7 +189,7 @@
 
 	return TRUE
 
-/obj/item/grenade/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/grenade/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(spent)
 		return ..()
@@ -277,7 +277,7 @@
 
 	return ..()
 
-/obj/item/grenade/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/grenade/trigger(mob/caller,atom/source,signal_freq,signal_code)
 
 	if(is_inventory(loc))
 		drop_item()

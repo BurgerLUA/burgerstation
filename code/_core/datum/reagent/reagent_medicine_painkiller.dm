@@ -20,7 +20,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
-/reagent/medicine/painkiller/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/painkiller/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -31,7 +31,7 @@
 	else
 		owner.pain_regen_buffer += .*multiplier
 
-/reagent/medicine/painkiller/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/painkiller/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -42,7 +42,7 @@
 	else
 		owner.pain_regen_buffer += .*multiplier
 
-/reagent/medicine/painkiller/on_overdose(var/mob/living/owner,var/reagent_container/container,var/metabolism_amount=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/painkiller/on_overdose(mob/living/owner,reagent_container/container,metabolism_amount=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 

@@ -1,4 +1,4 @@
-/mob/living/advanced/player/proc/set_squad(var/squad/S)
+/mob/living/advanced/player/proc/set_squad(squad/S)
 
 	if(S == current_squad)
 		return FALSE
@@ -21,7 +21,7 @@
 	return TRUE
 
 
-/mob/living/advanced/player/proc/add_squad_button(var/mob/living/advanced/player/P)
+/mob/living/advanced/player/proc/add_squad_button(mob/living/advanced/player/P)
 
 	for(var/obj/hud/button/squad/member/B in buttons)
 		if(B.tracked_mob == P)
@@ -32,7 +32,7 @@
 
 	return TRUE
 
-/mob/living/advanced/player/proc/remove_squad_button(var/mob/living/advanced/player/P)
+/mob/living/advanced/player/proc/remove_squad_button(mob/living/advanced/player/P)
 
 	for(var/obj/hud/button/squad/member/B in buttons)
 		if(B.tracked_mob == P)

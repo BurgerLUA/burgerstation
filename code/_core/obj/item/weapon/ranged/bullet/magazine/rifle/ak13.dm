@@ -72,6 +72,6 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_static_spread()
 	return 0.008
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/ak13/get_skill_spread(mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.01 - (0.05 * L.get_skill_power(SKILL_RANGED)))

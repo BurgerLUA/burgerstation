@@ -11,7 +11,7 @@
 
 	affects_dead = FALSE
 
-/status_effect/rage/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/rage/on_effect_added(mob/living/owner,atom/source,magnitude,duration,stealthy)
 	. = ..()
 	owner.add_status_effect(UNDYING,magnitude,duration,stealthy=TRUE)
 	owner.add_status_effect(ADRENALINE,magnitude,duration,stealthy=TRUE)

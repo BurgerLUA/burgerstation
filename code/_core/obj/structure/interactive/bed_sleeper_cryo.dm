@@ -7,7 +7,7 @@
 	tertiary_color = "#008800"
 	var/spawnpoint = TRUE
 
-/obj/structure/interactive/bed/sleeper/cryo/New(var/desired_loc)
+/obj/structure/interactive/bed/sleeper/cryo/New(desired_loc)
 	if(spawnpoint) SSobj.cryo_spawnpoints += src
 	return ..()
 
@@ -16,14 +16,14 @@
 	if(spawnpoint)
 		SSobj.cryo_spawnpoints -= src
 
-/obj/structure/interactive/bed/sleeper/can_buckle(var/mob/living/advanced/A,var/mob/caller)
+/obj/structure/interactive/bed/sleeper/can_buckle(mob/living/advanced/A,mob/caller)
 
 	if(!is_player(A))
 		return FALSE
 
 	. = ..()
 
-/obj/structure/interactive/bed/sleeper/cryo/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
+/obj/structure/interactive/bed/sleeper/cryo/buckle(mob/living/victim,mob/caller,silent=FALSE)
 
 	. = ..()
 
@@ -45,7 +45,7 @@
 	if(buckled)
 		return TRUE
 
-/obj/structure/interactive/bed/sleeper/cryo/on_close(var/mob/caller)
+/obj/structure/interactive/bed/sleeper/cryo/on_close(mob/caller)
 
 	. = ..()
 

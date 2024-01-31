@@ -5,7 +5,7 @@
 	var/base_damage = 20
 
 //TODO: REDO THIS
-/spellcraft/effect/damage/on_cast(var/turf/cast_loc,var/mob/living/caster,var/atom/target,var/effect_color,var/spell_mod_id,var/spell_buff_id)
+/spellcraft/effect/damage/on_cast(turf/cast_loc,mob/living/caster,atom/target,effect_color,spell_mod_id,spell_buff_id)
 	/*
 	var/spellcraft/modifier/M = all_modifiers[spell_mod_id]
 	var/damage_type = M.damage_type

@@ -1,2 +1,2 @@
-/mob/living/proc/get_emote_sound(var/emote_id)
+/mob/living/proc/get_emote_sound(emote_id)
 	return null

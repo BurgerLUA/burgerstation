@@ -6,7 +6,7 @@
 
 	return TRUE
 
-/mob/living/advanced/proc/add_inventory_defer(var/obj/hud/inventory/I,var/slot=0)
+/mob/living/advanced/proc/add_inventory_defer(obj/hud/inventory/I,slot=0)
 
 	var/x_pos = (slot % 6) - 3
 	var/y_pos = -FLOOR(1 + slot/6,1)
@@ -24,7 +24,7 @@
 
 	return B
 
-/mob/living/advanced/proc/examine_body_inventory(var/mob/living/advanced/caller) //caller wants to see inside src
+/mob/living/advanced/proc/examine_body_inventory(mob/living/advanced/caller) //caller wants to see inside src
 
 	if(!src.can_caller_interact_with(caller,distance_checks=FALSE))
 		return TRUE

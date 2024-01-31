@@ -1,9 +1,9 @@
 /savedata/server/soapstone
 
-/savedata/server/soapstone/get_file(var/file_id)
+/savedata/server/soapstone/get_file(file_id)
 	return replacetext(SOAPSTONE_FILE_FORMAT,"%MAP",file_id)
 
-/savedata/server/soapstone/proc/quick_write(var/list/data_to_write)
+/savedata/server/soapstone/proc/quick_write(list/data_to_write)
 
 	if(!data_to_write || !length(data_to_write))
 		return FALSE

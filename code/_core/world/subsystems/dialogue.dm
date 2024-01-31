@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(dialogue)
 
 
 
-/subsystem/dialogue/proc/setup_combat_dialogue(var/combat_dialogue/CD)
+/subsystem/dialogue/proc/setup_combat_dialogue(combat_dialogue/CD)
 
 	var/list/files = flist("[CD.folderpath]/")
 
@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(dialogue)
 
 	return TRUE
 
-/subsystem/dialogue/proc/get_combat_dialogue(var/combat_dialogue/cd_id,var/desired_category,var/swear_chance=25)
+/subsystem/dialogue/proc/get_combat_dialogue(combat_dialogue/cd_id,desired_category,swear_chance=25)
 
 	if(!desired_category)
 		return FALSE

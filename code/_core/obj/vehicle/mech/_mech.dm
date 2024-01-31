@@ -16,10 +16,10 @@
 	blood_type = /reagent/blood/robot
 	blood_volume = 1000
 
-/mob/living/vehicle/mech/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+/mob/living/vehicle/mech/get_footsteps(list/original_footsteps,enter=TRUE)
 	return original_footsteps + /footstep/mech_step
 
-/mob/living/vehicle/mech/set_dir(var/desired_dir,var/force=FALSE)
+/mob/living/vehicle/mech/set_dir(desired_dir,force=FALSE)
 
 	. = ..()
 
@@ -41,7 +41,7 @@
 	. = ..()
 	update_sprite()
 
-/mob/living/vehicle/mech/get_movement_delay(var/include_stance=TRUE)
+/mob/living/vehicle/mech/get_movement_delay(include_stance=TRUE)
 	return movement_delay
 
 /mob/living/vehicle/mech/update_icon()

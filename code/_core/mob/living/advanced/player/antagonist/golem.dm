@@ -9,7 +9,7 @@ var/global/list/possible_materials = list(
 /mob/living/advanced/player/antagonist/golem
 	loadout_to_use = /loadout/golem
 
-/mob/living/advanced/player/antagonist/golem/setup_appearance(var/set_default=FALSE)
+/mob/living/advanced/player/antagonist/golem/setup_appearance(set_default=FALSE)
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/golem)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/golem)
 

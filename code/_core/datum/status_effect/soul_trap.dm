@@ -8,7 +8,7 @@
 
 	affects_dead = FALSE
 
-/status_effect/soul_trap/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+/status_effect/soul_trap/can_add_status_effect(atom/attacker,mob/living/victim)
 
 	if(victim.is_player_controlled())
 		return FALSE

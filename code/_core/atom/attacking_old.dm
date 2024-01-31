@@ -1,4 +1,4 @@
-/atom/proc/get_attack_delay(var/mob/user)
+/atom/proc/get_attack_delay(mob/user)
 
 	if(is_living(user))
 		var/mob/living/L = user
@@ -6,20 +6,20 @@
 
 	return attack_delay
 
-/atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/list/damage_table,var/damage_amount)
+/atom/proc/on_damage_received(atom/atom_damaged,atom/attacker,list/damage_table,damage_amount)
 
 	if(health)
 		health.update_health(damage_amount,attacker)
 
 	return TRUE
 
-/atom/proc/change_victim(var/atom/attacker)
+/atom/proc/change_victim(atom/attacker)
 	return src
 
-/atom/proc/help(var/atom/caller,var/atom/object,var/list/params=list()) //The src attacks the victim, with the blamed taking responsibility
+/atom/proc/help(atom/caller,atom/object,list/params=list()) //The src attacks the victim, with the blamed taking responsibility
 	return FALSE
 
-/atom/proc/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
+/atom/proc/attack(atom/attacker,atom/victim,list/params=list(),atom/blamed,ignore_distance = FALSE) //The src attacks the victim, with the blamed taking responsibility
 
 	if(!attacker)
 		attacker = src
@@ -93,13 +93,13 @@
 
 	return TRUE
 
-/atom/proc/get_object_to_damage(var/atom/attacker,params) //Which object should the attacker damage?
+/atom/proc/get_object_to_damage(atom/attacker,params) //Which object should the attacker damage?
 	return src
 
-/atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params) //Which object should the attacker damage with?
+/atom/proc/get_object_to_damage_with(atom/attacker,atom/victim,params) //Which object should the attacker damage with?
 	return src
 
-/atom/proc/can_attack(var/atom/victim,var/atom/weapon,var/params)
+/atom/proc/can_attack(atom/victim,atom/weapon,params)
 
 	if(!mouse_opacity)
 		return FALSE
@@ -123,19 +123,19 @@
 
 	return TRUE
 
-/atom/proc/get_parry_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+/atom/proc/get_parry_chance(atom/attacker,atom/weapon,atom/target)
 	return 0
 
-/atom/proc/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target) //Chance that hitting this atom is a miss.
+/atom/proc/get_miss_chance(atom/attacker,atom/weapon,atom/target) //Chance that hitting this atom is a miss.
 	return 0
 
-/atom/proc/get_dodge_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+/atom/proc/get_dodge_chance(atom/attacker,atom/weapon,atom/target,damagetype/DT)
 	return 0
 
-/atom/proc/get_block_chance(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+/atom/proc/get_block_chance(atom/attacker,atom/weapon,atom/target,damagetype/DT)
 	return 0
 
-/atom/proc/perform_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+/atom/proc/perform_block(atom/attacker,atom/weapon,atom/target,damagetype/DT)
 	if(attacker == src)
 		return FALSE
 	var/base_chance = get_block_chance(attacker,weapon,target,DT) * DT.block_chance_mul
@@ -155,7 +155,7 @@
 
 	return TRUE
 
-/atom/proc/perform_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT,var/allow_parry_counter)
+/atom/proc/perform_parry(atom/attacker,atom/weapon,atom/target,damagetype/DT,allow_parry_counter)
 	if(attacker == src)
 		return FALSE
 	var/base_chance = get_parry_chance(attacker,weapon,target) * DT.parry_chance_mul
@@ -177,7 +177,7 @@
 
 	return TRUE
 
-/atom/proc/perform_dodge(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
+/atom/proc/perform_dodge(atom/attacker,atom/weapon,atom/target,damagetype/DT)
 	if(attacker == src)
 		return FALSE
 	var/base_chance = get_dodge_chance(attacker,weapon,target,DT) * DT.dodge_chance_mul

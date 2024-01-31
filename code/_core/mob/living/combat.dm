@@ -18,7 +18,7 @@
 
 	return TRUE
 
-/mob/living/proc/handle_blocking(var/force_change=FALSE)
+/mob/living/proc/handle_blocking(force_change=FALSE)
 
 	var/changed = force_change
 
@@ -51,7 +51,7 @@
 			if(!force_change)
 				animate(alpha=150, time = parry_spam_time - world.time)
 
-/mob/living/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+/mob/living/can_attack(atom/attacker,atom/victim,atom/weapon,params,damagetype/damage_type)
 
 	if(dead)
 		return FALSE
@@ -65,7 +65,7 @@
 
 	. = ..()
 
-/mob/living/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/mob/living/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 
 	if(src != attacker && is_living(attacker))
 		var/mob/living/L = attacker
@@ -75,17 +75,17 @@
 
 	return ..()
 
-/mob/living/proc/send_pain_response(var/pain_strength=50)
+/mob/living/proc/send_pain_response(pain_strength=50)
 	if(pain_strength < 75)
 		do_emote("pain")
 	else
 		do_emote("scream")
 	return TRUE
 
-/mob/living/proc/get_block_data(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+/mob/living/proc/get_block_data(atom/attacker,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT)
 	return list(src,0.5)
 
-/mob/living/proc/on_blocked_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/atom/block_atom,var/block_multiplier=0,var/total_damage_blocked=0)
+/mob/living/proc/on_blocked_hit(atom/attacker,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT,atom/block_atom,block_multiplier=0,total_damage_blocked=0)
 
 	if(is_item(block_atom) && !is_organ(block_atom))
 		var/obj/item/I = block_atom
@@ -97,14 +97,14 @@
 
 	return TRUE
 
-/mob/living/proc/on_unblocked_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/total_damage_dealt=0)
+/mob/living/proc/on_unblocked_hit(atom/attacker,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT,total_damage_dealt=0)
 	if(client) src.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt)
 	return TRUE
 
-/mob/living/proc/on_parried_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/damage_multiplier=1)
+/mob/living/proc/on_parried_hit(atom/attacker,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT,damage_multiplier=1)
 	return TRUE
 
-/mob/living/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)
+/mob/living/proc/parry(atom/attacker,atom/weapon,atom/hit_object,damagetype/DT)
 
 	if(horizontal)
 		return FALSE

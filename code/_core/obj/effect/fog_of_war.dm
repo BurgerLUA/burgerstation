@@ -23,7 +23,7 @@ var/global/list/all_fog = list()
 		return FALSE
 	return TRUE
 
-/obj/effect/fog_of_war/New(var/desired_loc)
+/obj/effect/fog_of_war/New(desired_loc)
 	all_fog += src
 	alpha = 200
 	return ..()

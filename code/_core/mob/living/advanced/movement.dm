@@ -1,4 +1,4 @@
-/mob/living/advanced/do_footstep(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
+/mob/living/advanced/do_footstep(turf/T,list/footsteps_to_use,enter=TRUE)
 
 	. = ..()
 
@@ -22,7 +22,7 @@
 				F.color = foot_right.blood_stain_color
 				foot_right.set_bloodstain(max(foot_right.blood_stain_intensity - 0.3,2)) //Lower the bloodstain to 2.
 
-/mob/living/advanced/handle_movement(var/adjust_delay=0)
+/mob/living/advanced/handle_movement(adjust_delay=0)
 
 	if(grabbing_hand && handcuffed) //Can't move while grabbed and handcuffed.
 		return FALSE
@@ -57,7 +57,7 @@ mob/living/advanced/get_movement_delay()
 
 	. *= worn_move_delay_multiplier
 
-/mob/living/advanced/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+/mob/living/advanced/get_footsteps(list/original_footsteps,enter=TRUE)
 
 	if(footstep_left_right_counter)
 		if(labeled_organs[BODY_FOOT_RIGHT])
@@ -70,7 +70,7 @@ mob/living/advanced/get_movement_delay()
 
 	return original_footsteps
 
-/mob/living/advanced/post_move(var/atom/old_loc)
+/mob/living/advanced/post_move(atom/old_loc)
 
 	. = ..()
 
@@ -162,7 +162,7 @@ mob/living/advanced/get_movement_delay()
 			make_dirty(dirt_items,S.blood_level,S.blood_color)
 
 
-/mob/living/advanced/proc/make_dirty(var/list/dirt_items,var/dirt_strength=1,var/dirt_color="#FFFFFF")
+/mob/living/advanced/proc/make_dirty(list/dirt_items,dirt_strength=1,dirt_color="#FFFFFF")
 
 	if(dirt_strength <= 0)
 		return FALSE
@@ -199,7 +199,7 @@ mob/living/advanced/get_movement_delay()
 
 	return TRUE
 
-/mob/living/advanced/proc/make_clean(var/list/clean_items,var/clean_strength=1)
+/mob/living/advanced/proc/make_clean(list/clean_items,clean_strength=1)
 
 	if(clean_strength <= 0)
 		return FALSE

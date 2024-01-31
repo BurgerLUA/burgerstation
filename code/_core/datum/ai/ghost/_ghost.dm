@@ -44,7 +44,7 @@
 	. = ..()
 	owner_as_ghost = null
 
-/ai/ghost/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/ghost/New(desired_loc,mob/living/desired_owner)
 
 	. = ..()
 
@@ -162,7 +162,7 @@
 	owner_as_ghost.icon_state = ghost_type
 	owner_as_ghost.name = ghost_type
 
-/ai/ghost/proc/create_emf(var/turf/loc,var/desired_level=3,var/desired_range=VIEW_RANGE)
+/ai/ghost/proc/create_emf(turf/loc,desired_level=3,desired_range=VIEW_RANGE)
 
 	if(!desired_level || !desired_range)
 		return FALSE
@@ -200,7 +200,7 @@
 
 	return null
 
-/ai/ghost/on_life(var/tick_rate)
+/ai/ghost/on_life(tick_rate)
 
 	anger = clamp(anger,0,200)
 
@@ -404,12 +404,12 @@
 
 	return TRUE
 
-/ai/ghost/get_attack_score(var/mob/living/L)
+/ai/ghost/get_attack_score(mob/living/L)
 	if(!is_advanced(L))
 		return -100
 	return L.ckey && directed_anger[L.ckey] ? directed_anger[L.ckey] : 1
 
-/ai/ghost/proc/add_anger(var/ckey,var/amount)
+/ai/ghost/proc/add_anger(ckey,amount)
 	if(!amount)
 		return TRUE
 	if(ckey)
@@ -420,7 +420,7 @@
 	anger += amount
 	return TRUE
 
-/ai/ghost/set_alert_level(var/desired_alert_level,var/atom/alert_source,var/atom/alert_epicenter,var/can_lower=FALSE)
+/ai/ghost/set_alert_level(desired_alert_level,atom/alert_source,atom/alert_epicenter,can_lower=FALSE)
 	//Trying to alert it just pisses it off.
 
 	if(!stat_hates_noise)
@@ -439,7 +439,7 @@
 	return TRUE
 
 
-/ai/ghost/shitass/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/ghost/shitass/New(desired_loc,mob/living/desired_owner)
 	. = ..()
 	stat_vocal = FALSE
 
@@ -450,7 +450,7 @@
 	owner_as_ghost.name = "shitass"
 
 
-/ai/ghost/post_move(var/mob/living/L,args)
+/ai/ghost/post_move(mob/living/L,args)
 	. = ..()
 	if(. && prob(10))
 		var/list/valid_objects = list()

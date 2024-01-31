@@ -55,7 +55,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/bullet_cartridge/New(var/desired_loc)
+/obj/item/bullet_cartridge/New(desired_loc)
 	calculate_weight()
 	return ..()
 
@@ -75,15 +75,15 @@
 /obj/item/bullet_cartridge/proc/get_ammo_count()
 	return amount
 
-/obj/item/bullet_cartridge/New(var/desired_loc)
+/obj/item/bullet_cartridge/New(desired_loc)
 	. = ..()
 	update_sprite()
 
-/obj/item/bullet_cartridge/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
+/obj/item/bullet_cartridge/on_unequip(obj/hud/inventory/old_inventory,silent=FALSE)
 	. = ..()
 	update_sprite()
 
-/obj/item/bullet_cartridge/on_equip(var/atom/old_location,var/silent=FALSE)
+/obj/item/bullet_cartridge/on_equip(atom/old_location,silent=FALSE)
 	. = ..()
 	update_sprite()
 
@@ -112,7 +112,7 @@
 			add_overlay(I)
 
 
-/obj/item/bullet_cartridge/get_examine_list(var/mob/examiner)
+/obj/item/bullet_cartridge/get_examine_list(mob/examiner)
 
 	. = ..()
 
@@ -123,7 +123,7 @@
 		. += div("notice","It contains [amount] [src.name]\s.")
 
 
-/obj/item/bullet_cartridge/proc/spend_bullet(var/mob/caller,var/bonus_misfire_chance=0)
+/obj/item/bullet_cartridge/proc/spend_bullet(mob/caller,bonus_misfire_chance=0)
 
 	if(!is_spent)
 		var/total_misfire_chance = bonus_misfire_chance + misfire_chance
@@ -149,7 +149,7 @@
 
 	return ..()
 
-/obj/item/bullet_cartridge/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/transfer_target,location,control,params,var/talk = TRUE)
+/obj/item/bullet_cartridge/proc/transfer_src_to_bullet(mob/caller as mob,obj/item/bullet_cartridge/transfer_target,location,control,params,talk = TRUE)
 
 	if(src == transfer_target)
 		return FALSE
@@ -168,7 +168,7 @@
 
 	return TRUE
 
-/obj/item/bullet_cartridge/proc/transfer_src_to_magazine(var/mob/caller as mob,var/obj/item/magazine/transfer_target,location,control,params,var/messages = TRUE)
+/obj/item/bullet_cartridge/proc/transfer_src_to_magazine(mob/caller as mob,obj/item/magazine/transfer_target,location,control,params,messages = TRUE)
 
 	if(!transfer_target.can_load_magazine(caller,src))
 		return FALSE
@@ -187,7 +187,7 @@
 
 	return TRUE
 
-/obj/item/bullet_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/bullet_cartridge/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(is_magazine(object))
 		INTERACT_CHECK
@@ -217,11 +217,11 @@
 
 	. = ..()
 
-/obj/item/bullet_cartridge/proc/can_load_bullet_into(var/mob/caller,var/obj/item/weapon/ranged/bullet/G) //Only used for bullettime. This feels like shitcode but whatever.
+/obj/item/bullet_cartridge/proc/can_load_bullet_into(mob/caller,obj/item/weapon/ranged/bullet/G) //Only used for bullettime. This feels like shitcode but whatever.
 	return src.can_caller_interact_with(caller,delay_checks=FALSE) && G.can_caller_interact_with(caller,delay_checks=FALSE)
 
 
-/obj/item/bullet_cartridge/can_transfer_stacks_to(var/obj/item/target)
+/obj/item/bullet_cartridge/can_transfer_stacks_to(obj/item/target)
 
 	if(target == src)
 		return FALSE
@@ -248,7 +248,7 @@
 
 	return TRUE
 
-/obj/item/bullet_cartridge/proc/get_recommended_value(var/debug=FALSE)
+/obj/item/bullet_cartridge/proc/get_recommended_value(debug=FALSE)
 
 	if(!damage_type_bullet)
 		return 0

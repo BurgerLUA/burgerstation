@@ -4,7 +4,7 @@ var/global/list/clown_planet_markers = list()
 	name = "clown planet marker"
 	icon_state = "goal"
 
-/obj/marker/clown_planet/New(var/desired_loc)
+/obj/marker/clown_planet/New(desired_loc)
 	clown_planet_markers += src
 	. = ..()
 

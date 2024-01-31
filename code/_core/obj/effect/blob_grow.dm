@@ -9,6 +9,6 @@
 
 	var/tolerance = 1 //Increases every movement.
 
-/obj/effect/blob_grow/post_move(var/atom/old_loc)
+/obj/effect/blob_grow/post_move(atom/old_loc)
 	tolerance += 0.1
 	. = ..()
