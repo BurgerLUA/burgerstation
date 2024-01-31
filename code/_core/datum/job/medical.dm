@@ -5,6 +5,8 @@
 	passive_income = 0
 	passive_income_bonus = 200
 
+	active_income_multiplier_bonus = 1
+
 	bonus_skills = list(
 		SKILL_MELEE = 5,
 		SKILL_PRECISION = 5,
