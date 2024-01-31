@@ -34,7 +34,6 @@
 			return TRUE
 
 		if(is_advanced(caller))
-			var/mob/living/advanced/doctor = caller
 			var/list/new_x_y = doctor.get_current_target_cords(params)
 			params[PARAM_ICON_X] = new_x_y[1]
 			params[PARAM_ICON_Y] = new_x_y[2]
@@ -113,25 +112,25 @@
 					var/income_multiplier = J.active_income_multiplier + J.active_income_multiplier_bonus*doctor.job_rank
 					var/currency_gain = min(doctor.insurance,CEILING(total_healed*income_multiplier,1))
 					if(currency_gain > 0)
-						target.insurance -= currency_gain
-						target.to_chat(span("notice","Your insurance was charged [currency_gain] credits for the treatment by [doctor.name]."))
+						L.insurance -= currency_gain
+						L.to_chat(span("notice","Your insurance was charged [currency_gain] credits for the treatment by [doctor.name]."))
 					currency_gain += CEILING(total_healed*0.25*income_multiplier,1) //Bonus
 					var/currency_given = doctor.adjust_currency(currency_gain, silent=TRUE)
 					if(currency_given > 0)
-						doctor.to_chat(span("notice","You were paid [currency_given] credits for treating [target.name]."))
+						doctor.to_chat(span("notice","You were paid [currency_given] credits for treating [L.name]."))
 
 	if(reagents && !reagents.contains_lethal)
 		var/reagent_transfer = CEILING((1/amount_max)*reagents.volume_current, 1)
-		reagents.transfer_reagents_to(target.reagents,reagent_transfer, caller = caller)
+		reagents.transfer_reagents_to(L.reagents,reagent_transfer, caller = caller)
 		reagents.volume_max = amount*10
 
-	if(caller == target.loc)
-		caller.visible_message(span("notice","\The [caller.name] treat their [target.name]."),span("notice","You treat your [target.name]."))
+	if(caller == L.loc)
+		caller.visible_message(span("notice","\The [caller.name] treat their [L.name]."),span("notice","You treat your [L.name]."))
 	else
-		caller.visible_message(span("warning","\The [caller.name] treat \the [target.loc.name]'s [target.name]."),span("notice","You treat \the [target.loc.name]'s [target.name]."))
+		caller.visible_message(span("warning","\The [caller.name] treat \the [L.loc.name]'s [L.name]."),span("notice","You treat \the [L.loc.name]'s [L.name]."))
 
-	PROGRESS_BAR(caller,src,base_delay + max(0,added_delay*(1-medicine_power)),src::treat(),caller,target)
-	PROGRESS_BAR_CONDITIONS(caller,src,src::can_be_treated(),caller,target)
+	PROGRESS_BAR(caller,src,base_delay + max(0,added_delay*(1-medicine_power)),src::treat(),caller,L)
+	PROGRESS_BAR_CONDITIONS(caller,src,src::can_be_treated(),caller,L)
 
 	use_condition(0.1) //About 1000 uses.
 
