@@ -38,7 +38,7 @@
 		var/intercardinal = is_intercardinal_dir(final_move_dir)
 
 		if(intercardinal)
-			final_movement_delay *= sqrt(2)
+			final_movement_delay *= SQRT2
 
 		if(src.loc && (collision_flags & FLAG_COLLISION_WALKING) && is_simulated(src.loc))
 			var/turf/simulated/T = loc
