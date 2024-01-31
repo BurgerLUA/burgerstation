@@ -27,7 +27,7 @@
 	return TRUE
 
 /event/proc/on_life()
-	lifetime += TICKS2DS(SSevents.tick_rate)
+	lifetime += TICKS_TO_DECISECONDS(SSevents.tick_rate)
 	return TRUE
 
 /event/proc/on_end()

@@ -5,9 +5,9 @@
 
 	var/fly_time = 0
 
-	var/fly_delay = 30 SECONDS
-	var/fireball_delay = 5 SECONDS
-	var/firebreath_delay = 10 SECONDS
+	var/fly_delay = SECONDS_TO_DECISECONDS(30)
+	var/fireball_delay = SECONDS_TO_DECISECONDS(5)
+	var/firebreath_delay = SECONDS_TO_DECISECONDS(10)
 
 	var/last_fly = 0
 	var/last_fireball = 0
@@ -39,7 +39,7 @@
 			owner_as_ash_drake.start_land()
 			fly_time = 0
 			if(prob(50*inverse_health_percent)) //Fly again.
-				last_fly = last_fly + 1 SECONDS
+				last_fly = last_fly + SECONDS_TO_DECISECONDS(1)
 			else
 				last_fly = world.time
 		fly_time += 1
@@ -51,7 +51,7 @@
 	if(!owner_as_ash_drake.health || (objective_attack && get_dist(owner,objective_attack) <= attack_distance_max)) //Just do melee.
 		return ..()
 
-	if(objective_attack && !owner_as_ash_drake.boss_state && last_fly >= 0 && last_fly + 4 SECONDS <= world.time)
+	if(objective_attack && !owner_as_ash_drake.boss_state && last_fly >= 0 && last_fly + SECONDS_TO_DECISECONDS(4) <= world.time)
 		if(last_fly != -1 && last_fly + fly_delay <= world.time && prob(20 + failed_attack_frames))
 			owner_as_ash_drake.start_fly()
 			failed_attack_frames = 0

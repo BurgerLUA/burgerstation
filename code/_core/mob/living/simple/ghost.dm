@@ -12,7 +12,7 @@
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
-	movement_delay = DS2TICKS(1)
+	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	health_base = 500
 	stamina_base = 500

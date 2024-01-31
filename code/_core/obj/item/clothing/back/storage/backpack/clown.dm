@@ -41,7 +41,7 @@ obj/item/clothing/back/storage/backpack/clown/bag_of_bombs/click_self(var/mob/ca
 			if(next_bomb >= world.time)
 				caller.to_chat(span("notice","\The [src.name] is recharging, please wait!"))
 				return TRUE
-			next_bomb = world.time + 4 SECONDS
+			next_bomb = world.time + SECONDS_TO_DECISECONDS(4)
 			var/obj/item/slime_bomb/SB = new(T)
 			SB.owner = caller
 			SB.loyalty_tag = L.loyalty_tag

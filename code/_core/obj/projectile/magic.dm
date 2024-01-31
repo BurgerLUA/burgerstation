@@ -19,7 +19,7 @@
 
 	var/obj/projectile/turret_projectile // The projectile for this projectile to shoot when near valid targets.
 	var/damagetype/turret_projectile_damage_type
-	var/turret_projectile_delay = 1 SECONDS //The delay in which the projectile can shoot.
+	var/turret_projectile_delay = SECONDS_TO_DECISECONDS(1) //The delay in which the projectile can shoot.
 	var/turret_projectie_max_range = 4
 	var/turret_projectile_next = 0 //Read only.
 	var/turret_projectile_speed = TILE_SIZE*0.5 - 1
@@ -185,7 +185,7 @@
 
 	if(. && hit_atom && old_loc)
 		var/turf/turf_to_hit = is_floor(hit_atom) ? hit_atom : old_loc
-		var/obj/effect/temp/hazard/lava/L = new(turf_to_hit,30 SECONDS,owner)
+		var/obj/effect/temp/hazard/lava/L = new(turf_to_hit,SECONDS_TO_DECISECONDS(30),owner)
 		INITIALIZE(L)
 		GENERATE(L)
 		FINALIZE(L)
@@ -285,7 +285,7 @@
 
 	turret_projectile = /obj/projectile/magic/tesla_bolt // The projectile for this projectile to shoot when near valid targets.
 	turret_projectile_damage_type = /damagetype/ranged/magic/tesla_shock
-	turret_projectile_delay = 1 SECONDS //The delay in which the projectile can shoot.
+	turret_projectile_delay = SECONDS_TO_DECISECONDS(1) //The delay in which the projectile can shoot.
 	turret_projectie_max_range = 4
 	turret_projectile_speed = TILE_SIZE*0.3 - 1
 	turret_projectile_sound = 'sound/effects/tesla.ogg'
@@ -381,7 +381,7 @@
 	icon_state = "summon_dark"
 	steps_allowed = 4
 	hit_target_turf = TRUE
-	lifetime = 2 SECONDS
+	lifetime = SECONDS_TO_DECISECONDS(2)
 	impact_effect_turf = null
 
 /obj/projectile/magic/blackflame
@@ -407,7 +407,7 @@
 	var/obj/effect/temp/hazard/curse/found_curse = locate() in new_loc
 
 	if(!found_curse)
-		new /obj/effect/temp/hazard/curse(new_loc,10 SECONDS,owner)
+		new /obj/effect/temp/hazard/curse(new_loc,SECONDS_TO_DECISECONDS(10),owner)
 
 
 
@@ -497,7 +497,7 @@
 	if(. && is_living(hit_atom))
 		var/mob/living/L = hit_atom
 		if(!L.dead)
-			L.add_status_effect(TEMP_REGEN,damage_multiplier,(damage_multiplier * 15) SECONDS)
+			L.add_status_effect(TEMP_REGEN,damage_multiplier,SECONDS_TO_DECISECONDS(damage_multiplier * 15))
 
 /obj/projectile/magic/buff/armor
 	name = "armor"
@@ -507,7 +507,7 @@
 	if(. && is_living(hit_atom))
 		var/mob/living/L = hit_atom
 		if(!L.dead)
-			L.add_status_effect(TEMP_ARMOR,damage_multiplier * 10,(damage_multiplier * 30) SECONDS)
+			L.add_status_effect(TEMP_ARMOR,damage_multiplier * 10,SECONDS_TO_DECISECONDS(damage_multiplier * 30))
 
 
 /obj/projectile/magic/leaper
@@ -517,6 +517,6 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
-	lifetime = 5 SECONDS
-	extra_lifetime = 4 SECONDS
+	lifetime = SECONDS_TO_DECISECONDS(5)
+	extra_lifetime = SECONDS_TO_DECISECONDS(4)
 	velocity_degrade = 0.95

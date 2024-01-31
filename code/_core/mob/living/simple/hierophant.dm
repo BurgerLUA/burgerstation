@@ -50,7 +50,7 @@
 
 	soul_size = SOUL_SIZE_RARE
 
-	movement_delay = DS2TICKS(6)
+	movement_delay = DECISECONDS_TO_TICKS(6)
 
 	level = 35
 

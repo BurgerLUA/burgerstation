@@ -18,7 +18,7 @@
 	. = ..()
 
 	if(. && objective_attack && !had_previous_objective && owner_as_slime_king.next_special_attack <= world.time)
-		owner_as_slime_king.next_special_attack = world.time + 5 SECONDS
+		owner_as_slime_king.next_special_attack = world.time + SECONDS_TO_DECISECONDS(5)
 
 /ai/boss/slime_king/handle_attacking()
 

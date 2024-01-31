@@ -2,10 +2,10 @@
 	name = "Regeneration"
 	desc = "Your wounds are healing!"
 	id = TEMP_REGEN
-	maximum = 150 SECONDS
-	minimum = 1 SECONDS
+	maximum = SECONDS_TO_DECISECONDS(150)
+	minimum = SECONDS_TO_DECISECONDS(1)
 
-	default_duration = 15 SECONDS
+	default_duration = SECONDS_TO_DECISECONDS(15)
 	default_magnitude = 1
 
 	affects_dead = FALSE

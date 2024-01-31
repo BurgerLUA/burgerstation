@@ -84,7 +84,7 @@
 			if(6)
 				play_sound('sound/voice/medbot/surgeon.ogg',get_turf(owner),range_max=VIEW_RANGE)
 				owner.do_say("I knew it, I should've been a plastic surgeon.")
-		next_idle_voice = world.time + 120 SECONDS
+		next_idle_voice = world.time + SECONDS_TO_DECISECONDS(120)
 
 	for(var/mob/living/L in view(VIEW_RANGE*0.5,owner))
 		if(!src.is_valid_healing_target(L))

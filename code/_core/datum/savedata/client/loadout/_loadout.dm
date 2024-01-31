@@ -51,7 +51,7 @@
 	L.loaded_data -= name
 
 	L.save()
-	SSclient.ckey_to_loadout_cooldown[P.ckey] = world.time + 10 SECONDS
+	SSclient.ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
 
 /proc/save_loadout_of_mob(var/mob/living/advanced/player/P,var/name="Default")
 
@@ -98,7 +98,7 @@
 	)
 
 	L.save()
-	SSclient.ckey_to_loadout_cooldown[P.ckey] = world.time + 10 SECONDS
+	SSclient.ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
 
 	return TRUE
 
@@ -137,7 +137,7 @@
 			qdel(I)
 
 	P.to_chat(span("notice","You were charged [-P.adjust_currency(-total_value)] credits for this loadout."))
-	SSclient.ckey_to_loadout_cooldown[P.ckey] = world.time + 10 SECONDS
+	SSclient.ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
 
 	return TRUE
 

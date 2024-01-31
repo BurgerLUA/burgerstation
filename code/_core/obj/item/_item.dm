@@ -103,7 +103,7 @@
 	var/grinder_reagent_amount //The amount to create.
 
 	var/flags_tool = FLAG_TOOL_NONE
-	var/tool_time = 5 SECONDS
+	var/tool_time = SECONDS_TO_DECISECONDS(5)
 
 	var/worn_pixel_x = 0
 	var/worn_pixel_y = 0

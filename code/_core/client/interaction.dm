@@ -1,5 +1,5 @@
 #define GLOBAL_CLICK_DELAY 							\
-	if(last_control + 1 TICKS >= world.time)		\
+	if(last_control + TICK_LAG >= world.time)		\
 		return TRUE;								\
 	var/true_time_of_day = true_time();				\
 	if(next_global_click > true_time_of_day)		\

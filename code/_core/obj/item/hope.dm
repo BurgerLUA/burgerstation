@@ -39,7 +39,7 @@
 			T.visible_message(span("notice","\The [src.name] chimes as it is ready to be used again."))
 			play_sound('sound/weapons/magic/creation.ogg',T)
 	else
-		CALLBACK("\ref[src]_check_ressurection",60 SECONDS,src,src::check_resurrection())
+		CALLBACK("\ref[src]_check_ressurection",SECONDS_TO_DECISECONDS(60),src,src::check_resurrection())
 
 /obj/item/hope/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -64,7 +64,7 @@
 		span("notice","You were resurrected with \the [src.name] by \the [caller.name]!")
 	)
 
-	next_resurrect = world.realtime + 60 SECONDS*15 //15 minutes.
+	next_resurrect = world.realtime + SECONDS_TO_DECISECONDS(60)*15 //15 minutes.
 
 	update_sprite()
 	check_resurrection()

@@ -9,7 +9,7 @@
 
 	var/dash_strength = 4
 	cost = 30
-	cooldown = 2 SECONDS
+	cooldown = SECONDS_TO_DECISECONDS(2)
 
 	category = "Dash"
 
@@ -27,7 +27,7 @@
 	desc = "Dash towards your character's facing direction. Can be controlled mid-dash. Distance is 3 tiles."
 	icon_state = "dash_plus"
 	dash_strength = 3
-	cooldown = 5 SECONDS
+	cooldown = SECONDS_TO_DECISECONDS(5)
 	cost = 50
 
 /ability/dash/controlled/on_cast(var/mob/caller,var/atom/target,location,params)
@@ -44,7 +44,7 @@
 	icon_state = "dash_targeted"
 	dash_strength = 3
 	cost = 40
-	cooldown = 3 SECONDS
+	cooldown = SECONDS_TO_DECISECONDS(3)
 
 	category = "Dash"
 
@@ -62,7 +62,7 @@
 	icon_state = "dash"
 	dash_strength = 2
 	cost = 10
-	cooldown = 0.5 SECONDS
+	cooldown = SECONDS_TO_DECISECONDS(0.5)
 
 	category = "Dash"
 
@@ -80,7 +80,7 @@
 	icon_state = "dash"
 	dash_strength = 2
 	cost = 20
-	cooldown = 1 SECONDS
+	cooldown = SECONDS_TO_DECISECONDS(1)
 
 	category = "Dash"
 

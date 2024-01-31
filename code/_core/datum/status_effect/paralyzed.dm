@@ -2,9 +2,9 @@
 	name = "Paralyzed"
 	desc = "You're paralyzed!"
 	id = PARALYZE
-	minimum = 1 SECONDS
-	maximum = 30 SECONDS
-	default_duration = 1 SECONDS
+	minimum = SECONDS_TO_DECISECONDS(1)
+	maximum = SECONDS_TO_DECISECONDS(30)
+	default_duration = SECONDS_TO_DECISECONDS(1)
 
 	affects_dead = FALSE
 
@@ -21,6 +21,6 @@
 /status_effect/paralyzed/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
 	if(duration > 0 && magnitude > 0)
-		owner.stun_immunity = max(owner.stun_immunity,owner.stun_immunity + duration*1.25 + 1 SECONDS)
+		owner.stun_immunity = max(owner.stun_immunity,owner.stun_immunity + duration*1.25 + SECONDS_TO_DECISECONDS(1))
 
 

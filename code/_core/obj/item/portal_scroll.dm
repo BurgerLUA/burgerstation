@@ -64,8 +64,8 @@
 		caller.to_chat(span("warning","Failed to create a portal. Something horribly went wrong."))
 		return TRUE
 
-	var/obj/effect/temp/portal/start_portal = new(T,300 SECONDS)
-	var/obj/effect/temp/portal/end_portal = new(PMT,300 SECONDS)
+	var/obj/effect/temp/portal/start_portal = new(T,SECONDS_TO_DECISECONDS(300))
+	var/obj/effect/temp/portal/end_portal = new(PMT,SECONDS_TO_DECISECONDS(300))
 	if(SSdmm_suite.is_pvp_coord(T.x,T.y,T.z)) //Effectively one way.
 		end_portal.mouse_opacity = 0
 		end_portal.alpha = 0

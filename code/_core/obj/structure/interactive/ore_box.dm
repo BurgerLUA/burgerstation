@@ -55,7 +55,7 @@
 	if(contained_ore[ore_id] <= 0)
 		contained_ore -= ore_id
 
-	PROGRESS_BAR(caller,src,3 SECONDS,src::dump_some_ore(),caller)
+	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::dump_some_ore(),caller)
 	PROGRESS_BAR_CONDITIONS(caller,src,src::can_dump_some_ore(),caller)
 
 	return TRUE
@@ -68,7 +68,7 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			PROGRESS_BAR(caller,src,3 SECONDS,src::can_dump_some_ore(),caller)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::can_dump_some_ore(),caller)
 			PROGRESS_BAR_CONDITIONS(caller,src,src::can_dump_some_ore(),caller)
 			return TRUE
 

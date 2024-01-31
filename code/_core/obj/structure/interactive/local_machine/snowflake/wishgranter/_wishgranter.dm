@@ -67,7 +67,7 @@
 	var/list/callback_list = list()
 	callback_list["start_turf"] = get_turf(P)
 	callback_list["end_turf"] = desired_turf
-	if(add_progress_bar(P,"teleport",3 SECONDS,callback_list))
+	if(add_progress_bar(P,"teleport",SECONDS_TO_DECISECONDS(3),callback_list))
 		P.to_chat(span("notice","You begin walking into the light..."))
 		P.show_hud(FALSE,FLAGS_HUD_TELEPORT,FLAGS_HUD_NONE,speed=1)
 

@@ -6,7 +6,7 @@
 
 	var/resource_type = MANA
 	var/cost = 100
-	var/cooldown = 1 SECONDS
+	var/cooldown = SECONDS_TO_DECISECONDS(1)
 	var/cooldown_end = 0
 	var/toggle = FALSE //Set to true if this is an ability that toggles.
 

@@ -35,12 +35,12 @@
 	if(bad_delete) CRASH("[src.get_debug_name()] was deleted incorrectly!")
 
 
-/obj/hud/button/proc/show(var/should_show=TRUE,var/draw_speed=1 SECONDS)
+/obj/hud/button/proc/show(var/should_show=TRUE,var/draw_speed=SECONDS_TO_DECISECONDS(1))
 	if(should_show)
 		animate(src,alpha= initial(alpha),time=draw_speed)
 		mouse_opacity = initial(mouse_opacity)
 	else
-		animate(src,alpha=0,time=draw_speed SECONDS)
+		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(draw_speed))
 		mouse_opacity = 0
 
 /obj/hud/button/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

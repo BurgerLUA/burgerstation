@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(payday)
 	. = ..()
 
 /subsystem/payday/Initialize()
-	next_payday = world.time + 180 SECONDS
+	next_payday = world.time + SECONDS_TO_DECISECONDS(180)
 	return ..()
 
 /subsystem/payday/on_life()
@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(payday)
 	if(next_payday > 0 && world.time >= next_payday)
 		stored_payday *= 0.25 //Prevents gaming the system.
 		trigger_payday()
-		next_payday = world.time + 300 SECONDS
+		next_payday = world.time + SECONDS_TO_DECISECONDS(300)
 		stored_payday = 0
 
 	return TRUE

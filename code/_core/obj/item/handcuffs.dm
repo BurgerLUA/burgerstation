@@ -24,7 +24,7 @@
 		var/mob/living/advanced/A = object
 		if(can_cuff(caller,A))
 			A.visible_message(span("warning","\The [caller.name] starts to cuff \the [A.name]..."),span("danger","\The [caller.name] starts cuffing you!"))
-			PROGRESS_BAR(caller,src,5 SECONDS,src::cuff(),caller,A)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::cuff(),caller,A)
 			PROGRESS_BAR_CONDITIONS(caller,src,src::can_cuff(),caller,A)
 		return TRUE
 

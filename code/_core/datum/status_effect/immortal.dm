@@ -5,6 +5,6 @@
 
 	affects_dead = TRUE
 
-	minimum = 1 SECONDS
-	maximum = 10 SECONDS
+	minimum = SECONDS_TO_DECISECONDS(1)
+	maximum = SECONDS_TO_DECISECONDS(10)
 	default_duration = -1

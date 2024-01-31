@@ -45,7 +45,7 @@
 		caller.to_chat(span("debug","[uppertext(k)]: [armor_list[k]]."))
 	caller.to_chat(span("notice bold","End of message."))
 
-	next_scan = world.time + 4 SECONDS
+	next_scan = world.time + SECONDS_TO_DECISECONDS(4)
 
 	return TRUE
 /obj/item/analyzer/armor/click_self(mob/caller, location, control, params)

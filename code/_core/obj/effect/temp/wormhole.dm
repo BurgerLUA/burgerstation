@@ -3,6 +3,6 @@
 	mouse_opacity = 0
 	icon = 'icons/obj/effects/portal.dmi'
 	icon_state = "bhole3"
-	duration = 5 SECONDS
+	duration = SECONDS_TO_DECISECONDS(5)
 	plane = PLANE_MOVABLE
 	layer = LAYER_MOB - 1

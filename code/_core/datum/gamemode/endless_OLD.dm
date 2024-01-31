@@ -4,7 +4,7 @@
 	hidden = FALSE
 
 	var/last_vote = 0
-	var/vote_delay = (60*60) SECONDS
+	var/vote_delay = SECONDS_TO_DECISECONDS(60*60)
 
 	round_time_next = 0
 
@@ -172,7 +172,7 @@
 					round_time_next = 30 //Check every half-minute.
 
 
-		if(stage == 6 && pvp_start_time > 0 && world.time >= pvp_start_time + 600 SECONDS)
+		if(stage == 6 && pvp_start_time > 0 && world.time >= pvp_start_time + SECONDS_TO_DECISECONDS(600))
 			if(!boredom_warning)
 				broadcast_to_clients(span("danger","PvP has lasted more than 10 minutes; sending Syndicate deathsquads."))
 			else

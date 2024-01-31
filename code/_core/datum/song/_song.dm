@@ -56,7 +56,7 @@
 	for(var/mob/M in range(SOUND_RANGE,get_turf(instrument_atom)))
 		temp_hearers += M
 
-	next_hear_check = world.time + 3 SECONDS
+	next_hear_check = world.time + SECONDS_TO_DECISECONDS(3)
 
 	return
 
@@ -99,7 +99,7 @@
 
 /song/proc/sanitize_tempo(var/desired_tempo)
 	desired_tempo = abs(desired_tempo)
-	return max(round(desired_tempo, 1 TICKS), 1 TICKS)
+	return max(round(desired_tempo, TICK_LAG), TICK_LAG)
 
 /song/proc/play_song(var/mob/caller)
 

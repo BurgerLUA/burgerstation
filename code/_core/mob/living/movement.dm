@@ -4,7 +4,7 @@
 		return FALSE
 
 	if(enter)
-		CALLBACK("enter_footstep_\ref[src]", TICKS2DS(next_move)*0.5, src, src::do_footstep(), T, footsteps_to_use)
+		CALLBACK("enter_footstep_\ref[src]", TICKS_TO_DECISECONDS(next_move)*0.5, src, src::do_footstep(), T, footsteps_to_use)
 		return FALSE
 
 	do_footstep(T,footsteps_to_use,enter)
@@ -100,7 +100,7 @@
 
 	climb_counter = 0
 
-	last_move_delay = TICKS2DS(next_move)
+	last_move_delay = TICKS_TO_DECISECONDS(next_move)
 	last_move_time = world.time
 
 	if(is_simulated(loc) && !horizontal && move_mod > 1)

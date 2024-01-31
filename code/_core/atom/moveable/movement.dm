@@ -105,7 +105,7 @@
 			is_moving = TRUE
 		else //Blocked by a wall or something.
 			move_dir_last = 0x0
-			next_move = max(next_move,DS2TICKS(1))
+			next_move = max(next_move,DECISECONDS_TO_TICKS(1))
 			is_moving = FALSE
 
 		if(acceleration_mod)
@@ -357,7 +357,7 @@
 		return FALSE
 
 	var/desired_delay = CEILING(10/momentum_speed,1)
-	next_move = max(next_move,DS2TICKS(desired_delay))
+	next_move = max(next_move,DECISECONDS_TO_TICKS(desired_delay))
 	glide_size = next_move ? CEILING(step_size/next_move,0.01) : 1
 	var/turf/desired_turf = get_step(src,momentum_dir)
 	CALLBACK("momentum_\ref[src]",desired_delay,src,src::process_momentum())

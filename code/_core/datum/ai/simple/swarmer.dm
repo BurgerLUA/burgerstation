@@ -83,7 +83,7 @@
 				X.iff_tag,
 				X.loyalty_tag
 			)
-			next_shot = world.time + 1 SECONDS
+			next_shot = world.time + SECONDS_TO_DECISECONDS(1)
 			return TRUE
 
 //swarmer structures
@@ -161,7 +161,7 @@
 
 		if(length(responses))
 			owner.do_say(pick(responses),language_to_use = owner.default_language)
-			next_talk = world.time + 5 SECONDS
+			next_talk = world.time + SECONDS_TO_DECISECONDS(5)
 
 /ai/swarmer/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
@@ -181,5 +181,5 @@
 				"PLEASE, I'M DIFFERENT!"
 			)
 			owner.do_say(pick(responses),language_to_use = owner.default_language)
-			next_talk = world.time + 5 SECONDS
+			next_talk = world.time + SECONDS_TO_DECISECONDS(5)
 

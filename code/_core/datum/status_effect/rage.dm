@@ -5,9 +5,9 @@
 	desc = "You're filled with rage!"
 	id = RAGE
 
-	minimum = 5 SECONDS
-	maximum = 30 SECONDS
-	default_duration = 10 SECONDS
+	minimum = SECONDS_TO_DECISECONDS(5)
+	maximum = SECONDS_TO_DECISECONDS(30)
+	default_duration = SECONDS_TO_DECISECONDS(10)
 
 	affects_dead = FALSE
 

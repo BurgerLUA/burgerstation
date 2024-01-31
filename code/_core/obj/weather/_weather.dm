@@ -14,8 +14,8 @@
 	height = SCREEN_SIZE
 	count = 2000
 	spawning = 12
-	lifespan = 6 SECONDS
-	fade = 2 SECONDS
+	lifespan = SECONDS_TO_DECISECONDS(6)
+	fade = SECONDS_TO_DECISECONDS(2)
 
 	position = generator("box", list(-SCREEN_SIZE*0.5,SCREEN_SIZE*0.5,0), list(SCREEN_SIZE*0.5,SCREEN_SIZE*0.5,50))
 

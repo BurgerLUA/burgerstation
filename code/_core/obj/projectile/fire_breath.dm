@@ -5,7 +5,7 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
-	lifetime = 3 SECONDS
+	lifetime = SECONDS_TO_DECISECONDS(3)
 	steps_allowed = VIEW_RANGE
 
 	ignore_living = TRUE

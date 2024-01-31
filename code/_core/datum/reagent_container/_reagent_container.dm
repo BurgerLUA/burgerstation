@@ -794,7 +794,7 @@
 		if(flavor_count > 1 && like_score > 0)
 			like_score *= 1 + flavor_count*0.5 //Bonuses for multiple flavor types. More effort must've been put into it.
 
-		if(final_flavor_text && (A.last_flavor_time + 3 SECONDS <= world.time || A.last_flavor != final_flavor_text) )
+		if(final_flavor_text && (A.last_flavor_time + SECONDS_TO_DECISECONDS(3) <= world.time || A.last_flavor != final_flavor_text) )
 			A.last_flavor = final_flavor_text
 			A.last_flavor_time = world.time
 			final_flavor_text = "You taste [final_flavor_text]."

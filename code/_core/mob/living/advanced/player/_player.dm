@@ -7,7 +7,7 @@
 
 	dna = /dna/human
 
-	movement_delay = DS2TICKS(1)
+	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	health_base = 200
 	stamina_base = 100
@@ -104,7 +104,7 @@
 	var/job_rank = 1
 	var/job_next_promotion
 
-	expiration_time = 180 SECONDS
+	expiration_time = SECONDS_TO_DECISECONDS(180)
 
 
 

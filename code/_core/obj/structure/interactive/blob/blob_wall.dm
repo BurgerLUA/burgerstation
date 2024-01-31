@@ -7,7 +7,7 @@
 /obj/structure/interactive/blob/wall/Finalize()
 	. = ..()
 	if(prob(10)) //Blob optimization
-		CALLBACK("make_spore_\ref[src]",2 SECONDS,src,src::make_spore())
+		CALLBACK("make_spore_\ref[src]",SECONDS_TO_DECISECONDS(2),src,src::make_spore())
 
 /obj/structure/interactive/blob/wall/proc/make_spore()
 	if(qdeleting || !src.z)

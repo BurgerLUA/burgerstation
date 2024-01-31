@@ -37,7 +37,7 @@
 
 	heat_max = 0.1
 
-	bullet_time = 3 SECONDS
+	bullet_time = SECONDS_TO_DECISECONDS(3)
 
 	open = TRUE
 	can_shoot_while_open = TRUE

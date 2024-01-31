@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(callback)
 	name = "Callback Subsystem"
 	desc = "Controls callbacks."
-	tick_rate = DS2TICKS(1)
+	tick_rate = DECISECONDS_TO_TICKS(1)
 	priority = SS_ORDER_CALLBACK
 	var/list/all_callbacks = list()
 

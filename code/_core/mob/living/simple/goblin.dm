@@ -23,7 +23,7 @@
 	blood_type = /reagent/blood/goblin
 	blood_volume = 300
 
-	movement_delay = DS2TICKS(4)
+	movement_delay = DECISECONDS_TO_TICKS(4)
 
 	stun_angle = 90
 

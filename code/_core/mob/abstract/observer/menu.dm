@@ -14,7 +14,7 @@
 	anchored = 2
 
 	var/current_lobby_position = 1
-	var/next_lobby_cycle = 10 SECONDS
+	var/next_lobby_cycle = SECONDS_TO_DECISECONDS(10)
 
 	invisibility = INVISIBILITY_ALWAYS
 
