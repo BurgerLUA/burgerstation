@@ -2,8 +2,8 @@
 	name = "Confused"
 	desc = "You're confused!"
 	id = CONFUSED
-	minimum = 1 SECONDS
-	maximum = 30 SECONDS
-	default_duration = 10 SECONDS
+	minimum = SECONDS_TO_DECISECONDS(1)
+	maximum = SECONDS_TO_DECISECONDS(30)
+	default_duration = SECONDS_TO_DECISECONDS(10)
 
 	affects_dead = FALSE

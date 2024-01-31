@@ -52,7 +52,7 @@
 
 /obj/structure/interactive/tendril/Finalize()
 	. = ..()
-	CALLBACK("\ref[src]_spawn",2 SECONDS,src,src::spawn_monster())
+	CALLBACK("\ref[src]_spawn",SECONDS_TO_DECISECONDS(2),src,src::spawn_monster())
 	for(var/d in DIRECTIONS_ALL + 0x0)
 		var/turf/T = get_step(src,d)
 		if(T && is_simulated(T))
@@ -95,7 +95,7 @@
 		GENERATE(C)
 		FINALIZE(C)
 		play_sound('sound/effects/tendril_destroyed.ogg',get_turf(src))
-		CALLBACK("\ref[src]_telegraph_delete",6 SECONDS,src,src::telegraph_delete())
+		CALLBACK("\ref[src]_telegraph_delete",SECONDS_TO_DECISECONDS(6),src,src::telegraph_delete())
 		return TRUE
 
 	if(tracked_mobs_length < spawn_limit && deaths_until_loot > 0)
@@ -113,11 +113,11 @@
 			GENERATE(L)
 			FINALIZE(L)
 			tracked_mobs += L
-			var/obj/effect/temp/E = new(T2,1 SECONDS)
+			var/obj/effect/temp/E = new(T2,SECONDS_TO_DECISECONDS(1))
 			E.icon = 'icons/obj/effects/tendril_spawn.dmi'
 			E.icon_state = "spawning"
 			L.color = "#000000"
-			animate(L,color=initial(L.color),1 SECONDS)
+			animate(L,color=initial(L.color),SECONDS_TO_DECISECONDS(1))
 			flick("spawn",src)
 			if(L.ai)
 				var/chunk/C = CHUNK(T2)
@@ -128,6 +128,6 @@
 					L.ai.allow_far_roaming = FALSE
 
 
-	CALLBACK("\ref[src]_spawn",(2+tracked_mobs_length) SECONDS,src,src::spawn_monster())
+	CALLBACK("\ref[src]_spawn",SECONDS_TO_DECISECONDS(2+tracked_mobs_length),src,src::spawn_monster())
 
 	return TRUE

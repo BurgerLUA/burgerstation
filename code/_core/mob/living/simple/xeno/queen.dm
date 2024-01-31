@@ -34,7 +34,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	boss = TRUE
 	force_spawn = TRUE
 
-	movement_delay = DS2TICKS(4)
+	movement_delay = DECISECONDS_TO_TICKS(4)
 
 	butcher_contents = list(
 		/obj/item/soapstone/orange,
@@ -66,7 +66,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	object_size = 2
 
-	respawn_time = 300 SECONDS
+	respawn_time = SECONDS_TO_DECISECONDS(300)
 
 	level = 30
 
@@ -94,7 +94,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 /mob/living/simple/xeno/queen/proc/inhale()
 	do_say("&#42;inhales&#42;",should_sanitize = FALSE)
-	CALLBACK("queen_screech_\ref[src]",4 SECONDS,src,src::screech())
+	CALLBACK("queen_screech_\ref[src]",SECONDS_TO_DECISECONDS(4),src,src::screech())
 	return TRUE
 
 /mob/living/simple/xeno/queen/proc/screech()

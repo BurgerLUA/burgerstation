@@ -30,7 +30,7 @@
 		A.strip_and_delete_items()
 		give_loadout(A)
 	needs_loadout -= L
-	L.add_status_effect(PARALYZE,15 SECONDS,15 SECONDS,stealthy=TRUE,bypass_limits=TRUE)
+	L.add_status_effect(PARALYZE,SECONDS_TO_DECISECONDS(15),SECONDS_TO_DECISECONDS(15),stealthy=TRUE,bypass_limits=TRUE)
 
 	return TRUE
 

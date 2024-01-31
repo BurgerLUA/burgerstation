@@ -47,7 +47,7 @@
 	return TRUE
 
 /mob/living/advanced/npc/beefman/post_death()
-	CALLBACK("beef_revive_\ref[src]",(rand(3,8)) SECONDS,src,src::beef())
+	CALLBACK("beef_revive_\ref[src]",SECONDS_TO_DECISECONDS(rand(3,8)),src,src::beef())
 	return ..()
 
 /mob/living/advanced/npc/beefman/get_plane()

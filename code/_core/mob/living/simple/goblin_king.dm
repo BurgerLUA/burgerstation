@@ -15,7 +15,7 @@
 	stamina_base = 4000
 	mana_base = 1000
 
-	movement_delay = DS2TICKS(5)
+	movement_delay = DECISECONDS_TO_TICKS(5)
 
 	stun_angle = 0
 
@@ -56,11 +56,11 @@
 
 	soul_size = SOUL_SIZE_RARE
 
-	respawn_time = 300 SECONDS
+	respawn_time = SECONDS_TO_DECISECONDS(300)
 
 	level = 28
 
-	movement_delay = DS2TICKS(6)
+	movement_delay = DECISECONDS_TO_TICKS(6)
 
 /mob/living/simple/goblin_king/post_death()
 	. = ..()
@@ -96,7 +96,7 @@
 		summoned_totem.affecting_faction = loyalty_tag
 		summoned_totem.ranged_limited = FALSE
 		summoned_totem.owner = src
-		summoned_totem.totem_remove_time = 120 SECONDS + world.time
+		summoned_totem.totem_remove_time = SECONDS_TO_DECISECONDS(120) + world.time
 		summoned_totem.leveled_effect = 3 //basically, a person with lvl.100 magic
 		INITIALIZE(summoned_totem)
 		GENERATE(summoned_totem)

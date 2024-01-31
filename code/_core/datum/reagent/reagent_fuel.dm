@@ -68,7 +68,7 @@
 		if(flash_range >= 2)
 			for(var/mob/living/L in viewers(flash_range,T))
 				var/strength_mod = 0.25 + (1 - (get_dist(L,T)/VIEW_RANGE))*0.75
-				var/duration = 10 SECONDS*strength_mod
+				var/duration = SECONDS_TO_DECISECONDS(10)*strength_mod
 				L.flash(duration)
 
 	if(bang_strength_per_unit > 0)
@@ -76,7 +76,7 @@
 		if(bang_range >= 2)
 			for(var/mob/living/L in hearers(bang_range,T))
 				var/strength_mod = 0.25 + (1 - (get_dist(L,T)/VIEW_RANGE))*0.75
-				var/duration = 10 SECONDS*strength_mod*2
+				var/duration = SECONDS_TO_DECISECONDS(10)*strength_mod*2
 				L.bang(duration)
 			play_sound('sound/effects/flashbang.ogg',T,volume=75,range_min=bang_range*0.5,range_max=bang_range*2,channel=SOUND_CHANNEL_FLASHBANG)
 
@@ -89,7 +89,7 @@
 		smoke(
 			epicenter,
 			volume_amount*explosion_strength_per_unit*0.8,
-			(20*explosion_strength_per_unit) SECONDS,
+			SECONDS_TO_DECISECONDS(20*explosion_strength_per_unit),
 			null,
 			owner,
 			alpha=100

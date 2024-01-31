@@ -32,7 +32,7 @@
 	stamina_base = 250
 	mana_base = 250
 
-	movement_delay = DS2TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	size = SIZE_GIANT
 

@@ -2,9 +2,9 @@
 	name = "Stunned"
 	desc = "You're stunned!"
 	id = STUN
-	minimum = 1 SECONDS
-	maximum = 4 SECONDS
-	default_duration = 1 SECONDS
+	minimum = SECONDS_TO_DECISECONDS(1)
+	maximum = SECONDS_TO_DECISECONDS(4)
+	default_duration = SECONDS_TO_DECISECONDS(1)
 
 	affects_dead = FALSE
 
@@ -24,4 +24,4 @@
 	owner.remove_status_effect(PARRIED)
 	owner.remove_status_effect(SHOVED)
 	if(duration > 0 && magnitude > 0)
-		owner.stun_immunity = max(owner.stun_immunity,owner.stun_immunity + duration*1.25 + 1 SECONDS)
+		owner.stun_immunity = max(owner.stun_immunity,owner.stun_immunity + duration*1.25 + SECONDS_TO_DECISECONDS(1))

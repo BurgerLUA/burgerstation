@@ -22,7 +22,7 @@
 
 	attack_range = 3
 
-	movement_delay = DS2TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	stun_angle = 0
 

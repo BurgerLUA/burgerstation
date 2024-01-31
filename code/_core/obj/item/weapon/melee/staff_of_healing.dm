@@ -68,6 +68,6 @@
 		GENERATE(H)
 		FINALIZE(H)
 
-	next_heal = world.time + 1 SECONDS
+	next_heal = world.time + SECONDS_TO_DECISECONDS(1)
 
 	return TRUE

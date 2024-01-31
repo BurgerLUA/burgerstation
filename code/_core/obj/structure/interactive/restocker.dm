@@ -49,7 +49,7 @@
 				caller.to_chat(span("warning","\The [src.name] doesn't have enough credits stored to complete this operation!"))
 				return TRUE
 			currency_left -= value_per_bullet*bullets_to_add
-		M.next_regen = world.time + 120 SECONDS
+		M.next_regen = world.time + SECONDS_TO_DECISECONDS(120)
 		M.stored_bullets[bullet_to_create] += bullets_to_add
 		M.update_sprite()
 		caller.to_chat(span("notice","\The [M.name] has been restocked with [bullets_to_add] [initial(bullet_to_create.name)]."))
@@ -106,7 +106,7 @@
 				return TRUE
 			currency_left -= value_per_bullet*bullets_to_add
 
-		B.next_regen = world.time + 120 SECONDS
+		B.next_regen = world.time + SECONDS_TO_DECISECONDS(120)
 		B.bullet_count += bullets_to_add
 		caller.to_chat(span("notice","The ammo box has been restocked with [bullets_to_add] [initial(bullet_to_create.name)]."))
 		return TRUE

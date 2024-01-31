@@ -53,7 +53,7 @@
 		return FALSE
 	caller.to_chat(span("notice","Distance: [get_dist_advanced(caller,target)] tiles."))
 	caller.to_chat(span("notice","Position: ([target.x],[target.y],[target.z])."))
-	next_scan = world.time + 2 SECONDS
+	next_scan = world.time + SECONDS_TO_DECISECONDS(2)
 
 	return TRUE
 

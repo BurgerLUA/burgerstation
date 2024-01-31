@@ -16,7 +16,7 @@
 		FINALIZE(H)
 		tracked_mobs += H
 		HOOK_ADD("post_death","\ref[src]_artificer_attacking",H,src,src::remove_tracked_mob())
-		next_spawn = world.time + 3 SECONDS
+		next_spawn = world.time + SECONDS_TO_DECISECONDS(3)
 
 	return ..()
 

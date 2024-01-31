@@ -15,7 +15,7 @@
 
 	value = 500
 
-	movement_delay = DS2TICKS(10)
+	movement_delay = DECISECONDS_TO_TICKS(10)
 
 	var/mob/living/advanced/stored_corpse = /mob/living/advanced/npc/nanotrasen/shaft_miner
 

@@ -2,9 +2,9 @@
 	name = "Slipped"
 	desc = "You slipped!"
 	id = SLIP
-	minimum = 1 SECONDS
-	maximum = 4 SECONDS
-	default_duration = 1 SECONDS
+	minimum = SECONDS_TO_DECISECONDS(1)
+	maximum = SECONDS_TO_DECISECONDS(4)
+	default_duration = SECONDS_TO_DECISECONDS(1)
 
 	affects_dead = FALSE
 

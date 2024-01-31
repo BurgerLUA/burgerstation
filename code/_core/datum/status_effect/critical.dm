@@ -43,5 +43,5 @@
 	if(is_advanced(owner) && !owner.horizontal)
 		owner.add_status_effect(DISARM,5,5,source = source,stealthy = TRUE)
 	owner.remove_status_effect(ADRENALINE)
-	owner.stamina_regen_delay = max(owner.stamina_regen_delay,owner.is_player_controlled() ? 4 SECONDS : 10 SECONDS)
+	owner.stamina_regen_delay = max(owner.stamina_regen_delay,owner.is_player_controlled() ? SECONDS_TO_DECISECONDS(4) : SECONDS_TO_DECISECONDS(10))
 	return ..()

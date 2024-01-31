@@ -16,8 +16,8 @@
 	var/heal_brute_percent = 5 //At 100 medicine.
 	var/heal_burn_percent = 5 //At 100 medicine.
 
-	var/base_delay = 1 SECONDS
-	var/added_delay = 9 SECONDS //At 0 medicine. Gets reduced to 0 at 100 medicine.
+	var/base_delay = SECONDS_TO_DECISECONDS(1)
+	var/added_delay = SECONDS_TO_DECISECONDS(9) //At 0 medicine. Gets reduced to 0 at 100 medicine.
 
 	rarity = RARITY_RARE
 
@@ -45,7 +45,7 @@
 		if(can_be_treated(caller,object))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
-			PROGRESS_BAR(caller,src,4 SECONDS,src::treat(),caller,object) //Takes 4 seconds to get started.
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(4),src::treat(),caller,object) //Takes 4 seconds to get started.
 			PROGRESS_BAR_CONDITIONS(caller,src,src::can_be_treated(),caller,object)
 
 		return TRUE

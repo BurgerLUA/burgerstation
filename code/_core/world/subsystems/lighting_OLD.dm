@@ -11,7 +11,7 @@
 SUBSYSTEM_DEF(lighting)
 	name = "Lighting Subsystem"
 	desc = "Controls the lighting."
-	tick_rate = DS2TICKS(LIGHTING_INTERVAL)
+	tick_rate = DECISECONDS_TO_TICKS(LIGHTING_INTERVAL)
 	priority = SS_ORDER_LIGHTING
 
 /subsystem/lighting/Initialize()

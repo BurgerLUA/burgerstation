@@ -6,7 +6,7 @@
 
 	level = 20
 
-	movement_delay = DS2TICKS(0.5)
+	movement_delay = DECISECONDS_TO_TICKS(0.5)
 
 	ai = /ai/advanced/zombie/clown
 

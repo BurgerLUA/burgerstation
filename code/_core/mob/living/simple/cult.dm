@@ -42,7 +42,7 @@
 	stamina_base = 200
 	mana_base = 50
 
-	movement_delay = DS2TICKS(7)
+	movement_delay = DECISECONDS_TO_TICKS(7)
 
 	level = 18
 
@@ -61,7 +61,7 @@
 	stamina_base = 50
 	mana_base = 200
 
-	movement_delay = DS2TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	level = 8
 
@@ -80,7 +80,7 @@
 	stamina_base = 100
 	mana_base = 50
 
-	movement_delay = DS2TICKS(1)
+	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	level = 12
 
@@ -100,7 +100,7 @@
 	mana_base = 100
 
 
-	movement_delay = DS2TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	level = 14
 
@@ -119,7 +119,7 @@
 	stamina_base = 100
 	mana_base = 100
 
-	movement_delay = DS2TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	level = 12
 

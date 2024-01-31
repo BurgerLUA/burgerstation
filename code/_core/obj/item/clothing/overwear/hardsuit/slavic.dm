@@ -74,7 +74,7 @@
 /obj/item/clothing/overwear/hardsuit/skat/antag/think()
 	if(cooldown_effect > world.time)
 		return TRUE
-	cooldown_effect = world.time + 1 SECONDS
+	cooldown_effect = world.time + SECONDS_TO_DECISECONDS(1)
 	var/turf/T = get_turf(src)
 	for(var/mob/living/affectLiving in T)
 		if(affectLiving.dead)

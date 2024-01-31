@@ -70,14 +70,14 @@
 	spawn(0)
 		A.paralyze_time = -1
 		A.movement_flags = 0x0
-		add_notification_colored_easy(A.client,"#FFFFFF",3 SECONDS,fade_in = TRUE, fade_out = TRUE)
-		sleep(3 SECONDS)
+		add_notification_colored_easy(A.client,"#FFFFFF",SECONDS_TO_DECISECONDS(3),fade_in = TRUE, fade_out = TRUE)
+		sleep(SECONDS_TO_DECISECONDS(3))
 		A.force_move(get_turf(transit_shuttle))
 		A.paralyze_time = 0
 		A.movement_flags = 0x0
-		sleep(10 SECONDS)
+		sleep(SECONDS_TO_DECISECONDS(10))
 		dock_shuttle.do_move(A)
-		sleep(2 SECONDS)
+		sleep(SECONDS_TO_DECISECONDS(2))
 		for(var/obj/structure/interactive/localmachine/snowflake/airlock/external/tutorial_dock/TD in tutorial_docks)
 			TD.open_for(A)
 
@@ -89,21 +89,21 @@
 
 	if(!ENABLE_LORE)
 		A.force_move(pick(spawnpoints_new_character))
-		A.show_hud(TRUE,FLAG_HUD_MOB,FLAG_HUD_SPECIAL,3 SECONDS)
+		A.show_hud(TRUE,FLAG_HUD_MOB,FLAG_HUD_SPECIAL,SECONDS_TO_DECISECONDS(3))
 		return TRUE
 
 	spawn(0)
-		A.show_hud(FALSE,FLAG_HUD_ALL,FLAG_HUD_SPECIAL|FLAG_HUD_WIDGET,1 SECONDS)
+		A.show_hud(FALSE,FLAG_HUD_ALL,FLAG_HUD_SPECIAL|FLAG_HUD_WIDGET,SECONDS_TO_DECISECONDS(1))
 		var/obj/hud/button/skip/SB = new(A)
 		SB.update_owner(A)
 		A.sight |= SEE_THRU
 		C.pixel_y = FLOOR(TILE_SIZE*-VIEW_RANGE*2, 1)
 
 		if(show_disclaimer)
-			add_notification_colored_easy(C,"#000000",46 SECONDS,fade_in = FALSE)
-			add_notification_easy(C,'icons/hud/discovery.dmi',"disclaimer",18 SECONDS,fade_in = FALSE)
+			add_notification_colored_easy(C,"#000000",SECONDS_TO_DECISECONDS(46),fade_in = FALSE)
+			add_notification_easy(C,'icons/hud/discovery.dmi',"disclaimer",SECONDS_TO_DECISECONDS(18),fade_in = FALSE)
 		else
-			add_notification_colored_easy(C,"#000000",28 SECONDS,fade_in = FALSE)
+			add_notification_colored_easy(C,"#000000",SECONDS_TO_DECISECONDS(28),fade_in = FALSE)
 
 		sleep(1)
 
@@ -113,18 +113,18 @@
 		A.movement_flags = 0x0
 
 		if(show_disclaimer)
-			sleep(20 SECONDS)
+			sleep(SECONDS_TO_DECISECONDS(20))
 
 		play_music_track("leaf",C)
 
-		sleep(5 SECONDS)
+		sleep(SECONDS_TO_DECISECONDS(5))
 		A.see_invisible = INVISIBILITY_NO_PLAYERS
-		add_notification_easy(C,'icons/hud/discovery.dmi',"byond",3 SECONDS)
-		sleep(7 SECONDS)
-		add_notification_easy(C,'icons/hud/discovery.dmi',"burger",3 SECONDS)
-		sleep(10 SECONDS)
-		add_notification_easy(C,'icons/hud/discovery.dmi',"logo",10 SECONDS)
-		sleep(10 SECONDS)
+		add_notification_easy(C,'icons/hud/discovery.dmi',"byond",SECONDS_TO_DECISECONDS(3))
+		sleep(SECONDS_TO_DECISECONDS(7))
+		add_notification_easy(C,'icons/hud/discovery.dmi',"burger",SECONDS_TO_DECISECONDS(3))
+		sleep(SECONDS_TO_DECISECONDS(10))
+		add_notification_easy(C,'icons/hud/discovery.dmi',"logo",SECONDS_TO_DECISECONDS(10))
+		sleep(SECONDS_TO_DECISECONDS(10))
 
 		while(C.pixel_y<0)
 			if(C.mob && C.mob.skip_cutscene)
@@ -140,8 +140,8 @@
 		sleep(1)
 
 		A.sight &= ~SEE_THRU
-		sleep(3 SECONDS)
-		A.show_hud(TRUE,FLAG_HUD_MOB,FLAG_HUD_SPECIAL,3 SECONDS)
+		sleep(SECONDS_TO_DECISECONDS(3))
+		A.show_hud(TRUE,FLAG_HUD_MOB,FLAG_HUD_SPECIAL,SECONDS_TO_DECISECONDS(3))
 		A.stun_time = 1
 		A.paralyze_time = 1
 		A.movement_flags = 0x0

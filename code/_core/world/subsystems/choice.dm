@@ -4,7 +4,7 @@ var/global/list/question_button_id_to_button = list()
 SUBSYSTEM_DEF(choices)
 	name = "Choice Subsystem"
 	desc = "Controls the choices people make."
-	tick_rate = DS2TICKS(1)
+	tick_rate = DECISECONDS_TO_TICKS(1)
 	priority = SS_ORDER_IMPORTANT
 
 /subsystem/choices/Initialize()
@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(choices)
 	C = new C(M)
 
 	while(!C.choice_made)
-		sleep(1 TICKS)
+		sleep(TICK_LAG)
 
 	var/decision_made = C.on_decision()
 

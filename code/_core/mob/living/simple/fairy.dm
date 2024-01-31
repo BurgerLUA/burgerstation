@@ -17,7 +17,7 @@
 
 	size = SIZE_ANIMAL
 
-	movement_delay = DS2TICKS(1)
+	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	loyalty_tag = "Meme"
 	iff_tag = "Meme"

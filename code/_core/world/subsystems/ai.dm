@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(ai)
 /subsystem/ai/on_life()
 
 	if(next_chunk_update < world.time)
-		next_chunk_update = world.time + 2 SECONDS
+		next_chunk_update = world.time + SECONDS_TO_DECISECONDS(2)
 		for(var/ch in queued_ai_update_chunks)
 			var/chunk/C1 = ch
 			queued_ai_update_chunks -= ch

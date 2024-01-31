@@ -205,7 +205,7 @@
 
 	flags_tool = FLAG_TOOL_PICKAXE
 
-	tool_time = 2 SECONDS
+	tool_time = SECONDS_TO_DECISECONDS(2)
 
 	value = 10
 
@@ -222,7 +222,7 @@
 
 	flags_tool = FLAG_TOOL_PICKAXE
 
-	tool_time = 1.5 SECONDS
+	tool_time = SECONDS_TO_DECISECONDS(1.5)
 
 	value = 1200
 
@@ -239,7 +239,7 @@
 
 	flags_tool = FLAG_TOOL_SHOVEL
 
-	tool_time = 2 SECONDS
+	tool_time = SECONDS_TO_DECISECONDS(2)
 
 	value = 10
 

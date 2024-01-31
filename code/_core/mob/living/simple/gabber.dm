@@ -44,11 +44,11 @@ var/global/list/valid_gabber_sound_files = list()
 
 	object_size = 2
 
-	respawn_time = 300 SECONDS
+	respawn_time = SECONDS_TO_DECISECONDS(300)
 
 	level = 50
 
-	movement_delay = DS2TICKS(3)
+	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	var/sword_mode = FALSE
 
@@ -183,7 +183,7 @@ var/global/list/valid_gabber_sound_files = list()
 
 	src.do_say("[uppertext(text_to_say)].")
 
-	next_special_attack = world.time + 1 SECONDS
+	next_special_attack = world.time + SECONDS_TO_DECISECONDS(1)
 
 	return TRUE
 

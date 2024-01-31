@@ -62,7 +62,7 @@
 		processing = TRUE
 		update_sprite()
 		process_data(caller,P.data)
-		CALLBACK("finish_processing_\ref[src]",5 SECONDS,src,src::finish_processing(),caller)
+		CALLBACK("finish_processing_\ref[src]",SECONDS_TO_DECISECONDS(5),src,src::finish_processing(),caller)
 
 		return TRUE
 

@@ -20,8 +20,8 @@
 		if(X.can_leap && world.time >= next_leap && objective_distance >= 3)
 			var/list/offsets = direction_to_pixel_offset(get_dir(owner,objective_attack))
 			var/throw_velocity = 20
-			owner.throw_self(owner,objective_attack,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = 4 SECONDS, steps_allowed = VIEW_RANGE, desired_loyalty_tag = owner.loyalty_tag)
-			next_leap = world.time + 10 SECONDS
+			owner.throw_self(owner,objective_attack,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = VIEW_RANGE, desired_loyalty_tag = owner.loyalty_tag)
+			next_leap = world.time + SECONDS_TO_DECISECONDS(10)
 			return TRUE
 
 		if(X.can_spit && world.time >= next_spit && objective_distance >= 4)
@@ -43,6 +43,6 @@
 				X.iff_tag,
 				X.loyalty_tag
 			)
-			next_spit = world.time + 4 SECONDS
+			next_spit = world.time + SECONDS_TO_DECISECONDS(4)
 			return TRUE
 

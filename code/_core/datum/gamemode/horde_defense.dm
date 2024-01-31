@@ -18,7 +18,7 @@
 	state = GAMEMODE_GEARING
 	round_time = 0
 	round_time_next = HORDE_DELAY_GEARING
-	SSshuttle.next_pod_launch = world.time + (60*10 + 10) SECONDS
+	SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(60*10 + 10)
 	add_objectives()
 	announce(
 		"Central Command Update",
@@ -64,7 +64,7 @@
 		'sound/voice/announcement/landfall_crew_0_minutes.ogg'
 	)
 	allow_launch = TRUE
-	SSshuttle.next_pod_launch = world.time + 10 SECONDS
+	SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(10)
 	return TRUE
 
 /gamemode/horde/defense/on_launching()
