@@ -22,7 +22,7 @@
 		return 0
 	if(!damage_dealt || !armor_rating)
 		return damage_dealt
-	if(IS_INF(armor_rating))
+	if(IS_INFINITY(armor_rating))
 		return 0
 	if(armor_rating <= 0)
 		return damage_dealt * (1 + (-armor_rating/200))
@@ -37,7 +37,7 @@
 		return 0
 	if(!damage_dealt || !armor_rating)
 		return damage_dealt
-	if(IS_INF(armor_rating))
+	if(IS_INFINITY(armor_rating))
 		return 0
 	if(armor_rating <= 0)
 		return damage_dealt * (1 + (-armor_rating/200))
@@ -52,7 +52,7 @@
 		return 0
 	if(!damage_dealt || !armor_rating)
 		return damage_dealt
-	if(IS_INF(armor_rating))
+	if(IS_INFINITY(armor_rating))
 		return 0
 	if(armor_rating <= 0)
 		return damage_dealt * (1 + (-armor_rating/200))
@@ -73,7 +73,7 @@
 
 	if(damage_dealt < 0)
 		CRASH("Damage [damage_dealt] was negative!")
-	if(IS_INF(armor_rating))
+	if(IS_INFINITY(armor_rating))
 		return 0
 	if(!damage_dealt || !armor_rating)
 		return damage_dealt //No need to calculate.

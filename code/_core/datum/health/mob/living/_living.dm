@@ -58,7 +58,7 @@
 
 		for(var/damage_type in bonus_armor)
 			if(.[damage_type])
-				if(IS_INF(.[damage_type]))
+				if(IS_INFINITY(.[damage_type]))
 					continue
 				.[damage_type] += bonus_armor[damage_type]
 			else
@@ -67,7 +67,7 @@
 	for(var/list/bonus in L.defense_bonuses) //Superpowers and whatnot.
 		for(var/damage_type in bonus)
 			if(.[damage_type])
-				if(IS_INF(.[damage_type]))
+				if(IS_INFINITY(.[damage_type]))
 					continue
 				.[damage_type] += bonus[damage_type]
 			else
