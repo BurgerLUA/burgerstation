@@ -60,6 +60,7 @@
 
 	var/obj/item/container/edible/pill/P = new(get_turf(src))
 
+
 	INITIALIZE(P)
 	GENERATE(P)
 	FINALIZE(P)
@@ -67,6 +68,7 @@
 
 	I1.reagents.transfer_reagents_to(P.reagents,I1.transfer_amount, caller = caller)
 	if(I2) I2.reagents.transfer_reagents_to(P.reagents,I2.transfer_amount, caller = caller)
+
 
 
 
