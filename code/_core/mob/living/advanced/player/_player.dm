@@ -1,6 +1,7 @@
-/mob/living/advanced/player/
+/mob/living/advanced/player
 
-	var/unique_pid //Snowflake system that generates a md5 hash of the player on character creation.
+	///Snowflake system that generates a md5 hash of the player on character creation.
+	var/unique_pid
 
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
@@ -38,11 +39,14 @@
 	var/currency = 0
 	var/revenue = 0
 	var/expenses = 0
-	var/partial_tax = 0 //Taxes you couldn't pay.
+	///Taxes you couldn't pay.
+	var/partial_tax = 0
 	var/last_tax_payment = 0
 
-	var/insurance = INSURANCE_PAYOUT * 4 //How much insurance the user has. This amount is paid out in death, up to 8000 credits.
-	var/insurance_premiums = 0.05 //How much your insurance premiums are. This is taxed from your current amount each payday.
+	///How much insurance the user has. This amount is paid out in death, up to 8000 credits.
+	var/insurance = INSURANCE_PAYOUT * 4
+	///How much your insurance premiums are. This is taxed from your current amount each payday.
+	var/insurance_premiums = 0.05
 
 	var/logout_time = 0
 
@@ -81,11 +85,14 @@
 
 	var/save_id
 
-	var/ai_steps = 0 //Determining when the AI activates.
+	///Determining when the AI activates.
+	var/ai_steps = 0
 
-	var/death_ckey //The ckey belonging to this person that died. Cleared on revive.
+	///The ckey belonging to this person that died. Cleared on revive.
+	var/death_ckey
 
-	var/list/prestige_count = list() //Prestige count for each of the skills. Each count increases maximum skill by 5.
+	///Prestige count for each of the skills. Each count increases maximum skill by 5.
+	var/list/prestige_count = list()
 
 	var/list/quests = list()
 
@@ -93,12 +100,14 @@
 
 	var/list/linked_portals
 
-	var/last_autosave = 0 //The last time this player saved.
+	///The last time this player saved.
+	var/last_autosave = 0
 
 	enable_chunk_clean = FALSE
 	enable_chunk_handling = TRUE
 
-	var/is_saving = FALSE //Debug var that checks if the player is saving and freaks out if it's saving if it's qdeleted.
+	///Debug var that checks if the player is saving and freaks out if it's saving if it's qdeleted.
+	var/is_saving = FALSE
 
 	var/job/job
 	var/job_rank = 1
@@ -134,7 +143,7 @@
 			var/desired_z = CEILING(world.maxz/2,1)
 			force_move(locate(desired_x,desired_y,desired_z))
 
-/mob/living/advanced/player/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+/mob/living/advanced/player/get_damage_received_multiplier(atom/attacker, atom/victim, atom/weapon, atom/hit_object, atom/blamed, damagetype/DT)
 
 	if(attacker.is_player_controlled()) //PvP is always 0.5.
 		return 0.5
@@ -149,11 +158,10 @@
 	. = ..()
 
 /mob/living/advanced/player/restore_inventory()
-
 	. = ..()
-
-	if(.)
-		client.screen += click_and_drag_icon
+	if(!.)
+		return
+	client.screen += click_and_drag_icon
 
 /mob/living/advanced/player/setup_name()
 
@@ -169,10 +177,10 @@
 	health.update_health_stats()
 	return TRUE
 
-/mob/living/advanced/player/is_safe_to_delete(var/check_loc = TRUE)
+/mob/living/advanced/player/is_safe_to_delete(check_loc = TRUE)
 	if(is_saving)
 		return FALSE
-	. = ..()
+	return ..()
 
 /mob/living/advanced/player/PreDestroy()
 
@@ -201,7 +209,7 @@
 
 	SSliving.dead_player_mobs -= src
 
-	. = ..()
+	return ..()
 
 /mob/living/advanced/player/Destroy()
 	dialogue_target = null
@@ -221,12 +229,12 @@
 
 	return TRUE
 
-/mob/living/advanced/player/proc/prestige(var/skill_id)
+/mob/living/advanced/player/proc/prestige(skill_id)
 	if(!prestige_count[skill_id])
 		prestige_count[skill_id] = 1
 	else
 		prestige_count[skill_id] += 1
-	set_skill_level(skill_id,5)
+	set_skill_level(skill_id, (prestige_count[skill_id]*5))
 	src.to_chat(span("warning","Your loyalty implant buzzes as you feel your brain tampered with... seems like you've forgot everything about [skill_id]..."))
 	src.to_chat(span("notice","You have prestiged your [skill_id]. It is now at prestige level [prestige_count[skill_id]], requiring skill level [100 + prestige_count[skill_id]*5] to prestige again."))
 	//broadcast_to_clients(span("notice","[src.real_name] prestiged their [skill_id] to level [prestige_count[skill_id]]!"))

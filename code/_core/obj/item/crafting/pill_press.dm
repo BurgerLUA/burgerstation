@@ -69,8 +69,6 @@
 
 	FINALIZE(P)
 
-
-
 	if(product_container)
 		product_container.add_object_to_src_inventory(caller,P,TRUE)
 	else
