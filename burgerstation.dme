@@ -1325,6 +1325,7 @@
 #include "code\_core\obj\item\clothing\belt\brass.dm"
 #include "code\_core\obj\item\clothing\belt\damage_deferal_shield.dm"
 #include "code\_core\obj\item\clothing\belt\kilt.dm"
+#include "code\_core\obj\item\clothing\belt\musket_bag.dm"
 #include "code\_core\obj\item\clothing\belt\quiver.dm"
 #include "code\_core\obj\item\clothing\belt\skull_codpiece.dm"
 #include "code\_core\obj\item\clothing\belt\storage.dm"
