@@ -59,8 +59,6 @@
 		return FALSE
 
 	var/obj/item/container/edible/pill/P = new(get_turf(src))
-
-
 	INITIALIZE(P)
 	GENERATE(P)
 
