@@ -84,16 +84,10 @@
 		/obj/item/clothing/hands/gloves/colored/padded/brown/left,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
-		/obj/item/clothing/belt/storage/colored/brown,
+		/obj/item/clothing/belt/musket_bag{charge_count=30},
 		/obj/item/clothing/glasses/eyepatch,
 		/obj/item/weapon/ranged/bullet/revolver/musket,
 		/obj/item/weapon/melee/sword/sabre,
-		/obj/item/bullet_cartridge/flintlock,
-		/obj/item/bullet_cartridge/flintlock,
-		/obj/item/bullet_cartridge/flintlock,
-		/obj/item/bullet_cartridge/flintlock,
-		/obj/item/bullet_cartridge/flintlock{amount=3},
-		/obj/item/bullet_cartridge/flintlock{amount=3},
 		/obj/item/bullet_cartridge/flintlock{amount=3},
 		/obj/item/bullet_cartridge/flintlock{amount=3}
 	)
