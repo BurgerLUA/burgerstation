@@ -5,7 +5,7 @@
 SUBSYSTEM_DEF(logging)
 	name = "Logging Subsystem"
 	desc = "Logs things that are important."
-	tick_rate = DS2TICKS(LOG_RATE)
+	tick_rate = DECISECONDS_TO_TICKS(LOG_RATE)
 	priority = SS_ORDER_CONFIG
 	var/round_id = 0
 	var/start_date = ""

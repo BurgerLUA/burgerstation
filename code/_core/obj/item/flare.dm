@@ -95,7 +95,7 @@
 	caller?.visible_message(span("notice","\The [caller.name] ignites \the [src.name]."),span("notice","You ignite \the [src.name]."))
 
 	var/flare_time = rand(280,320)
-	CALLBACK("\ref[src]_flare_time",flare_time SECONDS,src,src::expire())
+	CALLBACK("\ref[src]_flare_time",SECONDS_TO_DECISECONDS(flare_time),src,src::expire())
 
 	play_sound('sound/items/flare_in.ogg',get_turf(src))
 

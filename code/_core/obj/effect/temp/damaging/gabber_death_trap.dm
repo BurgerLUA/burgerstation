@@ -3,7 +3,7 @@
 	name = "death trap"
 	icon = 'icons/obj/effects/gabber_death_trap.dmi'
 	icon_state = "active"
-	duration = 30 SECONDS
+	duration = SECONDS_TO_DECISECONDS(30)
 
 	hazardous = TRUE
 
@@ -43,7 +43,7 @@
 /obj/effect/temp/gabber_death_trap/Crossed(atom/movable/O,atom/OldLoc)
 	. = ..()
 	if(active && !triggered && !src.qdeleting)
-		CALLBACK("remove_effect_\ref[src]",5 SECONDS,src,/obj/effect/temp/proc/remove_effect)
+		CALLBACK("remove_effect_\ref[src]",SECONDS_TO_DECISECONDS(5),src,/obj/effect/temp/proc/remove_effect)
 		triggered = TRUE
 		icon_state = "triggered"
 		animate(src,alpha=100,time=10)

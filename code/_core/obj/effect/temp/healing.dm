@@ -3,7 +3,7 @@
 	mouse_opacity = 0
 	icon = 'icons/obj/effects/healing.dmi'
 	icon_state = "heal"
-	duration = 3 SECONDS
+	duration = SECONDS_TO_DECISECONDS(3)
 	color = "#FF0000"
 
 /obj/effect/temp/healing/New(var/desired_location,var/desired_time,var/desired_color)
@@ -24,7 +24,7 @@
 	mouse_opacity = 0
 	icon = 'icons/obj/effects/sparkles.dmi'
 	icon_state = "sparks"
-	duration = 1 SECONDS
+	duration = SECONDS_TO_DECISECONDS(1)
 
 
 
@@ -33,11 +33,11 @@
 	mouse_opacity = 0
 	icon = 'icons/obj/effects/sparkles.dmi'
 	icon_state = "emppulse"
-	duration = 1 SECONDS
+	duration = SECONDS_TO_DECISECONDS(1)
 
 /obj/effect/temp/emp_sparkle
 	name = "EMP effect"
 	mouse_opacity = 0
 	icon = 'icons/obj/effects/sparkles.dmi'
 	icon_state = "empdisable"
-	duration = 1 SECONDS
+	duration = SECONDS_TO_DECISECONDS(1)

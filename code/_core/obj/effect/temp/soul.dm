@@ -1,7 +1,7 @@
 /obj/effect/temp/soul
 	name = "soul"
 	mouse_opacity = 1
-	duration = 10 SECONDS
+	duration = SECONDS_TO_DECISECONDS(10)
 
 	icon = 'icons/mob/living/advanced/species/human.dmi'
 	icon_state = "preview"
@@ -22,12 +22,12 @@
 
 	animate(src,pixel_z=TILE_SIZE,time=duration)
 
-	CALLBACK("remove_effect_fade_\ref[src]",duration-1 SECONDS,src,src::remove_effect_fade())
+	CALLBACK("remove_effect_fade_\ref[src]",duration-SECONDS_TO_DECISECONDS(1),src,src::remove_effect_fade())
 
 	color = "#000000"
 
 	return ..()
 
 /obj/effect/temp/soul/proc/remove_effect_fade()
-	animate(src,alpha=0,time=1 SECONDS)
+	animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(1))
 	return TRUE

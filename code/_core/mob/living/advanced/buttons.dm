@@ -79,10 +79,10 @@
 	return TRUE
 
 //Inventory
-/mob/living/advanced/proc/toggle_inventory(var/show_flags_whitelist=FLAG_HUD_ALL,var/show_flags_blacklist=FLAG_HUD_NONE,var/speed = 1 SECONDS)
+/mob/living/advanced/proc/toggle_inventory(var/show_flags_whitelist=FLAG_HUD_ALL,var/show_flags_blacklist=FLAG_HUD_NONE,var/speed = SECONDS_TO_DECISECONDS(1))
 	return show_inventory(!draw_inventory,show_flags_whitelist,show_flags_blacklist,speed)
 
-/mob/living/advanced/proc/show_inventory(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed=1 SECONDS)
+/mob/living/advanced/proc/show_inventory(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed=SECONDS_TO_DECISECONDS(1))
 	draw_inventory = show
 	for(var/k in inventories_by_id)
 		var/obj/hud/inventory/I = inventories_by_id[k]
@@ -90,6 +90,6 @@
 			I.show(show,speed)
 	return TRUE
 
-/mob/living/advanced/show_hud(var/show,var/show_flags_whitelist=FLAG_HUD_ALL,var/show_flags_blacklist=FLAG_HUD_NONE,var/speed=1 SECONDS)
+/mob/living/advanced/show_hud(var/show,var/show_flags_whitelist=FLAG_HUD_ALL,var/show_flags_blacklist=FLAG_HUD_NONE,var/speed=SECONDS_TO_DECISECONDS(1))
 	. = ..()
 	show_inventory(show,show_flags_whitelist,show_flags_blacklist,speed)

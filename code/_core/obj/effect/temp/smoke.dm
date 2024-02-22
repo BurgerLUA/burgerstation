@@ -24,8 +24,8 @@
 	mouse_opacity = 1
 	icon = 'icons/obj/effects/smoke.dmi'
 	icon_state = "layer_1"
-	duration = 30 SECONDS
-	var/fade_time = 3 SECONDS
+	duration = SECONDS_TO_DECISECONDS(30)
+	var/fade_time = SECONDS_TO_DECISECONDS(3)
 	appearance_flags = PIXEL_SCALE | LONG_GLIDE | KEEP_TOGETHER
 
 	var/smoke_volume = 20//in tiles. Not a width. If you want a rough width, get your volume and divide by 4.

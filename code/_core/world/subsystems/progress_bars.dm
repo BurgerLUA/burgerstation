@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(progressbars)
 	name = "Progress Bar Subsystem"
 	desc = "Controls the display of progress bars."
-	tick_rate = DS2TICKS(1)
+	tick_rate = DECISECONDS_TO_TICKS(1)
 	priority = SS_ORDER_IMPORTANT
 
 	var/list/all_progress_bars = list()

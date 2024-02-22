@@ -28,10 +28,10 @@
 		create_alert(VIEW_RANGE,src.loc,src,ALERT_LEVEL_NOISE)
 		pixel_z = TILE_SIZE*VIEW_RANGE*4
 		pixel_w = TILE_SIZE*VIEW_RANGE*0.5
-		animate(src, pixel_z = 0, pixel_w = 0,time = 2 SECONDS)
-		CALLBACK("pod_land_\ref[src]",2 SECONDS,src,src::land())
+		animate(src, pixel_z = 0, pixel_w = 0,time = SECONDS_TO_DECISECONDS(2))
+		CALLBACK("pod_land_\ref[src]",SECONDS_TO_DECISECONDS(2),src,src::land())
 		if(auto_open)
-			CALLBACK("pod_open_\ref[src]",3 SECONDS,src,src::open())
+			CALLBACK("pod_open_\ref[src]",SECONDS_TO_DECISECONDS(3),src,src::open())
 
 
 /obj/structure/interactive/crate/closet/supply_pod/proc/land()

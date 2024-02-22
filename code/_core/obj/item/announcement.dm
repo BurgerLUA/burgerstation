@@ -78,7 +78,7 @@ var/global/next_announcement = 0
 
 	announce(sender,title,message,sound_to_play=sound_to_play)
 
-	next_announcement = world.time + 60 SECONDS
+	next_announcement = world.time + SECONDS_TO_DECISECONDS(60)
 
 	stored_message = null
 
@@ -204,7 +204,7 @@ var/global/next_announcement = 0
 
 	announce(sender,title,message,sound_to_play=pick(sounds_to_play))
 
-	next_announcement = world.time + 60 SECONDS
+	next_announcement = world.time + SECONDS_TO_DECISECONDS(60)
 
 	stored_message = null
 

@@ -7,7 +7,7 @@
 		var/mob/living/advanced/player/P = triggerer
 
 		if(P.client)
-			P.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL|FLAGS_HUD_WIDGET,1 SECONDS)
+			P.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL|FLAGS_HUD_WIDGET,SECONDS_TO_DECISECONDS(1))
 			P.sight |= SEE_THRU
 			. = ..()
 			play_music_track("village_intro",P.client)
@@ -15,9 +15,9 @@
 			P.move_dir = NORTH
 
 			spawn(0)
-				sleep(2 SECONDS)
+				sleep(SECONDS_TO_DECISECONDS(2))
 				P.move_dir = WEST
-				sleep(4 SECONDS)
+				sleep(SECONDS_TO_DECISECONDS(4))
 				P.move_dir = 0
 
 				var/list/points = list( //start at 116,100
@@ -41,7 +41,7 @@
 					if(mod_x == 0 && mod_y == 0)
 						step_num += 1
 						if(step_num == 2)
-							add_notification_easy(P.client,'icons/hud/discovery.dmi',"village",5 SECONDS)
+							add_notification_easy(P.client,'icons/hud/discovery.dmi',"village",SECONDS_TO_DECISECONDS(5))
 						if(step_num > length(points))
 							break
 					else
@@ -50,14 +50,14 @@
 
 					sleep(0.000001)
 
-				add_notification_colored_easy(P.client,"#FFFFFF",2 SECONDS,fade_in = TRUE)
-				sleep(2 SECONDS)
+				add_notification_colored_easy(P.client,"#FFFFFF",SECONDS_TO_DECISECONDS(2),fade_in = TRUE)
+				sleep(SECONDS_TO_DECISECONDS(2))
 				P.client.pixel_x = 0
 				P.client.pixel_y = 0
 
 				P.client.disable_controls = FALSE
 				P.sight &= ~SEE_THRU
-				sleep(3 SECONDS)
+				sleep(SECONDS_TO_DECISECONDS(3))
 				P.show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
 				var/savedata/client/mob/U = P.mobdata
 				U.loaded_data["tutorial"] = 0

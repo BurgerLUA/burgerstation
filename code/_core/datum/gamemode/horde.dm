@@ -136,7 +136,7 @@
 	state = GAMEMODE_GEARING
 	round_time = 0
 	round_time_next = HORDE_DELAY_GEARING
-	SSshuttle.next_pod_launch = world.time + (60*10 + 10) SECONDS
+	SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(60*10 + 10)
 	add_objectives()
 	announce(
 		"Central Command Update",
@@ -174,7 +174,7 @@
 	round_time_next = HORDE_DELAY_LAUNCHING
 	announce("Central Command Mission Update","Mission is a Go","Shuttles are prepped and ready to depart into the Area of Operations. All crew are cleared to launch.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes.ogg')
 	allow_launch = TRUE
-	SSshuttle.next_pod_launch = world.time + 10 SECONDS
+	SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(10)
 	return TRUE
 
 /gamemode/horde/proc/on_launching()
@@ -196,7 +196,7 @@
 	if(next_spawn_check > world.time)
 		return TRUE
 
-	next_spawn_check = world.time + 1 SECONDS //Incase a check fails.
+	next_spawn_check = world.time + SECONDS_TO_DECISECONDS(1) //Incase a check fails.
 
 	handle_alert_level()
 
@@ -270,15 +270,15 @@
 
 	switch(player_count)
 		if(-INFINITY to 10)
-			return 90 SECONDS
+			return SECONDS_TO_DECISECONDS(90)
 		if(10 to 20)
-			return 45 SECONDS
+			return SECONDS_TO_DECISECONDS(45)
 		if(20 to 30)
-			return 30 SECONDS
+			return SECONDS_TO_DECISECONDS(30)
 		if(30 to INFINITY)
-			return 15 SECONDS
+			return SECONDS_TO_DECISECONDS(15)
 
-	return 60 SECONDS //Fallback lol
+	return SECONDS_TO_DECISECONDS(60) //Fallback lol
 
 /gamemode/horde/proc/get_wave_size()
 

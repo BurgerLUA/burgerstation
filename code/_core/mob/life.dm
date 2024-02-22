@@ -9,7 +9,7 @@
 /mob/proc/get_lighting_alpha()
 	return 255
 
-#define NIGHTVISION_TIME 2 SECONDS
+#define NIGHTVISION_TIME SECONDS_TO_DECISECONDS(2)
 
 /mob/proc/handle_lighting_alpha()
 

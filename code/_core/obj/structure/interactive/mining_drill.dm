@@ -87,9 +87,9 @@
 	else
 		visible_message(span("warning","\The [src.name] powers up!"))
 
-	SShorde.all_drills[src] = world.time + 15 SECONDS
+	SShorde.all_drills[src] = world.time + SECONDS_TO_DECISECONDS(15)
 	set_anchored(TRUE)
-	CALLBACK("\ref[src]_do_drill",1.8 SECONDS,src,src::do_drill())
+	CALLBACK("\ref[src]_do_drill",SECONDS_TO_DECISECONDS(1.8),src,src::do_drill())
 	update_sprite()
 
 	return TRUE
@@ -188,7 +188,7 @@
 
 	play_sound('sound/machines/mining_drill.ogg',current_turf)
 
-	CALLBACK("\ref[src]_do_drill",1.8 SECONDS,src,src::do_drill())
+	CALLBACK("\ref[src]_do_drill",SECONDS_TO_DECISECONDS(1.8),src,src::do_drill())
 
 	return TRUE
 

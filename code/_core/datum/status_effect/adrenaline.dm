@@ -3,9 +3,9 @@
 	desc = "You're filled with adrenaline!"
 	id = ADRENALINE
 
-	minimum = 10 SECONDS
-	maximum = 300 SECONDS
-	default_duration = 30 SECONDS
+	minimum = SECONDS_TO_DECISECONDS(10)
+	maximum = SECONDS_TO_DECISECONDS(300)
+	default_duration = SECONDS_TO_DECISECONDS(30)
 
 /status_effect/adrenaline/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()

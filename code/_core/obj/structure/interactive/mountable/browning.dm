@@ -142,7 +142,7 @@
 	. = ..()
 
 	if(is_living(O))
-		CALLBACK("sit_down_\ref[src]",1 SECONDS,src,src::mount_your_ass(),O)
+		CALLBACK("sit_down_\ref[src]",SECONDS_TO_DECISECONDS(1),src,src::mount_your_ass(),O)
 
 
 /obj/structure/interactive/mountable/browning/proc/mount_your_ass(var/mob/living/L)
@@ -216,7 +216,7 @@
 
 	if(can_pack_up(caller))
 		caller.visible_message(span("warning","\The [caller.name] starts to pack up \the [src.name]..."),span("notice","You start to pack up \the [src.name]..."))
-		PROGRESS_BAR(caller,src,5 SECONDS,src::pack_up(),caller)
+		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::pack_up(),caller)
 		PROGRESS_BAR_CONDITIONS(caller,src,src::can_pack_up(),caller)
 
 	return TRUE

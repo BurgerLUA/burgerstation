@@ -10,5 +10,5 @@ obj/effect/temp/arrow
 
 obj/effect/temp/arrow/Finalize()
 	. = ..()
-	animate(src,pixel_z = 0, time=1 SECONDS,easing=BOUNCE_EASING,flags=ANIMATION_PARALLEL)
-	animate(src,pixel_x=desired_pixel_x,pixel_y=desired_pixel_y,time=0.3 SECONDS,flags=ANIMATION_PARALLEL)
+	animate(src,pixel_z = 0, time=SECONDS_TO_DECISECONDS(1),easing=BOUNCE_EASING,flags=ANIMATION_PARALLEL)
+	animate(src,pixel_x=desired_pixel_x,pixel_y=desired_pixel_y,time=SECONDS_TO_DECISECONDS(0.3),flags=ANIMATION_PARALLEL)

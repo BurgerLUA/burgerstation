@@ -143,7 +143,7 @@
 		)
 		play_sound(pick(valid_sounds),get_turf(L),range_max=VIEW_RANGE)
 
-	CALLBACK("zombie_revive_\ref[L]",(rand(4,10)) SECONDS,src,src::zombie_revive(),L)
+	CALLBACK("zombie_revive_\ref[L]",SECONDS_TO_DECISECONDS(rand(4,10)),src,src::zombie_revive(),L)
 	return TRUE
 
 /status_effect/zombie/proc/zombie_revive(var/mob/living/advanced/L) //Stolen from meatmen.
@@ -222,7 +222,7 @@
 	var/turf/T = get_turf(A)
 	if(T)
 		A.reagents.add_reagent(/reagent/toxin/blob_spore,50)
-		smoke(T,10,3 SECONDS,A.reagents,A,255)
+		smoke(T,10,SECONDS_TO_DECISECONDS(3),A.reagents,A,255)
 		var/reagent/R = REAGENT(/reagent/blood/blob)
 		for(var/i=1,i<=3,i++)
 			create_blood(

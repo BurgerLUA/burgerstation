@@ -4,7 +4,7 @@
 	var/name = "spell name"
 	var/desc = "Spell description."
 
-	var/cast_delay = 0.5 SECONDS
+	var/cast_delay = SECONDS_TO_DECISECONDS(0.5)
 	var/cast_sound
 
 /spell/proc/on_cast(var/mob/caller,var/atom/target,location,control,params)

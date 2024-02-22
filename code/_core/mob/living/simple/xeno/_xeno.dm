@@ -91,7 +91,7 @@
 		if(sound_to_play)
 			play_sound(sound_to_play,get_turf(src),range_max=VIEW_RANGE)
 
-		next_talk = world.time + (rand(5,12)) SECONDS
+		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
 
 /mob/living/simple/xeno/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
 
@@ -105,7 +105,7 @@
 			'sound/voice/xeno/screech4.ogg'
 		)
 		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
-		next_talk = world.time + (rand(5,12)) SECONDS
+		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
 
 /mob/living/simple/xeno/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()

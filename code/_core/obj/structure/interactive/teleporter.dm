@@ -90,5 +90,5 @@
 				play_sound('sound/effects/sparks4.ogg',get_turf(A),range_max=VIEW_RANGE)
 				item_counter++
 				second_cooldown += 2
-	teleport_cooldown = world.time + second_cooldown SECONDS
+	teleport_cooldown = world.time + SECONDS_TO_DECISECONDS(second_cooldown)
 	flick(icon, "pad-beam")

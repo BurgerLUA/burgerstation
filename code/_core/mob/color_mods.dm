@@ -37,7 +37,7 @@
 				break
 			desired_color[i] = (desired_color[i]+color_mod[i])*0.5
 
-	animate(src,color = desired_color,time = TICKS2DS(CLIENT_TICK_SLOW))
+	animate(src,color = desired_color,time = TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW))
 
 	return TRUE
 
@@ -54,6 +54,6 @@
 
 	desired_alpha = FLOOR(desired_alpha,1)
 
-	animate(mob.plane_master_lighting,alpha = desired_alpha,time = TICKS2DS(CLIENT_TICK_SLOW))
+	animate(mob.plane_master_lighting,alpha = desired_alpha,time = TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW))
 
 	return TRUE

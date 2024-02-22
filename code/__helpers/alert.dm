@@ -42,11 +42,11 @@
 		if(L.master)
 			if(L.master.next_alert > world.time)
 				return FALSE
-			L.master.next_alert = world.time + 1 SECONDS
+			L.master.next_alert = world.time + SECONDS_TO_DECISECONDS(1)
 		else
 			if(L.next_alert > world.time)
 				return FALSE
-			L.next_alert = world.time + 1 SECONDS
+			L.next_alert = world.time + SECONDS_TO_DECISECONDS(1)
 
 	. = 0
 

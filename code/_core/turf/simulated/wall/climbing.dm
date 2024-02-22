@@ -54,7 +54,7 @@
 			var/turf/landing_turf = locate(x,y,z+1)
 			if(!can_climb(L,actual_turf,above_turf,landing_turf))
 				return TRUE
-			PROGRESS_BAR(L,src,3 SECONDS,src::do_climb(),L,actual_turf,above_turf,landing_turf)
+			PROGRESS_BAR(L,src,SECONDS_TO_DECISECONDS(3),src::do_climb(),L,actual_turf,above_turf,landing_turf)
 			PROGRESS_BAR_CONDITIONS(L,src,src::can_climb(),L,actual_turf,above_turf,landing_turf)
 			return TRUE
 

@@ -15,7 +15,7 @@
 			"WELL, WHAT IS IT?"
 		)
 		owner.do_say(pick(possible_phrases))
-		next_chat_time = world.time + 5 SECONDS
+		next_chat_time = world.time + SECONDS_TO_DECISECONDS(5)
 
 /ai/advanced/daddy/attack_message()
 	owner.do_say("POW.")

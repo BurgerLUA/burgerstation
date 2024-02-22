@@ -78,14 +78,14 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
-			PROGRESS_BAR(caller,src,1 SECONDS,src::construct_lattice(),caller,object)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),src::construct_lattice(),caller,object)
 			PROGRESS_BAR_CONDITIONS(caller,src,src::can_construct_lattice(),caller,object)
 			return TRUE
 		if(istype(object,/obj/item/material/sheet/))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
-			PROGRESS_BAR(caller,src,1 SECONDS,src::construct_girder(),caller,object)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),src::construct_girder(),caller,object)
 			PROGRESS_BAR_CONDITIONS(caller,src,src::can_construct_girder(),caller,object)
 			return TRUE
 

@@ -19,7 +19,7 @@
 	weight = 0.1
 
 	var/injection_sound = null //Optional injection sound to use.
-	var/injection_time = 2 SECONDS //Time in deciseconds to take when performing an injection. Draws are double this. Self injections are half this.
+	var/injection_time = SECONDS_TO_DECISECONDS(2) //Time in deciseconds to take when performing an injection. Draws are double this. Self injections are half this.
 	var/inject_amount_max = INFINITY //Set to a value other than infinity to add a hard limit to injections. Limit is then limited again by the reagent's container.
 	var/can_inject = TRUE //Set to true if this can inject into other beings.
 	var/can_draw = TRUE //Set to true if this can draw reagents from beings or objects.

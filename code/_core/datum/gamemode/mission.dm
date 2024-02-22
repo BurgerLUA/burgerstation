@@ -4,7 +4,7 @@
 	hidden = FALSE
 
 	var/last_vote = 0
-	var/vote_delay = (60*60) SECONDS
+	var/vote_delay = SECONDS_TO_DECISECONDS(60*60)
 
 	round_time_next = 0
 
@@ -180,7 +180,7 @@
 					"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle functionality: 6 minutes.",
 					sound_to_play = 'sound/voice/announcement/landfall_crew_6_minutes_shuttle.ogg'
 				)
-				CALLBACK("\ref[src]_add_objectives",10 SECONDS,src,src::add_objectives()) //10 to 60 seconds.
+				CALLBACK("\ref[src]_add_objectives",SECONDS_TO_DECISECONDS(10),src,src::add_objectives()) //10 to 60 seconds.
 				CALLBACK("\ref[src]_announce_lore",rand(100,600),src,src::announce_lore()) //10 to 60 seconds.
 			if(2)
 				status_display_text = "PREP"

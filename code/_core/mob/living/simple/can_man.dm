@@ -56,13 +56,13 @@
 
 	change_dir_on_move = FALSE
 
-	movement_delay = DS2TICKS(4)
+	movement_delay = DECISECONDS_TO_TICKS(4)
 
 	soul_size = SOUL_SIZE_RARE
 
 	object_size = 1
 
-	respawn_time = 300 SECONDS
+	respawn_time = SECONDS_TO_DECISECONDS(300)
 
 	level = 90
 

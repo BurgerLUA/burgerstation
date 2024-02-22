@@ -9,7 +9,7 @@
 	shoot_delay = 30
 	projectile = /obj/projectile/bullet/summon
 
-	duration = 300 SECONDS //In deciseconds. Only applies to summoning mobs.
+	duration = SECONDS_TO_DECISECONDS(300) //In deciseconds. Only applies to summoning mobs.
 
 	cost_mana = 100
 	var/obj/structure/totem/totem_to_spawn = /obj/structure/totem

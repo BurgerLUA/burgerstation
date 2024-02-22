@@ -80,7 +80,7 @@
 	if(color == "#000000")
 		color=color_mod
 	else
-		animate(src,color=color_mod,time=TICKS2DS(LIFE_TICK_FAST))
+		animate(src,color=color_mod,time=TICKS_TO_DECISECONDS(LIFE_TICK_FAST))
 
 	if(text_to_use)
 		maptext = "<font color='#0000FF'>[text_to_use]</font>"

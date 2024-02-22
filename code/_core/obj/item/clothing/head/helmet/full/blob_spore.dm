@@ -47,7 +47,7 @@
 	return TRUE
 
 /obj/item/clothing/head/helmet/full/blob_spore/click_self(var/mob/caller,location,control,params)
-	PROGRESS_BAR(caller,src,1 SECONDS,src::remove_blob(),caller)
+	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),src::remove_blob(),caller)
 	PROGRESS_BAR_CONDITIONS(caller,src,src::can_remove_blob(),caller)
 	return TRUE
 
@@ -90,7 +90,7 @@
 			if(T && A.blood_type && prob(50))
 				var/reagent/R = REAGENT(A.blood_type)
 				create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
-		next_feed = world.time + 1 SECONDS
+		next_feed = world.time + SECONDS_TO_DECISECONDS(1)
 
 	if(A.ai && !A.is_busy() && prob(25))
 		click_self(A)
@@ -99,7 +99,7 @@
 
 	if(A.dead)
 		inert = TRUE
-		next_feed = world.time + 10 SECONDS
+		next_feed = world.time + SECONDS_TO_DECISECONDS(10)
 
 
 

@@ -5,9 +5,9 @@
 	minimum = 0
 	maximum = 300
 
-	minimum = 5 SECONDS
-	maximum = 5 SECONDS
-	default_duration = 5 SECONDS
+	minimum = SECONDS_TO_DECISECONDS(5)
+	maximum = SECONDS_TO_DECISECONDS(5)
+	default_duration = SECONDS_TO_DECISECONDS(5)
 
 /status_effect/fire/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 

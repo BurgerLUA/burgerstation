@@ -88,14 +88,14 @@
 			var/turf/T4 = get_turf(astar_path_current[astar_length]) //Check the end of the path.
 			if(get_dist(T2,T4) >= 4 || next_star <= world.time) //Is it an old path?
 				set_path_astar(T2)
-				next_star = world.time + 4 SECONDS
+				next_star = world.time + SECONDS_TO_DECISECONDS(4)
 				return TRUE
 		else
 			var/move_dir = get_dir(T1,T2)
 			var/turf/T3 = get_step(T1,move_dir)
 			if(!T3.can_move_to(FALSE))
 				set_path_astar(T2)
-				next_star = world.time + 4 SECONDS
+				next_star = world.time + SECONDS_TO_DECISECONDS(4)
 				return TRUE
 
 	else if(objective_move)
@@ -108,14 +108,14 @@
 			var/turf/T4 = get_turf(astar_path_current[astar_length]) //Check the end of the path.
 			if(get_dist(T2,T4) >= 4 || next_star <= world.time) //Is it an old path?
 				set_path_astar(T2)
-				next_star = world.time + 4 SECONDS
+				next_star = world.time + SECONDS_TO_DECISECONDS(4)
 				return TRUE
 		else
 			var/move_dir = get_dir(T1,T2)
 			var/turf/T3 = get_step(T1,move_dir)
 			if(!T3.can_move_to(FALSE))
 				set_path_astar(T2)
-				next_star = world.time + 4 SECONDS
+				next_star = world.time + SECONDS_TO_DECISECONDS(4)
 				return TRUE
 
 	return FALSE
@@ -168,7 +168,7 @@
 		return FALSE
 
 	var/obj/emf/E = new(loc,desired_level,desired_range)
-	E.time_to_delete = world.time + 20 SECONDS
+	E.time_to_delete = world.time + SECONDS_TO_DECISECONDS(20)
 	INITIALIZE(E)
 	GENERATE(E)
 	FINALIZE(E)
@@ -222,7 +222,7 @@
 
 	owner.handle_movement(tick_rate)
 
-	if(!CALLBACK_EXISTS("set_new_objective_\ref[src]") && (objective_attack || (anger >= 100 && last_teleport + 4 SECONDS <= world.time)))
+	if(!CALLBACK_EXISTS("set_new_objective_\ref[src]") && (objective_attack || (anger >= 100 && last_teleport + SECONDS_TO_DECISECONDS(4) <= world.time)))
 		var/no_objective = !objective_attack
 		objective_ticks += tick_rate
 		owner_as_ghost.desired_alpha = 255
@@ -340,7 +340,7 @@
 					if(anger >= 50)
 						if(stat_vocal && !annoying_player)
 							play_sound(pick('sound/ghost/pain_1.ogg','sound/ghost/pain_2.ogg','sound/ghost/pain_3.ogg'),T,range_max=VIEW_RANGE)
-							next_voice = world.time + 10 SECONDS
+							next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 						add_anger(ADV.ckey,20)
 					else
 						add_anger(ADV.ckey,10)
@@ -349,7 +349,7 @@
 					var/obj/item/weapon/melee/torch/L = LS.source_atom
 					if(L.enabled) L.click_self(owner)
 					create_emf(get_turf(L),3)
-			if(annoying_player && last_teleport + 60 SECONDS <= world.time)
+			if(annoying_player && last_teleport + SECONDS_TO_DECISECONDS(60) <= world.time)
 				if(viewer_count || insane)
 					var/mob/living/advanced/ADV = insane ? insane : pick(found_viewers)
 					var/turf/T2 = get_turf(ADV)
@@ -358,10 +358,10 @@
 					if(stat_vocal)
 						if(anger <= 50)
 							play_sound(pick('sound/ghost/behind_you1.ogg','sound/ghost/behind_you2.ogg'),T2,range_max=VIEW_RANGE)
-							next_voice = world.time + 10 SECONDS
+							next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 						else
 							play_sound(pick('sound/ghost/turn_around1.ogg','sound/ghost/turn_around2.ogg'),T2,range_max=VIEW_RANGE)
-							next_voice = world.time + 10 SECONDS
+							next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 					add_anger(ADV.ckey,10)
 
 	//Look at the man who will die.
@@ -369,7 +369,7 @@
 		owner.set_dir(get_dir(owner,insane))
 		if(stat_vocal && next_voice < world.time && prob(25))
 			play_sound_target(pick('sound/ghost/i_see_you1.ogg','sound/ghost/i_see_you2.ogg','sound/ghost/im_here1.ogg','sound/ghost/im_here2.ogg'),insane)
-			next_voice = world.time + 10 SECONDS
+			next_voice = world.time + SECONDS_TO_DECISECONDS(10)
 
 	if(anger <= 50)
 		desired_alpha = 0 //No reason to show ourselves.

@@ -100,28 +100,29 @@
 
 
 
-/dialogue/npc/master/proc/try_prestige(var/mob/living/advanced/player/P)
+/dialogue/npc/master/proc/try_prestige(mob/living/advanced/player/prestiger)
 
 	var/list/valid_skills = list()
+	var/experience/skill_to_prestige
 
-	for(var/k in P.skills)
-		var/experience/E = P.skills[k]
-		if(E.get_max_level() > E.get_current_level())
+	for(var/k in prestiger.skills)
+		skill_to_prestige = prestiger.skills[k]
+		if(skill_to_prestige.get_max_level() > skill_to_prestige.get_current_level())
 			continue
-		valid_skills += E
+		valid_skills += skill_to_prestige
 
 	if(!length(valid_skills))
-		P.to_chat(span("warning","You have no valid skills to prestige! Come back when one of your skills is above the prestige threshold."))
+		prestiger.to_chat(span("warning","You have no valid skills to prestige! Come back when one of your skills is above the prestige threshold."))
 		return FALSE
 
 	valid_skills += "Cancel"
 
-	var/desired_choice = input("Are you sure you wish to enter the prestige program? The chosen skill will be reset to 5 and its max level will increase by 5.","Prestige Program","Cancel") as null|anything in valid_skills
+	var/desired_choice = input("Are you sure you wish to enter the prestige program? The chosen skill will be reset to [prestiger.prestige_count[skill_to_prestige.id]*5] and its max level will increase by 5.","Prestige Program","Cancel") as null|anything in valid_skills
 	if(!desired_choice || desired_choice == "Cancel")
-		P.to_chat(span("notice","You decide not to prestige anything."))
+		prestiger.to_chat(span("notice","You decide not to prestige anything."))
 		return FALSE
 
-	var/experience/E = desired_choice
-	if(E.get_max_level() <= E.get_current_level())
-		P.prestige(E.id)
-	return TRUE
+	skill_to_prestige = desired_choice
+	if(skill_to_prestige.get_max_level() <= skill_to_prestige.get_current_level())
+		prestiger.prestige(skill_to_prestige.id)
+		return TRUE

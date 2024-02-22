@@ -17,7 +17,7 @@
 
 /client/proc/on_life_slow()
 
-	if(restricted && inactivity <= TICKS2DS(CLIENT_TICK)*3)
+	if(restricted && inactivity <= TICKS_TO_DECISECONDS(CLIENT_TICK)*3)
 		del(src)
 		return TRUE
 
@@ -39,10 +39,10 @@
 				spectate(null)
 
 	if(spam_protection_chat > 0)
-		spam_protection_chat = max(0,spam_protection_chat - TICKS2DS(CLIENT_TICK_SLOW))
+		spam_protection_chat = max(0,spam_protection_chat - TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW))
 
 	if(spam_protection_interact > 0)
-		spam_protection_interact = max(0,spam_protection_interact - TICKS2DS(CLIENT_TICK_SLOW))
+		spam_protection_interact = max(0,spam_protection_interact - TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW))
 
 	for(var/k in stored_hud_images)
 		var/image/I = k
@@ -78,8 +78,8 @@
 	/*
 	if(desired_zoom)
 		var/list/dir_to_pixel = direction_to_pixel_offset(mob.dir)
-		animate(src,pixel_x = dir_to_pixel[1]*TILE_SIZE*VIEW_RANGE, pixel_y = dir_to_pixel[2]*TILE_SIZE*VIEW_RANGE, time = 1 SECONDS, flags = ANIMATION_LINEAR_TRANSFORM )
+		animate(src,pixel_x = dir_to_pixel[1]*TILE_SIZE*VIEW_RANGE, pixel_y = dir_to_pixel[2]*TILE_SIZE*VIEW_RANGE, time = SECONDS_TO_DECISECONDS(1), flags = ANIMATION_LINEAR_TRANSFORM )
 	else
-		animate(src,pixel_x = 0, pixel_y = 0, time = 0.5 SECONDS, flags = ANIMATION_LINEAR_TRANSFORM )
+		animate(src,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(0.5), flags = ANIMATION_LINEAR_TRANSFORM )
 	*/
 	return TRUE

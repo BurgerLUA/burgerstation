@@ -115,7 +115,7 @@
 		return FALSE
 
 	if(next_consume <= world.time)
-		next_consume = world.time + 4 SECONDS
+		next_consume = world.time + SECONDS_TO_DECISECONDS(4)
 		consume(1)
 
 	return TRUE

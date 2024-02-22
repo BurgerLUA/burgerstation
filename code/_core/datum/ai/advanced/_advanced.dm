@@ -303,7 +303,7 @@
 			G.drop_item(get_turf(owner))
 			if(offsets[1] || offsets[2])
 				var/throw_velocity = 10
-				G.throw_self(owner,real_target,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = 4 SECONDS, steps_allowed = VIEW_RANGE, desired_loyalty_tag = owner.loyalty_tag)
+				G.throw_self(owner,real_target,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = VIEW_RANGE, desired_loyalty_tag = owner.loyalty_tag)
 		else
 			if(debug) log_debug("Dropping the grenade because of weird fuckery.")
 			G.drop_item(get_turf(A)) //Bad grenade. This will rarely happen due to the above turf checking but this is for weird cases.

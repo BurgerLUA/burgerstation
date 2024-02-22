@@ -10,7 +10,7 @@
 
 	resource_type = STAMINA
 	cost = 10
-	cooldown = 4 SECONDS
+	cooldown = SECONDS_TO_DECISECONDS(4)
 
 /ability/cqc/on_cast(var/mob/caller,var/atom/target,location,params)
 

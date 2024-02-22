@@ -29,7 +29,7 @@
 
 	if(is_living(victim))
 		var/mob/living/L = victim
-		var/flash_duration = clamp(damage_multiplier,1 SECONDS,4 SECONDS)
+		var/flash_duration = clamp(damage_multiplier,SECONDS_TO_DECISECONDS(1),SECONDS_TO_DECISECONDS(4))
 		L.flash(flash_duration)
-		var/bang_duration = clamp(damage_multiplier,4 SECONDS,10 SECONDS)
+		var/bang_duration = clamp(damage_multiplier,SECONDS_TO_DECISECONDS(4),SECONDS_TO_DECISECONDS(10))
 		L.bang(bang_duration)

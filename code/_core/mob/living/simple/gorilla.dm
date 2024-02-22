@@ -16,7 +16,7 @@
 
 	size = SIZE_GIANT
 
-	movement_delay = DS2TICKS(5)
+	movement_delay = DECISECONDS_TO_TICKS(5)
 
 	loyalty_tag = "Gorilla"
 	iff_tag = "Gorilla"

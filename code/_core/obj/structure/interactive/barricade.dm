@@ -76,7 +76,7 @@
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
-		PROGRESS_BAR(caller,src,2 SECONDS,src::climb_over(),caller)
+		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(2),src::climb_over(),caller)
 		PROGRESS_BAR_CONDITIONS(caller,src,src::can_climb_over(),caller)
 		caller.visible_message(span("warning","\The [caller.name] begins climbing over \the [src.name]."),span("notice","You begin climbing over \the [src.name]."))
 		return TRUE

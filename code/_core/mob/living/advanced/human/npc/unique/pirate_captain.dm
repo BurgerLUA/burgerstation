@@ -76,7 +76,7 @@
 				src.loyalty_tag
 			)
 
-			next_revive = world.time + 5 SECONDS
+			next_revive = world.time + SECONDS_TO_DECISECONDS(5)
 
 /mob/living/advanced/npc/unique/pirate_mate
 	name = "HOS COOL"

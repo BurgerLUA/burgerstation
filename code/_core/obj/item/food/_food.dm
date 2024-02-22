@@ -33,7 +33,7 @@
 		callback_list["object"] = src
 		//callback_list["start_turf"] = get_turf(src)
 
-		if(add_progress_bar(A1,"feed_self",1 SECONDS,callback_list))
+		if(add_progress_bar(A1,"feed_self",SECONDS_TO_DECISECONDS(1),callback_list))
 			A1.to_chat(span("notice","You start eating \the [src]..."))
 
 	else
@@ -43,7 +43,7 @@
 		callback_list["object"] = src
 		callback_list["start_turf"] = get_turf(src)
 
-		if(add_progress_bar(A1,"feed_other",3 SECONDS,callback_list))
+		if(add_progress_bar(A1,"feed_other",SECONDS_TO_DECISECONDS(3),callback_list))
 			A1.to_chat(span("notice","You start to forcefeed \the [src] to \the [A2]..."))
 
 	return TRUE
@@ -80,3 +80,4 @@
 	if(heal_amount_mana)
 		. += div("notice","Mana Restore: [heal_amount_mana].")
 
+	

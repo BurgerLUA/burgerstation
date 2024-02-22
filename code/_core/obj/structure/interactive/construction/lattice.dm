@@ -96,14 +96,14 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
-			PROGRESS_BAR(caller,src,1 SECONDS,src::construct_grille(),caller,object)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),src::construct_grille(),caller,object)
 			PROGRESS_BAR_CONDITIONS(caller,src,src::can_construct_grille(),caller,object)
 			return TRUE
 		if(istype(I,/obj/item/material/sheet/))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
-			PROGRESS_BAR(caller,src,1 SECONDS,src::construct_floor_plating(),caller,object)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),src::construct_floor_plating(),caller,object)
 			PROGRESS_BAR_CONDITIONS(caller,src,src::can_construct_floor_plating(),caller,object)
 			return TRUE
 

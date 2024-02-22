@@ -29,7 +29,7 @@
 	var/had_previous_objective = objective_attack
 	. = ..()
 	if(. && objective_attack && !had_previous_objective)
-		next_minigun_sweep = max(next_minigun_sweep,world.time + 30 SECONDS)
+		next_minigun_sweep = max(next_minigun_sweep,world.time + SECONDS_TO_DECISECONDS(30))
 
 /ai/boss/can_man/handle_movement()
 
@@ -55,7 +55,7 @@
 		//Charged minigun attack
 		if(next_minigun_sweep <= world.time)
 			owner_as_can_man.telegraph_special_minigun_sweep(objective_attack)
-			next_minigun_sweep = world.time + 30 SECONDS
+			next_minigun_sweep = world.time + SECONDS_TO_DECISECONDS(30)
 			return TRUE
 		//Basic minigun attack.
 		if(owner_as_can_man.minigun_delay <= world.time && get_dist(owner,objective_attack) >= 2)

@@ -149,7 +149,7 @@
 	if(is_inventory(object))
 		if(!can_enter_vehicle(caller))
 			return TRUE
-		PROGRESS_BAR(caller,src,3 SECONDS,src::enter_vehicle(),caller)
+		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::enter_vehicle(),caller)
 		PROGRESS_BAR_CONDITIONS(caller,src,src::can_enter_vehicle(),caller)
 		return TRUE
 
@@ -230,7 +230,7 @@
 	L.invisibility = 100
 	L.update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 	add_buttons(L)
-	L.show_hud(TRUE,FLAG_HUD_VEHICLE,speed=1 SECONDS)
+	L.show_hud(TRUE,FLAG_HUD_VEHICLE,speed=SECONDS_TO_DECISECONDS(1))
 	update_sprite()
 
 	return TRUE
