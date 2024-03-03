@@ -64,6 +64,7 @@
 	loot_table = list(
 		/obj/item/clothing/back/wings/angel = 3,
 		/obj/item/weapon/melee/staff_of_healing = 1
+		/obj/item/weapon/ranged/spellgem/pillar = 0.1
 	)
 
 /loot/lavaland/slime_king
