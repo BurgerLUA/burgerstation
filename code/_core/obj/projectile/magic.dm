@@ -436,6 +436,17 @@
 	ricochet_angle = 90
 	homing_angle_limit = 80
 
+/obj/projectile/magic/pillar
+	name = "pillar"
+	icon_state = "arbiterpillar"
+	penetrations_left = 6
+	collision_bullet_flags = FLAG_COLLISION_BULLET_XRAY
+	homing = TRUE
+	homing_speed = TILE_SIZE*1.5
+	homing_mod = 0.5
+	ricochet_angle = 90
+	homing_angle_limit = 180
+
 /*
 /obj/projectile/magic/fractal/on_projectile_hit(atom/hit_atom)
 
