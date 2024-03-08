@@ -1,8 +1,8 @@
 /damagetype/ranged/magic/pillar
 	attack_damage_base = list(
-		BLUNT = 100,
-		HEAT = 100,
-		ARCANE = 100,
+		BLUNT = 110,
+		HEAT = 60,
+		ARCANE = 80,
         DARK = 100
 	)
 
