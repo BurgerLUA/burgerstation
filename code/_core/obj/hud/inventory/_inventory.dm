@@ -230,13 +230,12 @@
 						if(click_flags & RIGHT_HAND)
 							desired_transform.Scale(-1,1)
 					else
+						desired_pixel_y = item_to_update.dan_offset_pixel_y[1]
 						if(click_flags & RIGHT_HAND)
 							desired_pixel_x = item_to_update.dan_offset_pixel_x[1]
-							desired_pixel_y = item_to_update.dan_offset_pixel_y[1]
 							desired_transform.Scale(-1,1)
 						else
 							desired_pixel_x = -item_to_update.dan_offset_pixel_x[1]
-							desired_pixel_y = -item_to_update.dan_offset_pixel_y[1]
 
 			if(EAST)
 				if(id == BODY_TORSO_OB)
@@ -248,13 +247,12 @@
 						desired_layer = item_to_update.dan_layer_above
 						desired_pixel_x = 4
 					else
+						desired_pixel_y = item_to_update.dan_offset_pixel_y[2]
 						if(click_flags & RIGHT_HAND)
 							desired_pixel_x = item_to_update.dan_offset_pixel_x[2]
-							desired_pixel_y = item_to_update.dan_offset_pixel_y[2]
 							desired_layer = item_to_update.dan_layer_above
 						else
 							desired_pixel_x = -item_to_update.dan_offset_pixel_x[2] + 4
-							desired_pixel_y = -item_to_update.dan_offset_pixel_y[2]
 							desired_layer = item_to_update.dan_layer_below
 						desired_transform.Scale(-1,1)
 			if(SOUTH)
@@ -266,12 +264,11 @@
 						if(click_flags & LEFT_HAND)
 							desired_transform.Scale(-1,1)
 					else
+						desired_pixel_y = item_to_update.dan_offset_pixel_y[3]
 						if(click_flags & RIGHT_HAND)
 							desired_pixel_x = item_to_update.dan_offset_pixel_x[3]
-							desired_pixel_y = item_to_update.dan_offset_pixel_y[3]
 						else
 							desired_pixel_x = -item_to_update.dan_offset_pixel_x[3]
-							desired_pixel_y = -item_to_update.dan_offset_pixel_y[3]
 							desired_transform.Scale(-1,1)
 			if(WEST)
 				if(id == BODY_TORSO_OB)
@@ -284,14 +281,13 @@
 						desired_transform.Scale(-1,1)
 						desired_pixel_x = -4
 					else
+						desired_pixel_y = item_to_update.dan_offset_pixel_y[4]
 						if(click_flags & RIGHT_HAND)
 							desired_layer = item_to_update.dan_layer_below
 							desired_pixel_x = item_to_update.dan_offset_pixel_x[4] - 4
-							desired_pixel_y = item_to_update.dan_offset_pixel_y[4]
 						else
 							desired_layer = item_to_update.dan_layer_above
 							desired_pixel_x = -item_to_update.dan_offset_pixel_x[4]
-							desired_pixel_y = -item_to_update.dan_offset_pixel_y[4]
 
 	else if(id == BODY_HAND_LEFT_HELD)
 		desired_icon_state = item_to_update.icon_state_held_left
@@ -301,6 +297,8 @@
 	if(desired_icon_state == null)
 		return FALSE
 
+	//This is for the held icon only. NOT the inventory icon.
+	//Not really a clean way to do this without icon blend operations.
 	if(length(item_to_update.polymorphs))
 		var/icon/I = ICON_INVISIBLE
 		for(var/polymorph_name in item_to_update.polymorphs)

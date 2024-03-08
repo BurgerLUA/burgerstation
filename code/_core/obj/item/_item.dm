@@ -138,8 +138,8 @@
 	var/dan_icon_state_wielded = "wielded"
 	var/dan_icon_state_back = "back"
 	// list(NORTH,EAST,SOUTH,WEST)
-	var/dan_offset_pixel_x = list(8,0,-8,0) //Aligned for right hand. These values are inversed in left hand. Automatic offsets are applied for EAST and WEST.
-	var/dan_offset_pixel_y = list(0,0,0,0) //Aligned for right hand. These values are inversed in left hand.
+	var/list/dan_offset_pixel_x = list(8,0,-8,0) //Aligned for right hand. These values are inversed in left hand. Automatic offsets are applied for EAST and WEST.
+	var/list/dan_offset_pixel_y = list(0,0,0,0) //Aligned for right hand.
 	var/dan_layer_above = LAYER_MOB_HELD
 	var/dan_layer_below = LAYER_MOB_NONE
 
@@ -830,12 +830,9 @@
 	. = ..()
 
 	if(length(polymorphs))
-		var/initial_icon = initial(icon)
-		var/initial_icon_state = initial(icon_state)
-
 		for(var/polymorph_name in polymorphs)
 			var/polymorph_color = polymorphs[polymorph_name]
-			var/image/I = new/image(initial_icon,"[initial_icon_state]_[polymorph_name]")
+			var/image/I = new/image(initial(icon),"[icon_state]_[polymorph_name]")
 			I.color = polymorph_color
 			add_overlay(I)
 
