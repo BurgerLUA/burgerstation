@@ -37,12 +37,24 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
+"h" = (
+/obj/marker/prefab/city/parking,
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
 "i" = (
 /obj/marker/prefab/city/parking{
 	icon_state = "parking";
 	dir = 4
 	},
 /turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"j" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "k" = (
 /obj/marker/prefab/city/store{
@@ -127,6 +139,14 @@
 /obj/structure/interactive/lighting/roadlamp,
 /turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
+"z" = (
+/obj/decal/road_marking/solid_line/offset/yellow{
+	icon_state = "1";
+	dir = 1
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "A" = (
 /obj/structure/interactive/lighting/roadlamp{
 	icon_state = "lamp";
@@ -140,6 +160,11 @@
 	dir = 8
 	},
 /turf/simulated/floor/sidewalk,
+/area/dmm_suite/clear_area)
+"C" = (
+/obj/decal/road_marking/dotted_line/half,
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "D" = (
 /obj/marker/blob,
@@ -173,6 +198,18 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
+"I" = (
+/obj/structure/scenery/flowers,
+/turf/simulated/floor/colored/grass,
+/area/dmm_suite/clear_area)
+"J" = (
+/obj/decal/road_marking/solid_line/offset/yellow{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "K" = (
 /obj/decal/road_marking/dotted_line/half{
 	icon_state = "1";
@@ -204,6 +241,7 @@
 	icon_state = "1";
 	dir = 4
 	},
+/obj/marker/map_node/x4,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "Q" = (
@@ -215,6 +253,23 @@
 	icon_state = "1";
 	dir = 1
 	},
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"U" = (
+/obj/marker/prefab/city/store{
+	dir = 4
+	},
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"V" = (
+/obj/decal/road_marking/dotted_line{
+	icon_state = "1";
+	dir = 8
+	},
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"Z" = (
+/obj/marker/map_node/x4,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 
@@ -314,7 +369,7 @@ a
 u
 p
 a
-c
+l
 c
 M
 N
@@ -337,7 +392,7 @@ e
 e
 e
 e
-e
+U
 e
 e
 e
@@ -487,7 +542,7 @@ e
 a
 l
 c
-c
+Z
 L
 L
 L
@@ -496,7 +551,7 @@ L
 L
 L
 L
-L
+j
 L
 L
 L
@@ -505,7 +560,7 @@ L
 L
 t
 t
-t
+z
 t
 t
 t
@@ -514,7 +569,7 @@ w
 x
 c
 c
-M
+C
 N
 c
 l
@@ -1081,7 +1136,7 @@ e
 a
 l
 c
-M
+C
 N
 c
 l
@@ -1108,7 +1163,7 @@ e
 a
 l
 c
-M
+C
 N
 c
 l
@@ -1385,6 +1440,7 @@ e
 e
 e
 e
+h
 e
 e
 e
@@ -1393,8 +1449,7 @@ e
 e
 e
 e
-e
-e
+h
 e
 e
 e
@@ -1527,7 +1582,7 @@ e
 e
 e
 e
-e
+a
 e
 e
 e
@@ -1573,7 +1628,7 @@ c
 M
 N
 c
-l
+V
 a
 e
 e
@@ -1593,7 +1648,7 @@ e
 e
 e
 e
-e
+a
 e
 e
 e
@@ -1609,7 +1664,7 @@ e
 a
 l
 c
-M
+C
 N
 c
 l
@@ -1639,7 +1694,7 @@ c
 M
 N
 c
-l
+V
 a
 e
 e
@@ -1659,7 +1714,7 @@ e
 e
 e
 e
-e
+a
 e
 e
 e
@@ -1702,10 +1757,10 @@ e
 a
 l
 c
-M
+C
 N
 c
-l
+V
 a
 e
 e
@@ -1725,7 +1780,7 @@ e
 e
 e
 e
-e
+a
 e
 e
 e
@@ -1771,7 +1826,7 @@ c
 M
 N
 c
-l
+V
 a
 e
 e
@@ -1791,7 +1846,7 @@ e
 e
 e
 e
-e
+a
 e
 e
 e
@@ -1857,7 +1912,7 @@ e
 e
 e
 e
-e
+a
 e
 e
 e
@@ -2037,24 +2092,24 @@ N
 c
 l
 A
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+a
 e
 e
 e
@@ -2296,7 +2351,7 @@ e
 a
 l
 c
-M
+C
 Q
 L
 L
@@ -2304,6 +2359,15 @@ L
 L
 L
 L
+j
+L
+L
+L
+L
+L
+L
+L
+j
 L
 L
 L
@@ -2314,16 +2378,7 @@ L
 L
 L
 L
-L
-L
-L
-L
-L
-L
-L
-L
-L
-L
+j
 L
 L
 L
@@ -2519,13 +2574,13 @@ b
 b
 b
 b
+c
+c
+c
+c
+c
+c
 b
-c
-c
-c
-c
-c
-c
 b
 "}
 (36,1,1) = {"
@@ -3049,7 +3104,7 @@ e
 a
 l
 c
-q
+J
 N
 c
 l
@@ -3643,7 +3698,7 @@ e
 a
 l
 c
-M
+C
 N
 c
 l
@@ -4079,6 +4134,7 @@ a
 H
 c
 c
+j
 L
 L
 L
@@ -4089,15 +4145,14 @@ L
 L
 L
 L
+j
 L
 L
 L
 L
 L
 L
-L
-L
-L
+j
 L
 L
 L

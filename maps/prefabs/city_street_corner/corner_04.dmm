@@ -111,6 +111,7 @@
 	icon_state = "1";
 	dir = 1
 	},
+/obj/marker/map_node/x4,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "aB" = (
@@ -172,6 +173,7 @@
 	icon_state = "1";
 	dir = 1
 	},
+/obj/marker/map_node/x4,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "aN" = (
@@ -213,6 +215,31 @@
 /area/dmm_suite/clear_area)
 "bh" = (
 /obj/decal/road_marking/hazard,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"hq" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 1
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"pb" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"rC" = (
+/obj/decal/road_marking/hazard,
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"VQ" = (
+/obj/marker/map_node/x4,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 
@@ -447,7 +474,7 @@ al
 as
 ak
 ak
-ak
+VQ
 ak
 aB
 al
@@ -589,6 +616,7 @@ aE
 aE
 aE
 aE
+pb
 aE
 aE
 aE
@@ -597,8 +625,7 @@ aE
 aE
 aE
 aE
-aE
-aE
+pb
 aE
 aE
 aE
@@ -1064,7 +1091,7 @@ ag
 aX
 ak
 aI
-aK
+hq
 ak
 aX
 ag
@@ -1359,7 +1386,7 @@ ag
 aX
 ak
 aI
-aK
+hq
 ak
 aX
 ag
@@ -1724,7 +1751,7 @@ ag
 aX
 ak
 aI
-aK
+hq
 ak
 aX
 ag
@@ -1887,7 +1914,7 @@ ag
 aX
 ak
 aI
-aK
+hq
 ak
 aX
 ag
@@ -2481,7 +2508,7 @@ ag
 aX
 ak
 aI
-aK
+hq
 ak
 aX
 ag
@@ -3075,7 +3102,7 @@ ag
 aX
 ak
 aI
-aK
+hq
 ak
 aX
 ag
@@ -3669,7 +3696,7 @@ ag
 bh
 bh
 bh
-bh
+rC
 bh
 bh
 ag

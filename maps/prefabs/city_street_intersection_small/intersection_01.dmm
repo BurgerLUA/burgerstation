@@ -32,6 +32,14 @@
 /obj/decal/road_marking/solid_cross,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
+"m" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "s" = (
 /obj/structure/interactive/lighting/roadlamp{
 	icon_state = "lamp";
@@ -69,6 +77,10 @@
 	dir = 4
 	},
 /turf/simulated/floor/sidewalk,
+/area/dmm_suite/clear_area)
+"B" = (
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "C" = (
 /obj/marker/prefab/city/store,
@@ -141,6 +153,14 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
+"T" = (
+/obj/decal/road_marking/solid_line/offset/yellow{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "U" = (
 /turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
@@ -160,6 +180,11 @@
 /area/dmm_suite/clear_area)
 "X" = (
 /obj/decal/road_marking/solid_stop,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"Y" = (
+/obj/decal/road_marking/dotted_line/half,
+/obj/marker/map_node/x4,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "Z" = (
@@ -367,7 +392,7 @@ k
 U
 W
 x
-I
+Y
 v
 x
 W
@@ -763,7 +788,7 @@ k
 U
 W
 x
-I
+Y
 S
 x
 W
@@ -1055,6 +1080,7 @@ O
 O
 O
 O
+m
 O
 O
 O
@@ -1062,8 +1088,7 @@ O
 O
 O
 O
-O
-O
+m
 D
 D
 D
@@ -1071,7 +1096,7 @@ P
 l
 x
 x
-x
+B
 x
 x
 x
@@ -1079,6 +1104,7 @@ l
 x
 O
 O
+m
 O
 O
 O
@@ -1086,8 +1112,7 @@ O
 O
 O
 O
-O
-O
+m
 O
 O
 O
@@ -1379,7 +1404,7 @@ k
 U
 W
 x
-F
+T
 v
 x
 W
@@ -1775,7 +1800,7 @@ k
 U
 W
 x
-I
+Y
 v
 x
 W

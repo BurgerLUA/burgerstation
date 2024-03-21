@@ -74,8 +74,24 @@
 /obj/marker/prefab/city/parking,
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
+"u" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 1
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "v" = (
 /obj/marker/blob,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"w" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "x" = (
@@ -135,6 +151,10 @@
 	dir = 4
 	},
 /turf/simulated/floor/sidewalk,
+/area/dmm_suite/clear_area)
+"R" = (
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "T" = (
 /obj/marker/prefab/city/store{
@@ -315,7 +335,7 @@ F
 e
 a
 m
-i
+u
 a
 e
 F
@@ -667,7 +687,7 @@ F
 e
 a
 m
-i
+u
 a
 e
 F
@@ -1063,7 +1083,7 @@ C
 a
 a
 a
-a
+R
 a
 a
 l
@@ -1072,6 +1092,7 @@ p
 p
 p
 p
+w
 p
 p
 p
@@ -1079,8 +1100,7 @@ p
 p
 p
 p
-p
-p
+w
 p
 p
 p
@@ -1503,7 +1523,7 @@ F
 e
 a
 m
-i
+u
 a
 e
 F
@@ -1855,7 +1875,7 @@ F
 e
 a
 m
-i
+u
 a
 e
 F

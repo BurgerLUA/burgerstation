@@ -128,6 +128,27 @@
 /obj/decal/road_marking/dotted_line,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
+"C" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 8
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"D" = (
+/obj/decal/road_marking/dotted_line/half,
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"X" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 1
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -491,7 +512,7 @@ a
 d
 p
 h
-t
+D
 v
 h
 g
@@ -1085,7 +1106,7 @@ a
 d
 p
 h
-t
+D
 v
 h
 p
@@ -1614,7 +1635,7 @@ d
 p
 h
 t
-v
+X
 h
 p
 d
@@ -2275,6 +2296,7 @@ p
 h
 h
 x
+C
 x
 x
 x
@@ -2283,6 +2305,15 @@ x
 x
 x
 x
+C
+x
+x
+x
+x
+x
+x
+x
+C
 x
 x
 x
@@ -2291,17 +2322,7 @@ x
 x
 x
 x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
+C
 x
 x
 x

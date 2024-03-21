@@ -26,6 +26,14 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
+"R" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "U" = (
 /obj/marker/prefab/house{
 	dir = 8
@@ -931,6 +939,7 @@ V
 V
 V
 V
+R
 V
 V
 V
@@ -939,8 +948,7 @@ V
 V
 V
 V
-V
-V
+R
 V
 V
 V
@@ -951,6 +959,7 @@ V
 V
 V
 V
+R
 V
 V
 V
@@ -959,8 +968,7 @@ V
 V
 V
 V
-V
-V
+R
 V
 V
 V

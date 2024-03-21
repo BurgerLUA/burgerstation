@@ -158,6 +158,14 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
+"D" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "F" = (
 /obj/decal/road_marking/solid_stop,
 /turf/simulated/floor/road,
@@ -191,11 +199,24 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
+"M" = (
+/obj/decal/road_marking/dotted_line/half,
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "N" = (
 /obj/decal/road_marking/solid_line/offset/yellow{
 	icon_state = "1";
 	dir = 4
 	},
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"O" = (
+/obj/decal/road_marking/solid_line/offset/yellow{
+	icon_state = "1";
+	dir = 1
+	},
+/obj/marker/map_node/x4,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "P" = (
@@ -220,6 +241,18 @@
 /area/dmm_suite/clear_area)
 "U" = (
 /obj/marker/blob,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"V" = (
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"W" = (
+/obj/decal/road_marking/solid_line/offset/yellow{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 
@@ -453,7 +486,7 @@ a
 b
 c
 d
-K
+M
 L
 d
 c
@@ -981,7 +1014,7 @@ a
 b
 c
 d
-K
+M
 L
 d
 c
@@ -1641,7 +1674,7 @@ d
 u
 r
 d
-K
+M
 P
 d
 r
@@ -2275,6 +2308,7 @@ G
 G
 G
 G
+D
 G
 G
 G
@@ -2283,8 +2317,7 @@ G
 G
 G
 G
-G
-G
+D
 G
 G
 G
@@ -2292,7 +2325,7 @@ G
 G
 Q
 Q
-Q
+O
 Q
 Q
 Q
@@ -2301,7 +2334,7 @@ s
 u
 d
 d
-d
+V
 d
 d
 d
@@ -2311,6 +2344,15 @@ G
 G
 G
 G
+D
+G
+G
+G
+G
+G
+G
+G
+D
 G
 G
 G
@@ -2320,16 +2362,7 @@ G
 G
 G
 G
-G
-G
-G
-G
-G
-G
-G
-G
-G
-G
+D
 G
 G
 G
@@ -2961,7 +2994,7 @@ d
 u
 r
 d
-N
+W
 L
 d
 r
@@ -3621,7 +3654,7 @@ a
 b
 c
 d
-K
+M
 L
 d
 c
@@ -4149,7 +4182,7 @@ a
 b
 c
 d
-K
+M
 L
 d
 c

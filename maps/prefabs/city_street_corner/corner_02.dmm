@@ -3,8 +3,12 @@
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "b" = (
-/obj/marker/prefab/yard,
-/turf/dmm_suite/clear_turf,
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 8
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "d" = (
 /obj/decal/road_marking/solid_line{
@@ -29,6 +33,7 @@
 	dir = 4
 	},
 /obj/decal/road_marking/dotted_line/half,
+/obj/marker/map_node/x4,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "h" = (
@@ -132,9 +137,22 @@
 	},
 /turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
+"C" = (
+/obj/decal/road_marking/dotted_line/half,
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "E" = (
 /obj/marker/prefab/city/store,
 /turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"F" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "G" = (
 /obj/marker/prefab/city/parking{
@@ -142,6 +160,10 @@
 	dir = 10
 	},
 /turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"I" = (
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "J" = (
 /obj/marker/prefab/city/parking{
@@ -388,7 +410,7 @@ p
 e
 t
 j
-j
+I
 v
 v
 v
@@ -1180,7 +1202,7 @@ a
 e
 t
 j
-x
+C
 y
 j
 t
@@ -1708,7 +1730,7 @@ a
 a
 t
 j
-x
+C
 y
 j
 t
@@ -2236,7 +2258,7 @@ a
 e
 t
 j
-x
+C
 z
 v
 v
@@ -2246,6 +2268,7 @@ v
 v
 v
 v
+F
 v
 v
 v
@@ -2254,8 +2277,7 @@ v
 v
 v
 v
-v
-v
+F
 v
 v
 v
@@ -2329,6 +2351,7 @@ w
 w
 w
 w
+b
 w
 w
 w
@@ -2337,8 +2360,7 @@ w
 w
 w
 w
-w
-w
+b
 w
 w
 w
@@ -2588,6 +2610,7 @@ a
 a
 a
 a
+m
 a
 a
 a
@@ -2604,8 +2627,7 @@ a
 a
 a
 a
-a
-a
+m
 a
 a
 a
@@ -2658,7 +2680,6 @@ a
 a
 a
 a
-m
 a
 a
 a
@@ -2675,7 +2696,8 @@ a
 a
 a
 a
-m
+a
+a
 a
 "}
 (39,1,1) = {"
@@ -3706,15 +3728,6 @@ a
 a
 a
 a
-b
-a
-a
-a
-a
-a
-a
-a
-b
 a
 a
 a
@@ -3723,7 +3736,6 @@ a
 a
 a
 a
-b
 a
 a
 a
@@ -3731,7 +3743,17 @@ a
 a
 a
 a
-b
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 a
 "}
 (55,1,1) = {"

@@ -84,12 +84,28 @@
 	},
 /turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
+"p" = (
+/obj/decal/road_marking/solid_line/offset/yellow{
+	icon_state = "1";
+	dir = 1
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "q" = (
 /obj/decal/road_marking/solid_stop,
 /obj/decal/road_marking/dotted_line/half{
 	icon_state = "1";
 	dir = 8
 	},
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"r" = (
+/obj/decal/road_marking/solid_line/offset/yellow{
+	icon_state = "1";
+	dir = 8
+	},
+/obj/marker/map_node/x4,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "s" = (
@@ -194,6 +210,15 @@
 	icon_state = "1";
 	dir = 4
 	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"K" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "L" = (
@@ -212,6 +237,11 @@
 	icon_state = "1";
 	dir = 1
 	},
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"O" = (
+/obj/decal/road_marking/dotted_line/half,
+/obj/marker/map_node/x4,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "P" = (
@@ -253,6 +283,14 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
+"U" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 1
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "V" = (
 /obj/decal/road_marking/solid_line/offset/yellow{
 	icon_state = "1";
@@ -267,6 +305,10 @@
 "Y" = (
 /obj/marker/blob,
 /turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"Z" = (
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 
 (1,1,1) = {"
@@ -500,7 +542,7 @@ H
 Q
 d
 M
-N
+U
 d
 w
 b
@@ -1160,7 +1202,7 @@ H
 Q
 d
 M
-N
+U
 d
 w
 b
@@ -1754,7 +1796,7 @@ b
 w
 d
 M
-V
+r
 d
 w
 b
@@ -2322,6 +2364,7 @@ L
 L
 L
 L
+K
 L
 L
 L
@@ -2330,8 +2373,7 @@ L
 L
 L
 L
-L
-L
+K
 L
 L
 L
@@ -2339,7 +2381,7 @@ R
 R
 R
 R
-R
+p
 R
 R
 R
@@ -2348,7 +2390,7 @@ u
 d
 d
 d
-d
+Z
 d
 d
 a
@@ -2374,7 +2416,7 @@ d
 d
 Q
 d
-d
+Z
 L
 L
 L
@@ -2942,7 +2984,7 @@ b
 w
 d
 S
-N
+U
 d
 w
 b
@@ -3034,7 +3076,7 @@ a
 b
 w
 d
-M
+O
 N
 d
 w
@@ -3536,7 +3578,7 @@ b
 w
 d
 M
-N
+U
 d
 w
 b
@@ -3562,7 +3604,7 @@ a
 b
 w
 d
-M
+O
 N
 d
 w
@@ -4130,7 +4172,7 @@ b
 w
 d
 M
-N
+U
 d
 d
 u
@@ -4139,6 +4181,7 @@ L
 L
 L
 L
+K
 L
 L
 L
@@ -4147,8 +4190,7 @@ L
 L
 L
 L
-L
-L
+K
 L
 L
 L

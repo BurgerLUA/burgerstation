@@ -255,12 +255,45 @@
 	},
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
+"di" = (
+/obj/decal/road_marking/solid_line/offset/yellow{
+	icon_state = "1";
+	dir = 1
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "oo" = (
 /obj/structure/interactive/lighting/roadlamp{
 	icon_state = "lamp";
 	dir = 1
 	},
 /turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"oN" = (
+/obj/decal/road_marking/dotted_line/half,
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"zY" = (
+/obj/decal/road_marking/solid_line/offset/yellow{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"BE" = (
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"Ws" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 
 (1,1,1) = {"
@@ -625,7 +658,7 @@ aa
 ab
 av
 ad
-aK
+oN
 aM
 ad
 aQ
@@ -1285,7 +1318,7 @@ aa
 ab
 av
 ad
-aK
+oN
 aM
 ad
 aQ
@@ -1813,7 +1846,7 @@ aa
 aa
 aQ
 ad
-aK
+oN
 aS
 ad
 av
@@ -2316,6 +2349,7 @@ az
 az
 az
 az
+Ws
 az
 az
 az
@@ -2324,8 +2358,7 @@ az
 az
 az
 az
-az
-az
+Ws
 az
 az
 az
@@ -2333,7 +2366,7 @@ aN
 aN
 aN
 aN
-aN
+di
 aN
 aN
 aN
@@ -2341,7 +2374,7 @@ ar
 at
 ad
 ad
-ad
+BE
 ad
 ad
 ad
@@ -2349,6 +2382,16 @@ at
 ad
 az
 az
+Ws
+az
+az
+az
+az
+az
+az
+az
+az
+Ws
 az
 az
 az
@@ -2358,17 +2401,7 @@ az
 az
 az
 az
-az
-az
-az
-az
-az
-az
-az
-az
-az
-az
-az
+Ws
 az
 az
 az
@@ -2869,7 +2902,7 @@ aa
 ab
 av
 ad
-aR
+zY
 aM
 ad
 av
@@ -3397,7 +3430,7 @@ aa
 ab
 av
 ad
-aK
+oN
 aM
 ad
 av
@@ -4057,7 +4090,7 @@ aa
 ab
 av
 ad
-aK
+oN
 aM
 ad
 aP

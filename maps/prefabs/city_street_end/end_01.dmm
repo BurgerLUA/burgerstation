@@ -90,6 +90,24 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
+"x" = (
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"A" = (
+/obj/marker/prefab/house{
+	dir = 8
+	},
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"F" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x4,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 b
@@ -1904,6 +1922,7 @@ b
 c
 w
 e
+x
 e
 e
 e
@@ -1912,8 +1931,7 @@ e
 e
 e
 e
-e
-e
+x
 e
 w
 c
@@ -2185,6 +2203,7 @@ t
 t
 t
 t
+F
 t
 t
 t
@@ -2193,8 +2212,7 @@ t
 t
 t
 t
-t
-t
+F
 t
 t
 t
@@ -2498,6 +2516,7 @@ b
 c
 w
 e
+x
 e
 e
 e
@@ -2506,8 +2525,7 @@ e
 e
 e
 e
-e
-e
+x
 e
 w
 c
@@ -2774,7 +2792,7 @@ b
 b
 b
 b
-a
+A
 b
 b
 b
