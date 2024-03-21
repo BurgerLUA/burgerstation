@@ -2,13 +2,6 @@
 "aa" = (
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
-"ab" = (
-/obj/marker/prefab/city/parking{
-	icon_state = "parking";
-	dir = 8
-	},
-/turf/simulated/floor/sidewalk,
-/area/dmm_suite/clear_area)
 "ac" = (
 /obj/marker/prefab/city/parking{
 	icon_state = "parking";
@@ -77,10 +70,6 @@
 /obj/marker/map_node,
 /turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
-"aq" = (
-/obj/marker/map_node/x4,
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
 "ar" = (
 /obj/decal/road_marking/solid_cross{
 	icon_state = "1";
@@ -95,24 +84,11 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
-"at" = (
-/obj/decal/road_marking/solid_cross{
-	icon_state = "1";
-	dir = 4
-	},
-/obj/marker/map_node/x4,
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
 "au" = (
 /obj/decal/road_marking/solid_stop{
 	icon_state = "1";
 	dir = 8
 	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"av" = (
-/obj/decal/road_marking/solid_line,
-/obj/marker/map_node/x3,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "aw" = (
@@ -131,14 +107,6 @@
 	icon_state = "1";
 	dir = 8
 	},
-/obj/decal/road_marking/dotted_line/half{
-	icon_state = "1";
-	dir = 1
-	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"aA" = (
-/obj/marker/map_node/x2,
 /obj/decal/road_marking/dotted_line/half{
 	icon_state = "1";
 	dir = 1
@@ -184,20 +152,7 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
-"aH" = (
-/obj/marker/map_node/x4,
-/obj/decal/road_marking/dotted_line/half{
-	icon_state = "1";
-	dir = 8
-	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
 "aI" = (
-/obj/decal/road_marking/dotted_line/half,
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"aJ" = (
-/obj/marker/map_node/x4,
 /obj/decal/road_marking/dotted_line/half,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
@@ -219,27 +174,11 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
-"aM" = (
-/obj/marker/map_node/x4,
-/obj/decal/road_marking/dotted_line/half{
-	icon_state = "1";
-	dir = 4
-	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
 "aN" = (
 /obj/decal/road_marking/dotted_line/half,
 /obj/decal/road_marking/dotted_line/half{
 	icon_state = "1";
 	dir = 8
-	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"aQ" = (
-/obj/marker/map_node/x3,
-/obj/decal/road_marking/dotted_line/half{
-	icon_state = "1";
-	dir = 4
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
@@ -258,22 +197,11 @@
 /obj/decal/road_marking/dotted_line,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
-"aW" = (
-/turf/simulated/wall/brick/city,
-/area/dmm_suite/clear_area)
 "aX" = (
 /obj/decal/road_marking/solid_line{
 	icon_state = "1";
 	dir = 8
 	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"aY" = (
-/obj/decal/road_marking/dotted_line/half{
-	icon_state = "1";
-	dir = 4
-	},
-/obj/marker/map_node/x3,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "bc" = (
@@ -285,11 +213,6 @@
 /area/dmm_suite/clear_area)
 "bh" = (
 /obj/decal/road_marking/hazard,
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"br" = (
-/obj/decal/road_marking/hazard,
-/obj/marker/map_node/x2,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 
@@ -321,7 +244,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 ag
 bc
 ak
@@ -330,7 +253,7 @@ aK
 ak
 bc
 ag
-aW
+aa
 aa
 aa
 aa
@@ -360,34 +283,34 @@ aa
 aa
 "}
 (2,1,1) = {"
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 ag
 bc
 ak
@@ -396,30 +319,30 @@ au
 au
 au
 aw
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -457,10 +380,10 @@ ag
 ag
 ar
 ar
-at
 ar
 ar
 ar
+ar
 ag
 ag
 ag
@@ -485,7 +408,7 @@ ag
 ag
 ag
 ag
-aW
+aa
 aa
 aa
 aa
@@ -551,7 +474,7 @@ al
 al
 aC
 ag
-aW
+aa
 aa
 aa
 aa
@@ -617,7 +540,7 @@ ak
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -644,12 +567,12 @@ ag
 aX
 ak
 ak
-aQ
 aE
 aE
 aE
 aE
-aY
+aE
+aE
 aE
 aE
 aE
@@ -664,26 +587,26 @@ aE
 aE
 aE
 aE
-aM
 aE
 aE
 aE
 aE
 aE
 aE
-aM
 aE
 aE
 aE
 aE
 aE
 aE
-aM
+aE
+aE
+aE
 ak
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -749,7 +672,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -815,7 +738,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -854,7 +777,7 @@ al
 al
 al
 al
-av
+al
 al
 al
 al
@@ -881,7 +804,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -928,16 +851,16 @@ ag
 ag
 ag
 ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ac
 ag
 ag
 aX
@@ -947,7 +870,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -974,7 +897,7 @@ ag
 aX
 ak
 aI
-aA
+aK
 ak
 aX
 ag
@@ -1013,7 +936,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1074,12 +997,12 @@ af
 ag
 aX
 ak
-aJ
+aI
 aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1145,7 +1068,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1211,7 +1134,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1238,7 +1161,7 @@ ag
 aX
 ak
 aI
-aA
+aK
 ak
 aX
 ag
@@ -1277,7 +1200,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1343,7 +1266,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1409,7 +1332,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1475,7 +1398,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1502,7 +1425,7 @@ ag
 aX
 ak
 aI
-aA
+aK
 ak
 aX
 ag
@@ -1536,12 +1459,12 @@ af
 ag
 aX
 ak
-aJ
+aI
 aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1607,7 +1530,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1673,7 +1596,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1739,7 +1662,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1766,7 +1689,7 @@ ag
 aX
 ak
 aI
-aA
+aK
 ak
 aX
 ag
@@ -1805,7 +1728,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1871,7 +1794,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1937,7 +1860,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -1998,12 +1921,12 @@ af
 ag
 aX
 ak
-aJ
+aI
 aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -2030,7 +1953,7 @@ ag
 aX
 ak
 aI
-aA
+aK
 ak
 aX
 ag
@@ -2069,7 +1992,7 @@ aK
 ak
 aX
 ag
-aW
+aa
 aa
 aa
 aa
@@ -2135,11 +2058,11 @@ aK
 ak
 aX
 ag
-aW
-aW
-aW
-aW
-aW
+aa
+aa
+aa
+aa
+aa
 "}
 (29,1,1) = {"
 aa
@@ -2294,7 +2217,7 @@ ag
 aX
 ak
 aI
-aA
+aK
 ak
 aX
 ag
@@ -2460,14 +2383,14 @@ af
 ag
 bc
 ak
-aq
+ak
 aF
 aG
 aG
 aG
 aG
 aG
-aH
+aG
 aG
 aG
 "}
@@ -2558,7 +2481,7 @@ ag
 aX
 ak
 aI
-aA
+aK
 ak
 aX
 ag
@@ -2721,9 +2644,9 @@ aa
 aa
 ad
 af
-ag
-ag
-ag
+aa
+aa
+aa
 aU
 aU
 aU
@@ -2731,9 +2654,9 @@ aU
 aa
 aa
 ae
-aW
-aW
-aW
+aa
+aa
+aa
 "}
 (38,1,1) = {"
 aa
@@ -2797,7 +2720,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 "}
@@ -2822,7 +2745,7 @@ ag
 aX
 ak
 aI
-aA
+aK
 ak
 aX
 ag
@@ -2863,7 +2786,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 "}
@@ -2929,7 +2852,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 "}
@@ -2995,7 +2918,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 "}
@@ -3061,7 +2984,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 "}
@@ -3086,7 +3009,7 @@ ag
 aX
 ak
 aI
-aA
+aK
 ak
 aX
 ag
@@ -3127,7 +3050,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 "}
@@ -3193,7 +3116,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 "}
@@ -3259,7 +3182,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 "}
@@ -3325,7 +3248,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 "}
@@ -3350,7 +3273,7 @@ ag
 aX
 ak
 aI
-aA
+aK
 ak
 aX
 ag
@@ -3390,8 +3313,8 @@ aa
 am
 aa
 aa
-aW
-aW
+aa
+aa
 aa
 aa
 "}
@@ -3456,7 +3379,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 aa
@@ -3522,7 +3445,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 aa
@@ -3588,7 +3511,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 aa
@@ -3614,7 +3537,7 @@ ag
 aX
 ak
 aI
-aA
+aK
 ak
 aX
 ag
@@ -3654,7 +3577,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 aa
@@ -3720,7 +3643,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 aa
@@ -3786,7 +3709,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 aa
@@ -3852,7 +3775,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 aa
@@ -3878,7 +3801,7 @@ ag
 bh
 bh
 bh
-br
+bh
 bh
 bh
 ag
@@ -3918,7 +3841,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 aa
@@ -3984,7 +3907,7 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 aa
@@ -4050,35 +3973,12 @@ aa
 aa
 aa
 aa
-aW
+aa
 aa
 aa
 aa
 "}
 (58,1,1) = {"
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
 aa
 aa
 aa
@@ -4116,7 +4016,30 @@ aa
 aa
 aa
 aa
-aW
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -4144,7 +4067,6 @@ aa
 aa
 aa
 aa
-aW
 aa
 aa
 aa
@@ -4182,7 +4104,8 @@ aa
 aa
 aa
 aa
-aW
+aa
+aa
 aa
 aa
 aa
@@ -4210,7 +4133,6 @@ aa
 aa
 aa
 aa
-aW
 aa
 aa
 aa
@@ -4248,7 +4170,8 @@ aa
 aa
 aa
 aa
-aW
+aa
+aa
 aa
 aa
 aa
@@ -4276,7 +4199,6 @@ aa
 aa
 aa
 aa
-aW
 aa
 aa
 aa
@@ -4314,7 +4236,8 @@ aa
 aa
 aa
 aa
-aW
+aa
+aa
 aa
 aa
 aa
@@ -4342,7 +4265,6 @@ aa
 aa
 aa
 aa
-aW
 aa
 aa
 aa
@@ -4380,7 +4302,8 @@ aa
 aa
 aa
 aa
-aW
+aa
+aa
 aa
 aa
 aa
@@ -4408,7 +4331,6 @@ aa
 aa
 aa
 aa
-aW
 aa
 aa
 aa
@@ -4446,7 +4368,8 @@ aa
 aa
 aa
 aa
-aW
+aa
+aa
 aa
 aa
 aa
@@ -4474,45 +4397,45 @@ aa
 aa
 aa
 aa
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa

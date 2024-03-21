@@ -26,10 +26,6 @@
 	},
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
-"g" = (
-/obj/marker/map_node/x5,
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
 "h" = (
 /obj/marker/prefab/yard{
 	icon_state = "yard";
@@ -66,18 +62,6 @@
 /obj/decal/road_marking/solid_line{
 	icon_state = "1";
 	dir = 9
-	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"p" = (
-/obj/marker/map_node/x3,
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"q" = (
-/obj/marker/map_node/x4,
-/obj/decal/road_marking/dotted_line/half{
-	icon_state = "1";
-	dir = 4
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
@@ -1854,17 +1838,17 @@ b
 c
 w
 e
-p
 e
 e
 e
 e
-p
 e
 e
 e
 e
-p
+e
+e
+e
 w
 c
 b
@@ -2183,7 +2167,6 @@ b
 b
 c
 w
-p
 e
 e
 e
@@ -2195,26 +2178,27 @@ e
 e
 e
 e
-q
+e
 t
 t
 t
 t
 t
 t
-q
 t
 t
 t
 t
 t
 t
-q
 t
 t
 t
 t
-q
+t
+t
+t
+t
 t
 t
 t
@@ -2254,7 +2238,7 @@ e
 e
 e
 e
-g
+e
 e
 e
 e
@@ -2579,18 +2563,18 @@ b
 b
 c
 w
-p
 e
 e
 e
 e
 e
-p
 e
 e
 e
 e
-p
+e
+e
+e
 w
 c
 b
