@@ -244,7 +244,7 @@
 		return FALSE
 	for(var/i=1,i<=4,i++)
 		create_blood(/obj/effect/cleanable/blood/splatter,E.loc,"#B4150F",rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
-	explode(E.loc,3,master ? master : src,src,loyalty_tag)
+	explode(E.loc,3,minion_master ? minion_master : src,src,loyalty_tag)
 	play_sound('sound/weapons/magic/chaos_blood.ogg',E.loc)
 	qdel(E)
 

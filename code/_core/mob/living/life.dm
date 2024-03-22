@@ -25,7 +25,7 @@
 
 	var/turf/T = get_turf(src)
 
-	if(T)
+	if(T && !minion_master)
 		if(boss && boss_loot)
 			var/obj/structure/interactive/boss_loot/BL = new(T)
 			BL.loot_to_give = boss_loot
@@ -62,9 +62,9 @@
 		var/obj/hud/button/dead_ghost/DG = new
 		DG.update_owner(src)
 
-	if(master)
-		dust()
-	else if(soul_size && has_status_effect(SOULTRAP) && !is_player_controlled())
+	if(minion_master)
+		minion_master.remove_minion(src)
+	else if(!delete_on_death && soul_size > 0 && has_status_effect(SOULTRAP) && !is_player_controlled())
 		var/obj/effect/temp/soul/S = new(T,SECONDS_TO_DECISECONDS(20))
 		S.appearance = src.appearance
 		S.transform = get_base_transform()
@@ -73,6 +73,7 @@
 		S.layer = LAYER_GHOST
 		S.name = "soul of [initial(name)]:"
 		S.soul_size = src.soul_size
+		S.soul_path = src.type
 		INITIALIZE(S)
 		GENERATE(S)
 		FINALIZE(S)
@@ -180,7 +181,7 @@
 	var/turf/T = get_turf(src)
 
 	//Was it a kill?
-	if(!suicide)
+	if(!suicide && !minion_master)
 		var/list/people_who_contributed = list()
 		var/list/people_who_killed = list()
 		for(var/k in hit_logs)
@@ -197,7 +198,7 @@
 
 		if(length(people_who_killed))
 			if(!boss)
-				if(!was_killed && !master && soul_size && !delete_on_death && health && health.health_max >= 100)
+				if(!was_killed && !minion_master && !delete_on_death && health && health.health_max >= 100 && src.get_xp_multiplier() >= 1)
 					for(var/k in people_who_killed)
 						var/mob/living/advanced/player/P = k
 						if(!is_player(P) || !P.job)
@@ -334,10 +335,6 @@
 	return TRUE
 
 mob/living/proc/on_life_slow()
-
-	if(minion_remove_time && minion_remove_time <= world.time)
-		dust()
-		return TRUE
 
 	//Immune system
 	immune_system_strength = initial(immune_system_strength)

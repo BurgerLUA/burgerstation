@@ -39,10 +39,10 @@
 
 	if(is_living(alert_source))
 		var/mob/living/L = alert_source
-		if(L.master)
-			if(L.master.next_alert > world.time)
+		if(L.minion_master)
+			if(L.minion_master.next_alert > world.time)
 				return FALSE
-			L.master.next_alert = world.time + SECONDS_TO_DECISECONDS(1)
+			L.minion_master.next_alert = world.time + SECONDS_TO_DECISECONDS(1)
 		else
 			if(L.next_alert > world.time)
 				return FALSE

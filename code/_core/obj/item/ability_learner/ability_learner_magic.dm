@@ -18,3 +18,7 @@
 /obj/item/ability_learner/radial_blind
 	stored_ability = /ability/magic/radial_blind
 	value = 2000
+
+/obj/item/ability_learner/soul_trap
+	stored_ability = /ability/magic/summon_item/soultrap
+	value = 1200

@@ -38,5 +38,5 @@
 	. = ..()
 
 /mob/living/simple/devil/post_death()
-	..()
-	qdel(src)
+	. = ..()
+	dust(TRUE)

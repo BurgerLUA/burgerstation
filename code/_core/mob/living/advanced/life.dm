@@ -65,7 +65,7 @@
 		var/obj/item/I = k
 		I.close_inventory(src)
 
-	if(src.loc && !master && !delete_on_death && is_turf(src.loc) && !is_player_controlled(src))
+	if(src.loc && !minion_master && !delete_on_death && is_turf(src.loc) && !is_player_controlled(src))
 		drop_hands(src.loc)
 
 /mob/living/advanced/rejuvenate()
