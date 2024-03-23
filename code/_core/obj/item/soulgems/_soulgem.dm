@@ -62,25 +62,28 @@
 
 	. = ..()
 
-	if(is_living(owner) && total_charge && hit_atom && stored_soul_path)
+	if(is_living(owner) && total_charge > 0 && hit_atom && stored_soul_path)
 		var/mob/living/master = owner
 		var/turf/T = is_turf(hit_atom) ? hit_atom : get_turf(hit_atom)
 		if(T)
-			var/mob/living/mob_to_spawn = new stored_soul_path(T)
+			var/mob/living/mob_to_spawn = stored_soul_path
+			src.total_charge = 0
+			src.stored_soul_path = null
+			mob_to_spawn = new mob_to_spawn(T)
 			INITIALIZE(mob_to_spawn)
 			GENERATE(mob_to_spawn)
 			master.add_minion(mob_to_spawn)
 			FINALIZE(mob_to_spawn)
-			mob_to_spawn.visible_message(span("notice","\The [src.name] shatters, releasing [mob_to_spawn.name]!"))
 			if(master.ckey)
 				master.add_skill_xp(SKILL_SUMMONING,CEILING(mob_to_spawn.soul_size*0.02,1))
-			total_charge = 0
-			stored_soul_path = null
 			if(!do_not_consume)
+				mob_to_spawn.visible_message(span("notice","\The [src.name] shatters, releasing [mob_to_spawn.name]!"))
 				qdel(src)
-			else if(is_advanced(master))
-				var/mob/living/advanced/A = master
-				src.quick_equip(A,ignore_worn=TRUE,ignore_dynamic=TRUE,silent=TRUE)
+			else
+				mob_to_spawn.visible_message(span("notice","\The [src.name] vanishes, releasing [mob_to_spawn.name]!"))
+				if(is_advanced(master))
+					var/mob/living/advanced/A = master
+					src.quick_equip(A,ignore_worn=TRUE,ignore_dynamic=TRUE,silent=TRUE)
 
 /obj/item/soulgem/update_sprite()
 	. = ..()
