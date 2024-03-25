@@ -33,7 +33,7 @@ var/global/world_state = STATE_STARTING
 	sleep_offline = FALSE
 	__detect_rust_g()
 
-	if(!rustg_get_version() || !length(rustg_file_read("config/example_config.txt")))
+	if(!rustg_get_version())
 		world.log << "FATAL ERROR: Failed to properly load and initalize rust-g. Restarting!"
 		Reboot(0)
 		return
@@ -82,6 +82,10 @@ var/global/world_state = STATE_STARTING
 	TgsInitializationComplete()
 
 	sleep_offline = initial(sleep_offline)
+
+	if(world.port != 0 && !SSadmin.stored_user_ranks)
+		world.log << "FATAL ERROR: Failed to properly load and initalize user ranks. Restarting!"
+		Reboot(0)
 
 /world/Topic(T,Addr,Master,Keys)
 	TGS_TOPIC
