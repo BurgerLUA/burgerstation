@@ -10,7 +10,16 @@
 
 /status_effect/soul_trap/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
 
+	if(!victim.ai)
+		return FALSE
+
+	if(victim.minion_master)
+		return FALSE
+
 	if(victim.is_player_controlled())
+		return FALSE
+
+	if(!is_simple(victim))
 		return FALSE
 
 	. = ..()

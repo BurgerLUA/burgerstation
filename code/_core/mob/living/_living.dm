@@ -192,10 +192,6 @@
 
 	var/suicide = FALSE
 
-	var/mob/living/minion //This object's minion.
-	var/mob/living/master //This object's master.
-	var/minion_remove_time = 0
-
 	var/obj/structure/totem/totem //This object's totem.
 
 	var/queue_health_update = FALSE //From automated processes like reagent and health updating. Should not be used for bullet impacts and whatnot.
@@ -293,6 +289,8 @@
 
 	var/was_killed = FALSE //This is set to true if the mob died at least once.
 
+	var/list/minions
+	var/mob/living/minion_master
 
 /mob/living/PreDestroy()
 
@@ -304,13 +302,12 @@
 	if(ai && istype(ai))
 		ai.set_active(FALSE)
 
-	if(minion)
-		minion.master = null
-		minion = null
+	if(minion_master)
+		minion_master.remove_minion(src)
 
-	if(master)
-		master.minion = null
-		master = null
+	for(var/k in minions)
+		var/mob/living/L = k
+		src.remove_minion(L)
 
 	if(following)
 		following.followers -= src

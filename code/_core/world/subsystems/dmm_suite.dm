@@ -18,9 +18,6 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	var/list/valid_prefabs = list()
 
-	var/list/linked_prefabs_below = list()
-	var/list/linked_prefabs_above = list()
-
 	var/list/maps_to_load = list(
 		"maps/_core/mission.dmm",
 		"maps/_core/bluespace.dmm",
@@ -107,16 +104,9 @@ SUBSYSTEM_DEF(dmm_suite)
 		for(var/file in flist("[PREFABS_DIR][category]/"))
 			if(!has_suffix(file,".dmm"))
 				continue
-			if(has_suffix(file,"_below.dmm"))
-				var/linked_file = replacetextEx(file,"_below.dmm",".dmm")
-				linked_prefabs_below["[PREFABS_DIR][category]/[linked_file]"] = "[PREFABS_DIR][category]/[file]"
-			else if(has_suffix(file,"_above.dmm"))
-				var/linked_file = replacetextEx(file,"_above.dmm",".dmm")
-				linked_prefabs_above["[PREFABS_DIR][category]/[linked_file]"] = "[PREFABS_DIR][category]/[file]"
-			else
-				if(!valid_prefabs[category])
-					valid_prefabs[category] = list()
-				valid_prefabs[category] += "[PREFABS_DIR][category]/[file]"
+			if(!valid_prefabs[category])
+				valid_prefabs[category] = list()
+			valid_prefabs[category] += "[PREFABS_DIR][category]/[file]"
 
 	log_subsystem(name,"Found [length(valid_prefabs)] valid prefab sets.")
 	var/loaded_prefabs = 0
@@ -129,23 +119,23 @@ SUBSYSTEM_DEF(dmm_suite)
 		var/obj/marker/prefab/M = prefab_markers[1]
 		prefab_markers -= M
 		M.prepare_prefab()
-		if(!length(valid_prefabs[M.category]))
+		if(!length(valid_prefabs[M.category])) //Check global prefabs.
 			if(!not_enough[M.category])
 				not_enough[M.category] = 1
 			else
 				not_enough[M.category] += 1
 			continue
-		var/list/local_prefabs = valid_prefabs[M.category].Copy()
-		if(length(M.prefabs))
-			local_prefabs = local_prefabs & M.prefabs
-		if(!length(local_prefabs))
-			if(!not_enough[M.category])
-				not_enough[M.category] = 1
-			else
-				not_enough[M.category] += 1
-			continue
+		var/list/prefab_to_use = valid_prefabs[M.category]
+		if(length(M.prefabs)) //We have local prefabs.
+			prefab_to_use = prefab_to_use.Copy() & M.prefabs
+			if(!length(prefab_to_use)) //Check local prefabs.
+				if(!not_enough[M.category])
+					not_enough[M.category] = 1
+				else
+					not_enough[M.category] += 1
+				continue
 
-		M.chosen_file = pick(local_prefabs)
+		M.chosen_file = pick(prefab_to_use)
 		if(M.unique) valid_prefabs[M.category] -= M.chosen_file
 		var/map_contents = rustg_file_read(M.chosen_file)
 		var/desired_angle = 0
@@ -166,30 +156,6 @@ SUBSYSTEM_DEF(dmm_suite)
 			tag="[M.chosen_file]",
 			angleOffset = SIMPLIFY_DEGREES(desired_angle)
 		)
-		/*
-		if(linked_prefabs_below[M.chosen_file])
-			M.chosen_file_below = linked_prefabs_below[M.chosen_file]
-			var/chosen_map_contents = rustg_file_read(M.chosen_file_below)
-			dmm_suite.read_map(
-				chosen_map_contents,
-				M.x + M.offset_x,
-				M.y + M.offset_y,
-				M.z-1,
-				tag="[M.chosen_file_below]",
-				angleOffset = SIMPLIFY_DEGREES(desired_angle)
-			)
-		if(linked_prefabs_above[M.chosen_file])
-			M.chosen_file_above = linked_prefabs_above[M.chosen_file]
-			var/chosen_map_contents = rustg_file_read(M.chosen_file_above)
-			dmm_suite.read_map(
-				chosen_map_contents,
-				M.x + M.offset_x,
-				M.y + M.offset_y,
-				M.z+1,
-				tag="[M.chosen_file_above]",
-				angleOffset = SIMPLIFY_DEGREES(desired_angle)
-			)
-		*/
 		loaded_prefabs++
 
 

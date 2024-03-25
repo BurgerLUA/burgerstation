@@ -15,15 +15,17 @@
 
 	rarity = RARITY_COMMON
 
-
+	var/mob/living/stored_soul_path
 
 /obj/item/soulgem/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("total_charge")
+	SAVEPATH("stored_soul_path")
 
 /obj/item/soulgem/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("total_charge")
+	LOADPATH("stored_soul_path")
 
 /obj/item/soulgem/Finalize()
 	. = ..()
@@ -47,7 +49,41 @@
 	. = CEILING(.,1)
 
 /obj/item/soulgem/get_examine_list(var/mob/caller)
-	return ..() + span("notice","It has [total_charge] total charge.")
+	. = ..()
+	. += span("notice","It has a soul worth [total_charge] total charge.")
+	if(total_charge)
+		if(stored_soul_path)
+			. += span("notice","Throwing this will [do_not_consume ? "" : "shatter the gem and "]release \a [initial(stored_soul_path.name)] under your control.")
+			. += span("notice","Souls can be recaptured using soul gems, with no penalty.")
+		else
+			. += span("warning","While it is charged, it does not have a complete soul inside, and will not release a minion when thrown.")
+
+/obj/item/soulgem/on_thrown(var/atom/owner,var/atom/hit_atom) //What happens after the soulgem is thrown and it hits an object.
+
+	. = ..()
+
+	if(is_living(owner) && total_charge > 0 && hit_atom && stored_soul_path)
+		var/mob/living/master = owner
+		var/turf/T = is_turf(hit_atom) ? hit_atom : get_turf(hit_atom)
+		if(T)
+			var/mob/living/mob_to_spawn = stored_soul_path
+			src.total_charge = 0
+			src.stored_soul_path = null
+			mob_to_spawn = new mob_to_spawn(T)
+			INITIALIZE(mob_to_spawn)
+			GENERATE(mob_to_spawn)
+			master.add_minion(mob_to_spawn)
+			FINALIZE(mob_to_spawn)
+			if(master.ckey)
+				master.add_skill_xp(SKILL_SUMMONING,CEILING(mob_to_spawn.soul_size*0.02,1))
+			if(!do_not_consume)
+				mob_to_spawn.visible_message(span("notice","\The [src.name] shatters, releasing [mob_to_spawn.name]!"))
+				qdel(src)
+			else
+				mob_to_spawn.visible_message(span("notice","\The [src.name] vanishes, releasing [mob_to_spawn.name]!"))
+				if(is_advanced(master))
+					var/mob/living/advanced/A = master
+					src.quick_equip(A,ignore_worn=TRUE,ignore_dynamic=TRUE,silent=TRUE)
 
 /obj/item/soulgem/update_sprite()
 	. = ..()
@@ -99,7 +135,35 @@
 
 /obj/item/soulgem/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	if(is_living(object))
+
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
+
+		var/mob/living/L = object
+		if(L.minion_master != caller)
+			return TRUE
+		if(L.qdeleting)
+			return TRUE
+		if(total_charge != 0)
+			caller.to_chat(span("warning","You need an empty soul gem in order to capture souls!"))
+			return TRUE
+		if(L.soul_size > src.total_capacity)
+			caller.to_chat(span("warning","This soul is too large to be contained in \the [src.name]!"))
+			return TRUE
+		total_charge = min(L.soul_size,total_capacity)
+		stored_soul_path = L.type
+		qdel(L)
+		update_sprite()
+		return TRUE
+
 	if(istype(object,/obj/effect/temp/soul))
+
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
+
 		if(total_charge != 0)
 			caller.to_chat(span("warning","You need an empty soul gem in order to capture souls!"))
 			return TRUE
@@ -108,11 +172,16 @@
 		if(S.qdeleting || !S.soul_size)
 			return TRUE
 
+		if(S.soul_size > src.total_capacity)
+			caller.to_chat(span("warning","This soul is too large to be contained in \the [src.name]!"))
+			return TRUE
+
 		total_charge = min(S.soul_size,total_capacity)
 		caller.visible_message(span("danger","\The [caller.name] traps \the [S.name] with \the [src.name]!"),span("warning","You trap \the [S.name] with \the [src.name]!"))
 		if(is_living(caller))
 			var/mob/living/L = caller
 			L.add_skill_xp(SKILL_SUMMONING,CEILING(S.soul_size*0.01,1))
+		stored_soul_path = S.soul_path
 		qdel(S)
 		update_sprite()
 
@@ -135,6 +204,8 @@
 			if(!do_not_consume && total_charge <= 0)
 				caller.to_chat(span("warning","\The [src] shatters!"))
 				qdel(src)
+			else
+				stored_soul_path = null
 		else
 			caller.to_chat(span("warning","\The [src] is empty!"))
 		update_sprite()
@@ -183,3 +254,4 @@
 /obj/item/soulgem/azuras_star
 	total_capacity = SOUL_SIZE_MYSTIC
 	do_not_consume = TRUE
+	value_burgerbux = 1

@@ -210,17 +210,20 @@
 
 	if(attacker == victim)
 		if(!allow_self_damage)
-			return FALSE
+			return null
 	else if(allow_friendly_fire < 2 && is_living(attacker) && is_living(victim))
 		var/mob/living/A = attacker
 		var/mob/living/V = victim
 		if(!allow_hostile_action(A.loyalty_tag,V))
-			return list()
+			return null
 
 	var/list/new_attack_damage = attack_damage_base.Copy()
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
+
+		if(L.minion_master)
+			damage_multiplier *= 0.5 //Half damage for being a minion.
 
 		for(var/attribute in attribute_stats)
 			if(!islist(attribute_damage[attribute]))
@@ -599,7 +602,7 @@
 			if(debug) log_debug("Adding [damage_type] damage into [pain_damage_to_add] pain damage.")
 			pain_damage += pain_damage_to_add
 
-	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INFINITY(defense_rating_victim[FATIGUE]))
+	if(length(damage_to_deal) && !length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INFINITY(defense_rating_victim[FATIGUE]))
 		damage_to_deal[FATIGUE] += CEILING(fatigue_damage,1)
 		if(debug) log_debug("Dealing [fatigue_damage] extra fatigue damage due to blocked damage.")
 

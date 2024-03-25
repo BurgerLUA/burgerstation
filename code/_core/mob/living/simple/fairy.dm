@@ -29,7 +29,8 @@
 	level = 16
 
 /mob/living/simple/fairy/post_death()
-	..()
+	. = ..()
 	icon_state = "dead"
-	var/turf/T = get_turf(src)
-	CREATE(/obj/item/clothing/back/wings/fairy,T)
+	if(. && !qdeleting)
+		var/turf/T = get_turf(src)
+		if(T) CREATE(/obj/item/clothing/back/wings/fairy,T)

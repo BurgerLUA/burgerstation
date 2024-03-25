@@ -9,7 +9,8 @@
 		/obj/item/paper/book/enchanting/soul_trap,
 		/obj/item/enchanting_chalk,
 		/obj/item/soulgem/common,
-		/obj/item/weapon/melee/sword/cult_dagger
+		/obj/item/weapon/melee/sword/cult_dagger,
+		/obj/item/ability_learner/soul_trap
 	)
 
 	accepts_item = /obj/item/currency/gold_coin

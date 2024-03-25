@@ -20,6 +20,9 @@
 	if(L.has_status_effect(STRESSED))
 		. += 0.5
 
+	if(L.minion_master)
+		. += 1 //Take double damage for being a minion.
+
 /health/mob/living/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 
 	. = ..()

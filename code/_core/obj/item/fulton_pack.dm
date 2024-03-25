@@ -48,7 +48,7 @@
 
 	if(is_living(object))
 		var/mob/living/L = object
-		if(L.master)
+		if(L.minion_master)
 			caller.to_chat(span("warning","Minions cannot be fultoned!"))
 			return FALSE
 		if(is_turf(L.loc) && !L.horizontal)

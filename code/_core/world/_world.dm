@@ -46,6 +46,7 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/mob/living)
 	createtypecache(/mob/living/advanced)
 	createtypecache(/mob/living/advanced/player)
+	createtypecache(/mob/living/simple)
 	createtypecache(/mob/abstract/observer)
 	createtypecache(/obj/structure)
 	createtypecache(/obj/item)
