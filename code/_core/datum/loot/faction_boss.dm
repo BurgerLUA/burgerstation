@@ -13,6 +13,7 @@
 		/obj/item/container/syringe/medipen/adminomnizine = 1,
 		/obj/item/dice/d20/cursed = 1,
 		/obj/item/weapon/ranged/magic/staff/lavaland = 1,
+		/obj/item/weapon/ranged/spellgem/pillar = 1,
 		/obj/item/soulgem/azuras_star = 1
 	)
 
@@ -62,7 +63,8 @@
 /loot/lavaland/gabber
 	loot_table = list(
 		/obj/item/clothing/back/wings/angel = 3,
-		/obj/item/weapon/melee/staff_of_healing = 1
+		/obj/item/weapon/melee/staff_of_healing = 1,
+		/obj/item/weapon/ranged/spellgem/pillar = 0.1
 	)
 
 /loot/lavaland/slime_king
