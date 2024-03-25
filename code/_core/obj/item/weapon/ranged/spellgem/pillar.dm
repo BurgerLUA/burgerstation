@@ -3,10 +3,10 @@
     desc = "The source of all... taxes?"
     icon_state = "damage"
 
-    shoot_delay = 8
+    shoot_delay = 17
 
     bullet_count = 1
-    projectile_speed = TILE_SIZE + 1
+    projectile_speed = TILE_SIZE - 1
 
     projectile = /obj/projectile/magic/pillar
     ranged_damage_type = /damagetype/ranged/magic/pillar

@@ -12,7 +12,8 @@
 		/obj/item/weapon/ranged/magic/spellblade/runesword = 1,
 		/obj/item/container/syringe/medipen/adminomnizine = 1,
 		/obj/item/dice/d20/cursed = 1,
-		/obj/item/weapon/ranged/magic/staff/lavaland = 1
+		/obj/item/weapon/ranged/magic/staff/lavaland = 1,
+		/obj/item/weapon/ranged/spellgem/pillar = 1
 
 	)
 
