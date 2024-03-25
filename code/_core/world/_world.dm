@@ -33,7 +33,7 @@ var/global/world_state = STATE_STARTING
 	sleep_offline = FALSE
 	__detect_rust_g()
 
-	if(!rustg_get_version())
+	if(!rustg_get_version() || !length(rustg_file_read("config/example_config.txt")))
 		world.log << "FATAL ERROR: Failed to properly load and initalize rust-g. Restarting!"
 		Reboot(0)
 		return
@@ -140,7 +140,9 @@ var/global/world_state = STATE_STARTING
 
 /world/Reboot(reason)
 	rustg_log_close_all()
+	sleep(1)
 	TgsReboot()
+	sleep(1)
 	. = ..()
 
 
