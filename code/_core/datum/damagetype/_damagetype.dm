@@ -731,37 +731,48 @@
 						A.add_skill_xp(SKILL_SURVIVAL,xp_to_give)
 						experience_gained[SKILL_SURVIVAL] += xp_to_give
 
+				var/total_skill_damage_amount = 0
 				for(var/skill in skill_stats)
-					//var/experience/skill/E = SSexperience.all_skills[skill]
-					var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * real_damage_dealt * experience_multiplier, 1)
-					if(xp_to_give > 0)
-						A.add_skill_xp(skill,xp_to_give)
-						experience_gained[skill] += xp_to_give
-
+					total_skill_damage_amount += skill_stats[skill]
 				for(var/attribute in attribute_stats)
-					var/experience/attribute/E = SSexperience.all_attributes[attribute]
-					if(!(E.flags & ATTRIBUTE_DAMAGE))
-						continue
-					var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * real_damage_dealt * experience_multiplier, 1)
-					if(xp_to_give > 0)
-						A.add_attribute_xp(attribute,xp_to_give)
-						experience_gained[attribute] += xp_to_give
-
+					total_skill_damage_amount += attribute_stats[attribute]
 				for(var/skill in bonus_experience_skill)
-					//var/experience/skill/E = SSexperience.all_skills[skill]
-					var/xp_to_give = CEILING(bonus_experience_skill[skill] * 0.01 * real_damage_dealt * experience_multiplier, 1)
-					if(xp_to_give > 0)
-						A.add_skill_xp(skill,xp_to_give)
-						experience_gained[skill] += xp_to_give
-
+					total_skill_damage_amount += bonus_experience_skill[skill]
 				for(var/attribute in bonus_experience_attribute)
-					var/experience/attribute/E = SSexperience.all_attributes[attribute]
-					if(!(E.flags & ATTRIBUTE_DAMAGE))
-						continue
-					var/xp_to_give = CEILING(bonus_experience_attribute[attribute] * 0.01 * real_damage_dealt * experience_multiplier, 1)
-					if(xp_to_give > 0)
-						A.add_attribute_xp(attribute,xp_to_give)
-						experience_gained[attribute] += xp_to_give
+					total_skill_damage_amount += bonus_experience_attribute[attribute]
+
+				if(total_skill_damage_amount > 0)
+					for(var/skill in skill_stats)
+						//var/experience/skill/E = SSexperience.all_skills[skill]
+						var/xp_to_give = CEILING( (skill_stats[skill]/total_skill_damage_amount) * real_damage_dealt * experience_multiplier, 1)
+						if(xp_to_give > 0)
+							A.add_skill_xp(skill,xp_to_give)
+							experience_gained[skill] += xp_to_give
+
+					for(var/attribute in attribute_stats)
+						var/experience/attribute/E = SSexperience.all_attributes[attribute]
+						if(!(E.flags & ATTRIBUTE_DAMAGE))
+							continue
+						var/xp_to_give = CEILING( (attribute_stats[attribute]/total_skill_damage_amount) * real_damage_dealt * experience_multiplier, 1)
+						if(xp_to_give > 0)
+							A.add_attribute_xp(attribute,xp_to_give)
+							experience_gained[attribute] += xp_to_give
+
+					for(var/skill in bonus_experience_skill)
+						//var/experience/skill/E = SSexperience.all_skills[skill]
+						var/xp_to_give = CEILING( (bonus_experience_skill[skill]/total_skill_damage_amount) * real_damage_dealt * experience_multiplier, 1)
+						if(xp_to_give > 0)
+							A.add_skill_xp(skill,xp_to_give)
+							experience_gained[skill] += xp_to_give
+
+					for(var/attribute in bonus_experience_attribute)
+						var/experience/attribute/E = SSexperience.all_attributes[attribute]
+						if(!(E.flags & ATTRIBUTE_DAMAGE))
+							continue
+						var/xp_to_give = CEILING( (bonus_experience_attribute[attribute]/total_skill_damage_amount) * real_damage_dealt * experience_multiplier, 1)
+						if(xp_to_give > 0)
+							A.add_attribute_xp(attribute,xp_to_give)
+							experience_gained[attribute] += xp_to_give
 
 				if(length(experience_gained))
 					var/list/final_experience = list()

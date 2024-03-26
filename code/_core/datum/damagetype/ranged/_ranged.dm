@@ -43,6 +43,8 @@
 
 	alert_on_impact = ALERT_LEVEL_CAUTION
 
+	experience_mod = 0.5
+
 /damagetype/ranged/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return 0.5
 

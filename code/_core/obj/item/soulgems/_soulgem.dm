@@ -16,15 +16,18 @@
 	rarity = RARITY_COMMON
 
 	var/mob/living/stored_soul_path
+	var/soul_gives_xp = TRUE
 
 /obj/item/soulgem/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("total_charge")
+	SAVEVAR("soul_gives_xp")
 	SAVEPATH("stored_soul_path")
 
 /obj/item/soulgem/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("total_charge")
+	LOADVAR("soul_gives_xp")
 	LOADPATH("stored_soul_path")
 
 /obj/item/soulgem/Finalize()
@@ -154,6 +157,7 @@
 			return TRUE
 		total_charge = min(L.soul_size,total_capacity)
 		stored_soul_path = L.type
+		soul_gives_xp = FALSE
 		qdel(L)
 		update_sprite()
 		return TRUE
@@ -182,6 +186,7 @@
 			var/mob/living/L = caller
 			L.add_skill_xp(SKILL_SUMMONING,CEILING(S.soul_size*0.01,1))
 		stored_soul_path = S.soul_path
+		soul_gives_xp = TRUE
 		qdel(S)
 		update_sprite()
 
@@ -198,7 +203,7 @@
 			caller.visible_message(span("notice","\The [caller.name] recharges \the [S.name] with \the [src.name]."),span("notice","You charge \the [S] with \the [src]."))
 			S.total_charge += total_charge
 			total_charge -= total_charge
-			if(is_living(caller))
+			if(soul_gives_xp && is_living(caller))
 				var/mob/living/L = caller
 				L.add_skill_xp(SKILL_SUMMONING,CEILING(total_charge*0.0025,1))
 			if(!do_not_consume && total_charge <= 0)
