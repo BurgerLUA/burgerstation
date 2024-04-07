@@ -56,13 +56,26 @@
 	var/obj/marker/shuttle_marker/SM = pick(shuttle_markers)
 	L.force_move(get_turf(SM))
 
+/obj/trigger/teleport_to_world
+	name = "teleport to world"
+	invisibility = 101
+	density = TRUE
 
+/obj/trigger/teleport_to_world/Crossed(var/atom/movable/triggerer)
 
+	. = ..()
+
+	if(!is_living(triggerer))
+		return .
+
+	var/mob/living/L = triggerer
+
+	var/obj/marker/wizard_rift_location/RL = pick(wizard_rift_markers)
+
+	L.force_move(get_turf(RL))
 
 /obj/marker/shuttle_marker/
 	name = "shuttle marker"
-
-
 
 /*
 

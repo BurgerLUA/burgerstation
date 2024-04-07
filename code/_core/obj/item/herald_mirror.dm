@@ -51,18 +51,27 @@
 
 	INTERACT_CHECK_NO_DELAY(src)
 
-	if(!A.can_move())
-		A.to_chat(span("warning","You can't use the mirror in your current state!"))
-		return FALSE
-
 	if(!linked_destination)
 		A.to_chat(span("warning","Something went wrong... tell Burger on discord."))
+		return FALSE
+
+	if(!SSgamemode?.active_gamemode?.allow_launch)
+		A.to_chat(span("warning","You can't use \the [src.name]... yet."))
+		return FALSE
+
+	if(!A.can_move())
+		A.to_chat(span("warning","You can't use \the [src.name] in your current state!"))
 		return FALSE
 
 	if(!is_inventory(loc))
 		A.to_chat(span("warning","You need to be holding \the [src.name] in order to teleport!"))
 		return FALSE
 
+	var/obj/hud/inventory/I = loc
+
+	if(!I.click_flags || I.owner != A)
+		A.to_chat(span("warning","You need to be holding \the [src.name] in order to teleport!"))
+		return FALSE
 
 	return TRUE
 
@@ -74,10 +83,10 @@
 	if(istype(A2,/area/herald))
 		var/turf/T = get_turf(linked_returning)
 		if(!T)
-			A.to_chat(span("notice","It seems you cannot go back to your previous location... perhaps the portal can help you get back."))
+			A.to_chat(span("notice","It seems you cannot go back to your previous location... perhaps the light can help you get back."))
 			return TRUE
 		A.force_move(T)
-		A.visible_message(span("danger","\The [A.name] appears out of nowhere!"),span("notice","\The [src.name] whisks you away back to where you were."))
+		A.visible_message(span("danger","\The [A.name] appears out of nowhere!"),span("notice","\The [src.name] whisks you away, back to where you were."))
 		return TRUE
 
 	if(linked_returning)
