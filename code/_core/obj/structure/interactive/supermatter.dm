@@ -136,7 +136,7 @@
 			trigger_warning()
 		//update_map_text()
 
-	if(weapon && DT.get_attack_type() == ATTACK_TYPE_MELEE)
+	if(weapon && DT.attack_type == ATTACK_TYPE_MELEE)
 		if(weapon.health)
 			weapon.health.adjust_loss_smart(burn=400)
 		else if(is_item(weapon))

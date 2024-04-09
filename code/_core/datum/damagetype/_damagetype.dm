@@ -155,6 +155,8 @@
 
 	var/allow_damage_numbers = TRUE
 
+	var/attack_type = ATTACK_TYPE_MELEE
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -710,7 +712,10 @@
 				V.hit_logs += list(hit_log_format)
 				if(A != V && A.loyalty_tag != V.loyalty_tag && V.is_player_controlled() && !A.is_player_controlled())
 					if(total_damage_dealt > 0)
-						V.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
+						if(attack_type == ATTACK_TYPE_MAGIC)
+							V.add_attribute_xp(ATTRIBUTE_SOUL,total_damage_dealt*0.1)
+						else
+							V.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
 					if(damage_blocked_with_armor > 0)
 						V.add_skill_xp(SKILL_ARMOR,damage_blocked_with_armor*0.1)
 					if(damage_blocked_with_shield > 0)
