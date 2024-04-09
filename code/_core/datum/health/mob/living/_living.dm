@@ -35,7 +35,7 @@
 		var/fat_bonus = FLOOR(max(0,L.nutrition_normal + L.nutrition_fast + L.nutrition_quality - L.nutrition_max)*0.05,1)
 
 		var/constitution_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_CONSTITUTION,0,1,2)*50,5) //Physical
-		var/soul_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_WISDOM,0,1,2)*50,1) //Magical
+		var/soul_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_SOUL,0,1,2)*50,1) //Magical
 
 		var/status_bonus =  STATUS_EFFECT_MAGNITUDE(L,TEMP_ARMOR)
 
