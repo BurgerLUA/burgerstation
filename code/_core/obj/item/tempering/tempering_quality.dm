@@ -113,3 +113,9 @@
 
 	temper_whitelist = list(/obj/item/weapon/ranged/spellgem,/obj/item/weapon/ranged/wand,/obj/item/supportgem)
 	value = 1250
+
+/obj/item/tempering/quality/ranged/magic/on_temper(var/mob/caller,var/obj/item/I)
+	. = ..()
+	if(istype(I,/obj/item/supportgem))
+		var/obj/item/supportgem/SG = I
+		SG.update_support_stats()
