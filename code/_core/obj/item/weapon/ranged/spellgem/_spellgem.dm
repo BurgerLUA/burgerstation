@@ -47,6 +47,8 @@
 	if(!istype(src.loc,/obj/item/weapon/ranged/wand))
 		return FALSE
 
+	attachment_stats["mana_cost_multiplier"] = 1
+
 	var/obj/item/weapon/ranged/wand/W = src.loc
 
 	for(var/g in W.socketed_supportgems)
@@ -109,8 +111,7 @@
 
 		if(is_living(caller))
 			var/mob/living/L = caller
-			final_mana_cost *= 1 / (1+L.get_skill_power(casting_type)*3) //Up to 25% reduction at level 100.
-
+			final_mana_cost *= 1 - 25 * L.get_skill_power(casting_type) / 100 //Up to 25% reduction at level 100.
 		if(final_mana_cost > caller.health.mana_current)
 			caller.to_chat(span("warning","You try to push with all your mana, but the spell fizzles!"))
 			return FALSE //Fail
