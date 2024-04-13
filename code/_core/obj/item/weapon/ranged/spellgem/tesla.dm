@@ -1,14 +1,24 @@
 /obj/item/weapon/ranged/spellgem/tesla
-	name = "tesla bolt spell gem"
+	name = "tesla blast spell gem"
 	desc = "The source of all magic."
-	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a tesla bolt."
+	desc_extended = "Shoots a blast of tesla bolts in random directions."
 	icon_state = "damage"
 
-	projectile = /obj/projectile/magic/tesla_bolt // The projectile for this projectile to shoot when near valid targets.
-	ranged_damage_type = /damagetype/ranged/magic/tesla_shock
-	shoot_delay = 5 //The delay in which the projectile can shoot.
+	rarity = RARITY_UNCOMMON
 
-	projectile_speed = TILE_SIZE*0.3 - 1
+	shoot_delay = 3
+
+	bullet_count = 4
+	projectile_speed = TILE_SIZE*0.2 - 1
+	spread_per_shot = 90
+
+	burst_delay = 15
+	max_bursts = 3
+
+	projectile = /obj/projectile/magic/tesla_bolt
+	ranged_damage_type = /damagetype/ranged/magic/tesla_shock
+
+	projectile_speed = TILE_SIZE*0.4 - 1
 	shoot_sounds = list('sound/effects/tesla.ogg')
 
 	color = "#FFFFFF"
@@ -18,3 +28,6 @@
 	value = 800
 
 	rarity = RARITY_UNCOMMON
+
+/obj/item/weapon/ranged/spellgem/tesla/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
+	return list(cos(rand(1,360)),sin(rand(1,360)))

@@ -53,4 +53,3 @@
 		/obj/item/portal_scroll,
 		/loot/soulgem/assorted
 	)
-	loot_count = 3

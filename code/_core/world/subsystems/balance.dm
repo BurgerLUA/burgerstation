@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(balance)
 	var/list/stored_tier_max = list()
 	var/list/stored_killtime = list()
 
-	var/list/stored_value = list() //STORED VALUE SHOULD BE ONLY USED FOR LOOT GENERATION (EXCEPTION: WEAPONS, BULLETS, MAGAZINES)
+	var/list/stored_value = list() //STORED VALUE SHOULD BE ONLY USED FOR LOOT GENERATION AND VENDORS (EXCEPTION: WEAPONS, BULLETS, MAGAZINES)
 
 	var/list/weapon_to_bullet = list()
 	var/list/weapon_to_magazine = list()

@@ -290,7 +290,7 @@
 
 	wand_damage_multiplier = 1
 
-	tier = 0
+	tier = 1
 
 	value = 100
 
@@ -300,17 +300,17 @@
 
 	wand_damage_multiplier = 1.1
 
-	tier = 1
+	tier = 2
 
 	value = 100
 
 /obj/item/weapon/ranged/wand/quartz
-	name = "crafted wand"
+	name = "quartz wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/quartz.dmi'
 
 	wand_damage_multiplier = 1.2
 
-	tier = 1
+	tier = 2
 
 	value = 100
 
@@ -320,7 +320,7 @@
 
 	wand_damage_multiplier = 1.3
 
-	tier = 2
+	tier = 3
 
 
 	value = 100

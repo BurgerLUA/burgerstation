@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/spellgem
 	name = "spell gem"
 	desc = "The source of all magic."
-	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands."
+	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells."
 	icon = 'icons/obj/item/spellgem.dmi'
 	icon_state = null
 
@@ -24,19 +24,21 @@
 
 	requires_bullets = FALSE
 
+	recommended_value_mod = 1.5
+
 /obj/item/weapon/ranged/spellgem/get_examine_list(var/mob/examiner)
 	. = ..()
-	. += div("notice","Base mana cost: [get_base_mana_cost()]")
+	. += div("notice","This spellgem has a base mana cost of [base_mana_cost*(max_bursts ? max_bursts : 1)]. Can be augmented into wands to alter the spellgem's stats.")
 
-/obj/item/weapon/ranged/spellgem/get_base_value()
-	. = ..()
-	. *= 1 - min(0.5,spread_per_shot/180)
-	. = CEILING(.,1)
-
-/obj/item/weapon/ranged/spellgem/proc/get_base_mana_cost()
-	. = get_damage_per_hit(0)
-	. *= 1 + bullet_count*0.75
-	. *= max(0.125,1 - (spread_per_shot/180))
+/obj/item/weapon/ranged/spellgem/proc/calculate_mana_cost() //Don't actually use this. Use src.base_mana_cost instead.
+	. = (get_damage_per_hit(0) + get_damage_per_hit(50) + get_damage_per_hit(100)) / 3
+	if(bullet_count > 1)
+		. *= 0.5 + bullet_count*0.5
+		if((bullet_count % 2) != 1) //Even number of shots means it's not going to be accurate.
+			. *= 0.5
+		. *= max(0.125,1 - (spread_per_shot/90))
+	. *= 0.5 + (projectile_speed / (TILE_SIZE-1))*0.5
+	. *= 0.5 + min(1,10/shoot_delay)*0.5
 	. *= 0.125
 	. = CEILING(.,1)
 
@@ -81,7 +83,7 @@
 
 /obj/item/weapon/ranged/spellgem/Initialize()
 	. = ..()
-	base_mana_cost = get_base_mana_cost()
+	base_mana_cost = calculate_mana_cost()
 
 /obj/item/weapon/ranged/spellgem/Finalize()
 	. = ..()
@@ -104,13 +106,18 @@
 	. = ..()
 
 	if(. && caller.health)
+
 		var/final_mana_cost = base_mana_cost
+
 		if(length(attachment_stats) && attachment_stats["mana_cost_multiplier"])
 			final_mana_cost *= attachment_stats["mana_cost_multiplier"]
 
 		if(is_living(caller))
 			var/mob/living/L = caller
 			final_mana_cost *= 1 - L.get_skill_power(casting_type,0,1,2)*0.25 //Up to 25% reduction at level 100. Level 200 is 50%
+
+		final_mana_cost = max(final_mana_cost,base_mana_cost*0.25)
+
 		if(final_mana_cost > caller.health.mana_current)
 			caller.to_chat(span("warning","You try to push with all your mana, but the spell fizzles!"))
 			return FALSE //Fail
@@ -123,14 +130,14 @@
 	if(color_2)
 		var/image/I = new(icon,"[icon_state]_grad")
 		I.appearance_flags = appearance_flags | RESET_COLOR
-		I.alpha = 200
+		I.alpha = min(100 + base_mana_cost,255)
 		I.color = color_2
 		add_overlay(I)
 
 	if(color_3)
 		var/image/I = new(icon,"[icon_state]_outline")
 		I.appearance_flags = appearance_flags | RESET_COLOR
-		I.alpha = 200
+		I.alpha = min(100 + base_mana_cost,255)
 		I.color = color_3
 		add_overlay(I)
 

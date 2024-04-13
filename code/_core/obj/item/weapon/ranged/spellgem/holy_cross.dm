@@ -1,8 +1,10 @@
 /obj/item/weapon/ranged/spellgem/holy_cross
 	name = "holy cross spell gem"
 	desc = "The source of all magic."
-	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a holy cross that deals extra damage to unholy creatures and causes them to explode!"
+	desc_extended = "Shoots a holy cross. Always deals critical strikes against bosses."
 	icon_state = "damage"
+
+	rarity = RARITY_COMMON
 
 	shoot_delay = 20
 
@@ -12,7 +14,7 @@
 	projectile = /obj/projectile/magic/holy_cross
 	ranged_damage_type = /damagetype/ranged/magic/holy_cross
 
-	shoot_sounds = list('sound/weapons/magic/fireball.ogg')
+	shoot_sounds = list('sound/weapons/magic/creation.ogg')
 
 	color = "#FFD800"
 	color_2 = "#917E1F"
