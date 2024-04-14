@@ -76,6 +76,7 @@
 			else
 				.[damage_type] = bonus[damage_type]
 
+
 /health/mob/living/update_health()
 
 	var/mob/living/L = owner

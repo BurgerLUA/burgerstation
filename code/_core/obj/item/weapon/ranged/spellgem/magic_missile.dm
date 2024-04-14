@@ -4,7 +4,7 @@
 	desc_extended = "Shoots one enemy-seeking magic missiles that deals arcane damage."
 	icon_state = "damage"
 
-	rarity = RARITY_CUMMON
+	rarity = RARITY_COMMON
 
 	shoot_delay = 10
 

@@ -29,11 +29,15 @@
 	. = ..()
 	if(name == "ability scroll")
 		name = "ability scroll: [initial(stored_ability.name)]"
+		desc_extended = initial(stored_ability.desc)
 
 /obj/item/ability_learner/update_overlays()
 	. = ..()
 	if(icon_state == "scroll" && stored_ability)
 		var/image/I = new/image(initial(stored_ability.icon),initial(stored_ability.icon_state))
+		var/matrix/M = matrix()
+		M.Scale(0.75,0.75)
+		I.transform = M
 		add_overlay(I)
 
 /obj/item/ability_learner/click_self(var/mob/caller)
