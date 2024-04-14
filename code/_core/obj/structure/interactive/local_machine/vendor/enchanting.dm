@@ -23,8 +23,7 @@
 	icon_state = "MagiVend"
 
 	stored_types = list(
-		/obj/item/weapon/ranged/wand/branch{sockets=3},
-		/obj/item/weapon/ranged/wand/crafted{sockets=2}
+		/obj/item/weapon/ranged/wand/branch{sockets=2}
 	)
 
 	accepts_item = /obj/item/currency/gold_coin

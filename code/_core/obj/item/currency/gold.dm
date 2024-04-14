@@ -8,15 +8,14 @@
 
 	amount_max = GOLD_AMOUNT_MAX
 
-	size = SIZE_4/GOLD_AMOUNT_MAX
-	weight = 50/GOLD_AMOUNT_MAX
+	size = 0.01
+	weight = (35/GOLD_AMOUNT_MAX) * 5
 
 	currency_class = "gold coin"
 
 	drop_sound = null
 
-/obj/item/currency/gold_coin/get_base_value()
-	return CEILING(SSeconomy.credits_per_gold * amount,1)
+	value = CREDITS_PER_GOLD
 
 /obj/item/currency/gold_coin/update_sprite()
 	. = ..()
@@ -138,12 +137,12 @@
 	desc_extended = "A bar of solid gold, likely valuable."
 	icon = 'icons/obj/item/currency/gold_bar.dmi'
 	icon_state = "1"
-	value = 0 //Value is based on current economy, see get_base_value()
 
 	amount_max = 5
 
-	size = (SIZE_4/GOLD_AMOUNT_MAX) * (GOLD_AMOUNT_MAX/5)
-	weight = (50/GOLD_AMOUNT_MAX) * (GOLD_AMOUNT_MAX/5)
+	size = SIZE_1
+	weight = 35 //Guess the reference
+	value = CREDITS_PER_GOLD * GOLD_AMOUNT_MAX * (1/5) //Worth 1/5th of a full gold stack.
 
 	currency_class = "gold bar"
 
@@ -162,10 +161,6 @@
 	. = ..()
 	var/image/I = new/image(icon,"sparkle_[amount]")
 	add_overlay(I)
-
-/obj/item/currency/gold_bar/get_base_value()
-	return CEILING(SSeconomy.credits_per_gold * amount * (GOLD_AMOUNT_MAX/5),1)
-
 
 /obj/item/currency/gold_bar/update_icon()
 	. = ..()

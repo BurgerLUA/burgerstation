@@ -7,24 +7,30 @@
 	stored_types = list(
 		/obj/item/clothing/overwear/armor/knight/battlemage,
 		/obj/item/clothing/head/helmet/full/knight/battlemage,
-		/obj/item/supply_crate/magic,
 		/obj/item/soulgem/uncommon,
 		/obj/item/container/simple/beaker/bottle/health_potion,
 		/obj/item/container/simple/beaker/bottle/stamina_potion,
 		/obj/item/container/simple/beaker/bottle/mana_potion,
-		/obj/item/weapon/ranged/spellgem/chaos,
+		/obj/item/weapon/ranged/spellgem/arcblades,
+		/obj/item/weapon/ranged/spellgem/blackflame,
 		/obj/item/weapon/ranged/spellgem/crystal,
-		/obj/item/weapon/ranged/spellgem/f50cal,
 		/obj/item/weapon/ranged/spellgem/fireball,
 		/obj/item/weapon/ranged/spellgem/oozey,
-		/obj/item/weapon/ranged/wand/quartz,
+		/obj/item/weapon/ranged/spellgem/fireball,
+		/obj/item/weapon/ranged/wand/crafted{sockets=3},
 		/obj/item/weapon/melee/torch/lantern,
 		/obj/item/weapon/ranged/magic/spellblade/runesword,
 		/obj/item/weapon/melee/shield/heartstone,
-		/obj/item/soulgem/uncommon/filled,
-		/obj/item/soulgem/rare,
-		/obj/item/soulgem/mystic,
-
+		/obj/item/ability_learner/fireball,
+		/obj/item/ability_learner/mana_armor,
+		/obj/item/ability_learner/radial_blind,
+		/obj/item/ability_learner/smite,
+		/obj/item/ability_learner/soul_trap,
+		/obj/item/ability_learner/tesla,
+		/obj/item/ability_learner/wrath,
+		/obj/item/soulgem/common,
+		/obj/item/soulgem/uncommon,
+		/obj/item/soulgem/rare
 	)
 
 	accepts_item = /obj/item/currency/magic_token

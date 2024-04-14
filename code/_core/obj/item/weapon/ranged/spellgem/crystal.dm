@@ -9,7 +9,7 @@
 	burst_delay = 15
 	max_bursts = 4
 
-	shoot_delay = 2
+	shoot_delay = 3
 
 	bullet_count = 1
 	projectile_speed = TILE_SIZE*0.75 - 1

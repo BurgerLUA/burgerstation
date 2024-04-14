@@ -166,9 +166,6 @@
 
 	caller.to_chat(span("notice","You vend \the [new_item.name]."))
 
-	if(!ignore_economy)
-		SSeconomy.purchases_this_round["[associated_item.type]"] += 1
-
 	return new_item
 
 /obj/structure/interactive/vending/PostInitialize()
@@ -241,13 +238,10 @@
 		if(stored_cost[I.type])
 			continue
 
-		var/local_markup = markup
-		if(!ignore_economy)
-			local_markup = max(markup * (SSeconomy.price_multipliers["[I.type]"] ? SSeconomy.price_multipliers["[I.type]"] : 1),markup)
 		if(isnum(item_multiplier[I.type]))
-			stored_cost[I.type] = CEILING((get_bullshit_price(I.get_value()*local_markup)*item_multiplier[I.type]),1)
+			stored_cost[I.type] = CEILING((get_bullshit_price(I.get_value()*markup)*item_multiplier[I.type]),1)
 		else
-			stored_cost[I.type] = CEILING(get_bullshit_price(I.get_value()*local_markup),1)
+			stored_cost[I.type] = CEILING(get_bullshit_price(I.get_value()*markup),1)
 
 		if(price_max && stored_cost[I.type] > price_max)
 			log_error("Warning: [I.type] is for sale, yet it is too expensive to be purchased in \the [src.get_debug_name()]!")
@@ -259,8 +253,6 @@
 			stored_cost -= I.type
 			stored_objects -= I
 			qdel(I)
-		else if(!ignore_economy && !isnum(SSeconomy.purchases_this_round["[I.type]"]))
-			SSeconomy.purchases_this_round["[I.type]"] = 0
 
 	update_sprite()
 

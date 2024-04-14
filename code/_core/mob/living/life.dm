@@ -38,7 +38,7 @@
 		if(!silent) create_alert(VIEW_RANGE*0.5,T, alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
 
 		if(boss && !drops_gold)
-			drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/SSeconomy.credits_per_gold) * 5
+			drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/CREDITS_PER_GOLD) * 5
 
 		if(drops_gold > 0)
 			create_gold_drop(T,CEILING(drops_gold,1))

@@ -33,7 +33,7 @@
 	if(!SSloot || !SSloot.initialized)
 		return null
 	var/loot/L = LOOT(loot)
-	return CEILING(L.average_value * 1.5,100)
+	return CEILING(L.average_value * 1.25,100)
 
 /obj/item/supply_crate/on_thrown(var/atom/owner,var/atom/hit_atom)
 	. = ..()

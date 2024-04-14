@@ -41,8 +41,6 @@
 					if(istype(B.stored_object,/obj/item/currency/gold_coin))
 						var/currency_added = A.adjust_currency(B.stored_value)
 						A.to_chat(span("notice","You exchange \the [B.stored_object] for [currency_added] credits."))
-						SSeconomy.goblin_economy += B.stored_value
-						SSeconomy.gold_in_circulation -= B.stored_object.amount
 						B.set_stored_object(null)
 						qdel(I)
 					else
@@ -53,8 +51,6 @@
 						INITIALIZE(G)
 						G.amount = B.stored_value
 						FINALIZE(G)
-						SSeconomy.gold_in_circulation += G.amount
-						SSeconomy.goblin_economy -= G.amount
 						A.to_chat(span("notice","You sell \the [B.stored_object] for [G.amount] gold."))
 						B.set_stored_object(null)
 						qdel(I)
@@ -62,9 +58,6 @@
 							G.transfer_amount_to(object)
 						if(!G.qdeleting && !A.put_in_hands(G,params))
 							G.quick_equip(A,ignore_worn=TRUE,ignore_dynamic=TRUE)
-
-
-					SSeconomy.update_stats()
 			else
 				B.set_stored_object(null)
 
@@ -144,10 +137,10 @@
 /obj/hud/button/exchange/base/proc/calculate_value()
 	if(stored_object)
 		if(istype(stored_object,/obj/item/currency/gold_coin))
-			stored_value = CEILING(stored_object.amount*SSeconomy.credits_per_gold,1)
+			stored_value = CEILING(stored_object.amount*CREDITS_PER_GOLD,1)
 			stored_value = max(stored_value,0)
 		else
-			stored_value = CEILING((SSeconomy.crash_sell_multiplier*SSeconomy.sell_multiplier*stored_object.get_value())/SSeconomy.credits_per_gold,1)
+			stored_value = CEILING((SELL_MULTIPLIER*stored_object.get_value())/CREDITS_PER_GOLD,1)
 			stored_value = clamp(stored_value,0,1000)
 	else
 		stored_value = 0

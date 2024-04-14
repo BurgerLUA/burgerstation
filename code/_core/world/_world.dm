@@ -163,15 +163,11 @@ var/global/world_state = STATE_STARTING
 			continue
 		G.save()
 
-/proc/save_economy()
-	SSeconomy.save()
-
 /world/proc/save()
 	save_all_globals()
 	//save_all_mechs()
 	save_deathboxes()
 	save_banks()
-	save_economy()
 	save_all_characters()
 	return TRUE
 
