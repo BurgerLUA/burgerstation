@@ -105,7 +105,26 @@
 				INTERACT_CHECK
 				INTERACT_CHECK_OBJECT
 				INTERACT_DELAY(1)
+
+				var/atom/old_location = I.loc
+
 				var/stacks_transfered = I.transfer_amount_to(src)
+
+				if(src.amount < src.amount_max && is_turf(old_location))
+					var/turf/T = old_location
+					var/check_limit = 10
+					for(var/obj/item/O in old_location)
+						if(check_limit <= 0 || src.amount >= src.amount_max)
+							break
+						check_limit--
+						if(O == I)
+							continue
+						if(O.loc != T || O.qdeleting)
+							continue
+						if(!O.can_transfer_stacks_to(src))
+							continue
+						stacks_transfered += O.transfer_amount_to(src)
+
 				if(stacks_transfered)
 					caller.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [src.name]."))
 				else

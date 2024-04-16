@@ -408,6 +408,21 @@
 	vis_contents += I
 	I.layer = LAYER_BASE + length(vis_contents)
 
+	if(I.amount < I.amount_max && is_turf(old_location))
+		var/turf/T = old_location
+		var/check_limit = 10
+		for(var/obj/item/O in old_location)
+			if(check_limit <= 0 || I.amount >= I.amount_max)
+				break
+			check_limit--
+			if(O == src)
+				continue
+			if(O.loc != T || O.qdeleting)
+				continue
+			if(!O.can_transfer_stacks_to(I))
+				continue
+			O.transfer_amount_to(I)
+
 	I.on_equip(old_location,silent)
 
 	if(is_item(src.loc))
