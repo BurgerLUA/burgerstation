@@ -66,6 +66,7 @@
 		/obj/item/clothing/feet/socks/knee/striped,
 		/obj/item/clothing/feet/socks/thigh,
 		/obj/item/clothing/feet/socks/thigh/striped,
+		/obj/item/clothing/underbottom/underwear/long_johns,
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/underbottom/underwear/panty,
 		/obj/item/clothing/underbottom/underwear/thong,
