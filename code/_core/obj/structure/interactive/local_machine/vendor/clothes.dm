@@ -86,8 +86,8 @@
 		/obj/item/clothing/pants/normal/grey,
 		/obj/item/clothing/pants/skirt,
 		/obj/item/clothing/pants/skirt/striped,
-		/obj/item/clothing/pants/kilt,
-
+		/obj/item/clothing/pants/skirt/grey,
+		/obj/item/clothing/pants/kilt
 	)
 
 /obj/structure/interactive/vending/clothes/shoes
