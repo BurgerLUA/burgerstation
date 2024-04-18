@@ -25,6 +25,7 @@
 		/obj/item/clothing/shirt/normal,
 		/obj/item/clothing/shirt/normal/striped,
 		/obj/item/clothing/shirt/normal/uniform,
+		/obj/item/clothing/shirt/normal/grey,
 		/obj/item/clothing/shirt/blouse,
 		/obj/item/clothing/shirt/blouse/frill,
 		/obj/item/clothing/shirt/blouse/uniform,
@@ -82,6 +83,7 @@
 		/obj/item/clothing/pants/normal,
 		/obj/item/clothing/pants/normal/chaps,
 		/obj/item/clothing/pants/normal/striped,
+		/obj/item/clothing/pants/normal/grey,
 		/obj/item/clothing/pants/skirt,
 		/obj/item/clothing/pants/skirt/striped,
 		/obj/item/clothing/pants/kilt,
@@ -102,9 +104,13 @@
 	icon_state = "accessories"
 	stored_types = list(
 		/obj/item/clothing/back/storage/satchel/poly,
+		/obj/item/clothing/back/storage/satchel,
 		/obj/item/clothing/back/storage/backpack/poly,
+		/obj/item/clothing/back/storage/backpack,
 		/obj/item/clothing/back/storage/dufflebag/poly,
+		/obj/item/clothing/back/storage/dufflebag/poly/grey, //the classic grey dufflebag is *mysteriously missing* from the code, might try unfucking later
 		/obj/item/clothing/belt/storage/colored,
+		/obj/item/clothing/belt/storage,
 		/obj/item/clothing/head/hat/bandana,
 		/obj/item/clothing/head/hat/skimask,
 		/obj/item/clothing/neck/cape,
@@ -123,5 +129,6 @@
 		/obj/item/clothing/head/hat/beret,
 		/obj/item/clothing/head/hat/cat,
 		/obj/item/clothing/head/hat/top,
+		/obj/item/clothing/head/hat/bowler,
 		/obj/item/clothing/head/hat/wizard
 	)
