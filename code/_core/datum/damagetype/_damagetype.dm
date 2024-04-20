@@ -649,9 +649,8 @@
 	//var/mental_damage_dealt = damage_to_deal_main[SANITY] + damage_to_deal_main[MENTAL]
 	//var/misc_damage_dealt = damage_to_deal_main[FATIGUE] + damage_to_deal_main[PAIN]
 
-	var/actual_damage_dealt = 0
-	if(total_damage_dealt > 0 && hit_object.health)
-		actual_damage_dealt = hit_object.health.adjust_loss_smart(
+	if(total_damage_dealt > 0 && hit_object.health && victim.health)
+		hit_object.health.adjust_loss_smart(
 			brute = damage_to_deal_main[BRUTE],
 			burn = damage_to_deal_main[BURN],
 			tox = damage_to_deal_main[TOX],
@@ -663,6 +662,25 @@
 			mental = damage_to_deal_main[MENTAL],
 			update = FALSE
 		)
+
+		//Calling this before update for a reason.
+		//Basically if you kill something in one hit, it won't calculate properly.
+		if(!victim_was_dead && real_damage_dealt > 0 && attacker != victim && is_living(attacker) && is_living(victim))
+			handle_logs(
+				attacker,
+				victim,
+				real_damage_dealt
+			)
+			handle_experience(
+				attacker,
+				victim,
+				min(victim.health.health_current,victim.health.health_max*0.25,real_damage_dealt), //Caps to prevent leveling exploits.
+				damage_blocked_with_armor,
+				damage_blocked_with_shield,
+				critical_hit_multiplier,
+				stealth_multiplier
+			)
+
 		//This forces it to immediately update.
 		//Organs have weird health updating code, which is handled here.
 		if(is_organ(hit_object))
@@ -698,93 +716,6 @@
 		display_glance_message(attacker,victim,weapon,hit_object)
 	else
 		display_hit_message(attacker,victim,weapon,hit_object)
-		if(is_living(blamed) && is_living(victim))
-			var/mob/living/A = blamed
-			var/mob/living/V = victim
-			if(actual_damage_dealt > 0 && !victim_was_dead)
-				var/list/hit_log_format = list()
-				hit_log_format["attacker"] = A
-				hit_log_format["attacker_ckey"] = A.ckey
-				hit_log_format["time"] = world.time
-				hit_log_format["damage"] = total_damage_dealt
-				hit_log_format["critical"] = V.health ? V.health.health_current - real_damage_dealt < 0 : TRUE
-				hit_log_format["lethal"] = V.health ? (V.health.health_current - real_damage_dealt) <= min(-50,V.health.health_max*-0.25) : TRUE
-				V.hit_logs += list(hit_log_format)
-				if(A != V && A.loyalty_tag != V.loyalty_tag && V.is_player_controlled() && !A.is_player_controlled())
-					if(total_damage_dealt > 0)
-						if(attack_type == ATTACK_TYPE_MAGIC)
-							V.add_attribute_xp(ATTRIBUTE_SOUL,total_damage_dealt*0.1)
-						else
-							V.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
-					if(damage_blocked_with_armor > 0)
-						V.add_skill_xp(SKILL_ARMOR,damage_blocked_with_armor*0.1)
-					if(damage_blocked_with_shield > 0)
-						V.add_skill_xp(SKILL_BLOCK,damage_blocked_with_shield*0.1)
-
-			if(real_damage_dealt > 0 && A != V && A.loyalty_tag != V.loyalty_tag && !victim_was_dead && A.is_player_controlled())
-				var/list/experience_gained = list()
-				var/experience_multiplier = victim.get_xp_multiplier() * experience_mod
-				if(critical_hit_multiplier > 1)
-					var/xp_to_give = CEILING((real_damage_dealt*experience_multiplier)/critical_hit_multiplier,1)
-					if(xp_to_give > 0)
-						A.add_skill_xp(SKILL_PRECISION,xp_to_give)
-						experience_gained[SKILL_PRECISION] += xp_to_give
-
-				if(stealth_multiplier > 1)
-					var/xp_to_give = CEILING((real_damage_dealt*experience_multiplier)/stealth_multiplier,1)
-					if(xp_to_give > 0)
-						A.add_skill_xp(SKILL_SURVIVAL,xp_to_give)
-						experience_gained[SKILL_SURVIVAL] += xp_to_give
-
-				var/total_skill_damage_amount = 0
-				for(var/skill in skill_stats)
-					total_skill_damage_amount += skill_stats[skill]
-				for(var/attribute in attribute_stats)
-					total_skill_damage_amount += attribute_stats[attribute]
-				for(var/skill in bonus_experience_skill)
-					total_skill_damage_amount += bonus_experience_skill[skill]
-				for(var/attribute in bonus_experience_attribute)
-					total_skill_damage_amount += bonus_experience_attribute[attribute]
-
-				if(total_skill_damage_amount > 0)
-					for(var/skill in skill_stats)
-						//var/experience/skill/E = SSexperience.all_skills[skill]
-						var/xp_to_give = CEILING( (skill_stats[skill]/total_skill_damage_amount) * real_damage_dealt * experience_multiplier, 1)
-						if(xp_to_give > 0)
-							A.add_skill_xp(skill,xp_to_give)
-							experience_gained[skill] += xp_to_give
-
-					for(var/attribute in attribute_stats)
-						var/experience/attribute/E = SSexperience.all_attributes[attribute]
-						if(!(E.flags & ATTRIBUTE_DAMAGE))
-							continue
-						var/xp_to_give = CEILING( (attribute_stats[attribute]/total_skill_damage_amount) * real_damage_dealt * experience_multiplier, 1)
-						if(xp_to_give > 0)
-							A.add_attribute_xp(attribute,xp_to_give)
-							experience_gained[attribute] += xp_to_give
-
-					for(var/skill in bonus_experience_skill)
-						//var/experience/skill/E = SSexperience.all_skills[skill]
-						var/xp_to_give = CEILING( (bonus_experience_skill[skill]/total_skill_damage_amount) * real_damage_dealt * experience_multiplier, 1)
-						if(xp_to_give > 0)
-							A.add_skill_xp(skill,xp_to_give)
-							experience_gained[skill] += xp_to_give
-
-					for(var/attribute in bonus_experience_attribute)
-						var/experience/attribute/E = SSexperience.all_attributes[attribute]
-						if(!(E.flags & ATTRIBUTE_DAMAGE))
-							continue
-						var/xp_to_give = CEILING( (bonus_experience_attribute[attribute]/total_skill_damage_amount) * real_damage_dealt * experience_multiplier, 1)
-						if(xp_to_give > 0)
-							A.add_attribute_xp(attribute,xp_to_give)
-							experience_gained[attribute] += xp_to_give
-
-				if(length(experience_gained))
-					var/list/final_experience = list()
-					for(var/k in experience_gained)
-						var/v = experience_gained[k]
-						final_experience += "[v] [k] xp"
-					A.to_chat(span("notice","You gained [english_list(final_experience)]."),CHAT_TYPE_COMBAT)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
@@ -825,6 +756,103 @@
 	src.post_on_hit(attacker,attacker_turf,victim,victim_turf,weapon,hit_object,total_damage_dealt)
 
 	return list(total_damage_dealt,damage_blocked_with_armor,damage_blocked_with_shield,deflection_rating)
+
+/damagetype/proc/handle_logs(var/mob/living/attacker,var/mob/living/victim,var/damage_dealt=0)
+
+	var/list/hit_log_format = list()
+	hit_log_format["attacker"] = attacker
+	hit_log_format["attacker_ckey"] = attacker.ckey
+	hit_log_format["time"] = world.time
+	hit_log_format["damage"] = damage_dealt
+	hit_log_format["critical"] = victim.health ? victim.health.health_current - damage_dealt < 0 : TRUE
+	hit_log_format["lethal"] = victim.health ? (victim.health.health_current - damage_dealt) <= min(-50,victim.health.health_max*-0.25) : TRUE
+	victim.hit_logs += list(hit_log_format)
+
+	return TRUE
+
+/damagetype/proc/handle_experience(var/mob/living/attacker,var/mob/living/victim,var/damage_dealt=0,var/damage_blocked_with_armor=0,var/damage_blocked_with_shield=0,var/critical_hit_multiplier=0,var/stealth_multiplier=0)
+
+	if(attacker.loyalty_tag == victim.loyalty_tag) //Prevents leveling exploits.
+		return FALSE
+
+	. = FALSE
+
+	if(victim.is_player_controlled() && !attacker.is_player_controlled())
+		if(attack_type == ATTACK_TYPE_MAGIC)
+			victim.add_attribute_xp(ATTRIBUTE_SOUL,damage_dealt*0.1)
+		else
+			victim.add_attribute_xp(ATTRIBUTE_CONSTITUTION,damage_dealt*0.1)
+		if(damage_blocked_with_armor > 0)
+			victim.add_skill_xp(SKILL_ARMOR,damage_blocked_with_armor*0.1)
+		if(damage_blocked_with_shield > 0)
+			victim.add_skill_xp(SKILL_BLOCK,damage_blocked_with_shield*0.1)
+		. = TRUE
+
+
+	if(!victim.is_player_controlled() && attacker.is_player_controlled())
+		var/list/experience_gained = list()
+		var/experience_multiplier = victim.get_xp_multiplier() * experience_mod
+		if(critical_hit_multiplier > 1)
+			var/xp_to_give = CEILING((damage_dealt*experience_multiplier)/critical_hit_multiplier,1)
+			if(xp_to_give > 0)
+				attacker.add_skill_xp(SKILL_PRECISION,xp_to_give)
+				experience_gained[SKILL_PRECISION] += xp_to_give
+
+		if(stealth_multiplier > 1)
+			var/xp_to_give = CEILING((damage_dealt*experience_multiplier)/stealth_multiplier,1)
+			if(xp_to_give > 0)
+				attacker.add_skill_xp(SKILL_SURVIVAL,xp_to_give)
+				experience_gained[SKILL_SURVIVAL] += xp_to_give
+
+		var/total_skill_damage_amount = 0
+		for(var/skill in skill_stats)
+			total_skill_damage_amount += skill_stats[skill]
+		for(var/attribute in attribute_stats)
+			total_skill_damage_amount += attribute_stats[attribute]
+		for(var/skill in bonus_experience_skill)
+			total_skill_damage_amount += bonus_experience_skill[skill]
+		for(var/attribute in bonus_experience_attribute)
+			total_skill_damage_amount += bonus_experience_attribute[attribute]
+
+		if(total_skill_damage_amount > 0)
+			for(var/skill in skill_stats)
+				var/xp_to_give = CEILING( (skill_stats[skill]/total_skill_damage_amount) * damage_dealt * experience_multiplier, 1)
+				if(xp_to_give > 0)
+					attacker.add_skill_xp(skill,xp_to_give)
+					experience_gained[skill] += xp_to_give
+
+			for(var/attribute in attribute_stats)
+				var/experience/attribute/E = SSexperience.all_attributes[attribute]
+				if(!(E.flags & ATTRIBUTE_DAMAGE))
+					continue
+				var/xp_to_give = CEILING( (attribute_stats[attribute]/total_skill_damage_amount) * damage_dealt * experience_multiplier, 1)
+				if(xp_to_give > 0)
+					attacker.add_attribute_xp(attribute,xp_to_give)
+					experience_gained[attribute] += xp_to_give
+
+			for(var/skill in bonus_experience_skill)
+				var/xp_to_give = CEILING( (bonus_experience_skill[skill]/total_skill_damage_amount) * damage_dealt * experience_multiplier, 1)
+				if(xp_to_give > 0)
+					attacker.add_skill_xp(skill,xp_to_give)
+					experience_gained[skill] += xp_to_give
+
+			for(var/attribute in bonus_experience_attribute)
+				var/experience/attribute/E = SSexperience.all_attributes[attribute]
+				if(!(E.flags & ATTRIBUTE_DAMAGE))
+					continue
+				var/xp_to_give = CEILING( (bonus_experience_attribute[attribute]/total_skill_damage_amount) * damage_dealt * experience_multiplier, 1)
+				if(xp_to_give > 0)
+					attacker.add_attribute_xp(attribute,xp_to_give)
+					experience_gained[attribute] += xp_to_give
+
+		if(length(experience_gained))
+			var/list/final_experience = list()
+			for(var/k in experience_gained)
+				var/v = experience_gained[k]
+				final_experience += "[v] [k] xp"
+			attacker.to_chat(span("notice","You gained [english_list(final_experience)]."),CHAT_TYPE_COMBAT)
+			. = TRUE
+
 
 /damagetype/proc/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
