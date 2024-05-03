@@ -108,8 +108,6 @@
 
 /mob/living/advanced/get_block_data(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 
-	var/attack_type = DT.get_attack_type()
-
 	var/obj/item/best_item = null
 	var/best_value = 0
 
@@ -120,24 +118,24 @@
 
 	//Left
 	if(left_item)
-		if(left_item.block_defense[attack_type] && left_item.block_defense[attack_type] > best_value && left_item.can_block(attacker,weapon,src,DT))
+		if(left_item.block_defense[DT.attack_type] && left_item.block_defense[DT.attack_type] > best_value && left_item.can_block(attacker,weapon,src,DT))
 			best_item = left_item
-			best_value = left_item.block_defense[attack_type]
+			best_value = left_item.block_defense[DT.attack_type]
 	else if(src.labeled_organs[BODY_HAND_LEFT])
 		var/obj/item/organ/O = src.labeled_organs[BODY_HAND_LEFT]
-		if(O.block_defense[attack_type] && O.can_block(attacker,weapon,src,DT))
+		if(O.block_defense[DT.attack_type] && O.can_block(attacker,weapon,src,DT))
 			best_item = O
-			best_value = max(.,O.block_defense[attack_type])
+			best_value = max(.,O.block_defense[DT.attack_type])
 
 	//Right
 	if(right_item)
-		if((right_item.block_defense[attack_type] > best_value || (best_value > 0 && right_item.block_defense[attack_type] == best_value && prob(50))) && right_item.can_block(attacker,weapon,src,DT) )
+		if((right_item.block_defense[DT.attack_type] > best_value || (best_value > 0 && right_item.block_defense[DT.attack_type] == best_value && prob(50))) && right_item.can_block(attacker,weapon,src,DT) )
 			best_item = right_item
-			best_value = right_item.block_defense[attack_type]
+			best_value = right_item.block_defense[DT.attack_type]
 	else if(src.labeled_organs[BODY_HAND_RIGHT])
 		var/obj/item/organ/O = src.labeled_organs[BODY_HAND_RIGHT]
-		if(O.block_defense[attack_type] > best_value && O.can_block(attacker,weapon,src,DT))
+		if(O.block_defense[DT.attack_type] > best_value && O.can_block(attacker,weapon,src,DT))
 			best_item = O
-			best_value = O.block_defense[attack_type]
+			best_value = O.block_defense[DT.attack_type]
 
 	return list(best_item,best_value*block_defense_multiplier)

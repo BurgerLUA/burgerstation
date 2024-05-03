@@ -9,7 +9,8 @@
 		/obj/item/paper/book/enchanting/soul_trap,
 		/obj/item/enchanting_chalk,
 		/obj/item/soulgem/common,
-		/obj/item/weapon/melee/sword/cult_dagger
+		/obj/item/weapon/melee/sword/cult_dagger,
+		/obj/item/ability_learner/soul_trap
 	)
 
 	accepts_item = /obj/item/currency/gold_coin
@@ -18,36 +19,32 @@
 /obj/structure/interactive/vending/magic/spellgem
 	name = "spellgem vendor"
 	desc = "Absolutely magic!"
-	desc_extended = "An almost cartoonish vendor of magical equipment and gear for the aspiring wizard."
+	desc_extended = "An almost cartoonish vendor of magical equipment and gear for the aspiring wizard. Only accepts gold coins!"
 	icon_state = "MagiVend"
 
 	stored_types = list(
-		/obj/item/weapon/ranged/wand/branch{sockets=2},
-
-		/obj/item/weapon/ranged/spellgem/arcblades,
-		/obj/item/weapon/ranged/spellgem/chaos,
-		/obj/item/weapon/ranged/spellgem/crystal,
-		/obj/item/weapon/ranged/spellgem/fire_spear,
-		/obj/item/weapon/ranged/spellgem/fireball,
-		/obj/item/weapon/ranged/spellgem/flame,
-		/obj/item/weapon/ranged/spellgem/fractal,
-		/obj/item/weapon/ranged/spellgem/frost,
-		/obj/item/weapon/ranged/spellgem/holy_cross,
-		/obj/item/weapon/ranged/spellgem/ice_spear,
-		/obj/item/weapon/ranged/spellgem/inferno,
-		/obj/item/weapon/ranged/spellgem/lightning,
-		/obj/item/weapon/ranged/spellgem/magic_missile,
-		/obj/item/weapon/ranged/spellgem/shock,
-
-		/obj/item/supportgem/cost,
-		/obj/item/supportgem/damage,
-		/obj/item/supportgem/spread,
-		/obj/item/supportgem/overkill,
-		/obj/item/supportgem/speed,
-		/obj/item/supportgem/precision
+		/obj/item/weapon/ranged/wand/branch{sockets=2}
 	)
 
 	accepts_item = /obj/item/currency/gold_coin
+
+/obj/structure/interactive/vending/magic/spellgem/Initialize() //Adds all the cheap support and spellgems.
+
+	. = ..()
+
+	for(var/k in subtypesof(/obj/item/weapon/ranged/spellgem))
+		var/obj/item/weapon/ranged/spellgem/S = k
+		if(rarity_to_number[initial(S.rarity)] > rarity_to_number[RARITY_UNCOMMON])
+			continue
+		if(SSbalance.stored_value[S] && SSbalance.stored_value[S] <= 1500)
+			stored_types += S
+
+	for(var/k in subtypesof(/obj/item/supportgem))
+		var/obj/item/supportgem/S = k
+		if(rarity_to_number[initial(S.rarity)] > rarity_to_number[RARITY_UNCOMMON])
+			continue
+		if(SSbalance.stored_value[S] && SSbalance.stored_value[S] <= 1500)
+			stored_types += S
 
 
 /obj/structure/interactive/vending/magic/magicdrobe

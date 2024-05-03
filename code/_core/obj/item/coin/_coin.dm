@@ -112,7 +112,7 @@
 /obj/item/coin/antag_token/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
-	INTERACT_DELAY(1)
+	INTERACT_DELAY(30)
 
 	if(!is_player(caller))
 		return FALSE
@@ -128,6 +128,7 @@
 
 	GD.loaded_data["antag_tokens"] += 1 //We don't save here because there might be an exploit where you don't save or something.
 	caller.to_chat(span("warning","Your antag token count has increased by 1! It is now [GD.loaded_data["antag_tokens"]]."))
+	GD.save()
 	qdel(src)
 
 	return TRUE

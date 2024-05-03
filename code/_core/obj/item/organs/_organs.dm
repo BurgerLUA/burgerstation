@@ -75,6 +75,7 @@
 	var/broken = FALSE
 	var/broken_name //Null basically means generate.
 
+	//Snowflake code for skeletons, basically.
 	var/projectile_dodge_chance = 0
 
 	var/armor/armor = /armor/default_organic
@@ -94,7 +95,7 @@
 
 	if(projectile_dodge_chance > 0 && !accurate && !find_closest && get_dist(src,attacker) > 1)
 		var/damagetype/DT = SSdamagetype.all_damage_types[damage_type]
-		if(DT && DT.get_attack_type() == ATTACK_TYPE_RANGED)
+		if(DT && DT.attack_type == ATTACK_TYPE_RANGED)
 			return !prob(projectile_dodge_chance)
 
 	return TRUE

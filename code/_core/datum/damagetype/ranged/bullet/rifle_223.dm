@@ -40,7 +40,7 @@
 		var/mob/living/L = victim
 		if(L.ckey_last)
 			return ..()
-		if(L.master && L.master.ckey_last)
+		if(L.minion_master && L.minion_master.ckey_last)
 			return ..()
 		if(L.boss)
 			return ..()

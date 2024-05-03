@@ -48,7 +48,7 @@
 		/obj/item/clothing/back/storage/backpack/poly/wizard{loot_to_generate = /loot/wizard/bag},
 
 		/loot/random/gun/wand,
-		/loot/random/gun/spellgem,
+		/loot/safe_spellgems,
 		/loot/random/support_gem
 	)
 

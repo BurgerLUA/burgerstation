@@ -22,7 +22,7 @@
 
 /mob/living/advanced/npc/goblin/Initialize()
 	. = ..()
-	drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/SSeconomy.credits_per_gold)
+	drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/CREDITS_PER_GOLD)
 
 /mob/living/advanced/npc/goblin/warrior
 	name = "goblin warrior"

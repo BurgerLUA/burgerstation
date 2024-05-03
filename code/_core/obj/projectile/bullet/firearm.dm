@@ -31,11 +31,12 @@
 	name = "smart pistol bullet"
 	icon_state = "bullet_small"
 	var/smart = FALSE
+	var/ignore_requirements = FALSE
 
 /obj/projectile/bullet/firearm/pistol/smart/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
 	. = ..()
 
-	if(istype(weapon,/obj/item/weapon/ranged/bullet/magazine/smg/smart))
+	if(!ignore_requirements && istype(weapon,/obj/item/weapon/ranged/bullet/magazine/smg/smart))
 		smart = TRUE
 
 	if(smart && iff_tag && target_turf)
@@ -55,6 +56,9 @@
 
 	if(!is_living(target_atom))
 		smart = FALSE
+
+/obj/projectile/bullet/firearm/pistol/smart/ignore_requirements
+	ignore_requirements = TRUE
 
 
 /obj/projectile/bullet/firearm/pistol/smart/update_projectile(var/tick_rate=1)

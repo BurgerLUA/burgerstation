@@ -90,7 +90,8 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	play_sound('sound/voice/xeno/queen_death.ogg',get_turf(src))
 
-	tracked_xeno_queen = null
+	if(tracked_xeno_queen == src)
+		tracked_xeno_queen = null
 
 /mob/living/simple/xeno/queen/proc/inhale()
 	do_say("&#42;inhales&#42;",should_sanitize = FALSE)

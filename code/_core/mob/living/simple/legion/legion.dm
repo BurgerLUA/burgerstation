@@ -41,6 +41,7 @@
 
 	level = 8
 
+
 /mob/living/simple/legionare/PreDestroy()
 
 	if(stored_corpse)

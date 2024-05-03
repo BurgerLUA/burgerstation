@@ -209,6 +209,7 @@ var/global/antag_count = 0
 
 	GD.loaded_data["antag_tokens"] -= 1
 	src.to_chat(span("notice","You spend an antag token to become an antagonist. You now have <b>[GD.loaded_data["antag_tokens"]]</b> antag token(s)."))
+	GD.save()
 
 	var/savedata/client/mob/mobdata = MOBDATA(C.ckey)
 	mobdata.reset_data()

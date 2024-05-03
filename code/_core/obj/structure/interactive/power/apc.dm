@@ -19,7 +19,13 @@
 
 /obj/structure/interactive/power/apc/get_examine_list(var/mob/examiner)
 	. = ..()
-	. += div("notice","Area Power Draw: [src.power_draw]w.")
+
+	var/total_power_draw = 0
+	for(var/k in linked_areas)
+		var/area/A = k
+		total_power_draw += A.power_draw
+
+	. += div("notice","Area Power Draw: [total_power_draw]w.")
 	. += div("notice","\The [cell.name] has [cell.charge_current] out of [cell.charge_max] charge remaining.")
 
 /obj/structure/interactive/power/apc/PreDestroy()

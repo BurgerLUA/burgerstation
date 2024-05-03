@@ -33,13 +33,14 @@
 /horde_data/syndicate
 
 	horde_weights = list(
-		/mob/living/advanced/npc/syndicate = 100
+		/mob/living/advanced/npc/syndicate = 95,
+		/mob/living/advanced/npc/syndicate/wizard = 5 //d20
 	)
 
 /horde_data/revolutionary
 
 	horde_weights = list(
-		/mob/living/advanced/npc/rev = 100,
-		/mob/living/advanced/npc/rev/elite = 20,
+		/mob/living/advanced/npc/rev = 85,
+		/mob/living/advanced/npc/rev/elite = 5,
 		/mob/living/simple/bear/armored/revolutionary = 10
 	)

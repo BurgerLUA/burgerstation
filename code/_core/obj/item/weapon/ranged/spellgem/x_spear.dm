@@ -1,12 +1,14 @@
 /obj/item/weapon/ranged/spellgem/ice_spear
 	name = "ice spear spell gem"
 	desc = "The source of all magic."
-	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a fast moving ice crystal that pierces."
+	desc_extended = "Shoots a fast moving ice crystal that pierces."
 	icon_state = "damage"
 
 	company_type = "Ashwalkers"
 
-	shoot_delay = 8
+	rarity = RARITY_UNCOMMON
+
+	shoot_delay = 10
 
 	bullet_count = 1
 	projectile_speed = TILE_SIZE - 1
@@ -25,12 +27,14 @@
 /obj/item/weapon/ranged/spellgem/fire_spear
 	name = "fire spear spell gem"
 	desc = "The source of all magic."
-	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a fast moving accurate fire crystal can pierce."
+	desc_extended = "Shoots a fast moving accurate fire crystal that pierces."
 	icon_state = "damage"
 
 	company_type = "Ashwalkers"
 
-	shoot_delay = 8
+	rarity = RARITY_UNCOMMON
+
+	shoot_delay = 10
 
 	bullet_count = 1
 	projectile_speed = TILE_SIZE - 1

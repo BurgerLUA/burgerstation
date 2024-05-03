@@ -46,6 +46,7 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/mob/living)
 	createtypecache(/mob/living/advanced)
 	createtypecache(/mob/living/advanced/player)
+	createtypecache(/mob/living/simple)
 	createtypecache(/mob/abstract/observer)
 	createtypecache(/obj/structure)
 	createtypecache(/obj/item)
@@ -81,6 +82,10 @@ var/global/world_state = STATE_STARTING
 	TgsInitializationComplete()
 
 	sleep_offline = initial(sleep_offline)
+
+	if(world.port != 0 && !length(SSadmin.stored_user_ranks))
+		world.log << "FATAL ERROR: Failed to properly load and initalize user ranks. Restarting!"
+		Reboot(0)
 
 /world/Topic(T,Addr,Master,Keys)
 	TGS_TOPIC
@@ -139,7 +144,9 @@ var/global/world_state = STATE_STARTING
 
 /world/Reboot(reason)
 	rustg_log_close_all()
+	sleep(1)
 	TgsReboot()
+	sleep(1)
 	. = ..()
 
 
@@ -156,15 +163,11 @@ var/global/world_state = STATE_STARTING
 			continue
 		G.save()
 
-/proc/save_economy()
-	SSeconomy.save()
-
 /world/proc/save()
 	save_all_globals()
 	//save_all_mechs()
 	save_deathboxes()
 	save_banks()
-	save_economy()
 	save_all_characters()
 	return TRUE
 

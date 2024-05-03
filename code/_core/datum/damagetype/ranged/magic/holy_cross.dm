@@ -17,3 +17,13 @@
 	)
 
 	force_attacker_armor_calculations_with = HOLY
+
+	crit_multiplier = 2
+
+/damagetype/ranged/magic/holy_cross/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		return L.boss
+
+	. = ..()

@@ -17,7 +17,7 @@
 /experience/attribute/constitution/ //100% complete
 	name = "Constitution"
 	desc = "A measure of your physical well-being."
-	desc_extended = "Affects your natural resistance to the physical elements. Can be increased by taking damage from attacks."
+	desc_extended = "Affects your natural resistance to the physical elements. Can be increased by taking damage from non-magical attacks."
 	id = ATTRIBUTE_CONSTITUTION
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.9
@@ -111,7 +111,7 @@
 /experience/attribute/soul //100% complete
 	name = "Soul"
 	desc = "A measure of how strong your spirtual being is."
-	desc_extended = "Affects your natural resistances to the arcane."
+	desc_extended = "Affects your natural resistances to the arcane. Can be increased by taking damage from magical attacks."
 	id = ATTRIBUTE_SOUL
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.9
