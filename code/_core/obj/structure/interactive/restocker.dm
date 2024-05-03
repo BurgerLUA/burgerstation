@@ -111,6 +111,35 @@
 		caller.to_chat(span("notice","The ammo box has been restocked with [bullets_to_add] [initial(bullet_to_create.name)]."))
 		return TRUE
 
+	if(istype(object,/obj/item/clothing/belt/musket_bag)) //Allows the musket bag to be restocked using a premium restocker
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
+		if(!premium)
+			caller.to_chat(span("warning","Only non-surplus ammo restockers can restock musket bags!"))
+			return TRUE
+		var/obj/item/clothing/belt/musket_bag/K = object
+		var/obj/item/bullet_cartridge/bullet_to_create = K.charge_type
+		var/bullets_to_add = K.max_charges - K.charge_count
+		if(bullets_to_add <= 0)
+			caller.to_chat(span("warning","The musket bag is already full!"))
+			return TRUE
+		if(K.next_regen > world.time)
+			caller.to_chat(span("warning","That musket bag was just filled! Please wait [CEILING(DECISECONDS_TO_SECONDS(K.next_regen-world.time),1)] seconds!"))
+			return TRUE
+		if(premium)
+			var/value_per_bullet = SSbalance.stored_value[bullet_to_create]
+			if(value_per_bullet*bullets_to_add > currency_left)
+				caller.to_chat(span("warning","\The [src.name] doesn't have enough credits stored to complete this operation!"))
+				return TRUE
+			else
+				currency_left -= value_per_bullet*bullets_to_add
+				K.charge_count += bullets_to_add
+
+		K.next_regen = world.time + SECONDS_TO_DECISECONDS(120)
+		K.update_sprite()
+		caller.to_chat(span("notice","The musket bag has been restocked with [bullets_to_add] charges."))
+
 	return ..()
 
 /obj/structure/interactive/restocker/ammo/premium
