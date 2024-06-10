@@ -182,6 +182,8 @@
 
 	var/unlock_requirement //Accepts a string, which is a prerequiste to unlock this to purchase in vendors.
 
+	var/bank_bypass = FALSE //True/false -- allows the item to be stored in the bank, even if it violates one of the bank's rules like being contra or a big container
+
 /obj/item/proc/can_unlock(var/mob/caller)
 	return TRUE
 
