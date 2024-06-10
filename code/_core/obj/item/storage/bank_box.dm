@@ -4,3 +4,5 @@
 	desc_extended = "A bluespace-enhanced box which can be fit in a bank to effectively add more slots."
   icon = 'icons/obj/item/storage/death_box.dmi'
 	icon_state = "locked"
+	is_container = TRUE
+	container_max_size = SIZE_10
