@@ -71,7 +71,7 @@
 		qdel(I)
 		return null
 	INITIALIZE(I)
-	if(!I.load_item_data_post(P,oject_data,loadout=loadout))
+	if(!I.load_item_data_post(P,object_data,loadout=loadout))
 		qdel(I)
 		return null
 	FINALIZE(I)
