@@ -8,3 +8,4 @@
 	size = SIZE_1
 	container_max_size = SIZE_10
 	value = 50000
+	dynamic_inventory_count = 10 * 10
