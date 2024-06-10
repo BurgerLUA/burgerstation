@@ -25,7 +25,6 @@
 			return FALSE
 
 		if(I.contraband)
-			if(messages) owner.to_chat(span("warning","The bank refuses to store contraband."))
-			return FALSE
+			if(messages) owner.to_chat(span("warning","The bank permits the storage of contraband, but thinks less of you for doing so."))
 
 	. = ..()
