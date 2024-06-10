@@ -6,3 +6,4 @@
 	icon_state = "locked"
 	is_container = TRUE
 	container_max_size = SIZE_10
+	value = 50000
