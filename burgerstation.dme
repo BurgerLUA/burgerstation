@@ -1756,6 +1756,7 @@
 #include "code\_core\obj\item\spellswap\_spellswap.dm"
 #include "code\_core\obj\item\spellswap\spellswap_types.dm"
 #include "code\_core\obj\item\storage\_storage.dm"
+#include "code\_core\obj\item\storage\bank_box.dm"
 #include "code\_core\obj\item\storage\cigarettes.dm"
 #include "code\_core\obj\item\storage\death_box.dm"
 #include "code\_core\obj\item\storage\eggbox.dm"
