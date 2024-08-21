@@ -32,12 +32,6 @@
 
 /ai/proc/handle_attacking()
 
-	if(!can_attack)
-		return FALSE
-
-	if(!objective_attack)
-		return FALSE
-
 	if(get_dist(owner,objective_attack) > distance_target_max)
 		return FALSE
 

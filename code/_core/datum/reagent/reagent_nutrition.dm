@@ -125,8 +125,9 @@
 			else if(amount_to_heal < 0)
 				owner.tox_regen_buffer += amount_to_heal
 
-		if(owner.health && (nutrition_normal_amount + nutrition_quality_amount + hydration_amount) != 0 && (owner.move_mod < 3 || owner.next_move <= 0)) //Not sprinting
-			owner.stamina_regen_buffer += (nutrition_normal_amount + nutrition_quality_amount + hydration_amount) * . *multiplier
+		var/stamina_to_give = (nutrition_normal_amount + nutrition_quality_amount + hydration_amount) * . *multiplier
+		if(owner.health && stamina_to_give > 0)
+			owner.stamina_regen_buffer += stamina_to_give
 
 /reagent/nutrition/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()

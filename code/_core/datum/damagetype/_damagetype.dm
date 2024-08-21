@@ -219,6 +219,11 @@
 		if(!allow_hostile_action(A.loyalty_tag,V))
 			return null
 
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.has_status_effect(IMMORTAL))
+			return null
+
 	var/list/new_attack_damage = attack_damage_base.Copy()
 
 	if(is_living(attacker))
@@ -502,7 +507,7 @@
 					block_multiplier = block_data[2]
 
 	var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
-	var/list/damage_to_deal_main = list(
+	var/list/damage_to_deal_core = list(
 		BRUTE = 0,
 		BURN = 0,
 		TOX = 0,
@@ -604,12 +609,13 @@
 			if(debug) log_debug("Adding [damage_type] damage into [pain_damage_to_add] pain damage.")
 			pain_damage += pain_damage_to_add
 
-	if(length(damage_to_deal) && !length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INFINITY(defense_rating_victim[FATIGUE]))
-		damage_to_deal[FATIGUE] += CEILING(fatigue_damage,1)
+
+	if(!length(defense_rating_victim) || !(defense_rating_victim[FATIGUE] && IS_INFINITY(defense_rating_victim[FATIGUE])))
+		damage_to_deal_core[FATIGUE] += CEILING(fatigue_damage,1)
 		if(debug) log_debug("Dealing [fatigue_damage] extra fatigue damage due to blocked damage.")
 
-	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INFINITY(defense_rating_victim[PAIN]))
-		damage_to_deal[PAIN] += CEILING(pain_damage,1)
+	if(!length(defense_rating_victim) || !(defense_rating_victim[PAIN] && IS_INFINITY(defense_rating_victim[PAIN])))
+		damage_to_deal_core[PAIN] += CEILING(pain_damage,1)
 		if(debug) log_debug("Dealing [pain_damage] extra pain damage due to converted damage.")
 
 	var/total_damage_dealt = 0
@@ -623,10 +629,10 @@
 			var/list_length = length(real_damage_type)
 			for(var/single_damage_type in real_damage_type)
 				var/real_damage_amount = CEILING(damage_amount/list_length,1)
-				damage_to_deal_main[single_damage_type] += real_damage_amount
+				damage_to_deal_core[single_damage_type] += real_damage_amount
 				if(debug) log_debug("Converting [damage_amount] [damage_type] damage into [real_damage_amount] [single_damage_type] damage.")
 		else
-			damage_to_deal_main[real_damage_type] += CEILING(damage_amount,1)
+			damage_to_deal_core[real_damage_type] += CEILING(damage_amount,1)
 			if(debug) log_debug("Converting [damage_amount] [damage_type] damage into [damage_amount] [real_damage_type] damage.")
 
 	if(defense_rating_victim && defense_rating_victim["items"])
@@ -643,23 +649,23 @@
 			victim_was_dead = TRUE
 
 
-	var/physical_damage_dealt = damage_to_deal_main[BRUTE] + damage_to_deal_main[BURN]
-	var/chemical_damage_dealt = damage_to_deal_main[TOX] + damage_to_deal_main[OXY] + damage_to_deal_main[RAD]
+	var/physical_damage_dealt = damage_to_deal_core[BRUTE] + damage_to_deal_core[BURN]
+	var/chemical_damage_dealt = damage_to_deal_core[TOX] + damage_to_deal_core[OXY] + damage_to_deal_core[RAD]
 	var/real_damage_dealt = physical_damage_dealt + chemical_damage_dealt
-	//var/mental_damage_dealt = damage_to_deal_main[SANITY] + damage_to_deal_main[MENTAL]
-	//var/misc_damage_dealt = damage_to_deal_main[FATIGUE] + damage_to_deal_main[PAIN]
+	//var/mental_damage_dealt = damage_to_deal_core[SANITY] + damage_to_deal_core[MENTAL]
+	//var/misc_damage_dealt = damage_to_deal_core[FATIGUE] + damage_to_deal_core[PAIN]
 
 	if(total_damage_dealt > 0 && hit_object.health && victim.health)
 		hit_object.health.adjust_loss_smart(
-			brute = damage_to_deal_main[BRUTE],
-			burn = damage_to_deal_main[BURN],
-			tox = damage_to_deal_main[TOX],
-			oxy = damage_to_deal_main[OXY],
-			fatigue = damage_to_deal_main[FATIGUE],
-			pain = damage_to_deal_main[PAIN],
-			rad = damage_to_deal_main[RAD],
-			sanity = damage_to_deal_main[SANITY],
-			mental = damage_to_deal_main[MENTAL],
+			brute = damage_to_deal_core[BRUTE],
+			burn = damage_to_deal_core[BURN],
+			tox = damage_to_deal_core[TOX],
+			oxy = damage_to_deal_core[OXY],
+			fatigue = damage_to_deal_core[FATIGUE],
+			pain = damage_to_deal_core[PAIN],
+			rad = damage_to_deal_core[RAD],
+			sanity = damage_to_deal_core[SANITY],
+			mental = damage_to_deal_core[MENTAL],
 			update = FALSE
 		)
 
@@ -787,7 +793,6 @@
 		if(damage_blocked_with_shield > 0)
 			victim.add_skill_xp(SKILL_BLOCK,damage_blocked_with_shield*0.1)
 		. = TRUE
-
 
 	if(!victim.is_player_controlled() && attacker.is_player_controlled())
 		var/list/experience_gained = list()

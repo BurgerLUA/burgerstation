@@ -109,7 +109,7 @@
 	if(set_default || !mobdata || !length(mobdata.loaded_data["organs"]))
 		return ..()
 
-	set_mob_data(mobdata["loaded_data"])
+	set_mob_data(mobdata.loaded_data)
 	return TRUE
 
 

@@ -186,11 +186,10 @@ var/global/world_state = STATE_STARTING
 			if(!P.ai) log_error("Warning: Tried saving [P.get_debug_name()] without a ckey_last assigned!")
 			continue
 		var/savedata/client/mob/M = SSclient.ckey_to_mobdata[P.ckey_last]
-		if(M.save_character(P,died = P.dead))
+		if(M.save_character(P))
 			P.to_chat(span("notice","Your character was automatically saved."))
 		else
 			P.to_chat(span("danger","Save error! Your character could not be saved!"))
-		sleep(1)
 		CHECK_TICK_HARD
 
 /world/proc/end(var/reason,var/shutdown=FALSE)
@@ -218,6 +217,15 @@ var/global/world_state = STATE_STARTING
 	play_sound_global('sound/meme/apcdestroyed.ogg',SSliving.all_mobs_with_clients)
 
 	//SSvote.create_vote(/vote/map)
+
+	for(var/mob/living/L as anything in SSliving.all_players)
+		if(L.loyalty_tag != "NanoTrasen")
+			continue
+		if(!L.ckey_last)
+			continue
+		L.resurrect()
+		L.add_status_effect(IMMORTAL)
+		CHECK_TICK_HARD
 
 	if(shutdown)
 		broadcast_to_clients(span("notice","Shutting down world in [REBOOT_TIME] seconds due to [nice_reason]. Characters will be saved when the server shuts down."))
