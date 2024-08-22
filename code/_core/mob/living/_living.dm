@@ -663,6 +663,9 @@
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,src))
+			if(loyalty_tag == P.loyalty_tag)
+				continue
+
 			for(var/obj/hud/button/boss_health/B in P.buttons)
 				B.target_bosses |= src
 				B.update_stats()
