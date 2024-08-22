@@ -57,8 +57,10 @@
 /experience/proc/set_level(var/level)
 	if(!ENABLE_XP)
 		return FALSE
+	var/old_level = get_current_level()
 	experience = level_to_xp(clamp(level,1,get_max_level()))
 	last_level = get_current_level()
+	on_level_up(old_level, last_level)
 	return experience
 
 /experience/proc/get_current_level()
