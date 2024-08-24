@@ -124,8 +124,7 @@
 	experience_multiplier = 43
 
 /experience/skill/summoning/get_examine_list(var/mob/living/examiner)
-	if(tips == initial(tips)) // Since this tip has an updating value, we need to put it here
-		tips += "Your summoning slots are expanded as you level up summoning, currently you can maintain [floor(max(1,1 + get_power(0,1,2)*3))] creatures"
+	tips = list("Your summoning slots are expanded as you level up summoning, currently you can maintain [floor(max(1,1 + get_power(0,1,2)*3))] creatures")
 	return ..()
 
 /experience/skill/medicine/ //ATTRIBUTE_WILLPOWER

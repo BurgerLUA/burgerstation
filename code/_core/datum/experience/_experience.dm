@@ -40,7 +40,7 @@
 	var/current_tip = 1
 	for(var/i in 1 to length(tips))
 		if(examine_level >= examine_list[current_tip + 1])
-			completed_list[4] += span("notice", "\n[tips[current_tip]]")
+			completed_list[4] += span("notice", "\n- [tips[current_tip]]")
 		current_tip++
 
 	if(examine_level < examine_list[length(examine_list)])
