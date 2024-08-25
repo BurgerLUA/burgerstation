@@ -50,6 +50,7 @@
 /obj/item/material/get_base_value()
 	var/material/M = SSmaterials.all_materials[material_id]
 	. = M.value_per_unit * material_multiplier
+	. *= amount
 	. = CEILING(.,1)
 
 /obj/item/material/Finalize()

@@ -7,7 +7,7 @@
 	icon_state = null
 
 	amount_max = 50
-	amount_max_icon = 6
+	amount_max_icon = 3
 
 	material_multiplier = 1
 
@@ -21,7 +21,7 @@
 	else
 		name = "[deunderscore(M.name)] ore"
 		color = "#FFFFFF"
-		icon_state = "[M.icon_state_ore]_[min(amount_max_icon,amount)]"
+		icon_state = "[M.icon_state_ore]_[min(amount_max_icon,CEILING(amount/15,1))]"
 	return ..()
 
 /*
