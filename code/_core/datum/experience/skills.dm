@@ -14,11 +14,11 @@
 	skill_for_examine = list(2, 15)
 	desc_vague = "Affects your damage in some way."
 	desc_extended = "Your skill in performing attacks with melee weapons. Affects the damage of swords, clubs, and even a toolbox."
-	experience_power = 1.6
-	experience_multiplier = 43
 	tips = list(
 		"You can perform a strong swing by holding alt and clicking on an enemy.\nThis deals 2 times the damage but requires a wind-up and consumes some stamina.",
 	)
+	experience_power = 1.6
+	experience_multiplier = 43
 
 /experience/skill/prayer/ //ATTRIBUTE_CONSTITUTION
 	//Each point of damage dealt or healed = 1xp
@@ -56,7 +56,7 @@
 	desc = "As close to immortality as you can get."
 	skill_for_examine = 3
 	desc_vague = "Affects your armor in some way."
-	desc_extended = "Your skill in blocking attacks with armor. Affects which armor you can wear."
+	desc_extended = "Your skill in blocking attacks with your armor."
 	experience_power = 1.6
 	experience_multiplier = 28
 
