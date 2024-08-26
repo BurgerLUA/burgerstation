@@ -11,11 +11,14 @@
 	name = "Melee"
 	id = SKILL_MELEE
 	desc = "Be the ninja weeb space samurai you always wanted to be."
-	skill_for_examine = 2
+	skill_for_examine = list(2, 15)
 	desc_vague = "Affects your damage in some way."
 	desc_extended = "Your skill in performing attacks with melee weapons. Affects the damage of swords, clubs, and even a toolbox."
 	experience_power = 1.6
 	experience_multiplier = 43
+	tips = list(
+		"You can perform a strong swing by holding alt and clicking on an enemy.\nThis deals 2 times the damage but requires a wind-up and consumes some stamina.",
+	)
 
 /experience/skill/prayer/ //ATTRIBUTE_CONSTITUTION
 	//Each point of damage dealt or healed = 1xp
@@ -118,7 +121,7 @@
 	name = "Summoning"
 	id = SKILL_SUMMONING
 	desc = "Not to be confused with prayer."
-	skill_for_examine = list(5, 10)
+	skill_for_examine = list(5, 30)
 	desc_extended = "Your skill in casting summoning related magic such as summon skeleton."
 	experience_power = 1.6
 	experience_multiplier = 43
