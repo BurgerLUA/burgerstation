@@ -135,13 +135,14 @@
 	update_eyes()
 	return TRUE
 
-/mob/living/proc/rejuvenate()
+/mob/living/proc/rejuvenate(var/reset_nutrition = TRUE)
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()
-	nutrition_normal = initial(nutrition_normal)
-	nutrition_fast = initial(nutrition_fast)
-	nutrition_quality = initial(nutrition_quality)
-	hydration = max(hydration,initial(hydration))
+	if(reset_nutrition)
+		nutrition_normal = initial(nutrition_normal)
+		nutrition_fast = initial(nutrition_fast)
+		nutrition_quality = initial(nutrition_quality)
+		hydration = max(hydration,initial(hydration))
 	intoxication = initial(intoxication)
 	on_fire = initial(on_fire)
 	fire_stacks = initial(fire_stacks)
@@ -159,8 +160,8 @@
 	stamina_regen_buffer = 0
 	return TRUE
 
-/mob/living/proc/resurrect()
-	return rejuvenate() && revive()
+/mob/living/proc/resurrect(var/reset_nutrition = TRUE)
+	return rejuvenate(reset_nutrition) && revive()
 
 /mob/living/proc/pre_death()
 	brute_regen_buffer = max(brute_regen_buffer,0)

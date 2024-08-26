@@ -223,7 +223,7 @@ var/global/world_state = STATE_STARTING
 			continue
 		if(!L.ckey_last)
 			continue
-		L.resurrect()
+		L.resurrect(FALSE)
 		L.add_status_effect(IMMORTAL)
 		CHECK_TICK_HARD
 
