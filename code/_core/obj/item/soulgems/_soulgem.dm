@@ -70,9 +70,10 @@
 		var/turf/T = is_turf(hit_atom) ? hit_atom : get_turf(hit_atom)
 		if(T)
 			var/mob/living/mob_to_spawn = stored_soul_path
+			mob_to_spawn = new mob_to_spawn(T)
+			mob_to_spawn.soul_size = total_charge
 			src.total_charge = 0
 			src.stored_soul_path = null
-			mob_to_spawn = new mob_to_spawn(T)
 			INITIALIZE(mob_to_spawn)
 			GENERATE(mob_to_spawn)
 			master.add_minion(mob_to_spawn)
@@ -87,6 +88,7 @@
 				if(is_advanced(master))
 					var/mob/living/advanced/A = master
 					src.quick_equip(A,ignore_worn=TRUE,ignore_dynamic=TRUE,silent=TRUE)
+			update_sprite()
 
 /obj/item/soulgem/update_sprite()
 	. = ..()
@@ -152,7 +154,7 @@
 		if(total_charge != 0)
 			caller.to_chat(span("warning","You need an empty soul gem in order to capture souls!"))
 			return TRUE
-		if(L.soul_size > src.total_capacity)
+		if(initial(L.soul_size) > src.total_capacity)
 			caller.to_chat(span("warning","This soul is too large to be contained in \the [src.name]!"))
 			return TRUE
 		total_charge = min(L.soul_size,total_capacity)
