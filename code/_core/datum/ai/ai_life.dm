@@ -50,7 +50,7 @@
 					queue_find_new_objectives = TRUE
 					frustration_attack = 0
 
-		if(owner.attack_next <= world.time)
+		if(objective_attack && (owner.attack_next <= world.time))
 			handle_attacking()
 
 		if(queue_find_new_objectives)
