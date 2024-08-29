@@ -361,8 +361,12 @@
 	var/list/possible_bosses = list()
 
 	for(var/k in SSbosses.tracked_bosses)
-		var/atom/A = k
+		var/mob/living/A = k
 		if(!can_track(A))
+			continue
+		if(!is_living(A))
+			continue
+		if(A.health.health_current < 0)
 			continue
 		var/name_mod = "[A.name] ([dir2text(get_dir_advanced(caller,A))], [get_dist_advanced(src,A)]m)"
 		possible_bosses[name_mod] = A
