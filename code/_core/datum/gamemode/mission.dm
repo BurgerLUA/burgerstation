@@ -210,7 +210,7 @@
 				status_display_text = "VOTE"
 				round_time_next = -1
 				if(allow_continue)
-					world.end(WORLD_END_NANOTRASEN_VICTORY)
+					world.end()
 				else
 					SSvote.create_vote(/vote/continue_round)
 
