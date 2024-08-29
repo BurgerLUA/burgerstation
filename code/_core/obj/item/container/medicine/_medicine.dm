@@ -98,9 +98,9 @@
 				P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
 
 	if(reagents)
-		var/reagent_transfer = CEILING((1/amount_max)*reagents.volume_current, 1)
-		reagents.transfer_reagents_to(A.reagents,reagent_transfer, caller = caller)
-		reagents.volume_max = amount*10
+		var/transfer_amount = min(reagent_max_per_amount, reagents.volume_current)
+		reagents.transfer_reagents_to(A.reagents, transfer_amount, caller = caller)
+		reagents.volume_max = amount * reagent_max_per_amount
 
 	if(caller == A.loc)
 		caller.visible_message(span("notice","\The [caller.name] bandages their [A.name]."),span("notice","You bandage your [A.name]."))
