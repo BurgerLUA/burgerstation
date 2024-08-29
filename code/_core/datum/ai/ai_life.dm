@@ -37,7 +37,7 @@
 		owner.resist()
 		return TRUE
 
-	if(aggression > 0 && can_attack && objective_attack)
+	if(aggression > 0 && can_attack)
 		if(!master_ai) //Find objectives only if you don't belong to a master.
 			objective_ticks += tick_rate
 			var/actual_objective_delay = get_objective_delay()
