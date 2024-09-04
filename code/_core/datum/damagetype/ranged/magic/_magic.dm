@@ -1,9 +1,6 @@
 /damagetype/ranged/magic/
 	attack_damage_penetration = list()
-
-/damagetype/ranged/magic/get_attack_type()
-	return ATTACK_TYPE_MAGIC
-
+	attack_type = ATTACK_TYPE_MAGIC
 
 /damagetype/ranged/magic/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
 

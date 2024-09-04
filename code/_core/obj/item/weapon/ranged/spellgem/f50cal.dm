@@ -1,22 +1,27 @@
 /obj/item/weapon/ranged/spellgem/f50cal
-	name = ".50 caliber spell gem"
+	name = ".357 spell gem"
 	desc = "The source of all... lead?"
-	desc_extended = "After the Third Mage War, Desert Eagles were largely replaced with this particular shiny rock that acts just like one without needing bullets."
+	desc_extended = "Shoots two homing .357 bullets at a time. Wicked."
 	icon_state = "damage"
 
-	shoot_delay = 8
+	rarity = RARITY_LEGENDARY
+
+	shoot_delay = 1
 
 	bullet_count = 1
-	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
-	spread_per_shot = 8
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
-	projectile = /obj/projectile/bullet/firearm/rifle
-	ranged_damage_type = /damagetype/ranged/bullet/pistol_50
+	burst_delay = 2
+	max_bursts = 2
 
-	shoot_sounds = list('sound/weapons/ranged/rifle/50_sniper/shoot.ogg')
+	projectile = /obj/projectile/bullet/firearm/pistol/smart/ignore_requirements
+	ranged_damage_type = /damagetype/ranged/bullet/revolver_357
+
+	shoot_sounds = list('sound/weapons/ranged/pistol/357_traitor/shoot.ogg')
 
 	color = "#FDDFCC"
 	color_2 = "#2333FF"
 	color_3 = "#F38C22"
 
 	value = 2700
+

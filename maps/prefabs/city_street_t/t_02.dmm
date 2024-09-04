@@ -61,9 +61,6 @@
 	},
 /turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
-"m" = (
-/turf/simulated/wall/brick/city,
-/area/dmm_suite/clear_area)
 "n" = (
 /obj/decal/road_marking/solid_cross{
 	icon_state = "1";
@@ -209,7 +206,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -218,7 +215,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -275,7 +272,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -284,7 +281,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -341,7 +338,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -350,7 +347,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -407,7 +404,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -416,7 +413,7 @@ H
 p
 e
 j
-m
+a
 a
 a
 a
@@ -473,7 +470,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -482,7 +479,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -539,7 +536,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -548,7 +545,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -605,7 +602,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -614,7 +611,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -671,7 +668,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -680,7 +677,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -737,7 +734,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -746,7 +743,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -786,24 +783,24 @@ a
 a
 a
 a
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 j
 e
 p
@@ -812,31 +809,31 @@ G
 p
 e
 j
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -852,7 +849,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -902,7 +899,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -918,7 +915,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -968,7 +965,7 @@ a
 a
 a
 h
-m
+a
 a
 a
 a
@@ -984,7 +981,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1034,7 +1031,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1050,7 +1047,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1100,7 +1097,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1116,7 +1113,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1166,7 +1163,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1182,7 +1179,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1232,7 +1229,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1248,7 +1245,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1298,7 +1295,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1314,7 +1311,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1364,7 +1361,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1380,7 +1377,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1430,7 +1427,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1446,7 +1443,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1496,7 +1493,7 @@ a
 a
 a
 h
-m
+a
 a
 a
 a
@@ -1512,7 +1509,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1562,7 +1559,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1578,7 +1575,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1628,7 +1625,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1644,7 +1641,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1694,7 +1691,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1710,7 +1707,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1760,7 +1757,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1776,7 +1773,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1826,7 +1823,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1842,7 +1839,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1892,7 +1889,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1908,7 +1905,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1958,7 +1955,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -1974,7 +1971,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2024,10 +2021,10 @@ a
 a
 a
 a
-m
-m
-m
-m
+a
+a
+a
+a
 "}
 (29,1,1) = {"
 a
@@ -2040,7 +2037,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2106,7 +2103,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2172,7 +2169,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2238,7 +2235,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2304,7 +2301,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2370,7 +2367,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2436,7 +2433,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2502,7 +2499,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2568,7 +2565,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2618,10 +2615,10 @@ a
 a
 a
 a
-m
-m
-m
-m
+a
+a
+a
+a
 "}
 (38,1,1) = {"
 a
@@ -2634,7 +2631,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2684,7 +2681,7 @@ a
 a
 a
 h
-m
+a
 a
 a
 a
@@ -2700,7 +2697,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2750,7 +2747,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2766,7 +2763,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2816,7 +2813,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2832,7 +2829,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2882,7 +2879,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2898,7 +2895,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2948,7 +2945,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -2964,7 +2961,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3014,7 +3011,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3030,7 +3027,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3080,7 +3077,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3096,7 +3093,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3146,7 +3143,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3162,7 +3159,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3212,7 +3209,7 @@ a
 a
 a
 h
-m
+a
 a
 a
 a
@@ -3228,7 +3225,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3278,7 +3275,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3294,7 +3291,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3344,7 +3341,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3360,7 +3357,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3410,7 +3407,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3426,7 +3423,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3476,7 +3473,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3492,7 +3489,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3542,7 +3539,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3558,7 +3555,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3608,7 +3605,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3624,7 +3621,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3674,7 +3671,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3690,7 +3687,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3740,7 +3737,7 @@ a
 a
 a
 a
-m
+a
 a
 a
 a
@@ -3756,24 +3753,24 @@ a
 a
 a
 a
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 j
 e
 p
@@ -3782,31 +3779,31 @@ G
 p
 e
 j
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -3839,7 +3836,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -3848,7 +3845,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -3905,7 +3902,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -3914,7 +3911,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -3971,7 +3968,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -3980,7 +3977,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -4037,7 +4034,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -4046,7 +4043,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -4103,7 +4100,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -4112,7 +4109,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -4169,7 +4166,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -4178,7 +4175,7 @@ H
 p
 e
 j
-m
+a
 a
 a
 a
@@ -4235,7 +4232,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -4244,7 +4241,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -4301,7 +4298,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -4310,7 +4307,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a
@@ -4367,7 +4364,7 @@ a
 a
 a
 a
-m
+a
 j
 e
 p
@@ -4376,7 +4373,7 @@ G
 p
 e
 j
-m
+a
 a
 a
 a

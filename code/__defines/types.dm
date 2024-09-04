@@ -22,6 +22,7 @@ var/global/list/all_typecaches = list()
 
 #define is_living(A) istypecache(A,/mob/living/)
 
+#define is_simple(A) istypecache(A,/mob/living/simple)
 
 #define is_advanced(A) istypecache(A,/mob/living/advanced/)
 

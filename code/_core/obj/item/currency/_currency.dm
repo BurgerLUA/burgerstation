@@ -95,12 +95,12 @@
 /obj/item/currency/magic_token
 	name = "magic shard token"
 	desc = "Magically delicious!"
-	desc_extended = "A special magic shard token that is commonly used to trade with the Wizard Federation. Used to buy magic items."
+	desc_extended = "A special magic shard token that is commonly used to trade with the Wizard Federation. Used to buy rare magic items."
 	icon = 'icons/obj/item/currency/magic_token.dmi'
 	icon_state = "1"
-	value = 800
+	value = 1000
 
-	amount_max = 4
+	amount_max = 8
 
 	currency_class = "magic shard"
 

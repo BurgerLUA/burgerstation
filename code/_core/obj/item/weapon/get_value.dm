@@ -45,7 +45,9 @@
 		log_error("Value Calcuation Error: dps_mod for [src.type] was negative! ([dps_mod])")
 		return 1
 
-	. = 0.2 * (dps_mod + stopping_power_mod + kill_time_mod + bullet_mod)**1.2
+	. = recommended_value_mod * 0.2 * (dps_mod + stopping_power_mod + kill_time_mod + bullet_mod)**1.2
+
+
 
 	if(debug) log_debug("final calculation: [.]")
 

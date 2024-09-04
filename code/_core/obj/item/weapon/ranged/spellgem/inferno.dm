@@ -1,8 +1,10 @@
 /obj/item/weapon/ranged/spellgem/inferno
 	name = "inferno spell gem"
 	desc = "The source of all magic."
-	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a wad of fire that spreads on hit."
+	desc_extended = "Shoots a wad of fire that creates a fire hazard on hit."
 	icon_state = "damage"
+
+	rarity = RARITY_RARE
 
 	shoot_delay = 20
 
@@ -19,3 +21,11 @@
 	color_3 = "#FFB200"
 
 	value = 800
+
+/obj/item/weapon/ranged/spellgem/inferno/get_base_value()
+	. = ..()
+	. += 1000 //For the fire spreading.
+
+/obj/item/weapon/ranged/spellgem/inferno/calculate_mana_cost()
+	. = ..()
+	. += 25 //For the fire spreading.

@@ -43,11 +43,12 @@
 
 	alert_on_impact = ALERT_LEVEL_CAUTION
 
+	experience_mod = 0.5
+
+	attack_type = ATTACK_TYPE_RANGED
+
 /damagetype/ranged/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return 0.5
-
-/damagetype/ranged/get_attack_type()
-	return ATTACK_TYPE_RANGED
 
 /damagetype/ranged/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return FALSE

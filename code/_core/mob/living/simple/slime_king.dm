@@ -186,7 +186,7 @@
 			v=100
 		)
 
-	if(!dead && damage_amount >= 10 && prob(damage_amount*0.25) && attacker)
+	if(attacker && !minion_master && !dead && damage_amount >= 10 && prob(damage_amount*0.25))
 		var/turf/T = get_step(src,get_dir(src,attacker))
 		if(T)
 			var/mob/living/simple/slime/S = create_slime(T)

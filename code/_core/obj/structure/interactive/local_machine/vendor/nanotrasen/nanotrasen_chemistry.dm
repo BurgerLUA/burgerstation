@@ -40,6 +40,8 @@
 		/obj/item/container/spray,
 		/obj/item/container/syringe/hypodermic,
 		/obj/item/container/syringe/medipen,
+		/obj/item/storage/pillbottle,
+		/obj/item/storage/pillbottle/consumer,
 		/obj/item/grenade/device,
 		/obj/item/grenade/device/large,
 		/obj/item/device/timer,

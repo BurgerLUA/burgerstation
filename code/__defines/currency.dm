@@ -1,3 +1,8 @@
 #define GOLD_AMOUNT_MAX 1000
 
 #define GOLD_DROP_AMOUNT_MAX 250
+
+#define CREDITS_PER_GOLD 8
+
+
+#define SELL_MULTIPLIER 0.5

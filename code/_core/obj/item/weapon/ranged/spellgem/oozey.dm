@@ -1,14 +1,15 @@
 /obj/item/weapon/ranged/spellgem/oozey
 	name = "oozey spell gem"
 	desc = "The source of all... lead?"
-	desc_extended = "Enunciation is very important. This spell is often learned by young mages accidentally, intending to creas"
+	desc_extended = "Shoots an endless stream of accurate low-damaging bullets."
 	icon_state = "damage"
+
+	rarity = RARITY_RARE
 
 	shoot_delay = 1.5
 
 	bullet_count = 1
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
-	spread_per_shot = 3
 
 	projectile = /obj/projectile/bullet/firearm/smg
 	ranged_damage_type = /damagetype/ranged/bullet/pistol_9mm

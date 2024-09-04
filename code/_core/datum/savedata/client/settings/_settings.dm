@@ -27,7 +27,7 @@
 
 	var/client/owner = CLIENT(ckey)
 
-	var/full_path = "[get_folder(ckey)][get_file()]"
+	var/full_path = "[get_folder()][get_file()]"
 
 	if(!fexists(full_path))
 		rustg_file_append(json_encode(loaded_data),full_path)
@@ -70,6 +70,6 @@
 
 /savedata/client/settings/proc/save()
 	var/client/owner = CLIENT(ckey)
-	var/full_path = "[get_folder(ckey)][get_file()]"
+	var/full_path = "[get_folder()][get_file()]"
 	rustg_file_write(json_encode(loaded_data),full_path)
 	owner.mob.to_chat(span("notice","Your settings have been saved."))

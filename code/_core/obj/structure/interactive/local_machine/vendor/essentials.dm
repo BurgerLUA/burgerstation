@@ -24,5 +24,7 @@
 		/obj/item/bullet_cartridge/revolver_38{amount=6},
 
 		/obj/item/storage/secure,
-		/obj/item/implanter/death_alarm
+		/obj/item/implanter/death_alarm,
+
+		/obj/item/storage/box
 	)

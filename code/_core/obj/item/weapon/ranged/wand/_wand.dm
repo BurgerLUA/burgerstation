@@ -205,7 +205,7 @@
 /obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 	if(!socketed_spellgem)
 		return FALSE
-	damage_multiplier *= get_quality_mod()
+	damage_multiplier *= src.get_quality_mod()
 	return socketed_spellgem.shoot(caller,object,location,params,damage_multiplier,click_called)
 
 /obj/item/weapon/ranged/wand/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
@@ -290,7 +290,7 @@
 
 	wand_damage_multiplier = 1
 
-	tier = 0
+	tier = 1
 
 	value = 100
 
@@ -300,17 +300,17 @@
 
 	wand_damage_multiplier = 1.1
 
-	tier = 1
+	tier = 2
 
 	value = 100
 
 /obj/item/weapon/ranged/wand/quartz
-	name = "crafted wand"
+	name = "quartz wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/quartz.dmi'
 
 	wand_damage_multiplier = 1.2
 
-	tier = 1
+	tier = 2
 
 	value = 100
 
@@ -320,7 +320,7 @@
 
 	wand_damage_multiplier = 1.3
 
-	tier = 2
+	tier = 3
 
 
 	value = 100

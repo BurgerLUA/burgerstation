@@ -1,13 +1,15 @@
 /obj/item/weapon/ranged/spellgem/blackflame
 	name = "blackflame spell gem"
 	desc = "The source of all magic."
-	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a single slow-moving high-damage unholy fireball that ignites unignited targets and explodes already ignited targets."
+	desc_extended = "Shoots a single slow-moving high-damage unholy fireball that ignites targets and explodes already ignited targets."
 	icon_state = "damage"
+
+	rarity = RARITY_UNCOMMON
 
 	shoot_delay = 20
 
 	bullet_count = 1
-	projectile_speed = TILE_SIZE*0.4 - 1
+	projectile_speed = TILE_SIZE*0.6 - 1
 
 	company_type = "Ashwalkers"
 
@@ -21,3 +23,11 @@
 	color_3 = "#000000"
 
 	value = 800
+
+/obj/item/weapon/ranged/spellgem/blackflame/get_base_value()
+	. = ..()
+	. += 600 //For the explosion + Ignite.
+
+/obj/item/weapon/ranged/spellgem/blackflame/calculate_mana_cost()
+	. = ..()
+	. += 10 //For the explosion + Ignite.

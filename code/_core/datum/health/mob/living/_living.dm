@@ -20,6 +20,9 @@
 	if(L.has_status_effect(STRESSED))
 		. += 0.5
 
+	if(L.minion_master)
+		. += 1 //Take double damage for being a minion.
+
 /health/mob/living/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 
 	. = ..()
@@ -32,7 +35,7 @@
 		var/fat_bonus = FLOOR(max(0,L.nutrition_normal + L.nutrition_fast + L.nutrition_quality - L.nutrition_max)*0.05,1)
 
 		var/constitution_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_CONSTITUTION,0,1,2)*50,5) //Physical
-		var/soul_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_WISDOM,0,1,2)*50,1) //Magical
+		var/soul_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_SOUL,0,1,2)*50,1) //Magical
 
 		var/status_bonus =  STATUS_EFFECT_MAGNITUDE(L,TEMP_ARMOR)
 
@@ -72,6 +75,7 @@
 				.[damage_type] += bonus[damage_type]
 			else
 				.[damage_type] = bonus[damage_type]
+
 
 /health/mob/living/update_health()
 

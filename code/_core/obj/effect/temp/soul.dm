@@ -7,6 +7,7 @@
 	icon_state = "preview"
 
 	var/soul_size = 0
+	var/mob/living/soul_path
 
 /obj/effect/temp/soul/Finalize()
 

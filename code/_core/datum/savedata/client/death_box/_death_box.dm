@@ -168,7 +168,7 @@
 
 /savedata/client/death_box/proc/save()
 	var/client/owner = CLIENT(ckey)
-	var/full_path = "[get_folder(ckey)][get_file()]"
+	var/full_path = "[get_folder()][get_file()]"
 	var/length_of_data = length(loaded_data)
 	if(length_of_data > 5)
 		loaded_data.Cut(1,length_of_data - (DEATH_BOX_LIMIT-1))
@@ -177,7 +177,7 @@
 	return TRUE
 
 /savedata/client/death_box/proc/load()
-	var/full_path = "[get_folder(ckey)][get_file()]"
+	var/full_path = "[get_folder()][get_file()]"
 	if(!fexists(full_path))
 		rustg_file_write(json_encode(loaded_data),full_path)
 	else

@@ -49,5 +49,5 @@
 	src.force_move(P) //Move it to contents.
 	return P
 
-/atom/movable/proc/on_thrown(var/atom/owner,var/atom/hit_atom) //What happens after the person is thrown and it hits an object.
+/atom/movable/proc/on_thrown(var/atom/owner,var/atom/hit_atom) //What happens after the movable is thrown and it hits an object.
 	return TRUE

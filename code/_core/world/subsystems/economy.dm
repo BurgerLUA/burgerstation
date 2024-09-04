@@ -1,3 +1,6 @@
+//Disabled because makinga  good economy system is an insane task.
+
+
 #define PRICE_MULTIPLIER_DIR "data/server/price_multipliers.txt"
 #define GOLD_CIRCULATION_DIR "data/server/gold_circulation.txt"
 #define GOBLIN_CIRCULATION_DIR "data/server/gold_circulation_goblin.txt"
