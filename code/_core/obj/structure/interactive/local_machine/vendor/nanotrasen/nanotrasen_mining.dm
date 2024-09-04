@@ -35,7 +35,7 @@
 
 		//Belt and pockets.
 		/obj/item/clothing/belt/storage/colored/brown,
-		/obj/item/clothing/belt/bandolier/shotgun_12,
+		/obj/item/clothing/belt/bandoliers/bandolier/shotgun_12,
 		/obj/item/storage/pouch/single/brown,
 		/obj/item/storage/pouch/double/brown,
 		/obj/item/storage/pouch/triple/brown,

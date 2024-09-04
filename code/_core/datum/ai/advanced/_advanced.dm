@@ -492,6 +492,7 @@
 					C = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/revolver/proc/can_fit_clip)
 					if(!C)
 						B = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/proc/can_fit_bullet) //It is implied we couldn't find B earlier.
+
 			if(C)
 				if(debug) log_debug("Found a valid clip to insert. Inserting...")
 				C.click_on_object(A,G)
@@ -537,6 +538,65 @@
 			return TRUE
 
 		return FALSE //All good.
+
+	if(istype(R,/obj/item/weapon/ranged/bullet/single_shot))
+		var/obj/item/weapon/ranged/bullet/single_shot/G = R
+		if(!G.chambered_bullet)
+
+			if(G.wielded)//Unwield if wielded, as usual
+				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,15)
+				if(debug) log_debug("Unwelding to make room in hands for a bullet...")
+				return TRUE
+
+			if(!G.open)
+				if(debug) log_debug("Opening the cylinder to insert bullets...")
+				G.click_self(A) //Open it.
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,15)
+				return TRUE
+
+			var/obj/item/bullet_cartridge/B
+			if(!B)
+				var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
+				if(O_groin)
+					B = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/proc/can_fit_bullet)
+					if(debug) log_debug("Finding a compatible bullet: [B ? "SUCCESS" : "FAIL"].")
+					return TRUE
+
+				var/obj/hud/inventory/I_hand = A.inventories_by_id[BODY_HAND_LEFT_HELD]
+				var/obj/hud/inventory/I_groin = A.inventories_by_id[BODY_GROIN_O]
+				var/obj/item/clothing/belt/bandoliers/S = I_groin.get_top_object()
+
+				if(S && istype(S) && length(S.stored_bullets) && !B)
+					S.take_bullet(A,I_hand)
+					B = I_hand.get_top_object()
+					next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,10)
+					if(debug) log_debug("Bullet taken from bandolier...")
+
+			if(B)
+				if(debug) log_debug("Found a valid bullet to insert. Inserting...")
+				B.click_on_object(A,G)
+				if(debug) log_debug("Weapon has been reloaded...")
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(2,5)
+				return TRUE
+
+			desired_shell_reload = 0
+			if(!should_find_ammo_pile_on_empty || !find_ammo_pile())
+				if(debug) log_debug("Couldn't find a valid ammo pile to loot. Dropping weapon...")
+				G.drop_item(get_turf(owner)) //Can't find anything, so drop it.
+			else
+				if(debug) log_debug("Found a valid ammo pile to loot...")
+			next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,10)
+			return TRUE
+
+			desired_shell_reload = 0 //All good.
+		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !left_item)
+			if(debug) log_debug("Wielding the gun so we can fire it...")
+			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
+			next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(2,6)
+			return TRUE
+
+		return FALSE //All good.x2
 
 	if(istype(R,/obj/item/weapon/ranged/bullet/pump))
 		var/obj/item/weapon/ranged/bullet/pump/G = R
