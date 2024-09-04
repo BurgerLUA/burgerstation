@@ -11,6 +11,8 @@
 			if(in_sleeper)
 				var/choice = input("Are you sure you want to save your character and cryo? Your items and character will be saved..","Cryogenics","No") in list("Yes","No") | null
 				if(choice == "Yes")
+					if(P.dead)
+						return FALSE
 					var/savedata/client/mob/mobdata = MOBDATA(ckey)
 					if(mobdata)
 						mobdata.save_character(P)

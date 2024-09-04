@@ -14,7 +14,7 @@
 
 	. = ..()
 
-	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
+	var/total_bleed_damage = length(damage_table) ? SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5 : 0
 
 	var/savage_hit = health && !has_status_effect(IMMORTAL) ? damage_amount >= health.health_max*DT.savage_hit_threshold : FALSE
 
@@ -55,7 +55,7 @@
 
 	if(dead && time_of_death + 30 <= world.time && (override_butcher || length(butcher_contents)) && is_living(attacker) && get_dist(attacker,src) <= 1)
 		var/mob/living/L = attacker
-		var/blade_damage = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[LASER])
+		var/blade_damage = length(damage_table) ? SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[LASER]) : 0
 
 		var/atom/atom_to_butcher = src
 		if(is_organ(atom_damaged))

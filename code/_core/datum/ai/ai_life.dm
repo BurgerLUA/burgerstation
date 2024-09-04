@@ -1,10 +1,10 @@
 /ai/proc/should_life()
 
-	if(!active)
-		return FALSE
-
 	if(!owner)
 		qdel(src)
+		return FALSE
+
+	if(!active)
 		return FALSE
 
 	if(!owner.finalized)
@@ -37,7 +37,7 @@
 		owner.resist()
 		return TRUE
 
-	if(aggression > 0)
+	if(aggression > 0 && can_attack)
 		if(!master_ai) //Find objectives only if you don't belong to a master.
 			objective_ticks += tick_rate
 			var/actual_objective_delay = get_objective_delay()
@@ -50,7 +50,7 @@
 					queue_find_new_objectives = TRUE
 					frustration_attack = 0
 
-		if(owner.attack_next <= world.time)
+		if(objective_attack && (owner.attack_next <= world.time))
 			handle_attacking()
 
 		if(queue_find_new_objectives)

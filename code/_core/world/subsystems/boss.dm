@@ -36,6 +36,9 @@ SUBSYSTEM_DEF(bosses)
 		var/ai/AI = L.ai
 		if(AI.objective_attack)
 			for(var/mob/living/advanced/player/P in viewers(L.boss_range,L))
+				if(L.loyalty_tag == P.loyalty_tag)
+					continue
+
 				CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 				L.add_player_to_boss(P)
 

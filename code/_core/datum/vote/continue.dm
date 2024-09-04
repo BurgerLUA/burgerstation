@@ -7,7 +7,7 @@
 /vote/continue_round/on_result(var/winner,var/list/results)
 
 	if(winner == "No")
-		world.end(WORLD_END_NANOTRASEN_VICTORY)
+		world.end()
 	else
 		SSgamemode.active_gamemode.on_continue()
 

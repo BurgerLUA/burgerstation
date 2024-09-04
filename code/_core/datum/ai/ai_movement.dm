@@ -32,9 +32,9 @@
 	if(!objective_attack)
 		return FALSE
 
-	if(cowardice >= 0) //RUN AWAY.
+	if(cowardice >= 0 || world_state >= STATE_ROUND_END) //RUN AWAY.
 		var/health_percent = owner.health ? owner.health.health_current/owner.health.health_max : 1
-		if((owner.horizontal || health_percent <= cowardice) && !length(node_path_current) && !length(astar_path_current) && get_dist(owner,objective_attack) <= VIEW_RANGE)
+		if((owner.horizontal || health_percent <= cowardice || world_state >= STATE_ROUND_END) && !length(node_path_current) && !length(astar_path_current) && get_dist(owner,objective_attack) <= VIEW_RANGE)
 			owner.move_dir = get_dir(objective_attack,owner)
 			owner.movement_flags = MOVEMENT_RUNNING
 			return TRUE
