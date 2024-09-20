@@ -68,19 +68,10 @@
 
 	rarity = RARITY_UNCOMMON
 
+	charge_icon_state_count = 4
+
 /obj/item/weapon/ranged/energy/freezegun/get_static_spread()
 	return 0.001
 
 /obj/item/weapon/ranged/energy/freezegun/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
-
-/obj/item/weapon/ranged/energy/freezegun/update_icon()
-
-	var/obj/item/powercell/PC = get_battery()
-
-	if(!istype(PC) || charge_cost > PC.charge_current)
-		icon_state = "inventory_0"
-	else
-		icon_state = "inventory_[FLOOR((PC.charge_current/PC.charge_max) * 4, 1)]"
-
-	return ..()

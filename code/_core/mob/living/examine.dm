@@ -100,8 +100,6 @@
 
 	if(ai && ai.use_alerts)
 		switch(ai.alert_level)
-			if(ALERT_LEVEL_NONE)
-				. += div("notice","[capitalize(pronoun)] does not appear to notice you.")
 			if(ALERT_LEVEL_NOISE)
 				. += div("warning","[capitalize(pronoun)] seems to be looking for a source of noise.")
 			if(ALERT_LEVEL_CAUTION)

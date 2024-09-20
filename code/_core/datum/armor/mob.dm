@@ -547,6 +547,28 @@
 		SANITY = 0
 	)
 
+/armor/arachnid/sand
+	defense_rating = list(
+		BLADE = 75,
+		BLUNT = 25,
+		PIERCE = 100,
+		LASER = 75,
+		ARCANE = 25,
+		HEAT = 200,
+		COLD = -50,
+		SHOCK = 0,
+		ACID = 25,
+		BOMB = 0,
+		BIO = 25,
+		RAD = 0,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = 0,
+		PAIN = 0,
+		ION = INFINITY,
+		SANITY = 0
+	)
+
 /armor/drake
 	defense_rating = list(
 		BLADE = 50,

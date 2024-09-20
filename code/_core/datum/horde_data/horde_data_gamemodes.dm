@@ -44,3 +44,12 @@
 		/mob/living/advanced/npc/rev/elite = 5,
 		/mob/living/simple/bear/armored/revolutionary = 10
 	)
+
+/horde_data/raging_mages
+
+	horde_weights = list(
+		/mob/living/advanced/npc/raging_mage/apprentice = 200,
+		/mob/living/advanced/npc/raging_mage = 10,
+		/mob/living/advanced/npc/raging_mage/anti_bullet = 20,
+		/mob/living/advanced/npc/raging_mage/witch = 10
+	)

@@ -29,43 +29,42 @@
 
 	var/mob/living/L = owner
 
-	if(L.ckey_last)
-		var/intoxication_bonus = FLOOR(L.intoxication*0.025,1)
-		var/quality_bonus = FLOOR(max(L.get_nutrition_quality_mod() - 1,0)*50,1)
-		var/fat_bonus = FLOOR(max(0,L.nutrition_normal + L.nutrition_fast + L.nutrition_quality - L.nutrition_max)*0.05,1)
+	var/intoxication_bonus = FLOOR(L.intoxication*0.025,1)
+	var/quality_bonus = L.ckey_last ? FLOOR(max(L.get_nutrition_quality_mod() - 1,0)*50,1) : 0
+	var/fat_bonus = L.ckey_last ? FLOOR(max(0,L.nutrition_normal + L.nutrition_fast + L.nutrition_quality - L.nutrition_max)*0.05,1) : 0
 
-		var/constitution_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_CONSTITUTION,0,1,2)*50,5) //Physical
-		var/soul_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_SOUL,0,1,2)*50,1) //Magical
+	var/constitution_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_CONSTITUTION,0,1,2)*50,5) //Physical
+	var/soul_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_SOUL,0,1,2)*50,1) //Magical
 
-		var/status_bonus =  STATUS_EFFECT_MAGNITUDE(L,TEMP_ARMOR)
+	var/status_bonus =  STATUS_EFFECT_MAGNITUDE(L,TEMP_ARMOR)
 
-		var/list/bonus_armor = list(
-			BLADE = quality_bonus + constitution_bonus + intoxication_bonus + status_bonus,
-			BLUNT = quality_bonus + constitution_bonus + intoxication_bonus + status_bonus,
-			PIERCE = quality_bonus + constitution_bonus + intoxication_bonus + status_bonus,
-			LASER = quality_bonus - fat_bonus,
-			ARCANE = quality_bonus + soul_bonus - intoxication_bonus - status_bonus,
-			HEAT = quality_bonus - fat_bonus,
-			COLD = intoxication_bonus + fat_bonus,
-			SHOCK = quality_bonus,
-			ACID = quality_bonus,
-			BOMB = quality_bonus,
-			BIO = quality_bonus,
-			RAD = quality_bonus,
-			HOLY = quality_bonus + soul_bonus - status_bonus,
-			DARK = quality_bonus + soul_bonus - status_bonus,
-			FATIGUE = quality_bonus + constitution_bonus - intoxication_bonus,
-			PAIN = quality_bonus + constitution_bonus + intoxication_bonus,
-			SANITY = quality_bonus + soul_bonus + intoxication_bonus
-		)
+	var/list/bonus_armor = list(
+		BLADE = quality_bonus + constitution_bonus + intoxication_bonus + status_bonus,
+		BLUNT = quality_bonus + constitution_bonus + intoxication_bonus + status_bonus,
+		PIERCE = quality_bonus + constitution_bonus + intoxication_bonus + status_bonus,
+		LASER = quality_bonus - fat_bonus,
+		ARCANE = quality_bonus + soul_bonus - intoxication_bonus - status_bonus,
+		HEAT = quality_bonus - fat_bonus,
+		COLD = intoxication_bonus + fat_bonus,
+		SHOCK = quality_bonus,
+		ACID = quality_bonus,
+		BOMB = quality_bonus,
+		BIO = quality_bonus,
+		RAD = quality_bonus,
+		HOLY = quality_bonus + soul_bonus - status_bonus,
+		DARK = quality_bonus + soul_bonus - status_bonus,
+		FATIGUE = quality_bonus + constitution_bonus - intoxication_bonus,
+		PAIN = quality_bonus + constitution_bonus + intoxication_bonus,
+		SANITY = quality_bonus + soul_bonus + intoxication_bonus
+	)
 
-		for(var/damage_type in bonus_armor)
-			if(.[damage_type])
-				if(IS_INFINITY(.[damage_type]))
-					continue
-				.[damage_type] += bonus_armor[damage_type]
-			else
-				.[damage_type] = bonus_armor[damage_type]
+	for(var/damage_type in bonus_armor)
+		if(.[damage_type])
+			if(IS_INFINITY(.[damage_type]))
+				continue
+			.[damage_type] += bonus_armor[damage_type]
+		else
+			.[damage_type] = bonus_armor[damage_type]
 
 	for(var/list/bonus in L.defense_bonuses) //Superpowers and whatnot.
 		for(var/damage_type in bonus)

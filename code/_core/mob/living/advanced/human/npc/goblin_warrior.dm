@@ -42,6 +42,11 @@
 
 	level = 17
 
+/mob/living/advanced/npc/goblin/mage/wizard_federation
+	name = "raging goblin wizard apprentice"
+	iff_tag = "Wizard Federation"
+	loyalty_tag = "Wizard Federation"
+
 /mob/living/advanced/npc/goblin/archer
 	name = "goblin archer"
 	loadout = /loadout/goblin/archer

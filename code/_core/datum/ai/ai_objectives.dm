@@ -150,9 +150,6 @@
 		var/atom/A = k
 		var/score_value = get_attack_score(A)
 		var/detection_value = possible_targets[k]
-		if(detection_value < 0.25)
-			//Can't see.
-			continue
 		if(score_value <= best_score)
 			//We have our sights focused on someone better.
 			continue
@@ -244,16 +241,14 @@
 	for(var/k in hearers(range_to_use,owner))
 		var/mob/living/L = k
 		if(L == owner)
-			CHECK_TICK(75,FPS_SERVER)
 			continue
 		if(!is_living(L))
-			CHECK_TICK(75,FPS_SERVER)
 			continue
 		if(!should_attack_mob(L))
 			CHECK_TICK(75,FPS_SERVER)
 			continue
 		var/detection_level = get_detection_level(L,view_check=FALSE)
-		if(detection_level <= 0)
+		if(detection_level < 0.25)
 			CHECK_TICK(75,FPS_SERVER)
 			continue
 		if(!.)

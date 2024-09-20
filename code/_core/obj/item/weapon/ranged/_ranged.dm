@@ -590,8 +590,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	use_condition(condition_to_use)
 
-	update_sprite()
-
 	if(click_called && automatic && caller.client && is_player(caller)) //Automatic fire.
 		SSclient.queued_automatics[src] = list(
 			caller,
@@ -666,6 +664,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/list/target_cords = L.get_current_target_cords(params)
 		final_pixel_target_x = target_cords[1]
 		final_pixel_target_y = target_cords[2]
+		if(L.ai && ispath(projectile_to_use,/obj/projectile/magic))
+			projectile_speed_to_use *= 0.5 //Since AI have infinite mana.
 	else
 		final_pixel_target_x = TILE_SIZE*0.5
 		final_pixel_target_y = TILE_SIZE*0.5

@@ -83,10 +83,26 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
+/obj/item/weapon/ranged/bullet/magazine/smg/pdw/handle_ammo(var/mob/caller)
+
+	var/old_stored_magazine = stored_magazine ? TRUE : FALSE
+	var/old_desired_ammo_count = stored_magazine ? CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*5, 1) : 0
+
+	. = ..()
+
+	if(.)
+		if(old_stored_magazine != (stored_magazine ? TRUE : FALSE))
+			update_icon()
+		else if(stored_magazine && old_desired_ammo_count != CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*5, 1))
+			update_icon()
+
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/update_icon()
-	if(stored_magazine)
-		var/obj/item/magazine/M = stored_magazine
-		icon_state = "[initial(icon_state)]_[CEILING((M.get_ammo_count()/M.bullet_count_max)*5,1)]"
+
+	icon_state = initial(icon_state)
+
+	if(!stored_magazine)
+		icon_state = "[icon_state]_open"
 	else
-		icon_state = "[initial(icon_state)]_open"
-	..()
+		icon_state = "[icon_state]_[CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*5, 1)]"
+
+	return ..()

@@ -77,6 +77,10 @@
 
 	rarity = RARITY_COMMON
 
+	charge_icon_state_count = 8
+
+	charge_icon_uses_bullet_color = TRUE
+
 /obj/item/weapon/ranged/energy/rifle/get_static_spread()
 	return 0.005
 
@@ -86,18 +90,6 @@
 /obj/item/weapon/ranged/energy/rifle/New(var/desired_loc)
 	. = ..()
 	update_sprite()
-
-/obj/item/weapon/ranged/energy/rifle/update_overlays()
-
-	. = ..()
-
-	var/obj/item/powercell/PC = get_battery()
-
-	var/true_charge = istype(PC) ? FLOOR(PC.charge_current/charge_cost, 1) / FLOOR(PC.charge_max/charge_cost, 1) : 0
-
-	var/image/I = new/image(initial(icon),"ammo_[CEILING(true_charge * 8, 1)]")
-	I.color = polymorphs["barrel"]
-	add_overlay(I)
 
 /obj/item/weapon/ranged/energy/rifle/update_sprite()
 	. = ..()

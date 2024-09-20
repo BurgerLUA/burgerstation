@@ -109,7 +109,7 @@
 
 /ai/proc/is_enemy(var/atom/A,var/safety_check=TRUE,var/aggression_check=TRUE)
 
-	if(A.qdeleting || !A.finalized)
+	if(!A || A.qdeleting || !A.finalized)
 		return FALSE
 	/*
 	if(istype(A,/mob/living/vehicle/))

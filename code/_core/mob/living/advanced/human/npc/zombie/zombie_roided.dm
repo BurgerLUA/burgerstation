@@ -29,11 +29,12 @@
 
 	. = ..()
 
-	if(next_flex <= world.time && total_damage_dealt >= 10 && !horizontal)
-		do_emote("flex")
-		add_status_effect(PARALYZE,100,SECONDS_TO_DECISECONDS(2),stealthy=TRUE)
-		next_flex = world.time + SECONDS_TO_DECISECONDS(10)
+	if(health.health_current > 0)
+		if(next_flex <= world.time && total_damage_dealt >= 10 && !horizontal)
+			do_emote("flex")
+			add_status_effect(PARALYZE,100,SECONDS_TO_DECISECONDS(2),stealthy=TRUE)
+			next_flex = world.time + SECONDS_TO_DECISECONDS(10)
 
-	if(health.health_current <= health.health_max*0.5 && !has_status_effect(RAGE))
-		add_status_effect(RAGE,100,-1)
+		if(health.health_current <= health.health_max*0.5 && !has_status_effect(RAGE))
+			add_status_effect(RAGE,100,-1)
 

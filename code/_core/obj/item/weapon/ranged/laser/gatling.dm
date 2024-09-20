@@ -2,7 +2,7 @@
 	name = "L055-Prototype Gatling Laser"
 	desc = "It costs 400.000 watts to fire this weapon for 12 seconds."
 	desc_extended = "A behemoth of a weapon, now in laser form. Handle with care."
-	icon = 'icons/obj/item/weapons/ranged/laser/gatling.dmi'
+	icon = 'icons/obj/item/weapons/ranged/laser/gatling_new.dmi'
 	value = 10000
 
 	company_type = "Solarian"
@@ -44,6 +44,15 @@
 
 	rarity = RARITY_MYTHICAL
 
+	charge_icon_state_count = 5
+
+	charge_icon_uses_bullet_color = TRUE
+
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"barrel" = "#FF6A00"
+	)
+
 /obj/item/weapon/ranged/energy/gatling/get_static_spread(var/mob/living/L)
 	return 0.05
 
@@ -52,30 +61,3 @@
 
 /obj/item/weapon/ranged/energy/gatling/get_skill_spread(var/mob/living/L)
 	return max(0,0.15 - (0.1 * L.get_skill_power(SKILL_RANGED)))
-
-/obj/item/weapon/ranged/energy/gatling/update_icon()
-
-	var/open_text = open_icon && open ? "_open" : ""
-
-	icon_state = initial(icon_state)
-	var/icon_state_held = "held"
-
-	var/obj/item/powercell/PC = get_battery()
-
-	var/charge_mod = (istype(PC) && PC.charge_current >= charge_cost) ? CEILING((PC.charge_current/PC.charge_max)*4,1) : 0
-
-	icon_state = "[icon_state]_[charge_mod]"
-	icon_state_held = "[icon_state_held]_[charge_mod]"
-
-	if(wielded)
-		icon_state_held_right = "[icon_state_held]_right_wielded"
-		icon_state_held_left = "[icon_state_held]_left_wielded"
-	else
-		icon_state_held_right = "[icon_state_held]_right"
-		icon_state_held_left = "[icon_state_held]_left"
-
-	icon_state_held_left = "[icon_state_held_left][open_text]"
-	icon_state_held_right = "[icon_state_held_right][open_text]"
-	update_held_icon()
-
-	return ..()

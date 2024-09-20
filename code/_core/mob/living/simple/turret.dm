@@ -280,7 +280,7 @@
 
 	level = 20
 
-	stored_weapon = /obj/item/weapon/ranged/energy/hybrid/carbine/small/ai_core
+	stored_weapon = /obj/item/weapon/ranged/energy/hybrid/carbine/ai_core
 
 	health_base = 250
 

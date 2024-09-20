@@ -27,7 +27,7 @@
 			/mob/living/advanced/npc/goblin = 80
 		),
 		"wizard" = list(
-			/mob/living/advanced/npc/hostile_wizard = 1
+			/mob/living/advanced/npc/raging_mage = 1
 		)
 	)
 
@@ -134,7 +134,9 @@
 
 	horde_weights = list(
 		/mob/living/simple/slime/sand = 10,
-		/mob/living/simple/spider/glow = 10
+		/mob/living/simple/spider/glow = 5,
+		/mob/living/simple/arachnid/sand = 5,
+		/mob/living/advanced/npc/zombie/mummy = 20
 	)
 
 /horde_data/xeno

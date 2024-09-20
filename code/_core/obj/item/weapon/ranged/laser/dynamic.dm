@@ -67,6 +67,7 @@
 
 	rarity = RARITY_RARE
 
+	charge_icon_state_count = 0
 
 /obj/item/weapon/ranged/energy/dynamic/get_static_spread()
 	return 0

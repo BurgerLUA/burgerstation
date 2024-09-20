@@ -372,3 +372,12 @@
 	)
 
 	color = "#932B1C"
+
+/reagent/blood/arachnid
+	name = "Arachnid Blood"
+
+	compatible_blood = list(
+		/reagent/blood/arachnid = TRUE
+	)
+
+	color = "#A22889"

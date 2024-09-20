@@ -128,7 +128,7 @@
 			update_icon()
 		. = FALSE
 
-	. = ..() || . //weirdest statement I ever wrote.
+	return ..() || .
 
 /obj/item/weapon/ranged/bow/handle_ammo(var/mob/caller)
 
