@@ -17,7 +17,8 @@
 		movement_spread - Spread from moving around.
 		inaccuracy_modifier - Target doll inaccuracy.
 		prone_mod - accuracy improvement from laying prone.
-		view_punch - Basically recoil
+		view_punch - visual recoil
+		heat_per_shot - spread added pers hot
 		shoot_delay - Delay of the gun.
 		bursts_to_use - How many shots does one sustained trigger pull give. Only works on automatic weapons.
 		shoot_sounds

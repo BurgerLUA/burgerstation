@@ -157,6 +157,29 @@
 
 	var/attack_type = ATTACK_TYPE_MELEE
 
+	//Read-Only. For recoil calculation.
+	var/total_base_damage = 0
+	var/total_base_penetration = 0
+
+/damagetype/New(var/desired_loc)
+
+	. = ..()
+
+	total_base_damage = 0
+	total_base_penetration = 0
+
+	for(var/damage_type in attack_damage_base)
+		var/damage_value = attack_damage_base[damage_type]
+		if(IS_INFINITY(damage_value))
+			continue
+		total_base_damage += damage_value
+
+	for(var/damage_type in attack_damage_penetration)
+		var/penetration_value = attack_damage_penetration[damage_type]
+		if(IS_INFINITY(penetration_value))
+			continue
+		total_base_penetration += penetration_value
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"

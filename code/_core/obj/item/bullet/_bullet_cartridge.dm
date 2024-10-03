@@ -26,7 +26,9 @@
 	var/bullet_color //The bullet color of the projectile.
 	var/inaccuracy_modifier = 1 //The modifier for target doll inaccuracy. Lower values means more accurate.
 	var/penetrations = 0 //How many additional penetrations this bullet is allowed.
+
 	var/view_punch_mod = 1
+	var/heat_per_shot_mod = 1
 
 
 	var/caseless = FALSE

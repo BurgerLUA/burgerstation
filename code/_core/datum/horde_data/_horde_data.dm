@@ -155,16 +155,5 @@
 
 	horde_weights = list(
 		/mob/living/advanced/npc/space_soldier = 100,
-		/mob/living/advanced/npc/space_soldier/special_operative = 5
+		/mob/living/advanced/npc/space_soldier/special_operative = 2
 	)
-
-/horde_data/tax
-
-	horde_weights = list(
-		/mob/living/advanced/npc/tax_collector = 100
-	)
-
-	ignore_gamemode = TRUE
-
-
-

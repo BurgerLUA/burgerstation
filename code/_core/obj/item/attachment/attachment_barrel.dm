@@ -85,12 +85,12 @@
 	attachment_stats = list(
 		projectile_speed = 1.1,
 
-		bullet_spread = 0.75,
+		bullet_spread = 0.5,
 		movement_spread = 1.5,
 		inaccuracy_modifier = 0.5,
 		static_spread = 0.9,
 		skill_spread = 1.25,
-		heat_spread = 1.1
+		heat_per_shot = 2
 	)
 
 	value = 100
@@ -104,7 +104,7 @@
 	attachment_stats = list(
 		projectile_speed = 0.9,
 		skill_spread = 0.9,
-		heat_spread = 0.9,
+		heat_per_shot = 0.25,
 		movement_spread = 1.25,
 
 	)

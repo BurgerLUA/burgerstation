@@ -26,7 +26,7 @@
 		),
 		"soldiers" = list(
 			/mob/living/advanced/npc/space_soldier = 100,
-			/mob/living/advanced/npc/space_soldier/special_operative = 5
+			/mob/living/advanced/npc/space_soldier/special_operative = 2
 		)
 	)
 

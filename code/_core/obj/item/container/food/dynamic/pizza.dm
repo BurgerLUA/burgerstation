@@ -173,7 +173,10 @@
 		else
 			total_cooked += volume
 
-	cooked_percent = total_cooked/(total_raw+total_cooked)
+	if(total_cooked > 0)
+		cooked_percent = total_cooked/(total_raw+total_cooked)
+	else
+		cooked_percent = 0
 
 	if(reagents)
 		color = reagents.color
@@ -204,7 +207,7 @@
 	for(var/k in topping_data)
 		var/list/v = topping_data[k]
 		for(var/i=1,i<=length(v),i++)
-			var/local_offset = 1 + (i+offsets[k] % 2)
+			var/local_offset = 1 + ( (i+offsets[k]) % 3)
 			var/image/topping = new/image(icon,"topping_[k]_[local_offset]")
 			topping.appearance_flags = src.appearance_flags | RESET_COLOR
 			topping.color = v[i]
