@@ -115,12 +115,13 @@
 	U.loaded_data = U.load_json_data_from_id(file_num)
 	U.loaded_data["id"] = file_num
 	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
-	stop_music_track(src)
 
 	var/turf/T = length(world_spawnpoints) ? pick(world_spawnpoints) : FALLBACK_TURF
 
 	var/mob/living/advanced/player/P = new(T,src)
 	INITIALIZE(P)
 	FINALIZE(P)
+
+	stop_music_track(src)
 
 	return P

@@ -5,8 +5,6 @@
 	aggression = 3
 	assistance = 1
 
-	sleep_on_idle = FALSE
-
 	guard = TRUE
 
 	resist_grabs = 2

@@ -38,6 +38,34 @@
 
 	return FALSE
 
+/ai/proc/is_idle()
+
+	if(!active)
+		return TRUE
+
+	if(queue_find_new_objectives)
+		return FALSE
+
+	if(master_ai)
+		return FALSE
+
+	if(objective_move)
+		return FALSE
+
+	if(alert_level >= ALERT_LEVEL_NOISE)
+		return FALSE
+
+	if(objective_attack || CALLBACK_EXISTS("set_new_objective_\ref[src]"))
+		return FALSE
+
+	if(length(astar_path_current) || length(node_path_current))
+		return FALSE
+
+	if(is_near_player())
+		return FALSE
+
+	return TRUE
+
 /ai/proc/on_life(var/tick_rate=1)
 
 	//Safeties.
@@ -52,7 +80,11 @@
 
 	if(resist_grabs && owner.grabbing_hand && owner.next_resist <= world.time && (resist_grabs > 1 || is_enemy(owner.grabbing_hand.owner,FALSE)))
 		owner.resist()
-		return TRUE
+		return FALSE
+
+	if(is_idle())
+		set_active(FALSE)
+		return FALSE
 
 	if(aggression > 0 && can_attack && !master_ai)
 		objective_ticks += tick_rate
@@ -66,7 +98,7 @@
 						frustration_attack = 0
 					else if(handle_current_objectives(actual_objective_delay) && !is_living(objective_attack)) //If we're attacking something, and it isn't living, find new targets possibly.
 						queue_find_new_objectives = TRUE
-				else if(is_near_player())
+				else
 					queue_find_new_objectives = TRUE
 				if(queue_find_new_objectives)
 					find_new_objectives()
@@ -74,21 +106,6 @@
 
 		if(objective_attack && owner.attack_next <= world.time)
 			handle_attacking()
-
-	// Idle handler for when the AI is being useless.
-	if(sleep_on_idle)
-		if(length(astar_path_current) || length(node_path_current) || objective_attack || objective_move || alert_level >= ALERT_LEVEL_NOISE)
-			idle_time = 0 //Reset idle.
-		else
-			if(idle_time <= 0)
-				idle_time = world.time + SECONDS_TO_DECISECONDS(120) //Idle for more than 2 minutes means you're just wasting processing power.
-			else if(idle_time <= world.time)
-				if(is_near_player())
-					idle_time = world.time + SECONDS_TO_DECISECONDS(60) //Try again later.
-				else
-					set_active(FALSE) //Deactivate if idle for more than 3 minutes.
-					idle_time = 0
-
 
 	if(alert_level >= ALERT_LEVEL_NOISE)
 		var/time_mod = 1

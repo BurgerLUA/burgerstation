@@ -30,7 +30,7 @@
 
 	mouse_pointer_icon = 'icons/pointers/help.dmi'
 
-	var/current_music_track //Id of music track that last played.
+	var/track/current_music_track //Id of music track that last played.
 	var/next_music_track = 0 //When the next music track should be triggered.
 
 	var/current_ambient_sound

@@ -166,7 +166,7 @@
 			try_investigate(best_target)
 			return TRUE
 
-		if(reaction_time > 0) //Delayed set_objective
+		if(reaction_time > 0 && get_dist(owner,best_target) > 1) //Delayed set_objective. Instant reaction if they're right next to them.
 			if(debug && ismob(best_target))
 				var/mob/M = best_target
 				if(M.client)
@@ -232,29 +232,30 @@
 /ai/proc/get_possible_targets()
 
 	if(aggression <= 0)
-		return .
+		return null
 
 	var/range_to_use = get_view_range()
 	if(range_to_use <= 0)
-		return .
+		return null
 
-	for(var/k in hearers(range_to_use,owner))
-		var/mob/living/L = k
+	. = list()
+
+	for(var/mob/living/L as anything in hearers(range_to_use,owner))
 		if(L == owner)
+			CHECK_TICK(90,FPS_SERVER*10)
 			continue
 		if(!is_living(L))
+			CHECK_TICK(90,FPS_SERVER*10)
 			continue
 		if(!should_attack_mob(L))
-			CHECK_TICK(75,FPS_SERVER)
+			CHECK_TICK(90,FPS_SERVER*10)
 			continue
 		var/detection_level = get_detection_level(L,view_check=FALSE)
 		if(detection_level < 0.25)
-			CHECK_TICK(75,FPS_SERVER)
+			CHECK_TICK(90,FPS_SERVER*10)
 			continue
-		if(!.)
-			. = list()
 		.[L] = detection_level
-		CHECK_TICK(75,FPS_SERVER)
+		CHECK_TICK(90,FPS_SERVER*10)
 
 /ai/proc/try_investigate(var/atom/desired_target,var/cooldown=reaction_time,var/force_if_on_cooldown=FALSE)
 

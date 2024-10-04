@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(bosses)
 		if(!L) // Invalid entry, for some reason.
 			tracked_bosses -= k
 			continue
-		if(!check_boss(L))
+		if(check_boss(L) == null)
 			tracked_bosses -= L
 			qdel(L)
 			log_error("WARNING! Boss [L.get_debug_name()] didn't complete tracked_bosses() and thus was deleted.")

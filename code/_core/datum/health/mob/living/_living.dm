@@ -89,26 +89,26 @@
 	if(!owner)
 		return .
 
-	//Regularcrit
-	if(L.death_threshold < 0)
-		var/should_be_in_crit = (health_current <= 0) && !L.status_effects[ADRENALINE]
-		if(!L.status_effects[CRIT] && should_be_in_crit)
-			L.add_status_effect(CRIT,-1,-1,force = TRUE)
-			if(!L.dead && !L.status_effects[CRITPROTECTION] && L.is_player_controlled())
-				L.add_status_effect(CRITPROTECTION,stealthy=TRUE)
-		else if(L.status_effects[CRIT] && !should_be_in_crit)
-			L.remove_status_effect(CRIT)
-
-	//Paincrit
-	var/should_be_in_paincrit = (damage[PAIN] - L.pain_regen_buffer) > 0 && (damage[PAIN] - L.pain_regen_buffer) >= health_current
-	if(!L.status_effects[PAINCRIT] && should_be_in_paincrit)
-		L.add_status_effect(PAINCRIT,-1,-1,force = TRUE)
-	else if(L.status_effects[PAINCRIT] && !should_be_in_paincrit)
-		L.remove_status_effect(PAINCRIT)
-
 	//Death
 	if(L.check_death())
 		L.death()
+	else
+		//Regularcrit
+		if(L.death_threshold < 0)
+			var/should_be_in_crit = (health_current <= 0) && !L.status_effects[ADRENALINE]
+			if(!L.status_effects[CRIT] && should_be_in_crit)
+				L.add_status_effect(CRIT,-1,-1,force = TRUE)
+				if(!L.dead && !L.status_effects[CRITPROTECTION] && L.is_player_controlled())
+					L.add_status_effect(CRITPROTECTION,stealthy=TRUE)
+			else if(L.status_effects[CRIT] && !should_be_in_crit)
+				L.remove_status_effect(CRIT)
+
+		//Paincrit
+		var/should_be_in_paincrit = (damage[PAIN] - L.pain_regen_buffer) > 0 && (damage[PAIN] - L.pain_regen_buffer) >= health_current
+		if(!L.status_effects[PAINCRIT] && should_be_in_paincrit)
+			L.add_status_effect(PAINCRIT,-1,-1,force = TRUE)
+		else if(L.status_effects[PAINCRIT] && !should_be_in_paincrit)
+			L.remove_status_effect(PAINCRIT)
 
 	//HUD stuff.
 	if(L.medical_hud_image)

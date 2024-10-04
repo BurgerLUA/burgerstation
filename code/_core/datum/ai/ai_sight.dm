@@ -11,7 +11,7 @@
 
 	var/true_distance = get_dist(T_owner,T_atom)
 	if(true_distance <= 1)
-		return 1 //Can always see people right next to them (unless above says otherwise)
+		return 100 //Can always see people right next to them (unless above says otherwise)
 	else if(true_distance >= min(VIEW_RANGE+ZOOM_RANGE*2,radius_find_enemy_combat))
 		return FALSE //Never be able to see what is impossible for a player.
 
@@ -49,6 +49,9 @@
 		var/mob/M = A
 		if(M.client)
 			M.to_chat(span("debug","[M.name] detection: [.]"))
+
+	if(length(attackers) && attackers[A])
+		. *= 2
 
 	if(use_blood_sight && owner.health)
 		. += clamp(0.5 - owner.health.health_current/owner.health.health_max,0,0.25)

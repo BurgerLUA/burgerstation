@@ -180,7 +180,7 @@
 		if(should_attack_mob(attacker,FALSE))
 			if(!attackers[attacker])
 				attackers[attacker] = TRUE
-			if(!objective_attack || (get_dist(owner,objective_attack) >= get_dist(owner,attacker)*1.25))
+			if(!objective_attack || (get_dist(owner,objective_attack) >= get_dist(owner,attacker)*2))
 				set_objective(attacker)
 		else if(alert_level != ALERT_LEVEL_COMBAT)
 			set_alert_level(ALERT_LEVEL_COMBAT,attacker)

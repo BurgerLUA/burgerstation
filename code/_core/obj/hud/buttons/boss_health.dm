@@ -17,7 +17,7 @@
 	var/list/mob/living/target_bosses = list()
 	var/mob/living/current_boss
 
-	var/current_boss_music
+	var/track/current_boss_music
 
 	user_colors = FALSE
 
@@ -35,11 +35,9 @@
 
 /obj/hud/button/boss_health/proc/update_current_boss()
 
-	if(current_boss)
-		if(current_boss.dead || current_boss.qdeleting)
-			current_boss = null
-		else if(get_dist(current_boss,owner) > BOSS_RANGE)
-			current_boss = null
+	if(current_boss && !(owner in current_boss.players_fighting_boss))
+		current_boss = null
+
 
 	if(!current_boss && length(target_bosses))
 		var/mob/living/best_boss
