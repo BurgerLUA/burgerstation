@@ -90,30 +90,6 @@
 
 	return TRUE
 
-
-/*
-/mob/living/proc/do_loot_drop(var/atom/desired_loc)
-
-	if(desired_loc && loot_drop && health)
-		var/loot/L = all_loot[loot_drop]
-
-		if(!is_turf(desired_loc))
-			return FALSE
-
-		if(loot_drop_in_corpse)
-			L.spawn_loot_corpse(desired_loc)
-		else
-			L.spawn_loot_turf(desired_loc)
-
-		var/obj/item/currency/C = new(src.loc)
-		C.value = 1 + FLOOR(health.health_max/10, 1)
-		INITIALIZE(C)
-		step_rand(C)
-		return TRUE
-
-	return FALSE
-*/
-
 /mob/living/proc/revive()
 	if(!dead)
 		return FALSE
@@ -198,7 +174,15 @@
 		on_killed(people_who_killed) //people_who_killed can be empty.
 
 		if(length(people_who_killed))
-			if(!boss)
+			if(boss)
+				for(var/k in people_who_killed)
+					var/mob/living/advanced/player/P = k
+					if(!is_player(P))
+						continue
+					INCREASE_ACHIEVEMENT(P,"bosses_killed",1)
+				if(T)
+					create_gold_drop(T,CEILING(src.health.health_max/10,1))
+			else
 				if(!was_killed && !minion_master && !delete_on_death && health && health.health_max >= 100 && src.get_xp_multiplier() >= 1)
 					for(var/k in people_who_killed)
 						var/mob/living/advanced/player/P = k
@@ -215,32 +199,8 @@
 							var/credits_given = P.adjust_currency(credits_to_give,silent=TRUE)
 							if(credits_given > 0)
 								P.to_chat(span("notice","You gained [credits_given] credits for killing [src.name]."),CHAT_TYPE_COMBAT)
-			else
-				var/rarity = 0
-				var/rarity_count = 0
-				for(var/k in people_who_killed)
-					var/mob/living/advanced/player/P = k
-					if(!is_player(P))
-						continue
-					rarity += P.get_rarity()
-					rarity_count++
-					INCREASE_ACHIEVEMENT(P,"bosses_killed",1)
-				if(T)
-					create_gold_drop(T,CEILING(src.health.health_max/10,1))
-					if(rarity_count > 0)
-						rarity *= 1/rarity_count
-						var/list/loot_spawned = SPAWN_LOOT(/loot/boss,T,rarity)
-						for(var/k in loot_spawned)
-							var/obj/item/I = k
-							var/item_move_dir = pick(DIRECTIONS_ALL)
-							var/turf/turf_to_move_to = get_step(T,item_move_dir)
-							if(!turf_to_move_to)
-								turf_to_move_to = T
-							I.force_move(turf_to_move_to)
-							var/list/pixel_offsets = direction_to_pixel_offset(item_move_dir)
-							I.pixel_x = -pixel_offsets[1]*TILE_SIZE
-							I.pixel_y = -pixel_offsets[2]*TILE_SIZE
-							animate(I,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=5)
+
+
 
 
 	HOOK_CALL("post_death")

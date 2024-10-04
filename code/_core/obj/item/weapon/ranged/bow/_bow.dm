@@ -247,6 +247,7 @@
 	ranged_damage_type = /damagetype/ranged/bow/hardlight/syndicate
 	stage_per_decisecond = 8
 	stage_max = 125
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bow/ashen
 	name = "ashen bow"

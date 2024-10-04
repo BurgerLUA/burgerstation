@@ -44,7 +44,7 @@
 			return TRUE
 		else if(!is_inventory(object))
 			if(can_temper(caller,object))
-				var/choice = input("Are you sure you want to temper \the [object.name]?","ALT+Click to skip this next time") as null|anything in list("Yes","No")
+				var/choice = input("Are you sure you want to temper \the [object.name]?","ALT+Click to skip this next time") as null|anything in list("Yes","No","Cancel")
 				if(choice == "Yes")
 					INTERACT_CHECK
 					INTERACT_CHECK_OBJECT
