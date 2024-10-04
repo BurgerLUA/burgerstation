@@ -3,7 +3,7 @@
 	icon = 'icons/obj/item/corrupting_frog.dmi'
 	icon_state = "inventory"
 	desc = "One frog was harmed in the making of this item."
-	desc_extended = "A magical wooden frog doll that has the abiltity to randomize the quality of an object between 1% and 300%. Single use."
+	desc_extended = "A magical wooden frog doll that has the abiltity to randomize the quality of an object between 1% and 200%. Single use."
 	rarity = RARITY_LEGENDARY
 	value = 4000
 	value_burgerbux = 1
@@ -41,7 +41,7 @@
 
 	play_sound('sound/weapons/magic/zap_large.ogg',get_turf(src))
 
-	I.quality = rand(1,300)
+	I.quality = rand(1,200)
 
 	if(is_clothing(I))
 		var/obj/item/clothing/C = I
