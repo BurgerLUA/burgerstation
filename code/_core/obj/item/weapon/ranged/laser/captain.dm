@@ -20,7 +20,7 @@
 
 	shoot_sounds = list('sound/weapons/ranged/energy/captain/shoot.ogg')
 
-	charge_cost = CELL_SIZE_BASIC / 80
+	charge_cost = (CELL_SIZE_BASIC*0.5) / 40
 
 	override_icon_state = TRUE
 
@@ -37,35 +37,10 @@
 
 	rarity = RARITY_LEGENDARY
 
-/obj/item/weapon/ranged/energy/captain/update_overlays()
-	. = ..()
-	var/obj/item/powercell/PC = get_battery()
-	if(!istype(PC))
-		var/image/I = new/image(initial(icon),"charge0")
-		add_overlay(I)
-	else
-		var/image/I = new/image(initial(icon),"charge[FLOOR((PC.charge_current/PC.charge_max) * 4, 1)]")
-		add_overlay(I)
-
+	charge_icon_state_count = 4
 
 /obj/item/weapon/ranged/energy/captain/get_static_spread()
 	return 0
 
 /obj/item/weapon/ranged/energy/captain/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
-
-/obj/item/weapon/ranged/energy/captain/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	if(is_item(object))
-		var/obj/item/I = object
-		if(I.flags_tool & FLAG_TOOL_CROWBAR)
-			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
-			INTERACT_DELAY(5)
-			if(battery)
-				caller.to_chat(span("warning","You are unable to pry out \the [battery.name]."))
-			else
-				caller.to_chat(span("warning","There is nothing to pry out of \the [src.name]!"))
-			return TRUE
-
-	. = ..()

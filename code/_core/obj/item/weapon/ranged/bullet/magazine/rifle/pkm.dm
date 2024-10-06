@@ -76,6 +76,20 @@
 
 	rarity = RARITY_RARE
 
+/obj/item/weapon/ranged/bullet/magazine/rifle/pkm/handle_ammo(var/mob/caller)
+
+	var/old_stored_magazine = stored_magazine ? TRUE : FALSE
+	var/old_desired_ammo_count = stored_magazine ? min(6,stored_magazine.get_ammo_count()) : 0
+
+	. = ..()
+
+	if(.)
+		if(old_stored_magazine != (stored_magazine ? TRUE : FALSE))
+			update_icon()
+		else if(stored_magazine && old_desired_ammo_count != min(6,stored_magazine.get_ammo_count()))
+			update_icon()
+
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/pkm/update_icon()
 
 	icon_state = initial(icon_state)
@@ -86,7 +100,7 @@
 	else
 		icon_state = "[icon_state]_open"
 
-	..()
+	. = ..()
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/pkm/get_static_spread()
 	return 0.005

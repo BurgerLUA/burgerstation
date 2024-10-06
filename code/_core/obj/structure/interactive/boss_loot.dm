@@ -85,7 +85,7 @@
 	return ..()
 
 /obj/structure/interactive/boss_loot/Finalize()
-	die_time = world.time + SECONDS_TO_DECISECONDS(120)
+	die_time = world.time + SECONDS_TO_DECISECONDS(180)
 	START_THINKING(src)
 	return ..()
 

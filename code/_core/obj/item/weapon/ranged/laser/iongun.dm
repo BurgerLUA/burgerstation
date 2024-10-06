@@ -39,20 +39,11 @@
 
 	rarity = RARITY_UNCOMMON
 
+	charge_icon_state_count = 4
+
 /obj/item/weapon/ranged/energy/iongun/get_static_spread()
 	if(wielded) return 0
 	return 0.001
 
 /obj/item/weapon/ranged/energy/iongun/get_skill_spread(var/mob/living/L)
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
-
-/obj/item/weapon/ranged/energy/iongun/update_icon()
-
-	var/obj/item/powercell/PC = get_battery()
-
-	if(!istype(PC) || charge_cost > PC.charge_current)
-		icon_state = "inventory_0"
-	else
-		icon_state = "inventory_[FLOOR((PC.charge_current/PC.charge_max) * 4, 1)]"
-
-	return ..()

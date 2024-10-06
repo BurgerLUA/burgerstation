@@ -60,20 +60,20 @@
 	)
 
 	var/list/damage_type_to_pain = list(
-		BLADE = 0.25,
-		BLUNT = 0.25,
+		BLADE = 0.125,
+		BLUNT = 0.125,
 		PIERCE = 0.125,
-		LASER = 0.25,
-		ARCANE = 0.125,
-		HEAT = 0.5,
+		LASER = 0.125,
+		ARCANE = 0,
+		HEAT = 0.125,
 		COLD = 0,
-		SHOCK = 0.75,
-		ACID = 0.75,
-		BOMB = 0.25,
+		SHOCK = 0.5,
+		ACID = 0.5,
+		BOMB = 0.125,
 		BIO = 0,
 		RAD = 0,
-		HOLY = 0.25,
-		DARK = 0.5,
+		HOLY = 0,
+		DARK = 0.25,
 		FATIGUE = 0,
 		PAIN = 0,
 		ION = 0,
@@ -156,6 +156,29 @@
 	var/allow_damage_numbers = TRUE
 
 	var/attack_type = ATTACK_TYPE_MELEE
+
+	//Read-Only. For recoil calculation.
+	var/total_base_damage = 0
+	var/total_base_penetration = 0
+
+/damagetype/New(var/desired_loc)
+
+	. = ..()
+
+	total_base_damage = 0
+	total_base_penetration = 0
+
+	for(var/damage_type in attack_damage_base)
+		var/damage_value = attack_damage_base[damage_type]
+		if(IS_INFINITY(damage_value))
+			continue
+		total_base_damage += damage_value
+
+	for(var/damage_type in attack_damage_penetration)
+		var/penetration_value = attack_damage_penetration[damage_type]
+		if(IS_INFINITY(penetration_value))
+			continue
+		total_base_penetration += penetration_value
 
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
@@ -560,7 +583,10 @@
 			if(attacker.health && is_advanced(attacker))
 				var/mob/living/advanced/A = attacker
 				if(A.overall_clothing_defense_rating[armor_damage_type_to_use])
-					damage_to_deal[damage_type] *= clamp(A.overall_clothing_defense_rating[armor_damage_type_to_use]*0.01,0.15,2) //Deal 1% more damage per 100 resist of attacker, max of 100% more damage, with a minimum of 85% less damage.
+					var/damage_bonus = A.overall_clothing_defense_rating[armor_damage_type_to_use]*0.01
+					if(!A.ckey_last && damage_bonus > 1) //AI get less of a bonus.
+						damage_bonus = max(1,damage_bonus*0.5)
+					damage_to_deal[damage_type] *= clamp(damage_bonus,0.15,2)  //Deal 1% more damage per 100 resist of attacker, max of 100% more damage, with a minimum of 85% less damage.
 					if(debug) log_debug("Victim's new [damage_type] damage taken due to attacker's [armor_damage_type_to_use] armor rating: [damage_to_deal[damage_type]].")
 		if(damage_type != FATIGUE && block_multiplier > 0)
 			if(debug) log_debug("Calculating [damage_type] with blocking...")
@@ -655,7 +681,7 @@
 	//var/mental_damage_dealt = damage_to_deal_core[SANITY] + damage_to_deal_core[MENTAL]
 	//var/misc_damage_dealt = damage_to_deal_core[FATIGUE] + damage_to_deal_core[PAIN]
 
-	if(total_damage_dealt > 0 && hit_object.health && victim.health)
+	if(total_damage_dealt > 0 && hit_object.health)
 		hit_object.health.adjust_loss_smart(
 			brute = damage_to_deal_core[BRUTE],
 			burn = damage_to_deal_core[BURN],
@@ -680,7 +706,7 @@
 			handle_experience(
 				attacker,
 				victim,
-				min(victim.health.health_current,victim.health.health_max*0.25,real_damage_dealt), //Caps to prevent leveling exploits.
+				victim.health ? min(victim.health.health_current,victim.health.health_max*0.25,real_damage_dealt) : 0, //Caps to prevent leveling exploits.
 				damage_blocked_with_armor,
 				damage_blocked_with_shield,
 				critical_hit_multiplier,

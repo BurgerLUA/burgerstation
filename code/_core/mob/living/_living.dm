@@ -90,7 +90,7 @@
 	var/stun_elevation = -14
 
 	var/boss = FALSE
-	var/boss_music
+	var/track/boss_music
 	var/boss_icon_state
 	var/loot/boss_loot
 

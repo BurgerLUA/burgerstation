@@ -10,8 +10,6 @@
 
 	cowardice = 1
 
-	sleep_on_idle = FALSE
-
 	frustration_move_threshold = 0
 
 	var/turn_mode = 0

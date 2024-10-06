@@ -51,8 +51,10 @@
 		var/blood_oxygen = "N/A"
 		var/blood_toxicity = "N/A"
 		var/reagent_printout = "N/A"
+		var/regen_buffer = "N/A"
 		if(is_living(target))
 			var/mob/living/L = target
+			regen_buffer = "<font color='red'>[CEILING(L.brute_regen_buffer,1)]</font>|<font color='yellow'>[CEILING(L.burn_regen_buffer,1)]</font>|<font color='green'>[CEILING(L.tox_regen_buffer,1)]</font>"
 			if(is_advanced(target))
 				var/mob/living/advanced/A = target
 				var/species/S = SPECIES(A.species)
@@ -74,7 +76,7 @@
 				if(!R.bypass_small_limit && volume < 1) //Ignore small reagents.
 					continue
 				reagent_printout += "[R.name]: [volume]u<br>"
-		. += "<br>Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>Blood Oxygen: [blood_oxygen]<br>Blood Toxicity: [blood_toxicity]<br>Reagents (Blood):<br>[reagent_printout]"
+		. += "<br>Name: [target.name]<br>Species: [species]<br>Regen Buffer: [regen_buffer]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>Blood Oxygen: [blood_oxygen]<br>Blood Toxicity: [blood_toxicity]<br>Reagents (Blood):<br>[reagent_printout]"
 		caller.to_chat(.)
 	else if(stealth)
 		caller.to_chat(.)

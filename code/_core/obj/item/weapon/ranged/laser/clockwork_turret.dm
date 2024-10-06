@@ -32,6 +32,8 @@
 	inaccuracy_modifier = 1.25
 	movement_spread_base = 0
 
+	charge_icon_state_count = 0
+
 /obj/item/weapon/ranged/energy/clockwork_turret/get_static_spread()
 	return 0.003
 

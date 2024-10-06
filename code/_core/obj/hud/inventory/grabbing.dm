@@ -1,5 +1,8 @@
 /obj/hud/inventory/proc/grab_object(var/mob/caller as mob,var/atom/movable/object,location,control,params)
 
+	if(src.qdeleting || caller.qdeleting)
+		return FALSE
+
 	if(caller == object)
 		caller.to_chat(span("notice","You cannot grab yourself, ERP is against the rules!"))
 		return FALSE
@@ -10,7 +13,7 @@
 	if(!is_turf(caller.loc))
 		return FALSE
 
-	if(grabbed_object)
+	if(grabbed_object) //We already are grabbing something.
 		if(grabbed_object == object)
 			if(is_living(grabbed_object))
 				return reinforce_grab(caller)
@@ -33,7 +36,7 @@
 			caller.to_chat(span("warning","\The [object.grabbing_hand.owner.name] has too strong of a grip on \the [object.name]!"))
 			return FALSE
 		else
-			object.grabbing_hand.release_object(caller)
+			object.grabbing_hand.release_object(caller) //Steal the grab.
 
 	if(!object) //Possible race condition?
 		return FALSE
@@ -42,8 +45,10 @@
 	grabbed_object = object
 	grabbed_object.grabbing_hand = src
 	grab_time = world.time //To prevent instant agressive grab
+
 	overlays.Cut()
 	update_overlays()
+
 	if(is_living(grabbed_object))
 		var/mob/living/L = grabbed_object
 		L.handle_transform()
@@ -51,7 +56,7 @@
 		if(is_living(caller))
 			var/mob/living/LC = caller
 			if(LC.has_status_effect(BUFF))
-				reinforce_grab(caller,force=TRUE)
+				reinforce_grab(caller,force=TRUE) //Instant reinforced grab.
 
 	HOOK_CALL_ADV("grab_changed",owner,args)
 
@@ -66,9 +71,11 @@
 
 	if(is_living(owner))
 		var/mob/living/L = owner
-		if(L.dead)
+
+		if(L.dead || L.qdeleting)
 			release_object(owner)
 			return FALSE
+
 		if(is_living(grabbed_object) && L.ai)
 			var/mob/living/G = grabbed_object
 			if(G.dead)
@@ -107,7 +114,7 @@
 
 /obj/hud/inventory/proc/can_grab(var/mob/caller,var/atom/movable/object)
 
-	if(!object || !caller)
+	if(!object || !caller || object.qdeleting || caller.qdeleting)
 		return FALSE
 
 	if(!caller.loc || !is_turf(caller.loc) || !object.loc || !is_turf(object.loc))
@@ -122,6 +129,9 @@
 
 	if(!grabbed_object)
 		CRASH("Tried calling reinforce_grab without a grabbed object!")
+
+	if(qdeleting || caller.qdeleting || grabbed_object.qdeleting)
+		return FALSE
 
 	if(!force && world.time <= grab_time+SECONDS_TO_DECISECONDS(2)) //Prevents insta agressive-grab
 		return FALSE

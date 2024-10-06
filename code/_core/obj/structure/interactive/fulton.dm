@@ -74,17 +74,8 @@
 	if(is_living(stored_movable))
 		var/mob/living/L = stored_movable
 		if(L.is_player_controlled() && L.loyalty_tag == "NanoTrasen")
-			var/has_tax = FALSE
-			if(is_player(L))
-				var/mob/living/advanced/player/P = L
-				var/delinq = SStax.check_delinquent(P)
-				if(delinq)
-					has_tax = TRUE
-			if(has_tax)
-				L.to_chat(span("danger","You were forced to pay your taxes!"))
-				. = SStax.pay_taxes(L)*0.25
 
-			L.to_chat(span("danger","You were sold back to NanoTrasen!"))
+			L.to_chat(span("danger","You were sold back to NanoTrasen and forced to pay your taxes!"))
 			if(is_player(L))
 				var/mob/living/advanced/player/P = L
 				. += -P.adjust_currency(-3000)

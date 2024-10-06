@@ -20,13 +20,13 @@
 		/obj/item/container/simple/can/cola = 1,
 		/obj/item/container/simple/can/mountain_wind = 1,
 		/obj/item/fulton_pack = 1,
-		/obj/item/ability_learner/cqc/boss = 1
+		/obj/item/ability_learner/cqc/boss = 1,
+		/obj/item/lighter = 1,
+		/loot/currency/dosh/survivor = 1
 	)
 	loot_table_guaranteed = list(
 		/obj/item/flare,
-		/obj/item/lighter,
-		/loot/currency/dosh/survivor
 	)
 	loot_count = 6
-	chance_none = 20
+	chance_none = 50
 	allow_duplicates = FALSE

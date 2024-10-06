@@ -51,3 +51,15 @@
 	. = ..()
 	add_objective(/objective/artifact)
 	add_objective(/objective/artifact)
+
+/gamemode/mission/raging_mages
+	name = "Mission - Raging Mages"
+	gamemode_horde_data = /horde_data/raging_mages
+
+	interior_corpse_type = /mob/living/advanced/citizen
+	exterior_corpse_type = /mob/living/advanced/npc/nanotrasen
+
+/gamemode/mission/raging_mages/add_objectives()
+	. = ..()
+	add_objective(/objective/artifact)
+	add_objective(/objective/artifact)

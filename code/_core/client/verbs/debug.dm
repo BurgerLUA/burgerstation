@@ -33,7 +33,9 @@ var/global/static/list/debug_verbs = list(
 	/client/verb/destroy_everything,
 	/client/verb/subsystem_debug,
 	/client/verb/debug_lighting,
-	/client/verb/complete_all_objectives
+	/client/verb/complete_all_objectives,
+	/client/verb/get_far_viewers,
+	/client/verb/get_active_ais_not_in_player_range
 )
 
 
@@ -747,3 +749,48 @@ var/global/static/list/destroy_everything_whitelist = list(
 		O.update(FALSE)
 
 	G.next_objective_update = world.time + 50
+
+/client/verb/get_far_viewers()
+	set name = "Get Far Viewers"
+	set category = "Debug"
+
+	var/list/ai_data = list()
+
+	for(var/k in subtypesof(/ai/))
+		var/ai/A = k
+		var/view_range = max(initial(A.radius_find_enemy_noise),initial(A.radius_find_enemy_caution),initial(A.radius_find_enemy_combat))
+		if(view_range > AI_DETECTION_RANGE_COMBAT)
+			ai_data["[A]"] = view_range
+
+	sort_tim(ai_data,/proc/cmp_numeric_dsc,associative=TRUE)
+
+	src << browse("<head><style>[STYLESHEET]</style></head><body>[english_list(ai_data, and_text = "<br>", comma_text = "<br>", final_comma_text = "<br>")]</body>","window=garbage")
+
+
+/client/verb/get_active_ais_not_in_player_range()
+	set name = "Get Active AIs Not In Player Range"
+	set category = "Debug"
+
+	var/final_text = ""
+
+	var/bad_ais = 0
+
+	for(var/z_level in SSai.active_ai_by_z)
+		for(var/k in SSai.active_ai_by_z[z_level])
+			var/ai/AI = k
+			var/good_ai = FALSE
+			for(var/mob/living/L in SSliving.all_mobs_with_clients)
+				var/turf/T = get_turf(L)
+				if(T.z != z_level)
+					continue
+				if(get_dist(T,AI.owner) <= VIEW_RANGE*4)
+					good_ai = TRUE
+					break
+			if(!good_ai)
+				final_text += "[AI.type], belonging to [AI.owner.type]<br>"
+				bad_ais++
+
+
+	final_text = "<h1>Found [bad_ais] AIs away from players.</h1>[final_text]"
+
+	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_text ? final_text : "No Bad AIs found. Yay!"]</body>","window=garbage")

@@ -88,6 +88,8 @@
 
 	var/ignore_living = FALSE //Ignore collisions with living beings.
 
+	var/muzzleflash_uses_bullet_color = FALSE
+
 /obj/projectile/PreDestroy()
 	SSprojectiles.all_projectiles -= src
 	. = ..()
@@ -180,6 +182,8 @@
 			M.pixel_x = pixel_x + muzzle_offset*normal_x
 			M.pixel_y = pixel_y + muzzle_offset*normal_y
 			M.pixel_z = pixel_z
+			if(muzzleflash_uses_bullet_color)
+				M.color = bullet_color
 			var/new_angle = ATAN2(vel_x,vel_y) - 90
 			M.transform = turn(M.transform,-new_angle)
 			INITIALIZE(M)

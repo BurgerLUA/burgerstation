@@ -387,7 +387,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	var/obj/projectile/projectile_to_use = projectile_override ? projectile_override : projectile
 	var/list/shoot_sounds_to_use = shoot_sounds
-	var/damage_type_to_use = get_ranged_damage_type()
+	var/damagetype/damage_type_to_use = get_ranged_damage_type()
 	var/bullet_count_to_use = bullet_count
 	var/bullet_spread_to_use = 0
 	var/projectile_speed_to_use = projectile_speed * quality_mod
@@ -399,8 +399,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/damage_multiplier_to_use = damage_multiplier * damage_mod * quality_mod
 	var/penetrations_left = 0
 	var/condition_to_use = 1
-	var/bullet_view_punch = 1
-	var/power_to_use = 1
+	var/bullet_view_punch_mod = 1
+	var/bullet_heat_per_shot_mod = 1
+	var/size_mod = 0.75 + 0.25 * (SIZE_2/clamp(size,SIZE_1,SIZE_4))
+	var/heat_per_shot_to_use = heat_per_shot_mod * bullet_heat_per_shot_mod
+	var/view_punch_to_use = view_punch_mod * bullet_view_punch_mod
 
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
 
@@ -414,9 +417,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			SET(projectile_speed_to_use,spent_bullet.projectile_speed)
 			SET(bullet_color_to_use,spent_bullet.bullet_color)
 			MUL(inaccuracy_modifier_to_use,spent_bullet.inaccuracy_modifier)
-			MUL(bullet_view_punch,spent_bullet.view_punch_mod)
+			MUL(bullet_view_punch_mod,spent_bullet.heat_per_shot_mod)
+			MUL(bullet_view_punch_mod,spent_bullet.view_punch_mod)
 			ADD(penetrations_left,spent_bullet.penetrations)
-			power_to_use = max(power_to_use,spent_bullet.bullet_length*spent_bullet.bullet_diameter*0.2) //For heat calculations.
 		else
 			handle_empty(caller)
 			return FALSE
@@ -425,118 +428,123 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			handle_empty(caller)
 			return
 
-	var/arm_strength = 0.5
-	if(is_advanced(caller))
-		var/mob/living/advanced/A = caller
-		arm_strength = A.get_attribute_power(ATTRIBUTE_STRENGTH)*0.75 + A.get_skill_power(SKILL_RANGED)*0.25
-	if(wielded || !can_wield)
-		arm_strength *= 10
-
-	var/heat_per_shot_to_use = max(0.25,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.006*bullet_count_to_use*(10/clamp(weight,5,20))
-	var/view_punch_to_use = max(0.25,1 - arm_strength)*view_punch_mod*bullet_view_punch*power_to_use*0.04*TILE_SIZE*bullet_count_to_use*(1 + heat_current/0.2)
-	var/recoil_delay_to_use = recoil_delay + max(0,(weight - 10)/10)
-
 	if(src.stored_spellswap && src.stored_spellswap.desired_projectile)
 		projectile_to_use = src.stored_spellswap.desired_projectile
 
-	if(projectile_to_use)
+	if(!projectile_to_use)
+		handle_empty(caller)
+		return
 
-		if(!length(params))
-			params = list(PARAM_ICON_X=16,PARAM_ICON_Y=16)
+	if(!length(params))
+		params = list(PARAM_ICON_X=16,PARAM_ICON_Y=16)
 
-		var/icon_pos_x = params[PARAM_ICON_X]
-		var/icon_pos_y = params[PARAM_ICON_Y]
+	var/icon_pos_x = params[PARAM_ICON_X]
+	var/icon_pos_y = params[PARAM_ICON_Y]
 
-		var/prone = FALSE
-		var/static_spread = get_static_spread() * (2 - quality_mod)
-		var/heat_spread = get_heat_spread() * (2 - quality_mod)
-		var/skill_spread = 0
-		var/movement_spread = 0
-		var/iff_tag = null
-		var/loyalty_tag = null
+	var/prone = FALSE
+	var/static_spread = get_static_spread() * (2 - quality_mod)
+	var/heat_spread = get_heat_spread() * (2 - quality_mod)
+	var/skill_spread = 0
+	var/movement_spread = 0
+	var/iff_tag = null
+	var/loyalty_tag = null
 
-		var/prone_mod = 0.75
+	var/prone_mod = 0.75
 
-		if(is_living(caller))
-			var/mob/living/L = caller
-			skill_spread = get_skill_spread(L)
-			if(L.ai)
-				skill_spread += RAND_PRECISE(0.05,0.1)
-			movement_spread = get_movement_spread(L)
-			heat_spread *= (1 - L.get_skill_power(SKILL_RANGED,0,0.5,1))
-			if(L.horizontal) prone = TRUE
-			if(use_iff_tag) iff_tag = L.iff_tag
-			if(use_loyalty_tag) loyalty_tag = L.loyalty_tag
+	if(is_living(caller))
+		var/mob/living/L = caller
+		skill_spread = get_skill_spread(L)
+		if(L.ai)
+			skill_spread += RAND_PRECISE(0.05,0.1)
+		movement_spread = get_movement_spread(L)
+		heat_spread *= (1 - L.get_skill_power(SKILL_RANGED,0,0.5,1))
+		if(L.horizontal) prone = TRUE
+		if(use_iff_tag) iff_tag = L.iff_tag
+		if(use_loyalty_tag) loyalty_tag = L.loyalty_tag
 
-		if(length(attachment_stats))
-			SET(shoot_sounds_to_use,attachment_stats["shoot_sounds"])
-			SET(shoot_alert_to_use,attachment_stats["shoot_alert"])
-			SET(damage_type_to_use,attachment_stats["damage_type"])
-			ADD(bullet_count_to_use,attachment_stats["bullet_count"])
-			MUL(bullet_spread_to_use,attachment_stats["bullet_spread"])
-			MUL(projectile_speed_to_use,attachment_stats["projectile_speed"])
-			SET(bullet_color_to_use,attachment_stats["bullet_color"])
-			MUL(inaccuracy_modifier_to_use,attachment_stats["inaccuracy_modifier"])
-			MUL(damage_multiplier_to_use,attachment_stats["damage_multiplier"])
-			MUL(static_spread,attachment_stats["static_spread"])
-			MUL(heat_spread,attachment_stats["heat_spread"])
-			MUL(skill_spread,attachment_stats["skill_spread"])
-			MUL(movement_spread,attachment_stats["movement_spread"])
-			MUL(view_punch_to_use,attachment_stats["view_punch"])
-			MUL(shoot_delay_to_use,attachment_stats["shoot_delay"])
-			MUL(condition_to_use,attachment_stats["condition_use_mod"])
-			ADD(penetrations_left,attachment_stats["penetrations"])
-			if(max_bursts_to_use > 1)
-				ADD(max_bursts_to_use,attachment_stats["bursts_to_use"])
-			MUL(prone_mod,attachment_stats["prone_mod"])
-
-		if(can_wield && !wielded)
-			movement_spread *= 2
-			movement_spread += 0.01
-			static_spread *= 2
-			static_spread += 0.02
-			view_punch_to_use *= 1.25
-			view_punch_to_use += TILE_SIZE*0.1
-
-
-		play_shoot_sounds(caller,shoot_sounds_to_use,shoot_alert_to_use)
-
-		/* The problem with this is that it adds more sounds to be played by guns, which is already insane :(
-		if(spent_bullet && projectile_speed_to_use >= TILE_SIZE*0.75)
-			var/bullet_size = max(342,spent_bullet.bullet_length * spent_bullet.bullet_diameter)/342
-			play_sound('sound/effects/bullet_crack.ogg', get_turf(src), pitch=RAND_PRECISE(0.95,1.05)-min(0.5,bullet_size*0.25),volume= 30 + bullet_size*25 + (projectile_speed_to_use/TILE_SIZE)*0.10)
-		*/
-
-		var/accuracy_loss = clamp(static_spread + heat_spread + max(skill_spread,0) + movement_spread,0,0.5)
-		if(prone) accuracy_loss *= prone_mod
-		projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE - 1)
-
-		shoot_projectile(
-			caller,
-			object,
-			location,
-			params,
-			projectile_to_use,
-			damage_type_to_use,
-			icon_pos_x,
-			icon_pos_y,
-			accuracy_loss,
-			projectile_speed_to_use,
-			bullet_count_to_use,
-			bullet_color_to_use,
-			view_punch_to_use,
-			damage_multiplier_to_use,
-			iff_tag ? iff_tag : null,
-			loyalty_tag ? loyalty_tag : null,
-			inaccuracy_modifier_to_use,
-			get_base_spread(),
-			penetrations_left
-		)
+	if(length(attachment_stats))
+		SET(shoot_sounds_to_use,attachment_stats["shoot_sounds"])
+		SET(shoot_alert_to_use,attachment_stats["shoot_alert"])
+		SET(damage_type_to_use,attachment_stats["damage_type"])
+		ADD(bullet_count_to_use,attachment_stats["bullet_count"])
+		MUL(bullet_spread_to_use,attachment_stats["bullet_spread"])
+		MUL(projectile_speed_to_use,attachment_stats["projectile_speed"])
+		SET(bullet_color_to_use,attachment_stats["bullet_color"])
+		MUL(inaccuracy_modifier_to_use,attachment_stats["inaccuracy_modifier"])
+		MUL(damage_multiplier_to_use,attachment_stats["damage_multiplier"])
+		MUL(static_spread,attachment_stats["static_spread"])
+		MUL(heat_spread,attachment_stats["heat_spread"])
+		MUL(skill_spread,attachment_stats["skill_spread"])
+		MUL(movement_spread,attachment_stats["movement_spread"])
+		MUL(view_punch_to_use,attachment_stats["view_punch"])
+		MUL(heat_per_shot_to_use,attachment_stats["heat_per_shot"])
+		MUL(shoot_delay_to_use,attachment_stats["shoot_delay"])
+		MUL(condition_to_use,attachment_stats["condition_use_mod"])
+		ADD(penetrations_left,attachment_stats["penetrations"])
+		if(max_bursts_to_use > 1)
+			ADD(max_bursts_to_use,attachment_stats["bursts_to_use"])
+		MUL(prone_mod,attachment_stats["prone_mod"])
 
 	last_shoot_time = world.time
 	next_shoot_time = world.time + shoot_delay_to_use
 
+	var/arm_strength = 0.5
+	if(is_advanced(caller))
+		var/mob/living/advanced/A = caller
+		arm_strength = A.get_attribute_power(ATTRIBUTE_STRENGTH)*0.75 + A.get_skill_power(SKILL_RANGED)*0.25
+
+	// https://www.desmos.com/calculator/3uukoz7iau
+	if(damage_type_to_use)
+		var/shot_power = 0
+		var/damagetype/DT = SSdamagetype.all_damage_types[damage_type_to_use]
+		var/bullet_power_mod = DT.total_base_damage + DT.total_base_penetration*0.5
+		shot_power = 10 + (max(0,bullet_power_mod-70)**0.25)*30
+		shot_power *= max(0.25,1 - arm_strength) * bullet_count_to_use * size_mod * (1 + heat_current/0.2)
+		heat_per_shot_to_use *= shot_power/(TILE_SIZE*8)
+		view_punch_to_use *= shot_power
+
+	if(can_wield && !wielded)
+		movement_spread *= 2
+		movement_spread += 0.01
+		static_spread *= 2
+		static_spread += 0.02
+		view_punch_to_use *= 1.25
+		view_punch_to_use += TILE_SIZE*0.1
+
+	var/accuracy_loss = clamp(static_spread + heat_spread + max(skill_spread,0) + movement_spread,0,0.5)
+	if(prone)
+		accuracy_loss *= prone_mod
+
+	play_shoot_sounds(
+		caller,
+		shoot_sounds_to_use,
+		shoot_alert_to_use
+	)
+
+	shoot_projectile(
+		caller,
+		object,
+		location,
+		params,
+		projectile_to_use,
+		damage_type_to_use,
+		icon_pos_x,
+		icon_pos_y,
+		accuracy_loss,
+		projectile_speed_to_use,
+		bullet_count_to_use,
+		bullet_color_to_use,
+		view_punch_to_use,
+		damage_multiplier_to_use,
+		iff_tag ? iff_tag : null,
+		loyalty_tag ? loyalty_tag : null,
+		inaccuracy_modifier_to_use,
+		get_base_spread(),
+		penetrations_left
+	)
+
 	if(heat_max)
+		var/recoil_delay_to_use = recoil_delay * size_mod
 		if(recoil_delay_to_use > 0)
 			queued_recoil = heat_per_shot_to_use
 		else
@@ -589,8 +597,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		firing_pin.on_shoot(caller,src)
 
 	use_condition(condition_to_use)
-
-	update_sprite()
 
 	if(click_called && automatic && caller.client && is_player(caller)) //Automatic fire.
 		SSclient.queued_automatics[src] = list(
@@ -666,6 +672,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/list/target_cords = L.get_current_target_cords(params)
 		final_pixel_target_x = target_cords[1]
 		final_pixel_target_y = target_cords[2]
+		if(L.ai && ispath(projectile_to_use,/obj/projectile/magic))
+			projectile_speed_to_use *= 0.5 //Since AI have infinite mana.
 	else
 		final_pixel_target_x = TILE_SIZE*0.5
 		final_pixel_target_y = TILE_SIZE*0.5

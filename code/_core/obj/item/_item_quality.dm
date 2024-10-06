@@ -1,8 +1,8 @@
-// https://www.desmos.com/calculator/htnhpikjwb
+// https://www.desmos.com/calculator/yipyhzzbmk
 /obj/item/proc/get_quality_mod()
 	if(quality == -1)
 		return 1
-	var/q_mod = quality/100
+	var/q_mod = min(quality/100,2)
 	return max(0.25,min(cos( (q_mod-1) * 90)**min(1,1 - q_mod),2))
 
 /obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
