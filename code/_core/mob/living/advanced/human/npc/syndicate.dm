@@ -9,23 +9,7 @@
 
 	dna = /dna/human
 
-	var/list/possible_outfits = list(
-		/loadout/syndicate/soldier = 90,
-		/loadout/syndicate/shotgunnner = 20,
-		//Hardsuits below.
-		/loadout/syndicate/basic = 6,
-		/loadout/syndicate/advanced = 3,
-		/loadout/syndicate/elite = 1
-	)
-
-	var/list/loadout_to_level = list(
-		/loadout/syndicate/soldier = 1,
-		/loadout/syndicate/shotgunnner = 1.25,
-		//Hardsuits below.
-		/loadout/syndicate/basic = 2,
-		/loadout/syndicate/advanced = 3,
-		/loadout/syndicate/elite = 4
-	)
+	loadout = /loadout/syndicate
 
 	level = 20
 
@@ -77,12 +61,7 @@
 /mob/living/advanced/npc/syndicate/scientist
 	name = "syndicate scientist"
 
-	possible_outfits = list(
-		/loadout/syndicate/scientist = 1
-	)
-	loadout_to_level = list(
-		/loadout/syndicate/scientist = 1
-	)
+	loadout = /loadout/syndicate/scientist
 
 	level = 20
 
@@ -90,14 +69,9 @@
 
 
 /mob/living/advanced/npc/syndicate/wizard
-	name = "syndicate wizard"
+	name = "syndicate spellcaster"
 
-	possible_outfits = list(
-		/loadout/syndicate/wizard = 1
-	)
-	loadout_to_level = list(
-		/loadout/syndicate/wizard = 1
-	)
+	loadout = /loadout/syndicate/wizard
 
 	level = 30
 
