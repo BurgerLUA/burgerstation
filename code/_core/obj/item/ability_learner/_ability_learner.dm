@@ -11,8 +11,6 @@
 
 	var/ability/stored_ability
 
-	value = 0
-
 /obj/item/ability_learner/Finalize()
 	. = ..()
 	if(!stored_ability)

@@ -13,3 +13,5 @@
 	rarity = RARITY_RARE
 
 	armor = /armor/dark/cult_robes/heretic
+
+	value = 0

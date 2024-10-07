@@ -4,6 +4,8 @@
 	var/registered_squad = "none"
 	var/loyalty_tag = "none"
 
+	value = 0
+
 /obj/item/organ/internal/implant/head/loyalty/on_organ_add(var/mob/living/advanced/new_owner)
 	new_owner.set_loyalty_tag(loyalty_tag)
 	return ..()

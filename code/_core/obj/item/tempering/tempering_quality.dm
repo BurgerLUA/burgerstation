@@ -75,6 +75,8 @@
 	temper_whitelist = /obj/item/clothing
 	value = 750
 
+/obj/item/tempering/quality/ranged
+
 /obj/item/tempering/quality/ranged/projectile
 	name = "soldier's spare brass parts"
 	desc = "Stay ahead of the curve!"

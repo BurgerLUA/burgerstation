@@ -10,3 +10,4 @@
 	name = "moth antennae"
 	icon = 'icons/mob/living/advanced/hair/moth_hair_head.dmi'
 	icon_state = "none"
+	value = 0

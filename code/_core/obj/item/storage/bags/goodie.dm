@@ -21,3 +21,5 @@
 	loot_to_generate = /loot/halloween
 
 	value = 50
+
+	value_burgerbux = 1

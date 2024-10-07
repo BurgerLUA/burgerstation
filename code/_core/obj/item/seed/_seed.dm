@@ -39,6 +39,8 @@
 
 /obj/item/seed/get_base_value()
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
+	if(!P)
+		return -1
 	. = (P.value * potency) * yield_max * (yield_percent/100)
 	. *= (0.1 + growth_speed)
 	if(!delete_after_harvest)

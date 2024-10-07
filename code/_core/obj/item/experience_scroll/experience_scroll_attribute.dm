@@ -1,9 +1,6 @@
 /obj/item/experience_scroll/attribute
 	var/attribute
-
 	overlay_icon_state = "bauble"
-
-	value = 1
 
 /obj/item/experience_scroll/attribute/get_base_value()
 	if(!attribute)

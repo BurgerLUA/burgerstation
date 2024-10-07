@@ -11,3 +11,5 @@
 	protected_limbs = list(BODY_TORSO,BODY_GROIN)
 
 	armor = /armor/military/light
+
+	value = 1

@@ -15,6 +15,8 @@
 
 	rarity = RARITY_LEGENDARY
 
+	value = 1
+
 /obj/item/clothing/overwear/coat/drip/get_base_value()
 	. = ..()
 	. += 20000

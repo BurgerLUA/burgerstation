@@ -9,6 +9,8 @@
 		ARCANE = 0.9
 	)
 
+	value = 1000
+
 /obj/item/spellswap/chaos
 	name = "SpellSwapper(tm) - Chaos Orb"
 	desc_extended = "Use this on a weapon to trade the bullets for Chaos Orbs. Brought to you by The Demon Prince of Hot Lead."
@@ -20,6 +22,8 @@
 		ARCANE = 0.45,
 		DARK = 0.45
 	)
+
+	value = 1000
 
 /obj/item/spellswap/fireball
 	name = "SpellSwapper(tm) - Fireball"
@@ -35,6 +39,8 @@
 		HEAT = 0.5
 	)
 
+	value = 1000
+
 /obj/item/spellswap/flame
 	name = "SpellSwapper(tm) - Flame"
 	desc_extended = "Use this on a weapon to trade the bullets for Flame Bolts. Brought to you by The Demon Prince of Hot Lead."
@@ -48,6 +54,8 @@
 		HEAT = 0.7
 	)
 
+	value = 1000
+
 /obj/item/spellswap/frost
 	name = "SpellSwapper(tm) - Frost"
 	desc_extended = "Use this on a weapon to trade the bullets for Frost Bolts. Brought to you by The Demon Prince of Hot Lead."
@@ -60,6 +68,8 @@
 		ARCANE = 0.2,
 		COLD = 0.7
 	)
+
+	value = 1000
 
 /obj/item/spellswap/arcblade
 	name = "SpellSwapper(tm) - ArcBlade"
@@ -75,6 +85,8 @@
 		SHOCK = 0.5
 	)
 
+	value = 1000
+
 /obj/item/spellswap/tesla
 	name = "SpellSwapper(tm) - Tesla"
 	desc_extended = "Use this on a weapon to trade the bullets for Tesla Balls. Brought to you by The Demon Prince of Hot Lead."
@@ -87,6 +99,8 @@
 		ARCANE = 0.2,
 		SHOCK = 0.7
 	)
+
+	value = 1000
 
 /obj/item/spellswap/negate
 	name= "SpellSwapper(tm) - NULL"

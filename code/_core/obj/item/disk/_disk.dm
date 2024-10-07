@@ -1,7 +1,7 @@
 /obj/item/disk/
 	name = "data disk"
 	desc = "GET THAT FUKKEN D-- Oh, nevermind."
-	desc_extended = "Stores information. This one is blank, though."
+	desc_extended = "Stores information. This one is blank and useless, though."
 	icon = 'icons/obj/item/disk.dmi'
 	icon_state = "disk"
 

@@ -39,6 +39,8 @@
 
 	var/cooked_percent = 0 //0 to 1 value of how much it's cooked.
 
+	value = 0
+
 /obj/item/container/edible/dynamic/pizza/sliced
 	crafting_id = "pizza_slice"
 	sliced = TRUE
@@ -246,6 +248,8 @@
 
 	return T.qdeleting ? null : T
 
+/obj/item/container/edible/dynamic/pizza/mushroom
+	value = 1
 
 /obj/item/container/edible/dynamic/pizza/mushroom/Generate()
 	. = ..()

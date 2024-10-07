@@ -17,6 +17,8 @@
 
 	var/last_cooked = FALSE
 
+	value = 0
+
 /obj/item/container/edible/dynamic/cake/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK

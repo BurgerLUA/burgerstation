@@ -9,7 +9,7 @@
 	icon = 'icons/obj/item/implanter.dmi'
 	icon_state = "implanter"
 
-	value = 50
+	value = 0
 
 	weight = 3
 
@@ -74,19 +74,26 @@
 
 	return TRUE
 
-/obj/item/implanter/IFF
+/obj/item/implanter/head/
+	name = "head implanter"
+
+/obj/item/implanter/head/iff
 	stored_implant = /obj/item/organ/internal/implant/hand/left/iff/nanotrasen
 	removes_existing = FALSE
-	value_burgerbux = 1000000
+	value_burgerbux = 1
 
 	rarity = RARITY_LEGENDARY
 	contraband = TRUE
 
-/obj/item/implanter/od_purge
+/obj/item/implanter/torso
+	name = "torso implanter"
+
+/obj/item/implanter/torso/od_purge
 	stored_implant = /obj/item/organ/internal/implant/torso/od_purge
 	removes_existing = TRUE
+	value = 1000
 
-/obj/item/implanter/death_alarm
+/obj/item/implanter/torso/death_alarm
 	stored_implant = /obj/item/organ/internal/implant/torso/death_alarm
 	removes_existing = TRUE
 	value = 500

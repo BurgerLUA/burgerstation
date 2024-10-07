@@ -10,3 +10,5 @@
 	armor = /armor/leather/hard
 
 	rarity = RARITY_BROKEN
+
+	value = 1

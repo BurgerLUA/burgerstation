@@ -13,8 +13,6 @@
 
 	quality = 100
 
-	value = 0
-
 	color = "#FFFFFF"
 	var/color_2 = "#FFFFFF"
 	var/color_3 = "#FFFFFF"

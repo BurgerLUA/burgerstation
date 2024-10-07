@@ -11,3 +11,5 @@
 	size = SIZE_3
 
 	can_save = FALSE
+
+	value = 1

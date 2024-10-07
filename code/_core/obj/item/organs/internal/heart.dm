@@ -14,6 +14,8 @@
 
 	has_life = FALSE
 
+	value = 0
+
 
 
 /obj/item/organ/internal/heart/robotic

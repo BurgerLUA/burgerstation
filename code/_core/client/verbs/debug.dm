@@ -35,7 +35,9 @@ var/global/static/list/debug_verbs = list(
 	/client/verb/debug_lighting,
 	/client/verb/complete_all_objectives,
 	/client/verb/get_far_viewers,
-	/client/verb/get_active_ais_not_in_player_range
+	/client/verb/get_active_ais_not_in_player_range,
+	/client/verb/check_value_of_loadouts,
+	/client/verb/check_unobtainable_items
 )
 
 
@@ -469,7 +471,7 @@ var/global/static/list/destroy_everything_whitelist = list(
 
 	for(var/k in subtypesof(/obj/item/weapon/ranged))
 		var/obj/item/weapon/ranged/R = k
-		if(initial(R.value) <= 0)
+		if(initial(R.value) < 0)
 			continue
 		R = new R(T)
 		INITIALIZE(R)
@@ -794,3 +796,61 @@ var/global/static/list/destroy_everything_whitelist = list(
 	final_text = "<h1>Found [bad_ais] AIs away from players.</h1>[final_text]"
 
 	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_text ? final_text : "No Bad AIs found. Yay!"]</body>","window=garbage")
+
+
+
+/client/verb/check_value_of_loadouts()
+
+	set name = "Check Value of Loadouts"
+	set category = "Debug"
+
+	var/list/mob_to_value = list()
+
+	for(var/k in subtypesof(/mob/living/advanced/))
+		var/mob/living/advanced/A = k
+		var/loadout/L = initial(A.loadout)
+		if(!L)
+			continue
+		L = SSloadouts.all_loadouts[L]
+		if(!L)
+			continue
+
+		var/total_value = 0
+		for(var/j in L.get_spawning_items())
+			if(ispath(j,/loot/))
+				var/loot/spawning_loot = LOOT(j)
+				total_value += spawning_loot.average_value
+			else
+				var/obj/item/I = j
+				var/value = SSbalance.stored_value[I]
+				if(value)
+					total_value += value
+				else
+
+
+		mob_to_value[A] = total_value
+
+
+	sort_tim(mob_to_value,/proc/cmp_numeric_dsc,associative=TRUE)
+
+	var/final_list = ""
+
+	for(var/k in mob_to_value)
+		var/v = mob_to_value[k]
+		final_list += "[k]: [v]cr<br>"
+
+	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_list]</body>","window=loadoutvalue")
+
+
+/client/verb/check_unobtainable_items()
+
+	set name = "Check Unobtainable Items"
+	set category = "Debug"
+
+	var/final_list = ""
+
+	for(var/k in SSloot.unobtainable_items)
+		var/v = SSloot.unobtainable_items[k]
+		final_list += "[k]: [v]cr<br>"
+
+	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_list]</body>","window=loadoutvalue")

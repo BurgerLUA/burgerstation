@@ -20,6 +20,7 @@
 
 	can_be_broken = FALSE
 
+	value = 0
 
 /obj/item/organ/eye/initialize_worn_blends(var/desired_icon_state)
 	. = ..()

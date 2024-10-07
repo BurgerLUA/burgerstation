@@ -142,11 +142,13 @@
 	rarity = RARITY_UNCOMMON
 
 /obj/item/cassette_tape/Finalize()
-	. = ..()
-	if(stored_track)
+	if(!stored_track)
+		value = -1
+	else
 		var/track/T = SStrack.all_tracks[stored_track]
 		if(T)
 			name = "[initial(name)]: [T.name]"
+	. = ..()
 
 /obj/item/cassette_tape/Generate()
 	. = ..()

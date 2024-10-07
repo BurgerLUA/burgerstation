@@ -9,9 +9,9 @@
 
 	dynamic_inventory_count = 8
 
-	value = 20
-
 	value_burgerbux = 1
+
+	value = 0
 
 /obj/item/storage/blood_box/Finalize()
 	. = ..()

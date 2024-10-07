@@ -37,6 +37,8 @@
 
 	has_life = TRUE
 
+	value = 0
+
 /obj/item/organ/head/get_damage_type(var/atom/attacker,var/atom/victim)
 	if(attached_organ)
 		return /damagetype/unarmed/bite/

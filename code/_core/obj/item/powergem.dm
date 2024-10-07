@@ -10,9 +10,8 @@
 	var/damage_type_to_add = ARCANE
 	var/damage_to_add = 10
 
-	value = 1000
-
-	value_burgerbux = 1 //Not in rotation, yet.
+	value = -1
+	can_save = FALSE
 
 /obj/item/powergem/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE

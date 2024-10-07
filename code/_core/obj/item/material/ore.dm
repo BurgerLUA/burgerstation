@@ -13,6 +13,8 @@
 
 	size = SIZE_2
 
+	value = 0
+
 /obj/item/material/ore/update_icon()
 	var/material/M = SSmaterials.all_materials[material_id]
 	if(!M || !M.icon_state_ore)

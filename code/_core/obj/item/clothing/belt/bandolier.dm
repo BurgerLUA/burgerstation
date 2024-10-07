@@ -8,7 +8,7 @@
 	dyeable = TRUE
 
 
-	value = 0
+	value = -1
 	size = SIZE_3
 
 	var/list/stored_shells = list()

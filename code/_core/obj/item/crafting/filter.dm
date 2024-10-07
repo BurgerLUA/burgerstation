@@ -25,6 +25,8 @@
 
 	var/precision = 0.1
 
+	value_burgerbux = 1
+
 /obj/item/crafting_bench/filter/click_self(var/mob/caller,location,control,params)
 
 	if(caller.attack_flags & CONTROL_MOD_DISARM)

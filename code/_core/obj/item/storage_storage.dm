@@ -1,4 +1,6 @@
-/obj/item/storage_storage
+
+
+/obj/item/structure_storage
 	name = "storage storage"
 	icon = null
 	icon_state = null
@@ -20,3 +22,5 @@
 	invisibility = 101
 
 	queue_delete_immune = TRUE
+
+	value = 0

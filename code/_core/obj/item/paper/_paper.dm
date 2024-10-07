@@ -8,9 +8,9 @@
 
 	var/last_page = 1
 
-	var/list/data = list("There is nothing here.","Oh god oh fuck.")
+	var/list/data = list("There is nothing here.","Also nothing here.")
 
-	value = 10
+	value = 1
 
 	drop_sound = 'sound/items/drop/paper.ogg'
 

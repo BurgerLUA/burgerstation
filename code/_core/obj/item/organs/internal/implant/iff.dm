@@ -9,6 +9,8 @@
 	var/registered_squad = "none"
 	var/iff_tag = "none"
 
+	value = 0
+
 /obj/item/organ/internal/implant/hand/left/iff/on_organ_add(var/mob/living/advanced/new_owner)
 	new_owner.set_iff_tag(iff_tag)
 	return ..()

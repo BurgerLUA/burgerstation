@@ -46,6 +46,8 @@
 
 	has_life = TRUE
 
+	value = 0
+
 /obj/item/organ/hand/on_pain()
 
 	. = ..()

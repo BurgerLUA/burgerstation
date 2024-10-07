@@ -15,9 +15,9 @@
 
 	drop_sound = 'sound/items/drop/paper.ogg'
 
-	value = 0
-
 	rarity = RARITY_RARE
+
+	value = 0
 
 /obj/item/contract/PreDestroy()
 	QDEL_NULL(reward)
@@ -37,13 +37,13 @@
 	if(!reward)
 		log_error("Warning: Tried generating [src.get_debug_name()], but it had a null reward!")
 		reward = /obj/item/coin/adamantium
-	reward = new reward(src)
-	if(reward.quality != -1)
-		reward.quality = rand(100,200)
-	INITIALIZE(reward)
-	GENERATE(reward)
-	FINALIZE(reward)
-	value_current = 0
+	if(!istype(reward))
+		reward = new reward(src)
+		if(reward.quality != -1)
+			reward.quality = rand(100,200)
+		INITIALIZE(reward)
+		GENERATE(reward)
+		FINALIZE(reward)
 
 /obj/item/contract/proc/on_kill(var/mob/living/attacker,var/list/data=list())
 

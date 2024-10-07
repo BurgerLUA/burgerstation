@@ -29,6 +29,8 @@
 
 	marker_color = COLOR_BLUE
 
+	value = 1
+
 /obj/item/grenade/device/timed/smoke/Generate()
 	stored_containers += new /obj/item/container/simple/beaker/smoke_01(src)
 	stored_containers += new /obj/item/container/simple/beaker/smoke_02(src)
@@ -43,6 +45,7 @@
 	desc = "Kaboomish!"
 	desc_extended = "A prebuilt timed EMP grenade. The labeling indicates that the fuse is set to 3 seconds."
 	marker_color = COLOR_CYAN
+	value = 1
 
 /obj/item/grenade/device/timed/emp/Generate()
 	stored_containers += new /obj/item/container/simple/beaker/iron(src)
@@ -57,6 +60,8 @@
 
 	paint_color = COLOR_RED
 	marker_color = COLOR_ORANGE
+
+	value = 1
 
 /obj/item/grenade/device/timed/incendiary/Generate()
 	stored_containers += new /obj/item/container/simple/beaker/oxygen(src)

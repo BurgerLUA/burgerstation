@@ -127,3 +127,4 @@
 
 /obj/item/attachment/sight/m4
 	icon_state = "m4sight"
+	value = 1

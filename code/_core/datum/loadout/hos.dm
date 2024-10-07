@@ -1,6 +1,6 @@
 /loadout/hos
 	spawning_items = list(
-		/obj/item/clothing/ears/headset,
+		/obj/item/clothing/ears/headset/nanotrasen,
 
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,

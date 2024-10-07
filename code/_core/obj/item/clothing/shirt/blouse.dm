@@ -14,7 +14,7 @@
 		"blouse" = COLOR_WHITE
 	)
 
-	value = 20
+	value = 1
 
 
 /obj/item/clothing/shirt/blouse/frill

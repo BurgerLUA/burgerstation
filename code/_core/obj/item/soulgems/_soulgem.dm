@@ -9,8 +9,6 @@
 	var/total_capacity = 0
 	var/do_not_consume = FALSE //Does this get consumed? Or merely emptied on craft. Only used for Azuras Star
 
-	value = 100 //Dummy value. Calculated later.
-
 	weight = 1
 
 	rarity = RARITY_COMMON
@@ -41,14 +39,18 @@
 
 	update_sprite()
 
+//https://www.desmos.com/calculator/vjla2nxgnn
+
 /obj/item/soulgem/get_base_value()
 	. = ..()
-	. += (total_capacity/32)**1.5
-	. = CEILING(.,1)
+	. = (300 + (total_capacity * ( 100 / (20000+300) ))**2)*0.5
+	. = CEILING(.,500)
+	if(do_not_consume)
+		. *= 3
 
 /obj/item/soulgem/get_value()
 	. = ..()
-	. += (total_charge/16)**1.5
+	. = (300 + (total_capacity * ( 100 / (20000+300) ))**2)*0.5
 	. = CEILING(.,1)
 
 /obj/item/soulgem/get_examine_list(var/mob/caller)
@@ -224,6 +226,7 @@
 
 /obj/item/soulgem/common
 	total_capacity = SOUL_SIZE_COMMON
+	value = 1
 
 /obj/item/soulgem/common/filled/Generate()
 	. = ..()
@@ -231,6 +234,7 @@
 
 /obj/item/soulgem/uncommon
 	total_capacity = SOUL_SIZE_UNCOMMON
+	value = 1
 
 /obj/item/soulgem/uncommon/filled/Generate()
 	. = ..()
@@ -238,6 +242,7 @@
 
 /obj/item/soulgem/rare
 	total_capacity = SOUL_SIZE_RARE
+	value = 1
 
 /obj/item/soulgem/rare/filled/Generate()
 	. = ..()
@@ -245,6 +250,7 @@
 
 /obj/item/soulgem/mystic
 	total_capacity = SOUL_SIZE_MYSTIC
+	value = 1
 
 /obj/item/soulgem/mystic/filled/Generate()
 	. = ..()
@@ -253,6 +259,7 @@
 /obj/item/soulgem/godly
 	total_capacity = SOUL_SIZE_GODLY
 	value_burgerbux = 1
+	value = 1
 
 /obj/item/soulgem/godly/filled/Generate()
 	. = ..()
@@ -262,3 +269,4 @@
 	total_capacity = SOUL_SIZE_MYSTIC
 	do_not_consume = TRUE
 	value_burgerbux = 1
+	value = 1

@@ -14,6 +14,8 @@
 
 	scale_sprite = FALSE
 
+	value = 0
+
 /obj/item/container/edible/dynamic/meat/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
@@ -188,11 +190,17 @@
 
 	return TRUE
 
+/obj/item/container/edible/dynamic/meat/raw_arachnid
+	value = 1
+
 /obj/item/container/edible/dynamic/meat/raw_arachnid/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/arachnid,15)
 	reagents.add_reagent(/reagent/nutrition/bad_meat/chicken,5)
 	reagents.add_reagent(/reagent/nutrition/fat/arachnid,5)
 	return ..()
+
+/obj/item/container/edible/dynamic/meat/raw_ash_drake
+	value = 1
 
 /obj/item/container/edible/dynamic/meat/raw_ash_drake/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/ash_drake,15)
@@ -202,12 +210,18 @@
 	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
 	return ..()
 
+/obj/item/container/edible/dynamic/meat/raw_bubblegum
+	value = 1
+
 /obj/item/container/edible/dynamic/meat/raw_bubblegum/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/bubblegum,15)
 	reagents.add_reagent(/reagent/nutrition/bad_meat/ancient,5)
 	reagents.add_reagent(/reagent/blood/ancient,10)
 	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
 	return ..()
+
+/obj/item/container/edible/dynamic/meat/raw_colossus
+	value = 1
 
 /obj/item/container/edible/dynamic/meat/raw_colossus/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/colossus,15)
@@ -216,11 +230,17 @@
 	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
 	return ..()
 
+/obj/item/container/edible/dynamic/meat/raw_monkey
+	value = 1
+
 /obj/item/container/edible/dynamic/meat/raw_monkey/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/monkey,10)
 	reagents.add_reagent(/reagent/nutrition/bad_meat,5)
 	reagents.add_reagent(/reagent/nutrition/fat/monkey,5)
 	return ..()
+
+/obj/item/container/edible/dynamic/meat/raw
+	value = 1
 
 /obj/item/container/edible/dynamic/meat/raw/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow,10)
@@ -228,26 +248,41 @@
 	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
 
+/obj/item/container/edible/dynamic/meat/cooked_steak
+	value = 1
+
 /obj/item/container/edible/dynamic/meat/cooked_steak/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow,15)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
+
+/obj/item/container/edible/dynamic/meat/cooked_cutlet
+	value = 1
 
 /obj/item/container/edible/dynamic/meat/cooked_cutlet/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow/cooked,7)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,3)
 	return ..()
 
+/obj/item/container/edible/dynamic/meat/cooked_bacon
+	value = 1
+
 /obj/item/container/edible/dynamic/meat/cooked_bacon/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow/cooked,3)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,2)
 	return ..()
+
+/obj/item/container/edible/dynamic/meat/raw_beefman
+	value = 1
 
 /obj/item/container/edible/dynamic/meat/raw_beefman/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat,10)
 	reagents.add_reagent(/reagent/nutrition/bad_meat,5)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
+
+/obj/item/container/edible/dynamic/meat/raw_xeno
+	value = 1
 
 /obj/item/container/edible/dynamic/meat/raw_xeno/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/xeno,10)
@@ -256,17 +291,26 @@
 	reagents.add_reagent(/reagent/toxin/xeno_acid,15)
 	return ..()
 
+/obj/item/container/edible/dynamic/meat/raw_spider
+	value = 1
+
 /obj/item/container/edible/dynamic/meat/raw_spider/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/spider,10)
 	reagents.add_reagent(/reagent/nutrition/bad_meat/insect,5)
 	reagents.add_reagent(/reagent/toxin/spider_toxin,5)
 	return ..()
 
+/obj/item/container/edible/dynamic/meat/raw_bear
+	value = 1
+
 /obj/item/container/edible/dynamic/meat/raw_bear/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/bear,15)
 	reagents.add_reagent(/reagent/nutrition/bad_meat,5)
 	reagents.add_reagent(/reagent/nutrition/fat/bear,10)
 	return ..()
+
+/obj/item/container/edible/dynamic/meat/raw_goliath
+	value = 1
 
 /obj/item/container/edible/dynamic/meat/raw_goliath/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/goliath,10)

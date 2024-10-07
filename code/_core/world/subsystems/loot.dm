@@ -5,6 +5,8 @@ SUBSYSTEM_DEF(loot)
 	var/list/all_loot = list()
 	var/list/recursive_loot = list()
 
+	var/list/unobtainable_items = list() //item = weight, higher weight means less value
+
 /subsystem/loot/Initialize()
 
 	var/list/loot_to_check = list()
@@ -79,9 +81,30 @@ SUBSYSTEM_DEF(loot)
 			//log_subsystem(name,"[k] was set to a value of [L.average_value].")
 		CHECK_TICK(95,FPS_SERVER)
 
+	var/list/all_items = subtypesof(/obj/item)
+
 	for(var/k in created_items)
 		var/obj/item/I = created_items[k]
+		all_items -= I.type
 		qdel(I)
+
+	for(var/k in SSloadouts.all_loadouts)
+		var/loadout/L = SSloadouts.all_loadouts[k]
+		for(var/j in L.spawning_items)
+			all_items -= j
+
+	for(var/k in all_items)
+		var/obj/item/I = k
+		if(I.value <= 0)
+			continue
+		if(!I.can_save)
+			continue
+		var/found_value = SSbalance.stored_value[I]
+		if(!found_value) //Could be null
+			found_value = 0
+		unobtainable_items[I] = CEILING(found_value,1)
+
+	sort_tim(unobtainable_items,/proc/cmp_numeric_dsc,associative=TRUE)
 
 	log_subsystem(name,"Initialized [length(all_loot)] loot tables.")
 

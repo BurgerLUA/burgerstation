@@ -369,7 +369,7 @@
 
 	penetrations = 1
 
-/obj/item/bullet_cartridge/pistol_45holy/
+/obj/item/bullet_cartridge/pistol_45holy
 	name = "\improper Holy .45 pistol cartridge"
 	desc = "Joshua Graham style."
 	desc_extended = "For pistols and smgs that require holy .45 ammo."
@@ -380,6 +380,7 @@
 
 	bullet_diameter = 11.77
 	bullet_length = 24
+
 	bullet_color = COLOR_SILVER
 
 	projectile = /obj/projectile/bullet/firearm/smg
