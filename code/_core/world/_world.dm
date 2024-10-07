@@ -60,6 +60,7 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/obj/item/weapon/ranged/bow)
 	createtypecache(/obj/item/weapon/ranged/bullet)
 	createtypecache(/obj/item/weapon/ranged/bullet/magazine)
+	createtypecache(/obj/item/weapon/ranged/spellgem)
 	createtypecache(/obj/item/magazine)
 	createtypecache(/obj/item/material)
 	createtypecache(/obj/item/bullet_cartridge)
@@ -73,6 +74,7 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/turf/simulated/liquid/water)
 	createtypecache(/turf/unsimulated)
 	createtypecache(/reagent/nutrition)
+
 
 	. = ..()
 

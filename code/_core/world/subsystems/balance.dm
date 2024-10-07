@@ -14,6 +14,8 @@ SUBSYSTEM_DEF(balance)
 
 	var/list/stored_value = list() //STORED VALUE SHOULD BE ONLY USED FOR LOOT GENERATION AND VENDORS (EXCEPTION: WEAPONS, BULLETS, MAGAZINES)
 
+	var/list/stored_mob_value = list() //Mob = mob loot value.
+
 	var/list/weapon_to_bullet = list()
 	var/list/weapon_to_magazine = list()
 

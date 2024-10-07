@@ -75,6 +75,8 @@ var/global/list/all_typecaches = list()
 
 #define is_ranged_bullet_weapon(A) istypecache(A,/obj/item/weapon/ranged/bullet)
 
+#define is_spell_gem(A) istypecache(A,/obj/item/weapon/ranged/spellgem)
+
 #define is_bow(A) istypecache(A,/obj/item/weapon/ranged/bow)
 
 #define is_wand(A) istypecache(A,/obj/item/weapon/ranged/wand)

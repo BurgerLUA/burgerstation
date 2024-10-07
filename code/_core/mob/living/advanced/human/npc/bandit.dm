@@ -8,6 +8,8 @@
 
 	ai = /ai/advanced/bandit
 
+	loadout = /loadout/bandit/male
+
 	level = 28
 
 	combat_dialogue = /combat_dialogue/bandit
@@ -19,11 +21,6 @@
 	loyalty_tag = "Bandit"
 	iff_tag = "Bandit"
 
-/mob/living/advanced/npc/bandit/setup_appearance(var/set_default=FALSE)
-
-	. = ..()
-
-	if(gender == FEMALE)
-		loadout = /loadout/bandit/female
-	else
-		loadout = /loadout/bandit/male
+/mob/living/advanced/npc/bandit/female
+	gender = FEMALE
+	loadout = /loadout/bandit/female

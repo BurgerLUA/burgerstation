@@ -302,6 +302,7 @@
 "fP" = (/obj/structure/interactive/lighting/fixture/bulb{dir = 8},/turf/simulated/floor/tile/coldroom,/area/mission/prefab/misc/syndicate_mining_outpost/service)
 "fQ" = (/mob/living/advanced/npc/syndicate,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/service)
 "fR" = (/obj/structure/table,/obj/item/storage/kit/syndicate,/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 4},/turf/simulated/floor/tile/morphing/medical,/area/mission/prefab/misc/syndicate_mining_outpost/medical)
+"fS" = (/mob/living/advanced/npc/syndicate/triple,/obj/decal/tile/cross/red,/obj/structure/interactive/chair/wood,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/misc/syndicate_mining_outpost/service)
 "fT" = (/obj/structure/interactive/door/airlock/syndicate,/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/hall)
 "fU" = (/obj/structure/interactive/crate,/obj/item/container/edible/dynamic/meat/raw_monkey,/obj/item/container/edible/dynamic/meat/raw_monkey,/turf/simulated/floor/tile/coldroom,/area/mission/prefab/misc/syndicate_mining_outpost/service)
 "fV" = (/obj/structure/interactive/door/airlock/station/glass,/turf/simulated/floor/tile,/area/mission/prefab/misc/syndicate_mining_outpost/service)
@@ -430,7 +431,7 @@ aaaFaMaMaMaMaMaMaMaMaMaMaMfAfLeufMeufNeDfOfEfPeHeWeSeXeXeXeXeXeHeZeWeWfQeZeHfaeK
 aaaFaYaMaMaMaMaMaMaMaMaMaMfAfTeseseufoeDfUfEfEeHfVeHeHeHfseHeHfWeZeZeZeZeZeHfaeKfHeNfxfYfxfZeNeNfeeLeuesffeeacfgeBabacacacacacac
 aaaFgagbgcePgdePePePePgdePePfLeueseugeeDeHfVeHeHgfgfgfggghgigjgigkglgkglgkeHfaeKgmeNeNeNeNeNeNeMfeeLeueseueeacaceBacacacacacacac
 aaaFaFaFaFaFaFaFaFaFaFaFaFaFeeeueseugneDgogfgpgqgfgfgfgrgsgtgigtgigtgigtgieHgueKgveNeNeNgweNeNgxeLeLeueseueeacaceBaaaaaaaaaaaaaa
-aaabacacacacacacacacacacaceveeeuexffeDgogfgfgfgfgfgfgfgrghgigygBgygigAgBgyeHfaeKgmeNgCeNeNeNeNeMeLeMeuexeueeacaceBaaaaaaaaaaaaaa
+aaabacacacacacacacacacacaceveeeuexffeDgogfgfgfgfgfgfgfgrghgigyfSgygigAgBgyeHfaeKgmeNgCeNeNeNeNeMeLeMeuexeueeacaceBaaaaaaaaaaaaaa
 aaeBacacacacacacacacacacacaceeeOeseueDgfgDgfgfgEgFgGgfgrgHgtgIgJgKgtgLgJgLgMfaeKeMeNgNeNgOeNeNeMeMeMeueseOeeacaceBaaaaaaaaaaaaaa
 aaeBfgacacacacacacacacacacaceeeueseueDgPgfgfgfgQgfgfgfgrghgigRgSgRgigRfXgRgMfagUgVgWgWgXgWgWgWgWgWgVeseseueeacaceBacacacacacacac
 aaeBacacacacacacacacacacacaceeeweseugYgZgZgZgZgZgZgZgZhahbhchdhchehchehchehfgueKeMeMhgeMeMeNeNeNeNeMeueseueeacfgeBabacacacacacac

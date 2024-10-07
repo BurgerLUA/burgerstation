@@ -29,7 +29,6 @@
 /mob/living/advanced/npc/raging_mage/witch
 	name = "raging witch"
 	gender = FEMALE
-	sex = FEMALE
 	loadout = /loadout/raging_mage/witch
 
 	level = 20
