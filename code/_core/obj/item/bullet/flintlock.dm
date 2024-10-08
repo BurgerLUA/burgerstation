@@ -19,3 +19,11 @@
 	value = 1 //Dummy value.
 
 	caseless = TRUE
+
+/obj/item/bullet_cartridge/flintlock/premium
+	name = "\improper premium .62 powder charge and iron ball"
+	desc = "Wow, look at how technology's advancing."
+	desc = "It's really just another iron ball and powder charge, but they're wrapped in paper so it's a tiny bit easier to load."
+	icon = 'icons/obj/item/bullet/flintlock_premium.dmi'
+
+	damage_type_bullet = /damagetype/ranged/bullet/flintlock/premium
