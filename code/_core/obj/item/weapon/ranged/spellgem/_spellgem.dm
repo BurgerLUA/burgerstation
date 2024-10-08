@@ -36,7 +36,7 @@
 		. *= 0.5 + bullet_count*0.5
 		if((bullet_count % 2) != 1) //Even number of shots means it's not going to be accurate.
 			. *= 0.5
-		. *= max(0.125,1 - (spread_per_shot/90))
+		. *= max(0.125,1 - ((spread_per_shot*bullet_count)/90))
 	. *= 0.5 + (projectile_speed / (TILE_SIZE-1))*0.5
 	. *= 0.5 + min(1,10/shoot_delay)*0.5
 	. *= 0.125

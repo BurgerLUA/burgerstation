@@ -12,21 +12,22 @@
 
 	level = 60
 
-	var/list/possible_loadouts = list(
-		/loadout/space_soldier/assault_rifle = 4,
-		/loadout/space_soldier/battle_rifle = 2,
-		/loadout/space_soldier/dmca = 1
-	)
-
-/mob/living/advanced/npc/space_soldier/Initialize()
-	loadout = pickweight(possible_loadouts)
-	. = ..()
+	loadout = /loadout/space_soldier/assault_rifle
 
 /mob/living/advanced/npc/space_soldier/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/space_cop)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/space_cop)
 
+/mob/living/advanced/npc/space_soldier/battle
+	loadout = /loadout/space_soldier/battle_rifle
+
+	level = 70
+
+/mob/living/advanced/npc/space_soldier/dmca
+	loadout = /loadout/space_soldier/dmca
+
+	level = 70
 
 /mob/living/advanced/npc/space_soldier/special_operative
 	name = "space special operative"
@@ -35,8 +36,6 @@
 
 	ai = /ai/advanced/space_soldier/special
 
-	possible_loadouts = list(
-		/loadout/space_soldier/spec_ops = 1
-	)
+	loadout = /loadout/space_soldier/spec_ops
 
 	level = 90

@@ -8,41 +8,46 @@
 
 	species = "reptile"
 
-	var/loadout_to_use_male = /loadout/ashwalker/
-	var/loadout_to_use_female = /loadout/ashwalker/female
-
+	loadout = /loadout/ashwalker/
 	loyalty_tag = "Ashwalker"
 	iff_tag = "Ashwalker"
 
-	level = 8
+	level = 10
 
 /mob/living/advanced/npc/ashwalker/Initialize()
 	. = ..()
 	drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/CREDITS_PER_GOLD)
-	if(gender == FEMALE)
-		loadout = loadout_to_use_female
-	else
-		loadout = loadout_to_use_male
 
+/mob/living/advanced/npc/ashwalker/female
+	loadout = /loadout/ashwalker/female
+	gender = FEMALE
+
+//Hunter
 /mob/living/advanced/npc/ashwalker/hunter
 	name = "ashwalker hunter"
-	loadout_to_use_male = /loadout/ashwalker/hunter
-	loadout_to_use_female = /loadout/ashwalker/hunter/female
+	loadout = /loadout/ashwalker/hunter
+	level = 20
 
-	level = 16
+/mob/living/advanced/npc/ashwalker/hunter/female
+	loadout = /loadout/ashwalker/hunter/female
+	gender = FEMALE
 
+//Shaman
 /mob/living/advanced/npc/ashwalker/shaman
 	name = "ashwalker shaman"
+	loadout = /loadout/ashwalker/shaman
+	level = 60
 
-	loadout_to_use_male = /loadout/ashwalker/shaman
-	loadout_to_use_female = /loadout/ashwalker/shaman/female
+/mob/living/advanced/npc/ashwalker/shaman/female
+	loadout = /loadout/ashwalker/shaman/female
+	gender = FEMALE
 
-	level = 40
-
+//Warrior
 /mob/living/advanced/npc/ashwalker/warrior
 	name = "ashwalker warrior"
+	loadout = /loadout/ashwalker/warrior
+	level = 40
 
-	loadout_to_use_male = /loadout/ashwalker/warrior
-	loadout_to_use_female = /loadout/ashwalker/warrior/female
-
-	level = 20
+/mob/living/advanced/npc/ashwalker/warrior/female
+	loadout = /loadout/ashwalker/warrior/female
+	gender = FEMALE

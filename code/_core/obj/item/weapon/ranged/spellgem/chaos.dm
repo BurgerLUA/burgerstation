@@ -8,7 +8,7 @@
 
 	shoot_delay = 2
 
-	bullet_count = 9
+	bullet_count = 5
 	projectile_speed = TILE_SIZE*0.2 - 1
 	spread_per_shot = 20
 
