@@ -33,7 +33,6 @@
 	use_iff_tag = TRUE
 
 	var/bullet_time = 0 //Not slow-mo, but how long it takes to insert a bullet into the gun.
-	var/list/timed_bullet = list() //If there's some special bullets that take longer or shorter to load. Meant for the single bullet weapons.
 
 	var/sound_pitch = 1
 

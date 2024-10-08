@@ -36,7 +36,7 @@
 		//3 heavy weapons (lmgs, sniper rifles, rocket launchers)
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
 		/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/nanotrasen,
-		/obj/item/weapon/ranged/bullet/single_shot/rocket,
+		/obj/item/weapon/ranged/bullet/revolver/rocket,
 
 		//3 grenades or equipment
 		/obj/item/grenade/device/landmine/proximity/explosive,
@@ -114,7 +114,7 @@
 
 		//Belts and pockets
 		/obj/item/clothing/belt/storage/colored/brown,
-		/obj/item/clothing/belt/bandoliers/bandolier/shotgun_12,
+		/obj/item/clothing/belt/bandolier/shotgun_12,
 		/obj/item/storage/pouch/single/brown,
 		/obj/item/storage/pouch/double/brown,
 		/obj/item/storage/pouch/triple/brown,

@@ -96,17 +96,3 @@
 		I.add_object(C)
 		update_sprite()
 		return TRUE
-
-/obj/item/clothing/belt/musket_bag/proc/take_charge(var/mob/caller,var/obj/hud/inventory/I)
-	if(charge_count <= 0)
-		caller.to_chat(span("warning","There are no charges left!"))
-		return FALSE
-	var/obj/item/bullet_cartridge/C = /obj/item/bullet_cartridge/flintlock
-	C = new C(get_turf(src))
-	C.amount = 1
-	caller.to_chat(span("notice","You take 1 charge from \the [src.name]. There are [charge_count] charges left."))
-	INITIALIZE(C)
-	FINALIZE(C)
-	I.add_object(C)
-	update_sprite()
-	return TRUE

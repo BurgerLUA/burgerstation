@@ -31,7 +31,8 @@
 		//Union
 		/obj/item/clothing/overwear/coat/union,
 		/obj/item/clothing/head/hat/union,
-		/obj/item/clothing/belt/bandoliers/musket_bag,
+		/obj/item/clothing/belt/musket_bag,
+		/obj/item/bullet_cartridge/flintlock{amount=3},
 
 		//Xeno
 		/obj/item/clothing/overwear/armor/xeno,
