@@ -193,7 +193,7 @@
 	return list()
 
 /damagetype/proc/get_crit_chance(var/mob/living/L)
-	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION,0,1,2)*0.75 + (L.get_attribute_power(ATTRIBUTE_LUCK,0,1) - 0.5)*0.25)
+	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION,0,1,2)*0.75 + 0.25)
 
 /damagetype/proc/get_combat_rating(var/mob/living/L)
 
@@ -244,7 +244,7 @@
 
 	if(is_living(victim))
 		var/mob/living/L = victim
-		if(L.has_status_effect(IMMORTAL))
+		if(L.has_status_effect(IMMORTAL) && !L.has_status_effect(DUMMY))
 			return null
 
 	var/list/new_attack_damage = attack_damage_base.Copy()
@@ -594,31 +594,45 @@
 			damage_to_deal[damage_type] -= blocked_damage
 			fatigue_damage += blocked_damage*0.5
 			damage_blocked_with_shield += blocked_damage
-		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier * stealth_multiplier
+		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier * stealth_multiplier //Before armor calculations.
 		if(debug) log_debug("Post-bonus [damage_type] damage: [old_damage_amount].")
 		var/victim_defense = defense_rating_victim[damage_type]
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
-		if(IS_INFINITY(victim_defense)) //Defense is infinite. No point in calculating further damage or armor.
+		if(IS_INFINITY(victim_defense)) //Defense is infinite. No point in calculating further damage or armor. Even if penetration is infinity.
 			damage_to_deal[damage_type] = 0
 			if(debug) log_debug("Victim has infinite [damage_type] defense. No damage can be dealt.")
 			continue
+
 		if(debug) log_debug("Victim's [damage_type] defense before penetration calculations: [victim_defense].")
-		var/local_penetration = attack_damage_penetration[damage_type] * penetration_mod
+
+		var/local_penetration = attack_damage_penetration[damage_type]
 		if(IS_INFINITY(local_penetration))
 			victim_defense = 0
-		else
+		else if(victim_defense >= 0)
+			local_penetration *= penetration_mod
 			if(local_penetration < 0)
-				if(victim_defense > 0)
-					victim_defense -= local_penetration //This adds extra armor.
+				victim_defense -= local_penetration //This adds extra armor, since local_penetration would be negative.
 			else
+				/* Here lies overpenetration code. It never scored.
+				if(local_penetration*0.5 > victim_defense)
+					old_damage_amount = max(
+						old_damage_amount*0.5,
+						old_damage_amount - (local_penetration*0.5 - victim_defense)*(1/ARMOR_AP_MUL)
+					)
+					if(debug) log_debug("Damage of [damage_type] was reduced to [old_damage_amount] due to armor overpenetration.")
+				*/
 				if(victim_defense > 0)
 					victim_defense = max(0,victim_defense - local_penetration)
+
 		if(debug) log_debug("Victim's [damage_type] defense after penetration calculations: [victim_defense].")
 		var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
 		if(debug) log_debug("Final [damage_type] damage: [new_damage_amount].")
 		var/damage_to_block = max(0,old_damage_amount - new_damage_amount)
 		if(debug) log_debug("Blocked [damage_type] damage: [damage_to_block].")
 		damage_blocked_with_armor += damage_to_block
+
+
+
 		damage_to_deal[damage_type] = CEILING(max(0,new_damage_amount),1)
 		if(damage_type_to_fatigue[damage_type])
 			var/fatigue_damage_to_convert = damage_to_block*damage_type_to_fatigue[damage_type]

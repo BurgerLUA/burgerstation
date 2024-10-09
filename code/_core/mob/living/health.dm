@@ -14,9 +14,12 @@
 
 	. = ..()
 
+	if(!health || has_status_effect(IMMORTAL))
+		return .
+
 	var/total_bleed_damage = length(damage_table) ? SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5 : 0
 
-	var/savage_hit = health && !has_status_effect(IMMORTAL) ? damage_amount >= health.health_max*DT.savage_hit_threshold : FALSE
+	var/savage_hit = damage_amount >= health.health_max*DT.savage_hit_threshold
 
 	if(savage_hit)
 		total_bleed_damage *= 3

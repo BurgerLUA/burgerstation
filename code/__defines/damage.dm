@@ -48,7 +48,7 @@
 #define ARMOR_VALUE_TO_CONSIDER 150 //The armor value of which to consider the value of weapons, bullets, and armor for.
 
 #define ARMOR_AP_MUL 3
-#define ARMOR_DAM_MUL 0.9
+#define ARMOR_DAM_MUL 0.8
 #define SURPLUS_MUL 0.75
 #define PREMIUM_MUL 1.25
 #define DU_MUL 1.5

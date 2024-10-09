@@ -6,6 +6,8 @@
 	icon = 'icons/obj/item/ore_new.dmi'
 	icon_state = null
 
+	material_id = /material/iron
+
 	amount_max = 50
 	amount_max_icon = 3
 

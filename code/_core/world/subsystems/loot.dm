@@ -3,90 +3,55 @@ SUBSYSTEM_DEF(loot)
 	desc = "Yes."
 	priority = SS_ORDER_LOOT
 	var/list/all_loot = list()
-	var/list/recursive_loot = list()
 
 	var/list/unobtainable_items = list() //item = weight, higher weight means less value
 
 /subsystem/loot/Initialize()
 
 	var/list/loot_to_check = list()
-
-	var/list/created_items = list()
+	var/list/checked_loot = list()
 
 	for(var/k in subtypesof(/loot/))
 		var/loot/L = new k
 		all_loot[L.type] = L
 		loot_to_check += L.type
 
-	var/turf/T = locate(1,1,1)
-
+	var/i = 1
 	while(length(loot_to_check) > 0)
-		var/k = loot_to_check[1]
-		var/loot/L = all_loot[k]
-		loot_to_check -= k
-		var/isolated = TRUE
-		for(var/j in L.loot_table)
-			if(ispathcache(k,/obj/item))
-				if(SSbalance.stored_value[k])
-					continue
-				var/obj/item/I = k
-				if(created_items[I])
-					I = created_items[I]
-				else
-					I = new k(T)
-					I.initialize_type = INITIALIZE_NONE
-					INITIALIZE(I)
-					GENERATE(I)
-					FINALIZE(I)
-					created_items[k] = I
-				if(isnull(I.value))
-					isolated = FALSE
-					break
-				continue
-			if(!ispathcache(j,/loot)) //Not loot. Must be something else.
-				continue
-			if(!(j in loot_to_check)) //Already checked!
-				continue
-			isolated = FALSE
-			break
-		for(var/j in L.loot_table_guaranteed)
-			if(ispathcache(k,/obj/item))
-				if(SSbalance.stored_value[k])
-					continue
-				var/obj/item/I = k
-				if(created_items[I])
-					I = created_items[I]
-				else
-					I = new k
-					I.initialize_type = INITIALIZE_NONE
-					INITIALIZE(I)
-					GENERATE(I)
-					FINALIZE(I)
-					created_items[k] = I
-				if(isnull(I.value))
-					isolated = FALSE
-					break
-				continue
-			if(!ispathcache(j,/loot)) //Not loot. Must be something else.
-				continue
-			if(!(j in loot_to_check)) //Already checked!
-				continue
-			isolated = FALSE
-			break
-		if(!isolated)
-			//log_subsystem(name,"[k] was not isolated. Moving to back...")
-			loot_to_check += k //Move to back. Check again later.
-		else
-			L.check_value()
-			//log_subsystem(name,"[k] was set to a value of [L.average_value].")
-		CHECK_TICK(95,FPS_SERVER)
+		CHECK_TICK_HARD
+		if(i > length(loot_to_check))
+			i = 1
+		var/loot/L = all_loot[loot_to_check[i]]
+		var/valid_check = TRUE
+		//Process the loot_table.
+		for(var/k in L.loot_table)
+			if(ispath(k,/loot/) && !(k in checked_loot))
+				valid_check = FALSE
+				break
+		if(!valid_check)
+			i++
+			continue
+		//Process the loot_table_guaranteed.
+		for(var/k in L.loot_table_guaranteed)
+			if(ispath(k,/loot/) && !(k in checked_loot))
+				valid_check = FALSE
+				break
+		if(!valid_check)
+			i++
+			continue
+		L.check_value()
+		checked_loot += L.type
+		loot_to_check -= L.type
 
 	var/list/all_items = subtypesof(/obj/item)
 
-	for(var/k in created_items)
-		var/obj/item/I = created_items[k]
-		all_items -= I.type
-		qdel(I)
+	//Dirty as fuck, but at least it runs once.
+	for(var/k in SSloot.all_loot)
+		var/loot/L = SSloot.all_loot[k]
+		for(var/j in L.loot_table)
+			all_items -= j
+		for(var/j in L.loot_table_guaranteed)
+			all_items -= j
 
 	for(var/k in SSloadouts.all_loadouts)
 		var/loadout/L = SSloadouts.all_loadouts[k]
@@ -98,6 +63,8 @@ SUBSYSTEM_DEF(loot)
 		if(I.value <= 0)
 			continue
 		if(!I.can_save)
+			continue
+		if(SSbalance.can_save_loadout[I.type])
 			continue
 		var/found_value = SSbalance.stored_value[I]
 		if(!found_value) //Could be null

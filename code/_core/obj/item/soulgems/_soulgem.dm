@@ -43,14 +43,14 @@
 
 /obj/item/soulgem/get_base_value()
 	. = ..()
-	. = (300 + (total_capacity * ( 100 / (20000+300) ))**2)*0.5
+	. = (300 + (total_capacity * ( 100 / (20000+300) ))**2)
 	. = CEILING(.,500)
 	if(do_not_consume)
 		. *= 3
 
 /obj/item/soulgem/get_value()
 	. = ..()
-	. = (300 + (total_capacity * ( 100 / (20000+300) ))**2)*0.5
+	. = (300 + (total_charge * ( 100 / (20000+300) ))**2)*2
 	. = CEILING(.,1)
 
 /obj/item/soulgem/get_examine_list(var/mob/caller)
