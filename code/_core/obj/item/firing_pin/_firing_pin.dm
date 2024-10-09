@@ -10,7 +10,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-	value = 1
+	value = 0
 
 /obj/item/firing_pin/proc/can_shoot(var/mob/caller,var/obj/item/weapon,var/messages=TRUE)
 	return TRUE
@@ -41,7 +41,6 @@
 	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered NanoTrasen IFF implant, and prevents firing at those with one."
 	iff_tag = "NanoTrasen"
 	icon_state = "nanotrasen"
-	value = 10
 
 /obj/item/firing_pin/electronic/iff/nanotrasen/can_shoot(var/mob/caller,var/obj/item/weapon)
 
