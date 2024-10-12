@@ -103,6 +103,9 @@
 "bY" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "bZ" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "ca" = (/obj/marker/map_node/x3,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"cb" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 8},/turf/simulated/wall/brick/red/dark/rev,/area/mission/prefab/misc/rev_base_3)
+"cc" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 4},/turf/simulated/wall/brick/red/dark/rev,/area/mission/prefab/misc/rev_base_1)
+"cd" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 8},/turf/simulated/wall/wood/rev,/area/mission/prefab/misc/rev_base_2)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -112,17 +115,17 @@ aaacacananananananaeakaoaoakaeacacalapapapapapapapapapapapacahaa
 aaacacanaqarasatanafakaoaoaeafacacalapauavawaxayazaAavaBapacahaa
 aaabacanaCararaDanaEaEaEaeaeacacacalapavavavavavavavavavaFalabaa
 aaacacanaGararaHanaIaJaKacacacaLacacapaMaNavavavavavaNavaOalacaa
-aaacaeanararaPaQanaRaeacacacaSacacaTapaUavavapapapavavaVapalacaa
+aaacaeanararaPaQcbaRaeacacacaSacacaTapaUavavapapapavavaVapalacaa
 aaacaeananaWaXananaYacacaLacacacacacapaMavavavavavavavaZapacacaa
 aaacafaKafaebaaYbbaYafacacacacaLacacapavavavbcavbdavavaZapacacaa
-aaacacaeaeaeaebeaeaYaeacacacacbfacacapbgaNavbhavbdavaNaZapacabaa
+aaacacaeaeaeaebeaeaYaeacacacacbfacacccbgaNavbhavbdavaNaZapacabaa
 aaabaeaJaeaeafaeadaYaYaYaRaYacaSacacapbgavavbhavbiavavaZapalacaa
 aaacaebjbjbjbjbjbjbjbjbjbjbbacacacaTapbkavavavaNavavavaVapblacaa
 aaacaebjbmbnbnbobpbqbqbqbjaYacacacacbrbgavavavavavavavavapblaeaa
 aaacaebjbsbqbqbqbtbqbtbubjbvbvbwbvbxbybzavavavavavavavavapblakaa
 aaabaebjbqbAbqbqbqbqbAbqbjbvacacacaeapauavbBavbCavbBavavapaeaeaa
 aaacblbjbqbDbDbDbDbDbDbDbjaYacacacaeapapapapapapapapapapapaebEaa
-aaacblbjbqbqbqbqbqbqbqbFbjaYacacacaJaebGbGbGbGbHbHbeaebIaeaeaeaa
+aaacblbjbqbqbqbqbqbqbqbFcdaYacacacaJaebGbGbGbGbHbHbeaebIaeaeaeaa
 aaaeblbjbqbJbqbqbqbKbqbFbLbMacacacaeaebHbGbGbGbGbHaeaJbeafaeacaa
 aaagblbjbsbNbqbqbAbKbqbObPbaacacaLaeaebGbGbHbHbGbHaeaeaeaeabacaa
 aaaeaebjbQbqbRbRbRbqbSbTbjaeacacacacaeaeaeaeaeaeaeaeaeaeacacacaa

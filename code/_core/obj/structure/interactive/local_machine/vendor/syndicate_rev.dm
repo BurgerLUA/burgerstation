@@ -50,7 +50,6 @@
 
 /obj/structure/interactive/vending/syndicate/guns/rev
 	name = "revolutionary armaments vendor"
-	icon_state = "sovietsoda"
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/revolver/nagant,
 		/obj/item/bullet_cartridge/revolver_762{amount=5},

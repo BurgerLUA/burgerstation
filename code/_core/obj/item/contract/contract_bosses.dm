@@ -2,7 +2,7 @@
 /obj/item/contract/boss/Generate()
 
 	if(!reward)
-		var/loot/L = LOOT(/loot/lavaland/chest)
+		var/loot/L = LOOT(/loot/lavaland/contract)
 		if(L)
 			var/list/spawned_loot = L.do_spawn(src)
 			if(length(spawned_loot) > 1) //Hacky fallback.

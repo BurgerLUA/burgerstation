@@ -58,7 +58,7 @@
 
 /obj/item/weapon/ranged/energy/hybrid/carbine/ai_core
 	value_burgerbux = 1
-	contraband = TRUE
+	can_save = FALSE
 	value = 0
 	battery = /obj/item/powercell/recharging
 	bullet_count = 1

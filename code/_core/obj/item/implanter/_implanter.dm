@@ -83,7 +83,7 @@
 	value_burgerbux = 1
 
 	rarity = RARITY_LEGENDARY
-	contraband = TRUE
+	can_save = FALSE
 
 /obj/item/implanter/torso
 	name = "torso implanter"

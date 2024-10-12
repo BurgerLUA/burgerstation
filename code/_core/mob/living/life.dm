@@ -74,6 +74,7 @@
 		S.name = "soul of [initial(name)]:"
 		S.soul_size = src.soul_size
 		S.soul_path = src.type
+		S.boss = src.boss
 		INITIALIZE(S)
 		GENERATE(S)
 		FINALIZE(S)

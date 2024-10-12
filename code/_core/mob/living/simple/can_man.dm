@@ -65,9 +65,13 @@
 
 	object_size = 1
 
-	level = 90
+	level = 80
 
 	use_momentum = FALSE
+
+/mob/living/simple/can_man/proc/summon_missile(var/turf/T)
+	new /obj/effect/falling_missile(T)
+	return TRUE
 
 /mob/living/simple/can_man/proc/shoot_minigun(var/atom/target)
 

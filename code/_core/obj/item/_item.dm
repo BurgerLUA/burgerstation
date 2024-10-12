@@ -7,7 +7,7 @@
 
 	var/value_burgerbux
 
-	var/contraband = FALSE //Set to true if this object is considered contraband and can't be saved, but still accessed by the game.
+	var/contraband = FALSE //Set to true if this object is considered contraband and can't be saved except on your character.
 	var/save_on_death = FALSE //Set to true if this item should save on death, regardless of item respawning. This should only be set by special code.
 	var/can_save_loadout = TRUE //Set to true if you can save this item in a loadout.
 
@@ -463,7 +463,9 @@
 	else if(tier == 0)
 		. += div("rarity center","Tier [tier][tier_type ? " [tier_type]" : ""].")
 
-	if(contraband)
+	if(!can_save)
+		. += div("bad bold center","CLASSIFIED")
+	else if(contraband)
 		. += div("bad bold center","CONTRABAND")
 
 	if(quality != -1)

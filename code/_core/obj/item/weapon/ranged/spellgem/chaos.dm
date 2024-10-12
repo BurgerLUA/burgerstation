@@ -6,7 +6,7 @@
 
 	rarity = RARITY_MYTHICAL
 
-	shoot_delay = 2
+	shoot_delay = 10
 
 	bullet_count = 5
 	projectile_speed = TILE_SIZE*0.2 - 1

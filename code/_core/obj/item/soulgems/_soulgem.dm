@@ -184,6 +184,10 @@
 			caller.to_chat(span("warning","This soul is too large to be contained in \the [src.name]!"))
 			return TRUE
 
+		if(S.boss && src.total_capacity < SOUL_SIZE_GODLY)
+			caller.to_chat(span("warning","Boss souls can only be stored in godly soul gems!"))
+			return TRUE
+
 		total_charge = min(S.soul_size,total_capacity)
 		caller.visible_message(span("danger","\The [caller.name] traps \the [S.name] with \the [src.name]!"),span("warning","You trap \the [S.name] with \the [src.name]!"))
 		if(is_living(caller))

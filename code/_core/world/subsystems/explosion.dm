@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(explosion)
 
 	var/list/atom/damage_to_process = list()
 
-	tick_usage_max = 95
+	tick_usage_max = 98
 
 	var/explosion_ticks = 0
 
@@ -76,7 +76,7 @@ SUBSYSTEM_DEF(explosion)
 				CHECK_TICK(tick_usage_max,FPS_SERVER)
 			if(!length(explosion_data))
 				damage_to_process -= k
-		explosion_ticks = 1
+		explosion_ticks = 0
 	else
 		explosion_ticks++
 

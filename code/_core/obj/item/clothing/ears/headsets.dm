@@ -50,7 +50,7 @@
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/syndicate
 
-	contraband = TRUE
+	can_save = FALSE
 
 	value = 1
 
@@ -60,7 +60,7 @@
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/mercenary
 
-	contraband = TRUE
+	can_save = FALSE
 
 	value = 1
 
@@ -71,7 +71,7 @@
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/revolutionary
 
-	contraband = TRUE
+	can_save = FALSE
 
 	value = 1
 

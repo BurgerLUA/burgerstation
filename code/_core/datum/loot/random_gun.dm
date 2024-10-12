@@ -34,6 +34,8 @@
 		var/obj/item/weapon/ranged/R = k
 		if(company_type && initial(R.company_type) != src.company_type)
 			continue
+		if(initial(R.value) <= 0)
+			continue
 		var/initial_value = SSbalance.stored_value[k]
 		if(initial_value <= 0)
 			continue
