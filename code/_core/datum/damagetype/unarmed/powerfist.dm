@@ -39,11 +39,11 @@
 /damagetype/unarmed/powerfist/can_man
 
 	attack_damage_base = list(
-		BLUNT = 80
+		BLUNT = 60
 	)
 
-	attack_delay = 10
-	attack_delay_max = 15
+	attack_delay = 20
+	attack_delay_max = 20
 
 	crit_multiplier = 4
 	crit_chance = 0
