@@ -18,10 +18,15 @@
 
 /loot/boss
 	loot_table = list(
-		/loot/potion = 5,
+		/loot/potion = 10,
 		/loot/random/scroll = 1,
-		/loot/soulgem/assorted = 10,
+		/loot/soulgem/assorted = 5,
 		/loot/random/tempering = 10
 	)
 	chance_none = 25
 	loot_count = 10
+
+/loot/boss/always_single
+	chance_none = 0
+	loot_count = 1
+	use_value = FALSE

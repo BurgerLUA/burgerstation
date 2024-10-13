@@ -5,8 +5,8 @@
 	icon = 'icons/mob/abstract/ghosts.dmi'
 	icon_state = "basic"
 
-	invisibility = INVISIBILITY_DEFAULT
-	see_invisible = INVISIBILITY_DEFAULT
+	invisibility = INVISIBLITY_GHOST
+	see_invisible = INVISIBLITY_GHOST
 
 	layer = LAYER_GHOST
 
