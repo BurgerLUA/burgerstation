@@ -76,7 +76,7 @@
 		return null
 	FINALIZE(I)
 
-	if(I.contraband || !I.can_save)
+	if(!I.can_save)
 		qdel(I)
 		return null
 

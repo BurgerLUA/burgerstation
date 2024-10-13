@@ -3,27 +3,6 @@
 	markup = 2
 	stored_types = list()
 
-	var/list/possible_rewards = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/brown/mod,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/mod,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/laton/mod,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47/mod,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod,
-		/obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod,
-		/obj/item/weapon/melee/energy/sword/katana,
-		/obj/item/weapon/melee/energy/stunbaton,
-		/obj/item/weapon/melee/sword/zweihander,
-		/obj/item/weapon/unarmed/brass_knuckles,
-		/obj/item/weapon/unarmed/powerfist
-	)
-
 	health = null
 
 	apc_powered = FALSE //Does not require power.
@@ -72,11 +51,6 @@
 		return ..()
 
 	var/obj/item/contract/I = new item_path(turf_spawn)
-	if(!I.reward)
-		var/chosen_reward = pick(possible_rewards)
-		possible_rewards -= chosen_reward
-		I.reward = chosen_reward
-
 	INITIALIZE(I)
 	GENERATE(I)
 	FINALIZE(I)
@@ -91,8 +65,6 @@
 		C.reward = based.reward.type
 
 	return TRUE
-
-
 
 /obj/structure/interactive/vending/contract/get_bullshit_price(var/desired_price)
 	return CEILING(desired_price,10)
