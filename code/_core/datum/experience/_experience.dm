@@ -5,6 +5,12 @@
 	var/desc = "This is the base experience tracker. You shouldn't have this."
 	var/desc_extended = "Extended description for that wall of text."
 
+	/// If your survival skill is lower than this value, you will see a vague description instead of a normal extended description
+	var/skill_for_examine = 0
+	var/desc_vague = "Affects... something"
+	/// If you want, you can also optionally add in tips that show up at different levels of survival by making skill_for_examine into a list
+	var/list/tips = list()
+
 	var/experience = 0
 
 	var/chargen_min_level = 1
@@ -21,8 +27,27 @@
 
 	var/mob/living/owner
 
-/experience/get_examine_list(var/mob/examiner)
-	return list(div("examine_title","[name]"),div("examine_description","[desc]"),div("examine_description","[desc]"),div("examine_description_long",src.desc_extended))
+/experience/get_examine_list(var/mob/living/examiner)
+	var/examine_level = istype(examiner) ? examiner.get_skill_level(SKILL_SURVIVAL) : 1
+	var/list/completed_list = list(div("examine_title","[name]"),div("examine_description","[desc]"),div("examine_description","[desc]"),)
+	if(!islist(skill_for_examine))
+		var/more_xp_text = span("notice", "\n... you feel as if raising your survival skill would greatly help with evaluating this skill")
+		completed_list += div("examine_description_long", examine_level >= skill_for_examine ? src.desc_extended : "[src.desc_vague]\n[more_xp_text]")
+		return completed_list
+
+	var/list/examine_list = skill_for_examine
+	completed_list += "<div class='examine_description_long'>[examine_level >= examine_list[1] ? src.desc_extended : src.desc_vague]"
+	var/current_tip = 1
+	for(var/i in 1 to length(tips))
+		if(examine_level >= examine_list[current_tip + 1])
+			completed_list[4] += span("notice", "\n- [tips[current_tip]]")
+		current_tip++
+
+	if(examine_level < examine_list[length(examine_list)])
+		completed_list[4] += span("notice", "\n... you feel as if raising your survival skill would greatly help with evaluating this skill")
+
+	completed_list[4] += "</div>"
+	return completed_list
 
 /experience/Destroy()
 	owner = null
