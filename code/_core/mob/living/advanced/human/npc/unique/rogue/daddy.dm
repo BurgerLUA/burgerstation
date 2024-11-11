@@ -8,7 +8,5 @@
 
 	level = 99
 
-	soul_size = SOUL_SIZE_RARE
-
 	loadout = /loadout/daddy
 	dna = /dna/human

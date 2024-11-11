@@ -61,8 +61,6 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(10)
 
-	soul_size = SOUL_SIZE_RARE
-
 	object_size = 1
 
 	level = 80

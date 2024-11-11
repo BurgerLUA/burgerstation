@@ -65,8 +65,6 @@
 
 	level = 20
 
-	soul_size = SOUL_SIZE_UNCOMMON
-
 
 /mob/living/advanced/npc/syndicate/wizard
 	name = "syndicate spellcaster"
@@ -74,8 +72,6 @@
 	loadout = /loadout/syndicate/wizard
 
 	level = 30
-
-	soul_size = SOUL_SIZE_UNCOMMON
 
 /mob/living/advanced/npc/syndicate/stress_test
 	name = "stress test"

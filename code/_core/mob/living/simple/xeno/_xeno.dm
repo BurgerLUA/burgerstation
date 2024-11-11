@@ -32,8 +32,6 @@
 
 	var/death_sounds = TRUE
 
-	soul_size = SOUL_SIZE_COMMON
-
 	armor = /armor/xeno
 
 	level = 10

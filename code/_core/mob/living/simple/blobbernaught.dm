@@ -35,8 +35,6 @@
 	blood_volume = 750
 	blood_type = /reagent/blood/blob
 
-	soul_size = SOUL_SIZE_UNCOMMON
-
 	level = 12
 
 /mob/living/simple/blobbernaught/New(loc,desired_client,desired_level_multiplier,var/obj/structure/interactive/blob/node/desired_node)

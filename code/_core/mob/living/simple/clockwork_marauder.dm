@@ -23,8 +23,6 @@
 	blood_type = null
 	blood_volume = 0
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 20
 
 /mob/living/simple/clockwork_marauder/post_death()

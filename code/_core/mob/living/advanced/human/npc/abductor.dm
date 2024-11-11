@@ -12,8 +12,6 @@
 	sex = NEUTER
 	gender = NEUTER
 
-	soul_size = SOUL_SIZE_UNCOMMON
-
 	loyalty_tag = "Abductor"
 	iff_tag = "Abductor"
 

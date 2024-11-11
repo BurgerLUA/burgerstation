@@ -6,8 +6,6 @@
 
 	level = 20
 
-	soul_size = SOUL_SIZE_UNCOMMON
-
 	loyalty_tag = "Wizard Federation"
 	iff_tag = "Wizard Federation"
 

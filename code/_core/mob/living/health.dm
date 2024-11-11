@@ -56,7 +56,7 @@
 	if(ai)
 		ai.on_damage_received(atom_damaged,attacker,weapon,DT,damage_table,damage_amount,stealthy)
 
-	if(dead && time_of_death + 30 <= world.time && (override_butcher || length(butcher_contents)) && is_living(attacker) && get_dist(attacker,src) <= 1)
+	if(!minion_master && dead && time_of_death + 30 <= world.time && (override_butcher || length(butcher_contents)) && is_living(attacker) && get_dist(attacker,src) <= 1)
 		var/mob/living/L = attacker
 		var/blade_damage = length(damage_table) ? SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[LASER]) : 0
 

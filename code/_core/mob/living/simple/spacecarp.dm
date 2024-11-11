@@ -37,8 +37,6 @@
 
 	blood_type = /reagent/blood/carp
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 8
 
 	var/color_body = "#FFFFFF"

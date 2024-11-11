@@ -9,5 +9,3 @@
 	blood_volume = 250
 
 	armor = /armor/borg
-
-	soul_size = null

@@ -1,7 +1,5 @@
 
 /mob/living/proc/can_add_minion(var/mob/living/minion_to_add)
-
-
 	return TRUE
 
 /mob/living/proc/add_minion(var/mob/living/minion_to_add)

@@ -37,7 +37,8 @@ var/global/static/list/debug_verbs = list(
 	/client/verb/get_far_viewers,
 	/client/verb/get_active_ais_not_in_player_range,
 	/client/verb/check_value_of_loadouts,
-	/client/verb/check_unobtainable_items
+	/client/verb/check_unobtainable_items,
+	/client/verb/check_soulgem_size
 )
 
 
@@ -854,3 +855,56 @@ var/global/static/list/destroy_everything_whitelist = list(
 		final_list += "[k]: [v]cr<br>"
 
 	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_list]</body>","window=loadoutvalue")
+
+/client/verb/check_soulgem_size()
+
+	set name = "Check All Soulgem Sizes (DANGER)"
+	set category = "Debug"
+
+	var/desired_choice = input("Are you sure you want to check the soul sizes of all mobs? This involves spawning every mob and then deleting them.","Soul Size Checking","Cancel") as null|anything in list("Yes","No","Cancel")
+
+	if(desired_choice != "Yes")
+		return
+
+	var/list/final_list = list()
+
+	var/turf/T = get_turf(mob)
+
+	for(var/k in subtypesof(/mob/living))
+		var/mob/living/L = k
+		if(!initial(L.ai))
+			continue
+		if(!initial(L.health))
+			continue
+		L = new L(T)
+		INITIALIZE(L)
+		GENERATE(L)
+		FINALIZE(L)
+		final_list["[L.type]"] = L.soul_size
+		qdel(L)
+
+	sort_tim(final_list,/proc/cmp_numeric_dsc,associative=TRUE)
+
+	var/final_output = ""
+
+	for(var/k in final_list)
+		var/v = final_list[k]
+		final_output += "[k]: [get_soul_size_name(v)]<br>"
+
+	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_output]</body>","window=garbage")
+
+/proc/get_soul_size_name(var/soul_size)
+
+	if(!soul_size || soul_size <= 0)
+		return "None"
+
+	if(soul_size <= SOUL_SIZE_COMMON)
+		return "Common"
+	else if(soul_size <= SOUL_SIZE_UNCOMMON)
+		return "Uncommon"
+	else if(soul_size <= SOUL_SIZE_RARE)
+		return "Rare"
+	else if(soul_size <= SOUL_SIZE_MYSTIC)
+		return "Mystic"
+
+	return "Godly"

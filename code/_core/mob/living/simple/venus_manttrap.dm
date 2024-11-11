@@ -27,8 +27,6 @@
 	blood_type = /reagent/blood/plant
 	blood_volume = 400
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 6
 
 /mob/living/simple/venus_human_trap/post_death()

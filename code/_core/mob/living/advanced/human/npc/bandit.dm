@@ -4,8 +4,6 @@
 
 	dna = /dna/human
 
-	soul_size = SOUL_SIZE_COMMON
-
 	ai = /ai/advanced/bandit
 
 	loadout = /loadout/bandit/male

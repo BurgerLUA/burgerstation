@@ -26,7 +26,7 @@
 	var/head_limit = 2
 	var/next_head = 0
 
-	var/clone=FALSE
+	var/clone = FALSE
 
 	iff_tag = "Legion"
 	loyalty_tag = "Legion"
@@ -36,8 +36,6 @@
 	blood_type = null
 
 	armor = /armor/legion
-
-	soul_size = null
 
 	level = 8
 
@@ -58,16 +56,19 @@
 
 /mob/living/simple/legionare/proc/create_head()
 
-	if(next_head > world.time)
-		return FALSE
-
-	if(length(tracked_heads) >= head_limit)
+	if(minion_master)
 		return FALSE
 
 	if(clone) //Clones cannot create heads.
 		return FALSE
 
 	if(dead)
+		return FALSE
+
+	if(next_head > world.time)
+		return FALSE
+
+	if(length(tracked_heads) >= head_limit)
 		return FALSE
 
 	var/mob/living/simple/legionare_head/L = new head_type(get_turf(src))

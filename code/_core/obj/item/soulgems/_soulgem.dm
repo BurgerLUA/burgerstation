@@ -31,7 +31,7 @@
 /obj/item/soulgem/Finalize()
 	. = ..()
 
-	if(!total_capacity)
+	if(!total_capacity) //In case of errors.
 		if(total_charge)
 			total_capacity = total_charge
 		else
@@ -43,14 +43,14 @@
 
 /obj/item/soulgem/get_base_value()
 	. = ..()
-	. = (300 + (total_capacity * ( 100 / (20000+300) ))**2)
+	. = (300 + (total_capacity * ( 100 / (SOUL_SIZE_GODLY+300) ))**2)
 	. = CEILING(.,500)
 	if(do_not_consume)
 		. *= 3
 
 /obj/item/soulgem/get_value()
 	. = ..()
-	. = (300 + (total_charge * ( 100 / (20000+300) ))**2)*2
+	. = (300 + (total_charge * ( 100 / (SOUL_SIZE_GODLY+300) ))**2)*2
 	. = CEILING(.,1)
 
 /obj/item/soulgem/get_examine_list(var/mob/caller)
@@ -82,15 +82,17 @@
 			FINALIZE(mob_to_spawn)
 			if(master.ckey)
 				master.add_skill_xp(SKILL_SUMMONING,CEILING(mob_to_spawn.soul_size*0.02,1))
-			if(!do_not_consume)
-				mob_to_spawn.visible_message(span("notice","\The [src.name] shatters, releasing [mob_to_spawn.name]!"))
-				qdel(src)
-			else
+			if(do_not_consume)
 				mob_to_spawn.visible_message(span("notice","\The [src.name] vanishes, releasing [mob_to_spawn.name]!"))
 				if(is_advanced(master))
 					var/mob/living/advanced/A = master
 					src.quick_equip(A,ignore_worn=TRUE,ignore_dynamic=TRUE,silent=TRUE)
-			update_sprite()
+				update_sprite()
+			else
+				mob_to_spawn.visible_message(span("notice","\The [src.name] shatters, releasing [mob_to_spawn.name]!"))
+				qdel(src)
+
+
 
 /obj/item/soulgem/update_sprite()
 	. = ..()
@@ -142,6 +144,7 @@
 
 /obj/item/soulgem/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	//Capture Minions
 	if(is_living(object))
 
 		INTERACT_CHECK
@@ -166,6 +169,7 @@
 		update_sprite()
 		return TRUE
 
+	//Capture Souls
 	if(istype(object,/obj/effect/temp/soul))
 
 		INTERACT_CHECK
@@ -182,10 +186,6 @@
 
 		if(S.soul_size > src.total_capacity)
 			caller.to_chat(span("warning","This soul is too large to be contained in \the [src.name]!"))
-			return TRUE
-
-		if(S.boss && src.total_capacity < SOUL_SIZE_GODLY)
-			caller.to_chat(span("warning","Boss souls can only be stored in godly soul gems!"))
 			return TRUE
 
 		total_charge = min(S.soul_size,total_capacity)
@@ -262,7 +262,6 @@
 
 /obj/item/soulgem/godly
 	total_capacity = SOUL_SIZE_GODLY
-	value_burgerbux = 1
 	value = 1
 
 /obj/item/soulgem/godly/filled/Generate()

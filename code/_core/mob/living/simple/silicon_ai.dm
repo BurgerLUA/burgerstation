@@ -28,7 +28,6 @@
 
 	var/list/hit_directions = list()
 
-	soul_size = null
 
 /mob/living/simple/silicon/ai/Initialize()
 	. = ..()
