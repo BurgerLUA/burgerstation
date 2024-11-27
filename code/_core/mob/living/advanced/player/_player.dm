@@ -115,8 +115,6 @@
 
 	expiration_time = SECONDS_TO_DECISECONDS(180)
 
-
-
 /mob/living/advanced/player/Finalize()
 	. = ..()
 	setup_difficulty()
