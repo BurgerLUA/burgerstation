@@ -115,6 +115,44 @@
 
 	expiration_time = SECONDS_TO_DECISECONDS(180)
 
+/mob/living/advanced/player/get_examine_list(var/mob/living/examiner)
+	var/list/species_to_names = list(
+		"human" = "human",
+		"reptile_advanced" = prob(10) ? "spine dragger" : "lizard",
+		"cyborg" = prob(10) ? "tin can": "cyborg",
+		"diona" = "dionae",
+		"moth" = prob(10) ? "moff" : "moth"
+	)
+
+	. = list(
+		div("examine_title", src.name),
+		div("center bold","Level [level] [species_to_names[species]]"),
+		div("examine_description_long", src.desc_extended)
+	)
+
+	var/activity_text = get_activity_text()
+	if(activity_text)
+		. += activity_text
+
+	var/examine_level = istype(examiner) ? examiner.get_skill_level(SKILL_SURVIVAL) : 1
+	if(examine_level >= 50)
+		var/weakness_name = ""
+		var/weakness = 0
+		for(var/i in overall_clothing_defense_rating)
+			if(i == "items" || overall_clothing_defense_rating[i] < -10000) // If someone is THAT weak, they are lying for attention
+				continue
+
+			if(weakness > overall_clothing_defense_rating[i])
+				weakness_name = i
+				weakness = overall_clothing_defense_rating[i]
+
+		if(weakness < 0)
+			. += div("notice", "[src.name]'s weakness seems to be [weakness_name] damage.")
+
+	var/damage_description = get_damage_description(examiner)
+	if(damage_description)
+		. += damage_description
+
 /mob/living/advanced/player/Finalize()
 	. = ..()
 	setup_difficulty()
