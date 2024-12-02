@@ -116,17 +116,9 @@
 	expiration_time = SECONDS_TO_DECISECONDS(180)
 
 /mob/living/advanced/player/get_examine_list(var/mob/living/examiner)
-	var/list/species_to_names = list(
-		"human" = "human",
-		"reptile_advanced" = prob(10) ? "spine dragger" : "lizard",
-		"cyborg" = prob(10) ? "tin can": "cyborg",
-		"diona" = "dionae",
-		"moth" = prob(10) ? "moff" : "moth"
-	)
-
 	. = list(
 		div("examine_title", src.name),
-		div("center bold","Level [level] [species_to_names[species]]"),
+		div("center bold","Level [level] [SPECIES(species)]"),
 		div("examine_description_long", src.desc_extended)
 	)
 
