@@ -9,7 +9,7 @@
 	value_burgerbux = 1
 	var/can_use = TRUE
 
-/obj/item/corrupting_frog/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/corrupting_frog/click_on_object(var/mob/caller, var/atom/object, location, control, params)
 
 	if(!can_use || !is_item(object))
 		return ..()
@@ -41,7 +41,7 @@
 
 	play_sound('sound/weapons/magic/zap_large.ogg',get_turf(src))
 
-	I.quality = rand(1,200)
+	I.adjust_quality(rand(1, 200) - I.quality)
 
 	if(is_clothing(I))
 		var/obj/item/clothing/C = I
