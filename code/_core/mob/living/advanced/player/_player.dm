@@ -134,21 +134,6 @@
 	if(activity_text)
 		. += activity_text
 
-	var/examine_level = istype(examiner) ? examiner.get_skill_level(SKILL_SURVIVAL) : 1
-	if(examine_level >= 50)
-		var/weakness_name = ""
-		var/weakness = 0
-		for(var/i in overall_clothing_defense_rating)
-			if(i == "items" || overall_clothing_defense_rating[i] < -10000) // If someone is THAT weak, they are lying for attention
-				continue
-
-			if(weakness > overall_clothing_defense_rating[i])
-				weakness_name = i
-				weakness = overall_clothing_defense_rating[i]
-
-		if(weakness < 0)
-			. += div("notice", "[src.name]'s weakness seems to be [weakness_name] damage.")
-
 	var/damage_description = get_damage_description(examiner)
 	if(damage_description)
 		. += damage_description
