@@ -12,3 +12,5 @@
 	weight = 8
 
 	rarity = RARITY_MYTHICAL
+
+	value = 1

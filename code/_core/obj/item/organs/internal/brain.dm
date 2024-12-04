@@ -13,6 +13,8 @@
 
 	has_life = TRUE
 
+	value = 0
+
 /obj/item/organ/internal/brain/on_life()
 
 	if(length(addictions) && is_advanced(src.loc))

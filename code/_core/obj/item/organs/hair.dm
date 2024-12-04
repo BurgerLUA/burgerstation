@@ -13,6 +13,8 @@
 
 	enable_skin = FALSE
 
+	value = 0
+
 /obj/item/organ/hair/initialize_worn_blends(var/desired_icon_state)
 	. = ..()
 	add_blend(
@@ -45,6 +47,8 @@
 	can_be_broken = FALSE
 
 	enable_skin = FALSE
+
+	value = 0
 
 /obj/item/organ/beard/initialize_worn_blends(var/desired_icon_state)
 	. = ..()

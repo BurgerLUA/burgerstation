@@ -40,8 +40,6 @@ var/global/list/valid_gabber_sound_files = list()
 
 	boss_music = /track/light_of_zach
 
-	soul_size = SOUL_SIZE_MYSTIC
-
 	object_size = 2
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
@@ -105,7 +103,7 @@ var/global/list/valid_gabber_sound_files = list()
 
 	. = ..()
 
-	if(health && health.health_current <= health.health_max*0.5 && !sword_mode && !has_status_effect(IMMORTAL)) //Start second phase at 50% health.
+	if(!minion_master && health && health.health_current <= health.health_max*0.5 && !sword_mode && !has_status_effect(IMMORTAL)) //Start second phase at 50% health.
 		start_sword_mode()
 
 

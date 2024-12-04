@@ -33,8 +33,6 @@
 
 	stun_angle = 180
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 8
 
 /mob/living/simple/bullshark/post_death()

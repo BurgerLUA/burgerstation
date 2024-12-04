@@ -42,8 +42,6 @@
 	blood_type = /reagent/blood/arachnid
 	blood_volume = 2000
 
-	soul_size = SOUL_SIZE_UNCOMMON
-
 	object_size = 2
 
 	level = 19

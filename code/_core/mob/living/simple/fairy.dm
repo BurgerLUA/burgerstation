@@ -24,8 +24,6 @@
 
 	blood_type = /reagent/medicine/mana_potion
 
-	soul_size = SOUL_SIZE_RARE
-
 	level = 16
 
 /mob/living/simple/fairy/post_death()

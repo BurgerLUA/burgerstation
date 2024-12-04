@@ -4,6 +4,8 @@
 
 	size = SIZE_3
 
+	value = -1
+
 /obj/item/clothing/head/helmet/full/knight/red
 	name = "red knight helmet"
 	icon = 'icons/obj/item/clothing/hats/knight_red.dmi'

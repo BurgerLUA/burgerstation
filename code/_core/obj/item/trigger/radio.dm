@@ -215,7 +215,7 @@ list(
 	frequency_min = RADIO_FREQ_MERCENARY_MIN
 	frequency_max = RADIO_FREQ_COMMON
 
-	contraband = TRUE
+	can_save = FALSE
 
 	value = 300
 
@@ -233,7 +233,7 @@ list(
 	frequency_min = RADIO_FREQ_SYNDICATE_MIN
 	frequency_max = RADIO_FREQ_COMMON
 
-	contraband = TRUE
+	can_save = FALSE
 
 	value = 300
 
@@ -251,7 +251,7 @@ list(
 	frequency_min = RADIO_FREQ_REVOLUTIONARY_MIN
 	frequency_max = RADIO_FREQ_COMMON
 
-	contraband = TRUE
+	can_save = FALSE
 
 	value = 300
 

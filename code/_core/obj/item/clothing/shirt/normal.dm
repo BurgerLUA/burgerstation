@@ -14,6 +14,8 @@
 		"shirt" = COLOR_WHITE
 	)
 
+	value = 1
+
 
 /obj/item/clothing/shirt/normal/priest
 	polymorphs = list(

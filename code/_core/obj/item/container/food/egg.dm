@@ -5,10 +5,10 @@
 	icon = 'icons/obj/item/consumable/food/meat.dmi'
 	icon_state = "egg"
 
-	value = 1
+	value = 0
 
 /obj/item/container/edible/egg/chicken
-	name = "chicken egg"
+	value = 1
 
 /obj/item/container/edible/egg/chicken/Generate()
 	reagents.add_reagent(/reagent/nutrition/egg_white,3)

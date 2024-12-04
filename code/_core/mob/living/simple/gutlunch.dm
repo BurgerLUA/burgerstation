@@ -19,8 +19,6 @@
 	stamina_base = 50
 	mana_base = 25
 
-	soul_size = SOUL_SIZE_COMMON
-
 	size = SIZE_ANIMAL
 
 	stun_angle = 0

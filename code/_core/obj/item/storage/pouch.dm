@@ -6,7 +6,6 @@
 
 	size = SIZE_2
 
-
 	is_container = TRUE
 
 	container_max_size = SIZE_2

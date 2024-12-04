@@ -9,6 +9,8 @@
 
 	dan_mode = FALSE
 
+	value = 0
+
 
 /obj/item/weapon/unarmed/single_use/soultrap
 	name = "soultrap"
@@ -20,3 +22,5 @@
 	damage_type = /damagetype/unarmed/soultrap
 
 	dan_mode = FALSE
+
+	value = 0

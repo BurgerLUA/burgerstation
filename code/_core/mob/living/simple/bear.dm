@@ -36,8 +36,6 @@
 	blood_type = /reagent/blood/bear
 	blood_volume = 700
 
-	soul_size = SOUL_SIZE_UNCOMMON
-
 	level = 6
 
 /mob/living/simple/bear/update_overlays()

@@ -8,6 +8,7 @@
 
 	var/soul_size = 0
 	var/mob/living/soul_path
+	var/boss = FALSE
 
 /obj/effect/temp/soul/Finalize()
 

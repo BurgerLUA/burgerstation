@@ -185,3 +185,9 @@
 	value = 0
 
 	weight = 0
+
+/obj/item/powercell/dummy/get_base_value()
+	return 0
+
+/obj/item/powercell/dummy/get_value()
+	return 0

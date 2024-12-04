@@ -1,10 +1,12 @@
 /obj/item/clothing/ears/headset
-	name = "nanotrasen headset"
+	name = "generic headset"
 	desc = "; HELP MAINT!"
 	desc_extended = "A headset for communicating with your fellows."
 	icon = 'icons/obj/item/clothing/ears/headset.dmi'
 
-	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/headset/nanotrasen
+	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/headset
+
+	value = 1
 
 /obj/item/clothing/ears/headset/get_examine_list(var/mob/examiner)
 	. = ..()
@@ -48,7 +50,9 @@
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/syndicate
 
-	contraband = TRUE
+	can_save = FALSE
+
+	value = 1
 
 /obj/item/clothing/ears/headset/mercenary
 	name = "mercenary headset"
@@ -56,7 +60,10 @@
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/mercenary
 
-	contraband = TRUE
+	can_save = FALSE
+
+	value = 1
+
 
 /obj/item/clothing/ears/headset/revolutionary
 	name = "revolutionary headset"
@@ -64,13 +71,20 @@
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/revolutionary
 
-	contraband = TRUE
+	can_save = FALSE
+
+	value = 1
+
+/obj/item/clothing/ears/headset/nanotrasen
+	stored_radio = /obj/item/device/radio/headset/nanotrasen
+	value = 1
 
 /obj/item/clothing/ears/headset/nanotrasen/medical
 	name = "nanotrasen medical headset"
 	desc = "; TURN ON SUIT SENSORS!"
 	icon = 'icons/obj/item/clothing/ears/medical_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/nanotrasen/medical
+
 
 /obj/item/clothing/ears/headset/nanotrasen/cat
 	name = "\improper cat ear headset"
@@ -91,3 +105,9 @@
 	worn_layer = LAYER_MOB_CLOTHING_HELMET + 0.01
 
 	rarity = RARITY_UNCOMMON
+
+	value = 1
+
+/obj/item/clothing/ears/headset/nanotrasen/cat/get_base_value()
+	. = ..()
+	. += 5000

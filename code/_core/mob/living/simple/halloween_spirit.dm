@@ -28,8 +28,6 @@
 
 	blood_type = null
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 8
 
 /mob/living/simple/halloween_spirit/blue

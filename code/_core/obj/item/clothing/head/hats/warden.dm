@@ -8,8 +8,12 @@
 
 	armor = /armor/leather/hard
 
+	value = 1
+
 /obj/item/clothing/head/hat/warden/drill
 	name = "warden's drill hat"
 	icon = 'icons/obj/item/clothing/hats/warden_drill.dmi'
 
 	size = SIZE_2
+
+	value = 1

@@ -118,8 +118,7 @@
 
 	used = TRUE
 
-	// https://www.desmos.com/calculator/vivxdlctyz
-	var/luck_to_add = ((chosen_number - 10)/10)*50
+	var/luck_to_add = (chosen_number - 10) * 5
 
 	if(luck_to_add)
 		if(luck_to_add < 0)

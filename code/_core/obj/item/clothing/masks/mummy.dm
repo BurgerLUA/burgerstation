@@ -7,7 +7,7 @@
 
 	armor = /armor/dark/mummy
 
-	value = 20
+	value = 1
 
 	worn_layer = LAYER_MOB_CLOTHING_MASK
 

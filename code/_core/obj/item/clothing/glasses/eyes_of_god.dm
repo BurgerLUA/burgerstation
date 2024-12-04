@@ -18,3 +18,4 @@
 
 	rarity = RARITY_MYTHICAL
 
+	value_burgerbux = 1

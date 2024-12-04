@@ -10,6 +10,8 @@
 
 	scale_sprite = FALSE
 
+	value = 0
+
 /obj/item/container/edible/dynamic/chicken/update_sprite()
 
 	if(!reagents.volume_current)
@@ -81,15 +83,24 @@
 
 	return TRUE
 
+/obj/item/container/edible/dynamic/chicken/raw
+	value = 1
+
 /obj/item/container/edible/dynamic/chicken/raw/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/chicken,10)
 	reagents.add_reagent(/reagent/nutrition/bad_meat/chicken,5)
 	reagents.add_reagent(/reagent/nutrition/fat/chicken,5)
 	return ..()
 
+/obj/item/container/edible/dynamic/chicken/raw
+	value = 1
+
 /obj/item/container/edible/dynamic/chicken/cooked/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/chicken/cooked,15)
 	return ..()
+
+/obj/item/container/edible/dynamic/chicken/raw_penguin
+	value = 1
 
 /obj/item/container/edible/dynamic/chicken/raw_penguin/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/penguin,10)

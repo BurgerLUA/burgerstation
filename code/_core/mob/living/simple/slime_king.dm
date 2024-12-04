@@ -48,8 +48,6 @@
 
 	blood_type = null
 
-	soul_size = SOUL_SIZE_MYSTIC
-
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
 	movement_delay = DECISECONDS_TO_TICKS(6)
@@ -82,6 +80,9 @@
 	. = ..()
 
 /mob/living/simple/slime_king/proc/create_slime(var/turf/T)
+
+	if(minion_master)
+		return FALSE
 
 	var/mob/living/simple/slime/S = new(T)
 	S.color = src.color

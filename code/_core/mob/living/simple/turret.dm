@@ -24,8 +24,6 @@
 
 	armor = /armor/borg
 
-	soul_size = null
-
 	status_immune = list(
 		STUN = TRUE,
 		SLEEP = TRUE,
@@ -35,11 +33,16 @@
 		CONFUSED = TRUE,
 		DISARM = TRUE,
 		GRAB = TRUE,
-		PAINCRIT = TRUE
+		PAINCRIT = TRUE,
+		SOULTRAP = TRUE
 	)
 
 	stun_angle = 0
 	stun_elevation = 0
+
+/mob/living/simple/turret/PreDestroy()
+	QDEL_NULL(stored_weapon)
+	. = ..()
 
 /mob/living/simple/turret/face_atom(var/atom/A)
 	return set_dir(get_dir(src,A))
@@ -325,16 +328,14 @@
 	. = ..()
 
 
+//For the AI
 /mob/living/simple/turret/ai_core/immortalish
 	name = "regenerating core turret"
-
 	var/mob/living/simple/silicon/ai/linked_ai
 
 /mob/living/simple/turret/ai_core/immortalish/Finalize()
 	. = ..()
 	linked_ai = locate() in range(VIEW_RANGE,src)
-	if(!linked_ai)
-		qdel(src)
 
 /mob/living/simple/turret/ai_core/immortalish/on_life_slow()
 
@@ -347,14 +348,17 @@
 
 
 /mob/living/simple/turret/ai_core/immortalish/post_death()
+
 	. = ..()
+
 	if(icon_state != "closed")
 		close()
+
+	if(linked_ai && linked_ai.dead)
+		linked_ai = null
+
 	if(linked_ai)
-		if(linked_ai.dead)
-			linked_ai = null
-		if(linked_ai)
-			CALLBACK("\ref[src]_try_revival",SECONDS_TO_DECISECONDS(30),src,src::try_revival())
+		CALLBACK("\ref[src]_try_revival",SECONDS_TO_DECISECONDS(30),src,src::try_revival())
 
 
 /mob/living/simple/turret/ai_core/immortalish/proc/try_revival()
@@ -366,7 +370,5 @@
 		return FALSE
 
 	resurrect()
-	if(ai)
-		ai.set_active(TRUE)
 
 	return TRUE

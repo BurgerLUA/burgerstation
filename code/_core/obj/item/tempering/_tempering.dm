@@ -5,8 +5,6 @@
 
 	var/obj/item/temper_whitelist //Type
 
-	value = 0
-
 	var/increase = 5
 	var/minimum = 100
 	var/maximum = 125

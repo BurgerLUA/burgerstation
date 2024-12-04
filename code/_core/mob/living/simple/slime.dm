@@ -43,8 +43,6 @@
 
 	blood_type = null
 
-	soul_size = SOUL_SIZE_NONE //Prevents farming.
-
 	level = 2
 
 	alpha = 255 //255 means set automatically based on level
@@ -222,7 +220,7 @@
 	. = ..()
 
 	if(.) //Would result in death.
-		if(stored_slimes <= 1) //Yeah you're dead, kiddo.
+		if(stored_slimes <= 1 || minion_master) //Yeah you're dead, kiddo.
 			return .
 
 		var/ratio = 1/stored_slimes
@@ -325,6 +323,9 @@
 /mob/living/simple/slime/proc/absorb_slime(var/mob/living/simple/slime/desired_slime)
 
 	if(desired_slime == src) //Can't absorb self.
+		return FALSE
+
+	if(minion_master)
 		return FALSE
 
 	var/stored_ratio = desired_slime.stored_slimes / (stored_slimes + desired_slime.stored_slimes)

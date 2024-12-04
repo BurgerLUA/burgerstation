@@ -8,8 +8,6 @@
 
 	dialogue_id = /dialogue/npc/soldier/
 
-	soul_size = SOUL_SIZE_UNCOMMON
-
 	level = 60
 
 	loadout = /loadout/space_soldier/assault_rifle

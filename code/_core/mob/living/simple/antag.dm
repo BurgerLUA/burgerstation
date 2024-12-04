@@ -31,8 +31,6 @@
 
 	size = SIZE_HUMAN
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 4
 
 	var/static/list/valid_antag_colors = list(

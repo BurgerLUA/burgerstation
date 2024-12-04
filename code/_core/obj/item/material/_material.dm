@@ -14,8 +14,6 @@
 
 	weight = 0.1
 
-	value = 0 //Auto generated.
-
 /obj/item/material/can_transfer_stacks_to(var/obj/item/target)
 
 	if(target == src)

@@ -234,7 +234,7 @@
 	desired_loyalty_tag = "Syndicate"
 	value = 1000
 	encoded = TRUE
-	contraband = TRUE
+	can_save = FALSE
 
 /obj/item/pinpointer/crew/revolutionary
 	name = "revolutionary soldier pinpointer"
@@ -243,7 +243,7 @@
 	desired_loyalty_tag = "Revolutionary"
 	value = 1000
 	encoded = TRUE
-	contraband = TRUE
+	can_save = FALSE
 
 /obj/item/pinpointer/landmark/
 	name = "area pinpointer"
@@ -401,8 +401,8 @@
 	icon_state = "syndicate"
 	value = 1000
 	value_burgerbux = 1
-	contraband = TRUE
 	unreliable = TRUE
+	can_save = FALSE
 
 /obj/item/pinpointer/deathmatch/click_self(var/mob/caller,location,control,params)
 

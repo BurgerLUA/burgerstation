@@ -29,8 +29,6 @@
 
 	rarity = RARITY_COMMON
 
-	value = 0
-
 /obj/item/magazine/quick(var/mob/caller,var/atom/object,location,params)
 
 	if(!is_advanced(caller) || !is_inventory(src.loc))
@@ -250,7 +248,7 @@
 	icon = 'icons/obj/item/magazine/golden.dmi'
 	icon_state = "inventory"
 
-	contraband = TRUE
+	can_save = FALSE
 
 	value = 0
 	value_burgerbux = 1

@@ -31,6 +31,11 @@
 
 	value = 0
 
+/obj/item/container/edible/plant/get_base_value()
+	if(!plant_type)
+		return 0
+	. = ..()
+
 /obj/item/container/edible/plant/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
 
@@ -138,6 +143,8 @@
 /obj/item/container/edible/plant/nitrogen_flower
 	name = "nitrogen flower"
 	icon_state = "nitrogen_flower"
+	plant_type = /plant_type/nitrogen_flower
+	value = 1
 
 /obj/item/container/edible/plant/nitrogen_flower/Generate()
 	reagents.add_reagent(/reagent/nitrogen,10)
@@ -146,6 +153,8 @@
 /obj/item/container/edible/plant/oxygen_fruit
 	name = "oxygen fruit"
 	icon_state = "oxygen_fruit"
+	plant_type = /plant_type/oxygen_fruit
+	value = 1
 
 /obj/item/container/edible/plant/oxygen_fruit/Generate()
 	reagents.add_reagent(/reagent/fuel/oxygen,10)
@@ -155,6 +164,7 @@
 	name = "wheat"
 	icon_state = "wheat"
 	plant_type = /plant_type/wheat
+	value = 1
 
 /obj/item/container/edible/plant/wheat/Generate()
 	reagents.add_reagent(/reagent/nutrition/wheat_grain,10)
@@ -163,6 +173,8 @@
 /obj/item/container/edible/plant/sugarcane
 	name = "sugarcane"
 	icon_state = "sugarcane"
+	plant_type = /plant_type/sugarcane
+	value = 1
 
 /obj/item/container/edible/plant/sugarcane/Generate()
 	reagents.add_reagent(/reagent/nutrition/sugar/cane,10)
@@ -172,6 +184,7 @@
 	name = "tomato"
 	icon_state = "tomato"
 	plant_type = /plant_type/tomato
+	value = 1
 
 /obj/item/container/edible/plant/tomato/Generate()
 	reagents.add_reagent(/reagent/nutrition/tomato,10)
@@ -181,6 +194,7 @@
 	name = "lettuce"
 	icon_state = "lettuce"
 	plant_type = /plant_type/lettuce
+	value = 1
 
 /obj/item/container/edible/plant/lettuce/Generate()
 	reagents.add_reagent(/reagent/nutrition/lettuce,10)
@@ -191,6 +205,7 @@
 	name = "chili pepper"
 	icon_state = "chilipepper"
 	plant_type = /plant_type/chili
+	value = 1
 
 /obj/item/container/edible/plant/chili/Generate()
 	reagents.add_reagent(/reagent/nutrition/capsaicin,5)

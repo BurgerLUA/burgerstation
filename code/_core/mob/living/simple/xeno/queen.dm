@@ -62,8 +62,6 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	blood_type = /reagent/blood/xeno
 	blood_volume = 4000
 
-	soul_size = SOUL_SIZE_RARE
-
 	object_size = 2
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)

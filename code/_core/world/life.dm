@@ -71,6 +71,7 @@
 
 	CHECK_TICK_HARD
 
+	//Do initializations.
 	for(var/k in active_subsystems)
 		var/subsystem/SS = k
 		if(!SS)
@@ -79,9 +80,23 @@
 			continue
 		if(SS.qdeleting)
 			active_subsystems -= k
-			log_error("FATAL ERROR: Subsystem [SS.get_debug_name()] was qdeleting!")
+			log_error("FATAL ERROR: Subsystem [SS.get_debug_name()] was qdeleted before it could be iniitalized!")
 			continue
 		subsystem_initialize(SS)
+
+	CHECK_TICK_HARD
+
+	//Do the life loop.
+	for(var/k in active_subsystems)
+		var/subsystem/SS = k
+		if(!SS)
+			active_subsystems -= k
+			log_error("FATAL ERROR: There was a subsystem in the active_substyems list that was null!")
+			continue
+		if(SS.qdeleting)
+			active_subsystems -= k
+			log_error("FATAL ERROR: Subsystem [SS.get_debug_name()] was qdeleting before it could run their life loop!")
+			continue
 		subsystem_life_loop(SS)
 
 	var/final_time_text = "All initializations took <b>[DECISECONDS_TO_SECONDS((true_time() - benchmark))]</b> seconds."

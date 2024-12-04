@@ -2,7 +2,7 @@
 
 	spawning_items = list(
 
-		/obj/item/clothing/ears/headset,
+		/obj/item/clothing/ears/headset/nanotrasen/medical,
 
 		/obj/item/clothing/shirt/normal/medical,
 		/obj/item/clothing/pants/normal/medical,

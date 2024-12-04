@@ -32,8 +32,6 @@
 	blood_volume = 100
 	blood_type = /reagent/blood/blob
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 2
 
 	reagents = /reagent_container/blob

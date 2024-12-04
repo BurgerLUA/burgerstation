@@ -64,7 +64,8 @@
 
 	if(minion_master)
 		minion_master.remove_minion(src)
-	else if(!delete_on_death && soul_size > 0 && has_status_effect(SOULTRAP) && !is_player_controlled())
+
+	if(has_status_effect(SOULTRAP) && can_be_soultrapped())
 		var/obj/effect/temp/soul/S = new(T,SECONDS_TO_DECISECONDS(20))
 		S.appearance = src.appearance
 		S.transform = get_base_transform()
@@ -74,6 +75,7 @@
 		S.name = "soul of [initial(name)]:"
 		S.soul_size = src.soul_size
 		S.soul_path = src.type
+		S.boss = src.boss
 		INITIALIZE(S)
 		GENERATE(S)
 		FINALIZE(S)
@@ -109,6 +111,8 @@
 		DG.update_owner(null)
 	handle_transform()
 	update_eyes()
+	if(ai)
+		ai.set_active(TRUE)
 	return TRUE
 
 /mob/living/proc/rejuvenate(var/reset_nutrition = TRUE)

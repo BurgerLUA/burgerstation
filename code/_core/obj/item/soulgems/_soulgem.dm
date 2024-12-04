@@ -9,8 +9,6 @@
 	var/total_capacity = 0
 	var/do_not_consume = FALSE //Does this get consumed? Or merely emptied on craft. Only used for Azuras Star
 
-	value = 100 //Dummy value. Calculated later.
-
 	weight = 1
 
 	rarity = RARITY_COMMON
@@ -33,7 +31,7 @@
 /obj/item/soulgem/Finalize()
 	. = ..()
 
-	if(!total_capacity)
+	if(!total_capacity) //In case of errors.
 		if(total_charge)
 			total_capacity = total_charge
 		else
@@ -41,14 +39,18 @@
 
 	update_sprite()
 
+//https://www.desmos.com/calculator/vjla2nxgnn
+
 /obj/item/soulgem/get_base_value()
 	. = ..()
-	. += (total_capacity/32)**1.5
-	. = CEILING(.,1)
+	. = (300 + (total_capacity * ( 100 / (SOUL_SIZE_GODLY+300) ))**2)
+	. = CEILING(.,500)
+	if(do_not_consume)
+		. *= 3
 
 /obj/item/soulgem/get_value()
 	. = ..()
-	. += (total_charge/16)**1.5
+	. = (300 + (total_charge * ( 100 / (SOUL_SIZE_GODLY+300) ))**2)*2
 	. = CEILING(.,1)
 
 /obj/item/soulgem/get_examine_list(var/mob/caller)
@@ -80,15 +82,17 @@
 			FINALIZE(mob_to_spawn)
 			if(master.ckey)
 				master.add_skill_xp(SKILL_SUMMONING,CEILING(mob_to_spawn.soul_size*0.02,1))
-			if(!do_not_consume)
-				mob_to_spawn.visible_message(span("notice","\The [src.name] shatters, releasing [mob_to_spawn.name]!"))
-				qdel(src)
-			else
+			if(do_not_consume)
 				mob_to_spawn.visible_message(span("notice","\The [src.name] vanishes, releasing [mob_to_spawn.name]!"))
 				if(is_advanced(master))
 					var/mob/living/advanced/A = master
 					src.quick_equip(A,ignore_worn=TRUE,ignore_dynamic=TRUE,silent=TRUE)
-			update_sprite()
+				update_sprite()
+			else
+				mob_to_spawn.visible_message(span("notice","\The [src.name] shatters, releasing [mob_to_spawn.name]!"))
+				qdel(src)
+
+
 
 /obj/item/soulgem/update_sprite()
 	. = ..()
@@ -140,6 +144,7 @@
 
 /obj/item/soulgem/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	//Capture Minions
 	if(is_living(object))
 
 		INTERACT_CHECK
@@ -164,6 +169,7 @@
 		update_sprite()
 		return TRUE
 
+	//Capture Souls
 	if(istype(object,/obj/effect/temp/soul))
 
 		INTERACT_CHECK
@@ -224,6 +230,7 @@
 
 /obj/item/soulgem/common
 	total_capacity = SOUL_SIZE_COMMON
+	value = 1
 
 /obj/item/soulgem/common/filled/Generate()
 	. = ..()
@@ -231,6 +238,7 @@
 
 /obj/item/soulgem/uncommon
 	total_capacity = SOUL_SIZE_UNCOMMON
+	value = 1
 
 /obj/item/soulgem/uncommon/filled/Generate()
 	. = ..()
@@ -238,6 +246,7 @@
 
 /obj/item/soulgem/rare
 	total_capacity = SOUL_SIZE_RARE
+	value = 1
 
 /obj/item/soulgem/rare/filled/Generate()
 	. = ..()
@@ -245,6 +254,7 @@
 
 /obj/item/soulgem/mystic
 	total_capacity = SOUL_SIZE_MYSTIC
+	value = 1
 
 /obj/item/soulgem/mystic/filled/Generate()
 	. = ..()
@@ -252,7 +262,7 @@
 
 /obj/item/soulgem/godly
 	total_capacity = SOUL_SIZE_GODLY
-	value_burgerbux = 1
+	value = 1
 
 /obj/item/soulgem/godly/filled/Generate()
 	. = ..()
@@ -262,3 +272,4 @@
 	total_capacity = SOUL_SIZE_MYSTIC
 	do_not_consume = TRUE
 	value_burgerbux = 1
+	value = 1

@@ -16,3 +16,5 @@
 	size = SIZE_2
 
 	can_save = FALSE
+
+	value = 1

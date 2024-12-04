@@ -7,8 +7,6 @@
 
 	species = "goblin"
 
-	soul_size = SOUL_SIZE_COMMON
-
 	pixel_z = 1
 
 	iff_tag = "Goblin"

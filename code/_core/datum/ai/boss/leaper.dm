@@ -38,9 +38,8 @@
 		last_teleport_health_mod = health_mod
 		return .
 
-	if(next_mass_summon <= world.time && prob(10))
-		if(owner_as_leaper.check_frogs() <= 5)
-			owner_as_leaper.manifest_frogs()
+	if(next_mass_summon <= world.time && prob(10) && owner_as_leaper.check_frogs() <= 5)
+		owner_as_leaper.manifest_frogs()
 		next_mass_summon = world.time + SECONDS_TO_DECISECONDS(30)*health_mod
 		return .
 

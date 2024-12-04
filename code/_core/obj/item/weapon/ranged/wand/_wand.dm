@@ -6,8 +6,6 @@
 
 	company_type = "Wizard Federation"
 
-	value = 0
-
 	var/obj/item/weapon/ranged/spellgem/socketed_spellgem
 	var/list/obj/item/supportgem/socketed_supportgems = list()
 

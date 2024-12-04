@@ -101,7 +101,7 @@
 
 	if(istype(I,/obj/item/weapon/ranged))
 		var/obj/item/weapon/ranged/R = I
-		R.firing_pin = /obj/item/firing_pin/mechanical
+		R.firing_pin = /obj/item/firing_pin/electronic
 
 
 /obj/structure/interactive/vending/virtual_reality/weapons

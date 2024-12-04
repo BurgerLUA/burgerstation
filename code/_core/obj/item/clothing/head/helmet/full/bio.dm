@@ -10,6 +10,8 @@
 
 	rarity = RARITY_UNCOMMON
 
+	value = 1
+
 
 /obj/item/clothing/head/helmet/full/rad
 	name = "radiation helmet"
@@ -23,6 +25,8 @@
 
 	rarity = RARITY_UNCOMMON
 
+	value = 1
+
 
 /obj/item/clothing/head/helmet/full/bomb
 	name = "bomb helmet"
@@ -35,3 +39,5 @@
 	size = SIZE_3
 
 	rarity = RARITY_UNCOMMON
+
+	value = 1

@@ -6,11 +6,11 @@
 	icon = 'icons/obj/item/firing_pins.dmi'
 	icon_state = "normal"
 
-	value = 50
-
 	weight = 0.25
 
 	rarity = RARITY_UNCOMMON
+
+	value = 0
 
 /obj/item/firing_pin/proc/can_shoot(var/mob/caller,var/obj/item/weapon,var/messages=TRUE)
 	return TRUE
@@ -20,15 +20,6 @@
 
 /obj/item/firing_pin/electronic
 	name = "electronic firing pin"
-	value_burgerbux = 1
-
-/obj/item/firing_pin/mechanical //YOU SHOULDN'T HAVE THIS.
-	name = "mechanical firing pin"
-	desc = "Oh god oh fuck."
-	desc_extended = "A completely mechanical firing pin that has no digital IFF technology and thus can be shot by anyone and aimed at anybody. These are extremely rare and extremely illegal. Having one may result in contract termination."
-
-	value = 50000
-	value_burgerbux = 1
 
 /obj/item/firing_pin/electronic/iff/can_shoot(var/mob/caller,var/obj/item/weapon,var/messages=TRUE)
 
@@ -53,10 +44,6 @@
 
 /obj/item/firing_pin/electronic/iff/nanotrasen/can_shoot(var/mob/caller,var/obj/item/weapon)
 
-	. = ..()
-
-	if(!.) return
-
 	var/area/A = get_area(caller)
 	if(A.flags_area & FLAG_AREA_TUTORIAL)
 		caller.to_chat(span("danger","\The [src.name] refuses to fire in this area!"))
@@ -69,7 +56,7 @@
 	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered NanoTrasen IFF implant, and prevents firing at those with one. This one seems to have some sort of speaker..."
 	iff_tag = "NanoTrasen"
 	icon_state = "nanotrasen"
-	value = 200
+	value = 1000
 
 /obj/item/firing_pin/electronic/iff/nanotrasen/nyantrasen/on_shoot(var/mob/caller,var/obj/item/weapon)
 	if(caller && weapon)

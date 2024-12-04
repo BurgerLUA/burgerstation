@@ -188,6 +188,8 @@
 
 	can_save = FALSE
 
+	value = 0
+
 /obj/item/defib_paddle/Destroy()
 	linked_defib = null
 	. = ..()

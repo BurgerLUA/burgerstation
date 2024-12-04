@@ -10,8 +10,6 @@
 
 	value_burgerbux = 1
 
-	value = 3000
-
 	rarity = RARITY_RARE
 
 

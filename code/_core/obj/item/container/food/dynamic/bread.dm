@@ -17,6 +17,8 @@
 
 	var/last_cooked = FALSE
 
+	value = 0
+
 /obj/item/container/edible/dynamic/bread/Generate()
 	. = ..()
 	reagents.add_reagent(/reagent/nutrition/dough/flour/processed,30)

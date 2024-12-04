@@ -11,6 +11,8 @@
 
 	can_be_broken = FALSE
 
+	value = 0
+
 /obj/item/organ/ear/left
 	name = "left ear"
 	id = BODY_EAR_LEFT

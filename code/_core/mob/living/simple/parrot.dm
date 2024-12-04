@@ -30,8 +30,6 @@
 		/obj/item/container/edible/dynamic/chicken/raw
 	)
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 2
 
 /mob/living/simple/parrot/Finalize()

@@ -9,3 +9,5 @@
 	size = SIZE_4
 
 	rarity = RARITY_COMMON
+
+	value = 1

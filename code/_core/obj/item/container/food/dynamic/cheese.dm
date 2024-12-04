@@ -17,6 +17,8 @@
 
 	reagents = /reagent_container/food/cheese
 
+	value = 0
+
 /obj/item/container/edible/dynamic/cheese/Generate()
 	created_date = get_date()
 	created_time = get_time()
@@ -114,7 +116,7 @@
 /obj/item/container/edible/dynamic/cheese/block
 	name = "block cheese"
 	icon_state = "block"
-	value = 20
+	value = 1
 
 /obj/item/container/edible/dynamic/cheese/block/Generate()
 	reagents.add_reagent(/reagent/nutrition/cheese,40)
@@ -123,7 +125,7 @@
 /obj/item/container/edible/dynamic/cheese/wheel
 	name = "wheel cheese"
 	icon_state = "wheel"
-	value = 30
+	value = 1
 
 /obj/item/container/edible/dynamic/cheese/wheel/Generate()
 	reagents.add_reagent(/reagent/nutrition/cheese,40)

@@ -15,6 +15,8 @@
 		BODY_HAND_LEFT = 3
 	)
 
-	contraband = TRUE
+	can_save = FALSE
 
 	rarity = RARITY_MYTHICAL
+
+	value = 1

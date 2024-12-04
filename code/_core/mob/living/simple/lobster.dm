@@ -34,8 +34,6 @@
 	blood_type = /reagent/blood/crab
 	blood_volume = 500
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 8
 
 /mob/living/simple/lobster/post_death()
