@@ -34,10 +34,9 @@
 
 	heat_max = 0.1
 
-	bullet_time = 0
-	timed_bullet = list(
-		/obj/item/bullet_cartridge/flintlock = 12,
-		/obj/item/bullet_cartridge/flintlock/premium = 8
+	bullet_time = list(
+		/obj/item/bullet_cartridge/flintlock = SECONDS_TO_DECISECONDS(2),
+		/obj/item/bullet_cartridge/flintlock/premium = SECONDS_TO_DECISECONDS(1)
 	)
 
 	open = TRUE

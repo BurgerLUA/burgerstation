@@ -137,9 +137,10 @@
 					currency_left -= value_per_bullet*bullets_to_add
 					if(!B.stored_bullets[bullet_to_create.type])
 						B.stored_bullets[bullet_to_create.type] = bullets_to_add
+						B.update_bullet_count()
 					else
 						B.stored_bullets[bullet_to_create.type] += bullets_to_add
-						B.bullet_count += bullets_to_add
+						B.update_bullet_count()
 		else
 			caller.to_chat(span("warning","That belt can't be restocked with a restocker!"))
 			return TRUE

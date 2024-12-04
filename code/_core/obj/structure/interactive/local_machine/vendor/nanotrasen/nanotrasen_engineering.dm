@@ -36,7 +36,7 @@
 		//3 heavy weapons (lmgs, sniper rifles, rocket launchers)
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
 		/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/nanotrasen,
-		/obj/item/weapon/ranged/bullet/single_shot/rocket,
+		/obj/item/weapon/ranged/bullet/revolver/rocket,
 
 		//3 grenades or equipment
 		/obj/item/grenade/device/landmine/proximity/explosive,
