@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/energy/plasma_cutter
+/obj/item/weapon/ranged/energy/fed/plasma_cutter
 	name = "plasma cutter"
 	desc = "Fed action!"
 	desc_extended = "An advanced mining tool that uses phorogenic plasma bursts to penetrate up to 4 meters of rocks and other foes. Not very effective against smaller objects."
@@ -13,9 +13,9 @@
 	projectile = /obj/projectile/bullet/laser/plasma_cutter
 	ranged_damage_type = /damagetype/ranged/laser/plasma_cutter
 
-	var/charge_per_feed = 100
-	var/list/fed_item = list(/obj/item/material/ingot,/obj/item/material/ore)
-	var/feed_delay = 5
+	charge_per_feed = 100
+	fed_item = list(/obj/item/material/ingot,/obj/item/material/ore)
+	feed_delay = 5
 	shoot_delay = 12
 
 	charge_cost = 10 //I couldn't figure out how to make the get_charge_cost() proc in _laser.dm return this value, if you wanna add a fed laser gun with a funky charge cost, you gotta fix it. For now, it always returns 10 for fed laser guns
