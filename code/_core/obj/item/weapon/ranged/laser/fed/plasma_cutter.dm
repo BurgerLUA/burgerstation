@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/energy/fed/plasma_cutter
+/obj/item/weapon/ranged/energy/plasma_cutter
 	name = "plasma cutter"
 	desc = "Fed action!"
 	desc_extended = "An advanced mining tool that uses phorogenic plasma bursts to penetrate up to 4 meters of rocks and other foes. Not very effective against smaller objects."

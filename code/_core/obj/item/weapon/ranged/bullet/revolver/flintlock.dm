@@ -34,7 +34,11 @@
 
 	heat_max = 0.1
 
-	bullet_time = SECONDS_TO_DECISECONDS(2)
+	bullet_time = 0
+	timed_bullet = list(
+		/obj/item/bullet_cartridge/flintlock = 12,
+		/obj/item/bullet_cartridge/flintlock/premium = 8
+	)
 
 	open = TRUE
 	can_shoot_while_open = TRUE

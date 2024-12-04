@@ -5,7 +5,7 @@
 	var/max_bullets = 100 //The maximum number of bullets the belt can hold. Duh.
 
 	var/next_regen = 0 //How long until it can be restocked again
-	var/can_be_restocked = FALSE //If someone can use a premium restocker to fill this with bullets
+	var/can_be_restocked = FALSE //If someone can use a premium restocker to fill this with bullets, false by default. If you want to be able to restock your bandolier, make sure to define this as true.
 
 	var/bullet_type = /obj/item/bullet_cartridge //The one specific kind of bullet that this belt can hold. I should probably make it a list so you can add more storable bullets but oh well.
 	var/bullet_type_premium = /obj/item/bullet_cartridge //Only for ammo restocking purposes, don't need to worry about this if it can't be restocked. Otherwise, make sure it's set to the premium version of the bullet your belt can hold
