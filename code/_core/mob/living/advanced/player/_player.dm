@@ -116,9 +116,10 @@
 	expiration_time = SECONDS_TO_DECISECONDS(180)
 
 /mob/living/advanced/player/get_examine_list(var/mob/living/examiner)
+	var/species/owner_species = SPECIES(species)
 	. = list(
 		div("examine_title", src.name),
-		div("center bold","Level [level] [SPECIES(species)]"),
+		div("center bold","Level [level] [owner_species.name]"),
 		div("examine_description_long", src.desc_extended)
 	)
 
