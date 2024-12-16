@@ -52,7 +52,6 @@
 "aZ" = (/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/core)
 "ba" = (/obj/structure/interactive/atmospherics/vent,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/misc/ai_core/engine)
 "bb" = (/obj/decal/hazard/black{icon_state = "line"; dir = 8},/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/core)
-"bc" = (/obj/structure/interactive/door/airlock/station/maintenance/no_access,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "bd" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 8},/obj/structure/interactive/disposals/pipe,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "be" = (/mob/living/simple/silicon/spawner,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "bf" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/foyer)
@@ -238,7 +237,7 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapdtbmaDaUaZbFaXddaXbYaXdfaXbLaZaUbBaGds
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapcbbGccaUaZbJaXbnaXaXaXbnaXbKaZaUcebMcfataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuapbNapapbhapapblbnaXaXaXbnblatatbiatatbBatbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapbNapbebScdapbzbPbQcibnbnacatdsbVbkatbBataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapclbXbGcobZapacacafasavacacatcacpbMbccyataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapclbXbGcobZapacacafasavacacatcacpbMdxcyataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapapapdrbScCapcEaTbfcIbTaTcEatcRbVcgatatataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuapcdbSaDapbUaTbTbEbTaTcsatchbVdsatbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapcdcTcXapctaTbTbIbTaTctatdodvdmataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
