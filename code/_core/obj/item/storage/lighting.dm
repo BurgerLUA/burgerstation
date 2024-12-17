@@ -9,10 +9,11 @@
 	icon = 'icons/obj/item/storage/boxes.dmi'
 	icon_state = "largebox"
 
-	value = 20
+	value = 0
 
 /obj/item/storage/lighting/tube
 	name = "lighting tube box"
+	value = 1
 
 /obj/item/storage/lighting/tube/fill_inventory()
 	for(var/i=1,i<=dynamic_inventory_count,i++)
@@ -21,6 +22,7 @@
 
 /obj/item/storage/lighting/bulb
 	name = "lighting bulb box"
+	value = 1
 
 /obj/item/storage/lighting/bulb/fill_inventory()
 	for(var/i=1,i<=dynamic_inventory_count,i++)

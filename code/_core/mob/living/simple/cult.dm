@@ -9,8 +9,6 @@
 	blood_type = /reagent/blood/unholy
 	blood_volume = BLOOD_VOLUME_DEFAULT
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 5
 
 /mob/living/simple/cult/construct

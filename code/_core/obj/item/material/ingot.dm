@@ -8,6 +8,8 @@
 	amount_max = 50
 	amount_max_icon = 6
 
+	value = 0
+
 /obj/item/material/ingot/update_icon()
 	var/material/M = SSmaterials.all_materials[material_id]
 	if(!M)

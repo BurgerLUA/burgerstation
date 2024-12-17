@@ -68,7 +68,6 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/laton,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power,
 		/obj/item/weapon/ranged/bullet/revolver/defender,
-		/obj/item/weapon/ranged/energy/hybrid/carbine/small,
 
 		//4 smgs or shotguns.
 		/obj/item/weapon/ranged/energy/hybrid/carbine,

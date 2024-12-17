@@ -1,13 +1,15 @@
 /obj/item/weapon/ranged/spellgem/shock
 	name = "shock stream spell gem"
 	desc = "The source of all magic."
-	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a short stream of lightning."
+	desc_extended = "Shoots a short stream of fast-moving lightning."
 	icon_state = "damage"
 
-	shoot_delay = 2
+	shoot_delay = 3
+
+	rarity = RARITY_UNCOMMON
 
 	bullet_count = 1
-	projectile_speed = TILE_SIZE*0.75 - 1
+	projectile_speed = TILE_SIZE*0.7 - 1
 
 	projectile = /obj/projectile/magic/lightning
 

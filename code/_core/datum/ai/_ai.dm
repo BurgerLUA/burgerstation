@@ -136,8 +136,6 @@
 
 	var/delete_on_no_path = FALSE
 
-	var/idle_time = 0
-
 	var/ignore_hazard_turfs = FALSE
 
 	var/boss = FALSE
@@ -153,8 +151,6 @@
 
 	var/move_from_ally_dir = 0x0
 	var/move_from_ally = 0
-
-	var/sleep_on_idle = TRUE
 
 	var/last_movement_proc = "none"
 

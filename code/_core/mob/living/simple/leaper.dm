@@ -59,8 +59,6 @@
 	blood_type = /reagent/blood/ancient
 	blood_volume = 3000
 
-	soul_size = SOUL_SIZE_RARE
-
 	anchored = 1
 
 	object_size = 2
@@ -244,12 +242,15 @@
 		return FALSE
 	for(var/i=1,i<=4,i++)
 		create_blood(/obj/effect/cleanable/blood/splatter,E.loc,"#B4150F",rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
-	explode(E.loc,3,master ? master : src,src,loyalty_tag)
+	explode(E.loc,3,minion_master ? minion_master : src,src,loyalty_tag)
 	play_sound('sound/weapons/magic/chaos_blood.ogg',E.loc)
 	qdel(E)
 
 //Frog summoning
 /mob/living/simple/leaper/proc/check_frogs()
+
+	if(minion_master)
+		return INFINITY
 
 	for(var/k in tracked_frogs)
 		var/mob/living/L = k
@@ -260,6 +261,9 @@
 
 
 /mob/living/simple/leaper/proc/manifest_frogs()
+
+	if(minion_master)
+		return FALSE
 
 	var/view_mod = CEILING(VIEW_RANGE*0.5,1)
 

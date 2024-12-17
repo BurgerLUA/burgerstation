@@ -2,6 +2,8 @@
 	volume_max = 15
 	should_update_owner = TRUE
 
+	flags_temperature = REAGENT_TEMPERATURE_NO_AMBIENT
+
 /reagent_container/syringe/medipen
 	volume_max = 20
 	should_update_owner = TRUE

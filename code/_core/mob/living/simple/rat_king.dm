@@ -25,8 +25,6 @@
 	blood_type = /reagent/blood/rat
 	blood_volume = 400
 
-	soul_size = SOUL_SIZE_RARE
-
 	level = 22
 
 

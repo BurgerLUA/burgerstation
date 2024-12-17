@@ -110,3 +110,6 @@
 
 #define BLINDED "blinded"
 
+#define MANA_ARMOR "mana_armor"
+
+#define DUMMY "dummy"

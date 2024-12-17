@@ -32,6 +32,8 @@
 
 	inaccuracy_modifier = 0.15
 
+	value = 1
+
 /obj/item/weapon/ranged/reagent_ammo/flamethrower/get_base_value()
 	return 4000
 

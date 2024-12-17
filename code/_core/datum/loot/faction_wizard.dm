@@ -16,3 +16,17 @@
 	chance_none = 20
 	allow_duplicates = FALSE
 	use_value = TRUE
+
+
+/loot/wizard/bag/lesser
+	loot_table = list(
+		/obj/item/tempering/quality/ranged/magic = 1,
+		/obj/item/tempering/luck = 1,
+		/loot/potion = 1,
+		/obj/item/portal_scroll = 1,
+		/loot/soulgem/assorted = 1,
+	)
+	loot_count = 3
+	chance_none = 20
+	allow_duplicates = FALSE
+	use_value = TRUE

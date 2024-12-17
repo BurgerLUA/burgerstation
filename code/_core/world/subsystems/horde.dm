@@ -136,11 +136,8 @@ SUBSYSTEM_DEF(horde)
 
 	var/horde_data/found_horde_data = src.all_horde_data_types[A.horde_data]
 
-	if(!found_horde_data || !found_horde_data.ignore_gamemode)
-		if(prob(40) && is_player(target) && SStax.check_delinquent(target))
-			found_horde_data = src.all_horde_data_types[/horde_data/tax]
-		else if(A.horde_data == "mission" && SSgamemode && SSgamemode.active_gamemode && SSgamemode.active_gamemode.gamemode_horde_data)
-			found_horde_data = src.all_horde_data_types[SSgamemode.active_gamemode.gamemode_horde_data]
+	if( (!found_horde_data || !found_horde_data.ignore_gamemode) && A.horde_data == "mission" && SSgamemode && SSgamemode.active_gamemode && SSgamemode.active_gamemode.gamemode_horde_data)
+		found_horde_data = src.all_horde_data_types[SSgamemode.active_gamemode.gamemode_horde_data]
 
 	if(!found_horde_data)
 		return null

@@ -22,6 +22,7 @@
 			return ..()
 
 		var/obj/marker/wizard_rift_location/RL = pick(wizard_rift_markers)
+		wizard_rift_markers -= RL
 
 		var/obj/structure/interactive/wizard_hole/WH = new(get_turf(RL))
 		WH.linked_wormhole = src

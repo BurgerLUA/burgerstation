@@ -20,6 +20,9 @@
 	object_to_place = /mob/living/simple/arachnid
 	objects_max = 1
 
+/obj/marker/generation/mob/arachnid/sand
+	object_to_place = /mob/living/simple/arachnid/sand
+
 /obj/marker/generation/mob/bat
 	object_to_place = /mob/living/simple/bat
 	objects_max = 3
@@ -213,5 +216,5 @@
 	object_to_place = /mob/living/advanced/npc/zombie/normal
 	objects_max = 2
 
-/obj/marker/generation/mob/zombie/desert
-	object_to_place = /mob/living/advanced/npc/zombie/normal
+/obj/marker/generation/mob/zombie/mummy
+	object_to_place = /mob/living/advanced/npc/zombie/mummy

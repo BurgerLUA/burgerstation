@@ -64,8 +64,10 @@
 	name = "burger"
 	desc = "The meal of champions."
 	icon_state = "bun_bottom"
+	value = 0
 
 
 /obj/item/container/edible/sandwich/bread
 	name = "sandwich"
 	icon_state = "bread_slice"
+	value = 0

@@ -14,8 +14,6 @@
 
 	weight = 0.1
 
-	value = 0 //Auto generated.
-
 /obj/item/material/can_transfer_stacks_to(var/obj/item/target)
 
 	if(target == src)
@@ -50,6 +48,7 @@
 /obj/item/material/get_base_value()
 	var/material/M = SSmaterials.all_materials[material_id]
 	. = M.value_per_unit * material_multiplier
+	. *= amount
 	. = CEILING(.,1)
 
 /obj/item/material/Finalize()

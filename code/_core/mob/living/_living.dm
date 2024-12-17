@@ -90,7 +90,7 @@
 	var/stun_elevation = -14
 
 	var/boss = FALSE
-	var/boss_music
+	var/track/boss_music
 	var/boss_icon_state
 	var/loot/boss_loot
 
@@ -192,10 +192,6 @@
 
 	var/suicide = FALSE
 
-	var/mob/living/minion //This object's minion.
-	var/mob/living/master //This object's master.
-	var/minion_remove_time = 0
-
 	var/obj/structure/totem/totem //This object's totem.
 
 	var/queue_health_update = FALSE //From automated processes like reagent and health updating. Should not be used for bullet impacts and whatnot.
@@ -242,6 +238,7 @@
 	var/list/addictions = list() //List of addictions.
 
 	var/soul_size = null
+	var/soul_size_name = "ERROR"
 
 	var/list/traits = list() //Assoc list. This is saved.
 	var/list/traits_by_category = list() //Assoc list. This isn't saved.
@@ -293,6 +290,8 @@
 
 	var/was_killed = FALSE //This is set to true if the mob died at least once.
 
+	var/list/minions
+	var/mob/living/minion_master
 
 /mob/living/PreDestroy()
 
@@ -304,13 +303,12 @@
 	if(ai && istype(ai))
 		ai.set_active(FALSE)
 
-	if(minion)
-		minion.master = null
-		minion = null
+	if(minion_master)
+		minion_master.remove_minion(src)
 
-	if(master)
-		master.minion = null
-		master = null
+	for(var/k in minions)
+		var/mob/living/L = k
+		src.remove_minion(L)
 
 	if(following)
 		following.followers -= src
@@ -666,6 +664,9 @@
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,src))
+			if(loyalty_tag == P.loyalty_tag)
+				continue
+
 			for(var/obj/hud/button/boss_health/B in P.buttons)
 				B.target_bosses |= src
 				B.update_stats()
@@ -676,9 +677,11 @@
 
 	update_level(TRUE)
 
-	QUEUE_HEALTH_UPDATE(src)
+	calculate_soulgem_size()
 
 	update_eyes()
+
+	QUEUE_HEALTH_UPDATE(src)
 
 /mob/living/proc/setup_name()
 	name = "[CHECK_NAME(name)]"
@@ -770,3 +773,29 @@
 		caller?.visible_message(span("notice","\The [caller.name] draws some blood from \the [src.name]."),span("notice","You drew [amount_added]u of blood from \the [src.name]."))
 
 	return amount_added
+
+/mob/living/proc/calculate_soulgem_size()
+
+	if(!health)
+		soul_size = SOUL_SIZE_COMMON
+		return
+
+	// https://www.desmos.com/calculator/0fm1pfghsb
+	var/health_bonus = sin( (min(health.health_max,SOUL_SIZE_MYSTIC) / SOUL_SIZE_MYSTIC)*90)*SOUL_SIZE_MYSTIC
+	var/level_bonus = ((level/100)**3)*SOUL_SIZE_RARE
+	if(boss)
+		health_bonus *= 0.25
+		level_bonus *= 4
+
+	soul_size = SOUL_SIZE_COMMON*0.9 + health_bonus + level_bonus
+
+	if(soul_size <= SOUL_SIZE_COMMON)
+		soul_size = SOUL_SIZE_COMMON
+	else if(soul_size <= SOUL_SIZE_UNCOMMON)
+		soul_size = SOUL_SIZE_UNCOMMON
+	else if(soul_size <= SOUL_SIZE_RARE || !boss) //Maximum size of non-boss souls is rare.
+		soul_size = SOUL_SIZE_RARE
+	else if(soul_size <= SOUL_SIZE_MYSTIC)
+		soul_size = SOUL_SIZE_MYSTIC
+	else
+		soul_size = SOUL_SIZE_GODLY

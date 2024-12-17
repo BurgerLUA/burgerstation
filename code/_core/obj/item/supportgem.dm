@@ -13,8 +13,6 @@
 
 	quality = 100
 
-	value = 0
-
 	color = "#FFFFFF"
 	var/color_2 = "#FFFFFF"
 	var/color_3 = "#FFFFFF"
@@ -27,11 +25,10 @@
 
 /obj/item/supportgem/get_base_value()
 
-	if(!length(support_stats))
+	if(!length(support_stats)) //Dummy item, something went wrong.
 		return 0
 
-	. = ..()
-
+	return initial(value)
 
 /obj/item/supportgem/proc/update_support_stats()
 	return TRUE
@@ -57,10 +54,12 @@
 		I.color = color_3
 		add_overlay(I)
 
+/obj/item/supportgem/Initialize()
+	update_support_stats()
+	. = ..()
 
 /obj/item/supportgem/Finalize()
 	. = ..()
-	update_support_stats()
 	update_sprite()
 
 /obj/item/supportgem/adjust_quality(var/quality_to_add=0)

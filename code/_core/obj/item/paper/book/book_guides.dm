@@ -41,9 +41,9 @@
 
 /obj/item/paper/book/controls/
 	name = "Manual: A Guide to Controlling Yourself"
-	desc = "Don't ERP."
+	desc = "How do i switch hands"
 	icon_state = "book2"
-	desc_extended = "A guide on how to master self-control"
+	desc_extended = "A guide on how to master self-control. Quite literally shows you the basic Burgerstation controls when used in your hands."
 
 /obj/item/paper/book/controls/Initialize()
 	. = ..()

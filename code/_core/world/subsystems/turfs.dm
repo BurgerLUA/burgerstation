@@ -88,7 +88,7 @@ SUBSYSTEM_DEF(turf)
 		stored_boss_floor_icons += I
 
 
-	snow_line = rand(380,440)
+	snow_line = rand(420,450)
 	snow_num = 0.6+rand()*0.2
 
 	var/list/type_to_time = list()

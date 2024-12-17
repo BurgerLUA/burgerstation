@@ -91,13 +91,13 @@
 	value = 1600
 
 /obj/item/attachment/sight/scope/massive
-	name = "sniper scope (x8)"
+	name = "sniper scope (x6)"
 	desc = "What's wrong with ironsights?"
 	desc_extended = "An absolutely bulky sniper scope that increases the zoom range of the weapon, making the weapon more precise. Significantly increases movement spread and heat spread as a penalty."
 	icon_state = "x8_scope"
 
 	attachment_stats  = list(
-		zoom_mul = 8,
+		zoom_mul = 6,
 		movement_spread = 3,
 		heat_spread = 1.25,
 		inaccuracy_modifier = 0.1,
@@ -127,3 +127,4 @@
 
 /obj/item/attachment/sight/m4
 	icon_state = "m4sight"
+	value = 1

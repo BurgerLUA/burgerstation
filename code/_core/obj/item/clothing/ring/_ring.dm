@@ -4,7 +4,6 @@
 	desc_extended = "A shiny circular ring. Wonder what it does?"
 
 	weight = 1
-	value = 1000
 	worn_layer = LAYER_MOB_CLOTHING_RING
 	item_slot = SLOT_RING
 
@@ -24,6 +23,7 @@
 	icon = 'icons/obj/item/clothing/ring/iron.dmi'
 	protected_limbs = BODY_MAIN
 	desc_extended = "A dull circular ring. Wonder what it does?"
+	value = 100
 
 /obj/item/clothing/ring/gold
 	name = "gold ring"

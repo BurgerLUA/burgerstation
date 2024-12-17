@@ -7,8 +7,6 @@
 
 	species = "goblin"
 
-	soul_size = SOUL_SIZE_COMMON
-
 	pixel_z = 1
 
 	iff_tag = "Goblin"
@@ -22,7 +20,7 @@
 
 /mob/living/advanced/npc/goblin/Initialize()
 	. = ..()
-	drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/SSeconomy.credits_per_gold)
+	drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/CREDITS_PER_GOLD)
 
 /mob/living/advanced/npc/goblin/warrior
 	name = "goblin warrior"
@@ -41,6 +39,11 @@
 	mana_base = 300
 
 	level = 17
+
+/mob/living/advanced/npc/goblin/mage/wizard_federation
+	name = "raging goblin wizard apprentice"
+	iff_tag = "Wizard Federation"
+	loyalty_tag = "Wizard Federation"
 
 /mob/living/advanced/npc/goblin/archer
 	name = "goblin archer"

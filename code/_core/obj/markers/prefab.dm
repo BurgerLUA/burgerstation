@@ -139,6 +139,7 @@
 	category = "house"
 	chance_none = 0
 	rotational_offset = 16
+	unique = TRUE
 
 /obj/marker/prefab/alley
 	icon = 'icons/obj/markers/prefab_5x5.dmi'
@@ -217,9 +218,34 @@
 				dir = EAST
 	else
 		category = "city_street_straight"
+		if(prob(50)) dir = turn(dir,180)
 
 	. = ..()
 
+/obj/marker/prefab/city/line_small
+	icon = 'icons/obj/markers/prefab_42x42_city.dmi'
+	icon_state = null
+	category = "city_street_straight_small" //or "city_street_corner_small"
+	unique = FALSE
+	rotational_offset = 42
+
+/obj/marker/prefab/city/line_small/prepare_prefab()
+
+	if(dir in DIRECTIONS_INTERCARDINAL) //Corner
+		category = "city_street_corner_small"
+		switch(dir)
+			if(SOUTHWEST)
+				dir = SOUTH
+			if(NORTHWEST)
+				dir = WEST
+			if(NORTHEAST)
+				dir = NORTH
+			if(SOUTHEAST)
+				dir = EAST
+	else
+		category = "city_street_straight_small"
+
+	. = ..()
 
 /obj/marker/prefab/city/intersection
 	icon = 'icons/obj/markers/prefab_64x64_city_intersection.dmi'
@@ -231,12 +257,47 @@
 	. = ..()
 	dir = pick(NORTH,EAST,SOUTH,WEST)
 
+/obj/marker/prefab/city/intersection_small
+	icon = 'icons/obj/markers/prefab_42x42_city_intersection.dmi'
+	icon_state = "cross"
+	category = "city_street_intersection_small"
+	unique = TRUE
+	rotational_offset = 42
 
+/obj/marker/prefab/city/intersection_small/New(var/desired_loc)
+	. = ..()
+	dir = pick(NORTH,EAST,SOUTH,WEST)
 
-/obj/marker/prefab/city/sol_base
+/obj/marker/prefab/city/t_junction
 	icon = 'icons/obj/markers/prefab_64x64_city_intersection.dmi'
 	icon_state = "t"
-	category = "sol_base"
+	category = "city_street_t"
+	unique = TRUE
+
+/obj/marker/prefab/city/t_junction_small
+	icon = 'icons/obj/markers/prefab_42x42_city_intersection.dmi'
+	icon_state = "t"
+	category = "city_street_t_small"
+	unique = TRUE
+	rotational_offset = 42
+
+/obj/marker/prefab/city/end
+	icon = 'icons/obj/markers/prefab_64x64_city_end.dmi'
+	icon_state = null
+	category = "city_street_end"
+	unique = TRUE
+
+/obj/marker/prefab/city/end_small
+	icon = 'icons/obj/markers/prefab_42x42_city_end.dmi'
+	icon_state = null
+	category = "city_street_end_small"
+	unique = TRUE
+	rotational_offset = 42
+
+/obj/marker/prefab/city/farm
+	icon = 'icons/obj/markers/prefab_64x64_farm.dmi'
+	icon_state = null
+	category = "farm"
 	unique = TRUE
 
 /obj/marker/prefab/city/city_hall
@@ -245,23 +306,11 @@
 	category = "city_special"
 	unique = TRUE
 
-/obj/marker/prefab/city/t_junction
+/obj/marker/prefab/city/sol_base
 	icon = 'icons/obj/markers/prefab_64x64_city_intersection.dmi'
 	icon_state = "t"
-	category = "city_street_t"
+	category = "sol_base"
 	unique = TRUE
-
-/obj/marker/prefab/city/end
-	icon = 'icons/obj/markers/prefab_64x64_city_end.dmi'
-	icon_state = null
-	category = "city_street_end"
-	unique = FALSE
-
-/obj/marker/prefab/city/farm
-	icon = 'icons/obj/markers/prefab_64x64_farm.dmi'
-	icon_state = null
-	category = "farm"
-	unique = FALSE
 
 /obj/marker/prefab/city/parking
 	icon = 'icons/obj/markers/prefab_10x10.dmi'

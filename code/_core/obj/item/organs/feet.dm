@@ -31,6 +31,8 @@
 
 	has_life = TRUE
 
+	value = 0
+
 /obj/item/organ/foot/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps
 

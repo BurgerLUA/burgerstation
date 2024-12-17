@@ -26,9 +26,10 @@
 "az" = (/obj/structure/carpet/red,/obj/structure/interactive/chair/comfy,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
 "aA" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
 "aB" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
-"aD" = (/mob/living/advanced/npc/syndicate,/obj/structure/carpet/red,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
-"aE" = (/mob/living/advanced/npc/syndicate,/obj/structure/carpet/red,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
-"aF" = (/mob/living/advanced/npc/syndicate,/obj/structure/interactive/barricade,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
+"aC" = (/obj/structure/carpet/red,/obj/marker/mission_mob,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
+"aD" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/obj/marker/mission_mob,/turf/simulated/floor/plating,/area/mission/prefab/city/city_hall)
+"aE" = (/obj/structure/interactive/wire/green,/obj/marker/mission_mob,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/west_office)
+"aF" = (/obj/structure/carpet/red,/obj/marker/mission_mob,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/east_office)
 "aG" = (/obj/structure/carpet/red,/obj/structure/table/wood,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
 "aH" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 8},/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
 "aI" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/door/airlock/station/maintenance,/turf/simulated/floor/plating,/area/mission/prefab/city/city_hall)
@@ -56,7 +57,7 @@
 "be" = (/obj/structure/interactive/fence,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "bf" = (/obj/structure/interactive/fence/door,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "bg" = (/obj/marker/prefab/landing,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"bh" = (/mob/living/advanced/npc/syndicate{icon_state = "directional"; dir = 4},/obj/structure/interactive/barricade{icon_state = "metal"; dir = 4},/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
+"bh" = (/obj/marker/mission_mob,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/east_office)
 "bi" = (/obj/structure/interactive/barricade,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "bj" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/west_office)
 "bk" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 4},/turf/simulated/wall/brick/city,/area/mission/prefab/city/city_hall/west_office)
@@ -89,14 +90,14 @@
 "bL" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/mission/prefab/city/city_hall)
 "bM" = (/turf/simulated/floor/plating,/area/mission/prefab/city/city_hall)
 "bN" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/city/city_hall)
-"bO" = (/mob/living/advanced/npc/syndicate{icon_state = "directional"; dir = 4},/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/west_office)
-"bP" = (/mob/living/advanced/npc/syndicate{icon_state = "directional"; dir = 8},/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/east_office)
-"bQ" = (/mob/living/advanced/npc/syndicate,/obj/structure/interactive/barricade,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"bR" = (/mob/living/advanced/npc/syndicate{icon_state = "directional"; dir = 8},/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
-"bS" = (/mob/living/advanced/npc/syndicate{icon_state = "directional"; dir = 8},/obj/structure/interactive/barricade{icon_state = "metal"; dir = 8},/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
+"bO" = (/obj/marker/mission_mob,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
+"bP" = (/obj/structure/interactive/barricade,/obj/marker/mission_mob,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
+"bQ" = (/obj/structure/interactive/barricade{icon_state = "metal"; dir = 4},/obj/marker/mission_mob,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
+"bR" = (/obj/structure/interactive/barricade{icon_state = "metal"; dir = 8},/obj/marker/mission_mob,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
+"bS" = (/obj/marker/mission_mob,/obj/structure/interactive/barricade{icon_state = "metal"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "bT" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/barricade{icon_state = "metal"; dir = 1},/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
-"bU" = (/mob/living/advanced/npc/syndicate{icon_state = "directional"; dir = 8},/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
-"bV" = (/mob/living/advanced/npc/syndicate,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
+"bU" = (/obj/marker/mission_mob,/obj/structure/interactive/barricade{icon_state = "metal"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bV" = (/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 1},/obj/marker/mission_mob,/obj/structure/interactive/barricade{icon_state = "metal"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "bW" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/door/airlock,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/west_office)
 "bX" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/door/airlock,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/east_office)
 "bY" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/door/airlock,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
@@ -124,12 +125,12 @@
 "cu" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
 "cv" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/west_office)
 "cw" = (/obj/marker/map_node/x3,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"cx" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/city/city_hall)
+"cx" = (/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 1},/obj/marker/mission_mob,/obj/structure/interactive/barricade{icon_state = "metal"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "cy" = (/obj/marker/map_node/x2,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "cz" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/east_office)
 "cA" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
 "cB" = (/obj/marker/map_node,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
-"cC" = (/obj/marker/map_node/x4,/obj/decal/road_marking/dotted_line/half,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"cC" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 4},/obj/marker/mission_mob,/obj/structure/interactive/barricade{icon_state = "metal"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "cD" = (/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 1},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "cE" = (/obj/marker/smart_clear_turf,/turf/simulated/floor/brick/city,/area/dmm_suite/clear_area)
 "cF" = (/obj/structure/interactive/barbed_wire,/turf/simulated/floor/stair/city{icon_state = "stair_middle"; dir = 1},/area/mission/prefab/city/city_hall)
@@ -145,7 +146,7 @@
 "cP" = (/obj/structure/interactive/barbed_wire{icon_state = "wire"; dir = 4},/turf/simulated/floor/brick/city,/area/dmm_suite/clear_area)
 "cQ" = (/obj/structure/scenery/flowers,/obj/structure/interactive/barbed_wire{icon_state = "wire"; dir = 4},/turf/simulated/floor/colored/grass,/area/dmm_suite/clear_area)
 "cR" = (/obj/decal/manhole,/turf/simulated/floor/brick/city,/area/dmm_suite/clear_area)
-"cS" = (/obj/marker/map_node/x2,/obj/decal/manhole,/turf/simulated/floor/brick/city,/area/dmm_suite/clear_area)
+"cS" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 4},/obj/marker/mission_mob,/obj/structure/interactive/barricade{icon_state = "metal"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "cT" = (/obj/marker/lobby,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
 
 (1,1,1) = {"
@@ -153,60 +154,60 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaadakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakagaeaeaeaeaeaeaeaeaeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aabecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckckckckckckckalalalcEaeafahahahahahafaecEckanaraUaVckckckckckcHaaaaaaaaaaaaaa
 aabecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckcfckckckcfckalckbCckavamcAahazahcAayavckbDbEbDbDbFckckckckckcHaaaaaaaaaaaaaa
-aabecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckckbGbGbGbGbGbGauawauaeaAahaGaGaGahaHaeauaIauckbDbHckckckckckcHaaaaaaaaaaaaaa
-cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckaJaJaJaJaJaJaJaubKbLaeayaDahaLahahbRaebMbNauaNaNaNaNaNaNaNckcHaaaaaaaaaaaaaa
-cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcwcdcdckaJaRaRbjaRaRbkcncxcoaeaycBayctblctblbmbMcnbMaNbnbnbobnasaNckcHaaaaaaaaaaaaaa
-cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckbpaRbqbraRbsbtauaIauaeaeavaebYaeavaeaeauaIaububvbnbwbxbnbyckcHaaaaaaaaaaaaaa
-cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckbpaRbzbraRbsaJaKcubUaQauaKaKcuaKaKauaQbVbTaKaNbvbPbwbAbnbycEcHaaaaaaaaaaaaaa
-cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckbpaRbqbrbOcvbWcuaBaBaBaBaBaBaBaBaBaBaBaBaBcubXczbnbwbxbnbyckcHaaaaaaaaaaaaaa
-cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckaJataRaRaRaRaJaKaKaKcraKaKaKcraKaKaKaKcraKaKaNbnbnbnbnbnaNckcHaaaaaaaaaaaaaa
-cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdadakbfaraJaJaJaJaJaJaJaSaKaKaKaKaKaKaKaKaKaKaKaKaKaTaNaNaNaNaNaNaNckcHaaaaaaaaaaaaaa
+aabecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckckbGbGbGbGbGbGauawauaeaAaCaGaGaGaCaHaeauaIauckbDbHckckckckckcHaaaaaaaaaaaaaa
+cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckaJaJaJaJaJaJaJaubKbLaeayahahaLahahayaebMbNauaNaNaNaNaNaNaNckcHaaaaaaaaaaaaaa
+cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcwcdcdckaJaRaRbjaRaRbkcnaDcoaeaycBayctblctblbmbMcnbMaNbnbnbobnasaNckcHaaaaaaaaaaaaaa
+cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckbpaRbqbraRaEbtauaIauaeaeavaebYaeavaeaeauaIaububvbnbwaFbnbyckcHaaaaaaaaaaaaaa
+cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckbpaRbzbraRbsaJaKcuaKaQauaKaKcuaKaKauaQaKbTaKaNbvbnbwbAbnbycEcHaaaaaaaaaaaaaa
+cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckbpaRbqbraRcvbWcuaBaBaBaBaBaBaBaBaBaBaBaBaBcubXczbnbwbxbnbyckcHaaaaaaaaaaaaaa
+cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckaJataRaRaRaRaJaKaKaKcraKaKaKcraKaKaKaKcraKaKaNbnbnbnbnbhaNckcHaaaaaaaaaaaaaa
+cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdadakbfaraJaJaJaJaJaJaJaSaKaKaKaKbOaKaKaKbOaKaKaKaKaTaNaNaNaNaNaNaNckcHaaaaaaaaaaaaaa
 cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcycdbecdcdcmbIbIcQauaxbZcaaKaKaKaPaPaOaPaPaPaOaPaPaKaKaKcbccaxaucQbIbIcmcHaaaaaaaaaaaaaa
-cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckbIbIcQauaQaKcgcgaKaKcsaPaOaEaWaPaOaPcsaKaKcgcgaKaQaucQbIbIckcHaaaaaaaaaaaaaa
-cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckbIbIcQaMaXaKaKaKaFaYaPaPaOaOaOaOaOaPaPaFaYaKaKaKaZaMcQbIbIckcHaaaaaaaaaaaaaa
-cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckbIbIcQaMbaaKaKaKaKaKaPaPaPaPaPaPaPaPaPaKaKaKaKaKbbaMcQbIbIckcHaaaaaaaaaaaaaa
+cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckbIbIcQauaQaKcgcgaKaKcsaPaOaPaWaPaOaPcsaKaKcgcgaKaQaucQbIbIckcHaaaaaaaaaaaaaa
+cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckbIbIcQaMaXaKaKaKbPaYaPaPaOaOaOaOaOaPaPaYbPaKaKaKaZaMcQbIbIckcHaaaaaaaaaaaaaa
+cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckbIbIcQaMbaaKaKaKaKaKaPaPaPaPaPaPaPaPaPaKaKaKaKaKbQaMcQbIbIckcHaaaaaaaaaaaaaa
 cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcycdbecdcdckbIbIcQaMaKaKcraKaKaKaKcraKaKcraKaKcraKaKaKaKcraKaKaMcQbIbIckcHaaaaaaaaaaaaaa
-cHbecdbgcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckbIbIcQauaQaKaKaKaKbcaYaYaKaKaKaKaKaYaYbcaKaKaKaKaQaucQbIbIckcHaaaaaaaaaaaaaa
+cHbecdbgcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckbIbIcQauaQaKaKaKaKbcaYbPaKaKaKaKaKbPaYbcaKaKaKaKaQaucQbIbIckcHaaaaaaaaaaaaaa
 cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckcmckcPauauauaxaxaxauaMaMaubdbdbdauaMaMauaxaxaxauauaucPckcmckcHaaaaaaaaaaaaaa
 cHbecdcdcycdcdcdcdcdcdcycdcdcdcdcdcycdcdcycdbecdcdckckckckabaKauaMaMaMauaKaKacaKaKaKacaKaKauaMaMaMauaKaickckckckcHaaaaaaaaaaaaaa
-cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckckckckabbaaKaKaKaKaKaKcraKaKcraKaKcraKaKaKaKaKaKbhaickckckckcHaaaaaaaaaaaaaa
-cHbecdbQbibicdcdcdbibibQbicdcdcdbQbibicdcdcdbecdcdckckckckabbSaKaKcraKcraKaKaKaKaKaKaKaKaKcraKcraKaKbbaickckckckcHaaaaaaaaaaaaaa
+cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckckckckabbRaKaKaKaKaKaKcraKaKcraKaKcraKaKaKaKaKaKbQaickckckckcHaaaaaaaaaaaaaa
+cHbecdbibibicdcdcdbibibibicdcdcdbibibicdcdcdbecdcdckckckckabbaaKaKcraKcraKaKaKaKaKaKaKaKaKcraKcraKaKbbaickckckckcHaaaaaaaaaaaaaa
 cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckckckcfabaKcgaKaKaKaKaKaKcgaKcTaKcgaKaKaKaKaKaKcgaKaicfckckckcHaaaaaaaaaaaaaa
-cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckbJckcPauauaKaYaFaYaKauauaKaYaFaYaKauauaKaYaFaYaKauaucPckbJckcHaaaaaaaaaaaaaa
+cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdbecdcdckbJckcPauauaKaYbPaYaKauauaKaYbPaYaKauauaKaYbPaYaKauaucPckbJckcHaaaaaaaaaaaaaa
 cHceakakakakakakakakakakakakakakakakakakakakchcdcdckckckcPauaucicFcFcFciauauajcFcFcFajauauajcFcFcFajauaucPckckckcHaaaaaaaaaaaaaa
 cHcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcHckckckckcOcOckckckckckcOcOckckckckckcOcOckckckckckcOcOckckckckcHaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacHckbJckcmckckbJckckckbJckcmbJckcRckbJcmckbJckckckbJckckcmckbJckcHaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacHckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckcHaaaaaaaaaaaaaa
 aoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaocIcGcGcGcGcGcGcGcGcGcGcGcGcGcGaoaoaocGcGcGcGcGcGcGcGcGcGcGcGcGcGcIaoaoaoaoaoaoao
 apapapapapapapapapapapapapapapapapapapapapapapcKapapapapapapapapapapapapapapapcjcjcjapapapapapapapapapapapapapapapcKapapapapapap
-aqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqcjcjcjaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaq
-bBcCbBbBbBbBbBbBcCbBbBbBbBbBbBcCbBbBbBbBbBbBcCcLbBbBbBbBbBcCbBbBbBbBbBbBcCbBaqcjcjcjaqbBbBbBcCbBbBbBbBbBbBcCbBbBbBcLbBbBcCbBbBbB
-cDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDaqcjcjcjaqcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcD
+aqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqbSaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqcjcjcjaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqbUaqaqaqaqaqaq
+bBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBcLbBbBbBbBbBbBbBbBbBbBbBbBbBbBaqcjcjcjaqbBbBbBbBbBbBbBbBbBbBbBbBbBbBcLbBbBbBbBbBbB
+cDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDcDbVcDcDcDcDcDcDcDcDcDcDcDcDcDcDaqcjcjcjaqcDcDcDcDcDcDcDcDcDcDcDcDcDcDcxcDcDcDcDcDcD
 aqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqcMaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqcjcjcjaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqcMaqaqaqaqaqaq
-apapapapapapapapapapapapapapapapapapapapapapapapapapapapapapapapapapapapapapapcjcjcjapapapapapapapapapapapapapapapapapapapapapap
+apapapapapapapapapapapapapapapapapapapapapapapcCapapapapapapapapapapapapapapapcjcjcjapapapapapapapapapapapapapapapcSapapapapapap
 aoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaocNaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaoaocNaoaoaoaoaoao
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckck
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackbJckckckckckckckckbJckckckckckckbJckckckckckcSckckckckckbJckckckckckckbJckckckckckckckckbJck
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckckckckckckckckckckckckckckckckckckckckckckcRckckckckckckckckckckckckckckckckckckckckckckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclclclclclckckckckckckckckckckckckckckckckckckckckckckckckckckckckckclclclclclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclclclclclckckckcmckckckckcmckckckckckcmckckckckckcmckckckckcmckckckclclclclclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclcpclclclckckckckcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqckckckckclclclcpclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclclclclclckckckckcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqckckckckclclclclclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclcpclclclckckckckcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqckckckckclclclcpclclclckck
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackbJclclclclclclclckbJckcmcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcmckbJckclclclclclclclbJck
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclclclclclckckckcmcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcmckckckclclclclclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclcpclclclckckckckcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqckckckckclclclcpclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclclclclclckckckckcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqckckckckclclclclclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclcpclclclckckckckcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqckckckckclclclcpclclclckck
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclclclclclckbJckcmcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcmckbJckclclclclclclclckck
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclclclclclckckckcmcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcmckckckclclclclclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclcpclclclckckckckcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqckckckckclclclcpclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclclclclclckckckckcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqckckckckclclclclclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclcpclclclckckckckcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqckckckckclclclcpclclclckck
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackbJclclclclclclclckbJckcmcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcmckbJckclclclclclclclbJck
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclclclclclckckckcmcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcmckckckclclclclclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclcpclclclckckckckcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqckckckckclclclcpclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclclclclclckckckckcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqckckckckclclclclclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclcpclclclckckckckcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqcqckckckckclclclcpclclclckck
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclclclclclckbJckcmckckckckcmckckckckckcmckckckckckcmckckckckcmckbJckclclclclclclclckck
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclclclclclckckckcmckckckckcmckckckckckcmckckckckckcmckckckckcmckckckclclclclclclclckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckclclclclclclclckckckckckckckckckckckckckckckckckckckckckckckckckckckckckclclclclclclclckck
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackbJckckckbJckckckckckckckckckbJckckckckbJckckckckckbJckckckckbJckckckckckckckckckbJckckckbJck
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaackckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckckck
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

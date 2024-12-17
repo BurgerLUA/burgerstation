@@ -96,7 +96,7 @@
 	desc = "Pointy end towards invaders."
 	desc_extended = "A sharp spear made out of goliath hides, sinew, and bones."
 	icon = 'icons/obj/item/weapons/melee/polearms/bone_spear.dmi'
-	damage_type = /damagetype/melee/spear/ratvar/
+	damage_type = /damagetype/melee/spear/basic
 
 	size = SIZE_4
 

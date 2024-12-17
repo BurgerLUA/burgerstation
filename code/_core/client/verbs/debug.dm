@@ -33,7 +33,12 @@ var/global/static/list/debug_verbs = list(
 	/client/verb/destroy_everything,
 	/client/verb/subsystem_debug,
 	/client/verb/debug_lighting,
-	/client/verb/complete_all_objectives
+	/client/verb/complete_all_objectives,
+	/client/verb/get_far_viewers,
+	/client/verb/get_active_ais_not_in_player_range,
+	/client/verb/check_value_of_loadouts,
+	/client/verb/check_unobtainable_items,
+	/client/verb/check_soulgem_size
 )
 
 
@@ -467,7 +472,7 @@ var/global/static/list/destroy_everything_whitelist = list(
 
 	for(var/k in subtypesof(/obj/item/weapon/ranged))
 		var/obj/item/weapon/ranged/R = k
-		if(initial(R.value) <= 0)
+		if(initial(R.value) < 0)
 			continue
 		R = new R(T)
 		INITIALIZE(R)
@@ -747,3 +752,159 @@ var/global/static/list/destroy_everything_whitelist = list(
 		O.update(FALSE)
 
 	G.next_objective_update = world.time + 50
+
+/client/verb/get_far_viewers()
+	set name = "Get Far Viewers"
+	set category = "Debug"
+
+	var/list/ai_data = list()
+
+	for(var/k in subtypesof(/ai/))
+		var/ai/A = k
+		var/view_range = max(initial(A.radius_find_enemy_noise),initial(A.radius_find_enemy_caution),initial(A.radius_find_enemy_combat))
+		if(view_range > AI_DETECTION_RANGE_COMBAT)
+			ai_data["[A]"] = view_range
+
+	sort_tim(ai_data,/proc/cmp_numeric_dsc,associative=TRUE)
+
+	src << browse("<head><style>[STYLESHEET]</style></head><body>[english_list(ai_data, and_text = "<br>", comma_text = "<br>", final_comma_text = "<br>")]</body>","window=garbage")
+
+
+/client/verb/get_active_ais_not_in_player_range()
+	set name = "Get Active AIs Not In Player Range"
+	set category = "Debug"
+
+	var/final_text = ""
+
+	var/bad_ais = 0
+
+	for(var/z_level in SSai.active_ai_by_z)
+		for(var/k in SSai.active_ai_by_z[z_level])
+			var/ai/AI = k
+			var/good_ai = FALSE
+			for(var/mob/living/L in SSliving.all_mobs_with_clients)
+				var/turf/T = get_turf(L)
+				if(T.z != z_level)
+					continue
+				if(get_dist(T,AI.owner) <= VIEW_RANGE*4)
+					good_ai = TRUE
+					break
+			if(!good_ai)
+				final_text += "[AI.type], belonging to [AI.owner.type]<br>"
+				bad_ais++
+
+
+	final_text = "<h1>Found [bad_ais] AIs away from players.</h1>[final_text]"
+
+	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_text ? final_text : "No Bad AIs found. Yay!"]</body>","window=garbage")
+
+
+
+/client/verb/check_value_of_loadouts()
+
+	set name = "Check Value of Loadouts"
+	set category = "Debug"
+
+	var/list/mob_to_value = list()
+
+	for(var/k in subtypesof(/mob/living/advanced/))
+		var/mob/living/advanced/A = k
+		var/loadout/L = initial(A.loadout)
+		if(!L)
+			continue
+		L = SSloadouts.all_loadouts[L]
+		if(!L)
+			continue
+
+		var/total_value = 0
+		for(var/j in L.get_spawning_items())
+			if(ispath(j,/loot/))
+				var/loot/spawning_loot = LOOT(j)
+				total_value += spawning_loot.average_value
+			else
+				var/obj/item/I = j
+				var/value = SSbalance.stored_value[I]
+				if(value)
+					total_value += value
+				else
+
+
+		mob_to_value[A] = total_value
+
+
+	sort_tim(mob_to_value,/proc/cmp_numeric_dsc,associative=TRUE)
+
+	var/final_list = ""
+
+	for(var/k in mob_to_value)
+		var/v = mob_to_value[k]
+		final_list += "[k]: [v]cr<br>"
+
+	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_list]</body>","window=loadoutvalue")
+
+
+/client/verb/check_unobtainable_items()
+
+	set name = "Check Unobtainable Items"
+	set category = "Debug"
+
+	var/final_list = ""
+
+	for(var/k in SSloot.unobtainable_items)
+		var/v = SSloot.unobtainable_items[k]
+		final_list += "[k]: [v]cr<br>"
+
+	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_list]</body>","window=loadoutvalue")
+
+/client/verb/check_soulgem_size()
+
+	set name = "Check All Soulgem Sizes (DANGER)"
+	set category = "Debug"
+
+	var/desired_choice = input("Are you sure you want to check the soul sizes of all mobs? This involves spawning every mob and then deleting them.","Soul Size Checking","Cancel") as null|anything in list("Yes","No","Cancel")
+
+	if(desired_choice != "Yes")
+		return
+
+	var/list/final_list = list()
+
+	var/turf/T = get_turf(mob)
+
+	for(var/k in subtypesof(/mob/living))
+		var/mob/living/L = k
+		if(!initial(L.ai))
+			continue
+		if(!initial(L.health))
+			continue
+		L = new L(T)
+		INITIALIZE(L)
+		GENERATE(L)
+		FINALIZE(L)
+		final_list["[L.type]"] = L.soul_size
+		qdel(L)
+
+	sort_tim(final_list,/proc/cmp_numeric_dsc,associative=TRUE)
+
+	var/final_output = ""
+
+	for(var/k in final_list)
+		var/v = final_list[k]
+		final_output += "[k]: [get_soul_size_name(v)]<br>"
+
+	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_output]</body>","window=garbage")
+
+/proc/get_soul_size_name(var/soul_size)
+
+	if(!soul_size || soul_size <= 0)
+		return "None"
+
+	if(soul_size <= SOUL_SIZE_COMMON)
+		return "Common"
+	else if(soul_size <= SOUL_SIZE_UNCOMMON)
+		return "Uncommon"
+	else if(soul_size <= SOUL_SIZE_RARE)
+		return "Rare"
+	else if(soul_size <= SOUL_SIZE_MYSTIC)
+		return "Mystic"
+
+	return "Godly"

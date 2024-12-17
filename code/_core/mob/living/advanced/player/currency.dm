@@ -1,4 +1,4 @@
-/mob/living/advanced/player/proc/adjust_currency(var/currency_to_add,var/tax=FALSE,var/silent=FALSE)
+/mob/living/advanced/player/proc/adjust_currency(var/currency_to_add,var/silent=FALSE)
 	if(!currency_to_add)
 		return FALSE
 	var/old_currency = currency
@@ -6,12 +6,6 @@
 	var/difference = currency - old_currency
 	for(var/obj/hud/button/cash_money/B in src.buttons)
 		B.update_stats(currency,silent=silent)
-
-	if(!tax)
-		if(difference > 0)
-			revenue += difference
-		else
-			expenses += -difference
 
 	return difference
 

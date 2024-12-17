@@ -28,6 +28,12 @@
 			//2 => 80
 			//Magic number: 40.
 			bullet_mod = (found_bullet_value*get_hits_per_second())*40
+	else if(is_spell_gem(src))
+		var/obj/item/weapon/ranged/spellgem/S = src
+		var/mana_cost = S.calculate_mana_cost()
+		//A spellgem that fires 10 2-mana cost rounds a second should cost 400 credits.
+		//See above. Magic number: 20
+		bullet_mod = (mana_cost*get_hits_per_second())*20
 	else if(is_ranged_weapon(src))
 		bullet_mod = dps_mod*3.5
 
@@ -45,7 +51,9 @@
 		log_error("Value Calcuation Error: dps_mod for [src.type] was negative! ([dps_mod])")
 		return 1
 
-	. = 0.2 * (dps_mod + stopping_power_mod + kill_time_mod + bullet_mod)**1.2
+	. = recommended_value_mod * 0.2 * (dps_mod + stopping_power_mod + kill_time_mod + bullet_mod)**1.2
+
+
 
 	if(debug) log_debug("final calculation: [.]")
 

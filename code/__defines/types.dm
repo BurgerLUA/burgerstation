@@ -22,6 +22,7 @@ var/global/list/all_typecaches = list()
 
 #define is_living(A) istypecache(A,/mob/living/)
 
+#define is_simple(A) istypecache(A,/mob/living/simple)
 
 #define is_advanced(A) istypecache(A,/mob/living/advanced/)
 
@@ -73,6 +74,8 @@ var/global/list/all_typecaches = list()
 #define is_ranged_weapon(A) istypecache(A,/obj/item/weapon/ranged)
 
 #define is_ranged_bullet_weapon(A) istypecache(A,/obj/item/weapon/ranged/bullet)
+
+#define is_spell_gem(A) istypecache(A,/obj/item/weapon/ranged/spellgem)
 
 #define is_bow(A) istypecache(A,/obj/item/weapon/ranged/bow)
 

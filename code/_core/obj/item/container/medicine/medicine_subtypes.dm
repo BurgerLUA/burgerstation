@@ -8,6 +8,7 @@
 	heal_brute_percent = 0
 	heal_bleeding = TRUE
 	amount_max = 10
+	reagent_max_per_amount = 10
 
 	value = 30
 
@@ -16,7 +17,6 @@
 /obj/item/container/healing/bandage/Generate()
 	. = ..()
 	amount = 3
-	reagents.volume_max = amount*10
 
 /obj/item/container/healing/bandage/advanced
 	name = "infused bandages (styptic powder)"
@@ -27,7 +27,7 @@
 
 /obj/item/container/healing/bandage/advanced/Generate()
 	. = ..()
-	reagents.add_reagent(/reagent/medicine/styptic_powder,reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/styptic_powder, reagents.volume_max)
 
 /obj/item/container/healing/ointment
 	name = "ointment"
@@ -53,7 +53,7 @@
 
 /obj/item/container/healing/ointment/advanced/Generate()
 	. = ..()
-	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine,reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine, reagents.volume_max)
 
 /obj/item/container/healing/trauma_kit
 	name = "trauma kit"
@@ -87,7 +87,7 @@
 
 /obj/item/container/healing/trauma_kit/advanced/Generate()
 	. = ..()
-	reagents.add_reagent(/reagent/medicine/styptic_powder,reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/styptic_powder, reagents.volume_max)
 
 /obj/item/container/healing/nanopaste
 	name = "nanopaste"
@@ -188,7 +188,7 @@
 
 /obj/item/container/healing/burn_kit/advanced/Generate()
 	. = ..()
-	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine,reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine, reagents.volume_max)
 
 /obj/item/container/healing/cable
 	name = "cable"
@@ -229,7 +229,7 @@
 
 /obj/item/container/healing/patch/brute/Generate()
 	. = ..()
-	reagents.add_reagent(/reagent/medicine/styptic_powder,reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/styptic_powder, reagents.volume_max)
 
 /obj/item/container/healing/patch/burn
 	name = "burn patch (Silver Sulfadiazine)"
@@ -239,7 +239,7 @@
 
 /obj/item/container/healing/patch/burn/Generate()
 	. = ..()
-	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine,reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine, reagents.volume_max)
 
 /obj/item/container/healing/patch/synthflesh
 	name = "regeneration patch (Synthflesh)"
@@ -249,7 +249,7 @@
 
 /obj/item/container/healing/patch/synthflesh/Generate()
 	. = ..()
-	reagents.add_reagent(/reagent/medicine/synthflesh,reagents.volume_max)
+	reagents.add_reagent(/reagent/medicine/synthflesh, reagents.volume_max)
 
 /obj/item/container/healing/gauze
 	name = "gauze"

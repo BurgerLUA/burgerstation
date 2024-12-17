@@ -15,7 +15,6 @@
 	allow_reagent_transfer_to = FALSE
 	allow_reagent_transfer_from = FALSE
 
-	value = 0
 	weight = 0.1
 
 	var/injection_sound = null //Optional injection sound to use.

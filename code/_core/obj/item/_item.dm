@@ -7,7 +7,7 @@
 
 	var/value_burgerbux
 
-	var/contraband = FALSE //Set to true if this object is considered contraband and can't be saved, but still accessed by the game.
+	var/contraband = FALSE //Set to true if this object is considered contraband and can't be saved except on your character.
 	var/save_on_death = FALSE //Set to true if this item should save on death, regardless of item respawning. This should only be set by special code.
 	var/can_save_loadout = TRUE //Set to true if you can save this item in a loadout.
 
@@ -138,8 +138,8 @@
 	var/dan_icon_state_wielded = "wielded"
 	var/dan_icon_state_back = "back"
 	// list(NORTH,EAST,SOUTH,WEST)
-	var/dan_offset_pixel_x = list(8,0,-8,0) //Aligned for right hand. These values are inversed in left hand. Automatic offsets are applied for EAST and WEST.
-	var/dan_offset_pixel_y = list(0,0,0,0) //Aligned for right hand. These values are inversed in left hand.
+	var/list/dan_offset_pixel_x = list(8,0,-8,0) //Aligned for right hand. These values are inversed in left hand. Automatic offsets are applied for EAST and WEST.
+	var/list/dan_offset_pixel_y = list(0,0,0,0) //Aligned for right hand.
 	var/dan_layer_above = LAYER_MOB_HELD
 	var/dan_layer_below = LAYER_MOB_NONE
 
@@ -158,7 +158,7 @@
 
 	density = TRUE
 
-	value = 0
+	value = -1
 
 	allow_path = TRUE
 
@@ -234,6 +234,12 @@
 /obj/item/Cross(atom/movable/O,atom/oldloc)
 	return TRUE
 
+/obj/item/New(var/desired_loc)
+	. = ..()
+	if(value <= -1)
+		log_error("Warning: [src.type] had a value of [value], but it was still able to be spawned!")
+		value = 0
+
 /obj/item/Finalize()
 
 	. = ..()
@@ -246,6 +252,10 @@
 
 	if(is_turf(loc))
 		layer = initial(layer) + clamp(value / 10000,0,0.999)
+
+	if(value <= -1)
+		log_error("Warning: [src.type] had a value of [value], but it was still able to be spawned!")
+		value = 0
 
 /obj/item/get_base_value()
 	. = initial(value) * amount
@@ -453,7 +463,9 @@
 	else if(tier == 0)
 		. += div("rarity center","Tier [tier][tier_type ? " [tier_type]" : ""].")
 
-	if(contraband)
+	if(!can_save)
+		. += div("bad bold center","CLASSIFIED")
+	else if(contraband)
 		. += div("bad bold center","CONTRABAND")
 
 	if(quality != -1)
@@ -830,12 +842,9 @@
 	. = ..()
 
 	if(length(polymorphs))
-		var/initial_icon = initial(icon)
-		var/initial_icon_state = initial(icon_state)
-
 		for(var/polymorph_name in polymorphs)
 			var/polymorph_color = polymorphs[polymorph_name]
-			var/image/I = new/image(initial_icon,"[initial_icon_state]_[polymorph_name]")
+			var/image/I = new/image(initial(icon),"[icon_state]_[polymorph_name]")
 			I.color = polymorph_color
 			add_overlay(I)
 

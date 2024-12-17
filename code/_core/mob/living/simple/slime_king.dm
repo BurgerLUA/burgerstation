@@ -48,8 +48,6 @@
 
 	blood_type = null
 
-	soul_size = SOUL_SIZE_MYSTIC
-
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
 	movement_delay = DECISECONDS_TO_TICKS(6)
@@ -82,6 +80,9 @@
 	. = ..()
 
 /mob/living/simple/slime_king/proc/create_slime(var/turf/T)
+
+	if(minion_master)
+		return FALSE
 
 	var/mob/living/simple/slime/S = new(T)
 	S.color = src.color
@@ -186,7 +187,7 @@
 			v=100
 		)
 
-	if(!dead && damage_amount >= 10 && prob(damage_amount*0.25) && attacker)
+	if(attacker && !minion_master && !dead && damage_amount >= 10 && prob(damage_amount*0.25))
 		var/turf/T = get_step(src,get_dir(src,attacker))
 		if(T)
 			var/mob/living/simple/slime/S = create_slime(T)

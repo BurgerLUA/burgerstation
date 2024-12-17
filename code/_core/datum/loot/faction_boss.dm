@@ -11,21 +11,33 @@
 		/obj/item/storage/blood_box/holy_grenades = 1,
 		/obj/item/weapon/ranged/magic/spellblade/runesword = 1,
 		/obj/item/container/syringe/medipen/adminomnizine = 1,
-		/obj/item/dice/d20/cursed = 1,
 		/obj/item/weapon/ranged/magic/staff/lavaland = 1
+	)
 
+/loot/lavaland/contract
+	loot_table = list(
+		/obj/item/clothing/back/storage/backpack/bluespace = 1,
+		/obj/item/clothing/back/storage/satchel/bluespace = 1,
+		/obj/item/weapon/melee/energy/plightbringer = 1,
+		/obj/item/dice/d20/cursed = 1,
+		/obj/item/weapon/ranged/spellgem/pillar = 1,
+		/obj/item/clothing/ring/horsemen/conquest = 1,
+		/obj/item/clothing/ring/horsemen/death = 1,
+		/obj/item/clothing/ring/horsemen/famine = 1,
+		/obj/item/clothing/ring/horsemen/war = 1,
+		/obj/item/soulgem/godly = 1
 	)
 
 /loot/lavaland/ash_drake
 	loot_table = list(
 		/obj/item/clothing/overwear/armor/drake_armor = 3,
-		/obj/item/weapon/melee/energy/plightbringer = 1
+		/obj/item/clothing/back/wings/angel/demon = 1,
 	)
 
 /loot/lavaland/bubblegum
 	loot_table = list(
 		/obj/item/clothing/overwear/hardsuit/ling = 3,
-		/obj/item/clothing/mask/endless_bubblegum = 1
+		/obj/item/storage/blood_box/auto_gauss = 1,
 	)
 
 /loot/lavaland/colossus
@@ -43,8 +55,8 @@
 
 /loot/lavaland/leaper
 	loot_table = list(
-		/obj/item/corrupting_frog = 3
-		//TODO: Something interesting.
+		/obj/item/corrupting_frog = 3,
+		/obj/item/soulgem/azuras_star = 1
 	)
 
 
@@ -68,10 +80,12 @@
 
 /loot/lavaland/slime_king
 	loot_table = list(
-		/obj/item/clothing/back/storage/backpack/clown/bag_of_bombs = 3
+		/obj/item/clothing/back/storage/backpack/clown/bag_of_bombs = 3,
+		/obj/item/clothing/mask/endless_bubblegum = 1
 	)
 
 /loot/lavaland/ai_core
 	loot_table = list(
-		/obj/item/weapon/ranged/energy/gatling = 3
+		/obj/item/weapon/ranged/energy/gatling = 1,
+		/obj/item/clothing/glasses/sun/augmented = 1
 	)

@@ -15,6 +15,8 @@
 
 	size = SIZE_3
 
+	value = 10
+
 
 /obj/item/storage/egg_carton/update_icon()
 

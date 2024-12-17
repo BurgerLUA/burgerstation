@@ -55,7 +55,7 @@
 			return FALSE
 
 		if(I.contraband)
-			if(messages) owner.to_chat(span("warning","This type of object cannot be stored."))
+			if(messages) owner.to_chat(span("warning","Contraband cannot be stored inside this."))
 			return FALSE
 
 	. = ..()

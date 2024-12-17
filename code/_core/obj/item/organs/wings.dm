@@ -11,3 +11,4 @@
 	name = "moth wings"
 	icon = 'icons/mob/living/advanced/hair/moth_hair_face.dmi'
 	icon_state = "none"
+	value = 0

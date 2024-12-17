@@ -16,7 +16,7 @@
 			GD.loaded_data["stored_experience"] = list()
 		GD.loaded_data["stored_experience"][E.id] += added_xp
 
-/mob/living/advanced/player/antagonist/adjust_currency(var/currency_to_add,var/tax=FALSE)
+/mob/living/advanced/player/antagonist/adjust_currency(var/currency_to_add)
 
 	. = ..()
 

@@ -1,0 +1,93 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"c" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"d" = (/obj/marker/smart_clear_turf,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"e" = (/turf/simulated/wall/cult,/area/mission/prefab/misc/cult)
+"f" = (/turf/simulated/floor/cult,/area/mission/prefab/misc/cult)
+"g" = (/obj/structure/interactive/lighting/cult_pylon,/turf/simulated/floor/cult,/area/mission/prefab/misc/cult)
+"h" = (/mob/living/simple/cult/construct/behemoth,/turf/simulated/floor/cult,/area/mission/prefab/misc/cult)
+"i" = (/obj/marker/map_node,/turf/simulated/floor/cult,/area/mission/prefab/misc/cult)
+"j" = (/obj/structure/interactive/crate/chest/filled,/turf/simulated/floor/cult,/area/mission/prefab/misc/cult)
+"k" = (/mob/living/advanced/npc/cultist,/turf/simulated/floor/cult,/area/mission/prefab/misc/cult)
+"l" = (/mob/living/advanced/npc/cultist{icon_state = "directional"; dir = 8},/turf/simulated/floor/cult,/area/mission/prefab/misc/cult)
+"m" = (/mob/living/advanced/npc/cultist{icon_state = "directional"; dir = 1},/turf/simulated/floor/cult,/area/mission/prefab/misc/cult)
+"n" = (/obj/structure/interactive/lighting/cult_pylon,/turf/simulated/floor/cult/darker,/area/mission/prefab/misc/cult)
+"o" = (/turf/simulated/floor/cult/darker,/area/mission/prefab/misc/cult)
+"p" = (/mob/living/simple/cult/construct/behemoth,/turf/simulated/floor/cult/darker,/area/mission/prefab/misc/cult)
+"q" = (/obj/marker/objective_spawn,/turf/simulated/floor/cult/darker,/area/mission/prefab/misc/cult)
+"r" = (/mob/living/simple/cult/construct/artificer,/turf/simulated/floor/cult,/area/mission/prefab/misc/cult)
+"s" = (/obj/marker/lobby,/turf/simulated/floor/cult/darker,/area/mission/prefab/misc/cult)
+"t" = (/obj/marker/map_node,/turf/simulated/floor/cult/darker,/area/mission/prefab/misc/cult)
+"u" = (/turf/simulated/floor/stair/cult{icon_state = "stair"; dir = 1},/area/mission/prefab/misc/cult)
+"v" = (/mob/living/simple/cult/construct/floating,/turf/simulated/floor/cult,/area/mission/prefab/misc/cult)
+"w" = (/obj/marker/map_node,/turf/simulated/floor/stair/cult,/area/mission/prefab/misc/cult)
+"x" = (/turf/simulated/floor/stair/cult,/area/mission/prefab/misc/cult)
+"y" = (/turf/simulated/floor/stair/cult{icon_state = "stair"; dir = 4},/area/mission/prefab/misc/cult)
+"z" = (/mob/living/advanced/npc/cultist{icon_state = "directional"; dir = 4},/turf/simulated/floor/cult,/area/mission/prefab/misc/cult)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaabbbbbbbaaaaaaaaaaaaaaabbbbbbaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbcbbbbcbbbbbcbbbbbcbbbdbcbbbbbbaaaaaaaaaaaaaaaa
+aaaaaaaaabbbbbcbbbbbbbbeeeeeeeeeeeefffffffffeeeeeeeeeeeaaaaaaaaa
+aaaaaaaaabbbbbbbbbbbbbbegffffffffffffffhfffffffffffffgeaaaaaaaaa
+aaaaaaaabbbbbbbbbbbbbbbefffifffffffifffffifffififffiffeaaaaaaaaa
+aaaaaaaabcbbbbbbdbbbbbbeeeffeeegffffffffffffffffffffffeaaaaaaaaa
+aaaaaaabbbbeeefffifffeeegjfffgeeeeeeeeeeeeeefffeeeeffeeaaaaaaaaa
+aaaaaaabbbbegfffffffffgeffffffegffffffffgegfffffgebbdaaaaaaaaaaa
+aaaaaaabbbbefffffffffffiffhffffffffffffffefkfffffebbbaaaaaaaaaaa
+aaaaaaabbbbefffffifffffffffifffiflffffilfefffffffebbbaaaaaaaaaaa
+aaaaaaabbbdffffffkfffffefffffffffffffffffefffifkfebcbaaaaaaaaaaa
+aaaaaaabcbbffiffffffiffegffffgegfffffffffeffkffffebbbaaaaaaaaaaa
+aaaaaaabbbbfffffmffffffeeeeeeeeeeeeeeflffefffffffebbbaaaaaaaaaaa
+aaaaaaabbbbffffffffffffenooooooooooneffffegfifffgebbbaaaaaaaaaaa
+aaaaaaabbbbefffffffffffeooooooooooooefiffeeefeeeeebbbaaaaaaaaaaa
+aaaaaaaabbbegfffffffffgeooopooooooqoeffrfegfffjgebbbaaaaaaaaaaaa
+aaaaaaaaabbeeifeeeefieeeooooooooooooeffffeffffffebcbaaaaaaaaaaaa
+aaaaaaaaacbbbbdaaegffgenooooosooooooeffffeffffflebbbaaaaaaaaaaaa
+aaaaaaaaabbbbbbbaeffffeoooooooooooooeffifeffffffebbbaaaaaaaaaaaa
+aaaaaaaaabbbbbbbaeffffeooooootooopooegffgeffifffebbbaaaaaaaaaaaa
+aaaaaaaaabbbbbbbaeffffeoooooooooooooeeffeeffffffebbbaaaaaaaaaaaa
+aaaaaaaaaaabbbbbaeffifenooooooooooonegffgeffffffecbbaaaaaaaaaaaa
+aaaaaaaaaaabbcbbaeffffeeeeeeuuueeeeeeffffeffffflebbbaaaaaaaaaaaa
+aaaaaaaaaaaabbbbaeffffjgegjffifffffffffffeffffffebbbaaaaaaaaaaaa
+aaaaaaaaabbbbbbbaeffifffefffvfffffffffiffeffffffebbbaaaaaaaaaaaa
+aaaaaaaaabbbbbbbaeffffffeffffffffffffffffegfiffgebbbaaaaaaaaaaaa
+aaaaaabcbbbcbdbaaegffffgeffffffffffffffffeeefeeeecbbaaaaaaaaaaaa
+aaaaaabbbbeeefieeeeewxeeefffffiffffifffffegfffgebbbbaaaaaaaaaaaa
+aaaaaabbbbegffffgenoooonefffvfffffffffvffefffffebbbbaaaaaaaaaaaa
+aaaaaabbbbeffffffeooooooeffffffffffffffffeffiffebbbbaaaaaaaaaaaa
+aaaaaabbbbefffhffeooooooegffffffffffffffgefffffebbbaaaaaaaaaaaaa
+aaaaaabbbbeffffffeooooooeeeeffifeeeeeeeeeefffffebbbaaaaaaaaaaaaa
+aaaaaabbbbeffffffyooooooegjfffffffffgebbbbbbcbdbbcbaaaaaaaaaaaaa
+aaaaaabcbbeffriffyooootoeffffffffffffebbbbbbbbbbbbbaaaaaaaaaaaaa
+aaaaaabbbbeffffffeooooooezffffffffffffbbbbbbbbbbbbbaaaaaaaaaaaaa
+aaaaaabbbbegffffgenoooonefffffifffifffcbbbbbcbbbbbaaaaaaaaaaaaaa
+aaaaaabbbbeeeeeeeeeeeuueezffffffffffffdbbbbbbbbbaaaaaaaaaaaaaaaa
+aaaaaabbbbbbbbbbbbbegffgeffffffffffffebbbbbbbbbbaaaaaaaaaaaaaaaa
+aaaaaabbbcbbbbbcbbbeffffegffffffffffgebbcbbbbbbbaaaaaaaaaaaaaaaa
+aaaaaaaaaabbbbbbbbbeffffeeeeeeeeeeeeeebbbbbbbbbaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaacbbdcbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaabbbbbbcbbbbbcbbbbcbbbaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbaabaabaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaabbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}

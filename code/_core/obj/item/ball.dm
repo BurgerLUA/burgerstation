@@ -97,6 +97,7 @@
 	desc = "Also known as a football."
 	desc_extended = "You kick this. I guess you can throw this too."
 	icon_state = "soccer"
+	value = 10
 
 /obj/item/ball/soccer/get_examine_list(var/mob/examiner)
 	. = ..()

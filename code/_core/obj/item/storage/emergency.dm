@@ -1,7 +1,10 @@
 /obj/item/storage/emergency
 	name = "survival kit"
+	desc = "Where are your internals man"
+	desc_extended = "A very small box that starts with some basic medical supplies. Could save someone's life in a pinch."
 	icon = 'icons/obj/item/storage/boxes.dmi'
 	icon_state = "emergency"
+	value = 10
 
 
 /obj/item/storage/emergency/fill_inventory()

@@ -62,6 +62,8 @@
 
 	var/next_voice = 0
 
+	value = 1
+
 /obj/item/clothing/mask/voice_of_god/get_base_value()
 	. = ..()
 	. += 18000

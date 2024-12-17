@@ -25,17 +25,18 @@
 	sort_tim(connection_files, /proc/cmp_path_dsc)
 	var/connections_length = length(connection_files)
 	if(connections_length >= CONNECTIONS_FILE_LIMIT)
+		var/our_folder = get_folder()
 		for(var/i=CONNECTIONS_FILE_LIMIT,i<=connections_length,i++)
-			var/file_name = "[get_folder(ckey)][connection_files[i]]"
+			var/file_name = "[our_folder][connection_files[i]]"
 			fdel(file_name)
 
-	var/new_file_name = "[get_folder(ckey)][loaded_data["connection_date"]]_[loaded_data["connection_time"]].json"
+	var/new_file_name = "[get_folder()][loaded_data["connection_date"]]_[loaded_data["connection_time"]].json"
 	var/new_file_data = json_encode(loaded_data)
 
 	rustg_file_write(new_file_data,new_file_name)
 
-/savedata/client/connection_history/get_folder(var/folder_id)
-	return replacetext(CONNECTION_PATH_FORMAT,"%CKEY",folder_id)
+/savedata/client/connection_history/get_folder()
+	return replacetext(CONNECTION_PATH_FORMAT,"%CKEY",get_folder_id())
 
 /savedata/client/connection_history/get_files()
-	return flist(get_folder(ckey))
+	return flist(get_folder())

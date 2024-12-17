@@ -9,6 +9,8 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_LIGHT
 
+	muzzleflash_uses_bullet_color = TRUE
+
 /obj/projectile/bullet/laser/update_underlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"[icon_state]_outline")

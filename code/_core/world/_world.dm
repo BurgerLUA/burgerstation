@@ -46,6 +46,7 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/mob/living)
 	createtypecache(/mob/living/advanced)
 	createtypecache(/mob/living/advanced/player)
+	createtypecache(/mob/living/simple)
 	createtypecache(/mob/abstract/observer)
 	createtypecache(/obj/structure)
 	createtypecache(/obj/item)
@@ -59,6 +60,7 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/obj/item/weapon/ranged/bow)
 	createtypecache(/obj/item/weapon/ranged/bullet)
 	createtypecache(/obj/item/weapon/ranged/bullet/magazine)
+	createtypecache(/obj/item/weapon/ranged/spellgem)
 	createtypecache(/obj/item/magazine)
 	createtypecache(/obj/item/material)
 	createtypecache(/obj/item/bullet_cartridge)
@@ -73,6 +75,7 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/turf/unsimulated)
 	createtypecache(/reagent/nutrition)
 
+
 	. = ..()
 
 	src.TgsNew(new /datum/tgs_event_handler, TGS_SECURITY_TRUSTED)
@@ -81,6 +84,10 @@ var/global/world_state = STATE_STARTING
 	TgsInitializationComplete()
 
 	sleep_offline = initial(sleep_offline)
+
+	if(world.port != 0 && !length(SSadmin.stored_user_ranks))
+		world.log << "FATAL ERROR: Failed to properly load and initalize user ranks. Restarting!"
+		Reboot(0)
 
 /world/Topic(T,Addr,Master,Keys)
 	TGS_TOPIC
@@ -139,7 +146,9 @@ var/global/world_state = STATE_STARTING
 
 /world/Reboot(reason)
 	rustg_log_close_all()
+	sleep(1)
 	TgsReboot()
+	sleep(1)
 	. = ..()
 
 
@@ -156,15 +165,11 @@ var/global/world_state = STATE_STARTING
 			continue
 		G.save()
 
-/proc/save_economy()
-	SSeconomy.save()
-
 /world/proc/save()
 	save_all_globals()
 	//save_all_mechs()
 	save_deathboxes()
 	save_banks()
-	save_economy()
 	save_all_characters()
 	return TRUE
 
@@ -183,14 +188,13 @@ var/global/world_state = STATE_STARTING
 			if(!P.ai) log_error("Warning: Tried saving [P.get_debug_name()] without a ckey_last assigned!")
 			continue
 		var/savedata/client/mob/M = SSclient.ckey_to_mobdata[P.ckey_last]
-		if(M.save_character(P,died = P.dead))
+		if(M.save_character(P))
 			P.to_chat(span("notice","Your character was automatically saved."))
 		else
 			P.to_chat(span("danger","Save error! Your character could not be saved!"))
-		sleep(1)
 		CHECK_TICK_HARD
 
-/world/proc/end(var/reason,var/shutdown=FALSE)
+/world/proc/end(var/reason = FALSE, var/shutdown = FALSE)
 
 	if(world_state != STATE_RUNNING)
 		log_error("Can't end now!")
@@ -200,21 +204,63 @@ var/global/world_state = STATE_STARTING
 
 	world_state = STATE_ROUND_END
 
+	if(!reason)
+		var/gamemode/gamemode = SSgamemode.active_gamemode
+		var/completed_objectives = length(gamemode.crew_completed_objectives)
+		var/failed_objectives = length(gamemode.crew_failed_objectives)
+		var/total_objectives = length(gamemode.crew_active_objectives) + completed_objectives + failed_objectives
+
+		if((completed_objectives || failed_objectives) && total_objectives)
+			switch((completed_objectives - (failed_objectives * 0.4)) / total_objectives)
+				if(-INFINITY to 0)
+					reason = WORLD_END_SYNDICATE_VICTORY
+				if(0.01 to 0.99)
+					reason = WORLD_END_MINOR_NANOTRASEN_VICTORY
+				if(1 to INFINITY)
+					reason = WORLD_END_NANOTRASEN_VICTORY
+
+		else
+			reason = WORLD_END_BORING_VICTORY
+
 	switch(reason)
 		if(WORLD_END_SHUTDOWN)
 			nice_reason = "Adminbus."
+
+		if(WORLD_END_SYNDICATE_VICTORY)
+			nice_reason = "Syndicate Victory"
+			announce("Central Command Mission Update","Fission Mailed","Mission failed, we'll get them next time.")
+
+		if(WORLD_END_BORING_VICTORY)
+			nice_reason = "Neutral Victory"
+			announce("Central Command Mission Update","Mission... failure?","You completed no objectives, don't expect to get paid any extra for your \"work\".")
+
+		if(WORLD_END_MINOR_NANOTRASEN_VICTORY)
+			nice_reason = "Minor Nanotrasen Victory"
+			SSpayday.stored_payday += 2500
+			SSpayday.trigger_payday()
+			announce("Central Command Mission Update","Minor Mission Success","You completed some of the objectives without fucking up too hard, so here is a small bonus.")
+
 		if(WORLD_END_NANOTRASEN_VICTORY)
 			nice_reason = "Nanotrasen Victory"
 			SSpayday.stored_payday += 5000
 			SSpayday.trigger_payday()
 			announce("Central Command Mission Update","Mission Success","You completed all the objectives without fucking up too hard, so here is a bonus.")
-		if(WORLD_END_SYNDICATE_VICTORY)
-			nice_reason = "Syndicate Victory"
-			announce("Central Command Mission Update","Fission Mailed","Mission failed, we'll get them next time.")
+
+		else
+			nice_reason = reason
 
 	play_sound_global('sound/meme/apcdestroyed.ogg',SSliving.all_mobs_with_clients)
 
 	//SSvote.create_vote(/vote/map)
+
+	for(var/mob/living/L as anything in SSliving.all_players)
+		if(L.loyalty_tag != "NanoTrasen")
+			continue
+		if(!L.ckey_last)
+			continue
+		L.resurrect(FALSE)
+		L.add_status_effect(IMMORTAL)
+		CHECK_TICK_HARD
 
 	if(shutdown)
 		broadcast_to_clients(span("notice","Shutting down world in [REBOOT_TIME] seconds due to [nice_reason]. Characters will be saved when the server shuts down."))

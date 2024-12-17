@@ -12,7 +12,9 @@ SUBSYSTEM_DEF(balance)
 	var/list/stored_tier_max = list()
 	var/list/stored_killtime = list()
 
-	var/list/stored_value = list() //STORED VALUE SHOULD BE ONLY USED FOR LOOT GENERATION (EXCEPTION: WEAPONS, BULLETS, MAGAZINES)
+	var/list/stored_value = list()
+
+	var/list/stored_mob_value = list() //Mob = mob loot value.
 
 	var/list/weapon_to_bullet = list()
 	var/list/weapon_to_magazine = list()
@@ -132,6 +134,8 @@ SUBSYSTEM_DEF(balance)
 
 /subsystem/balance/proc/process_loadout(var/turf/T)
 
+	//This proc checks if we're allowed to save an item as a loadout, as long as it is in a vending machine that belongs to Nanotrasen.
+
 	for(var/k in subtypesof(/obj/structure/interactive/vending/))
 		var/obj/structure/interactive/vending/V = k
 		if(initial(V.special))
@@ -161,7 +165,9 @@ SUBSYSTEM_DEF(balance)
 
 	for(var/k in everything_else)
 		var/obj/item/I = k
-		if(initial(I.value) <= 0)
+		if(initial(I.value) < 0)
+			continue
+		if(!initial(I.can_save))
 			continue
 		I = new k(T)
 		I.initialize_type = INITIALIZE_NONE
@@ -179,6 +185,10 @@ SUBSYSTEM_DEF(balance)
 	. = list()
 	for(var/k in bullet_subtypes)
 		var/obj/item/bullet_cartridge/B = k
+		if(initial(B.value) < 0)
+			continue
+		if(!initial(B.can_save))
+			continue
 		B = new k(T)
 		B.initialize_type = INITIALIZE_NONE
 		INITIALIZE(B)
@@ -197,6 +207,10 @@ SUBSYSTEM_DEF(balance)
 	. = list()
 	for(var/k in magazine_subtypes)
 		var/obj/item/magazine/M = k
+		if(initial(M.value) < 0)
+			continue
+		if(!initial(M.can_save))
+			continue
 		if(initial(M.bullet_count_max) <= 0)
 			continue
 		M = new k(T)
@@ -218,7 +232,9 @@ SUBSYSTEM_DEF(balance)
 	. = list()
 	for(var/k in weapon_subtypes)
 		var/obj/item/weapon/W = k
-		if(initial(W.value) <= 0)
+		if(initial(W.value) < 0)
+			continue
+		if(!initial(W.can_save))
 			continue
 		W = new k(T)
 		W.initialize_type = INITIALIZE_NONE

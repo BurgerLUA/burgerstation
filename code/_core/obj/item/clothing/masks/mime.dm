@@ -9,4 +9,4 @@
 	size = SIZE_2
 
 
-	value = 120
+	value = 1

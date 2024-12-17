@@ -42,6 +42,8 @@
 
 	quality = 100
 
+	var/recommended_value_mod = 1
+
 /obj/item/weapon/Finalize()
 	. = ..()
 	if(SSbalance && SSbalance.initialized && isnum(SSbalance.stored_tier[type]))

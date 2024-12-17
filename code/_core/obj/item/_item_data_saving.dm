@@ -76,7 +76,7 @@
 		return null
 	FINALIZE(I)
 
-	if(I.contraband || !I.can_save)
+	if(!I.can_save)
 		qdel(I)
 		return null
 
@@ -90,8 +90,8 @@
 
 /obj/item/proc/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 
-	if( (contraband || !can_save) && !length(inventories)) //The inventory check prevents people from losing their stuff if a dev is dumb and adds a contraband item with storage.
-		if(contraband) P.to_chat(span("warning","Notice: \The [src.name] could not be saved because it is considered contraband."))
+	if(!can_save && !length(inventories))
+		P.to_chat(span("warning","Notice: \The [src.name] could not be saved."))
 		return null
 
 	if(loadout && !SSbalance.can_save_loadout[src.type])
@@ -140,7 +140,7 @@
 		desired_quality -= 25
 		desired_quality = FLOOR(desired_quality,1)
 	if(desired_quality != initial(quality))
-		.["quality"] = clamp(desired_quality,0,200)
+		.["quality"] = clamp(desired_quality,0,300)
 
 	if(luck && luck != initial(luck))
 		.["luck"] = luck

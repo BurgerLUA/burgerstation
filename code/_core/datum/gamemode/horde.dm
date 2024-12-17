@@ -31,7 +31,7 @@
 		if(can_continue())
 			SSvote.create_vote(/vote/continue_round)
 		else
-			world.end(WORLD_END_NANOTRASEN_VICTORY)
+			world.end()
 
 /gamemode/horde/proc/create_horde_mob(var/desired_loc)
 	var/mob/living/L = pickweight(enemy_types_to_spawn)

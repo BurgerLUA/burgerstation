@@ -20,8 +20,6 @@
 
 	armor = /armor/borg
 
-	soul_size = null
-
 /mob/living/simple/silicon/squats
 	name = "S.Q.U.A.T.S."
 	icon_state = "squats"

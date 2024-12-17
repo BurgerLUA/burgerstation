@@ -1,5 +1,5 @@
 /mob/living/simple/halloween_spirit
-	name = "spirit of halloween"
+	name = "phantasm"
 	desc = "No, not that one."
 	desc_extended = "Extremely spooky spirits that only exist to bite your ankles."
 	icon = 'icons/mob/living/simple/spooky.dmi'
@@ -27,8 +27,6 @@
 	iff_tag = "Ghost"
 
 	blood_type = null
-
-	soul_size = SOUL_SIZE_COMMON
 
 	level = 8
 

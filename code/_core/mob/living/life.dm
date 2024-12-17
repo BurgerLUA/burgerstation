@@ -25,7 +25,7 @@
 
 	var/turf/T = get_turf(src)
 
-	if(T)
+	if(T && !minion_master)
 		if(boss && boss_loot)
 			var/obj/structure/interactive/boss_loot/BL = new(T)
 			BL.loot_to_give = boss_loot
@@ -38,7 +38,7 @@
 		if(!silent) create_alert(VIEW_RANGE*0.5,T, alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
 
 		if(boss && !drops_gold)
-			drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/SSeconomy.credits_per_gold) * 5
+			drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/CREDITS_PER_GOLD) * 5
 
 		if(drops_gold > 0)
 			create_gold_drop(T,CEILING(drops_gold,1))
@@ -62,9 +62,10 @@
 		var/obj/hud/button/dead_ghost/DG = new
 		DG.update_owner(src)
 
-	if(master)
-		dust()
-	else if(soul_size && has_status_effect(SOULTRAP) && !is_player_controlled())
+	if(minion_master)
+		minion_master.remove_minion(src)
+
+	if(has_status_effect(SOULTRAP) && can_be_soultrapped())
 		var/obj/effect/temp/soul/S = new(T,SECONDS_TO_DECISECONDS(20))
 		S.appearance = src.appearance
 		S.transform = get_base_transform()
@@ -73,6 +74,8 @@
 		S.layer = LAYER_GHOST
 		S.name = "soul of [initial(name)]:"
 		S.soul_size = src.soul_size
+		S.soul_path = src.type
+		S.boss = src.boss
 		INITIALIZE(S)
 		GENERATE(S)
 		FINALIZE(S)
@@ -88,30 +91,6 @@
 		client.to_chat(span("danger","Be warned, if you choose to be cloned or you suffer from brain death, you will need to retrieve your items!."))
 
 	return TRUE
-
-
-/*
-/mob/living/proc/do_loot_drop(var/atom/desired_loc)
-
-	if(desired_loc && loot_drop && health)
-		var/loot/L = all_loot[loot_drop]
-
-		if(!is_turf(desired_loc))
-			return FALSE
-
-		if(loot_drop_in_corpse)
-			L.spawn_loot_corpse(desired_loc)
-		else
-			L.spawn_loot_turf(desired_loc)
-
-		var/obj/item/currency/C = new(src.loc)
-		C.value = 1 + FLOOR(health.health_max/10, 1)
-		INITIALIZE(C)
-		step_rand(C)
-		return TRUE
-
-	return FALSE
-*/
 
 /mob/living/proc/revive()
 	if(!dead)
@@ -132,15 +111,18 @@
 		DG.update_owner(null)
 	handle_transform()
 	update_eyes()
+	if(ai)
+		ai.set_active(TRUE)
 	return TRUE
 
-/mob/living/proc/rejuvenate()
+/mob/living/proc/rejuvenate(var/reset_nutrition = TRUE)
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()
-	nutrition_normal = initial(nutrition_normal)
-	nutrition_fast = initial(nutrition_fast)
-	nutrition_quality = initial(nutrition_quality)
-	hydration = max(hydration,initial(hydration))
+	if(reset_nutrition)
+		nutrition_normal = initial(nutrition_normal)
+		nutrition_fast = initial(nutrition_fast)
+		nutrition_quality = initial(nutrition_quality)
+		hydration = max(hydration,initial(hydration))
 	intoxication = initial(intoxication)
 	on_fire = initial(on_fire)
 	fire_stacks = initial(fire_stacks)
@@ -158,8 +140,8 @@
 	stamina_regen_buffer = 0
 	return TRUE
 
-/mob/living/proc/resurrect()
-	return rejuvenate() && revive()
+/mob/living/proc/resurrect(var/reset_nutrition = TRUE)
+	return rejuvenate(reset_nutrition) && revive()
 
 /mob/living/proc/pre_death()
 	brute_regen_buffer = max(brute_regen_buffer,0)
@@ -180,7 +162,7 @@
 	var/turf/T = get_turf(src)
 
 	//Was it a kill?
-	if(!suicide)
+	if(!suicide && !minion_master)
 		var/list/people_who_contributed = list()
 		var/list/people_who_killed = list()
 		for(var/k in hit_logs)
@@ -196,8 +178,16 @@
 		on_killed(people_who_killed) //people_who_killed can be empty.
 
 		if(length(people_who_killed))
-			if(!boss)
-				if(!was_killed && !master && soul_size && !delete_on_death && health && health.health_max >= 100)
+			if(boss)
+				for(var/k in people_who_killed)
+					var/mob/living/advanced/player/P = k
+					if(!is_player(P))
+						continue
+					INCREASE_ACHIEVEMENT(P,"bosses_killed",1)
+				if(T)
+					create_gold_drop(T,CEILING(src.health.health_max/10,1))
+			else
+				if(!was_killed && !minion_master && !delete_on_death && health && health.health_max >= 100 && src.get_xp_multiplier() >= 1)
 					for(var/k in people_who_killed)
 						var/mob/living/advanced/player/P = k
 						if(!is_player(P) || !P.job)
@@ -213,32 +203,8 @@
 							var/credits_given = P.adjust_currency(credits_to_give,silent=TRUE)
 							if(credits_given > 0)
 								P.to_chat(span("notice","You gained [credits_given] credits for killing [src.name]."),CHAT_TYPE_COMBAT)
-			else
-				var/rarity = 0
-				var/rarity_count = 0
-				for(var/k in people_who_killed)
-					var/mob/living/advanced/player/P = k
-					if(!is_player(P))
-						continue
-					rarity += P.get_rarity()
-					rarity_count++
-					INCREASE_ACHIEVEMENT(P,"bosses_killed",1)
-				if(T)
-					create_gold_drop(T,CEILING(src.health.health_max/10,1))
-					if(rarity_count > 0)
-						rarity *= 1/rarity_count
-						var/list/loot_spawned = SPAWN_LOOT(/loot/boss,T,rarity)
-						for(var/k in loot_spawned)
-							var/obj/item/I = k
-							var/item_move_dir = pick(DIRECTIONS_ALL)
-							var/turf/turf_to_move_to = get_step(T,item_move_dir)
-							if(!turf_to_move_to)
-								turf_to_move_to = T
-							I.force_move(turf_to_move_to)
-							var/list/pixel_offsets = direction_to_pixel_offset(item_move_dir)
-							I.pixel_x = -pixel_offsets[1]*TILE_SIZE
-							I.pixel_y = -pixel_offsets[2]*TILE_SIZE
-							animate(I,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=5)
+
+
 
 
 	HOOK_CALL("post_death")
@@ -334,10 +300,6 @@
 	return TRUE
 
 mob/living/proc/on_life_slow()
-
-	if(minion_remove_time && minion_remove_time <= world.time)
-		dust()
-		return TRUE
 
 	//Immune system
 	immune_system_strength = initial(immune_system_strength)

@@ -22,7 +22,6 @@
 	blood_type = /reagent/blood/cat
 	blood_volume = 200
 
-	soul_size = SOUL_SIZE_COMMON
 
 	health = null //immortal
 

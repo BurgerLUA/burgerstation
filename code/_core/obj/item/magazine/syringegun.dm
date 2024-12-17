@@ -12,13 +12,13 @@
 
 	ammo = /obj/item/bullet_cartridge/syringe_gun
 
-	bullet_length_min = 18.5
+	bullet_length_min = 18.4
 	bullet_length_best = 18.5
-	bullet_length_max = 18.5
+	bullet_length_max = 18.6
 
-	bullet_diameter_min = 18.5
+	bullet_diameter_min = 18.4
 	bullet_diameter_best = 18.5
-	bullet_diameter_max = 18.5
+	bullet_diameter_max = 18.6
 
 	size = SIZE_2
 

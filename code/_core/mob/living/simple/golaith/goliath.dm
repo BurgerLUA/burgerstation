@@ -35,8 +35,6 @@
 	blood_type = /reagent/blood/goliath
 	blood_volume = 750
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 12
 
 	movement_delay = DECISECONDS_TO_TICKS(2)

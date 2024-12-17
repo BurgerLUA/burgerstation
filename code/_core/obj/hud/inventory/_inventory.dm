@@ -230,13 +230,12 @@
 						if(click_flags & RIGHT_HAND)
 							desired_transform.Scale(-1,1)
 					else
+						desired_pixel_y = item_to_update.dan_offset_pixel_y[1]
 						if(click_flags & RIGHT_HAND)
 							desired_pixel_x = item_to_update.dan_offset_pixel_x[1]
-							desired_pixel_y = item_to_update.dan_offset_pixel_y[1]
 							desired_transform.Scale(-1,1)
 						else
 							desired_pixel_x = -item_to_update.dan_offset_pixel_x[1]
-							desired_pixel_y = -item_to_update.dan_offset_pixel_y[1]
 
 			if(EAST)
 				if(id == BODY_TORSO_OB)
@@ -248,13 +247,12 @@
 						desired_layer = item_to_update.dan_layer_above
 						desired_pixel_x = 4
 					else
+						desired_pixel_y = item_to_update.dan_offset_pixel_y[2]
 						if(click_flags & RIGHT_HAND)
 							desired_pixel_x = item_to_update.dan_offset_pixel_x[2]
-							desired_pixel_y = item_to_update.dan_offset_pixel_y[2]
 							desired_layer = item_to_update.dan_layer_above
 						else
 							desired_pixel_x = -item_to_update.dan_offset_pixel_x[2] + 4
-							desired_pixel_y = -item_to_update.dan_offset_pixel_y[2]
 							desired_layer = item_to_update.dan_layer_below
 						desired_transform.Scale(-1,1)
 			if(SOUTH)
@@ -266,12 +264,11 @@
 						if(click_flags & LEFT_HAND)
 							desired_transform.Scale(-1,1)
 					else
+						desired_pixel_y = item_to_update.dan_offset_pixel_y[3]
 						if(click_flags & RIGHT_HAND)
 							desired_pixel_x = item_to_update.dan_offset_pixel_x[3]
-							desired_pixel_y = item_to_update.dan_offset_pixel_y[3]
 						else
 							desired_pixel_x = -item_to_update.dan_offset_pixel_x[3]
-							desired_pixel_y = -item_to_update.dan_offset_pixel_y[3]
 							desired_transform.Scale(-1,1)
 			if(WEST)
 				if(id == BODY_TORSO_OB)
@@ -284,14 +281,13 @@
 						desired_transform.Scale(-1,1)
 						desired_pixel_x = -4
 					else
+						desired_pixel_y = item_to_update.dan_offset_pixel_y[4]
 						if(click_flags & RIGHT_HAND)
 							desired_layer = item_to_update.dan_layer_below
 							desired_pixel_x = item_to_update.dan_offset_pixel_x[4] - 4
-							desired_pixel_y = item_to_update.dan_offset_pixel_y[4]
 						else
 							desired_layer = item_to_update.dan_layer_above
 							desired_pixel_x = -item_to_update.dan_offset_pixel_x[4]
-							desired_pixel_y = -item_to_update.dan_offset_pixel_y[4]
 
 	else if(id == BODY_HAND_LEFT_HELD)
 		desired_icon_state = item_to_update.icon_state_held_left
@@ -301,6 +297,8 @@
 	if(desired_icon_state == null)
 		return FALSE
 
+	//This is for the held icon only. NOT the inventory icon.
+	//Not really a clean way to do this without icon blend operations.
 	if(length(item_to_update.polymorphs))
 		var/icon/I = ICON_INVISIBLE
 		for(var/polymorph_name in item_to_update.polymorphs)
@@ -409,6 +407,21 @@
 
 	vis_contents += I
 	I.layer = LAYER_BASE + length(vis_contents)
+
+	if(I.amount < I.amount_max && is_turf(old_location))
+		var/turf/T = old_location
+		var/check_limit = 10
+		for(var/obj/item/O in old_location)
+			if(check_limit <= 0 || I.amount >= I.amount_max)
+				break
+			check_limit--
+			if(O == src)
+				continue
+			if(O.loc != T || O.qdeleting)
+				continue
+			if(!O.can_transfer_stacks_to(I))
+				continue
+			O.transfer_amount_to(I)
 
 	I.on_equip(old_location,silent)
 
@@ -580,36 +593,6 @@
 			return FALSE
 
 	if(worn)
-		if(worn_allow_duplicate)
-			for(var/k in contents)
-				var/obj/item/I2 = k
-				if(I.item_slot & I.item_slot)
-					if(messages) owner.to_chat(span("warning","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
-					return FALSE
-
-
-		if(is_advanced(owner))
-			var/mob/living/advanced/A = owner
-			if(I.item_slot && I.item_slot_layer)
-				for(var/k in src.contents)
-					var/obj/item/clothing/existing_clothing = k
-					if(!is_clothing(existing_clothing))
-						continue
-					if(existing_clothing.item_slot_layer < I.item_slot_layer)
-						continue
-					if(messages) owner.to_chat(span("warning","\The [existing_clothing.name] prevents you from wearing \the [I.name]!"))
-					return FALSE
-			if(is_clothing(I))
-				var/obj/item/clothing/C = I
-				if(C.flags_clothing)
-					for(var/k in A.organs)
-						var/obj/item/organ/O = k
-						if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_FEET && O.flags_organ & FLAG_ORGAN_BEAST_FEET)
-							if(messages) owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-humanoid feet..."))
-							return FALSE
-						if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_HEAD && O.flags_organ & FLAG_ORGAN_BEAST_HEAD)
-							if(messages) owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-humanoid head..."))
-							return FALSE
 
 		if(!(I.item_slot & item_slot))
 			if(messages)
@@ -624,10 +607,40 @@
 					owner.to_chat(span("notice","\The [I.name] doesn't fit on \the [src.loc.name]!"))
 				return FALSE
 
-	if(max_size >= 0 && I.size > max_size && !(item_bypass && I.type in item_bypass) && !(I.inventory_bypass && src.type in I.inventory_bypass))
-		if(messages && src.loc)
-			owner.to_chat(span("warning","\The [I] is too large to be put in \the [src.loc.name]."))
-		return FALSE
+		if(worn_allow_duplicate)
+			for(var/k in contents)
+				var/obj/item/I2 = k
+				if(I.item_slot & I2.item_slot)
+					if(messages) owner.to_chat(span("warning","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
+					return FALSE
+
+		if(is_advanced(owner))
+			var/mob/living/advanced/A = owner
+			if(I.item_slot && I.item_slot_layer)
+				for(var/k in src.contents)
+					var/obj/item/clothing/existing_clothing = k
+					if(!is_clothing(existing_clothing))
+						continue
+					if(existing_clothing.item_slot_layer < I.item_slot_layer)
+						continue
+					if(messages) owner.to_chat(span("warning","\The [existing_clothing.name] prevents you from wearing \the [I.name]!"))
+					return FALSE
+			if(is_clothing(I))
+				var/obj/item/clothing/C = I
+				if(C.flags_clothing & (FLAG_CLOTHING_NOBEAST_FEET | FLAG_CLOTHING_NOBEAST_HEAD))
+					for(var/k in A.organs)
+						var/obj/item/organ/O = k
+						if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_FEET && O.flags_organ & FLAG_ORGAN_BEAST_FEET)
+							if(messages) owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-humanoid feet..."))
+							return FALSE
+						if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_HEAD && O.flags_organ & FLAG_ORGAN_BEAST_HEAD)
+							if(messages) owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-humanoid head..."))
+							return FALSE
+	else
+		if(max_size >= 0 && I.size > max_size && !(item_bypass && I.type in item_bypass) && !(I.inventory_bypass && src.type in I.inventory_bypass))
+			if(messages && src.loc)
+				owner.to_chat(span("warning","\The [I] is too large to be put in \the [src.loc.name]."))
+			return FALSE
 
 	return TRUE
 

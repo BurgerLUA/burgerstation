@@ -14,8 +14,6 @@
 
 	var/open = TRUE
 
-	value = 1
-
 	drop_sound = 'sound/items/drop/soda.ogg'
 
 	size = SIZE_1
@@ -38,6 +36,7 @@
 /obj/item/container/simple/can/cola/
 	name = "\improper Space Cola"
 	icon_state = "cola"
+	value = 1
 
 /obj/item/container/simple/can/cola/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/cola,reagents.volume_max)
@@ -47,6 +46,7 @@
 /obj/item/container/simple/can/grape_soda/
 	name = "\improper Starkist Grape Soda"
 	icon_state = "grape_soda"
+	value = 1
 
 /obj/item/container/simple/can/grape_soda/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/grape,reagents.volume_max)
@@ -56,6 +56,7 @@
 /obj/item/container/simple/can/orange_soda/
 	name = "\improper Starkist Orange Soda"
 	icon_state = "orange_soda"
+	value = 1
 
 /obj/item/container/simple/can/orange_soda/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/orange,reagents.volume_max)
@@ -65,6 +66,7 @@
 /obj/item/container/simple/can/iced_tea/
 	name = "\improper Disk! Iced Tea"
 	icon_state = "iced_tea"
+	value = 1
 
 /obj/item/container/simple/can/iced_tea/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/iced_tea,reagents.volume_max)
@@ -78,6 +80,8 @@
 
 	rarity = RARITY_RARE
 
+	value = 1
+
 /obj/item/container/simple/can/grey_bull/Generate()
 	reagents.add_reagent(/reagent/nutrition/energy/grey_bull,reagents.volume_max)
 	open = FALSE
@@ -86,6 +90,7 @@
 /obj/item/container/simple/can/mountain_wind/
 	name = "\improper Space Mountain Wind"
 	icon_state = "mountain_wind"
+	value = 1
 
 /obj/item/container/simple/can/mountain_wind/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/mountain_wind,reagents.volume_max)
@@ -95,6 +100,7 @@
 /obj/item/container/simple/can/dr_gibb
 	name = "\improper Dr. Gibb"
 	icon_state = "dr_gibb"
+	value = 1
 
 /obj/item/container/simple/can/dr_gibb/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/dr_gibb,reagents.volume_max)
@@ -140,6 +146,7 @@
 /obj/item/container/simple/can/space_up/
 	name = "\improper Space Up!"
 	icon_state = "space_up"
+	value = 1
 
 /obj/item/container/simple/can/space_up/Generate()
 	reagents.add_reagent(/reagent/nutrition/soda/space_up,reagents.volume_max)

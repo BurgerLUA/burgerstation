@@ -55,9 +55,9 @@
 "bc" = (/obj/marker/map_node,/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
 "bd" = (/obj/structure/interactive/vending/wizard/prank,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
 "be" = (/obj/structure/interactive/vending/wizard,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
-"bf" = (/mob/living/advanced/npc/hostile_wizard,/obj/structure/carpet/blue/magic,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
-"bg" = (/mob/living/advanced/npc/hostile_wizard,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"bh" = (/mob/living/advanced/npc/hostile_wizard{icon_state = "directional"; dir = 1},/obj/structure/interactive/chair/stool/bar{icon_state = "bar"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"bf" = (/mob/living/advanced/npc/raging_mage,/obj/structure/carpet/blue/magic,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"bg" = (/mob/living/advanced/npc/raging_mage,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"bh" = (/mob/living/advanced/npc/raging_mage,/obj/structure/interactive/chair/stool/bar{icon_state = "bar"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
 
 (1,1,1) = {"
 aaababababababababababababababaa

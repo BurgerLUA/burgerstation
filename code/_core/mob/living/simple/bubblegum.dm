@@ -74,8 +74,6 @@
 
 	var/next_blood_attack = 0
 
-	soul_size = SOUL_SIZE_RARE
-
 	object_size = 2
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
@@ -120,11 +118,12 @@
 
 /mob/living/simple/bubblegum/post_move(var/atom/old_loc)
 
-	if(!horizontal) play_sound('sound/effects/impacts/meteor_impact.ogg',get_turf(src),volume = charge_steps ? 50 : 25)
+	var/turf/simulated/T0 = get_turf(src)
+
+	if(!horizontal && T0) play_sound('sound/effects/impacts/meteor_impact.ogg',T0,volume = charge_steps ? 50 : 25)
 
 	if(charge_steps > 0)
 		if(charge_steps <= 3)
-			var/turf/simulated/T0 = get_turf(src)
 			var/turf/simulated/T1 = get_step(src,turn(dir,90))
 			var/turf/simulated/T2 = get_step(src,turn(dir,-90))
 			if(T0) create_blood(/obj/effect/cleanable/blood/splatter,T0,"#7F0000",rand(-8,8),rand(-8,8))

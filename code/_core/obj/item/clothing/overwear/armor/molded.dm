@@ -13,6 +13,8 @@
 
 	dyeable = TRUE
 
+	value = 1
+
 /obj/item/clothing/overwear/armor/molded_armor/black
 	color = COLOR_BLACK
 

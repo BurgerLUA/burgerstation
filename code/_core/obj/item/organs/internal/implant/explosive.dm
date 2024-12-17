@@ -5,6 +5,8 @@
 	has_life = TRUE
 	var/warnings_left = 5
 
+	value = 0
+
 /obj/item/organ/internal/implant/groin/syndicate_explosive/on_life()
 
 	. = ..()

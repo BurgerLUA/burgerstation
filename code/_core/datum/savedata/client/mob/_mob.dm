@@ -2,8 +2,8 @@
 
 /savedata/client/mob
 
-/savedata/client/mob/get_folder(var/folder_id)
-	. = replacetext(CHARACTER_PATH_FORMAT,"%CKEY",folder_id)
+/savedata/client/mob/get_folder()
+	. = replacetext(CHARACTER_PATH_FORMAT,"%CKEY",get_folder_id())
 	return
 
 /savedata/client/mob/reset_data()
@@ -25,7 +25,7 @@
 	)
 
 /savedata/client/mob/New(var/desired_ckey)
-	..()
+	. = ..()
 	reset_data()
 	var/client/owner = CLIENT(ckey)
 	if(owner)
@@ -36,8 +36,10 @@
 	return FALSE
 
 /savedata/client/mob/get_file(var/file_id)
-	var/returning = "[get_folder(ckey)][CHARACTER_FILE_FORMAT]"
-	returning = replacetext(returning,"%CKEY",bot_controlled ? "BOT" : ckey)
+
+	var/returning = "[get_folder()][CHARACTER_FILE_FORMAT]"
+
 	returning = replacetext(returning,"%CID",file_id)
+
 	return returning
 

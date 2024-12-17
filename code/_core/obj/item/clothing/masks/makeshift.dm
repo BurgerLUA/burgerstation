@@ -8,3 +8,5 @@
 	size = SIZE_2
 
 	rarity = RARITY_BROKEN
+
+	value = 1

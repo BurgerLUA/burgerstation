@@ -9,7 +9,7 @@
 		/obj/item/clothing/feet/shoes/colored/black,
 		/obj/item/clothing/feet/shoes/colored/black/left,
 		/obj/item/clothing/back/storage/satchel/loadout/new_player,
-		/obj/item/clothing/ears/headset,
+		/obj/item/clothing/ears/headset/nanotrasen,
 		/obj/item/weapon/melee/toolbox/blue
 	)
 

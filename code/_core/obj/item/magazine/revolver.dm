@@ -1,3 +1,5 @@
+/obj/item/magazine/clip/revolver
+
 /obj/item/magazine/clip/revolver/bullet_38
 	name = "\improper .38 six round speedloader"
 	desc = "IT'S NOT A CLIP. IT'S A MA-- Wait, what?"

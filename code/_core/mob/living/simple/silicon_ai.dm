@@ -28,6 +28,7 @@
 
 	var/list/hit_directions = list()
 
+
 /mob/living/simple/silicon/ai/Initialize()
 	. = ..()
 	for(var/d in DIRECTIONS_ALL)

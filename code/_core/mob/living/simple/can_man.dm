@@ -1,8 +1,12 @@
 /mob/living/simple/can_man
+
 	name = "Can Man"
-	boss_icon_state = "can_man"
+	desc = "The man with the can."
+
+
 	icon = 'icons/mob/living/simple/canman.dmi'
 	icon_state = "living"
+	boss_icon_state = "can_man"
 	damage_type = /damagetype/unarmed/powerfist/can_man
 
 	value = 20000
@@ -23,8 +27,10 @@
 
 	force_spawn = TRUE
 	boss = TRUE
+	respawn_time = SECONDS_TO_DECISECONDS(300)
 
 	armor = /armor/borg/military
+
 	fatigue_mul = 0
 
 	status_immune = list(
@@ -48,95 +54,48 @@
 	loyalty_tag = "Syndicate"
 	iff_tag = "Syndicate"
 
-	var/charge_steps = 0
-	var/charge_dir = 0
-
 	blood_type = /reagent/blood/robot
 	blood_volume = 5000
 
 	change_dir_on_move = FALSE
 
-	movement_delay = DECISECONDS_TO_TICKS(4)
-
-	soul_size = SOUL_SIZE_RARE
+	movement_delay = DECISECONDS_TO_TICKS(10)
 
 	object_size = 1
 
-	respawn_time = SECONDS_TO_DECISECONDS(300)
+	level = 80
 
-	level = 90
+	use_momentum = FALSE
 
-	stun_angle = 0
+/mob/living/simple/can_man/proc/summon_missile(var/turf/T)
+	new /obj/effect/falling_missile(T)
+	return TRUE
 
-	var/minigun_spread = 100 //Chance to hit an adjacent turf instead.
+/mob/living/simple/can_man/proc/shoot_minigun(var/atom/target)
 
-	var/minigun_delay = 0 //delay between each shot
+	var/turf/T
 
-/mob/living/simple/can_man/post_death()
-	. = ..()
-	charge_steps = 0
-	charge_dir = 0x0
-	update_sprite()
+	var/target_dir = get_dir(src,target)
 
-/mob/living/simple/can_man/update_icon()
-	. = ..()
-	icon = initial(icon)
-	icon_state = initial(icon_state)
-	if(dead)
-		icon_state = "dead"
-
-/mob/living/simple/can_man/is_busy()
-	if(CALLBACK_EXISTS("\ref[src]_minigun_sweep"))
-		return TRUE
-	. = ..()
-
-/mob/living/simple/can_man/proc/telegraph_special_minigun_sweep(var/atom/target)
-	play_sound('sound/mob/can_man/rev_start.ogg',get_turf(src))
-	CALLBACK("\ref[src]_minigun_sweep",10,src,src::do_special_minigun_sweep(),target,30,30)
-
-/mob/living/simple/can_man/proc/do_special_minigun_sweep(var/atom/target,var/shots_current,var/shots_max)
-
-	if(dead || horizontal)
-		return FALSE
-
-	shoot_minigun(target,TRUE)
-
-	shots_current--
-
-	if(shots_current <= 0)
-		minigun_spread = initial(minigun_spread)
-		if(ai) ai.queue_find_new_objectives = TRUE
-		add_status_effect(PARALYZE,duration=30,magnitude=-1,stealthy=TRUE)
-		play_sound('sound/mob/can_man/rev_stop.ogg',get_turf(src))
-		return TRUE
-
-	CALLBACK("\ref[src]_minigun_sweep",0.25 + max(0,shots_current/shots_max - 0.5),src,src::do_special_minigun_sweep(),target,shots_current,shots_max)
-
-/mob/living/simple/can_man/proc/shoot_minigun(var/atom/target,var/use_spread=FALSE)
-
-	var/turf/T = get_turf(src)
+	if(src.dir & target_dir) //Facing.
+		T = get_turf(target)
+	else //Not facing.
+		var/desired_dir = turn(dir,pick(-45,0,45))
+		T = get_step(src,desired_dir)
 
 	if(!T)
 		return FALSE
 
-	if(use_spread && prob(minigun_spread-50))
-		var/found_direction = get_dir(src,target)
-		var/offset_01 = turn(found_direction,90)
-		var/offset_02 = turn(found_direction,-90)
-		var/turf/new_target = get_step(target,pick(offset_01,offset_02))
-		if(new_target)
-			target = new_target
-
 	src.shoot_projectile(
 		src,
-		target,
+		T,
 		null,
 		null,
 		/obj/projectile/bullet/firearm/pistol,
 		/damagetype/ranged/bullet/pistol_45/hp,
 		16,
 		16,
-		use_spread ? 0.1*(minigun_spread/100) : 0.03,
+		0.01,
 		TILE_SIZE*0.5,
 		1,
 		"#FF4A00",
@@ -145,13 +104,8 @@
 		src.iff_tag,
 		src.loyalty_tag
 	)
-	src.set_dir(get_dir(src,target))
+
 	play_sound('sound/weapons/ranged/misc/canman_shot.ogg',T)
-
-	if(use_spread)
-		minigun_spread -= 5
-
-	minigun_delay = world.time + 0.5 + (health.health_current/health.health_max)*1.5
 
 /mob/living/simple/can_man/post_move(var/atom/old_loc)
 	. = ..()
@@ -185,6 +139,3 @@
 						continue
 					var/atom/object_to_damage = M.get_object_to_damage(src,src,damage_type,params,TRUE,TRUE)
 					DT.process_damage(src,M,src,object_to_damage,src,1)
-
-
-

@@ -1,13 +1,15 @@
 /obj/item/weapon/ranged/spellgem/magic_missile
 	name = "magic missile spell gem"
 	desc = "The source of all magic."
-	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots three enemy-seeking magic missiles that deal arcane damage."
+	desc_extended = "Shoots one enemy-seeking magic missiles that deals arcane damage."
 	icon_state = "damage"
+
+	rarity = RARITY_COMMON
 
 	shoot_delay = 10
 
-	bullet_count = 3
-	projectile_speed = TILE_SIZE*0.75 - 1
+	bullet_count = 1
+	projectile_speed = TILE_SIZE*0.25 - 1
 
 	projectile = /obj/projectile/magic/magic_missile
 	ranged_damage_type = /damagetype/ranged/magic/magic_missile

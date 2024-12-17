@@ -6,12 +6,16 @@
 	icon = 'icons/obj/item/ore_new.dmi'
 	icon_state = null
 
+	material_id = /material/iron
+
 	amount_max = 50
-	amount_max_icon = 6
+	amount_max_icon = 3
 
 	material_multiplier = 1
 
 	size = SIZE_2
+
+	value = 0
 
 /obj/item/material/ore/update_icon()
 	var/material/M = SSmaterials.all_materials[material_id]
@@ -21,7 +25,7 @@
 	else
 		name = "[deunderscore(M.name)] ore"
 		color = "#FFFFFF"
-		icon_state = "[M.icon_state_ore]_[min(amount_max_icon,amount)]"
+		icon_state = "[M.icon_state_ore]_[min(amount_max_icon,CEILING(amount/15,1))]"
 	return ..()
 
 /*

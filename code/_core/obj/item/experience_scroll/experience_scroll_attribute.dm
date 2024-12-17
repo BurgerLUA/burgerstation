@@ -1,9 +1,6 @@
 /obj/item/experience_scroll/attribute
 	var/attribute
-
 	overlay_icon_state = "bauble"
-
-	value = 1
 
 /obj/item/experience_scroll/attribute/get_base_value()
 	if(!attribute)
@@ -12,7 +9,8 @@
 
 /obj/item/experience_scroll/attribute/get_examine_list()
 	. = ..()
-	. += div("notice","Reading \the [src.name] will grant [attribute] experience.")
+	if(attribute)
+		. += div("notice","Reading \the [src.name] will grant [attribute] experience.")
 
 /obj/item/experience_scroll/attribute/gain_knowledge(var/mob/living/advanced/A)
 

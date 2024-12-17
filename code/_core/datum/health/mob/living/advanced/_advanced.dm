@@ -249,3 +249,25 @@
 						clothing_defense *= 0.5
 			.[damage_type] += FLOOR(clothing_defense,1)
 		.["items"] += C
+
+	var/mana_armor_value = STATUS_EFFECT_MAGNITUDE(A,MANA_ARMOR)
+	if(mana_armor_value > 0 && mana_current >= mana_max*0.5 && length(A.overall_clothing_defense_rating) && A.overall_clothing_defense_rating[ARCANE] > 0)
+		var/bonus_mana_armor = (mana_armor_value/100) * A.overall_clothing_defense_rating[ARCANE]
+		bonus_mana_armor = CEILING(bonus_mana_armor,1)
+		if(bonus_mana_armor > 0)
+			for(var/damage_type in list(BLADE,BLUNT,PIERCE))
+				if(!.[damage_type])
+					.[damage_type] = 0
+				else if(IS_INFINITY(.[damage_type]))
+					continue
+				var/damage_type_difference = min(bonus_mana_armor,bonus_mana_armor - .[damage_type])
+				if(damage_type_difference > 0)
+					.[damage_type] += damage_type_difference
+
+
+
+
+
+
+
+

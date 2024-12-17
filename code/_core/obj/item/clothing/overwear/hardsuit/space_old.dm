@@ -9,3 +9,5 @@
 	armor = /armor/hardsuit/env
 
 	size = SIZE_6
+
+	value = 1

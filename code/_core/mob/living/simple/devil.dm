@@ -28,8 +28,6 @@
 	blood_type = /reagent/blood/cow
 	blood_volume = 700
 
-	soul_size = SOUL_SIZE_UNCOMMON
-
 	level = 22
 
 /mob/living/simple/devil/get_damage_type(var/atom/attacker,var/atom/victim)
@@ -38,5 +36,5 @@
 	. = ..()
 
 /mob/living/simple/devil/post_death()
-	..()
-	qdel(src)
+	. = ..()
+	dust(TRUE)

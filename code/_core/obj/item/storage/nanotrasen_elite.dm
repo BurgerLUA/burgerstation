@@ -13,6 +13,8 @@
 
 	value = 150
 
+	value_burgerbux = 1
+
 /obj/item/storage/nanotrasen_elite/fill_inventory()
 	new /obj/item/clothing/overwear/coat/nanotrasen_officer(src)
 	new /obj/item/clothing/overwear/armor/reinforced(src)

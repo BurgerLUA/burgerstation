@@ -65,7 +65,7 @@
 	return A.add_xp(xp_to_add,difficulty_multiplier=difficulty_multiplier)
 
 /mob/living/get_xp_multiplier()
-	if(master)
+	if(minion_master)
 		return 0
 	return 1
 

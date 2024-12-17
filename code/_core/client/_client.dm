@@ -30,7 +30,7 @@
 
 	mouse_pointer_icon = 'icons/pointers/help.dmi'
 
-	var/current_music_track //Id of music track that last played.
+	var/track/current_music_track //Id of music track that last played.
 	var/next_music_track = 0 //When the next music track should be triggered.
 
 	var/current_ambient_sound
@@ -94,7 +94,7 @@
 
 	var/last_control = 0 //Prevents race conditions.
 
-
+	var/guest = FALSE //Are we a guest?
 
 
 /client/proc/is_player_controlled()
@@ -155,7 +155,12 @@
 
 var/global/total_clients = 0
 
+var/global/regex/guest_regex = regex(@'guest-\d+$',"m")
+
 /client/New()
+
+	if(guest_regex.Find(src.ckey))
+		guest = TRUE
 
 	total_clients++
 
@@ -300,6 +305,7 @@ var/global/total_clients = 0
 		to_chat(span("notice","<h1>Please be sure to read the rules <a href='[server_rules]'>here</a> before playing!</h1>"))
 
 	return TRUE
+
 
 /*
 /client/Command(command as command_text)

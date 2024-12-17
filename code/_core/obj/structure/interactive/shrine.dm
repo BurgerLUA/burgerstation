@@ -62,7 +62,7 @@
 	HOOK_REMOVE("post_death","\ref[src]_post_death",L)
 	HOOK_REMOVE("Destroy","\ref[src]_destroy",L)
 	HOOK_REMOVE("post_move","\ref[src]_post_move",L)
-	if(length(tracked_enemies) <= 0 && IS_THINKING(src))
+	if(length(tracked_enemies) <= 0 && spawns_left <= 0 && IS_THINKING(src))
 		end_ritual(TRUE)
 	return TRUE
 
@@ -125,6 +125,8 @@
 		log_error("Could not start [src.get_debug_name()], no found players!")
 		return FALSE
 
+	create_smoke() //Must be called before valid turfs.
+
 	if(!length(valid_turfs)) //Something went wrong.
 		log_error("Could not find any good edge turfs for [src.get_debug_name()]. Choosing random ones...")
 		for(var/turf/simulated/floor/F in orange(src,ritual_size-1))
@@ -138,7 +140,6 @@
 
 	enemy_type_to_spawn = pickweight(possible_ritual_spawns)
 	spawns_left = possible_ritual_spawns[enemy_type_to_spawn]
-	create_smoke()
 	START_THINKING(src)
 	next_enemy_spawn = world.time + SECONDS_TO_DECISECONDS(6)
 	return TRUE

@@ -21,6 +21,8 @@
 
 	size = SIZE_4
 
+	value_burgerbux = 1
+
 /obj/item/crafting_bench/pill_press/attempt_to_craft(var/mob/living/advanced/caller)
 
 	var/obj/hud/inventory/crafting/result/product_slot
@@ -61,11 +63,11 @@
 	var/obj/item/container/edible/pill/P = new(get_turf(src))
 	INITIALIZE(P)
 	GENERATE(P)
-	FINALIZE(P)
-	caller.to_chat(span("warning","You press the button but nothing happens... Seems like the press is non-functional.")) //borgir plz fix :((((
 
 	I1.reagents.transfer_reagents_to(P.reagents,I1.transfer_amount, caller = caller)
 	if(I2) I2.reagents.transfer_reagents_to(P.reagents,I2.transfer_amount, caller = caller)
+
+	FINALIZE(P)
 
 	if(product_container)
 		product_container.add_object_to_src_inventory(caller,P,TRUE)

@@ -80,6 +80,19 @@
 
 	rarity = RARITY_COMMON
 
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/handle_ammo(var/mob/caller)
+
+	var/old_stored_magazine = stored_magazine ? TRUE : FALSE
+	var/old_desired_ammo_count = stored_magazine ? CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*7, 1) : 0
+
+	. = ..()
+
+	if(.)
+		if(old_stored_magazine != (stored_magazine ? TRUE : FALSE))
+			update_icon()
+		else if(stored_magazine && old_desired_ammo_count != CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*7, 1))
+			update_icon()
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/update_icon()
 
 	icon_state = initial(icon_state)

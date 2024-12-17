@@ -28,30 +28,6 @@
 	quality_max = 100
 	quality_mod_min = 0.75
 
-//Hostile generic wizard.
-/loadout/hostile_wizard
-
-	spawning_items = list(
-
-		/obj/item/clothing/underbottom/underwear/boxers/heart,
-		/obj/item/clothing/undertop/underwear/shirt/random,
-
-		/obj/item/clothing/overwear/coat/wizard/real/purple,
-		/obj/item/clothing/head/hat/wizard/real/purple,
-
-		/obj/item/clothing/feet/socks/knee,
-		/obj/item/clothing/feet/socks/knee,
-
-		/obj/item/clothing/feet/shoes/sandal,
-		/obj/item/clothing/feet/shoes/sandal/left,
-
-		/obj/item/clothing/back/storage/backpack/poly/wizard{loot_to_generate = /loot/wizard/bag},
-
-		/loot/random/gun/wand,
-		/loot/random/gun/spellgem,
-		/loot/random/support_gem
-	)
-
 /loadout/wizard_ambassador
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers/heart,

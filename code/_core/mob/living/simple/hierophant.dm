@@ -48,8 +48,6 @@
 	blood_type = /reagent/blood/ancient
 	blood_volume = 3000
 
-	soul_size = SOUL_SIZE_RARE
-
 	movement_delay = DECISECONDS_TO_TICKS(6)
 
 	level = 35

@@ -19,6 +19,8 @@
 
 	size = SIZE_4
 
+	value_burgerbux = 1
+
 /*
 Old code. Maybe someone else will find a use for it....
 /obj/item/crafting/alchemy/attempt_to_craft(var/mob/living/advanced/caller)

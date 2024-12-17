@@ -36,8 +36,6 @@
 	blood_type = /reagent/blood/cow
 	blood_volume = 500
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 6
 
 /mob/living/simple/bull/post_death()

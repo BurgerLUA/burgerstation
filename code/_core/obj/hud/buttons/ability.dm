@@ -66,15 +66,15 @@
 	I.maptext = id
 	add_overlay(I)
 	if(ability)
-		if(ability.toggle && ability.is_active(owner))
-			var/image/I3 = new/image(initial(icon),"[initial(icon_state)]_selected")
-			add_overlay(I3)
 		var/image/I2 = new/image(ability.icon,ability.icon_state)
 		I2.maptext = "<div align='right' style='color:[ability_colors[ability.resource_type]]'>[ability.cost]</div>"
 		I2.maptext_x = -5
 		add_overlay(I2)
 		name = ability.name
 		desc_extended = ability.desc
+		if(ability.toggle && ability.is_active(owner))
+			var/image/I3 = new/image(initial(icon),"[initial(icon_state)]_selected")
+			add_overlay(I3)
 	else
 		name = initial(name)
 		desc_extended = initial(desc_extended)

@@ -22,8 +22,6 @@
 	blood_type = null
 	blood_volume = 0
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 12
 
 /mob/living/simple/clockwork_fragment/post_death()

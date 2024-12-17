@@ -2,7 +2,6 @@
 	name = "specific item type bags"
 	icon = 'icons/obj/item/storage/bags.dmi'
 	icon_state = "mining"
-	value = 0
 
 /obj/item/storage/bags/botany
 	name = "botany bag"
@@ -25,6 +24,8 @@
 	desc = "Process your seed."
 	desc_extended = "A special bag that converts all plant matter into seeds when inserted into the bag."
 	icon_state = "botany_processor"
+
+	value = 100
 
 /obj/item/storage/bags/botany/processor/click_self(var/mob/caller,location,control,params)
 
