@@ -26,7 +26,9 @@
 	var/bullet_color //The bullet color of the projectile.
 	var/inaccuracy_modifier = 1 //The modifier for target doll inaccuracy. Lower values means more accurate.
 	var/penetrations = 0 //How many additional penetrations this bullet is allowed.
+
 	var/view_punch_mod = 1
+	var/heat_per_shot_mod = 1
 
 
 	var/caseless = FALSE
@@ -207,8 +209,8 @@
 			var/obj/item/attachment/undermount/gun/AG = G.attachment_undermount
 			G = AG.stored_gun
 
-		if(G.bullet_time > 0)
-			PROGRESS_BAR(caller,G,G.bullet_time,/obj/item/weapon/ranged/bullet/proc/accept_bullet,caller,src)
+		if(G.bullet_time[src.type] > 0)
+			PROGRESS_BAR(caller,G,G.bullet_time[src.type],/obj/item/weapon/ranged/bullet/proc/accept_bullet,caller,src)
 			PROGRESS_BAR_CONDITIONS(caller,src,src::can_load_bullet_into(),caller,G)
 		else
 			G.accept_bullet(caller,src)
