@@ -10,15 +10,11 @@
 /obj/item/weapon/ranged/energy/fed/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_item(object))
-		var/obj/item/I = object
-		var/obj/item/weapon/ranged/energy/fed/G = object
-		caller.to_chat(span("notice","Did not make it past if"))
-		if(I.type == G.fed_item)
-			caller.to_chat(span("notice","Made it this far"))
+		if(istype(object,fed_item))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			battery.charge_current += G.charge_per_feed
+			battery.charge_current += charge_per_feed
 			caller.to_chat(span("notice","You've recharged \the [src.name]."))
 			qdel(object)
 			return
@@ -39,4 +35,3 @@
 			return TRUE
 
 	. = ..()
-///obj/item/weapon/ranged/energy/fed/proc/get_fed_charge_cost(

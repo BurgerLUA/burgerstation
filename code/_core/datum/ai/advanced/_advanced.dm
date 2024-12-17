@@ -492,7 +492,6 @@
 					C = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/revolver/proc/can_fit_clip)
 					if(!C)
 						B = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/proc/can_fit_bullet) //It is implied we couldn't find B earlier.
-
 			if(C)
 				if(debug) log_debug("Found a valid clip to insert. Inserting...")
 				C.click_on_object(A,G)
