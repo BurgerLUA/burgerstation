@@ -111,8 +111,6 @@
 
 		var/obj/hud/inventory/I = object
 		var/obj/item/bullet_cartridge/C = pickweight(stored_bullets)
-		if(!C)
-			C = initial(bullet_type)
 		C = new C(get_turf(src))
 		var/amount_to_grab = 1
 		if(caller.attack_flags & CONTROL_MOD_DISARM)
