@@ -11,6 +11,8 @@
 
 	material_multiplier = 0.25
 
+	value = 0
+
 /obj/item/material/rod/update_icon()
 	var/material/M = SSmaterials.all_materials[material_id]
 	if(!M)

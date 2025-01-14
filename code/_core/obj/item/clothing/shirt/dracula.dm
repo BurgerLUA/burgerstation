@@ -8,4 +8,4 @@
 
 	armor = /armor/dark/arcane/vampire
 
-	value = 100
+	value = 1

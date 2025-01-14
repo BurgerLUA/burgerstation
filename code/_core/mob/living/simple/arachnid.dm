@@ -1,6 +1,6 @@
 /mob/living/simple/arachnid
 	name = "giant arachnid"
-	desc = "Might as well be a miniboss."
+	desc = "King of the jungle."
 	desc_extended = "A giant quadreped carniverous creature."
 	icon = 'icons/mob/living/simple/jungle/arachnid.dmi'
 	icon_state = "living"
@@ -39,10 +39,8 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
-	blood_type = /reagent/blood/alien/green
+	blood_type = /reagent/blood/arachnid
 	blood_volume = 2000
-
-	soul_size = SOUL_SIZE_UNCOMMON
 
 	object_size = 2
 
@@ -75,3 +73,15 @@
 	else
 		icon_state = "living"
 
+/mob/living/simple/arachnid/sand
+	name = "giant sand arachnid"
+	desc = "King of the sand."
+	desc_extended = "A giant quadreped carniverous creature."
+	icon = 'icons/mob/living/simple/jungle/arachnid_sand.dmi'
+
+	level = 24
+
+	iff_tag = "Desert"
+	loyalty_tag = "Desert"
+
+	armor = /armor/arachnid/sand

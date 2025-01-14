@@ -67,7 +67,11 @@
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/pistol_40,
-		/obj/item/magazine/pistol_40
+		/obj/item/magazine/pistol_40,
+
+		/obj/item/grenade/fuse/fragmentation,
+		/obj/item/grenade/fuse/fragmentation,
+
 	)
 
 
@@ -96,7 +100,11 @@
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/pistol_40,
-		/obj/item/magazine/pistol_40
+		/obj/item/magazine/pistol_40,
+
+		/obj/item/grenade/fuse/fragmentation,
+		/obj/item/grenade/fuse/fragmentation,
+
 	)
 
 /loadout/space_soldier/dmca
@@ -122,7 +130,10 @@
 		/obj/item/magazine/dmca,
 		/obj/item/magazine/dmca,
 		/obj/item/magazine/pistol_40,
-		/obj/item/magazine/pistol_40
+		/obj/item/magazine/pistol_40,
+
+		/obj/item/grenade/fuse/fragmentation,
+		/obj/item/grenade/fuse/fragmentation
 	)
 
 
@@ -145,28 +156,21 @@
 		/obj/item/clothing/glasses/nightvision,
 
 		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/clothing/back/storage/satchel/poly/black,
+		/obj/item/clothing/back/storage/satchel/poly/black{loot_to_generate=/loot/space_cop/bag},
 
 		/obj/item/storage/pouch/triple/black,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/dmr/specop,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/tranq,
 		/obj/item/weapon/melee/energy/sword/katana/black,
 
-		/obj/item/magazine/sniper_308/nato/ap,
-		/obj/item/magazine/sniper_308/nato/ap,
-		/obj/item/magazine/sniper_308/nato/ap,
-		/obj/item/magazine/sniper_308/nato/ap,
-
-		/obj/item/magazine/pistol_tranq_11m,
-		/obj/item/magazine/pistol_tranq_11m,
-		/obj/item/magazine/pistol_tranq_11m,
+		/obj/item/magazine/sniper_308/nato,
+		/obj/item/magazine/sniper_308/nato,
+		/obj/item/magazine/sniper_308/nato,
+		/obj/item/magazine/sniper_308/nato,
 
 		/obj/item/grenade/fuse/flashbang,
 		/obj/item/grenade/fuse/flashbang,
 		/obj/item/grenade/device/special/timed/decoy,
 		/obj/item/grenade/device/special/timed/decoy,
-		/obj/item/grenade/device/landmine/proximity/explosive,
-		/obj/item/grenade/device/landmine/proximity/explosive
 
 	)

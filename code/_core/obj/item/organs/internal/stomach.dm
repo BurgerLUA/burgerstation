@@ -10,5 +10,7 @@
 
 	has_life = TRUE
 
+	value = 0
+
 /obj/item/organ/internal/stomach/robotic
 	name = "robotic stomach"

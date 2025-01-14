@@ -41,8 +41,6 @@
 
 	size = SIZE_GIANT
 
-	soul_size = SOUL_SIZE_RARE
-
 	enable_chunk_clean = FALSE
 
 	density = TRUE

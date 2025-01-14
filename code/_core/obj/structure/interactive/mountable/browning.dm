@@ -88,6 +88,8 @@
 
 	weight = 2
 
+	value = 0
+
 /obj/item/browning_handle/PreDestroy()
 	QDEL_NULL(linked_gun)
 	. = ..()

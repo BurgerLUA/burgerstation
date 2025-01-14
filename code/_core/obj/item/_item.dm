@@ -7,7 +7,7 @@
 
 	var/value_burgerbux
 
-	var/contraband = FALSE //Set to true if this object is considered contraband and can't be saved, but still accessed by the game.
+	var/contraband = FALSE //Set to true if this object is considered contraband and can't be saved except on your character.
 	var/save_on_death = FALSE //Set to true if this item should save on death, regardless of item respawning. This should only be set by special code.
 	var/can_save_loadout = TRUE //Set to true if you can save this item in a loadout.
 
@@ -158,7 +158,7 @@
 
 	density = TRUE
 
-	value = 0
+	value = -1
 
 	allow_path = TRUE
 
@@ -236,6 +236,12 @@
 /obj/item/Cross(atom/movable/O,atom/oldloc)
 	return TRUE
 
+/obj/item/New(var/desired_loc)
+	. = ..()
+	if(value <= -1)
+		log_error("Warning: [src.type] had a value of [value], but it was still able to be spawned!")
+		value = 0
+
 /obj/item/Finalize()
 
 	. = ..()
@@ -248,6 +254,10 @@
 
 	if(is_turf(loc))
 		layer = initial(layer) + clamp(value / 10000,0,0.999)
+
+	if(value <= -1)
+		log_error("Warning: [src.type] had a value of [value], but it was still able to be spawned!")
+		value = 0
 
 /obj/item/get_base_value()
 	. = initial(value) * amount
@@ -455,7 +465,9 @@
 	else if(tier == 0)
 		. += div("rarity center","Tier [tier][tier_type ? " [tier_type]" : ""].")
 
-	if(contraband)
+	if(!can_save)
+		. += div("bad bold center","CLASSIFIED")
+	else if(contraband)
 		. += div("bad bold center","CONTRABAND")
 
 	if(quality != -1)

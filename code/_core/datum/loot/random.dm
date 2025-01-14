@@ -28,8 +28,10 @@
 
 	for(var/k in get_base_types())
 		var/obj/item/I = k
+		if(initial(I.value) <= 0)
+			continue
 		var/value = SSbalance.stored_value[k]
-		if(value <= 0)
+		if(!value || value <= 0)
 			continue
 		if(value < value_min)
 			continue

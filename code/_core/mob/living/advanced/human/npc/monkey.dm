@@ -6,8 +6,6 @@
 
 	species = "monkey"
 
-	soul_size = SOUL_SIZE_COMMON
-
 	loyalty_tag = "Monkey"
 
 	butcher_contents = list(

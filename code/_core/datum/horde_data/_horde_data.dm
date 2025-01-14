@@ -18,8 +18,7 @@
 
 	horde_squads = list(
 		"syndicate" = list(
-			/mob/living/advanced/npc/syndicate = 100,
-			/mob/living/simple/silicon/syndieborg = 10
+			/mob/living/advanced/npc/syndicate = 100
 		),
 		"goblin" = list(
 			/mob/living/advanced/npc/goblin/mage = 20,
@@ -27,7 +26,7 @@
 			/mob/living/advanced/npc/goblin = 80
 		),
 		"wizard" = list(
-			/mob/living/advanced/npc/hostile_wizard = 1
+			/mob/living/advanced/npc/raging_mage = 1
 		)
 	)
 
@@ -105,8 +104,11 @@
 		),
 		"ashwalker" = list(
 			/mob/living/advanced/npc/ashwalker/shaman = 5,
+			/mob/living/advanced/npc/ashwalker/shaman/female = 5,
 			/mob/living/advanced/npc/ashwalker/hunter = 20,
-			/mob/living/advanced/npc/ashwalker/warrior = 20
+			/mob/living/advanced/npc/ashwalker/hunter/female = 20,
+			/mob/living/advanced/npc/ashwalker/warrior = 20,
+			/mob/living/advanced/npc/ashwalker/warrior/female = 20
 		)
 	)
 
@@ -134,7 +136,9 @@
 
 	horde_weights = list(
 		/mob/living/simple/slime/sand = 10,
-		/mob/living/simple/spider/glow = 10
+		/mob/living/simple/spider/glow = 5,
+		/mob/living/simple/arachnid/sand = 5,
+		/mob/living/advanced/npc/zombie/mummy = 20
 	)
 
 /horde_data/xeno
@@ -153,16 +157,7 @@
 
 	horde_weights = list(
 		/mob/living/advanced/npc/space_soldier = 100,
-		/mob/living/advanced/npc/space_soldier/special_operative = 5
+		/mob/living/advanced/npc/space_soldier/battle = 25,
+		/mob/living/advanced/npc/space_soldier/dmca = 25,
+		/mob/living/advanced/npc/space_soldier/special_operative = 2
 	)
-
-/horde_data/tax
-
-	horde_weights = list(
-		/mob/living/advanced/npc/tax_collector = 100
-	)
-
-	ignore_gamemode = TRUE
-
-
-

@@ -10,6 +10,8 @@
 
 	rarity = RARITY_RARE
 
+	value = 0
+
 /obj/item/clothing/head/helmet/full/hardsuit/syndie/advanced
 	name = "mauler helmet mk2"
 	desc = "Perimeter Secured."

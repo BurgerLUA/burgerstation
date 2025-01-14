@@ -10,7 +10,7 @@
 
 	size = SIZE_2
 
-	value = 90
+	value = 1
 
 
 // maybe eventually perhaps i'll make this stuff colorable. that eventually is definitely not now.

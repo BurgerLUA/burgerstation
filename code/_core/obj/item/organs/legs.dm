@@ -31,6 +31,8 @@
 
 	has_life = TRUE
 
+	value = 0
+
 /obj/item/organ/leg/left
 	name = "left leg"
 	id = BODY_LEG_LEFT

@@ -26,7 +26,7 @@
 	bullet_color = bullet_color_kill
 
 	update_sprite()
-
+	update_held_icon()
 
 /obj/item/weapon/ranged/energy/hybrid/click_self(var/mob/caller,location,control,params)
 
@@ -49,6 +49,9 @@
 
 	charge_cost = get_charge_cost()
 
+	charge_icon_state_count = null
+
 	update_sprite()
+	update_held_icon()
 
 	return TRUE

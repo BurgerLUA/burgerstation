@@ -5,6 +5,8 @@
 
 	has_life = TRUE
 
+	value = 0
+
 /obj/item/organ/internal/implant/torso/od_purge/on_life()
 	. = ..()
 	if(loc && is_advanced(loc))

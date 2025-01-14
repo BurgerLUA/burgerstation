@@ -25,13 +25,13 @@
 
 	heat_max = 0.03
 
-	bullet_length_min = 18.5
+	bullet_length_min = 18.4
 	bullet_length_best = 18.5
-	bullet_length_max = 18.5
+	bullet_length_max = 18.6
 
-	bullet_diameter_min = 18.5
+	bullet_diameter_min = 18.4
 	bullet_diameter_best = 18.5
-	bullet_diameter_max = 18.5
+	bullet_diameter_max = 18.6
 
 	ai_heat_sensitivity = 2
 
@@ -83,18 +83,27 @@
 	. = ..()
 	. += 1000
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/update_icon()
-	if(stored_magazine)
-		var/obj/item/magazine/M = stored_magazine
-		var/stored_bullets = M.get_ammo_count()
-		if(stored_bullets == 1)
-			icon_state = "[initial(icon_state)]_[round(stored_bullets,1)]"
-		else
-			icon_state = "[initial(icon_state)]_[round(stored_bullets,2)]"
-	else
-		icon_state = initial(icon_state)
+/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/handle_ammo(var/mob/caller)
 
-	..()
+	var/old_stored_magazine = stored_magazine ? TRUE : FALSE
+	var/old_desired_ammo_count = stored_magazine ? CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*5, 1) : 0
+
+	. = ..()
+
+	if(.)
+		if(old_stored_magazine != (stored_magazine ? TRUE : FALSE))
+			update_icon()
+		else if(stored_magazine && old_desired_ammo_count != CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*5, 1))
+			update_icon()
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/update_icon()
+
+	icon_state = initial(icon_state)
+
+	if(stored_magazine)
+		icon_state = "[icon_state]_[CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*5, 1)]"
+
+	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damagetype/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
 

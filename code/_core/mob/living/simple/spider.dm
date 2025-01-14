@@ -34,8 +34,6 @@
 
 	blood_type = /reagent/blood/spider
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 5
 
 /mob/living/simple/spider/post_death()

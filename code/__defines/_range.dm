@@ -10,7 +10,7 @@
 #define AI_DETECTION_RANGE (1 + VIEW_RANGE * 0.5)
 #define AI_DETECTION_RANGE_NOISE (1 + VIEW_RANGE * 0.75)
 #define AI_DETECTION_RANGE_CAUTION (1 + VIEW_RANGE)
-#define AI_DETECTION_RANGE_COMBAT (1 + VIEW_RANGE + ZOOM_RANGE*0.25)
+#define AI_DETECTION_RANGE_COMBAT (1 + VIEW_RANGE*2)
 
 #define BOSS_RANGE (VIEW_RANGE + ZOOM_RANGE*2) //If you're out of this range, you're out of the boss fight.
 

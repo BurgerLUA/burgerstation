@@ -11,3 +11,7 @@
 	size = SIZE_3
 
 	can_save = FALSE
+
+	value_burgerbux = 1
+
+	value = 0

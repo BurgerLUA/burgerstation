@@ -29,8 +29,6 @@
 	blood_type = /reagent/blood/insect
 	blood_volume = 50
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 2
 
 

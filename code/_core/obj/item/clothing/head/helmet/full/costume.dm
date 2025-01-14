@@ -33,7 +33,7 @@
 
 	armor = /armor/cloth/flammable
 
-	value = 10
+	value = 0
 
 	can_save = FALSE
 

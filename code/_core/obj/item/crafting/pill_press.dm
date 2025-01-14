@@ -21,6 +21,8 @@
 
 	size = SIZE_4
 
+	value_burgerbux = 1
+
 /obj/item/crafting_bench/pill_press/attempt_to_craft(var/mob/living/advanced/caller)
 
 	var/obj/hud/inventory/crafting/result/product_slot

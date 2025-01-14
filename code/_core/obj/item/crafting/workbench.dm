@@ -26,3 +26,5 @@
 	value = 25
 
 	size = SIZE_4
+
+	value_burgerbux = 1

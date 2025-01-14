@@ -15,14 +15,16 @@
 
 	rarity = RARITY_RARE
 
+	value = 1
+
 /obj/item/clothing/overwear/armor/spec_ops/calculate_weight()
 	. = ..()
-	. *= 0.5
+	. *= 0.75
 	. = CEILING(.,1)
 
 /obj/item/clothing/overwear/armor/spec_ops/get_base_value()
 	. = ..()
-	. *= 1.5
+	. *= 1.25
 	. = CEILING(.,1)
 
 /obj/item/clothing/overwear/armor/spec_ops/black

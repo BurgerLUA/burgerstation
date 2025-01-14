@@ -9,7 +9,7 @@
 	allow_reagent_transfer_to = FALSE
 	allow_reagent_transfer_from = FALSE
 
-	value = 100
+	value = 0
 
 	value_burgerbux = 1
 

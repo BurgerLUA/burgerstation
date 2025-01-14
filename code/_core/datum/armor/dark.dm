@@ -35,6 +35,15 @@
 		ARCANE = 50
 	)
 
+/armor/dark/mummy
+	defense_rating = list(
+		COLD = -40,
+		HEAT = 40,
+		DARK = 125,
+		HOLY = -125,
+		ARCANE = 25
+	)
+
 /armor/dark/arcane/vampire
 	defense_rating = list(
 		COLD = 100,

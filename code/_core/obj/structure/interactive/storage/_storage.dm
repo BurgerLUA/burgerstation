@@ -1,7 +1,7 @@
 /obj/structure/interactive/storage
 	name = "lootable storage"
 	desc = "Like inventories, but better."
-	var/obj/item/storage_storage/storage
+	var/obj/item/structure_storage/storage
 
 	var/loot/stored_loot
 	var/loot/stored_loot_per_instance

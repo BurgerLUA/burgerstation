@@ -17,6 +17,8 @@
 
 	var/last_cooked = FALSE
 
+	value = 0
+
 /obj/item/container/edible/dynamic/bread/Generate()
 	. = ..()
 	reagents.add_reagent(/reagent/nutrition/dough/flour/processed,30)
@@ -138,13 +140,16 @@
 				animate(B, pixel_x = pixel_x + rand(-4,4), pixel_y= pixel_y + rand(-4,4), time=5)
 			qdel(src)
 	else if( (!damage_table[BLADE] && damage_table[BLUNT]) || damage_table[BLADE] < damage_table[BLUNT]) //Flatten
-		if(has_prefix(icon_state,"dough") && raw_icon_state != "dough_flat")
-			raw_icon_state = "dough_flat"
-			cooked_icon_state = "bread_flat"
+		if(has_prefix(icon_state,"dough"))
 			if(is_living(attacker))
 				var/mob/living/L = attacker
 				L.visible_message(span("notice","\The [L.name] flattens \the [src.name]."),span("notice","You flatten \the [src.name]."))
-			update_sprite()
+			var/obj/item/container/edible/dynamic/pizza/P = new(get_turf(src))
+			INITIALIZE(P)
+			reagents.transfer_reagents_to(P.reagents,reagents.volume_current)
+			FINALIZE(P)
+			qdel(src)
+
 
 	return TRUE
 

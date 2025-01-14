@@ -34,8 +34,6 @@
 	blood_type = /reagent/blood/crab
 	blood_volume = 200
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 3
 
 /mob/living/simple/crab/post_death()
@@ -111,8 +109,6 @@
 	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	soul_size = SOUL_SIZE_RARE
-
-	level = 20
 
 
 /mob/living/simple/crab/king/Cross(atom/movable/O)

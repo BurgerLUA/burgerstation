@@ -33,8 +33,6 @@
 	blood_type = /reagent/blood/ancient
 	blood_volume = 200
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 8
 
 /mob/living/simple/watcher/post_death()

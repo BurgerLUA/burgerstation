@@ -4,6 +4,8 @@
 
 	should_update_owner = FALSE
 
+	flags_temperature = REAGENT_TEMPERATURE_NO_AMBIENT
+
 
 /reagent_container/temp/update_container(var/mob/caller,var/update_owner = TRUE,var/force=FALSE)
 

@@ -7,3 +7,5 @@
 	armor = /armor/military/heavy/hard/bomb
 
 	size = SIZE_3
+
+	value = 1

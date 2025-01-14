@@ -10,9 +10,6 @@
 		/obj/hud/button/teleport_to_player
 	)
 
-	invisibility = INVISIBLITY_GHOST
-	see_invisible = INVISIBLITY_GHOST
-
 	density = FALSE
 
 /mob/abstract/observer/ghost/get_lighting_alpha()

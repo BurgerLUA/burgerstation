@@ -11,7 +11,7 @@
 	weight = 10
 	can_rename = TRUE
 	var/build_type = "grilles"
-	value = 0
+	value = 1000
 
 /obj/item/diy_construction_kit/attack(atom/attacker, atom/victim, list/params, atom/blamed, ignore_distance, precise, damage_multiplier, damagetype/damage_type_override)
 	return FALSE //no

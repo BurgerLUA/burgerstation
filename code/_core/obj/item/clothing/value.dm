@@ -15,7 +15,8 @@
 	if(is_container && dynamic_inventory_count > 0)
 		. += ((dynamic_inventory_count*container_max_size)**1.4)*0.35
 
-	if(speed_bonus > 0) // 3000 per 0.1 (10%)
-		. += speed_bonus*(3000/0.1)
+	// https://www.desmos.com/calculator/7if9azxt2m
+	if(speed_bonus > 0.1)
+		. += (max(speed_bonus - 0.1,0) * 30)**2.8 + (max(speed_bonus - 0.1,0)*1000)
 
 	. = CEILING(.,1)

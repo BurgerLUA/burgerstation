@@ -5,16 +5,13 @@
 	icon = 'icons/obj/item/clothing/masks/mummy.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
 
-	armor = /armor/cloth
+	armor = /armor/dark/mummy
 
-	value = 20
-
-	worn_layer = LAYER_MOB_CLOTHING_MASK
+	value = 1
 
 	worn_layer = LAYER_MOB_CLOTHING_MASK
 
 	item_slot = SLOT_FACE
-
 
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE,

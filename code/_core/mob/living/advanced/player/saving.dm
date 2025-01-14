@@ -76,8 +76,8 @@
 			if(isnum(insurance))
 				var/insurance_to_pay = clamp(insurance,0,INSURANCE_PAYOUT)
 				insurance -= insurance_to_pay
-				to_chat(span("notice","You were paid <b>[insurance_to_pay] credits</b> in insurance. You have <b>[insurance] credits</b> left in your insurance pool."))
 				currency_to_give = insurance_to_pay
+				to_chat(span("notice","You were paid <b>[insurance_to_pay] credits</b> in insurance. You have <b>[insurance] credits</b> left in your insurance pool."))
 				update_premiums()
 			if(currency >= 10000)
 				var/death_tax = FLOOR(currency*0.1,1)

@@ -6,5 +6,7 @@
 
 	attach_flag = BODY_GROIN
 
+	value = 0
+
 /obj/item/organ/internal/intestines/robotic
 	name = "robotic intestines"

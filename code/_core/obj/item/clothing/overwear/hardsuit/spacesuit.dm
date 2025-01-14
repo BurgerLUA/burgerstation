@@ -26,3 +26,5 @@
 	armor = /armor/bio
 
 	size = SIZE_6
+
+	value = 1

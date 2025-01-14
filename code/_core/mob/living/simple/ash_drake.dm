@@ -66,8 +66,6 @@
 	blood_type = /reagent/blood/ancient
 	blood_volume = 2000
 
-	soul_size = SOUL_SIZE_MYSTIC
-
 	object_size = 2
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)

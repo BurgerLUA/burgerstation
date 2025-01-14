@@ -11,6 +11,8 @@
 
 	rarity = RARITY_UNCOMMON
 
+	value = 1
+
 /obj/item/clothing/mask/gas/mining
 	name = "advanced gas mask"
 	icon = 'icons/obj/item/clothing/masks/mining.dmi'

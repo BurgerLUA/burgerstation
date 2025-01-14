@@ -22,6 +22,7 @@ obj/structure/interactive/bed
 
 	density = TRUE
 
+/*
 /obj/structure/interactive/bed/Crossed(atom/movable/O,atom/OldLoc)
 	. = ..()
 	if(src.z && is_living(O))
@@ -37,6 +38,7 @@ obj/structure/interactive/bed
 				found = TRUE
 			if(found)
 				L.add_disease(/disease/hrp)
+*/
 
 /obj/structure/interactive/bed/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
 

@@ -1,10 +1,10 @@
 /ai/proc/should_life()
 
-	if(!active)
-		return FALSE
-
 	if(!owner)
 		qdel(src)
+		return FALSE
+
+	if(!active)
 		return FALSE
 
 	if(!owner.finalized)
@@ -17,6 +17,51 @@
 		return FALSE
 
 	if(owner.has_status_effects(STUN,SLEEP,PARALYZE))
+		return FALSE
+
+	return TRUE
+
+/ai/proc/is_near_player()
+	var/turf/T = get_turf(owner)
+	if(!T)
+		return FALSE
+
+	var/chunk/C = CHUNK(T)
+
+	if(length(C.players))
+		return TRUE
+
+	for(var/k in C.adjacent_chunks)
+		var/chunk/C2 = k
+		if(length(C2.players))
+			return TRUE
+
+	return FALSE
+
+/ai/proc/is_idle()
+
+	if(!active)
+		return TRUE
+
+	if(queue_find_new_objectives)
+		return FALSE
+
+	if(master_ai)
+		return FALSE
+
+	if(objective_move)
+		return FALSE
+
+	if(alert_level >= ALERT_LEVEL_NOISE)
+		return FALSE
+
+	if(objective_attack || CALLBACK_EXISTS("set_new_objective_\ref[src]"))
+		return FALSE
+
+	if(length(astar_path_current) || length(node_path_current))
+		return FALSE
+
+	if(is_near_player())
 		return FALSE
 
 	return TRUE
@@ -35,49 +80,32 @@
 
 	if(resist_grabs && owner.grabbing_hand && owner.next_resist <= world.time && (resist_grabs > 1 || is_enemy(owner.grabbing_hand.owner,FALSE)))
 		owner.resist()
-		return TRUE
+		return FALSE
 
-	if(aggression > 0)
-		if(!master_ai) //Find objectives only if you don't belong to a master.
-			objective_ticks += tick_rate
-			var/actual_objective_delay = get_objective_delay()
-			if(objective_ticks >= actual_objective_delay && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))
-				objective_ticks = 0
-				if(objective_attack && frustration_attack < frustration_attack_threshold)
-					if(handle_current_objectives(actual_objective_delay) && !is_living(objective_attack))
+	if(is_idle())
+		set_active(FALSE)
+		return FALSE
+
+	if(aggression > 0 && can_attack && !master_ai)
+		objective_ticks += tick_rate
+		var/actual_objective_delay = get_objective_delay()
+		if(objective_ticks >= actual_objective_delay)
+			objective_ticks = 0
+			if(!CALLBACK_EXISTS("set_new_objective_\ref[src]"))
+				if(objective_attack)
+					if(frustration_attack >= frustration_attack_threshold) //We're frustrated. Try to find a new objective!
+						queue_find_new_objectives = TRUE
+						frustration_attack = 0
+					else if(handle_current_objectives(actual_objective_delay) && !is_living(objective_attack)) //If we're attacking something, and it isn't living, find new targets possibly.
 						queue_find_new_objectives = TRUE
 				else
 					queue_find_new_objectives = TRUE
-					frustration_attack = 0
+				if(queue_find_new_objectives)
+					find_new_objectives()
+					queue_find_new_objectives = FALSE
 
-		if(owner.attack_next <= world.time)
+		if(objective_attack && owner.attack_next <= world.time)
 			handle_attacking()
-
-		if(queue_find_new_objectives)
-			find_new_objectives()
-			queue_find_new_objectives = FALSE
-
-	// Idle handler for when the AI is being useless.
-	if(sleep_on_idle)
-		if(length(node_path_current) || objective_attack || objective_move || alert_level >= ALERT_LEVEL_NOISE)
-			idle_time = 0 //Reset idle.
-		else
-			if(idle_time <= 0)
-				idle_time = world.time + SECONDS_TO_DECISECONDS(180) //Idle for more than 3 minutes means you're just wasting processing power.
-			else if(idle_time <= world.time)
-				var/found_player = FALSE
-				for(var/k in SSliving.all_players)
-					var/mob/living/advanced/player/P = k
-					if(P.z != owner.z)
-						continue
-					if(get_dist(P,owner) <= VIEW_RANGE)
-						found_player = TRUE
-						break
-				if(found_player)
-					idle_time = world.time + SECONDS_TO_DECISECONDS(180) //Try again later.
-				else
-					set_active(FALSE) //Deactivate if idle for more than 3 minutes.
-
 
 	if(alert_level >= ALERT_LEVEL_NOISE)
 		var/time_mod = 1
@@ -98,7 +126,9 @@
 	var/turf/current_turf
 	var/should_remove_frustration = TRUE
 
-	if(owner.next_move <= 0) //We will move.
+	if(owner.grabbing_hand)
+		owner.move_dir = 0x0 //Don't move.
+	else if(owner.next_move <= 0) //We will move.
 		current_turf = get_turf(owner)
 
 		if(!master_ai) //No frustration handling if you belong to a master.

@@ -6,6 +6,6 @@
 
 	armor = /armor/cloth/hard
 
-	value = 150
+	value = 1
 
 	rarity = RARITY_UNCOMMON

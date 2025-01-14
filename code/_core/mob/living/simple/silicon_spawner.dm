@@ -19,8 +19,6 @@
 
 	var/has_stored_cyborg = FALSE
 
-	soul_size = null
-
 /mob/living/simple/silicon/spawner/Destroy()
 	. = ..()
 	active_silicons.Cut()

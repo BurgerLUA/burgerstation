@@ -7,7 +7,7 @@
 	size = SIZE_2
 	weight = 0
 
-	value = 120
+	value = 1
 
 	dyeable = TRUE
 

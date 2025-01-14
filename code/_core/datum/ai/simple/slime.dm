@@ -2,7 +2,7 @@
 
 	roaming_distance = VIEW_RANGE*2
 
-	aggression = 1
+	aggression = 2
 	assistance = 1
 
 	target_distribution_x = list(12,16,20)

@@ -58,15 +58,18 @@
 
 	set_dir(dir,TRUE)
 
+/obj/structure/interactive/cannon/get_base_transform()
+	var/matrix/M = matrix()
+	M.Turn(dir2angle(src.dir) + 180)
+	return M
+
+
 /obj/structure/interactive/cannon/set_dir(var/desired_dir,var/force = FALSE)
 
 	. = ..()
 
 	if(.)
-		var/matrix/M = matrix()
-		M.Turn(dir2angle(src.dir) + 180)
-		transform = M
-
+		transform = get_base_transform()
 
 /obj/structure/interactive/cannon/proc/insert_item(var/mob/living/caller,var/obj/item/I)
 	I.drop_item(src)

@@ -1,3 +1,4 @@
+/*
 /obj/item/seed/template
 	plant_type = null
 
@@ -10,7 +11,7 @@
 	growth_speed = 0.075
 
 	delete_after_harvest = TRUE
-
+*/
 
 /obj/item/seed/cabbage
 	plant_type = /plant_type/cabbage

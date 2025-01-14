@@ -22,6 +22,10 @@
 
 	queue_delete_immune = TRUE
 
+	value = 0
+
+	can_save = FALSE
+
 /obj/item/bank_storage/is_safe_to_delete(var/check_loc = TRUE)
 	return FALSE
 

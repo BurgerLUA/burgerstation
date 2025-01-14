@@ -36,6 +36,7 @@
 /obj/structure/interactive/blob/PreDestroy()
 
 	if(linked_core)
+		linked_core.blob_fatigue++
 		linked_core.linked_walls -= src
 		linked_core.linked_nodes -= src
 		linked_core = null

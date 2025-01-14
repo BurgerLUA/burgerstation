@@ -19,9 +19,6 @@
 
 	has_quick_function = TRUE
 
-/obj/item/container/edible/get_base_value()
-	return 0
-
 /obj/item/container/edible/get_display_value()
 	return get_value()
 

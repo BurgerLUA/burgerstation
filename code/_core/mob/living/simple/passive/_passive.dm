@@ -7,6 +7,5 @@
 
 	collision_flags = FLAG_COLLISION_WALKING
 
-	soul_size = SOUL_SIZE_COMMON
 
 	level = 1

@@ -58,7 +58,7 @@
 			return FALSE
 	else
 		if(CL.loyalty_tag == "NanoTrasen")
-			if(!allow_hostile_action(CL.loyalty_tag,L)) //NanoTrasen can only strip enemies.
+			if(!allow_hostile_action(CL.loyalty_tag,L) && (!L.dead || is_player(L)))
 				if(messages) caller.to_chat(span("warning","You can't strip allies!"))
 				return FALSE
 		else

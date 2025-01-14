@@ -46,9 +46,6 @@
 /obj/marker/spawning/random/vault_loot,
 /turf/simulated/floor/plating/syndicate,
 /area/mission/prefab/vault/vault_02)
-"j" = (
-/turf/simulated/wall/brick/grey,
-/area/dmm_suite/clear_area)
 "k" = (
 /obj/structure/interactive/power/apc{
 	icon_state = "apc";
@@ -143,7 +140,7 @@ b
 b
 b
 b
-j
+b
 k
 b
 p

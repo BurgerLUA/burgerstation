@@ -77,24 +77,7 @@
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.1
 
-	override_icon_state = TRUE
-
 	rarity = RARITY_RARE
-
-/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_classic/update_icon()
-
-	. = ..()
-
-	icon_state = initial(icon_state)
-
-	if(!chambered_bullet)
-		icon_state = "[icon_state]_unloaded"
-
-	if(!stored_magazine)
-		icon_state = "[icon_state]_open"
-
-
-
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_classic/get_static_spread()
 	return 0.003

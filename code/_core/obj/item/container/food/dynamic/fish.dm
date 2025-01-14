@@ -10,6 +10,8 @@
 
 	scale_sprite = FALSE
 
+	value = 0
+
 /obj/item/container/edible/dynamic/fish/update_sprite()
 
 	if(!reagents.volume_current)
@@ -82,17 +84,24 @@
 	return TRUE
 
 
-
+/obj/item/container/edible/dynamic/fish/raw_crab
+	value = 1
 
 /obj/item/container/edible/dynamic/fish/raw_crab/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/crab,15)
 	reagents.add_reagent(/reagent/nutrition/fat/crab,5)
 	return ..()
 
+/obj/item/container/edible/dynamic/fish/raw_lobster
+	value = 1
+
 /obj/item/container/edible/dynamic/fish/raw_lobster/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/lobster,10)
 	reagents.add_reagent(/reagent/nutrition/fat/lobster,10)
 	return ..()
+
+/obj/item/container/edible/dynamic/fish/raw_carp
+	value = 1
 
 /obj/item/container/edible/dynamic/fish/raw_carp/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/fish,15)

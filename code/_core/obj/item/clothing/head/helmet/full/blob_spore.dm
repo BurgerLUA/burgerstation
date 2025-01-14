@@ -23,6 +23,8 @@
 
 	no_drop = TRUE
 
+	value_burgerbux = 1
+
 /obj/item/clothing/head/helmet/full/blob_spore/can_be_dragged(var/mob/caller)
 	return FALSE
 

@@ -12,8 +12,6 @@
 	weight = WEIGHT_0
 	size = SIZE_2
 
-	value = 0
-
 	var/overlay_icon_state = "gem"
 	var/overlay_color = "#FFFFFF"
 

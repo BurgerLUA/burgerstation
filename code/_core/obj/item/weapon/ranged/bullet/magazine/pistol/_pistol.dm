@@ -9,6 +9,20 @@
 
 	tier_type = "pistol"
 
+/obj/item/weapon/ranged/bullet/magazine/pistol/handle_ammo(var/mob/caller)
+
+	var/old_chambered_bullet = chambered_bullet ? TRUE : FALSE
+	var/old_stored_magazine = stored_magazine ? TRUE : FALSE
+
+	. = ..()
+
+	if(.)
+		if(old_chambered_bullet != (chambered_bullet ? TRUE : FALSE))
+			update_icon()
+		else if(old_stored_magazine != (stored_magazine ? TRUE : FALSE))
+			update_icon()
+
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/update_icon()
 
 	icon_state = initial(icon_state)

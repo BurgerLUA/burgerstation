@@ -17,6 +17,8 @@
 
 	rarity = RARITY_UNCOMMON
 
+	value = 1
+
 /obj/item/clothing/head/hat/cult/old
 
 	name = "ancient cult hood"

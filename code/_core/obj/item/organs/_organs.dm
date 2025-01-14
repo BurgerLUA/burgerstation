@@ -197,7 +197,7 @@
 					src.bleeding = min(src.bleeding + bleed_to_add,src.health_base/5)
 			if(!A.dead && has_pain && atom_damaged == src && (broken || src.health.health_current <= 0 || critical_hit_multiplier > 1))
 				src.send_pain_response(damage_amount)
-			if(!A.boss && health.health_current <= damage_amount && !is_player(A))
+			if(!A.boss && health.health_current <= damage_amount*0.5 && !is_player(A))
 				var/gib_chance = 0
 				if(length(attached_organs) == 1 && A.has_status_effect(ZOMBIE))
 					gib_chance = 100

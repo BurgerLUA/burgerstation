@@ -23,6 +23,4 @@
 		/obj/item/container/edible/dynamic/meat/raw_goliath
 	)
 
-	soul_size = SOUL_SIZE_UNCOMMON
-
 	level = 35

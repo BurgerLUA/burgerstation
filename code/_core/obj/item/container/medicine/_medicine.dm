@@ -38,15 +38,15 @@
 
 /obj/item/container/healing/Generate(var/desired_loc)
 	. = ..()
-	if(reagents) reagents.volume_max = amount*reagent_max_per_amount
+	if(reagents) reagents.volume_max = amount * reagent_max_per_amount
 
 /obj/item/container/healing/Finalize(var/desired_loc)
 	. = ..()
-	if(reagents) reagents.volume_max = amount*reagent_max_per_amount //Safety
+	if(reagents) reagents.volume_max = amount * reagent_max_per_amount //Safety
 
-/obj/item/container/healing/add_item_count(var/amount_to_add,var/bypass_checks = FALSE)
+/obj/item/container/healing/add_item_count(var/amount_to_add, var/bypass_checks = FALSE)
 	. = ..()
-	if(reagents) reagents.volume_max = max(1,amount)*reagent_max_per_amount
+	if(reagents && amount) reagents.volume_max = amount * reagent_max_per_amount
 
 /obj/item/container/healing/quick(var/mob/caller,var/atom/object,location,params)
 
@@ -98,9 +98,8 @@
 				P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
 
 	if(reagents)
-		var/reagent_transfer = CEILING((1/amount_max)*reagents.volume_current, 1)
-		reagents.transfer_reagents_to(A.reagents,reagent_transfer, caller = caller)
-		reagents.volume_max = amount*10
+		var/transfer_amount = min(reagent_max_per_amount, reagents.volume_current)
+		reagents.transfer_reagents_to(A.reagents, transfer_amount, caller = caller)
 
 	if(caller == A.loc)
 		caller.visible_message(span("notice","\The [caller.name] bandages their [A.name]."),span("notice","You bandage your [A.name]."))

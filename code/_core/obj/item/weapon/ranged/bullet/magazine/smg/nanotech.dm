@@ -67,16 +67,27 @@
 
 	rarity = RARITY_UNCOMMON
 
+/obj/item/weapon/ranged/bullet/magazine/smg/nanotech/handle_ammo(var/mob/caller)
+
+	var/old_stored_magazine = stored_magazine ? TRUE : FALSE
+	var/old_desired_ammo_count = stored_magazine ? CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*9, 1) : 0
+
+	. = ..()
+
+	if(.)
+		if(old_stored_magazine != (stored_magazine ? TRUE : FALSE))
+			update_icon()
+		else if(stored_magazine && old_desired_ammo_count != CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*9, 1))
+			update_icon()
+
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/update_icon()
 
 	icon_state = initial(icon_state)
 
-	if(stored_magazine)
-		var/obj/item/magazine/M = stored_magazine
-		var/bullet_num = FLOOR(length(M.get_ammo_count()/M.bullet_count_max)*9,1)
-		icon_state = "[icon_state]_[bullet_num]"
-	else
+	if(!stored_magazine)
 		icon_state = "[icon_state]_open"
+	else
+		icon_state = "[icon_state]_[CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*9, 1)]"
 
 	return ..()
 

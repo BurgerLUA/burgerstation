@@ -9,7 +9,7 @@
 
 	size = SIZE_2
 
-	value = 40
+	value = 1
 
 	mob_values_add = list(
 		SKILL_MEDICAL = 3

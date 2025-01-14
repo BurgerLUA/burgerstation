@@ -48,7 +48,7 @@
 	var/list/protection_cold = TARGETABLE_LIMBS_KV
 	var/list/protection_pressure = TARGETABLE_LIMBS_KV
 
-	health = null
+	health = /health/mob/living/advanced
 
 	value = 500
 

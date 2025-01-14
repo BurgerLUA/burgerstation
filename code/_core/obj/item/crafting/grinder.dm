@@ -21,6 +21,8 @@
 
 	size = SIZE_4
 
+	value_burgerbux = 1
+
 
 /obj/item/crafting_bench/grinder/attempt_to_craft(var/mob/living/advanced/caller)
 

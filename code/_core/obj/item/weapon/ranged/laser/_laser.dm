@@ -17,6 +17,10 @@
 
 	damage_mod = 1
 
+	var/charge_icon_state_count = 0
+	var/old_charge_icon_state
+	var/charge_icon_uses_bullet_color = FALSE
+
 /obj/item/weapon/ranged/energy/PreDestroy()
 	QDEL_NULL(battery)
 	. = ..()
@@ -61,8 +65,6 @@
 	charge_cost = get_charge_cost()
 
 /obj/item/weapon/ranged/energy/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-
 
 	if(istype(object,/obj/item/))
 
@@ -130,9 +132,21 @@
 	return FLOOR(battery.charge_current/charge_cost, 1)
 
 /obj/item/weapon/ranged/energy/handle_ammo(var/mob/caller,var/bullet_position=1)
+
 	var/obj/item/powercell/PC = get_battery()
 	if(istype(PC))
-		PC.charge_current -= charge_cost
+		PC.charge_current = max(0,PC.charge_current - charge_cost)
+
+	if(charge_icon_state_count > 0)
+		if(old_charge_icon_state == null)
+			overlays.Cut()
+			update_overlays()
+		else
+			var/desired_state = get_charge_icon_state()
+			if(desired_state != old_charge_icon_state)
+				overlays.Cut()
+				update_overlays()
+
 	return null
 
 /obj/item/weapon/ranged/energy/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
@@ -162,3 +176,33 @@
 		. += div("notice","[PC.charge_current] / [PC.charge_max] ([get_ammo_count()] shots) remaining.")
 	else
 		. += div("warning","No powercell detected!")
+
+/obj/item/weapon/ranged/energy/proc/get_charge_icon_state()
+
+	if(!charge_icon_state_count)
+		return 0
+
+	if(charge_cost <= 0 || charge_icon_state_count <= 1)
+		return charge_icon_state_count
+
+	var/obj/item/powercell/PC = get_battery()
+
+	if(!PC || PC.charge_max <= 0 || PC.charge_current < charge_cost) //Always display 0 charge if we can't fire a shot.
+		return 0
+
+	. = (PC.charge_current/PC.charge_max) * charge_icon_state_count
+	. = CEILING(.,1)
+
+	if(PC.charge_current < PC.charge_max) //Never display max charge if we're not max charge.
+		. = min(.,charge_icon_state_count-1)
+
+/obj/item/weapon/ranged/energy/update_overlays()
+
+	. = ..()
+
+	if(charge_icon_state_count)
+		old_charge_icon_state = get_charge_icon_state()
+		var/image/I = new/image(initial(icon),"charge_[old_charge_icon_state]")
+		if(charge_icon_uses_bullet_color)
+			I.color = bullet_color
+		add_overlay(I)

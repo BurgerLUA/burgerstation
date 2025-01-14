@@ -6,5 +6,7 @@
 
 	attach_flag = BODY_TORSO
 
+	value = 0
+
 /obj/item/organ/internal/liver/robotic
 	name = "robotic liver"

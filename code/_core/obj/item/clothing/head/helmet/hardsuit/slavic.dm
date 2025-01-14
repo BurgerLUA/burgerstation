@@ -9,7 +9,7 @@
 	size = SIZE_4
 
 
-	value = 400
+	value = 0
 
 /obj/item/clothing/head/helmet/full/hardsuit/skat
 	name = "SKAT-9 full-head mask/helmet assembly"
@@ -22,7 +22,7 @@
 	size = SIZE_4
 
 
-	value = 550
+	value = 0
 
 /obj/item/clothing/head/helmet/full/hardsuit/skat/antag
 	name = "SKAT-10 helmet"
@@ -35,4 +35,4 @@
 	size = SIZE_4
 
 
-	value = 1050
+	value = 0

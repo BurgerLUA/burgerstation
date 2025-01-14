@@ -32,12 +32,6 @@
 
 /ai/proc/handle_attacking()
 
-	if(!can_attack)
-		return FALSE
-
-	if(!objective_attack)
-		return FALSE
-
 	if(get_dist(owner,objective_attack) > distance_target_max)
 		return FALSE
 
@@ -115,7 +109,7 @@
 
 /ai/proc/is_enemy(var/atom/A,var/safety_check=TRUE,var/aggression_check=TRUE)
 
-	if(A.qdeleting || !A.finalized)
+	if(!A || A.qdeleting || !A.finalized)
 		return FALSE
 	/*
 	if(istype(A,/mob/living/vehicle/))
@@ -186,7 +180,7 @@
 		if(should_attack_mob(attacker,FALSE))
 			if(!attackers[attacker])
 				attackers[attacker] = TRUE
-			if(!objective_attack || (get_dist(owner,objective_attack) >= get_dist(owner,attacker)*1.25))
+			if(!objective_attack || (get_dist(owner,objective_attack) >= get_dist(owner,attacker)*2))
 				set_objective(attacker)
 		else if(alert_level != ALERT_LEVEL_COMBAT)
 			set_alert_level(ALERT_LEVEL_COMBAT,attacker)

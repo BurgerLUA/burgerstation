@@ -32,8 +32,6 @@
 	blood_volume = 500
 	blood_type = /reagent/blood/blob
 
-	soul_size = SOUL_SIZE_COMMON
-
 	level = 7
 
 /mob/living/simple/bio_monster/post_death()

@@ -19,6 +19,7 @@
 /mob/living/advanced/npc/dummy/Finalize()
 	. = ..()
 	add_status_effect(IMMORTAL)
+	add_status_effect(DUMMY)
 
 /mob/living/advanced/npc/dummy/add_organ(var/obj/item/organ/O)
 	O = new O(src)

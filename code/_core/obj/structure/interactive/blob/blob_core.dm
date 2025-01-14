@@ -18,6 +18,7 @@
 
 	var/blob_limit = 700
 
+	var/blob_fatigue = 0 //Basically means how many tiles destroyed.
 
 /obj/structure/interactive/blob/core/New(var/desired_loc,var/obj/structure/interactive/blob/core/desired_owner)
 	color = random_color()
@@ -75,7 +76,10 @@
 				priority_turf = pick(lost_turfs)
 			var/obj/structure/interactive/blob/node/N = linked_nodes[current_node]
 			N.grow_charge(src,src,1,priority_turf)
-			next_grow = world.time + CEILING(SECONDS_TO_DECISECONDS(5)/max(1,node_count),1)
+			var/grow_delay = SECONDS_TO_DECISECONDS(5)/max(1,node_count)
+			grow_delay *= 1 - min(0.75,blob_fatigue*0.01)
+			grow_delay *= clamp( 2 - length(SSliving.all_players)*0.25 , 0.25, 2)
+			next_grow = world.time + CEILING(grow_delay,1)
 			current_node++
 			if(fast_grows_left > 0)
 				fast_grows_left--

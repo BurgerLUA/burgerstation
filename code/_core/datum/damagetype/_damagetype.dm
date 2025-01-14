@@ -60,20 +60,20 @@
 	)
 
 	var/list/damage_type_to_pain = list(
-		BLADE = 0.25,
-		BLUNT = 0.25,
+		BLADE = 0.125,
+		BLUNT = 0.125,
 		PIERCE = 0.125,
-		LASER = 0.25,
-		ARCANE = 0.125,
-		HEAT = 0.5,
+		LASER = 0.125,
+		ARCANE = 0,
+		HEAT = 0.125,
 		COLD = 0,
-		SHOCK = 0.75,
-		ACID = 0.75,
-		BOMB = 0.25,
+		SHOCK = 0.5,
+		ACID = 0.5,
+		BOMB = 0.125,
 		BIO = 0,
 		RAD = 0,
-		HOLY = 0.25,
-		DARK = 0.5,
+		HOLY = 0,
+		DARK = 0.25,
 		FATIGUE = 0,
 		PAIN = 0,
 		ION = 0,
@@ -157,6 +157,29 @@
 
 	var/attack_type = ATTACK_TYPE_MELEE
 
+	//Read-Only. For recoil calculation.
+	var/total_base_damage = 0
+	var/total_base_penetration = 0
+
+/damagetype/New(var/desired_loc)
+
+	. = ..()
+
+	total_base_damage = 0
+	total_base_penetration = 0
+
+	for(var/damage_type in attack_damage_base)
+		var/damage_value = attack_damage_base[damage_type]
+		if(IS_INFINITY(damage_value))
+			continue
+		total_base_damage += damage_value
+
+	for(var/damage_type in attack_damage_penetration)
+		var/penetration_value = attack_damage_penetration[damage_type]
+		if(IS_INFINITY(penetration_value))
+			continue
+		total_base_penetration += penetration_value
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -170,7 +193,7 @@
 	return list()
 
 /damagetype/proc/get_crit_chance(var/mob/living/L)
-	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION,0,1,2)*0.75 + (L.get_attribute_power(ATTRIBUTE_LUCK,0,1) - 0.5)*0.25)
+	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION,0,1,2)*0.75 + 0.25)
 
 /damagetype/proc/get_combat_rating(var/mob/living/L)
 
@@ -217,6 +240,11 @@
 		var/mob/living/A = attacker
 		var/mob/living/V = victim
 		if(!allow_hostile_action(A.loyalty_tag,V))
+			return null
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.has_status_effect(IMMORTAL) && !L.has_status_effect(DUMMY))
 			return null
 
 	var/list/new_attack_damage = attack_damage_base.Copy()
@@ -502,7 +530,7 @@
 					block_multiplier = block_data[2]
 
 	var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
-	var/list/damage_to_deal_main = list(
+	var/list/damage_to_deal_core = list(
 		BRUTE = 0,
 		BURN = 0,
 		TOX = 0,
@@ -555,7 +583,10 @@
 			if(attacker.health && is_advanced(attacker))
 				var/mob/living/advanced/A = attacker
 				if(A.overall_clothing_defense_rating[armor_damage_type_to_use])
-					damage_to_deal[damage_type] *= clamp(A.overall_clothing_defense_rating[armor_damage_type_to_use]*0.01,0.15,2) //Deal 1% more damage per 100 resist of attacker, max of 100% more damage, with a minimum of 85% less damage.
+					var/damage_bonus = A.overall_clothing_defense_rating[armor_damage_type_to_use]*0.01
+					if(!A.ckey_last && damage_bonus > 1) //AI get less of a bonus.
+						damage_bonus = max(1,damage_bonus*0.5)
+					damage_to_deal[damage_type] *= clamp(damage_bonus,0.15,2)  //Deal 1% more damage per 100 resist of attacker, max of 100% more damage, with a minimum of 85% less damage.
 					if(debug) log_debug("Victim's new [damage_type] damage taken due to attacker's [armor_damage_type_to_use] armor rating: [damage_to_deal[damage_type]].")
 		if(damage_type != FATIGUE && block_multiplier > 0)
 			if(debug) log_debug("Calculating [damage_type] with blocking...")
@@ -563,31 +594,45 @@
 			damage_to_deal[damage_type] -= blocked_damage
 			fatigue_damage += blocked_damage*0.5
 			damage_blocked_with_shield += blocked_damage
-		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier * stealth_multiplier
+		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier * stealth_multiplier //Before armor calculations.
 		if(debug) log_debug("Post-bonus [damage_type] damage: [old_damage_amount].")
 		var/victim_defense = defense_rating_victim[damage_type]
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
-		if(IS_INFINITY(victim_defense)) //Defense is infinite. No point in calculating further damage or armor.
+		if(IS_INFINITY(victim_defense)) //Defense is infinite. No point in calculating further damage or armor. Even if penetration is infinity.
 			damage_to_deal[damage_type] = 0
 			if(debug) log_debug("Victim has infinite [damage_type] defense. No damage can be dealt.")
 			continue
+
 		if(debug) log_debug("Victim's [damage_type] defense before penetration calculations: [victim_defense].")
-		var/local_penetration = attack_damage_penetration[damage_type] * penetration_mod
+
+		var/local_penetration = attack_damage_penetration[damage_type]
 		if(IS_INFINITY(local_penetration))
 			victim_defense = 0
-		else
+		else if(victim_defense >= 0)
+			local_penetration *= penetration_mod
 			if(local_penetration < 0)
-				if(victim_defense > 0)
-					victim_defense -= local_penetration //This adds extra armor.
+				victim_defense -= local_penetration //This adds extra armor, since local_penetration would be negative.
 			else
+				/* Here lies overpenetration code. It never scored.
+				if(local_penetration*0.5 > victim_defense)
+					old_damage_amount = max(
+						old_damage_amount*0.5,
+						old_damage_amount - (local_penetration*0.5 - victim_defense)*(1/ARMOR_AP_MUL)
+					)
+					if(debug) log_debug("Damage of [damage_type] was reduced to [old_damage_amount] due to armor overpenetration.")
+				*/
 				if(victim_defense > 0)
 					victim_defense = max(0,victim_defense - local_penetration)
+
 		if(debug) log_debug("Victim's [damage_type] defense after penetration calculations: [victim_defense].")
 		var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
 		if(debug) log_debug("Final [damage_type] damage: [new_damage_amount].")
 		var/damage_to_block = max(0,old_damage_amount - new_damage_amount)
 		if(debug) log_debug("Blocked [damage_type] damage: [damage_to_block].")
 		damage_blocked_with_armor += damage_to_block
+
+
+
 		damage_to_deal[damage_type] = CEILING(max(0,new_damage_amount),1)
 		if(damage_type_to_fatigue[damage_type])
 			var/fatigue_damage_to_convert = damage_to_block*damage_type_to_fatigue[damage_type]
@@ -604,12 +649,13 @@
 			if(debug) log_debug("Adding [damage_type] damage into [pain_damage_to_add] pain damage.")
 			pain_damage += pain_damage_to_add
 
-	if(length(damage_to_deal) && !length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INFINITY(defense_rating_victim[FATIGUE]))
-		damage_to_deal[FATIGUE] += CEILING(fatigue_damage,1)
+
+	if(!length(defense_rating_victim) || !(defense_rating_victim[FATIGUE] && IS_INFINITY(defense_rating_victim[FATIGUE])))
+		damage_to_deal_core[FATIGUE] += CEILING(fatigue_damage,1)
 		if(debug) log_debug("Dealing [fatigue_damage] extra fatigue damage due to blocked damage.")
 
-	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INFINITY(defense_rating_victim[PAIN]))
-		damage_to_deal[PAIN] += CEILING(pain_damage,1)
+	if(!length(defense_rating_victim) || !(defense_rating_victim[PAIN] && IS_INFINITY(defense_rating_victim[PAIN])))
+		damage_to_deal_core[PAIN] += CEILING(pain_damage,1)
 		if(debug) log_debug("Dealing [pain_damage] extra pain damage due to converted damage.")
 
 	var/total_damage_dealt = 0
@@ -623,10 +669,10 @@
 			var/list_length = length(real_damage_type)
 			for(var/single_damage_type in real_damage_type)
 				var/real_damage_amount = CEILING(damage_amount/list_length,1)
-				damage_to_deal_main[single_damage_type] += real_damage_amount
+				damage_to_deal_core[single_damage_type] += real_damage_amount
 				if(debug) log_debug("Converting [damage_amount] [damage_type] damage into [real_damage_amount] [single_damage_type] damage.")
 		else
-			damage_to_deal_main[real_damage_type] += CEILING(damage_amount,1)
+			damage_to_deal_core[real_damage_type] += CEILING(damage_amount,1)
 			if(debug) log_debug("Converting [damage_amount] [damage_type] damage into [damage_amount] [real_damage_type] damage.")
 
 	if(defense_rating_victim && defense_rating_victim["items"])
@@ -643,23 +689,23 @@
 			victim_was_dead = TRUE
 
 
-	var/physical_damage_dealt = damage_to_deal_main[BRUTE] + damage_to_deal_main[BURN]
-	var/chemical_damage_dealt = damage_to_deal_main[TOX] + damage_to_deal_main[OXY] + damage_to_deal_main[RAD]
+	var/physical_damage_dealt = damage_to_deal_core[BRUTE] + damage_to_deal_core[BURN]
+	var/chemical_damage_dealt = damage_to_deal_core[TOX] + damage_to_deal_core[OXY] + damage_to_deal_core[RAD]
 	var/real_damage_dealt = physical_damage_dealt + chemical_damage_dealt
-	//var/mental_damage_dealt = damage_to_deal_main[SANITY] + damage_to_deal_main[MENTAL]
-	//var/misc_damage_dealt = damage_to_deal_main[FATIGUE] + damage_to_deal_main[PAIN]
+	//var/mental_damage_dealt = damage_to_deal_core[SANITY] + damage_to_deal_core[MENTAL]
+	//var/misc_damage_dealt = damage_to_deal_core[FATIGUE] + damage_to_deal_core[PAIN]
 
-	if(total_damage_dealt > 0 && hit_object.health && victim.health)
+	if(total_damage_dealt > 0 && hit_object.health)
 		hit_object.health.adjust_loss_smart(
-			brute = damage_to_deal_main[BRUTE],
-			burn = damage_to_deal_main[BURN],
-			tox = damage_to_deal_main[TOX],
-			oxy = damage_to_deal_main[OXY],
-			fatigue = damage_to_deal_main[FATIGUE],
-			pain = damage_to_deal_main[PAIN],
-			rad = damage_to_deal_main[RAD],
-			sanity = damage_to_deal_main[SANITY],
-			mental = damage_to_deal_main[MENTAL],
+			brute = damage_to_deal_core[BRUTE],
+			burn = damage_to_deal_core[BURN],
+			tox = damage_to_deal_core[TOX],
+			oxy = damage_to_deal_core[OXY],
+			fatigue = damage_to_deal_core[FATIGUE],
+			pain = damage_to_deal_core[PAIN],
+			rad = damage_to_deal_core[RAD],
+			sanity = damage_to_deal_core[SANITY],
+			mental = damage_to_deal_core[MENTAL],
 			update = FALSE
 		)
 
@@ -674,7 +720,7 @@
 			handle_experience(
 				attacker,
 				victim,
-				min(victim.health.health_current,victim.health.health_max*0.25,real_damage_dealt), //Caps to prevent leveling exploits.
+				victim.health ? min(victim.health.health_current,victim.health.health_max*0.25,real_damage_dealt) : 0, //Caps to prevent leveling exploits.
 				damage_blocked_with_armor,
 				damage_blocked_with_shield,
 				critical_hit_multiplier,
@@ -787,7 +833,6 @@
 		if(damage_blocked_with_shield > 0)
 			victim.add_skill_xp(SKILL_BLOCK,damage_blocked_with_shield*0.1)
 		. = TRUE
-
 
 	if(!victim.is_player_controlled() && attacker.is_player_controlled())
 		var/list/experience_gained = list()

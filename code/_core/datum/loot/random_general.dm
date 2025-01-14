@@ -1,5 +1,5 @@
 /loot/random/trash
-	value_min = 1
+	value_min = 5
 	value_max = 100
 	rarity_min = RARITY_BROKEN
 	rarity_max = RARITY_UNCOMMON

@@ -23,7 +23,6 @@
 
 	value = 20
 
-
 /obj/item/storage/pillbottle/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("color_lid")

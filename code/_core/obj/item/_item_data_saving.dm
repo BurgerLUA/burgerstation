@@ -139,7 +139,7 @@
 		desired_quality -= 25
 		desired_quality = FLOOR(desired_quality,1)
 	if(desired_quality != initial(quality))
-		.["quality"] = clamp(desired_quality,0,200)
+		.["quality"] = clamp(desired_quality,0,300)
 
 	if(luck && luck != initial(luck))
 		.["luck"] = luck

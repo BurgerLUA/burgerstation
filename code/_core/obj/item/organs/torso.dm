@@ -32,6 +32,8 @@
 
 	has_life = TRUE
 
+	value = 0
+
 /obj/item/organ/torso/on_organ_remove(var/mob/living/advanced/old_owner)
 	. = ..()
 	if(!old_owner.qdeleting && !old_owner.changing)

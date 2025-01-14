@@ -59,8 +59,6 @@
 	blood_type = /reagent/blood/ancient
 	blood_volume = 3000
 
-	soul_size = SOUL_SIZE_RARE
-
 	anchored = 1
 
 	object_size = 2
@@ -251,6 +249,9 @@
 //Frog summoning
 /mob/living/simple/leaper/proc/check_frogs()
 
+	if(minion_master)
+		return INFINITY
+
 	for(var/k in tracked_frogs)
 		var/mob/living/L = k
 		if(L.dead || L.qdeleting || get_dist(L,src) > VIEW_RANGE*3)
@@ -260,6 +261,9 @@
 
 
 /mob/living/simple/leaper/proc/manifest_frogs()
+
+	if(minion_master)
+		return FALSE
 
 	var/view_mod = CEILING(VIEW_RANGE*0.5,1)
 

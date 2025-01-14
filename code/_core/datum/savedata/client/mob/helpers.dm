@@ -182,8 +182,6 @@ var/global/allow_loading = TRUE
 		CRASH("Could not delete file [file_name] for [A.ckey]!")
 		return FALSE
 
-	SStax.pay_taxes(A)
-
 	var/total_value = A.get_value() + A.currency
 	total_value = max(0,total_value)
 

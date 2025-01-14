@@ -24,6 +24,4 @@
 	blood_type = /reagent/blood/human/o_negative
 	blood_volume = 750
 
-	soul_size = SOUL_SIZE_UNCOMMON
-
 	level = 16

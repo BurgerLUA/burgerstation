@@ -1,9 +1,5 @@
 /ai/boss/bubblegum/
-
 	var/mob/living/simple/bubblegum/owner_as_bubblegum
-
-
-	night_vision = 0
 
 /ai/boss/bubblegum/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_bubblegum = desired_owner

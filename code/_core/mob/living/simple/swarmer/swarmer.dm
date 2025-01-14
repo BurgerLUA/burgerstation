@@ -8,7 +8,6 @@
 	blood_type = null
 	damage_type = /damagetype/npc/swarmer
 
-	soul_size = null
 	size = SIZE_CRITTER
 
 	iff_tag = "Swarmer"
@@ -112,7 +111,6 @@
 
 	anchored = TRUE
 
-	soul_size = null
 	size = SIZE_GIANT
 
 	collision_flags = FLAG_COLLISION_WALL //YOU'RE UP AGAINST THE WALL AND I AM THE FUCKING WALL
