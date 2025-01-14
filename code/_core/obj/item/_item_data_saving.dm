@@ -90,8 +90,7 @@
 
 /obj/item/proc/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 
-	if(!can_save && !length(inventories))
-		P.to_chat(span("warning","Notice: \The [src.name] could not be saved."))
+	if( (!can_save) && !length(inventories)) //The inventory check prevents people from losing their stuff if a dev is dumb and adds a contraband item with storage.
 		return null
 
 	if(loadout && !SSbalance.can_save_loadout[src.type])
