@@ -98,6 +98,7 @@
 		/obj/item/bullet_cartridge/flintlock{amount=3}
 	)
 
+
 /loadout/pirate/crew/magic
 	spawning_items = list(
 		/obj/item/clothing/pants/brown,
