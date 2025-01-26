@@ -115,6 +115,22 @@
 
 	expiration_time = SECONDS_TO_DECISECONDS(180)
 
+/mob/living/advanced/player/get_examine_list(var/mob/living/examiner)
+	var/species/owner_species = SPECIES(species)
+	. = list(
+		div("examine_title", src.name),
+		div("center bold","Level [level] [owner_species.name]"),
+		div("examine_description_long", src.desc_extended)
+	)
+
+	var/activity_text = get_activity_text()
+	if(activity_text)
+		. += activity_text
+
+	var/damage_description = get_damage_description(examiner)
+	if(damage_description)
+		. += damage_description
+
 /mob/living/advanced/player/Finalize()
 	. = ..()
 	setup_difficulty()
