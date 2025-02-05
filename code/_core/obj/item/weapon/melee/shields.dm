@@ -122,7 +122,7 @@
 
 	value = 900
 
-	rarity = RARITY_RARE
+	rarity = RARITY_MYTHICAL
 
 /obj/item/weapon/melee/shield/heartstone
 	name = "heartstone shield"
@@ -209,7 +209,7 @@
 
 	value = 1200
 
-	rarity = RARITY_RARE
+	rarity = RARITY_LEGENDARY
 
 /obj/item/weapon/melee/shield/redstar
 	name = "slavic redstar shield"

@@ -28,6 +28,8 @@
 	return TRUE
 
 /vote/New()
+	if(CONFIG("ENABLE_QUICKVOTE", FALSE))
+		time_limit = 1
 
 	for(var/k in SSclient.all_clients)
 		var/client/C = SSclient.all_clients[k]
