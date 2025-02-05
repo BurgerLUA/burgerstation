@@ -166,7 +166,7 @@
 		if(!(permissions & FLAG_PERMISSION_MODERATOR) && !(permissions & FLAG_PERMISSION_ADMIN))
 			to_chat(span("warning", "You cannot use ghost commands as a living player."))
 			return FALSE
-		to_chat(span("warning", "Skipping living player safety check due to admin privileges."))
+		to_chat(span("notice", "ADMIN: Skipping living player safety check."))
 
 	var/area/A = coverted_choice[choice]
 
