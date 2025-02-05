@@ -6,12 +6,18 @@
 
 	var/mob/choice = input("Who would you like to jump to?","Jump to Mob") as null|mob in SSliving.all_mobs_with_clients
 	if(!choice || choice == mob)
-		to_chat(span("warning","Invalid mob."))
+		to_chat(span("warning","Invalid mob selected."))
 		return FALSE
+
+	if(is_living(mob))
+		if(!(permissions & FLAG_PERMISSION_MODERATOR) && !(permissions & FLAG_PERMISSION_ADMIN))
+			to_chat(span("warning", "You cannot use ghost commands as a living player."))
+			return FALSE
+		to_chat(span("notice", "ADMIN: Skipping living player safety check."))
 
 	var/turf/T = get_turf(choice)
 	if(!T)
-		to_chat(span("warning","Invalid turf."))
+		to_chat(span("warning","Target is in an Invalid turf."))
 		return FALSE
 
 	mob.force_move(T)
@@ -28,8 +34,14 @@
 
 	var/mob/choice = input("Who would you like to jump to?","Jump to Mob") as null|mob in SSliving.all_mobs
 	if(!choice || choice == mob)
-		to_chat(span("warning","Invalid mob."))
+		to_chat(span("warning","Invalid mob selected."))
 		return FALSE
+
+	if(is_living(mob))
+		if(!(permissions & FLAG_PERMISSION_MODERATOR) && !(permissions & FLAG_PERMISSION_ADMIN))
+			to_chat(span("warning", "You cannot use ghost commands as a living player."))
+			return FALSE
+		to_chat(span("notice", "ADMIN: Skipping living player safety check."))
 
 	var/turf/T = get_turf(choice)
 	if(!T)
@@ -42,8 +54,7 @@
 	if(is_living(mob))
 		log_admin("[mob.get_debug_name()] jumped to [choice.get_debug_name()]'s location.")
 
-/client/verb/jump_to_client()
-
+/client/verb/jump_to_client() // Admin-only
 	set name = "Jump to Client"
 	set category = "View"
 
@@ -85,16 +96,16 @@
 
 	var/mob/choice = input("Who would you like to orbit?","Orbit Mob") as null|mob in SSliving.all_mobs_with_clients
 	if(!choice || choice == mob)
-		to_chat(span("warning","Invalid mob."))
+		to_chat(span("warning","Invalid mob selected."))
+		return FALSE
+
+	if(is_living(mob))
+		to_chat(span("warning","Cannot orbit as a living mob."))
 		return FALSE
 
 	var/turf/T = get_turf(choice)
 	if(!T)
 		to_chat(span("warning","Invalid turf."))
-		return FALSE
-
-	if(is_living(mob))
-		to_chat(span("warning","Cannot orbit as a living mob."))
 		return FALSE
 
 	if(mob.observing)
@@ -118,13 +129,13 @@
 		to_chat(span("warning","Invalid mob."))
 		return FALSE
 
+	if(is_living(mob))
+		to_chat(span("warning","Cannot orbit as a living mob."))
+		return FALSE
+
 	var/turf/T = get_turf(choice)
 	if(!T)
 		to_chat(span("warning","Invalid turf."))
-		return FALSE
-
-	if(is_living(mob))
-		to_chat(span("warning","Cannot orbit as a living mob."))
 		return FALSE
 
 	if(mob.observing)
@@ -150,6 +161,12 @@
 	if(!choice)
 		to_chat(span("warning","Invalid area."))
 		return FALSE
+
+	if(is_living(mob))
+		if(!(permissions & FLAG_PERMISSION_MODERATOR) && !(permissions & FLAG_PERMISSION_ADMIN))
+			to_chat(span("warning", "You cannot use ghost commands as a living player."))
+			return FALSE
+		to_chat(span("notice", "ADMIN: Skipping living player safety check."))
 
 	var/area/A = coverted_choice[choice]
 
