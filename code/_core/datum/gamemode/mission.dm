@@ -32,7 +32,10 @@
 	log_debug("Spawning missions mobs...")
 	. = ..()
 	spawn_and_set_enemies()
-	round_time_next = 30
+	if(CONFIG("ENABLE_QUICKSTART", FALSE))
+		round_time_next = 1
+	else
+		round_time_next = 30
 	var/benchmark_time = DECISECONDS_TO_SECONDS((true_time() - local_benchmark))
 	log_debug("Mission mobs took <b>[benchmark_time]</b> seconds to spawn.")
 
@@ -173,13 +176,20 @@
 		switch(stage)
 			if(1)
 				status_display_text = "GEAR"
-				round_time_next = 6*60
-				announce(
-					"Central Command Mission Update",
-					"Prepare for Landfall",
-					"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle functionality: 6 minutes.",
-					sound_to_play = 'sound/voice/announcement/landfall_crew_6_minutes_shuttle.ogg'
-				)
+				if(CONFIG("ENABLE_QUICKSTART", FALSE))
+					round_time_next = 1
+					allow_launch = TRUE
+					SShorde.enable = TRUE
+					SSevents.enable = TRUE
+					stage = 3
+				else
+					round_time_next = 6*60
+					announce(
+						"Central Command Mission Update",
+						"Prepare for Landfall",
+						"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle functionality: 6 minutes.",
+						sound_to_play = 'sound/voice/announcement/landfall_crew_6_minutes_shuttle.ogg'
+					)
 				CALLBACK("\ref[src]_add_objectives",SECONDS_TO_DECISECONDS(10),src,src::add_objectives()) //10 to 60 seconds.
 				CALLBACK("\ref[src]_announce_lore",rand(100,600),src,src::announce_lore()) //10 to 60 seconds.
 			if(2)

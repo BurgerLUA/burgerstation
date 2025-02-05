@@ -21,6 +21,16 @@ SERVER_GITHUB
 
 PLAYER_LIMIT 100
 
+# Developer options start here
+
+# If enabled skips the 
+ENABLE_QUICKSTART 0
+
+# If enabled sets all votes to a duration of 1
+ENABLE_QUICKVOTE 0
+
+# Developer options end here
+
 # Features
 ENABLE_LOGGING 1
 ENABLE_WIKIBOT 0
