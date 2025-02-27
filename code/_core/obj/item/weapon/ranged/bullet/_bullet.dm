@@ -32,7 +32,7 @@
 
 	use_iff_tag = TRUE
 
-	var/bullet_time = 0 //Not slow-mo, but how long it takes to insert a bullet into the gun.
+	var/list/bullet_time //If there's some special bullets that take longer or shorter to load. Look at the flintlock or musket for examples
 
 	var/sound_pitch = 1
 
