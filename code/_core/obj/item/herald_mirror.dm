@@ -47,8 +47,6 @@
 
 /obj/item/herald_mirror/proc/can_teleport(var/mob/living/advanced/A)
 
-	var/mob/caller = A //reeee shitcode
-
 	INTERACT_CHECK_NO_DELAY(src)
 
 	if(!linked_destination)

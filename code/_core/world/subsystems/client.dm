@@ -67,14 +67,14 @@ SUBSYSTEM_DEF(client)
 		if(!data || !length(data))
 			queued_automatics -= k
 			continue
-		var/mob/caller = data[1]
+		var/mob/mob = data[1]
 		var/list/params = data[2]
 		var/damage_multiplier = data[3]
 		var/max_bursts_to_use = data[4]
 		var/shoot_delay_to_use = data[5]
 		if(R.next_shoot_time > world.time)
 			continue
-		if(!R.handle_automatic(caller,params,damage_multiplier,max_bursts_to_use,shoot_delay_to_use))
+		if(!R.handle_automatic(mob,params,damage_multiplier,max_bursts_to_use,shoot_delay_to_use))
 			var/real_burst_delay = (R.burst_delay ? R.burst_delay : R.shoot_delay*R.current_bursts*1.25) - R.shoot_delay*R.current_bursts
 			R.next_shoot_time = max(R.next_shoot_time,world.time + real_burst_delay)
 			R.current_bursts = 1
