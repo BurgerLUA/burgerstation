@@ -47,9 +47,8 @@
 
 /obj/item/herald_mirror/proc/can_teleport(var/mob/living/advanced/A)
 
-	var/mob/caller = A //reeee shitcode
-
-	INTERACT_CHECK_NO_DELAY(src)
+	if(!can_caller_interact_with(A, delay_checks = FALSE)) // This is INTERACT_CHECK_NO_DELAY(x) but 516 friendly
+		return FALSE
 
 	if(!linked_destination)
 		A.to_chat(span("warning","Something went wrong... tell Burger on discord."))
