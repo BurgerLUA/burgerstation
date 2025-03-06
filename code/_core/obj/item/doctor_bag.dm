@@ -2,13 +2,14 @@
 	name = "doctor's bag"
 	desc = "HOLD STILL!"
 	desc_extended = "A highly advanced set of surgery tools and general medical equipment to make you excel at your duties of being a doctor. \
-	Heals the target's limb by a fixed amount based on your medical skill. Treatment power and time is also based on your medical skill, and is improved if the target is laying down. Cannot be used to self-treat. Using this while taking the Medical Doctor job can earn you credits if you treat your fellow man."
+	Heals the target's limb by a fixed amount based on your medical skill. Treatment power and time is also based on your medical skill, and is improved if the target is laying down. Cannot be used to self-treat. Using this while taking the Medical Doctor job can earn you credits if you treat your fellow man. Clicking on it will let you change healing modes."
 	icon = 'icons/obj/item/doctor_bag.dmi'
 	icon_state = "inventory"
 
 	value = 1 //generated
 
 	var/organic = TRUE
+	var/heal_all_limbs = FALSE
 
 	var/heal_brute = 20 //At 100 medicine.
 	var/heal_burn = 20 //At 100 medicine.
@@ -23,16 +24,29 @@
 
 	size = SIZE_3
 
+	quality_max = 190
 	quality = 100
 
-	uses_until_condition_fall = 1000 //1000 uses.
+	uses_until_condition_fall = 1
 
 /obj/item/doctor_bag/get_base_value()
 	. = 100 + ((heal_burn+heal_brute)*10 + (heal_brute_percent + heal_burn_percent)*40) * (SECONDS_TO_DECISECONDS(6) / (base_delay + added_delay*0.5)) * 1.5
 	. = FLOOR(.,100)
 
-/obj/item/doctor_bag/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/doctor_bag/click_self(var/mob/caller,location,control,params)
 
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
+	heal_all_limbs = !heal_all_limbs
+	if(heal_all_limbs)
+		caller.to_chat(span("notice","You decide to heal injuries of others more broadly, at the cost of healing power."))
+	else
+		caller.to_chat(span("warning","You decide to focus on healing a singular limb."))
+
+	return TRUE
+
+/obj/item/doctor_bag/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_living(object) && is_living(caller))
 
@@ -122,6 +136,10 @@
 
 	if(!target_as_living.horizontal) //Not horizontal penalty.
 		medicine_power *= 0.5
+
+	if(heal_all_limbs && is_living(A.loc)) // If we are on the second healing mode, heal more broadly at a severe penalty.
+		A = A.loc
+		medicine_power *= 0.25
 
 	medicine_power = max(medicine_power,0.1)
 
