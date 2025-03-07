@@ -72,12 +72,12 @@
 		. += div("notice","It is enchanted with <b>[enchantment.name] \Roman[enchantment.strength]</b>")
 		. += div("notice","The enchantment has [enchantment.charge] charge left ([FLOOR(enchantment.charge/enchantment.cost,1)] uses).")
 
-/obj/item/weapon/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/quick(var/mob/activator,var/atom/object,location,params)
 
-	if(!is_advanced(caller) || !is_inventory(src.loc))
+	if(!is_advanced(activator) || !is_inventory(src.loc))
 		return FALSE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 
 	return A.put_in_hands(src,params)
 
@@ -94,7 +94,7 @@
 
 	. = CEILING(.,1)
 
-/obj/item/weapon/can_feed(var/mob/caller,var/atom/target)
+/obj/item/weapon/can_feed(var/mob/activator,var/atom/target)
 	return FALSE
 
 /obj/item/weapon/PostInitialize()
@@ -135,28 +135,28 @@
 	update_sprite()
 	. = ..()
 
-/obj/item/weapon/clicked_on_by_object(mob/caller,atom/object,location,control,params)
+/obj/item/weapon/clicked_on_by_object(mob/activator,atom/object,location,control,params)
 
 	if(enchantment && istype(object,/obj/item/soulgem))
 		INTERACT_CHECK
 		INTERACT_DELAY(20)
 		var/obj/item/soulgem/G = object
 		if(enchantment.charge >= enchantment.max_charge)
-			caller.to_chat(span("warning","\The [src.name] is already fully recharged!"))
+			activator.to_chat(span("warning","\The [src.name] is already fully recharged!"))
 			return TRUE
 		if(G.total_charge <= 0)
-			caller.to_chat(span("warning","\The [G.name] is empty and devoid of charge!"))
+			activator.to_chat(span("warning","\The [G.name] is empty and devoid of charge!"))
 			return TRUE
 		var/chargediff = min(G.total_charge,(enchantment.max_charge - enchantment.charge))
 		enchantment.charge += chargediff
 		G.total_charge -= chargediff
-		var/mob/living/L = caller
+		var/mob/living/L = activator
 		L.add_skill_xp(SKILL_SUMMONING,chargediff*0.0025)
 		if(G.total_charge <= 0 && !G.do_not_consume)
-			caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name], consuming it!"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name], consuming it!"))
+			activator.visible_message(span("notice","\The [activator.name] siphons some energy from \the [G.name] to recharge \the [src.name], consuming it!"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name], consuming it!"))
 			qdel(G)
 		else
-			caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name]"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name]"))
+			activator.visible_message(span("notice","\The [activator.name] siphons some energy from \the [G.name] to recharge \the [src.name]"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name]"))
 		return TRUE
 
 	. = ..()

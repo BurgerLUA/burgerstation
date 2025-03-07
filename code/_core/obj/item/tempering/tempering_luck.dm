@@ -18,15 +18,15 @@
 	. = ..()
 	. += span("notice","Increases the luck of items by [increase]%, up to [maximum]%, with a minimum of [minimum]%.")
 
-/obj/item/tempering/luck/can_temper(var/mob/caller,var/obj/item/I)
+/obj/item/tempering/luck/can_temper(var/mob/activator,var/obj/item/I)
 
 	if(I.luck >= maximum)
-		caller.to_chat(span("warning","\The [I.name] cannot be improved any further!"))
+		activator.to_chat(span("warning","\The [I.name] cannot be improved any further!"))
 		return FALSE
 
 	. = ..()
 
-/obj/item/tempering/luck/on_temper(var/mob/caller,var/obj/item/I)
+/obj/item/tempering/luck/on_temper(var/mob/activator,var/obj/item/I)
 	I.luck = clamp(I.luck + increase,minimum,maximum)
 	. = ..()
 

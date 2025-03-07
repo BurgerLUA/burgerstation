@@ -76,7 +76,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/pkm/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/rifle/pkm/handle_ammo(var/mob/activator)
 
 	var/old_stored_magazine = stored_magazine ? TRUE : FALSE
 	var/old_desired_ammo_count = stored_magazine ? min(6,stored_magazine.get_ammo_count()) : 0

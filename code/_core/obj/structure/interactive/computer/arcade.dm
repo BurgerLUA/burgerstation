@@ -20,16 +20,16 @@ obj/structure/interactive/computer/arcade
 obj/structure/interactive/computer/arcade/bubbletwist
 	name = "arcade - bubble twist"
 
-obj/structure/interactive/computer/arcade/bubbletwist/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+obj/structure/interactive/computer/arcade/bubbletwist/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(!is_living(caller))
+	if(!is_living(activator))
 		return ..()
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 	if(L.client)
 		L.toggle_research_game(FALSE,TRUE)
 

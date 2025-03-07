@@ -39,7 +39,7 @@
 	update_sprite()
 	return ..()
 
-/obj/item/cell_charger/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/cell_charger/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(battery && is_inventory(object))
 		INTERACT_CHECK
@@ -47,11 +47,11 @@
 		INTERACT_DELAY(10)
 		var/obj/hud/inventory/I = object
 		if(I.add_object(battery))
-			caller.to_chat(span("warning","You remove \the [battery.name] from \the [src.name]."))
+			activator.to_chat(span("warning","You remove \the [battery.name] from \the [src.name]."))
 			battery.update_sprite()
 			battery = null
 		else
-			caller.to_chat(span("warning","You can't seem to remove \the [battery.name] from \the [src.name]!"))
+			activator.to_chat(span("warning","You can't seem to remove \the [battery.name] from \the [src.name]!"))
 		update_sprite()
 		return TRUE
 
@@ -61,14 +61,14 @@
 		INTERACT_DELAY(10)
 		var/obj/item/PC = object
 		if(PC.size > SIZE_3) //Only fits size 3.
-			caller.to_chat(span("warning","\The [PC.name] is too large to be put into \the [src.name]!"))
+			activator.to_chat(span("warning","\The [PC.name] is too large to be put into \the [src.name]!"))
 			return TRUE
 		if(battery)
-			caller.to_chat(span("notice","You replace \the [battery.name] in \the [src.name] with \the [object.name] in your hand."))
+			activator.to_chat(span("notice","You replace \the [battery.name] in \the [src.name] with \the [object.name] in your hand."))
 			battery.update_sprite()
-			battery.drop_item(get_turf(caller))
+			battery.drop_item(get_turf(activator))
 		else
-			caller.to_chat(span("notice","You add \the [PC.name] to \the [src.name]."))
+			activator.to_chat(span("notice","You add \the [PC.name] to \the [src.name]."))
 		PC.drop_item(src)
 		battery = PC
 		update_sprite()
@@ -140,7 +140,7 @@
 		return FALSE
 
 
-/obj/item/cell_charger/get_examine_list(var/mob/caller)
+/obj/item/cell_charger/get_examine_list(var/mob/activator)
 
 	. = ..()
 

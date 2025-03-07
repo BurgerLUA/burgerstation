@@ -65,7 +65,7 @@
 	vis_contents += associated_object
 
 
-/obj/hud/button/floor_object/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/floor_object/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 	if(associated_object)
-		return object.click_on_object(caller,associated_object,location,control,params)
+		return object.click_on_object(activator,associated_object,location,control,params)
 	return ..()

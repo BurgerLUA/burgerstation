@@ -18,23 +18,23 @@
 
 	container_priority = -20
 
-/obj/item/storage/pouch/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/storage/pouch/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
-	if(caller == object && is_advanced(caller))
+	if(activator == object && is_advanced(activator))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
-		if(quick_equip(caller,ignore_hands=TRUE,ignore_held=FALSE,ignore_dynamic=TRUE))
+		if(quick_equip(activator,ignore_hands=TRUE,ignore_held=FALSE,ignore_dynamic=TRUE))
 			INTERACT_DELAY(1)
 			return TRUE
 
 	return ..()
 
-/obj/item/storage/pouch/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/storage/pouch/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_inventory(object)) //Roughly pockets only.
 		var/obj/hud/inventory/I = object
-		if(I.loc == caller && !I.drag_to_take)
-			return click_self(caller,location,control,params)
+		if(I.loc == activator && !I.drag_to_take)
+			return click_self(activator,location,control,params)
 
 	. = ..()
 

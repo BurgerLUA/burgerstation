@@ -77,12 +77,12 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 
 	chargen_flags = CHARGEN_BEARD
 
-/obj/hud/button/chargen/change_beardstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/change_beardstyle/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		var/species/S = SPECIES(A.species)
 		hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(SSspecies.all_hair_files[S.default_icon_hair_face]))
 		A.handle_beardstyle_chargen(hair_num)
@@ -130,10 +130,10 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 			add_overlay(I_head)
 			add_overlay(I_hair)
 
-/obj/hud/button/chargen/beardstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/beardstyle/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 	. = ..()
-	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		A.handle_beardstyle_chargen(hair_num)
 
 /obj/hud/button/chargen/beardstyle/main
@@ -142,12 +142,12 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	icon_state = "square_round"
 	screen_loc = "CENTER,CENTER+3"
 
-/obj/hud/button/chargen/beardstyle/main/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/beardstyle/main/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		var/desired_color = input("Beard Color","Beard Color",hair_color) as color|null
 		if(desired_color)
 			A.handle_beardstyle_chargen(hair_num,desired_color)

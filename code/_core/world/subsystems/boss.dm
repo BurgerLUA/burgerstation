@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(bosses)
 
 	var/list/tracked_rogue_crewmembers = list()
 
-/subsystem/bosses/unclog(var/mob/caller)
+/subsystem/bosses/unclog(var/mob/activator)
 
 	. = ..()
 

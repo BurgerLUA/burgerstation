@@ -37,7 +37,7 @@
 			if(R)
 				cheese_mix[R] = object_data["cheese_mix"][k]
 
-/obj/item/container/cheese_mold/get_examine_list(var/mob/caller)
+/obj/item/container/cheese_mold/get_examine_list(var/mob/activator)
 	. = ..()
 	if(process_count >= CHEESE_PROCESS_TIME)
 		. += div("notice","The cheese is ready to be removed!")
@@ -67,7 +67,7 @@
 
 	CALLBACK("\ref[src]_process_cheese",SECONDS_TO_DECISECONDS(1),src,src::process())
 
-/obj/item/container/cheese_mold/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/cheese_mold/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(process_count < CHEESE_PROCESS_TIME || !is_inventory(object))
 		return ..()
@@ -77,7 +77,7 @@
 
 	var/turf/T = get_turf(src)
 	if(!T)
-		T = get_turf(caller)
+		T = get_turf(activator)
 
 	if(!T)
 		return FALSE //Something terrible went wrong.
@@ -117,7 +117,7 @@
 
 	C.reagents.process_recipes() //Update container is called in FINALIZE(C)
 
-	caller.to_chat(span("notice","You take \the [C.name] out of \the [src.name]."))
+	activator.to_chat(span("notice","You take \the [C.name] out of \the [src.name]."))
 
 	process_count = 0
 	cheese_mix.Cut()
@@ -127,14 +127,14 @@
 	return TRUE
 
 
-/obj/item/container/cheese_mold/click_self(var/mob/caller,location,control,params)
+/obj/item/container/cheese_mold/click_self(var/mob/activator,location,control,params)
 
 	var/answer = input("Are you sure you want to empty the contents of \the [src.name]?","Empty Contents","Cancel") in list("Yes","No","Cancel")
 	if(answer == "Yes")
 		INTERACT_CHECK
 		INTERACT_DELAY(1)
 		reagents.remove_all_reagents(reagents.volume_current)
-		caller.visible_message(span("notice","\The [caller.name] empties \the [src.name] of its contents."),span("notice","You empty \the [src.name] of its contents."))
+		activator.visible_message(span("notice","\The [activator.name] empties \the [src.name] of its contents."),span("notice","You empty \the [src.name] of its contents."))
 
 	return TRUE
 

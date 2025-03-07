@@ -145,7 +145,7 @@
 /obj/structure/interactive/vending/proc/modify_item(var/obj/item/I,var/obj/item/base_item)
 	return TRUE
 
-/obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/caller,var/params,var/obj/item/associated_item,var/item_value=0)
+/obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/activator,var/params,var/obj/item/associated_item,var/item_value=0)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(3)
@@ -153,18 +153,18 @@
 	if((apc_powered || wire_powered) && !powered) //Not powered.
 		return null
 
-	if(!spend_currency(caller,item_value))
+	if(!spend_currency(activator,item_value))
 		flick("[initial(icon_state)]-deny",src)
 		return null
 
-	var/obj/item/new_item = new associated_item.type(get_turf(caller))
+	var/obj/item/new_item = new associated_item.type(get_turf(activator))
 	modify_item(new_item,associated_item)
 	INITIALIZE(new_item)
 	GENERATE(new_item)
 	new_item.amount = associated_item.amount
 	FINALIZE(new_item)
 
-	caller.to_chat(span("notice","You vend \the [new_item.name]."))
+	activator.to_chat(span("notice","You vend \the [new_item.name]."))
 
 	return new_item
 
@@ -256,16 +256,16 @@
 
 	update_sprite()
 
-/obj/structure/interactive/vending/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/vending/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(!caller.client || !powered || !is_player(caller) && !is_inventory(object))
+	if(!activator.client || !powered || !is_player(activator) && !is_inventory(object))
 		return ..()
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(1)
 
-	var/mob/living/advanced/player/P = caller
+	var/mob/living/advanced/player/P = activator
 
 	if(P.active_structure == src)
 		P.set_structure_unactive()

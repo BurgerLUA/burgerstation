@@ -38,29 +38,29 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/flare/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/flare/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/flare_cap/))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		if(is_living(caller))
-			var/mob/living/L = caller
+		if(is_living(activator))
+			var/mob/living/L = activator
 			if(L.attack_flags & CONTROL_MOD_DISARM)
 				stored_cap.drop_item(src)
 				stored_cap = object
-				caller.to_chat(span("notice","You put \the [object.name] back on \the [src.name]."))
+				activator.to_chat(span("notice","You put \the [object.name] back on \the [src.name]."))
 				play_sound('sound/items/flare_cap.ogg',get_turf(src))
 				return TRUE
-		ignite(caller)
+		ignite(activator)
 		return TRUE
 
-	if(stored_cap && istype(object,/obj/hud/inventory) && is_advanced(caller))
+	if(stored_cap && istype(object,/obj/hud/inventory) && is_advanced(activator))
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
-		var/mob/living/advanced/A = caller
+		var/mob/living/advanced/A = activator
 		A.put_in_hands(stored_cap,params)
-		caller.to_chat(span("notice","You remove \the [stored_cap.name] from \the [src.name]."))
+		activator.to_chat(span("notice","You remove \the [stored_cap.name] from \the [src.name]."))
 		play_sound('sound/items/flare_cap.ogg',get_turf(src))
 		stored_cap = null
 		update_sprite()
@@ -76,23 +76,23 @@
 		update_sprite()
 
 
-/obj/item/flare/proc/ignite(var/mob/caller)
+/obj/item/flare/proc/ignite(var/mob/activator)
 
 	if(!has_fuel)
-		caller.to_chat(span("warning","\The [src.name] is spent!"))
+		activator.to_chat(span("warning","\The [src.name] is spent!"))
 		return FALSE
 
 	if(ignited)
-		if(caller)
+		if(activator)
 			if(prob(1))
-				caller.to_chat(span("warning","\The [src.name] is already lit af!"))
+				activator.to_chat(span("warning","\The [src.name] is already lit af!"))
 			else
-				caller.to_chat(span("warning","\The [src.name] is already lit!"))
+				activator.to_chat(span("warning","\The [src.name] is already lit!"))
 		return FALSE
 
 	ignited = TRUE
 
-	caller?.visible_message(span("notice","\The [caller.name] ignites \the [src.name]."),span("notice","You ignite \the [src.name]."))
+	activator?.visible_message(span("notice","\The [activator.name] ignites \the [src.name]."),span("notice","You ignite \the [src.name]."))
 
 	var/flare_time = rand(280,320)
 	CALLBACK("\ref[src]_flare_time",SECONDS_TO_DECISECONDS(flare_time),src,src::expire())

@@ -23,23 +23,23 @@
 	RUN_PARENT_SAFE
 	LOADVAR("code")
 
-/obj/item/device/keypad/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/device/keypad/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(loc && signal_freq == -1 && signal_code == code)
-		loc.trigger(caller,src,-1,-1)
+		loc.trigger(activator,src,-1,-1)
 
 	return TRUE
 
-/obj/item/device/keypad/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/device/keypad/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(!is_player(caller) || !caller.client)
+	if(!is_player(activator) || !activator.client)
 		return ..()
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
-	var/mob/living/advanced/player/P = caller
+	var/mob/living/advanced/player/P = activator
 	P.set_device_active(src)
 
 	return TRUE

@@ -28,18 +28,18 @@
 	value = 10
 
 
-/obj/item/magazine/m13_762/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/magazine/m13_762/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/weapon/ranged/bullet/magazine/rifle/m13))
 		var/obj/item/weapon/ranged/bullet/magazine/rifle/m13/W = object
 		if(W.stored_magazine)
-			caller.to_chat(span("notice","\The [W.name] already has a clip inserted!"))
+			activator.to_chat(span("notice","\The [W.name] already has a clip inserted!"))
 			return TRUE
 		src.drop_item(W)
 		W.stored_magazine = src
 		W.open = FALSE
 		play_sound(get_magazine_insert_sound(),get_turf(src),range_max=VIEW_RANGE*0.25)
-		W.load_new_bullet_from_magazine(caller)
+		W.load_new_bullet_from_magazine(activator)
 		W.update_sprite()
 
 		return TRUE

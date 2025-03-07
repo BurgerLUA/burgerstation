@@ -8,12 +8,12 @@
 
 	chargen_flags = CHARGEN_NONE
 
-/obj/hud/button/chargen/species/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/species/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator))
+		var/mob/living/advanced/A = activator
 
 		var/species_choice = input("What species do you wish to change to?") as null|anything in list("Human","Lizard","Cyborg","Dionae","Moth")
 		if(!species_choice)

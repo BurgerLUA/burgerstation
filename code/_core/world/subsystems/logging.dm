@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(logging)
 	var/version = "NOT FOUND"
 
 //Logging shouldn't be unclogged.
-/subsystem/logging/unclog(var/mob/caller)
+/subsystem/logging/unclog(var/mob/activator)
 	. = ..()
 
 /subsystem/logging/Initialize()

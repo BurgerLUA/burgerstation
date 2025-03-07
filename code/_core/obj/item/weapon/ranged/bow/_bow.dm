@@ -80,26 +80,26 @@
 /obj/item/weapon/ranged/bow/get_skill_spread(var/mob/living/L)
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bow/on_mouse_up(var/mob/caller as mob, var/atom/object,location,control,params) //Release. This fires the bow.
+/obj/item/weapon/ranged/bow/on_mouse_up(var/mob/activator as mob, var/atom/object,location,control,params) //Release. This fires the bow.
 	if(stage_current > 0 )
-		shoot(caller,object,location,params,max(stage_current/100,0.25))
+		shoot(activator,object,location,params,max(stage_current/100,0.25))
 		stage_current = 0
-		if(is_living(caller))
-			var/mob/living/L = caller
+		if(is_living(activator))
+			var/mob/living/L = activator
 			next_shoot_time = world.time + (10 - L.get_attribute_power(ATTRIBUTE_DEXTERITY,0,1,2)*4)
 		update_sprite()
 	return TRUE
 
-/obj/item/weapon/ranged/bow/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/bow/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 	if(object.plane >= PLANE_HUD)
 		return ..()
 	if(object.loc && object.loc.plane >= PLANE_HUD)
 		return ..()
-	if(!is_advanced(caller))
+	if(!is_advanced(activator))
 		return ..()
-	if(!can_gun_shoot(caller,object,location,params))
+	if(!can_gun_shoot(activator,object,location,params))
 		return ..()
-	current_shooter = caller
+	current_shooter = activator
 	START_THINKING(src)
 	return TRUE
 
@@ -130,12 +130,12 @@
 
 	return ..() || .
 
-/obj/item/weapon/ranged/bow/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bow/handle_ammo(var/mob/activator)
 
-	if(!is_advanced(caller))
+	if(!is_advanced(activator))
 		return FALSE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 	var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
 	var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
 
@@ -146,14 +146,14 @@
 		I = right_item
 
 	if(!istype(I,/obj/item/bullet_cartridge/arrow))
-		if(I && caller) caller.to_chat(span("warning","You can't fire \the [I.name] with \the [src.name]!"))
+		if(I && activator) activator.to_chat(span("warning","You can't fire \the [I.name] with \the [src.name]!"))
 		return null
 
 	var/obj/item/bullet_cartridge/arrow/BC = I
 
-	return BC.spend_bullet(caller,0)
+	return BC.spend_bullet(activator,0)
 
-/obj/item/weapon/ranged/bow/handle_empty(var/mob/caller)
+/obj/item/weapon/ranged/bow/handle_empty(var/mob/activator)
 	return FALSE
 
 /obj/item/weapon/ranged/bow/get_damage_per_hit(armor_to_use)
@@ -235,7 +235,7 @@
 	GENERATE(stored_arrow)
 	FINALIZE(stored_arrow)
 
-/obj/item/weapon/ranged/bow/hardlight/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bow/hardlight/handle_ammo(var/mob/activator)
 	. = ..()
 	if(!.) return stored_arrow
 

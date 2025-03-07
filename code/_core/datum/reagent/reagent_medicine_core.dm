@@ -454,7 +454,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_SKIN
 
-/reagent/medicine/silver_sulfadiazine/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+/reagent/medicine/silver_sulfadiazine/on_splash(var/reagent_container/container,var/mob/activator,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 	. = ..()
 	if(.)
 		on_add(container,volume_to_splash*strength_mod,0)
@@ -495,7 +495,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_SKIN
 
-/reagent/medicine/styptic_powder/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+/reagent/medicine/styptic_powder/on_splash(var/reagent_container/container,var/mob/activator,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 	. = ..()
 	if(. && is_living(target))
 		on_add(container,volume_to_splash*strength_mod,0)
@@ -532,7 +532,7 @@
 	flags_metabolism = REAGENT_METABOLISM_SKIN
 
 
-/reagent/medicine/synthflesh/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+/reagent/medicine/synthflesh/on_splash(var/reagent_container/container,var/mob/activator,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()
 

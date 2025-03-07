@@ -49,18 +49,18 @@
 				qdel(G)
 
 
-/obj/item/ghost_box/click_self(var/mob/caller,location,control,params)
+/obj/item/ghost_box/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
 	if(stored_ghost)
-		caller.to_chat(span("warning","\The [src.name] is locked!"))
+		activator.to_chat(span("warning","\The [src.name] is locked!"))
 	else if(active)
-		caller.to_chat(span("notice","You turn off \the [src.name]."))
+		activator.to_chat(span("notice","You turn off \the [src.name]."))
 		active = FALSE
 	else
-		caller.to_chat(span("notice","You turn on \the [src.name]."))
+		activator.to_chat(span("notice","You turn on \the [src.name]."))
 		active = TRUE
 
 	update_sprite()

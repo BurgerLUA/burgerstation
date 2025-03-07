@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(area)
 
 	var/list/areas_by_identifier = list()
 
-/subsystem/area/unclog(var/mob/caller)
+/subsystem/area/unclog(var/mob/activator)
 	src.tick_rate = 0
 	log_subsystem(src.name,"Shutting down.")
 	. = ..()

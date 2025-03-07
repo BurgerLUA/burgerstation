@@ -13,11 +13,11 @@
 
 	category = "Dash"
 
-/ability/dash/on_cast(var/mob/caller,var/atom/target,location,params)
-	var/mob/living/L = caller
+/ability/dash/on_cast(var/mob/activator,var/atom/target,location,params)
+	var/mob/living/L = activator
 	L.dash_direction = L.move_dir ? L.move_dir : L.dir
 	L.dash_amount = dash_strength
-	play_sound('sound/effects/dodge.ogg',get_turf(caller))
+	play_sound('sound/effects/dodge.ogg',get_turf(activator))
 	return TRUE
 
 
@@ -30,10 +30,10 @@
 	cooldown = SECONDS_TO_DECISECONDS(5)
 	cost = 50
 
-/ability/dash/controlled/on_cast(var/mob/caller,var/atom/target,location,params)
-	var/mob/living/L = caller
+/ability/dash/controlled/on_cast(var/mob/activator,var/atom/target,location,params)
+	var/mob/living/L = activator
 	L.dash_amount = dash_strength
-	play_sound('sound/effects/dodge.ogg',get_turf(caller))
+	play_sound('sound/effects/dodge.ogg',get_turf(activator))
 	return TRUE
 
 
@@ -48,11 +48,11 @@
 
 	category = "Dash"
 
-/ability/dash/targeted/on_cast(var/mob/caller,var/atom/target,location,params)
-	var/mob/living/L = caller
+/ability/dash/targeted/on_cast(var/mob/activator,var/atom/target,location,params)
+	var/mob/living/L = activator
 	L.dash_target = target
 	L.dash_amount = dash_strength
-	play_sound('sound/effects/dodge.ogg',get_turf(caller))
+	play_sound('sound/effects/dodge.ogg',get_turf(activator))
 	return TRUE
 
 //Random dash.
@@ -66,11 +66,11 @@
 
 	category = "Dash"
 
-/ability/dash/random/on_cast(var/mob/caller,var/atom/target,location,params)
-	var/mob/living/L = caller
+/ability/dash/random/on_cast(var/mob/activator,var/atom/target,location,params)
+	var/mob/living/L = activator
 	L.dash_direction = pick(DIRECTIONS_ALL)
 	L.dash_amount = dash_strength
-	play_sound('sound/effects/dodge.ogg',get_turf(caller))
+	play_sound('sound/effects/dodge.ogg',get_turf(activator))
 	return TRUE
 
 //Fleeting dash.
@@ -84,11 +84,11 @@
 
 	category = "Dash"
 
-/ability/dash/fleeting/on_cast(var/mob/caller,var/atom/target,location,params)
-	var/mob/living/L = caller
-	L.dash_direction = get_dir(target,caller)
+/ability/dash/fleeting/on_cast(var/mob/activator,var/atom/target,location,params)
+	var/mob/living/L = activator
+	L.dash_direction = get_dir(target,activator)
 	L.dash_amount = dash_strength
-	play_sound('sound/effects/dodge.ogg',get_turf(caller))
+	play_sound('sound/effects/dodge.ogg',get_turf(activator))
 	return TRUE
 
 

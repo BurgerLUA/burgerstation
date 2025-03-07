@@ -24,9 +24,9 @@
 		var/material/M = MATERIAL(k)
 		. += amount*1*M.value_per_unit
 
-/obj/structure/interactive/ore_box/proc/can_dump_some_ore(var/mob/caller)
+/obj/structure/interactive/ore_box/proc/can_dump_some_ore(var/mob/activator)
 
-	if(get_dist(caller,src) > 1)
+	if(get_dist(activator,src) > 1)
 		return FALSE
 
 	if(!length(contained_ore))
@@ -36,9 +36,9 @@
 
 
 
-/obj/structure/interactive/ore_box/proc/dump_some_ore(var/mob/caller)
+/obj/structure/interactive/ore_box/proc/dump_some_ore(var/mob/activator)
 
-	var/turf/T = get_turf(caller)
+	var/turf/T = get_turf(activator)
 	if(!T)
 		return FALSE
 	var/ore_id = contained_ore[1]
@@ -55,21 +55,21 @@
 	if(contained_ore[ore_id] <= 0)
 		contained_ore -= ore_id
 
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::dump_some_ore(),caller)
-	PROGRESS_BAR_CONDITIONS(caller,src,src::can_dump_some_ore(),caller)
+	PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(3),src::dump_some_ore(),activator)
+	PROGRESS_BAR_CONDITIONS(activator,src,src::can_dump_some_ore(),activator)
 
 	return TRUE
 
-/obj/structure/interactive/ore_box/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/ore_box/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(is_advanced(caller))
-		var/mob/living/advanced/C = caller
+	if(is_advanced(activator))
+		var/mob/living/advanced/C = activator
 		if(C.attack_flags & CONTROL_MOD_DISARM)
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::can_dump_some_ore(),caller)
-			PROGRESS_BAR_CONDITIONS(caller,src,src::can_dump_some_ore(),caller)
+			PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(3),src::can_dump_some_ore(),activator)
+			PROGRESS_BAR_CONDITIONS(activator,src,src::can_dump_some_ore(),activator)
 			return TRUE
 
 	if(object.type == /obj/item/material/ore)

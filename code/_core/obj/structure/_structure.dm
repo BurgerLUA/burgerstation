@@ -122,27 +122,27 @@
 /obj/structure/proc/on_inactive(var/mob/living/advanced/player/P)
 	return TRUE
 
-/obj/structure/proc/buckle(var/mob/living/victim,var/mob/caller,var/silent = FALSE)
+/obj/structure/proc/buckle(var/mob/living/victim,var/mob/activator,var/silent = FALSE)
 
 	if(victim.anchored)
-		if(caller && !silent) caller.to_chat(span("notice","You cannot buckle \the [victim.name] to \the [src.name]!"))
+		if(activator && !silent) activator.to_chat(span("notice","You cannot buckle \the [victim.name] to \the [src.name]!"))
 		return FALSE
 
 	if(!victim.set_anchored(TRUE))
 		return FALSE
 
 	if(!silent)
-		if(!caller || caller == victim)
+		if(!activator || activator == victim)
 			victim.visible_message(span("notice","\The [victim.name] buckles themselves to \the [src.name]."),span("notice","You buckle yourself to \the [src.name]."))
 		else
-			victim.visible_message(span("notice","\The [caller.name] buckles \the [victim.name] into \the [src.name]."),span("notice","You buckle \the [victim.name] to \the [src.name]."))
+			victim.visible_message(span("notice","\The [activator.name] buckles \the [victim.name] into \the [src.name]."),span("notice","You buckle \the [victim.name] to \the [src.name]."))
 
 	buckled = victim
 	buckled.buckled_object = src
 
 	return TRUE
 
-/obj/structure/proc/unbuckle(var/mob/caller,var/silent=FALSE,var/force=FALSE)
+/obj/structure/proc/unbuckle(var/mob/activator,var/silent=FALSE,var/force=FALSE)
 
 	if(!buckled)
 		return FALSE
@@ -151,10 +151,10 @@
 		return FALSE
 
 	if(!silent)
-		if(!caller || caller == buckled)
+		if(!activator || activator == buckled)
 			buckled.visible_message(span("notice","\The [buckled.name] unbuckles themselves from \the [src.name]."),span("notice","You unbuckle yourself from \the [src.name]."))
 		else
-			buckled.visible_message(span("notice","\The [buckled.name] is unbuckled from \the [src.name] by \the [caller.name]."),span("notice","You were unbuckled from \the [src.name] by \the [caller.name]."))
+			buckled.visible_message(span("notice","\The [buckled.name] is unbuckled from \the [src.name] by \the [activator.name]."),span("notice","You were unbuckled from \the [src.name] by \the [activator.name]."))
 
 	buckled.buckled_object = null
 	buckled = null

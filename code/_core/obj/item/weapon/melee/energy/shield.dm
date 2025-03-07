@@ -31,7 +31,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/weapon/melee/energy/shield/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/energy/shield/click_self(var/mob/activator,location,control,params)
 
 	. = ..()
 

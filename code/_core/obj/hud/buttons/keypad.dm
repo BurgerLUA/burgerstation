@@ -12,12 +12,12 @@
 	icon_state = "close_inventory"
 	screen_loc = "CENTER+3,CENTER+2"
 
-/obj/hud/button/keypad/close/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/keypad/close/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_player(caller))
-		var/mob/living/advanced/player/P = caller
+	if(. && is_player(activator))
+		var/mob/living/advanced/player/P = activator
 		P.set_device_unactive()
 
 
@@ -28,7 +28,7 @@
 	maptext_y = 22
 	maptext_x = -2
 
-/obj/hud/button/keypad/top/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/keypad/top/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -63,14 +63,14 @@
 		else
 			maptext = null
 
-		for(var/obj/hud/button/keypad/K in caller.buttons)
+		for(var/obj/hud/button/keypad/K in activator.buttons)
 			K.stored_keypad = stored_keypad
 
 /obj/hud/button/keypad/bottom
 	icon_state = "keypad_bottom"
 	screen_loc = "CENTER+2,CENTER+1"
 
-/obj/hud/button/keypad/bottom/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/keypad/bottom/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -99,10 +99,10 @@
 
 		if(number_selected == -2)
 			//Submit
-			if(is_player(caller))
-				var/mob/living/advanced/player/P = caller
+			if(is_player(activator))
+				var/mob/living/advanced/player/P = activator
 				if(P.active_device)
-					P.active_device.trigger(caller,src,-1,stored_keypad)
+					P.active_device.trigger(activator,src,-1,stored_keypad)
 			return TRUE
 
 		if(number_selected == -100)
@@ -117,7 +117,7 @@
 		else
 			stored_keypad = (stored_keypad*10) + number_selected
 
-		for(var/obj/hud/button/keypad/K in caller.buttons)
+		for(var/obj/hud/button/keypad/K in activator.buttons)
 			K.stored_keypad = stored_keypad
 			K.update_sprite()
 

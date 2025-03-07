@@ -59,16 +59,16 @@
 
 
 
-/obj/structure/interactive/mining_drill/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/mining_drill/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
 	if(CALLBACK_EXISTS("\ref[src]_do_drill"))
-		deactivate(caller)
+		deactivate(activator)
 	else
-		activate(caller)
+		activate(activator)
 
 	return TRUE
 
@@ -76,14 +76,14 @@
 	. = ..()
 	if(. && CALLBACK_EXISTS("\ref[src]_do_drill")) deactivate()
 
-/obj/structure/interactive/mining_drill/proc/activate(var/mob/caller)
+/obj/structure/interactive/mining_drill/proc/activate(var/mob/activator)
 
 	if(!check_braces())
-		caller.to_chat(span("warning","\The [src] doesn't seem to want to turn on!"))
+		activator.to_chat(span("warning","\The [src] doesn't seem to want to turn on!"))
 		return FALSE
 
-	if(caller)
-		visible_message(span("notice","\The [caller.name] activates \the [src.name]."),span("notice","You activate \the [src.name]."))
+	if(activator)
+		visible_message(span("notice","\The [activator.name] activates \the [src.name]."),span("notice","You activate \the [src.name]."))
 	else
 		visible_message(span("warning","\The [src.name] powers up!"))
 
@@ -94,10 +94,10 @@
 
 	return TRUE
 
-/obj/structure/interactive/mining_drill/proc/deactivate(var/mob/caller)
+/obj/structure/interactive/mining_drill/proc/deactivate(var/mob/activator)
 
-	if(caller)
-		visible_message(span("notice","\The [caller.name] turns off \the [src.name]."),span("notice","You turn off \the [src.name]."))
+	if(activator)
+		visible_message(span("notice","\The [activator.name] turns off \the [src.name]."),span("notice","You turn off \the [src.name]."))
 	else
 		visible_message(span("warning","\The [src.name] powers down!"))
 
@@ -216,31 +216,31 @@
 	. = ..()
 	qdel(src)
 
-/obj/structure/interactive/mining_brace/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/mining_brace/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
-	if(caller.movement_flags & MOVEMENT_WALKING)
+	if(activator.movement_flags & MOVEMENT_WALKING)
 		if(anchored)
-			caller.to_chat(span("warning","You need to unsecure \the [src.name] before rotating it!"))
+			activator.to_chat(span("warning","You need to unsecure \the [src.name] before rotating it!"))
 		else
-			caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
+			activator.visible_message(span("notice","\The [activator.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
 			set_dir(turn(dir,90))
 		return TRUE
 
 	var/obj/structure/interactive/mining_drill/MD = locate() in get_step(src,dir)
 	if(MD && MD.anchored)
-		caller.to_chat(span("warning","You need to disable the mining drill first before moving this!"))
+		activator.to_chat(span("warning","You need to disable the mining drill first before moving this!"))
 		return TRUE
 
 	set_anchored(!anchored)
 
 	if(anchored)
-		caller.visible_message(span("notice","\The [caller.name] secures \the [src.name]."),span("notice","You secure \the [src.name]."))
+		activator.visible_message(span("notice","\The [activator.name] secures \the [src.name]."),span("notice","You secure \the [src.name]."))
 	else
-		caller.visible_message(span("notice","\The [caller.name] unsecures \the [src.name]."),span("notice","You unsecure \the [src.name]."))
+		activator.visible_message(span("notice","\The [activator.name] unsecures \the [src.name]."),span("notice","You unsecure \the [src.name]."))
 
 	update_sprite()
 

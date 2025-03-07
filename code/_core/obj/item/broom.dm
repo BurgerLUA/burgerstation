@@ -12,7 +12,7 @@
 
 	var/broom_range = 1
 
-/obj/item/broom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/broom/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 
 	if(object.plane >= PLANE_HUD)

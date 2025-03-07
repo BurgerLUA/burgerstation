@@ -1,6 +1,6 @@
-/obj/shuttle_controller/proc/start_flight(var/mob/caller)
+/obj/shuttle_controller/proc/start_flight(var/mob/activator)
 
-	if(!is_safe_to_land(caller,src.transit_marker_destination))
+	if(!is_safe_to_land(activator,src.transit_marker_destination))
 		return FALSE
 
 	src.time = 0
@@ -9,13 +9,13 @@
 
 	return TRUE
 
-/obj/shuttle_controller/proc/launch(var/mob/caller,var/desired_transit_time) //In deciseconds. This proc will always be called to bluespace.
+/obj/shuttle_controller/proc/launch(var/mob/activator,var/desired_transit_time) //In deciseconds. This proc will always be called to bluespace.
 
 	if(!set_doors(FALSE,TRUE,TRUE)) //This will return false if something is blocking the doors.
 		time = time - 5 //Go back 5 seconds.
 		return FALSE
 
-	last_caller = caller
+	last_activator = activator
 	state = SHUTTLE_STATE_LAUNCHING
 	time = 0
 
@@ -26,7 +26,7 @@
 
 	if(start_sound) //Play shuttle sound.
 		play_sound(start_sound,src.loc,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
-		if(last_caller)
-			create_alert(VIEW_RANGE*3,src.loc,last_caller,ALERT_LEVEL_CAUTION)
+		if(last_activator)
+			create_alert(VIEW_RANGE*3,src.loc,last_activator,ALERT_LEVEL_CAUTION)
 
 	return TRUE

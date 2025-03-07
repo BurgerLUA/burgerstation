@@ -120,7 +120,7 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 /obj/hud/Generate()
 	CRASH("HUD objects should never be Generated!")
 
-/obj/hud/proc/set_tooltip(var/mob/caller)
+/obj/hud/proc/set_tooltip(var/mob/activator)
 
 	var/list/split_screen_loc = splittext(src.screen_loc,",")
 
@@ -144,7 +144,7 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 			x_offset = 1
 
 		var/desired_screen_loc = "[split_screen_loc[1]]+[x_offset],[split_screen_loc[2]]+[y_offset]"
-		caller?.tooltip?.set_text("[src.name]\n\n[src.tooltip_text]",desired_screen_loc)
+		activator?.tooltip?.set_text("[src.name]\n\n[src.tooltip_text]",desired_screen_loc)
 
 	return TRUE
 

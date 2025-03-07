@@ -12,52 +12,52 @@
 
 	size = SIZE_1
 
-/obj/item/handcuffs/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/handcuffs/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(ismob(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 		if(!is_advanced(object))
-			caller.to_chat(span("warning","You can't cuff this!"))
+			activator.to_chat(span("warning","You can't cuff this!"))
 			return TRUE
 		var/mob/living/advanced/A = object
-		if(can_cuff(caller,A))
-			A.visible_message(span("warning","\The [caller.name] starts to cuff \the [A.name]..."),span("danger","\The [caller.name] starts cuffing you!"))
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::cuff(),caller,A)
-			PROGRESS_BAR_CONDITIONS(caller,src,src::can_cuff(),caller,A)
+		if(can_cuff(activator,A))
+			A.visible_message(span("warning","\The [activator.name] starts to cuff \the [A.name]..."),span("danger","\The [activator.name] starts cuffing you!"))
+			PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(5),src::cuff(),activator,A)
+			PROGRESS_BAR_CONDITIONS(activator,src,src::can_cuff(),activator,A)
 		return TRUE
 
 	return ..()
 
-/obj/item/handcuffs/proc/cuff(var/mob/caller,var/mob/living/advanced/target)
-	target.visible_message(span("warning","\The [caller.name] finishes cuffing \the [target.name]."),span("danger","\The [caller.name] cuffs you!"))
+/obj/item/handcuffs/proc/cuff(var/mob/activator,var/mob/living/advanced/target)
+	target.visible_message(span("warning","\The [activator.name] finishes cuffing \the [target.name]."),span("danger","\The [activator.name] cuffs you!"))
 	target.set_handcuffs(TRUE,src)
 	return TRUE
 
-/obj/item/handcuffs/proc/can_cuff(var/mob/caller,var/mob/living/advanced/target)
+/obj/item/handcuffs/proc/can_cuff(var/mob/activator,var/mob/living/advanced/target)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
 
 	if(target.handcuffed)
-		caller.to_chat(span("warning","\The [target.name] is already handcuffed!"))
+		activator.to_chat(span("warning","\The [target.name] is already handcuffed!"))
 		return FALSE
 
 	if(!src.loc || !is_inventory(src.loc))
-		caller.to_chat(span("warning","You need to be holding \the [src.name] in order to cuff \the [target.name]!"))
+		activator.to_chat(span("warning","You need to be holding \the [src.name] in order to cuff \the [target.name]!"))
 		return FALSE
 
 	var/obj/hud/inventory/I = src.loc
 
 	if(!I.click_flags)
-		caller.to_chat(span("warning","You need to be holding \the [src.name] in order to cuff \the [target.name]!"))
+		activator.to_chat(span("warning","You need to be holding \the [src.name] in order to cuff \the [target.name]!"))
 		return FALSE
 
-	if(is_living(caller))
-		var/mob/living/L = caller
+	if(is_living(activator))
+		var/mob/living/L = activator
 		if(!allow_hostile_action(L.loyalty_tag,target))
-			caller.to_chat(span("warning","You can't handcuff allies!"))
+			activator.to_chat(span("warning","You can't handcuff allies!"))
 			return FALSE
 
 	return TRUE

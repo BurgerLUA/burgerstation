@@ -12,7 +12,7 @@
 	var/electronics = FALSE
 	bullet_block_chance = 90
 
-/obj/structure/interactive/construction/machine_frame/proc/make_machine(var/mob/caller,var/obj/item/S,var/machine_to_make)
+/obj/structure/interactive/construction/machine_frame/proc/make_machine(var/mob/activator,var/obj/item/S,var/machine_to_make)
 	var/turf/T = src.loc
 	new machine_to_make(T)
 	S.add_item_count(-1)
@@ -24,23 +24,23 @@
 	. = ..()
 	qdel(src)
 
-obj/structure/interactive/construction/machine_frame/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+obj/structure/interactive/construction/machine_frame/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item))
 		var/obj/item/T = object
 		if(T.flags_tool & FLAG_TOOL_WRENCH)
 			if(anchored)
-				caller.to_chat(span("notice","You un-anchor the machine frame."))
+				activator.to_chat(span("notice","You un-anchor the machine frame."))
 				anchored = FALSE
 			else
-				caller.to_chat(span("notice","You anchor the machine frame."))
+				activator.to_chat(span("notice","You anchor the machine frame."))
 				anchored = TRUE
 	if(istype(object,/obj/item/container/healing/cable))
 		var/obj/item/P = object
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		caller.visible_message(span("notice","[caller.name] inserts some parts into the [src.name]."),span("notice","You insert some parts into the [src.name]."))
+		activator.visible_message(span("notice","[activator.name] inserts some parts into the [src.name]."),span("notice","You insert some parts into the [src.name]."))
 		electronics = TRUE
 		P.add_item_count(-1)
 		return TRUE
@@ -48,27 +48,27 @@ obj/structure/interactive/construction/machine_frame/clicked_on_by_object(var/mo
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		caller.visible_message(span("notice","[caller.name] inserts some parts into the [src.name]."),span("notice","You insert some parts into the [src.name]."))
-		make_machine(caller,object,/obj/structure/interactive/mining_drill)
+		activator.visible_message(span("notice","[activator.name] inserts some parts into the [src.name]."),span("notice","You insert some parts into the [src.name]."))
+		make_machine(activator,object,/obj/structure/interactive/mining_drill)
 		return TRUE
 	if(istype(object,/obj/item/material/sheet))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		caller.visible_message(span("notice","[caller.name] inserts some parts into the [src.name]."),span("notice","You insert some parts into the [src.name]."))
-		make_machine(caller,object,/obj/structure/interactive/mining_brace)
+		activator.visible_message(span("notice","[activator.name] inserts some parts into the [src.name]."),span("notice","You insert some parts into the [src.name]."))
+		make_machine(activator,object,/obj/structure/interactive/mining_brace)
 		return TRUE
 	if(istype(object,/obj/item/crafting_bench/smelter))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		caller.visible_message(span("notice","[caller.name] inserts some parts into the [src.name]."),span("notice","You insert some parts into the [src.name]."))
-		make_machine(caller,object,/obj/structure/interactive/smelter)
+		activator.visible_message(span("notice","[activator.name] inserts some parts into the [src.name]."),span("notice","You insert some parts into the [src.name]."))
+		make_machine(activator,object,/obj/structure/interactive/smelter)
 		return TRUE
 	if(istype(object,/obj/item/material/rod))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		caller.visible_message(span("notice","[caller.name] inserts some parts into the [src.name]."),span("notice","You insert some parts into the [src.name]."))
-		make_machine(caller,object,/obj/structure/interactive/conveyor)
+		activator.visible_message(span("notice","[activator.name] inserts some parts into the [src.name]."),span("notice","You insert some parts into the [src.name]."))
+		make_machine(activator,object,/obj/structure/interactive/conveyor)
 	return ..()

@@ -20,8 +20,8 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/clothing/mask/paper/click_self(var/mob/caller,location,control,params)
-	var/mob/C = caller
+/obj/item/clothing/mask/paper/click_self(var/mob/activator,location,control,params)
+	var/mob/C = activator
 	if(C.attack_flags & CONTROL_MOD_DISARM && istype(src.loc,/obj/hud/inventory/organs/))
 		INTERACT_CHECK
 		var/choice = input("What do you want to change on \the [src.name]?","Design Selection") as null|anything in list("Logo") //removing this would make this not work
@@ -52,10 +52,10 @@
 				"[choice]" = "#000000"
 
 				)
-				caller.to_chat(span("notice","You change \the [src.name]'s design."))
+				activator.to_chat(span("notice","You change \the [src.name]'s design."))
 				update_icon() //what it doesn't do is remove the previous polymorphs until re-cryo. While the designs CAN look cool, this is unintended.
 		else
-			caller.to_chat(span("notice","You decide not to change \the [src.name]'s design."))
+			activator.to_chat(span("notice","You decide not to change \the [src.name]'s design."))
 			return TRUE
 		update_sprite()
 		return TRUE

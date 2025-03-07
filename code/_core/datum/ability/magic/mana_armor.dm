@@ -7,18 +7,18 @@
 
 	toggle = TRUE
 
-/ability/magic/mana_armor/is_active(var/mob/caller)
+/ability/magic/mana_armor/is_active(var/mob/activator)
 
-	if(is_living(caller))
-		var/mob/living/L = caller
+	if(is_living(activator))
+		var/mob/living/L = activator
 		return L.has_status_effect(MANA_ARMOR)
 
 	return FALSE
 
-/ability/magic/mana_armor/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/magic/mana_armor/on_cast(var/mob/activator,var/atom/target,location,params)
 	. = ..()
-	if(. && is_living(caller))
-		var/mob/living/L = caller
+	if(. && is_living(activator))
+		var/mob/living/L = activator
 		if(L.has_status_effect(MANA_ARMOR))
 			L.remove_status_effect(MANA_ARMOR)
 		else

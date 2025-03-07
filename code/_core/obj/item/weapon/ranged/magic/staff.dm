@@ -25,18 +25,18 @@
 	LOADVAR("total_charge")
 
 
-/obj/item/weapon/ranged/magic/staff/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
+/obj/item/weapon/ranged/magic/staff/can_gun_shoot(var/mob/activator,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
 
 	if(total_charge < cost_charge)
-		handle_empty(caller)
+		handle_empty(activator)
 		return FALSE
 
 	return ..()
 
-/obj/item/weapon/ranged/magic/staff/get_examine_list(var/mob/caller)
+/obj/item/weapon/ranged/magic/staff/get_examine_list(var/mob/activator)
 	return ..() + div("notice","It has [get_ammo_count()] charges ([total_charge]) remaining.")
 
-/obj/item/weapon/ranged/magic/staff/handle_ammo(var/mob/caller,var/bullet_position=1)
+/obj/item/weapon/ranged/magic/staff/handle_ammo(var/mob/activator,var/bullet_position=1)
 	var/charge_to_remove = cost_charge
 	if(total_charge > initial(total_charge)*2)
 		charge_to_remove *= 2

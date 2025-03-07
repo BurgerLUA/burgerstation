@@ -69,7 +69,7 @@
 
 	return TRUE
 
-/atom/proc/get_display_name(var/mob/caller)
+/atom/proc/get_display_name(var/mob/activator)
 	return "[src.name]"
 
 /atom/proc/update_name(var/desired_name)
@@ -140,7 +140,7 @@
 /atom/proc/get_base_transform()
 	return matrix()
 
-/atom/proc/defer_click_on_object(var/mob/caller,location,control,params)
+/atom/proc/defer_click_on_object(var/mob/activator,location,control,params)
 	return src
 
 /atom/proc/get_xp_multiplier() //How much XP should this object give for interacting with it.

@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(explosion)
 
 	var/particles/fire_particles
 
-/subsystem/explosion/unclog(var/mob/caller)
+/subsystem/explosion/unclog(var/mob/activator)
 
 	damage_to_process.Cut()
 

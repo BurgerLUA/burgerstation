@@ -19,22 +19,22 @@
 	scan_range = VIEW_RANGE*0.75
 	icon_state = "inventory_syndicate"
 
-/obj/item/analyzer/health/click_self(var/mob/caller,location,control,params)
+/obj/item/analyzer/health/click_self(var/mob/activator,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 	advanced = !advanced
-	caller.to_chat(span("notice","Advanced diagnostics is [advanced ? "enabled" : "disabled"]."))
+	activator.to_chat(span("notice","Advanced diagnostics is [advanced ? "enabled" : "disabled"]."))
 	return TRUE
 
-/obj/item/analyzer/health/can_be_scanned(var/mob/caller,var/atom/target)
+/obj/item/analyzer/health/can_be_scanned(var/mob/activator,var/atom/target)
 
-	if(get_dist(caller,target) > scan_range)
-		caller.to_chat(span("warning","You're too far away!"))
+	if(get_dist(activator,target) > scan_range)
+		activator.to_chat(span("warning","You're too far away!"))
 		return FALSE
 
 	return is_living(target)
 
-/obj/item/analyzer/health/on_scan(var/mob/caller,var/atom/target,location,control,params)
+/obj/item/analyzer/health/on_scan(var/mob/activator,var/atom/target,location,control,params)
 
 	next_scan = world.time + SECONDS_TO_DECISECONDS(4)
 
@@ -77,8 +77,8 @@
 					continue
 				reagent_printout += "[R.name]: [volume]u<br>"
 		. += "<br>Name: [target.name]<br>Species: [species]<br>Regen Buffer: [regen_buffer]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>Blood Oxygen: [blood_oxygen]<br>Blood Toxicity: [blood_toxicity]<br>Reagents (Blood):<br>[reagent_printout]"
-		caller.to_chat(.)
+		activator.to_chat(.)
 	else if(stealth)
-		caller.to_chat(.)
+		activator.to_chat(.)
 
 	return TRUE

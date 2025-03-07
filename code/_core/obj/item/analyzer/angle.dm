@@ -43,45 +43,45 @@
 	SSobj.gps_list -= src
 	. = ..()
 
-/obj/item/analyzer/gps/can_be_scanned(var/mob/caller,var/atom/target)
+/obj/item/analyzer/gps/can_be_scanned(var/mob/activator,var/atom/target)
 	return is_turf(target) || (target.loc && is_turf(target.loc))
 
-/obj/item/analyzer/gps/on_scan(var/mob/caller,var/atom/target,location,control,params)
+/obj/item/analyzer/gps/on_scan(var/mob/activator,var/atom/target,location,control,params)
 
 	if(!target)
-		caller.to_chat(span("warning","Invalid target!"))
+		activator.to_chat(span("warning","Invalid target!"))
 		return FALSE
-	caller.to_chat(span("notice","Distance: [get_dist_advanced(caller,target)] tiles."))
-	caller.to_chat(span("notice","Position: ([target.x],[target.y],[target.z])."))
+	activator.to_chat(span("notice","Distance: [get_dist_advanced(activator,target)] tiles."))
+	activator.to_chat(span("notice","Position: ([target.x],[target.y],[target.z])."))
 	next_scan = world.time + SECONDS_TO_DECISECONDS(2)
 
 	return TRUE
 
-/obj/item/analyzer/gps/click_self(mob/caller, location, control, params)
+/obj/item/analyzer/gps/click_self(mob/activator, location, control, params)
 	var/choose_function = !advanced ? "Rename" : input("Select the function you wish to run.","Function Selection") as null|anything in list("Rename", "Change Passkey", "Cancel")
 	switch(choose_function)
 		if("Change Passkey")
 			if(!advanced)
-				caller.to_chat(span("notice","DENIED: Advanced GPS feature only."))
+				activator.to_chat(span("notice","DENIED: Advanced GPS feature only."))
 				return TRUE
 			var/chosen_passkey = input("Input a new passkey.", "Passkey Select") as null|password
-			chosen_passkey = police_text(caller.client,chosen_passkey,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
+			chosen_passkey = police_text(activator.client,chosen_passkey,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
 			if(chosen_passkey)
 				assigned_passkey = chosen_passkey
-				caller.to_chat(span("notice","You set the passkey to [assigned_passkey]."))
+				activator.to_chat(span("notice","You set the passkey to [assigned_passkey]."))
 				play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE)
 			else
-				caller.to_chat(span("notice","Invalid passkey."))
+				activator.to_chat(span("notice","Invalid passkey."))
 		if("Rename")
 			var/chosen_name = input("Input a new name.", "Name Select") as null|text
-			chosen_name = police_text(caller.client,chosen_name,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
+			chosen_name = police_text(activator.client,chosen_name,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
 			if(chosen_name)
 				assigned_name = chosen_name
-				caller.to_chat(span("notice","You set the gps name to [chosen_name]"))
+				activator.to_chat(span("notice","You set the gps name to [chosen_name]"))
 				play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE)
 				update_sprite()
 			else
-				caller.to_chat(span("notice","Invalid name."))
+				activator.to_chat(span("notice","Invalid name."))
 	return TRUE
 
 /obj/item/analyzer/gps/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)

@@ -41,7 +41,7 @@
 	else
 		CALLBACK("\ref[src]_check_ressurection",SECONDS_TO_DECISECONDS(60),src,src::check_resurrection())
 
-/obj/item/hope/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/hope/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(!is_advanced(object))
 		return ..()
@@ -52,7 +52,7 @@
 	var/mob/living/advanced/A = object
 
 	if(!A.dead || !A.is_player_controlled())
-		caller.to_chat(span("warning","You can't seem to use this on \the [A.name]..."))
+		activator.to_chat(span("warning","You can't seem to use this on \the [A.name]..."))
 		return FALSE
 
 	A.resurrect()
@@ -60,8 +60,8 @@
 	play_sound('sound/weapons/magic/heal.ogg',get_turf(object))
 
 	A.visible_message(
-		span("notice","\The [A.name] was resurrected with \the [src.name] by \the [caller.name]!"),
-		span("notice","You were resurrected with \the [src.name] by \the [caller.name]!")
+		span("notice","\The [A.name] was resurrected with \the [src.name] by \the [activator.name]!"),
+		span("notice","You were resurrected with \the [src.name] by \the [activator.name]!")
 	)
 
 	next_resurrect = world.realtime + SECONDS_TO_DECISECONDS(60)*15 //15 minutes.

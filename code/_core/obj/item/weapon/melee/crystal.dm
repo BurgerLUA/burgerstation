@@ -27,17 +27,17 @@
 	RUN_PARENT_SAFE
 	LOADVAR("shape")
 
-/obj/item/weapon/melee/crystal/click_self(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
+/obj/item/weapon/melee/crystal/click_self(var/mob/activator as mob,var/atom/object,location,control,params) //The src is used on the object
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
 	if(shape < 2)
 		shape++
-		caller.to_chat(span("notice","You alter \the shape of \the [src.name]."))
+		activator.to_chat(span("notice","You alter \the shape of \the [src.name]."))
 	else
 		shape = 0
-		caller.to_chat(span("notice","You collapse \the [src.name] back into pure crystals."))
+		activator.to_chat(span("notice","You collapse \the [src.name] back into pure crystals."))
 
 	if(shape == 0)
 		name = "conjuring crystals"

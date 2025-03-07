@@ -53,19 +53,19 @@
 
 	qdel(src)
 
-/obj/structure/interactive/door/airlock/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/structure/interactive/door/airlock/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(door_state == DOOR_STATE_BROKEN)
 		return FALSE
 
 	if(door_state == DOOR_STATE_CLOSED)
 		if(locked)
-			unlock(caller)
-			open(caller)
+			unlock(activator)
+			open(activator)
 		else
-			lock(caller)
+			lock(activator)
 	else if(door_state == DOOR_STATE_OPENED)
-		close(caller,TRUE)
+		close(activator,TRUE)
 
 	return TRUE
 
@@ -103,14 +103,14 @@
 	if(. && istype(.,/obj/structure/interactive/door/airlock/))
 		return null
 
-obj/structure/interactive/door/airlock/open(var/mob/caller,var/lock = FALSE,var/force = FALSE)
+obj/structure/interactive/door/airlock/open(var/mob/activator,var/lock = FALSE,var/force = FALSE)
 
 	if(door_state == DOOR_STATE_BROKEN)
 		return FALSE
 
 	if(!force)
 		if(locked || no_access)
-			set_door_state(caller,DOOR_STATE_DENY)
+			set_door_state(activator,DOOR_STATE_DENY)
 			return FALSE
 
 		if(door_state != DOOR_STATE_CLOSED)
@@ -118,13 +118,13 @@ obj/structure/interactive/door/airlock/open(var/mob/caller,var/lock = FALSE,var/
 
 	if(door_state == DOOR_STATE_OPENED)
 		if(!locked && lock)
-			lock(caller)
+			lock(activator)
 		return FALSE
 
-	set_door_state(caller,DOOR_STATE_START_OPENING,lock)
+	set_door_state(activator,DOOR_STATE_START_OPENING,lock)
 	return TRUE
 
-obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var/force = FALSE)
+obj/structure/interactive/door/airlock/close(var/mob/activator,var/lock = FALSE,var/force = FALSE)
 
 	if(door_state == DOOR_STATE_BROKEN)
 		return FALSE
@@ -138,13 +138,13 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 
 	if(door_state == DOOR_STATE_CLOSED)
 		if(!locked && lock)
-			lock(caller)
+			lock(activator)
 		return FALSE
 
-	set_door_state(caller,DOOR_STATE_CLOSING_01,lock)
+	set_door_state(activator,DOOR_STATE_CLOSING_01,lock)
 	return TRUE
 
-/obj/structure/interactive/door/airlock/proc/set_door_state(var/mob/caller=null,var/desired_door_state,var/should_lock=FALSE)
+/obj/structure/interactive/door/airlock/proc/set_door_state(var/mob/activator=null,var/desired_door_state,var/should_lock=FALSE)
 
 	. = FALSE
 
@@ -152,32 +152,32 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 		if(DOOR_STATE_BROKEN)
 			. = TRUE
 		if(DOOR_STATE_DENY)
-			CALLBACK("door_state_closed_\ref[src]",6,src,src::set_door_state(),caller,DOOR_STATE_CLOSED,should_lock)
+			CALLBACK("door_state_closed_\ref[src]",6,src,src::set_door_state(),activator,DOOR_STATE_CLOSED,should_lock)
 			if(deny_sound)
 				play_sound(deny_sound, src.loc,range_max=VIEW_RANGE)
-				if(caller) create_alert(VIEW_RANGE,src.loc,caller,ALERT_LEVEL_NOISE)
+				if(activator) create_alert(VIEW_RANGE,src.loc,activator,ALERT_LEVEL_NOISE)
 			. = TRUE
 
 		if(DOOR_STATE_START_OPENING)
-			CALLBACK("door_state_opening_01_\ref[src]",open_wait_time,src,src::set_door_state(),caller,DOOR_STATE_OPENING_01,should_lock)
+			CALLBACK("door_state_opening_01_\ref[src]",open_wait_time,src,src::set_door_state(),activator,DOOR_STATE_OPENING_01,should_lock)
 			if(open_sound)
 				play_sound(open_sound, src.loc,range_max=VIEW_RANGE)
-				if(caller) create_alert(VIEW_RANGE,src.loc,caller,ALERT_LEVEL_NOISE)
+				if(activator) create_alert(VIEW_RANGE,src.loc,activator,ALERT_LEVEL_NOISE)
 			. = TRUE
 
 		if(DOOR_STATE_OPENING_01)
-			CALLBACK("door_state_opening_02_\ref[src]",open_time_01,src,src::set_door_state(),caller,DOOR_STATE_OPENING_02,should_lock)
+			CALLBACK("door_state_opening_02_\ref[src]",open_time_01,src,src::set_door_state(),activator,DOOR_STATE_OPENING_02,should_lock)
 			. = TRUE
 
 		if(DOOR_STATE_OPENING_02)
-			CALLBACK("door_state_opened_\ref[src]",open_time_02,src,src::set_door_state(),caller,DOOR_STATE_OPENED,should_lock)
+			CALLBACK("door_state_opened_\ref[src]",open_time_02,src,src::set_door_state(),activator,DOOR_STATE_OPENED,should_lock)
 			. = TRUE
 
 		if(DOOR_STATE_CLOSING_01)
-			CALLBACK("door_state_closing_02_\ref[src]",close_time_01,src,src::set_door_state(),caller,DOOR_STATE_CLOSING_02,should_lock)
+			CALLBACK("door_state_closing_02_\ref[src]",close_time_01,src,src::set_door_state(),activator,DOOR_STATE_CLOSING_02,should_lock)
 			if(close_sound)
 				play_sound(close_sound, src.loc,range_max=VIEW_RANGE)
-				if(caller) create_alert(VIEW_RANGE,src.loc,caller,ALERT_LEVEL_NOISE)
+				if(activator) create_alert(VIEW_RANGE,src.loc,activator,ALERT_LEVEL_NOISE)
 			. = TRUE
 
 		if(DOOR_STATE_CLOSING_02)
@@ -193,12 +193,12 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 			if(has_living)
 				set_door_state(has_living,DOOR_STATE_OPENING_02,FALSE)
 			else
-				CALLBACK("door_state_closed_\ref[src]",close_time_02,src,src::set_door_state(),caller,DOOR_STATE_CLOSED,should_lock)
+				CALLBACK("door_state_closed_\ref[src]",close_time_02,src,src::set_door_state(),activator,DOOR_STATE_CLOSED,should_lock)
 			. = TRUE
 
 		if(DOOR_STATE_OPENED)
 			if(should_lock)
-				lock(caller)
+				lock(activator)
 			opened_time = 0
 			START_THINKING(src)
 			. = TRUE
@@ -206,7 +206,7 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 		if(DOOR_STATE_CLOSED)
 			STOP_THINKING(src)
 			if(should_lock)
-				lock(caller)
+				lock(activator)
 			. = TRUE
 
 	if(.)

@@ -18,15 +18,15 @@
 	icon_state = "xp_new"
 	screen_loc = "RIGHT-1,TOP"
 
-/obj/hud/button/widget/experience/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/widget/experience/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_living(caller))
+	if(. && is_living(activator))
 
 		var/final_text = list()
 
-		var/mob/living/L = caller
+		var/mob/living/L = activator
 
 		var/job/J
 		var/job_rank = 0
@@ -94,12 +94,12 @@
 	icon_state = "logout_new"
 	screen_loc = "RIGHT,TOP"
 
-/obj/hud/button/widget/logout/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/widget/logout/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_player(caller))
-		var/mob/living/advanced/player/P = caller
+	if(. && is_player(activator))
+		var/mob/living/advanced/player/P = activator
 		P.try_logout()
 
 
@@ -109,12 +109,12 @@
 	icon_state = "theme_new"
 	screen_loc = "RIGHT-2,TOP"
 
-/obj/hud/button/widget/change_theme/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/widget/change_theme/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(!is_player(caller))
+	if(!is_player(activator))
 		return ..()
 
-	var/mob/living/advanced/player/P = caller
+	var/mob/living/advanced/player/P = activator
 
 	if(/obj/hud/button/close_color_scheme in P.buttons)
 		return ..()
@@ -130,16 +130,16 @@
 	icon_state = "map_new"
 	screen_loc = "RIGHT-3,TOP"
 
-/obj/hud/button/widget/view_map/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/widget/view_map/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	var/obj/hud/button/map_background/M_control = locate() in caller.buttons
+	var/obj/hud/button/map_background/M_control = locate() in activator.buttons
 
 	if(M_control)
 		M_control.update_owner(null)
-		caller.to_chat(span("notice","You close the map."))
+		activator.to_chat(span("notice","You close the map."))
 	else
-		M_control = new(caller)
-		M_control.update_owner(caller)
-		caller.to_chat(span("notice","You open the map."))
+		M_control = new(activator)
+		M_control.update_owner(activator)
+		activator.to_chat(span("notice","You open the map."))

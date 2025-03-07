@@ -22,31 +22,31 @@
 
 	layer = LAYER_OBJ_WINDOW - 0.1
 
-/obj/structure/interactive/construction/grille/proc/can_construct_window(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/grille/proc/can_construct_window(var/mob/activator,var/obj/item/material/sheet/S)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(S)
 
 	if(istype(src.loc,/obj/structure/window/))
-		caller.to_chat(span("warning","There is already a window here!"))
+		activator.to_chat(span("warning","There is already a window here!"))
 		return FALSE
 	if(S.amount < 1)
-		caller.to_chat(span("warning","You need a glass sheet in order to build a wall!"))
+		activator.to_chat(span("warning","You need a glass sheet in order to build a wall!"))
 		return FALSE
 	return TRUE
 
-/obj/structure/interactive/construction/grille/proc/construct_window(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/grille/proc/construct_window(var/mob/activator,var/obj/item/material/sheet/S)
 	var/obj/structure/window/W = new(src.loc)
 	W.material_id = S.material_id
 	W.color = S.color
 	INITIALIZE(W)
 	GENERATE(W)
 	FINALIZE(W)
-	caller?.visible_message(span("notice","\The [caller.name] places \the [W.name]."),span("notice","You place \the [W.name]."))
+	activator?.visible_message(span("notice","\The [activator.name] places \the [W.name]."),span("notice","You place \the [W.name]."))
 	S.add_item_count(-1)
 	return TRUE
 
-/obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -55,7 +55,7 @@
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
 			if(src.can_do_destruction(FALSE))
-				caller.to_chat(span("notice","You dissasemble the [src.name]"))
+				activator.to_chat(span("notice","You dissasemble the [src.name]"))
 				src.on_destruction(FALSE)
 			return TRUE
 	if(istype(object,/obj/item/material/sheet))
@@ -64,8 +64,8 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::construct_window(),caller,object)
-			PROGRESS_BAR_CONDITIONS(caller,src,src::can_construct_window(),caller,object)
+			PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(3),src::construct_window(),activator,object)
+			PROGRESS_BAR_CONDITIONS(activator,src,src::can_construct_window(),activator,object)
 			return TRUE
 
 	return ..()

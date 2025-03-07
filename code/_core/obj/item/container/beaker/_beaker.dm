@@ -30,7 +30,7 @@
 	. = ..()
 	. *= 2
 
-/obj/item/container/simple/beaker/can_feed(var/mob/caller,var/mob/living/target)
+/obj/item/container/simple/beaker/can_feed(var/mob/activator,var/mob/living/target)
 	if(!allow_reagent_transfer_from)
 		return FALSE
 	. = ..()

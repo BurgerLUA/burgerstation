@@ -48,12 +48,12 @@
 	. = ..()
 	if(reagents && amount) reagents.volume_max = amount * reagent_max_per_amount
 
-/obj/item/container/healing/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/container/healing/quick(var/mob/activator,var/atom/object,location,params)
 
-	if(!is_advanced(caller) || !is_inventory(src.loc))
+	if(!is_advanced(activator) || !is_inventory(src.loc))
 		return FALSE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 
 	return A.put_in_hands(src,params)
 
@@ -69,7 +69,7 @@
 
 	return ..()
 
-/obj/item/container/healing/proc/treat(var/mob/caller,var/atom/A)
+/obj/item/container/healing/proc/treat(var/mob/activator,var/atom/A)
 
 	if(heal_bleeding && is_organ(A))
 		var/obj/item/organ/O = A
@@ -77,8 +77,8 @@
 
 	var/heal_multiplier = 1
 
-	if(is_living(caller))
-		var/mob/living/L = caller
+	if(is_living(activator))
+		var/mob/living/L = activator
 		heal_multiplier += L.get_skill_power(SKILL_MEDICINE,0,1,2)
 
 	var/total_healed = 0
@@ -91,20 +91,20 @@
 
 	if(total_healed > 0 && is_organ(A) && is_living(A.loc))
 		var/mob/living/L = A.loc
-		if(is_player(caller) && caller.client)
-			var/mob/living/advanced/player/P = caller
+		if(is_player(activator) && activator.client)
+			var/mob/living/advanced/player/P = activator
 			if(!enable_friendly_fire && P.loyalty_tag == L.loyalty_tag) //Prevents an exploit where you hit then heal the enemy.
 				var/experience_gain = total_healed*5
 				P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
 
 	if(reagents)
 		var/transfer_amount = min(reagent_max_per_amount, reagents.volume_current)
-		reagents.transfer_reagents_to(A.reagents, transfer_amount, caller = caller)
+		reagents.transfer_reagents_to(A.reagents, transfer_amount, activator = activator)
 
-	if(caller == A.loc)
-		caller.visible_message(span("notice","\The [caller.name] bandages their [A.name]."),span("notice","You bandage your [A.name]."))
+	if(activator == A.loc)
+		activator.visible_message(span("notice","\The [activator.name] bandages their [A.name]."),span("notice","You bandage your [A.name]."))
 	else
-		caller.visible_message(span("warning","\The [caller.name] bandages \the [A.loc.name]'s [A.name]."),span("notice","You bandage \the [A.loc.name]'s [A.name]."))
+		activator.visible_message(span("warning","\The [activator.name] bandages \the [A.loc.name]'s [A.name]."),span("notice","You bandage \the [A.loc.name]'s [A.name]."))
 
 	if(treatment_sound)
 		play_sound(treatment_sound,get_turf(src))
@@ -113,23 +113,23 @@
 
 	return TRUE
 
-/obj/item/container/healing/proc/can_be_treated(var/mob/caller,var/atom/target)
+/obj/item/container/healing/proc/can_be_treated(var/mob/activator,var/atom/target)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
 
 	if(!is_organ(target) && !is_living(target))
-		caller.to_chat(span("warning","You can't treat \the [target.name]!"))
+		activator.to_chat(span("warning","You can't treat \the [target.name]!"))
 		return FALSE
 
 	if(!target || !target.health)
-		caller.to_chat(span("warning","You can't treat \the [target.name]!"))
+		activator.to_chat(span("warning","You can't treat \the [target.name]!"))
 		return FALSE
 
 	if(heal_brute < 0 || heal_burn < 0 || reagents.contains_lethal) //Hostile!
-		if(!is_living(caller))
+		if(!is_living(activator))
 			return FALSE
-		var/mob/living/caller_as_living = caller
+		var/mob/living/activator_as_living = activator
 		var/mob/living/target_as_living
 		if(is_organ(target))
 			var/obj/item/organ/O = target
@@ -140,42 +140,42 @@
 			target_as_living = target
 		else
 			return FALSE
-		if(caller_as_living != target_as_living)
-			if(!allow_hostile_action(caller_as_living.loyalty_tag,target_as_living))
-				caller.to_chat(span("warning","You'd feel it would be unsafe to treat your fellow man with the dangerous [src.name]..."))
+		if(activator_as_living != target_as_living)
+			if(!allow_hostile_action(activator_as_living.loyalty_tag,target_as_living))
+				activator.to_chat(span("warning","You'd feel it would be unsafe to treat your fellow man with the dangerous [src.name]..."))
 				return FALSE
 
 	if(organic)
 		if(!target.health.organic)
-			caller.to_chat(span("warning","\The [src.name] can only treat organic limbs!"))
+			activator.to_chat(span("warning","\The [src.name] can only treat organic limbs!"))
 			return FALSE
 	else
 		if(target.health.organic)
-			caller.to_chat(span("warning","\The [src.name] can only treat non-organic limbs!"))
+			activator.to_chat(span("warning","\The [src.name] can only treat non-organic limbs!"))
 			return FALSE
 	return TRUE
 
 
 
-/obj/item/container/healing/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/container/healing/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
 
-	var/self_treat = caller == object
+	var/self_treat = activator == object
 
-	if(is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		var/list/new_x_y = A.get_current_target_cords(params)
 		params[PARAM_ICON_X] = new_x_y[1]
 		params[PARAM_ICON_Y] = new_x_y[2]
-		object = object.get_object_to_damage(caller,src,null,params,TRUE,TRUE)
+		object = object.get_object_to_damage(activator,src,null,params,TRUE,TRUE)
 
-	if(can_be_treated(caller,object))
+	if(can_be_treated(activator,object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
-		PROGRESS_BAR(caller,src,(self_treat ? BASE_TREATMENT_TIME_SELF : BASE_TREATMENT_TIME) * treatment_time_mul,src::treat(),caller,object)
-		PROGRESS_BAR_CONDITIONS(caller,src,src::can_be_treated(),caller,object)
+		PROGRESS_BAR(activator,src,(self_treat ? BASE_TREATMENT_TIME_SELF : BASE_TREATMENT_TIME) * treatment_time_mul,src::treat(),activator,object)
+		PROGRESS_BAR_CONDITIONS(activator,src,src::can_be_treated(),activator,object)
 		return TRUE
 
 	return ..()

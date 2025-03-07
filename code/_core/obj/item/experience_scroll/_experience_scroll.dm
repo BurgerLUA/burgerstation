@@ -39,23 +39,23 @@
 	play_sound('sound/ui/friendly.ogg',get_turf(src),range_max=VIEW_RANGE)
 	return TRUE
 
-/obj/item/experience_scroll/click_self(var/mob/caller,location,control,params)
+/obj/item/experience_scroll/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
-	if(!is_advanced(caller) || !caller.is_player_controlled())
-		caller.to_chat(span("warning","You don't know how to read this..."))
+	if(!is_advanced(activator) || !activator.is_player_controlled())
+		activator.to_chat(span("warning","You don't know how to read this..."))
 		return TRUE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 
 	if(!A.allow_experience_gains)
-		caller.to_chat(span("warning","You don't know how to read this..."))
+		activator.to_chat(span("warning","You don't know how to read this..."))
 		return TRUE
 
-	if(gain_knowledge(caller))
-		caller.visible_message(span("notice","\The [caller.name] reads \the [src.name], taking in the knowledge..."),span("notice","You read \the [src.name], taking in the knowledge..."))
+	if(gain_knowledge(activator))
+		activator.visible_message(span("notice","\The [activator.name] reads \the [src.name], taking in the knowledge..."),span("notice","You read \the [src.name], taking in the knowledge..."))
 		add_item_count(-1)
 
 	return TRUE

@@ -9,20 +9,20 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/new_character/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/new_character/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
 	if(.)
-		if(!is_observer(caller))
-			caller.to_chat(span("notice","You cannot create a new character while your character is currently loaded!"))
+		if(!is_observer(activator))
+			activator.to_chat(span("notice","You cannot create a new character while your character is currently loaded!"))
 			return TRUE
 
 		if(world_state < STATE_RUNNING)
-			caller.to_chat(span("notice","The game has not loaded yet!"))
+			activator.to_chat(span("notice","The game has not loaded yet!"))
 			return TRUE
 
-		var/mob/abstract/observer/O = caller
+		var/mob/abstract/observer/O = activator
 		O.new_character()
 
 
@@ -37,22 +37,22 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/load_character/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/load_character/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
 	if(.)
-		if(!is_observer(caller))
-			caller.to_chat(span("notice","You cannot load a new character while your character is currently loaded!"))
+		if(!is_observer(activator))
+			activator.to_chat(span("notice","You cannot load a new character while your character is currently loaded!"))
 			return TRUE
 		if(world_state < STATE_RUNNING)
-			caller.to_chat(span("notice","The game has not loaded yet!"))
+			activator.to_chat(span("notice","The game has not loaded yet!"))
 			return TRUE
 		if(!allow_loading)
-			caller.to_chat(span("danger","Cannot load your character currently as the server is undergoing a cleaning process."))
+			activator.to_chat(span("danger","Cannot load your character currently as the server is undergoing a cleaning process."))
 			return TRUE
 
-		var/mob/abstract/observer/O = caller
+		var/mob/abstract/observer/O = activator
 		O.load_character()
 
 
@@ -67,12 +67,12 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/become_antag/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/become_antag/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(is_observer(caller))
-		var/mob/abstract/observer/O = caller
+	if(is_observer(activator))
+		var/mob/abstract/observer/O = activator
 		O.become_antagonist()
 
 
@@ -92,16 +92,16 @@
 	var/image/I = new/image(initial(icon),"ghost_overlay")
 	add_overlay(I)
 
-/obj/hud/button/teleport_to_player/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/teleport_to_player/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
 	if(.)
-		if(!is_observer(caller))
-			caller.to_chat(span("notice","You cannot teleport as a non-observer!"))
+		if(!is_observer(activator))
+			activator.to_chat(span("notice","You cannot teleport as a non-observer!"))
 			return TRUE
 		if(world_state < STATE_RUNNING)
-			caller.to_chat(span("notice","The game has not loaded yet!"))
+			activator.to_chat(span("notice","The game has not loaded yet!"))
 			return TRUE
 
 		var/list/valid_spectators = list()
@@ -114,8 +114,8 @@
 
 		if(selection)
 			var/mob/M = valid_spectators[selection]
-			caller.to_chat(span("notice","You are now spectating [M.name]."))
-			caller.force_move(M.loc)
+			activator.to_chat(span("notice","You are now spectating [M.name]."))
+			activator.force_move(M.loc)
 
 
 /obj/hud/button/dead_ghost/
@@ -131,19 +131,19 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/dead_ghost/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/dead_ghost/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(!. || !caller.client)
+	if(!. || !activator.client)
 		return .
 
 	/* VIRUTAL REALITY
-	if(istype(caller,/mob/living/advanced/player/virtual))
+	if(istype(activator,/mob/living/advanced/player/virtual))
 		if(!SSvirtual_reality || !SSvirtual_reality.current_virtual_reality)
 			return .
 
-		var/mob/living/L = caller
+		var/mob/living/L = activator
 
 		var/virtual_reality/VR = SSvirtual_reality.current_virtual_reality
 
@@ -158,14 +158,14 @@
 			return .
 
 		if(!L.dead || desired_spectate.qdeleting)
-			caller.to_chat(span("warning","Failed to spectate."))
+			activator.to_chat(span("warning","Failed to spectate."))
 			return .
 
 		L.client.spectate(desired_spectate)
 		return .
 	*/
 
-	caller.client.ghost()
+	activator.client.ghost()
 
 
 /obj/hud/button/dead_ghost/update_overlays()

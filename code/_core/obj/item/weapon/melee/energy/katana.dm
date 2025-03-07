@@ -32,7 +32,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/weapon/melee/energy/sword/katana/merc/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/energy/sword/katana/merc/click_self(var/mob/activator,location,control,params)
 	return TRUE
 
 /obj/item/weapon/melee/energy/sword/katana/merc/Initialize()

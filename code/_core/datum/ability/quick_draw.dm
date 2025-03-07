@@ -8,12 +8,12 @@
 
 	category = "Quick Draw"
 
-/ability/quick_draw/on_cast_pre(var/mob/caller,var/atom/target,location,params)
+/ability/quick_draw/on_cast_pre(var/mob/activator,var/atom/target,location,params)
 
-	if(!is_advanced(caller))
+	if(!is_advanced(activator))
 		return FALSE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 
 	if(!A.inventories_by_id[BODY_TORSO_OB])
 		return FALSE
@@ -31,7 +31,7 @@
 			var/obj/hud/inventory/new_inventory = I2.loc
 			if(!new_inventory)
 				return FALSE
-			I2.click_on_object(caller,target,location,null,params)
+			I2.click_on_object(activator,target,location,null,params)
 		return TRUE
 
 

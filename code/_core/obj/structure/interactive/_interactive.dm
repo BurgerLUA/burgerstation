@@ -117,55 +117,55 @@ obj/structure/interactive/get_examine_list(var/mob/examiner)
 				. += div("notice","It has a few scrapes.")
 
 
-obj/structure/interactive/proc/can_repair(var/mob/living/advanced/caller,var/obj/item/I)
+obj/structure/interactive/proc/can_repair(var/mob/living/advanced/activator,var/obj/item/I)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(I)
 
-	if(caller.intent != INTENT_HELP)
+	if(activator.intent != INTENT_HELP)
 		return FALSE
 
 	if(!health)
 		return FALSE
 
 	if(health.health_current >= health.health_max)
-		caller?.to_chat(span("warning","\The [src.name] is already repaired!"))
+		activator?.to_chat(span("warning","\The [src.name] is already repaired!"))
 		return FALSE
 
 	if(!(I.flags_tool & repair_flag))
-		caller?.to_chat(span("warning","\The [I.name] cannot be used to repair \the [src.name]!"))
+		activator?.to_chat(span("warning","\The [I.name] cannot be used to repair \the [src.name]!"))
 		return FALSE
 
 	return TRUE
 
 
-obj/structure/interactive/proc/do_repair(var/mob/living/advanced/caller,var/obj/item/I)
-	visible_message(span("notice","\The [caller.name] repairs \the [src.name] with \the [I.name]."))
+obj/structure/interactive/proc/do_repair(var/mob/living/advanced/activator,var/obj/item/I)
+	visible_message(span("notice","\The [activator.name] repairs \the [src.name] with \the [I.name]."))
 	health.adjust_loss_smart(brute=-100,burn=-100)
 
 	return TRUE
 
-obj/structure/interactive/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+obj/structure/interactive/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 
 	if(is_item(object))
 		var/obj/item/I = object
 
-		if(repair_flag && is_advanced(caller) && can_repair(caller,I))
+		if(repair_flag && is_advanced(activator) && can_repair(activator,I))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::do_repair(),caller,object)
-			PROGRESS_BAR_CONDITIONS(caller,src,src::can_repair(),caller,object)
+			PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(5),src::do_repair(),activator,object)
+			PROGRESS_BAR_CONDITIONS(activator,src,src::can_repair(),activator,object)
 			return TRUE
 
-		var/obj/item/I2 = src.check_interactables(caller,src,location,control,params)
+		var/obj/item/I2 = src.check_interactables(activator,src,location,control,params)
 		if(I2)
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			I2.drop_item(get_turf(caller))
-			caller.to_chat(span("notice","You successfully remove \the [I2.name] from \the [I.name] with \the [src.name]."))
+			I2.drop_item(get_turf(activator))
+			activator.to_chat(span("notice","You successfully remove \the [I2.name] from \the [I.name] with \the [src.name]."))
 			return TRUE
 
 
@@ -176,7 +176,7 @@ obj/structure/interactive/clicked_on_by_object(var/mob/caller,var/atom/object,lo
 /obj/structure/interactive/proc/power_process(var/power_multiplier=1)
 	return TRUE
 
-obj/structure/interactive/proc/check_interactables(var/mob/caller,var/atom/object,location,control,params)
+obj/structure/interactive/proc/check_interactables(var/mob/activator,var/atom/object,location,control,params)
 
 	var/list/valid_interactables = list()
 
@@ -201,7 +201,7 @@ obj/structure/interactive/proc/check_interactables(var/mob/caller,var/atom/objec
 	if(valid_length == 1)
 		T = valid_interactables[1]
 	else
-		T = input(caller,"Which device do you wish to interact with?","Device Interaction") as null|anything in valid_interactables
+		T = input(activator,"Which device do you wish to interact with?","Device Interaction") as null|anything in valid_interactables
 
 	return T
 

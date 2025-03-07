@@ -18,12 +18,12 @@
 
 	value = 90
 
-/obj/item/clothing/overwear/coat/vest/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/clothing/overwear/coat/vest/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_inventory(object)) //TODO: Move this to clothing?
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
-		click_self(caller,location,control,params)
+		click_self(activator,location,control,params)
 		return TRUE
 
 	return ..()

@@ -44,20 +44,20 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/data_laptop/click_self(var/mob/caller,location,control,params)
+/obj/item/data_laptop/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
 	if(used)
-		caller.to_chat(span("warning","Nothing happens..."))
+		activator.to_chat(span("warning","Nothing happens..."))
 		update_sprite()
 		return TRUE
 
 	var/obj/structure/interactive/door/vault/syndicate/D
 	while(TRUE)
 		if(!length(SSobj.all_vault_doors))
-			caller.to_chat(span("notice","\The [src.name] doesn't seem to want to turn on... maybe use it in another shift?"))
+			activator.to_chat(span("notice","\The [src.name] doesn't seem to want to turn on... maybe use it in another shift?"))
 			return TRUE
 		D = pick(SSobj.all_vault_doors)
 		SSobj.all_vault_doors -= D
@@ -71,6 +71,6 @@
 
 	value = get_base_value()
 
-	caller.to_chat(span("notice","\The [src.name] flashes the coordinates \"<b>[D.x],[D.y],[D.z]</b>\" and \"<b>[D.stored_keypad.code]</b>\" before flickering to dark..."))
+	activator.to_chat(span("notice","\The [src.name] flashes the coordinates \"<b>[D.x],[D.y],[D.z]</b>\" and \"<b>[D.stored_keypad.code]</b>\" before flickering to dark..."))
 
 	return TRUE

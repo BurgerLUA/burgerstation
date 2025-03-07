@@ -35,7 +35,7 @@
 	. = ..()
 	. += span("notice","It is currently [enabled ? "on" : "off"].")
 
-/obj/structure/table/cooking/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/table/cooking/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_item(object))
 		INTERACT_CHECK
@@ -44,14 +44,14 @@
 		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_WRENCH && !initial(anchored))
 			src.set_anchored(!anchored)
-			caller.to_chat(span("notice","You [anchored ? "anchor" : "unachor"] \the [src.name]."))
+			activator.to_chat(span("notice","You [anchored ? "anchor" : "unachor"] \the [src.name]."))
 			return TRUE
 		I.drop_item(get_turf(src))
 		return TRUE
 
 	if(!initial(enabled))
 		set_enabled(!enabled)
-		caller.visible_message(span("notice","\The [caller.name] turns [enabled ? "on" : "off"] \the [src.name]."),span("notice","You turn [enabled ? "on" : "off"] \the [src.name]."))
+		activator.visible_message(span("notice","\The [activator.name] turns [enabled ? "on" : "off"] \the [src.name]."),span("notice","You turn [enabled ? "on" : "off"] \the [src.name]."))
 		return TRUE
 
 	. = ..()

@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(gamemode)
 
 	var/list/tracked_bosses = list()
 
-/subsystem/gamemode/unclog(var/mob/caller)
+/subsystem/gamemode/unclog(var/mob/activator)
 
 	if(active_gamemode)
 		var/gamemode/G = active_gamemode.type

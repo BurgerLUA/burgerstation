@@ -50,7 +50,7 @@
 	else
 		. += div("notice","There is no power cell installed.")
 
-/obj/item/clothing/glasses/nightvision/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/clothing/glasses/nightvision/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -58,10 +58,10 @@
 			INTERACT_CHECK
 			INTERACT_DELAY(5)
 			if(!stored_cell)
-				caller.to_chat(span("warning","There is no power cell to remove from \the [src.name]!"))
+				activator.to_chat(span("warning","There is no power cell to remove from \the [src.name]!"))
 				return TRUE
-			stored_cell.drop_item(get_turf(caller))
-			caller.to_chat(span("notice","You remove \the [stored_cell.name] from \the [src.name]."))
+			stored_cell.drop_item(get_turf(activator))
+			activator.to_chat(span("notice","You remove \the [stored_cell.name] from \the [src.name]."))
 			stored_cell = null
 			return TRUE
 		if(istype(object,/obj/item/powercell/))
@@ -69,13 +69,13 @@
 			INTERACT_DELAY(5)
 			var/obj/item/PC = object
 			if(stored_cell)
-				caller.to_chat(span("warning","There is already \a [stored_cell.name] inside \the [src.name]!"))
+				activator.to_chat(span("warning","There is already \a [stored_cell.name] inside \the [src.name]!"))
 				return TRUE
 			if(PC.size > SIZE_0)
-				caller.to_chat(span("warning","\The [PC.name] is too large to be put into \the [src.name]!"))
+				activator.to_chat(span("warning","\The [PC.name] is too large to be put into \the [src.name]!"))
 				return TRUE
 			PC.drop_item(src)
-			caller.to_chat(span("notice","You insert \the [PC.name] into \the [src.name]."))
+			activator.to_chat(span("notice","You insert \the [PC.name] into \the [src.name]."))
 			stored_cell = PC
 			return TRUE
 
@@ -107,14 +107,14 @@
 		icon_state = "[icon_state]_off"
 		icon_state_worn = "[icon_state_worn]_off"
 
-/obj/item/clothing/glasses/nightvision/proc/drain_power(var/mob/caller)
+/obj/item/clothing/glasses/nightvision/proc/drain_power(var/mob/activator)
 
 	if(!active)
 		return FALSE
 
 	var/obj/item/powercell/PC = get_battery()
 	if(!PC)
-		set_active(caller,FALSE)
+		set_active(activator,FALSE)
 		return FALSE
 
 	var/drain_amount = CELL_SIZE_TINY * (1/(60*30)) //~30 minutes of nightvision
@@ -123,14 +123,14 @@
 	PC.charge_current = max(0,PC.charge_current - 3)
 
 	if(PC.charge_current <= 0)
-		set_active(caller,FALSE)
+		set_active(activator,FALSE)
 		return FALSE
 
-	CALLBACK("\ref[src]_drain_power",SECONDS_TO_DECISECONDS(1),src,src::drain_power(),caller)
+	CALLBACK("\ref[src]_drain_power",SECONDS_TO_DECISECONDS(1),src,src::drain_power(),activator)
 
 	return TRUE
 
-/obj/item/clothing/glasses/nightvision/proc/set_active(var/mob/caller,var/desired_active=TRUE)
+/obj/item/clothing/glasses/nightvision/proc/set_active(var/mob/activator,var/desired_active=TRUE)
 
 	if(active == desired_active)
 		return FALSE
@@ -138,11 +138,11 @@
 	if(!active)
 		var/obj/item/powercell/PC = get_battery()
 		if(!PC)
-			caller?.to_chat(span("notice","\The [src.name] doesn't have a power cell installed!"))
+			activator?.to_chat(span("notice","\The [src.name] doesn't have a power cell installed!"))
 			return TRUE
 		PC.charge_current = max(0,PC.charge_current - 10) //Spamming removes power.
 		if(PC.charge_current <= 0)
-			caller?.to_chat(span("notice","\The [src.name] doesn't have enough power!"))
+			activator?.to_chat(span("notice","\The [src.name] doesn't have enough power!"))
 			return TRUE
 
 	active = !active
@@ -160,20 +160,20 @@
 		if(I.worn)
 			I.update_worn_icon(src)
 
-	if(active && !drain_power(caller))
+	if(active && !drain_power(activator))
 		return FALSE
 
-	caller?.to_chat(span("notice","\The [src.name] flickers [active ? "on" : "off"]."))
+	activator?.to_chat(span("notice","\The [src.name] flickers [active ? "on" : "off"]."))
 
 	return TRUE
 
 
-/obj/item/clothing/glasses/nightvision/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/glasses/nightvision/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
-	set_active(caller,!active)
+	set_active(activator,!active)
 
 	return TRUE
 

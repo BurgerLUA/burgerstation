@@ -5,35 +5,35 @@
 	has_quick_function = TRUE //use analyzers from the belt slots
 	rarity = RARITY_COMMON
 
-/obj/item/analyzer/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/analyzer/quick(var/mob/activator,var/atom/object,location,params)
 
-	if(!is_living(caller))
+	if(!is_living(activator))
 		return FALSE
 
-	return click_on_object(caller, object, location, null, params)
+	return click_on_object(activator, object, location, null, params)
 
 
-/obj/item/analyzer/proc/on_scan(var/mob/caller,var/atom/target,location,control,params)
+/obj/item/analyzer/proc/on_scan(var/mob/activator,var/atom/target,location,control,params)
 	return TRUE
 
 
-/obj/item/analyzer/proc/can_be_scanned(var/mob/caller,var/atom/target)
+/obj/item/analyzer/proc/can_be_scanned(var/mob/activator,var/atom/target)
 	return TRUE
 
-/obj/item/analyzer/proc/can_scan(var/mob/caller,var/atom/target)
+/obj/item/analyzer/proc/can_scan(var/mob/activator,var/atom/target)
 	if(next_scan >= world.time)
-		caller.to_chat(span("warning","\The [src.name] is recharging, please wait!"))
+		activator.to_chat(span("warning","\The [src.name] is recharging, please wait!"))
 		return FALSE
 	return TRUE
 
-/obj/item/analyzer/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/analyzer/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
-	if(object.plane < PLANE_HUD && can_be_scanned(caller,object))
+	if(object.plane < PLANE_HUD && can_be_scanned(activator,object))
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
-		if(can_scan(caller,object))
-			caller.visible_message(span("notice","\The [caller.name] scans \the [object.name]."),span("notice","You scan \the [object.name]."))
-			on_scan(caller,object,location,control,params)
+		if(can_scan(activator,object))
+			activator.visible_message(span("notice","\The [activator.name] scans \the [object.name]."),span("notice","You scan \the [object.name]."))
+			on_scan(activator,object,location,control,params)
 		return TRUE
 
 	return ..()

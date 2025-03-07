@@ -19,7 +19,7 @@
 
 	caseless = TRUE
 
-/obj/item/bullet_cartridge/arrow/spend_bullet(var/mob/caller,var/bonus_misfire_chance=0)
+/obj/item/bullet_cartridge/arrow/spend_bullet(var/mob/activator,var/bonus_misfire_chance=0)
 	src.projectile_count = amount
 	qdel(src)
 	return src
@@ -53,7 +53,7 @@
 	value = 0
 	value_burgerbux = 1
 
-/obj/item/bullet_cartridge/arrow/hardlight/spend_bullet(var/mob/caller,var/bonus_misfire_chance=0)
+/obj/item/bullet_cartridge/arrow/hardlight/spend_bullet(var/mob/activator,var/bonus_misfire_chance=0)
 	return src
 
 

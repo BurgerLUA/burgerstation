@@ -50,7 +50,7 @@
 	. = ..()
 	value = CEILING(value,0.01)
 
-/reagent/nutrition/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+/reagent/nutrition/on_splash(var/reagent_container/container,var/mob/activator,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()
 

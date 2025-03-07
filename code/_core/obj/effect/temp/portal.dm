@@ -89,17 +89,17 @@
 
 	CALLBACK("delete_\ref[src]",SECONDS_TO_DECISECONDS(300),src,.datum/proc/delete)
 
-/obj/effect/temp/portal/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/effect/temp/portal/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_inventory(object) && linked_portal && src.invisibility < 101)
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
-		var/mob/living/L = caller
+		var/mob/living/L = activator
 		if(L.loyalty_tag == loyalty_tag)
 			var/turf/destination_turf = get_turf(linked_portal)
-			L.visible_message(span("notice","\The [caller.name] steps into \the [src.name]."),span("notice","You step into \the [src.name]."))
+			L.visible_message(span("notice","\The [activator.name] steps into \the [src.name]."),span("notice","You step into \the [src.name]."))
 			L.force_move(destination_turf)
-			L.visible_message(span("notice","\The [caller.name] walks out from out of \the [linked_portal.name]"),span("notice","You walk out of \the [linked_portal.name]"))
+			L.visible_message(span("notice","\The [activator.name] walks out from out of \the [linked_portal.name]"),span("notice","You walk out of \the [linked_portal.name]"))
 			play_sound('sound/effects/portal_exit.ogg',destination_turf)
 			play_sound('sound/effects/portal_exit.ogg',get_turf(src))
 			return TRUE

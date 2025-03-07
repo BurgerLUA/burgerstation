@@ -268,19 +268,19 @@
 
 	desc = "Icon state: [icon_state]"
 
-/obj/structure/interactive/plant/proc/harvest(var/mob/living/advanced/caller,var/obj/item/harvest_item)
+/obj/structure/interactive/plant/proc/harvest(var/mob/living/advanced/activator,var/obj/item/harvest_item)
 
 	if(dead)
-		caller.to_chat(span("warning","\The [src.name] is dead!"))
+		activator.to_chat(span("warning","\The [src.name] is dead!"))
 		return TRUE
 
 	if(growth < growth_produce_max)
-		caller.to_chat(span("warning","\The [src.name] is not ready to be harvested!"))
+		activator.to_chat(span("warning","\The [src.name] is not ready to be harvested!"))
 		return TRUE
 
-	var/turf/caller_turf = get_turf(caller)
+	var/turf/activator_turf = get_turf(activator)
 
-	if(!caller_turf)
+	if(!activator_turf)
 		return FALSE
 
 	if(!plant_type)
@@ -289,11 +289,11 @@
 	var/plant_type/associated_plant = SSbotany.all_plant_types[plant_type]
 
 	if(!associated_plant || potency <= 0 || yield_max <= 0)
-		caller.to_chat(span("warning","You fail to harvest anything from \the [src.name]!"))
+		activator.to_chat(span("warning","You fail to harvest anything from \the [src.name]!"))
 		return TRUE
 	else
 
-		var/move_direction = get_dir(src,caller)
+		var/move_direction = get_dir(src,activator)
 
 		var/animation_offset_x = 0
 		var/animation_offset_y = 0
@@ -324,7 +324,7 @@
 				var/local_yield_percent = yield_percent - yield_percent*(total_harvests/local_yield)
 				if(!prob(local_yield_percent))
 					continue
-				var/obj/item/container/edible/plant/P = new(caller_turf)
+				var/obj/item/container/edible/plant/P = new(activator_turf)
 				P.plant_type = associated_plant.type
 				P.pixel_x = animation_offset_x
 				P.pixel_y = animation_offset_y
@@ -339,14 +339,14 @@
 					P.reagents.add_reagent(r_id,r_value,TNULL,FALSE,FALSE)
 				FINALIZE(P)
 				//Update container is called in Finalize()
-				P.reagents.process_recipes(caller)
+				P.reagents.process_recipes(activator)
 				animate(P,pixel_x = rand(-16,16),pixel_y = rand(-16,16),time=5)
 				total_harvests += 1
 
 		if(total_harvests <= 0)
-			caller.visible_message(span("warning","\The [caller.name] fails to harvest anything from \the [src.name]!"),span("warning","You fail to harvest anything from \the [src.name]!"))
+			activator.visible_message(span("warning","\The [activator.name] fails to harvest anything from \the [src.name]!"),span("warning","You fail to harvest anything from \the [src.name]!"))
 		else
-			caller.visible_message(span("notice","\The [caller.name] harvests from \the [src.name]."),span("notice","You harvest [total_harvests] [associated_plant.name]\s from \the [src.name]."))
+			activator.visible_message(span("notice","\The [activator.name] harvests from \the [src.name]."),span("notice","You harvest [total_harvests] [associated_plant.name]\s from \the [src.name]."))
 
 	if(delete_after_harvest)
 		growth = 0 //just in case
@@ -359,15 +359,15 @@
 
 	return TRUE
 
-/obj/structure/interactive/plant/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/plant/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(!is_advanced(caller))
+	if(!is_advanced(activator))
 		return ..()
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
-	harvest(caller)
+	harvest(activator)
 
 	return TRUE

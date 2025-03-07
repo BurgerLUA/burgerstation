@@ -10,12 +10,12 @@
 
 	var/spam_fix_time = 0
 
-	var/mob/last_caller = null
+	var/mob/last_activator = null
 
 	value = 0
 
 /obj/item/device/fuse/Destroy()
-	last_caller = null
+	last_activator = null
 	return ..()
 
 /obj/item/device/fuse/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
@@ -26,19 +26,19 @@
 	RUN_PARENT_SAFE
 	LOADVAR("time_set")
 
-/obj/item/device/fuse/click_self(var/mob/caller,location,control,params)
+/obj/item/device/fuse/click_self(var/mob/activator,location,control,params)
 	INTERACT_CHECK
 	SPAM_CHECK(5)
-	trigger(caller,src,-1,-1)
+	trigger(activator,src,-1,-1)
 	return TRUE
 
-/obj/item/device/fuse/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
-	last_caller = caller
+/obj/item/device/fuse/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
+	last_activator = activator
 	START_THINKING(src)
 	active = TRUE
 	var/turf/T = get_turf(src)
 	play_sound('sound/items/fuse_start.ogg',T,range_max=VIEW_RANGE)
-	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
+	create_alert(VIEW_RANGE,T,activator,ALERT_LEVEL_NOISE)
 	return ..()
 
 /obj/item/device/fuse/think()
@@ -77,12 +77,12 @@
 	. = ..()
 
 	if(active && .)
-		if(!(time_set % 10) && is_living(last_caller))
-			var/mob/living/L = last_caller
+		if(!(time_set % 10) && is_living(last_activator))
+			var/mob/living/L = last_activator
 			var/obj/item/I = src.loc
 			if(!L.dead && istype(I))
 				var/obj/hud/inventory/INV = I.loc
-				if(istype(INV) && INV.owner == last_caller)
+				if(istype(INV) && INV.owner == last_activator)
 					switch(time_set)
 						if(70)
 							L.do_say("One!")

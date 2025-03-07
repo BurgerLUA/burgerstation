@@ -20,7 +20,7 @@
 
 	has_quick_function = TRUE
 
-/obj/hud/button/quick(var/mob/living/advanced/caller,var/atom/object,location,params)
+/obj/hud/button/quick(var/mob/living/advanced/activator,var/atom/object,location,params)
 
 	if(alpha == 0)
 		return FALSE
@@ -28,7 +28,7 @@
 	if(mouse_opacity == 0)
 		return FALSE
 
-	return src.clicked_on_by_object(caller,null,location,null,params)
+	return src.clicked_on_by_object(activator,null,location,null,params)
 
 /obj/hud/button/Destroy()
 	. = ..()
@@ -43,6 +43,6 @@
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(draw_speed))
 		mouse_opacity = 0
 
-/obj/hud/button/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	play_sound_target('sound/ui/tap-muted.ogg',caller, sound_setting = SOUND_SETTING_UI)
+/obj/hud/button/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
+	play_sound_target('sound/ui/tap-muted.ogg',activator, sound_setting = SOUND_SETTING_UI)
 	return TRUE

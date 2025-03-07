@@ -21,14 +21,14 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/pinpointer/quick(var/mob/caller,var/atom/object,location,params)
-	return click_self(caller)
+/obj/item/pinpointer/quick(var/mob/activator,var/atom/object,location,params)
+	return click_self(activator)
 
 /obj/item/pinpointer/Destroy()
 	tracked_atom = null
 	. = ..()
 
-/obj/item/pinpointer/get_examine_list(var/mob/caller)
+/obj/item/pinpointer/get_examine_list(var/mob/activator)
 
 	. = ..()
 
@@ -119,23 +119,23 @@
 
 	value = 30
 
-/obj/item/pinpointer/custom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/pinpointer/custom/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(scan_mode && object)
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
 		if(!can_track(object))
-			caller.to_chat(span("warning","You can't track this object!"))
+			activator.to_chat(span("warning","You can't track this object!"))
 			return TRUE
 		tracked_atom = object
-		caller.visible_message(span("notice","\The [caller.name] scans \the [object.name] with \the [src.name]."),span("notice","You scan \the [object.name], tracking it."))
+		activator.visible_message(span("notice","\The [activator.name] scans \the [object.name] with \the [src.name]."),span("notice","You scan \the [object.name], tracking it."))
 		scan_mode = FALSE
 		START_THINKING(src)
 		return TRUE
 
 	return ..()
 
-/obj/item/pinpointer/custom/click_self(var/mob/caller,location,control,params)
+/obj/item/pinpointer/custom/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -143,9 +143,9 @@
 	scan_mode = !scan_mode
 
 	if(scan_mode)
-		caller.to_chat(span("notice","You enable scan mode. Scan an object to track it."))
+		activator.to_chat(span("notice","You enable scan mode. Scan an object to track it."))
 	else
-		caller.to_chat(span("notice","You disable scan mode."))
+		activator.to_chat(span("notice","You disable scan mode."))
 
 	update_sprite()
 
@@ -165,7 +165,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/pinpointer/crew/click_self(var/mob/caller,location,control,params)
+/obj/item/pinpointer/crew/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -173,13 +173,13 @@
 	var/list/possible_crew = list()
 
 	if(enable_friendly_fire)
-		caller.to_chat(span("notice","This doesn't seem to be working for some reason..."))
+		activator.to_chat(span("notice","This doesn't seem to be working for some reason..."))
 		return FALSE
 
-	if(encoded && is_living(caller))
-		var/mob/living/L = caller
+	if(encoded && is_living(activator))
+		var/mob/living/L = activator
 		if(L.loyalty_tag != desired_loyalty_tag)
-			caller.to_chat(span("warning","All the information seems to be displayed in code you don't understand..."))
+			activator.to_chat(span("warning","All the information seems to be displayed in code you don't understand..."))
 			return FALSE
 
 	for(var/mob/living/advanced/player/P in SSliving.all_players)
@@ -187,7 +187,7 @@
 			continue
 		if(!can_track(P))
 			continue
-		var/name_mod = "[P.real_name] ([P.dead ? "DEAD" : "Alive"], [dir2text(get_dir_advanced(caller,P))], [get_dist_advanced(src,P)]m)"
+		var/name_mod = "[P.real_name] ([P.dead ? "DEAD" : "Alive"], [dir2text(get_dir_advanced(activator,P))], [get_dist_advanced(src,P)]m)"
 		possible_crew[name_mod] = P
 
 	scan_mode = TRUE
@@ -252,7 +252,7 @@
 
 	value = 10
 
-/obj/item/pinpointer/landmark/click_self(var/mob/caller,location,control,params)
+/obj/item/pinpointer/landmark/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -261,23 +261,23 @@
 
 	var/area/my_area = get_area(src)
 	if(!my_area.area_identifier)
-		caller.to_chat(span("warning","There is no signal..."))
+		activator.to_chat(span("warning","There is no signal..."))
 		return TRUE
 
 	for(var/k in SSarea.all_areas)
 		var/area/A = SSarea.all_areas[k]
-		if(A.z != caller.z)
+		if(A.z != activator.z)
 			continue
 		if(!A.trackable)
 			continue
 		if(my_area.area_identifier != A.area_identifier)
 			continue
 		var/turf/T = locate(A.average_x,A.average_y,A.z)
-		var/name_mod = "[A.name] ([dir2text(get_dir_advanced(caller,T))], [get_dist_advanced(src,T)]m)"
+		var/name_mod = "[A.name] ([dir2text(get_dir_advanced(activator,T))], [get_dist_advanced(src,T)]m)"
 		possible_landmarks[name_mod] = T
 
 	if(!length(possible_landmarks))
-		caller.to_chat(span("warning","Can't find anything to track!"))
+		activator.to_chat(span("warning","Can't find anything to track!"))
 		return TRUE
 
 	scan_mode = TRUE
@@ -305,7 +305,7 @@
 
 	value = 20
 
-/obj/item/pinpointer/objective/click_self(var/mob/caller,location,control,params)
+/obj/item/pinpointer/objective/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -320,11 +320,11 @@
 			var/atom/A = k
 			if(!can_track(A))
 				continue
-			var/name_mod = "[A.name] ([dir2text(get_dir_advanced(caller,A))], [get_dist_advanced(src,A)]m)"
+			var/name_mod = "[A.name] ([dir2text(get_dir_advanced(activator,A))], [get_dist_advanced(src,A)]m)"
 			possible_artifacts[name_mod] = A
 
 	if(!length(possible_artifacts))
-		caller.to_chat(span("warning","Can't find anything to track!"))
+		activator.to_chat(span("warning","Can't find anything to track!"))
 		return TRUE
 
 	scan_mode = TRUE
@@ -353,7 +353,7 @@
 
 	value = 100
 
-/obj/item/pinpointer/boss/click_self(var/mob/caller,location,control,params)
+/obj/item/pinpointer/boss/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -368,11 +368,11 @@
 			continue
 		if(A.health.health_current < 0)
 			continue
-		var/name_mod = "[A.name] ([dir2text(get_dir_advanced(caller,A))], [get_dist_advanced(src,A)]m)"
+		var/name_mod = "[A.name] ([dir2text(get_dir_advanced(activator,A))], [get_dist_advanced(src,A)]m)"
 		possible_bosses[name_mod] = A
 
 	if(!length(possible_bosses))
-		caller.to_chat(span("warning","Can't find anything to track!"))
+		activator.to_chat(span("warning","Can't find anything to track!"))
 		return TRUE
 
 	scan_mode = TRUE
@@ -404,7 +404,7 @@
 	unreliable = TRUE
 	can_save = FALSE
 
-/obj/item/pinpointer/deathmatch/click_self(var/mob/caller,location,control,params)
+/obj/item/pinpointer/deathmatch/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -412,7 +412,7 @@
 	var/list/possible_crew = list()
 
 	if(!enable_friendly_fire)
-		caller.to_chat(span("notice","This doesn't seem to be working for some reason..."))
+		activator.to_chat(span("notice","This doesn't seem to be working for some reason..."))
 		return FALSE
 
 	for(var/mob/living/advanced/player/P in SSliving.all_players)
@@ -455,7 +455,7 @@
 
 	rarity = RARITY_MYTHICAL
 
-/obj/item/pinpointer/mobs/click_self(var/mob/caller, var/mob/living/advanced/npc/a, var/mob/living/simple/a)
+/obj/item/pinpointer/mobs/click_self(var/mob/activator, var/mob/living/advanced/npc/a, var/mob/living/simple/a)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 

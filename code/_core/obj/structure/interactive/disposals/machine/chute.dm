@@ -43,7 +43,7 @@
 		O.Move(src)
 	return ..()
 
-/obj/structure/interactive/disposals/machine/chute/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/disposals/machine/chute/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_item(object))
 		INTERACT_CHECK
@@ -55,9 +55,9 @@
 
 	return ..()
 
-/obj/structure/interactive/disposals/machine/chute/drop_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/disposals/machine/chute/drop_on_object(var/mob/activator,var/atom/object,location,control,params)
 	//Todo, interact delay.
-	if(ismob(object) && caller == object)
+	if(ismob(object) && activator == object)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)

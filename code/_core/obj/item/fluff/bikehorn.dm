@@ -12,7 +12,7 @@
 
 	weight = 0.25
 
-/obj/item/bikehorn/click_self(var/mob/caller,location,control,params)
+/obj/item/bikehorn/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(20)
@@ -21,7 +21,7 @@
 
 	play_sound('sound/items/bikehorn.ogg',T)
 
-	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
+	create_alert(VIEW_RANGE,T,activator,ALERT_LEVEL_NOISE)
 
 	return TRUE
 
@@ -32,12 +32,12 @@
 	rarity = RARITY_RARE
 	value_burgerbux = 5
 
-/obj/item/bikehorn/magic/click_self(var/mob/caller,location,control,params)
+/obj/item/bikehorn/magic/click_self(var/mob/activator,location,control,params)
 
 	. = ..()
 
 	if(.)
-		for(var/mob/living/L in viewers(VIEW_RANGE,caller))
+		for(var/mob/living/L in viewers(VIEW_RANGE,activator))
 			if(L.dead)
 				continue
 			L.do_emote("spin")

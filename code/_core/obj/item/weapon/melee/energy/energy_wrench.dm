@@ -14,7 +14,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/weapon/melee/energy/energy_wrench/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/energy/energy_wrench/click_self(var/mob/activator,location,control,params)
 
 	. = ..()
 
@@ -25,7 +25,7 @@
 		else
 			play_sound('sound/weapons/melee/esword/energy_off.ogg',get_turf(src),range_max=VIEW_RANGE)
 // cant use both the sounds and the wrench flag code
-//obj/item/weapon/melee/energy/energy_wrench/click_self(var/mob/caller,location,control,params)
+//obj/item/weapon/melee/energy/energy_wrench/click_self(var/mob/activator,location,control,params)
 //
 //	INTERACT_CHECK
 //	INTERACT_DELAY(1)

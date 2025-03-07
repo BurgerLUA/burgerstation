@@ -25,18 +25,18 @@
 
 	screen_loc = "CENTER+1,CENTER-1"
 
-/obj/hud/button/exchange/sell/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/exchange/sell/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 	. = ..()
 
-	if(is_player(caller))
-		var/mob/living/advanced/player/A = caller
+	if(is_player(activator))
+		var/mob/living/advanced/player/A = activator
 		var/obj/hud/button/exchange/base/B = locate() in A.buttons
 		if(B)
 			var/obj/item/I = B.stored_object
 			if(I && !I.qdeleting && get_dist(I,A) <= 1)
 				B.calculate_value()
 				if(B.stored_value <= 0)
-					caller.to_chat(span("warning","\The [I.name] cannot be sold!"))
+					activator.to_chat(span("warning","\The [I.name] cannot be sold!"))
 				else
 					if(istype(B.stored_object,/obj/item/currency/gold_coin))
 						var/currency_added = A.adjust_currency(B.stored_value)
@@ -69,12 +69,12 @@
 
 	screen_loc = "CENTER+3,CENTER"
 
-/obj/hud/button/exchange/close/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/exchange/close/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		A.remove_sell_buttons()
 
 /obj/hud/button/exchange/base
@@ -97,7 +97,7 @@
 	set_stored_object(null)
 	. = ..()
 
-/obj/hud/button/exchange/base/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/exchange/base/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(stored_object)
 		set_stored_object(null)
@@ -111,7 +111,7 @@
 
 	. = ..()
 
-/obj/hud/button/exchange/base/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/exchange/base/dropped_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	DEFER_OBJECT
 

@@ -28,7 +28,7 @@
 	GENERATE(stored_keypad)
 	FINALIZE(stored_keypad)
 
-/obj/structure/interactive/door/vault/syndicate/defer_click_on_object(var/mob/caller,location,control,params)
+/obj/structure/interactive/door/vault/syndicate/defer_click_on_object(var/mob/activator,location,control,params)
 
 	if(stored_keypad)
 		return stored_keypad
@@ -40,18 +40,18 @@
 	SSobj.all_vault_doors += src
 
 
-/obj/structure/interactive/door/vault/syndicate/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/structure/interactive/door/vault/syndicate/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(door_state == DOOR_STATE_BROKEN)
 		return FALSE
 
 	if(door_state == DOOR_STATE_CLOSED)
 		if(locked)
-			unlock(caller)
-			open(caller)
+			unlock(activator)
+			open(activator)
 		else
-			lock(caller)
+			lock(activator)
 	else if(door_state == DOOR_STATE_OPENED)
-		close(caller,TRUE)
+		close(activator,TRUE)
 
 	return TRUE

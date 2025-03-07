@@ -83,7 +83,7 @@
 	. = ..()
 	. += 1000
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/handle_ammo(var/mob/activator)
 
 	var/old_stored_magazine = stored_magazine ? TRUE : FALSE
 	var/old_desired_ammo_count = stored_magazine ? CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*5, 1) : 0
@@ -105,7 +105,7 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damagetype/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
+/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/shoot_projectile(var/atom/activator,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damagetype/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
 
 	. = ..()
 
@@ -113,7 +113,7 @@
 		for(var/k in .)
 			var/obj/projectile/P = k
 			if(P.reagents)
-				stored_magazine.reagents.transfer_reagents_to(P.reagents,reagent_per_shot, caller = caller)
+				stored_magazine.reagents.transfer_reagents_to(P.reagents,reagent_per_shot, activator = activator)
 				if(P.reagents && P.reagents.volume_current > 0 && !P.reagents.contains_lethal) //I love race conditions!
 					P.hostile = FALSE
 					P.damage_type = null

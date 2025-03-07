@@ -77,12 +77,12 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 
 	chargen_flags = CHARGEN_HAIR
 
-/obj/hud/button/chargen/change_hairstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/change_hairstyle/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		var/species/S = SPECIES(A.species)
 		var/desired_hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(SSspecies.all_hair_files[S.default_icon_hair]))
 		A.handle_hairstyle_chargen(desired_hair_num)
@@ -125,10 +125,10 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 			add_overlay(I_head)
 			add_overlay(I_hair)
 
-/obj/hud/button/chargen/hairstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/hairstyle/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 	. = ..()
-	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		A.handle_hairstyle_chargen(hair_num)
 
 	return TRUE
@@ -139,12 +139,12 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	icon_state = "square_round"
 	screen_loc = "CENTER,CENTER+4"
 
-/obj/hud/button/chargen/hairstyle/main/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/hairstyle/main/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		var/desired_color = input("Hair Color","Hair Color",hair_color) as color|null
 		if(desired_color)
 			A.handle_hairstyle_chargen(hair_num,desired_color)

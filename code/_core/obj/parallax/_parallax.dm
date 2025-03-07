@@ -41,14 +41,14 @@
 
 	. = ..()
 
-/obj/parallax/defer_click_on_object(var/mob/caller,location,control,params)
+/obj/parallax/defer_click_on_object(var/mob/activator,location,control,params)
 
 	if(owner && params && length(params) && params["screen-loc"])
 		var/turf/T = get_turf(owner)
 		if(T)
 			var/list/screen_loc = parse_screen_loc(params["screen-loc"])
-			var/x_c = FLOOR(T.x + (screen_loc[1]/TILE_SIZE) - caller?.client?.view,1)
-			var/y_c = FLOOR(T.y + (screen_loc[2]/TILE_SIZE) - caller?.client?.view,1)
+			var/x_c = FLOOR(T.x + (screen_loc[1]/TILE_SIZE) - activator?.client?.view,1)
+			var/y_c = FLOOR(T.y + (screen_loc[2]/TILE_SIZE) - activator?.client?.view,1)
 			var/z_c = FLOOR(T.z,1)
 			var/turf/T2 = locate(x_c,y_c,z_c)
 			if(T2) return T2

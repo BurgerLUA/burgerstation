@@ -20,12 +20,12 @@ mob/living/advanced/proc/handle_detail_chargen(var/desired_color,var/update_blen
 
 	chargen_flags = CHARGEN_DETAIL
 
-/obj/hud/button/chargen/detail/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/detail/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		var/desired_color = input("Detail Color","Detail Color",detail_color) as color|null
 		if(desired_color)
 			A.handle_detail_chargen(desired_color)

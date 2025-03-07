@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(ai)
 
 	var/list/ai_attacking_players = list() //Assoc list. key is AI, value is list of players
 
-/subsystem/ai/unclog(var/mob/caller)
+/subsystem/ai/unclog(var/mob/activator)
 
 	for(var/z in active_ai_by_z)
 		for(var/k in active_ai_by_z[z])

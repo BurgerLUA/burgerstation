@@ -25,32 +25,32 @@
 
 	value_burgerbux = 1
 
-/obj/item/clothing/head/helmet/full/blob_spore/can_be_dragged(var/mob/caller)
+/obj/item/clothing/head/helmet/full/blob_spore/can_be_dragged(var/mob/activator)
 	return FALSE
 
-/obj/item/clothing/head/helmet/full/blob_spore/proc/can_remove_blob(var/mob/caller)
+/obj/item/clothing/head/helmet/full/blob_spore/proc/can_remove_blob(var/mob/activator)
 	INTERACT_CHECK_NO_DELAY(src)
 	return TRUE
 
-/obj/item/clothing/head/helmet/full/blob_spore/proc/remove_blob(var/mob/caller,var/messsage=TRUE)
-	if(messsage && caller) caller.visible_message(span("notice","\The [caller.name] successfully removes \the [src.name]!"),span("notice","You sucessfully remove \the [src.name]!"))
-	var/turf/T = get_turf(caller ? caller : src)
+/obj/item/clothing/head/helmet/full/blob_spore/proc/remove_blob(var/mob/activator,var/messsage=TRUE)
+	if(messsage && activator) activator.visible_message(span("notice","\The [activator.name] successfully removes \the [src.name]!"),span("notice","You sucessfully remove \the [src.name]!"))
+	var/turf/T = get_turf(activator ? activator : src)
 	if(T)
 		var/mob/living/simple/blob_spore/BS = new(T)
 		INITIALIZE(BS)
 		GENERATE(BS)
 		FINALIZE(BS)
-		if(caller)
-			BS.ai.set_objective(caller)
+		if(activator)
+			BS.ai.set_objective(activator)
 		else
 			BS.ai.set_active(TRUE)
 		BS.add_status_effect(STUN,40,40,stealthy=TRUE) //So it doesn't latch immediately after being removed.
 	qdel(src)
 	return TRUE
 
-/obj/item/clothing/head/helmet/full/blob_spore/click_self(var/mob/caller,location,control,params)
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),src::remove_blob(),caller)
-	PROGRESS_BAR_CONDITIONS(caller,src,src::can_remove_blob(),caller)
+/obj/item/clothing/head/helmet/full/blob_spore/click_self(var/mob/activator,location,control,params)
+	PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(1),src::remove_blob(),activator)
+	PROGRESS_BAR_CONDITIONS(activator,src,src::can_remove_blob(),activator)
 	return TRUE
 
 /obj/item/clothing/head/helmet/full/blob_spore/think()

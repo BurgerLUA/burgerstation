@@ -25,13 +25,13 @@
 
 
 
-/obj/structure/interactive/ability_machine/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/ability_machine/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(caller.ckey && is_advanced(caller) && is_inventory(object))
+	if(activator.ckey && is_advanced(activator) && is_inventory(object))
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
 		SPAM_CHECK(10)
-		show_ability_choices(caller,src)
+		show_ability_choices(activator,src)
 		return TRUE
 
 	. = ..()

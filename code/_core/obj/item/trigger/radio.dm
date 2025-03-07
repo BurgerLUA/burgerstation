@@ -45,11 +45,11 @@
 	LOADVAR("frequency")
 	LOADLIST("listening_frequencies")
 
-/obj/item/device/radio/click_self(var/mob/caller,location,control,params)
+/obj/item/device/radio/click_self(var/mob/activator,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
-	if(caller.attack_flags & CONTROL_MOD_GRAB)
+	if(activator.attack_flags & CONTROL_MOD_GRAB)
 
 		var/list/possible_settings = list()
 
@@ -70,16 +70,16 @@
 				return TRUE
 			desired_frequency = text2num(desired_frequency)
 			if(!desired_frequency || desired_frequency <= 0)
-				caller.to_chat(span("warning","Invalid frequency!"))
+				activator.to_chat(span("warning","Invalid frequency!"))
 				return TRUE
 			if(MODULUS(desired_frequency,1)) //Entered a correct frequency, however it needs to be multiplied to fit the current system.
 				desired_frequency *= 10
 			desired_frequency = round(desired_frequency,2) + 1
 			if(desired_frequency > frequency_max)
-				caller.to_chat(span("warning","Input frequency ([desired_frequency]) is too high for this radio's maximum frequency ([frequency_max])!"))
+				activator.to_chat(span("warning","Input frequency ([desired_frequency]) is too high for this radio's maximum frequency ([frequency_max])!"))
 				return TRUE
 			if(desired_frequency < frequency_min)
-				caller.to_chat(span("warning","Input frequency ([desired_frequency]) is too low for this radio's minimum frequency ([frequency_min])!"))
+				activator.to_chat(span("warning","Input frequency ([desired_frequency]) is too low for this radio's minimum frequency ([frequency_min])!"))
 				return TRUE
 
 		else if(chosen_setting == "Cancel")
@@ -87,20 +87,20 @@
 		else
 			//We have an existing number. Toggle it.
 			listening_frequencies[chosen_setting[chosen_setting]] = !listening_frequencies[chosen_setting[chosen_setting]]
-			caller.to_chat(span("notice","The frequency [chosen_setting[chosen_setting]]([frequency_to_name(chosen_setting[chosen_setting])]) was [listening_frequencies[chosen_setting[chosen_setting]] ? "added to" : "removed from"] \the [src.name]'s listening frequencies."))
+			activator.to_chat(span("notice","The frequency [chosen_setting[chosen_setting]]([frequency_to_name(chosen_setting[chosen_setting])]) was [listening_frequencies[chosen_setting[chosen_setting]] ? "added to" : "removed from"] \the [src.name]'s listening frequencies."))
 		return TRUE
 
-	if(caller.attack_flags & CONTROL_MOD_DISARM)
+	if(activator.attack_flags & CONTROL_MOD_DISARM)
 		broadcasting = !broadcasting
-		caller.to_chat(span("notice","You toggle the microphone to <b>[broadcasting ? "always broadcast." : "only broadcast when pressed."]</b>"))
+		activator.to_chat(span("notice","You toggle the microphone to <b>[broadcasting ? "always broadcast." : "only broadcast when pressed."]</b>"))
 		return TRUE
 
 
 	receiving = !receiving
-	caller.to_chat(span("notice","You toggle the signal reciever <b>[receiving ? "on" : "off"]</b>."))
+	activator.to_chat(span("notice","You toggle the signal reciever <b>[receiving ? "on" : "off"]</b>."))
 	return TRUE
 
-/obj/item/device/radio/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/device/radio/mouse_wheel_on_object(var/mob/activator,delta_x,delta_y,location,control,params)
 
 	INTERACT_CHECK
 
@@ -120,11 +120,11 @@
 	var/freq = frequency_string ? " (<b>[frequency_string]</b>)" : ""
 
 	if(old_frequency == frequency)
-		caller.to_chat(span("warning","The frequency can't seem to go any [frequency == frequency_min ? "lower" : "higher"]!"))
+		activator.to_chat(span("warning","The frequency can't seem to go any [frequency == frequency_min ? "lower" : "higher"]!"))
 	else if(spam_fix_time <= world.time)
-		caller.to_chat(span("notice","You change \the [src.name]'s frequency to [frequency*0.1] kHz[freq]..."))
+		activator.to_chat(span("notice","You change \the [src.name]'s frequency to [frequency*0.1] kHz[freq]..."))
 	else
-		caller.to_chat(span("notice","...[frequency*0.1] kHz[freq]..."))
+		activator.to_chat(span("notice","...[frequency*0.1] kHz[freq]..."))
 
 	spam_fix_time = world.time + 20
 
@@ -150,17 +150,17 @@ list(
 )
 */
 
-/obj/item/device/radio/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/device/radio/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(signal_freq == -1) //Sent
 		for(var/k in SSradio.all_radios)
 			var/obj/item/device/radio/S = k
 			if(S == src)
 				continue
-			S.trigger(caller,src,frequency,signal_code)
+			S.trigger(activator,src,frequency,signal_code)
 	else //Recieved
 		if(loc && signal_freq == frequency)
-			loc.trigger(caller,src,signal_freq,signal_code)
+			loc.trigger(activator,src,signal_freq,signal_code)
 			return TRUE
 
 /obj/item/device/radio/on_listen(var/atom/speaker,var/datum/source,var/text,var/raw_text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)

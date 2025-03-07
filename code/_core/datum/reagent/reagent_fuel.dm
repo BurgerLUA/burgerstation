@@ -61,7 +61,7 @@
 
 	var/turf/T = get_turf(container.owner)
 
-	var/volume_amount = -container.add_reagent(src.type,-container.volume_current,caller = owner) //Can't be bothered to get the exact amount needed to be removed as it is handled in the proc anyways.
+	var/volume_amount = -container.add_reagent(src.type,-container.volume_current,activator = owner) //Can't be bothered to get the exact amount needed to be removed as it is handled in the proc anyways.
 
 	if(flash_strength_per_unit > 0)
 		var/flash_range = min(VIEW_RANGE*2,volume_amount*flash_strength_per_unit)

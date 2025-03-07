@@ -66,16 +66,16 @@ obj/structure/interactive/computer/console/old/cargo/
 	desc = "At least it works."
 	desc_extended = "An old computer meant to handle cargo orders."
 
-obj/structure/interactive/computer/console/old/cargo/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+obj/structure/interactive/computer/console/old/cargo/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(!is_player(caller) || !caller.client)
+	if(!is_player(activator) || !activator.client)
 		return ..()
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
-	var/mob/living/advanced/player/P = caller
+	var/mob/living/advanced/player/P = activator
 
 	P.dialogue_target = src
 	P.dialogue_target_id = /dialogue/npc/cargo_computer/

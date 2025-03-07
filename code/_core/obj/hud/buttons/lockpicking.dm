@@ -67,7 +67,7 @@
 		linked_wedge.mouse_opacity = 0
 		vis_contents += linked_wedge
 
-/obj/hud/button/lockpicking/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/lockpicking/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 	return TRUE
 
 /obj/hud/button/lockpicking/MouseDown(location,control,params)

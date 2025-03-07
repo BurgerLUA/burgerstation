@@ -22,7 +22,7 @@
 
 	var/turf/simulated/liquid/fishing_turf
 
-	var/mob/last_caller
+	var/mob/last_activator
 
 	var/snagged_fish
 	var/catch_time
@@ -49,7 +49,7 @@
 /obj/item/fishing/rod/Destroy()
 	. = ..()
 	fishing_turf = null
-	last_caller = null
+	last_activator = null
 
 
 
@@ -79,7 +79,7 @@
 		I.color = L.color
 		add_overlay(I)
 
-/obj/item/fishing/rod/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/fishing/rod/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(fishing_turf) //Don't do anything while fishing.
 		return ..()
@@ -87,7 +87,7 @@
 
 
 	if(is_inventory(object))
-		var/mob/living/advanced/C = caller
+		var/mob/living/advanced/C = activator
 		var/obj/item/object_removed
 		if(bait)
 			object_removed = bait
@@ -100,9 +100,9 @@
 			line = null
 			update_sprite()
 		if(!object_removed)
-			caller.to_chat(span("notice","There is nothing to remove from \the [src.name]."))
+			activator.to_chat(span("notice","There is nothing to remove from \the [src.name]."))
 			return TRUE
-		caller.to_chat(span("notice","You remove \the [object_removed.name]."))
+		activator.to_chat(span("notice","You remove \the [object_removed.name]."))
 		object_removed.drop_item(get_turf(src))
 		C.put_in_hands(object_removed,params)
 		return TRUE
@@ -111,11 +111,11 @@
 		if(istype(object,/obj/item/fishing/line/))
 			var/obj/item/fishing/line/P = object
 			if(line)
-				caller.to_chat(span("notice","You swap out \the [line.name] for \the [P.name]."))
-				line.drop_item(get_turf(caller))
+				activator.to_chat(span("notice","You swap out \the [line.name] for \the [P.name]."))
+				line.drop_item(get_turf(activator))
 				line = null
 			else
-				caller.to_chat(span("notice","You insert \the [P.name] into \the [src.name]."))
+				activator.to_chat(span("notice","You insert \the [P.name] into \the [src.name]."))
 
 			line = P
 			P.drop_item(src)
@@ -125,11 +125,11 @@
 		if(istype(object,/obj/item/fishing/lure/))
 			var/obj/item/fishing/lure/P = object
 			if(lure)
-				caller.to_chat(span("notice","You swap out \the [lure.name] for \the [P.name]."))
-				lure.drop_item(get_turf(caller))
+				activator.to_chat(span("notice","You swap out \the [lure.name] for \the [P.name]."))
+				lure.drop_item(get_turf(activator))
 				lure = null
 			else
-				caller.to_chat(span("notice","You insert \the [P.name] onto \the [src.name]."))
+				activator.to_chat(span("notice","You insert \the [P.name] onto \the [src.name]."))
 
 			lure = P
 			P.drop_item(src)
@@ -138,11 +138,11 @@
 		if(istype(object,/obj/item/fishing/bait/))
 			var/obj/item/fishing/bait/P = object
 			if(bait)
-				caller.to_chat(span("notice","You swap out \the [bait.name] for \the [P.name]."))
-				bait.drop_item(get_turf(caller))
+				activator.to_chat(span("notice","You swap out \the [bait.name] for \the [P.name]."))
+				bait.drop_item(get_turf(activator))
 				bait = null
 			else
-				caller.to_chat(span("notice","You attach \the [P.name] to \the [src.name]."))
+				activator.to_chat(span("notice","You attach \the [P.name] to \the [src.name]."))
 
 			bait = P
 			P.drop_item(src)
@@ -159,7 +159,7 @@
 			if(!is_inventory(src.loc) || time_since_snag >= snagged_fish) //Too slow...
 				snagged_fish = null
 				if(line.break_on_failure > 0 && rand(0,100) <= line.break_on_failure) //Bad line.
-					last_caller?.to_chat(span("danger","Too slow... your [line.name] snaps, and you lose your [bait.name] and [lure.name]!"))
+					last_activator?.to_chat(span("danger","Too slow... your [line.name] snaps, and you lose your [bait.name] and [lure.name]!"))
 					QDEL_NULL(line)
 					QDEL_NULL(bait)
 					QDEL_NULL(lure)
@@ -170,7 +170,7 @@
 					return FALSE
 
 				if(!bait.nice_bait) //Fish stole your bait!
-					last_caller?.to_chat(span("warning","Too slow... the fish steals your [bait.name]!"))
+					last_activator?.to_chat(span("warning","Too slow... the fish steals your [bait.name]!"))
 					snagged_fish = null
 					fishing_turf = null
 					QDEL_NULL(fishing_bob)
@@ -180,13 +180,13 @@
 						bait = null
 					return FALSE
 
-				last_caller?.to_chat(span("warning","Too slow... the fish got away..."))
+				last_activator?.to_chat(span("warning","Too slow... the fish got away..."))
 				snagged_fish = null
 
 		else if(fishing_turf)
 			if(!is_inventory(src.loc))
 				fishing_turf = null
-				last_caller = null
+				last_activator = null
 				QDEL_NULL(fishing_bob)
 			else if(prob(5 + lure.chance_bonus) && nospam <= world.time)
 				fishing_alert = new(fishing_turf)
@@ -201,7 +201,7 @@
 	return ..()
 
 
-/obj/item/fishing/rod/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/fishing/rod/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 
 	INTERACT_CHECK
@@ -211,7 +211,7 @@
 
 	if(fishing_turf)
 		if(snagged_fish) //Caught something!
-			var/mob/living/C = caller
+			var/mob/living/C = activator
 			var/turf/T = get_step(C,C.dir)
 			if(!is_floor(T))
 				T = get_turf(C)
@@ -221,8 +221,8 @@
 
 			var/list/spawned_loot = SPAWN_LOOT(fishing_turf.fishing_rewards,T,score_total)
 
-			caller.visible_message(
-				span("notice","\The [caller.name] reels their [src.name] in!"),
+			activator.visible_message(
+				span("notice","\The [activator.name] reels their [src.name] in!"),
 				span("notice","You reel your [src.name] in!")
 			)
 
@@ -231,9 +231,9 @@
 				for(var/k in spawned_loot)
 					var/atom/movable/M = k
 					object_names += M.name
-				caller.to_chat(span("notice","You caught [english_list(spawned_loot)]!"))
+				activator.to_chat(span("notice","You caught [english_list(spawned_loot)]!"))
 			else
-				caller.to_chat(span("notice","You fail to catch anything. At least your bait is saved..."))
+				activator.to_chat(span("notice","You fail to catch anything. At least your bait is saved..."))
 
 			STOP_THINKING(src)
 			fishing_turf = null
@@ -247,31 +247,31 @@
 			fishing_turf = null
 			nospam = null
 			QDEL_NULL(fishing_bob)
-			caller.visible_message(span("notice","\The [caller] reels their [src.name] in."),span("notice","You reel your [src.name] in."))
+			activator.visible_message(span("notice","\The [activator] reels their [src.name] in."),span("notice","You reel your [src.name] in."))
 			return TRUE
 
 	if(istype(object,/turf/simulated/liquid/))
 		if(compact)
-			caller.to_chat(span("notice","Extend your fishing rod first!"))
+			activator.to_chat(span("notice","Extend your fishing rod first!"))
 			return TRUE
 		var/turf/simulated/liquid/H = object
 		if(!H.fishing_rewards)
-			caller.to_chat(span("warning","There seems to be no fish here..."))
+			activator.to_chat(span("warning","There seems to be no fish here..."))
 			return TRUE
 		if(!line || !lure || !bait)
-			caller.to_chat(span("warning","You need a line, a lure, and bait to use \the [src.name]!"))
+			activator.to_chat(span("warning","You need a line, a lure, and bait to use \the [src.name]!"))
 			return TRUE
 		if(H.fishing_rewards != bait.valid_loot_type)
-			caller.to_chat(span("warning","This doesn't seem to be the right bait..."))
+			activator.to_chat(span("warning","This doesn't seem to be the right bait..."))
 			return TRUE
 		if(!line.lavaproof && istype(object,/turf/simulated/liquid/lava))
-			caller.to_chat(span("warning","You need a lavaproof fishing line in order to fish in lava!"))
+			activator.to_chat(span("warning","You need a lavaproof fishing line in order to fish in lava!"))
 			return TRUE
 		INTERACT_CHECK
 		INTERACT_DELAY(5)
 		fishing_turf = H
-		last_caller = caller
-		caller.visible_message(span("notice","\The [caller] casts their [src.name] into \the [fishing_turf.name]."),span("notice","You cast your [src.name] into \the [fishing_turf.name]."))
+		last_activator = activator
+		activator.visible_message(span("notice","\The [activator] casts their [src.name] into \the [fishing_turf.name]."),span("notice","You cast your [src.name] into \the [fishing_turf.name]."))
 		fishing_bob = new(fishing_turf)
 		fishing_bob.icon_state = "[lure.bob_icon_state]_out"
 		animate(fishing_bob,pixel_x=rand(-10,10),pixel_y=rand(-10,10),time=50)
@@ -281,7 +281,7 @@
 
 	return ..()
 
-/obj/item/fishing/rod/get_examine_list(var/mob/living/advanced/caller)
+/obj/item/fishing/rod/get_examine_list(var/mob/living/advanced/activator)
 
 	. = ..()
 
@@ -303,7 +303,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/fishing/rod/telescopic/click_self(var/mob/caller,location,control,params)
+/obj/item/fishing/rod/telescopic/click_self(var/mob/activator,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
 	if(fishing_turf)

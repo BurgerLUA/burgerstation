@@ -95,19 +95,19 @@
 	. = ..()
 
 //prototyped from defib paddles
-/obj/item/browning_handle/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/browning_handle/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_inventory(object))
 		return ..()
 
-	if(caller.is_busy())
+	if(activator.is_busy())
 		return TRUE
 
 	if(!linked_gun)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		caller.to_chat(span("danger","Unlinked handle error detected. Report at #bug-reports on Discord on how you encountered this bug."))
+		activator.to_chat(span("danger","Unlinked handle error detected. Report at #bug-reports on Discord on how you encountered this bug."))
 		drop_item(get_turf(src))
 		return TRUE
 
@@ -119,10 +119,10 @@
 
 	//shoot gun
 	else if(wielded)
-		if(angle2dir_cardinal(get_angle(caller,object))==linked_gun.dir)
-			linked_gun.stored_weapon.shoot(caller,object,location,params,damage_multiplier=1)
+		if(angle2dir_cardinal(get_angle(activator,object))==linked_gun.dir)
+			linked_gun.stored_weapon.shoot(activator,object,location,params,damage_multiplier=1)
 		else
-			caller.to_chat(span("warning","You can't turn the gun that far!"))
+			activator.to_chat(span("warning","You can't turn the gun that far!"))
 
 	return ..()
 
@@ -169,7 +169,7 @@
 	return TRUE
 
 //pack 'em up, from turret
-/obj/structure/interactive/mountable/browning/proc/can_pack_up(var/mob/caller)
+/obj/structure/interactive/mountable/browning/proc/can_pack_up(var/mob/activator)
 
 	if(qdeleting)
 		return FALSE
@@ -177,16 +177,16 @@
 	INTERACT_CHECK_NO_DELAY(src)
 
 	if(!src.z)
-		caller.to_chat(span("warning","You can't pack up \the [src.name] here!"))
+		activator.to_chat(span("warning","You can't pack up \the [src.name] here!"))
 		return FALSE
 
 	return TRUE
 
-/obj/structure/interactive/mountable/browning/proc/pack_up(var/mob/caller)
+/obj/structure/interactive/mountable/browning/proc/pack_up(var/mob/activator)
 
-	caller.visible_message(span("warning","\The [caller.name] packs up \the [src.name]."),span("notice","You pack up \the [src.name]."))
+	activator.visible_message(span("warning","\The [activator.name] packs up \the [src.name]."),span("notice","You pack up \the [src.name]."))
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 	var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
 	var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
 
@@ -207,19 +207,19 @@
 
 	return TRUE
 
-/obj/structure/interactive/mountable/browning/drop_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/mountable/browning/drop_on_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(caller != object)
+	if(activator != object)
 		return ..()
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(10)
 
-	if(can_pack_up(caller))
-		caller.visible_message(span("warning","\The [caller.name] starts to pack up \the [src.name]..."),span("notice","You start to pack up \the [src.name]..."))
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::pack_up(),caller)
-		PROGRESS_BAR_CONDITIONS(caller,src,src::can_pack_up(),caller)
+	if(can_pack_up(activator))
+		activator.visible_message(span("warning","\The [activator.name] starts to pack up \the [src.name]..."),span("notice","You start to pack up \the [src.name]..."))
+		PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(5),src::pack_up(),activator)
+		PROGRESS_BAR_CONDITIONS(activator,src,src::can_pack_up(),activator)
 
 	return TRUE
 
@@ -232,7 +232,7 @@
 		. += div("warning","It is missing a magazine.")
 
 //clickies by player on the gun
-/obj/structure/interactive/mountable/browning/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/mountable/browning/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 	if(istype(object,/obj/item/magazine/))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
@@ -242,16 +242,16 @@
 		var/obj/item/weapon/ranged/bullet/magazine/W = stored_weapon
 
 		if(!M.weapon_whitelist[W.type])
-			caller.to_chat(span("warning","This turret doesn't accept this type of magazine!"))
+			activator.to_chat(span("warning","This turret doesn't accept this type of magazine!"))
 			return FALSE
 
 		if(stored_magazine)
-			caller.to_chat(span("notice","You swap out the magazine of \the [src.name]."))
+			activator.to_chat(span("notice","You swap out the magazine of \the [src.name]."))
 			stored_magazine.update_icon()
 			stored_magazine.drop_item(get_turf(src))
 			stored_magazine = null
 		else
-			caller.to_chat(span("notice","You insert a new magazine into \the [src.name]."))
+			activator.to_chat(span("notice","You insert a new magazine into \the [src.name]."))
 
 		M.drop_item(src)
 		stored_magazine = M
@@ -270,11 +270,11 @@
 
 		return TRUE
 
-	if(caller.attack_flags & CONTROL_MOD_DISARM && is_inventory(object) && is_advanced(caller) && (get_dist(caller,src)<1))
+	if(activator.attack_flags & CONTROL_MOD_DISARM && is_inventory(object) && is_advanced(activator) && (get_dist(activator,src)<1))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
-		caller.visible_message(span("notice","\The [caller.name] grabs hold of the handles..."),span("notice","You grab the handles..."))
+		activator.visible_message(span("notice","\The [activator.name] grabs hold of the handles..."),span("notice","You grab the handles..."))
 		var/obj/hud/inventory/I = object
 		I.add_object(stored_handle)
 

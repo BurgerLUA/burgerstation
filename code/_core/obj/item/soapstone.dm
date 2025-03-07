@@ -48,26 +48,26 @@
 	I3.appearance_flags = src.appearance_flags
 	add_overlay(I3)
 
-/obj/item/soapstone/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/soapstone/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(10)
 
 	if(!is_floor(object))
-		caller.to_chat(span("warning","You can't write here, it's not a floor!"))
+		activator.to_chat(span("warning","You can't write here, it's not a floor!"))
 		return TRUE
 
 	var/turf/T = object
 
 	var/obj/structure/interactive/soapstone_message/existing_message = locate() in T //Copied from /tg/
 	if(existing_message)
-		caller.to_chat(span("warning","You can't write here, there is already a message!"))
+		activator.to_chat(span("warning","You can't write here, there is already a message!"))
 		return TRUE
 
 	var/input_text = input("What would you like the message to say?") as text|null
 
-	input_text = police_text(caller.client,input_text,check_characters=TRUE)
+	input_text = police_text(activator.client,input_text,check_characters=TRUE)
 
 	if(!input_text)
 		return TRUE
@@ -75,10 +75,10 @@
 	var/date = get_date()
 	var/time = get_time()
 
-	SSsoapstone.create_new_soapstone(T,get_dir(caller,object),color,caller.name,caller.ckey,input_text,date,time)
+	SSsoapstone.create_new_soapstone(T,get_dir(activator,object),color,activator.name,activator.ckey,input_text,date,time)
 
-	caller.visible_message(\
-		span("notice","\The [caller.name] writes a message with the soapstone on \the [T.name]."),\
+	activator.visible_message(\
+		span("notice","\The [activator.name] writes a message with the soapstone on \the [T.name]."),\
 		span("notice","The soapstone fades in your hand after you write down the last word on \the [T.name].")\
 	)
 

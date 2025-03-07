@@ -180,7 +180,7 @@
 			continue
 		total_base_penetration += penetration_value
 
-/damagetype/proc/get_examine_text(var/mob/caller)
+/damagetype/proc/get_examine_text(var/mob/activator)
 	/*
 	. = "<table>"
 	. += "<tr><th>Damage type</th><th>Damage value</th><th>Skill modifier</th></tr>"

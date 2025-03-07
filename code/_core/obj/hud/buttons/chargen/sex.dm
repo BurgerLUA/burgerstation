@@ -21,13 +21,13 @@
 	. = ..()
 
 
-/obj/hud/button/chargen/sex/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/sex/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
 
-	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		var/desired_sex = A.sex == MALE ? FEMALE : MALE
 		var/choice = input("Are you sure you want to change your sex to [desired_sex == MALE ? "male" : "female"]? Your appearance will reset to default.","Sex Change") in list("Yes","No")
 

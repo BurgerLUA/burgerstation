@@ -20,35 +20,35 @@
 	. = ..()
 	. += span("notice","ALT+Click this with an empty hand to pack up and retrieve.")
 
-/obj/structure/interactive/crate/bodybag/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/crate/bodybag/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 
-	if(caller.attack_flags & CONTROL_MOD_DISARM)
-		if(can_pack_up(caller))
-			caller.visible_message(span("warning","\The [caller.name] starts to pack up \the [src.name]..."),span("notice","You start to pack up \the [src.name]..."))
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::pack_up(),caller)
-			PROGRESS_BAR_CONDITIONS(caller,src,src::can_pack_up(),caller)
+	if(activator.attack_flags & CONTROL_MOD_DISARM)
+		if(can_pack_up(activator))
+			activator.visible_message(span("warning","\The [activator.name] starts to pack up \the [src.name]..."),span("notice","You start to pack up \the [src.name]..."))
+			PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(5),src::pack_up(),activator)
+			PROGRESS_BAR_CONDITIONS(activator,src,src::can_pack_up(),activator)
 		return TRUE
 
 	return ..()
 
 
-/obj/structure/interactive/crate/bodybag/proc/can_pack_up(var/mob/caller)
+/obj/structure/interactive/crate/bodybag/proc/can_pack_up(var/mob/activator)
     INTERACT_CHECK_NO_DELAY(src)
 
     if(length(src.contents))
-        caller.to_chat(span("warning","You can't pack up \the [src.name] while its full!"))
+        activator.to_chat(span("warning","You can't pack up \the [src.name] while its full!"))
         return FALSE
 
     if(qdeleting || !src.z)
-        caller.to_chat(span("warning","You can't pack up \the [src.name] here!"))
+        activator.to_chat(span("warning","You can't pack up \the [src.name] here!"))
         return FALSE
 
     return TRUE
 
-/obj/structure/interactive/crate/bodybag/proc/pack_up(var/mob/caller)
+/obj/structure/interactive/crate/bodybag/proc/pack_up(var/mob/activator)
 
-	caller.visible_message(span("warning","\The [caller.name] packs up \the [src.name]."),span("notice","You pack up \the [src.name]."))
+	activator.visible_message(span("warning","\The [activator.name] packs up \the [src.name]."),span("notice","You pack up \the [src.name]."))
 
 	var/obj/item/deployable/bodybag/S = new(get_turf(src))
 	INITIALIZE(S)
@@ -72,10 +72,10 @@
 
     size = SIZE_3
 
-/obj/item/deployable/bodybag/get_deploy_time(var/mob/caller)
+/obj/item/deployable/bodybag/get_deploy_time(var/mob/activator)
 	return SECONDS_TO_DECISECONDS(1)
 
-/obj/item/deployable/bodybag/can_deploy_to(var/mob/caller,var/turf/T)
+/obj/item/deployable/bodybag/can_deploy_to(var/mob/activator,var/turf/T)
 
     if(amount <= 0)
         qdel(src)

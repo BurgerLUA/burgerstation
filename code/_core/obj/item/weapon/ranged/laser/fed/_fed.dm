@@ -7,7 +7,7 @@
 	var/fed_item = null
 	var/feed_delay = 1
 
-/obj/item/weapon/ranged/energy/fed/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/energy/fed/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_item(object))
 		if(istype(object,fed_item))
@@ -15,11 +15,11 @@
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
 			battery.charge_current += charge_per_feed
-			caller.to_chat(span("notice","You've recharged \the [src.name]."))
+			activator.to_chat(span("notice","You've recharged \the [src.name]."))
 			qdel(object)
 			return
 		else
-			caller.to_chat(span("warning","You can't use this for refilling!"))
+			activator.to_chat(span("warning","You can't use this for refilling!"))
 			return FALSE
 
 	if(is_item(object))
@@ -29,9 +29,9 @@
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
 			if(battery)
-				caller.to_chat(span("warning","You are unable to pry out \the [battery.name]."))
+				activator.to_chat(span("warning","You are unable to pry out \the [battery.name]."))
 			else
-				caller.to_chat(span("warning","There is nothing to pry out of \the [src.name]!"))
+				activator.to_chat(span("warning","There is nothing to pry out of \the [src.name]!"))
 			return TRUE
 
 	. = ..()

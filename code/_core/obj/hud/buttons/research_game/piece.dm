@@ -144,7 +144,7 @@
 	return TRUE
 
 
-/obj/hud/button/research/piece/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/research/piece/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -171,7 +171,7 @@
 		desired_dir = -90
 	M.Turn(desired_dir)
 	animate(src,transform = M,time = 5, easing = ELASTIC_EASING)
-	play_sound_target('sound/ui/game/rotate_piece.ogg',caller, sound_setting = SOUND_SETTING_UI)
+	play_sound_target('sound/ui/game/rotate_piece.ogg',activator, sound_setting = SOUND_SETTING_UI)
 	sleep(3)
 	fake_dir += desired_dir
 	turning = FALSE
@@ -179,7 +179,7 @@
 
 	var/points = check_clear() ** 2
 	if(points)
-		play_sound_target('sound/ui/game/score_piece.ogg',caller, sound_setting = SOUND_SETTING_UI)
+		play_sound_target('sound/ui/game/score_piece.ogg',activator, sound_setting = SOUND_SETTING_UI)
 		for(var/i=1,i<=points,i++)
 			if(!length(linked_board.cleared_pieces))
 				break

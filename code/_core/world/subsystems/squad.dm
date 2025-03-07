@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(squad)
 
 	var/list/squad/all_squads = list()
 
-/subsystem/squad/unclog(var/mob/caller)
+/subsystem/squad/unclog(var/mob/activator)
 
 	for(var/k in all_squads)
 		var/squad/S = k

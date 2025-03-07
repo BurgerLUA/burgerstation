@@ -11,17 +11,17 @@
 	QDEL_NULL(stored_extinguisher)
 	. = ..()
 
-/obj/structure/interactive/fire_closet/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/fire_closet/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	//Putting the object back in is handled in the weapon itself.
 
-	if(is_inventory(object) && is_advanced(caller))
+	if(is_inventory(object) && is_advanced(activator))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		var/mob/living/advanced/A = caller
+		var/mob/living/advanced/A = activator
 		if(!stored_extinguisher)
-			caller.to_chat(span("warning","\The [src.name] is empty!"))
+			activator.to_chat(span("warning","\The [src.name] is empty!"))
 			return TRUE
 		A.put_in_hands(stored_extinguisher,params)
 		stored_extinguisher = null

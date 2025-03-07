@@ -27,17 +27,17 @@
 
 	value = 100
 
-/obj/item/storage/bags/botany/processor/click_self(var/mob/caller,location,control,params)
+/obj/item/storage/bags/botany/processor/click_self(var/mob/activator,location,control,params)
 
-	if(caller.attack_flags & CONTROL_MOD_DISARM)
+	if(activator.attack_flags & CONTROL_MOD_DISARM)
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
-		process_plants(caller)
+		process_plants(activator)
 		return TRUE
 
 	return ..()
 
-/obj/item/storage/bags/botany/processor/proc/process_plants(var/mob/caller)
+/obj/item/storage/bags/botany/processor/proc/process_plants(var/mob/activator)
 
 	var/process_count = 0
 
@@ -73,7 +73,7 @@
 			I.add_object(S,FALSE,TRUE,silent=TRUE) //We add the object to this item's inventory.
 			process_count++
 
-	caller.to_chat(span("notice","You process [process_count] plants to seeds."))
+	activator.to_chat(span("notice","You process [process_count] plants to seeds."))
 
 	return TRUE
 

@@ -21,7 +21,7 @@
 	var/image/I = new/image(initial(icon),initial(icon_state))
 	add_underlay(I)
 
-/obj/item/light_sensor/click_self(var/mob/caller,location,control,params)
+/obj/item/light_sensor/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -29,7 +29,7 @@
 
 	active = !active
 
-	caller.to_chat(span("notice","You turn \the [src.name] [active ? "on" : "off"]."))
+	activator.to_chat(span("notice","You turn \the [src.name] [active ? "on" : "off"]."))
 
 	play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE*0.25)
 

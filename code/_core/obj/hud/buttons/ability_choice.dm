@@ -120,13 +120,13 @@
 		color = initial(color)
 
 
-/obj/hud/button/ability_choice/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	caller.to_chat(span("notice","Click and drag to an ability slot at the top left to slot this ability."))
+/obj/hud/button/ability_choice/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
+	activator.to_chat(span("notice","Click and drag to an ability slot at the top left to slot this ability."))
 	return TRUE
 
 
 
-/obj/hud/button/ability_choice/proc/can_slot_ability(var/mob/caller,var/ability/ability_to_replace)
+/obj/hud/button/ability_choice/proc/can_slot_ability(var/mob/activator,var/ability/ability_to_replace)
 
 	if(!is_advanced(owner))
 		return FALSE
@@ -134,11 +134,11 @@
 	var/mob/living/advanced/A = owner
 
 	if(get_dist(linked_close.linked_machine,A) >= 2)
-		caller.to_chat(span("warning","You're too far away!"))
+		activator.to_chat(span("warning","You're too far away!"))
 		return FALSE
 
 	if(!unlocked)
-		caller.to_chat(span("warning","You have not unlocked this ability yet. Abilities can be unlocked by purchasing them in Science or by finding them in the mission area."))
+		activator.to_chat(span("warning","You have not unlocked this ability yet. Abilities can be unlocked by purchasing them in Science or by finding them in the mission area."))
 		return FALSE
 
 	var/src_ability_category = initial(stored_ability.category)
@@ -150,18 +150,18 @@
 		for(var/k in A.ability_buttons)
 			var/obj/hud/button/ability/B = A.ability_buttons[k]
 			if(B.ability && B.ability.category == src_ability_category)
-				caller.to_chat(span("warning","You cannot have more than one ability of the same category in your genetics."))
+				activator.to_chat(span("warning","You cannot have more than one ability of the same category in your genetics."))
 				return FALSE
 
 	return TRUE
 
 
-/obj/hud/button/ability_choice/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
+/obj/hud/button/ability_choice/drop_on_object(var/mob/activator,var/atom/object,location,control,params) //Src is dragged to object
 
 	if(istype(object,/obj/hud/button/ability))
 		var/obj/hud/button/ability/B = object
 
-		if(!can_slot_ability(caller,B.ability))
+		if(!can_slot_ability(activator,B.ability))
 			return TRUE
 
 		var/old_ability_name
@@ -172,9 +172,9 @@
 		B.ability = new stored_ability
 		B.update_sprite()
 		if(old_ability_name)
-			caller.to_chat(span("notice","You replace [old_ability_name] with [B.ability.name]."))
+			activator.to_chat(span("notice","You replace [old_ability_name] with [B.ability.name]."))
 		else
-			caller.to_chat(span("notice","You add [B.ability.name] to genetics."))
+			activator.to_chat(span("notice","You add [B.ability.name] to genetics."))
 		var/obj/hud/button/close_ability_choice/C = src.linked_close
 		for(var/k in C.linked_buttons)
 			var/obj/hud/button/OB = k
@@ -219,6 +219,6 @@
 		B.update_owner(desired_owner)
 	. = ..()
 
-/obj/hud/button/close_ability_choice/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/close_ability_choice/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 	. = ..()
 	update_owner(null)

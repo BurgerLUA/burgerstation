@@ -5,20 +5,20 @@
 	cost = 80
 	cooldown = SECONDS_TO_DECISECONDS(30)
 
-/ability/magic/radial_blind/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/magic/radial_blind/on_cast(var/mob/activator,var/atom/target,location,params)
 
-	var/turf/T = get_turf(caller)
+	var/turf/T = get_turf(activator)
 	new/obj/effect/temp/phase(T)
 
 	var/loyalty_tag_to_use
-	if(is_living(caller))
-		var/mob/living/L_caller = caller
-		loyalty_tag_to_use = L_caller.loyalty_tag
+	if(is_living(activator))
+		var/mob/living/L_activator = activator
+		loyalty_tag_to_use = L_activator.loyalty_tag
 
 	play_sound('sound/weapons/magic/electrical_blast.ogg',T)
 
-	for(var/mob/living/L in viewers(VIEW_RANGE,caller))
-		if(!is_facing(L,caller))
+	for(var/mob/living/L in viewers(VIEW_RANGE,activator))
+		if(!is_facing(L,activator))
 			continue
 		if(!allow_hostile_action(loyalty_tag_to_use,L))
 			continue

@@ -26,15 +26,15 @@
 	mouse_opacity = 0
 	alpha = 0
 
-/obj/hud/button/crafting/craft/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/crafting/craft/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller))
+	if(. && is_advanced(activator))
 		if(stored_crafting_table)
-			stored_crafting_table.attempt_to_craft(caller)
+			stored_crafting_table.attempt_to_craft(activator)
 		else
-			log_error("Warning: [caller.get_debug_name()] tried to craft without a stored crafting table!")
+			log_error("Warning: [activator.get_debug_name()] tried to craft without a stored crafting table!")
 
 
 
@@ -48,9 +48,9 @@
 	mouse_opacity = 0
 	alpha = 0
 
-/obj/hud/button/crafting/close/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/crafting/close/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller))
-		stored_crafting_table.toggle_crafting(caller)
+	if(. && is_advanced(activator))
+		stored_crafting_table.toggle_crafting(activator)

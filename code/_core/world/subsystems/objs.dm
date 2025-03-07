@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(obj)
 
 	var/list/obj/hud/button/message/all_hud_messages = list()
 
-/subsystem/obj/unclog(var/mob/caller)
+/subsystem/obj/unclog(var/mob/activator)
 
 	for(var/k in initialize_superlate)
 		var/obj/O = k

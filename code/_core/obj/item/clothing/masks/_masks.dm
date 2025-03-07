@@ -10,5 +10,5 @@
 	uses_until_condition_fall = 300
 
 
-/obj/item/clothing/mask/proc/mod_speech(var/mob/living/advanced/caller,var/text_to_say,var/talk_type_to_use = TEXT_TALK, var/talk_range=TALK_RANGE,var/language_to_use=null)
+/obj/item/clothing/mask/proc/mod_speech(var/mob/living/advanced/activator,var/text_to_say,var/talk_type_to_use = TEXT_TALK, var/talk_range=TALK_RANGE,var/language_to_use=null)
 	return text_to_say

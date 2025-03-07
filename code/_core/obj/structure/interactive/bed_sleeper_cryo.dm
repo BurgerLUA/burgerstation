@@ -16,14 +16,14 @@
 	if(spawnpoint)
 		SSobj.cryo_spawnpoints -= src
 
-/obj/structure/interactive/bed/sleeper/can_buckle(var/mob/living/advanced/A,var/mob/caller)
+/obj/structure/interactive/bed/sleeper/can_buckle(var/mob/living/advanced/A,var/mob/activator)
 
 	if(!is_player(A))
 		return FALSE
 
 	. = ..()
 
-/obj/structure/interactive/bed/sleeper/cryo/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
+/obj/structure/interactive/bed/sleeper/cryo/buckle(var/mob/living/victim,var/mob/activator,var/silent=FALSE)
 
 	. = ..()
 
@@ -45,7 +45,7 @@
 	if(buckled)
 		return TRUE
 
-/obj/structure/interactive/bed/sleeper/cryo/on_close(var/mob/caller)
+/obj/structure/interactive/bed/sleeper/cryo/on_close(var/mob/activator)
 
 	. = ..()
 

@@ -44,10 +44,10 @@
 	update_sprite()
 	return ..()
 
-/obj/item/container/edible/meme_pizza/get_calculated_bites(var/mob/living/caller,var/total_reagents = 1)
+/obj/item/container/edible/meme_pizza/get_calculated_bites(var/mob/living/activator,var/total_reagents = 1)
 	return servings_left
 
-/obj/item/container/edible/meme_pizza/feed(var/mob/caller,var/mob/living/target)
+/obj/item/container/edible/meme_pizza/feed(var/mob/activator,var/mob/living/target)
 	. = ..()
 	if(.)
 		servings_left = 1 //It's always going to be 1 or nothing. If it's nothing, then that might cause issues.

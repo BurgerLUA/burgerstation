@@ -10,12 +10,12 @@
 
 	var/spam_fix_time = 0
 
-	var/mob/last_caller = null
+	var/mob/last_activator = null
 
 	value = 20
 
 /obj/item/device/timer/Destroy()
-	last_caller = null
+	last_activator = null
 	return ..()
 
 /obj/item/device/timer/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
@@ -26,19 +26,19 @@
 	RUN_PARENT_SAFE
 	LOADVAR("time_set")
 
-/obj/item/device/timer/click_self(var/mob/caller,location,control,params)
+/obj/item/device/timer/click_self(var/mob/activator,location,control,params)
 	INTERACT_CHECK
 	SPAM_CHECK(5)
-	trigger(caller,src,-1,-1)
+	trigger(activator,src,-1,-1)
 	return TRUE
 
-/obj/item/device/timer/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
-	last_caller = caller
+/obj/item/device/timer/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
+	last_activator = activator
 	START_THINKING(src)
 	active = TRUE
 	var/turf/T = get_turf(src)
 	play_sound('sound/items/timer/arm.ogg',T,range_max=VIEW_RANGE)
-	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
+	create_alert(VIEW_RANGE,T,activator,ALERT_LEVEL_NOISE)
 	return ..()
 
 /obj/item/device/timer/think()
@@ -62,7 +62,7 @@
 			return FALSE
 
 
-/obj/item/device/timer/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/device/timer/mouse_wheel_on_object(var/mob/activator,delta_x,delta_y,location,control,params)
 
 	var/fixed_delta = clamp(delta_y,-1,1)
 
@@ -78,11 +78,11 @@
 	time_set = clamp(time_set + fixed_delta,time_min,time_max)
 
 	if(old_time_set == time_set)
-		caller.to_chat(span("notice","\The [src.name] can't seem to go any [time_set == time_min ? "lower" : "higher"]."))
+		activator.to_chat(span("notice","\The [src.name] can't seem to go any [time_set == time_min ? "lower" : "higher"]."))
 	else if(spam_fix_time <= world.time)
-		caller.to_chat(span("notice","You change \the [src.name]'s time to [time_set] deciseconds..."))
+		activator.to_chat(span("notice","You change \the [src.name]'s time to [time_set] deciseconds..."))
 	else
-		caller.to_chat(span("notice","...[time_set] deciseconds..."))
+		activator.to_chat(span("notice","...[time_set] deciseconds..."))
 
 	spam_fix_time = world.time + 20
 

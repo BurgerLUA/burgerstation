@@ -10,12 +10,12 @@
 
 	blood_toxicity_multiplier = 1
 
-/reagent/medicine/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
+/reagent/medicine/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/activator)
 
 	. = ..()
 
-	if(!L.dead && experience_per_unit*. > 0 && is_player(caller) && caller.client)
-		caller.add_skill_xp(SKILL_MEDICINE,CEILING(experience_per_unit*.,1))
+	if(!L.dead && experience_per_unit*. > 0 && is_player(activator) && activator.client)
+		activator.add_skill_xp(SKILL_MEDICINE,CEILING(experience_per_unit*.,1))
 
 /reagent/medicine/on_overdose(var/mob/living/owner,var/reagent_container/container,var/metabolism_amount=0,var/starting_volume=0,var/multiplier=1)
 

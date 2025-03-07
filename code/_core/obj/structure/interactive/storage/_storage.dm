@@ -29,44 +29,44 @@
 		tracked_instance_ckeys = list()
 
 
-/obj/structure/interactive/storage/proc/examine_storage(var/mob/living/advanced/caller) //caller wants to see inside src
+/obj/structure/interactive/storage/proc/examine_storage(var/mob/living/advanced/activator) //activator wants to see inside src
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
 	var/turf/T = get_turf(src)
 	var/rarity = 0
-	if(is_player(caller))
-		var/mob/living/advanced/player/P = caller
+	if(is_player(activator))
+		var/mob/living/advanced/player/P = activator
 		rarity = P.get_rarity()
 
 	if(stored_loot)
 		var/list/spawned_loot = SPAWN_LOOT(stored_loot,T,rarity)
 		for(var/obj/item/I in spawned_loot)
-			storage.add_object_to_src_inventory(caller,I,enable_messages = FALSE,bypass = TRUE,silent=TRUE)
+			storage.add_object_to_src_inventory(activator,I,enable_messages = FALSE,bypass = TRUE,silent=TRUE)
 		stored_loot = null
 
-	if(stored_loot_per_instance && caller.ckey && !tracked_instance_ckeys[caller.ckey])
-		tracked_instance_ckeys[caller.ckey] = TRUE
+	if(stored_loot_per_instance && activator.ckey && !tracked_instance_ckeys[activator.ckey])
+		tracked_instance_ckeys[activator.ckey] = TRUE
 		var/list/spawned_instance_loot = SPAWN_LOOT(stored_loot_per_instance,T,rarity)
 		for(var/obj/item/I in spawned_instance_loot)
-			storage.add_object_to_src_inventory(caller,I,enable_messages = FALSE,bypass = TRUE,silent=TRUE)
+			storage.add_object_to_src_inventory(activator,I,enable_messages = FALSE,bypass = TRUE,silent=TRUE)
 
-	caller.clear_inventory_defers() //Remove existing ones.
+	activator.clear_inventory_defers() //Remove existing ones.
 
 	var/s=0
 	for(var/k in storage.inventories)
 		var/obj/hud/inventory/I = k
-		caller.add_inventory_defer(I,s)
+		activator.add_inventory_defer(I,s)
 		s++
 
 	return TRUE
 
 
-/obj/structure/interactive/storage/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/storage/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(is_inventory(object) && is_advanced(caller))
-		examine_storage(caller)
+	if(is_inventory(object) && is_advanced(activator))
+		examine_storage(activator)
 		return TRUE
 
 	. = ..()
@@ -108,7 +108,7 @@
 	if(prob(50))
 		stored_threat = TRUE
 
-/obj/structure/interactive/storage/trash_pile/station/examine_storage(var/mob/living/advanced/caller)
+/obj/structure/interactive/storage/trash_pile/station/examine_storage(var/mob/living/advanced/activator)
 
 	. = ..()
 
@@ -152,11 +152,11 @@
 
 	. = ..()
 
-/obj/structure/interactive/storage/safe/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/storage/safe/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_inventory(object) && is_advanced(caller))
+	if(. && is_inventory(object) && is_advanced(activator))
 		icon_state = "safe_open"
 
 /obj/structure/interactive/storage/safe/Finalize()

@@ -128,9 +128,9 @@
 
 	return TRUE
 
-/mob/living/advanced/stand/clicked_on_by_object(var/mob/caller,var/atom/object)
+/mob/living/advanced/stand/clicked_on_by_object(var/mob/activator,var/atom/object)
 
-	if(caller == owner)
+	if(activator == owner)
 		return TRUE
 
 	return ..()

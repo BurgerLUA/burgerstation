@@ -41,7 +41,7 @@
 		return referencing.get_examine_details_list(examiner)
 	. = ..()
 
-/obj/hud/button/inventory_defer/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/inventory_defer/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(!referencing) CRASH("Referenced inventory not found!")
 
@@ -54,17 +54,17 @@
 
 	var/obj/item/top_object = get_top_vis_object()
 	if(!top_object)
-		caller.to_chat(span("warning","There is nothing to remove!"))
+		activator.to_chat(span("warning","There is nothing to remove!"))
 		return FALSE
 
 	if(is_organ(referencing.loc))
-		if(referencing.owner && referencing.owner.ckey_owner == caller.ckey_owner)
+		if(referencing.owner && referencing.owner.ckey_owner == activator.ckey_owner)
 			I.add_object(top_object)
 			return TRUE
-		top_object.try_strip(caller)
+		top_object.try_strip(activator)
 		return TRUE
 
-	if(get_dist(caller,top_object) <= 1)
+	if(get_dist(activator,top_object) <= 1)
 		I.add_object(top_object)
 		return TRUE
 

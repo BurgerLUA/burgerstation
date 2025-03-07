@@ -28,13 +28,13 @@
 	I.plane = PLANE_LIGHTING_EFFECT
 	add_overlay(I)
 
-/obj/structure/interactive/atm/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/atm/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
 
-	if(caller.client && is_player(caller))
-		var/mob/living/advanced/player/P = caller
+	if(activator.client && is_player(activator))
+		var/mob/living/advanced/player/P = activator
 		if(is_inventory(object))
 			var/obj/hud/inventory/I = object
 			var/desired_input = input("How many credits do you wish to withdraw? (Limit: 5000cr per machine, 1% + 2cr fee.)","Withdraw Credits",0) as num
@@ -58,7 +58,7 @@
 				return TRUE
 			tracked_limits[P.ckey] += desired_input
 			P.adjust_currency(-(fee + desired_input))
-			var/obj/item/currency/credits/C = new(get_turf(caller))
+			var/obj/item/currency/credits/C = new(get_turf(activator))
 			INITIALIZE(C)
 			C.amount = desired_input
 			FINALIZE(C)

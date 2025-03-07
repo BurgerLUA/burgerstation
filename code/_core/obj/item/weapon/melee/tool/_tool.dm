@@ -3,8 +3,8 @@
 	drop_sound = 'sound/items/drop/scrap.ogg'
 	has_quick_function = TRUE
 
-/obj/item/weapon/melee/tool/quick(var/mob/caller,var/atom/object,location,params)
-	if(object) object.clicked_on_by_object(caller,src,location,null,params) //It's important it's called this way as not to call attack() if it fails.
+/obj/item/weapon/melee/tool/quick(var/mob/activator,var/atom/object,location,params)
+	if(object) object.clicked_on_by_object(activator,src,location,null,params) //It's important it's called this way as not to call attack() if it fails.
 	return TRUE
 
 /obj/item/weapon/melee/tool/wirecutters
@@ -117,7 +117,7 @@
 
 
 
-/obj/item/weapon/melee/tool/welder/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/tool/welder/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -125,16 +125,16 @@
 	if(active)
 		active = FALSE
 		update_sprite()
-		caller.to_chat(span("notice","You turn \the [src.name] off."))
+		activator.to_chat(span("notice","You turn \the [src.name] off."))
 		STOP_THINKING(src)
 	else
 		if(fuel_current > 0)
 			active = TRUE
 			update_sprite()
-			caller.to_chat(span("notice","\The [src.name] turns on."))
+			activator.to_chat(span("notice","\The [src.name] turns on."))
 			START_THINKING(src)
 		else
-			caller.to_chat(span("warning","\The [src.name] doesn't seem to want to turn on..."))
+			activator.to_chat(span("warning","\The [src.name] doesn't seem to want to turn on..."))
 
 	return TRUE
 

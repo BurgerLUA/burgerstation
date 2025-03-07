@@ -23,9 +23,9 @@
 
 	value = 0
 
-/obj/item/storage/cigarettes/click_self(var/mob/caller,location,control,params)
+/obj/item/storage/cigarettes/click_self(var/mob/activator,location,control,params)
 
-	if(open && caller.attack_flags & CONTROL_MOD_DISARM)
+	if(open && activator.attack_flags & CONTROL_MOD_DISARM)
 		open = FALSE
 		update_sprite()
 		return TRUE

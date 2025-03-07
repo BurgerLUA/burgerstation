@@ -9,6 +9,6 @@
 
 	if(. && hit_atom)
 		if(hit_atom.reagents && is_living(hit_atom)) //Direct injection.
-			hit_atom.reagents.add_reagent(/reagent/space_cleaner,10,caller=owner)
+			hit_atom.reagents.add_reagent(/reagent/space_cleaner,10,activator=owner)
 		var/reagent/R = REAGENT(/reagent/nutrition/water)
 		R.on_splash(null,owner,hit_atom,20,1)

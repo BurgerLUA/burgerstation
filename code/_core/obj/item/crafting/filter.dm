@@ -27,9 +27,9 @@
 
 	value_burgerbux = 1
 
-/obj/item/crafting_bench/filter/click_self(var/mob/caller,location,control,params)
+/obj/item/crafting_bench/filter/click_self(var/mob/activator,location,control,params)
 
-	if(caller.attack_flags & CONTROL_MOD_DISARM)
+	if(activator.attack_flags & CONTROL_MOD_DISARM)
 		var/current_setting
 		var/possible_inputs = list()
 		for(var/i=0,i<=1,i=FLOOR(i+precision,0.1))
@@ -47,12 +47,12 @@
 		if(!desired_input || desired_input == "Cancel")
 			return TRUE
 		filter_setting = possible_inputs[desired_input]
-		caller.to_chat(span("notice","You set the filter to [desired_input]."))
+		activator.to_chat(span("notice","You set the filter to [desired_input]."))
 		return TRUE
 
 	. = ..()
 
-/obj/item/crafting_bench/filter/attempt_to_craft(var/mob/living/advanced/caller)
+/obj/item/crafting_bench/filter/attempt_to_craft(var/mob/living/advanced/activator)
 
 	var/obj/item/container/C //Final slot container.
 
@@ -63,10 +63,10 @@
 			break
 
 	if(!C)
-		caller.to_chat(span("warning","You're missing a valid container in the product slot!"))
+		activator.to_chat(span("warning","You're missing a valid container in the product slot!"))
 		return FALSE
 
-	var/list/item_table = generate_crafting_table(caller,src)
+	var/list/item_table = generate_crafting_table(activator,src)
 
 	var/success = FALSE
 
@@ -84,20 +84,20 @@
 			var/volume = I.reagents.stored_reagents[k]
 			if(R.particle_size < filter_setting)
 				var/temperature = I.reagents.stored_reagents_temperature[k]
-				var/amount_removed = -I.reagents.add_reagent(k,-volume,should_update=FALSE,check_recipes=FALSE,caller=caller)
-				C.reagents.add_reagent(k,amount_removed,temperature,should_update=FALSE,check_recipes=FALSE,caller=caller)
+				var/amount_removed = -I.reagents.add_reagent(k,-volume,should_update=FALSE,check_recipes=FALSE,activator=activator)
+				C.reagents.add_reagent(k,amount_removed,temperature,should_update=FALSE,check_recipes=FALSE,activator=activator)
 				transfered = TRUE
 				success = TRUE
 
 		if(transfered)
-			I.reagents.update_container(caller)
-			I.reagents.process_recipes(caller)
+			I.reagents.update_container(activator)
+			I.reagents.process_recipes(activator)
 
 	if(success)
-		C.reagents.update_container(caller)
-		C.reagents.process_recipes(caller)
+		C.reagents.update_container(activator)
+		C.reagents.process_recipes(activator)
 	else
-		caller.to_chat(span("warning","\The [src.name] could not filter anything!"))
+		activator.to_chat(span("warning","\The [src.name] could not filter anything!"))
 
 	return TRUE
 

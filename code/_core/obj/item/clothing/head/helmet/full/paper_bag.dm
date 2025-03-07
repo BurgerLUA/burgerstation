@@ -38,9 +38,9 @@
 	LOADVAR("logo")
 	LOADVAR("logobg")
 
-/obj/item/clothing/head/helmet/full/paperbag/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/head/helmet/full/paperbag/click_self(var/mob/activator,location,control,params)
 
-	var/mob/C = caller
+	var/mob/C = activator
 	if(C.attack_flags & CONTROL_MOD_DISARM && istype(src.loc,/obj/hud/inventory/organs/))
 		INTERACT_CHECK
 		var/choice = input("What do you want to change on \the [src.name]?","Design Selection") as null|anything in list("Logo","Background")
@@ -58,7 +58,7 @@
 			if(choice)
 				INTERACT_CHECK
 				logo = logomenu[choice]
-				caller.to_chat(span("notice","You change \the [src.name]'s logo."))
+				activator.to_chat(span("notice","You change \the [src.name]'s logo."))
 		else if(choice == "Background")
 			var/bgmenu = list(
 				"none" = 0,
@@ -71,9 +71,9 @@
 			if(choice)
 				INTERACT_CHECK
 				logobg = bgmenu[choice]
-				caller.to_chat(span("notice","You change \the [src.name]'s background."))
+				activator.to_chat(span("notice","You change \the [src.name]'s background."))
 		else
-			caller.to_chat(span("notice","You decide not to change \the [src.name]'s design."))
+			activator.to_chat(span("notice","You decide not to change \the [src.name]'s design."))
 			return TRUE
 		update_sprite()
 		return TRUE

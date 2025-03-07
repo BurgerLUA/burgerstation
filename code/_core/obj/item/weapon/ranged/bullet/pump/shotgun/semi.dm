@@ -88,7 +88,7 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_base_spread()
 	return 0.2
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/semi/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bullet/pump/shotgun/semi/handle_ammo(var/mob/activator)
 	. = ..()
 	pump(silent = TRUE)
 

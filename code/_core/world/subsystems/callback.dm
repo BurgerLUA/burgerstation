@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(callback)
 	tick_usage_max = 100
 
 
-/subsystem/callback/unclog(var/mob/caller)
+/subsystem/callback/unclog(var/mob/activator)
 	for(var/callback_id in src.all_callbacks)
 		all_callbacks -= callback_id
 	. = ..()

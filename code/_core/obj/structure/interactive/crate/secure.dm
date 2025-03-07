@@ -14,38 +14,38 @@
 	add_overlay(I)
 
 
-/obj/structure/interactive/crate/secure/open(var/mob/caller)
+/obj/structure/interactive/crate/secure/open(var/mob/activator)
 	if(locked)
 		return FALSE
 	. = ..()
 
-/obj/structure/interactive/crate/secure/close(var/mob/caller)
+/obj/structure/interactive/crate/secure/close(var/mob/activator)
 	if(locked)
 		return FALSE
 	. = ..()
 
-/obj/structure/interactive/crate/secure/proc/lock(var/mob/caller)
+/obj/structure/interactive/crate/secure/proc/lock(var/mob/activator)
 	locked = TRUE
-	caller?.to_chat(span("notice","You lock \the [src.name]."))
+	activator?.to_chat(span("notice","You lock \the [src.name]."))
 	update_sprite()
 	return TRUE
 
-/obj/structure/interactive/crate/secure/proc/unlock(var/mob/caller)
+/obj/structure/interactive/crate/secure/proc/unlock(var/mob/activator)
 	locked = FALSE
-	caller?.to_chat(span("notice","You unlock \the [src.name]."))
+	activator?.to_chat(span("notice","You unlock \the [src.name]."))
 	update_sprite()
 	return TRUE
 
-/obj/structure/interactive/crate/secure/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/crate/secure/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(caller.attack_flags & CONTROL_MOD_DISARM)
+	if(activator.attack_flags & CONTROL_MOD_DISARM)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 		if(locked)
-			unlock(caller)
+			unlock(activator)
 		else
-			lock(caller)
+			lock(activator)
 		return TRUE
 
 	return ..()
@@ -74,39 +74,39 @@
 	. += div("notice","It contains: [english_list(contents_to_display)].")
 
 
-/obj/structure/interactive/crate/secure/cargo/lock(var/mob/caller)
+/obj/structure/interactive/crate/secure/cargo/lock(var/mob/activator)
 
 	if(!owner_name)
 		return ..()
 
-	if(!caller)
+	if(!activator)
 		return ..()
 
-	if(is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		if(lowertext(A.real_name) != lowertext(owner_name))
-			caller.to_chat(span("notice","The [src.name] refuses to lock!"))
+			activator.to_chat(span("notice","The [src.name] refuses to lock!"))
 			return FALSE
 	else
-		if(lowertext(caller.name) != lowertext(owner_name))
-			caller.to_chat(span("notice","The [src.name] refuses to lock!"))
+		if(lowertext(activator.name) != lowertext(owner_name))
+			activator.to_chat(span("notice","The [src.name] refuses to lock!"))
 			return FALSE
 
 	return ..()
 
 
-/obj/structure/interactive/crate/secure/cargo/unlock(var/mob/caller)
+/obj/structure/interactive/crate/secure/cargo/unlock(var/mob/activator)
 
 	if(!owner_name)
 		return ..()
 
-	if(!caller)
+	if(!activator)
 		return ..()
 
-	if(!is_player(caller) || !caller.client)
+	if(!is_player(activator) || !activator.client)
 		return FALSE
 
-	var/mob/living/advanced/player/A = caller
+	var/mob/living/advanced/player/A = activator
 	if(A.real_name != owner_name)
 		src.do_say("Error: Unrecognized user.")
 		return FALSE

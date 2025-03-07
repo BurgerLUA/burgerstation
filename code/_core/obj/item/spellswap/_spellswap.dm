@@ -13,7 +13,7 @@
 	rarity = RARITY_RARE
 
 
-/obj/item/spellswap/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/spellswap/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_weapon(object))
 
@@ -26,7 +26,7 @@
 		var/desired_choice = input("Are you sure you wish to spellswap \the [I.name] with \the [src.name]? This cannot be undone.","Spellswap","Cancel") as null|anything in list("Yes","No","Cancel")
 
 		if(desired_choice != "Yes")
-			caller.to_chat(span("notice","You decide not to spellswap \the [I.name]."))
+			activator.to_chat(span("notice","You decide not to spellswap \the [I.name]."))
 			return TRUE
 		if(desired_projectile==null)
 			if(I.stored_spellswap)
@@ -35,11 +35,11 @@
 				src.drop_item(I)
 				I.damage_type = initial(I.damage_type)
 			else
-				caller.to_chat(span("notice", "There's no spell to remove!"))
+				activator.to_chat(span("notice", "There's no spell to remove!"))
 				return TRUE
-			caller.to_chat(span("notice","You spellswap \the [I.name] with \the [src.name]."))
+			activator.to_chat(span("notice","You spellswap \the [I.name] with \the [src.name]."))
 
-			var/turf/T = get_turf(caller)
+			var/turf/T = get_turf(activator)
 			play_sound(desired_sound,T)
 
 			return TRUE
@@ -50,9 +50,9 @@
 		src.drop_item(I)
 		I.stored_spellswap = src
 
-		caller.to_chat(span("notice","You spellswap \the [I.name] with \the [src.name]."))
+		activator.to_chat(span("notice","You spellswap \the [I.name] with \the [src.name]."))
 
-		var/turf/T = get_turf(caller)
+		var/turf/T = get_turf(activator)
 		play_sound(desired_sound,T)
 
 		return TRUE

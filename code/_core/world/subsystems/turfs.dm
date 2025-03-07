@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(turf)
 
 	var/list/image/turf_damage_icons = new/list(5,4)
 
-/subsystem/turf/unclog(var/mob/caller)
+/subsystem/turf/unclog(var/mob/activator)
 	wet_turfs.Cut()
 	. = ..()
 

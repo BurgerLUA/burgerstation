@@ -9,12 +9,12 @@
 
 	flags_hud = FLAG_HUD_MOB
 
-/obj/hud/button/sneak/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/sneak/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_living(caller))
-		var/mob/living/L = caller
+	if(. && is_living(activator))
+		var/mob/living/L = activator
 		L.sneak()
 		sneaking = L.is_sneaking
 
@@ -60,7 +60,7 @@
 	icon_state = "move_[move_mod_button+2]"
 	..()
 
-/obj/hud/button/move/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/move/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -68,18 +68,18 @@
 		if(params[PARAM_ICON_X] && params[PARAM_ICON_Y] && params[PARAM_ICON_Y] >= 10)
 			switch(params[PARAM_ICON_X])
 				if(1 to 10)
-					caller.move_mod_button = -1
+					activator.move_mod_button = -1
 				if(12 to 21)
-					caller.move_mod_button = 0
+					activator.move_mod_button = 0
 				if(23 to 32)
-					caller.move_mod_button = 1
+					activator.move_mod_button = 1
 		else
 			move_mod_button += 1
 
-		if(caller.move_mod_button > 1)
-			caller.move_mod_button = -1
+		if(activator.move_mod_button > 1)
+			activator.move_mod_button = -1
 
-		move_mod_button = caller.move_mod_button
+		move_mod_button = activator.move_mod_button
 
 		update_sprite()
 
@@ -93,12 +93,12 @@
 
 	flags_hud = FLAG_HUD_MOB
 
-/obj/hud/button/rest/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/rest/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_living(caller))
-		var/mob/living/L = caller
+	if(. && is_living(activator))
+		var/mob/living/L = activator
 		L.rest()
 
 
@@ -111,12 +111,12 @@
 
 	flags_hud = FLAG_HUD_MOB
 
-/obj/hud/button/stand/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/stand/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_living(caller))
-		var/mob/living/L = caller
+	if(. && is_living(activator))
+		var/mob/living/L = activator
 		if(L.stand && L.stand.linked_stand)
 			L.stand.linked_stand.set_enabled(!L.stand.linked_stand.enabled)
 		else

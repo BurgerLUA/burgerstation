@@ -90,7 +90,7 @@
 	return TRUE
 
 
-/obj/hud/map/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/map/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(30)
@@ -118,9 +118,9 @@
 			best_marker = SL
 			best_distance = distance
 
-		if(best_marker && connected_background.linked_shuttle_controller.set_destination(caller,best_marker))
+		if(best_marker && connected_background.linked_shuttle_controller.set_destination(activator,best_marker))
 			update_sprite()
-			caller.to_chat(span("notice","New shuttle destination selected: [best_marker.name] [best_marker.linked_computer.shuttle_number]."))
+			activator.to_chat(span("notice","New shuttle destination selected: [best_marker.name] [best_marker.linked_computer.shuttle_number]."))
 
 		return TRUE
 
@@ -128,27 +128,27 @@
 	if(connected_background?.linked_pod)
 		var/turf/T = locate(x_pos,y_pos,z_pos)
 		if(!T)
-			caller.to_chat(span("warning","Error: Invalid location ([x_pos],[y_pos],[z_pos])."))
+			activator.to_chat(span("warning","Error: Invalid location ([x_pos],[y_pos],[z_pos])."))
 		else
 			var/turf/safe_check = get_step(T,SOUTH)
 			if(!safe_check || safe_check.density)
-				caller.to_chat(span("warning","Error: Unsafe location."))
+				activator.to_chat(span("warning","Error: Unsafe location."))
 			else
 				connected_background.x_drop = x_pos
 				connected_background.y_drop = y_pos
 				connected_background.z_drop = z_pos
 				update_sprite()
-				caller.to_chat(span("notice","Coords set to: ([x_pos],[y_pos],[z_pos]); Area: [T.loc.name]."))
+				activator.to_chat(span("notice","Coords set to: ([x_pos],[y_pos],[z_pos]); Area: [T.loc.name]."))
 		return TRUE
 
 
 	var/turf/T = locate(x_pos,y_pos,z_pos)
 	if(!T)
-		caller.to_chat(span("warning","Failed to give valid information on coords ([x_pos],[y_pos],[z_pos])."))
+		activator.to_chat(span("warning","Failed to give valid information on coords ([x_pos],[y_pos],[z_pos])."))
 	else
-		caller.to_chat(span("notice","Coords: ([x_pos],[y_pos],[z_pos]); Area: [T.loc.name]."))
-		if(istype(caller,/mob/abstract/observer))
-			caller.force_move(T)
+		activator.to_chat(span("notice","Coords: ([x_pos],[y_pos],[z_pos]); Area: [T.loc.name]."))
+		if(istype(activator,/mob/abstract/observer))
+			activator.force_move(T)
 
 /obj/hud/button/map_background
 	name = "map background"
@@ -181,7 +181,7 @@
 
 	var/map_z = 2
 
-/obj/hud/button/map_background/clicked_on_by_object(var/mob/caller,var/atom/caller,location,control,params)
+/obj/hud/button/map_background/clicked_on_by_object(var/mob/activator,var/atom/activator,location,control,params)
 	return TRUE
 
 /obj/hud/button/map_background/New(var/desired_loc,var/desired_pod,var/desired_shuttle_controller)
@@ -269,7 +269,7 @@
 	. = ..()
 	connected_background = null
 
-/obj/hud/button/map_control/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/map_control/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	var/obj/hud/map/M = connected_background?.connected_map
 
@@ -279,11 +279,11 @@
 
 		if(connected_background.linked_shuttle_controller)
 			if(launch && close) //Return to base.
-				if(connected_background.linked_shuttle_controller.set_destination(caller,connected_background.linked_shuttle_controller.transit_marker_base) && connected_background.linked_shuttle_controller.start_flight(caller))
+				if(connected_background.linked_shuttle_controller.set_destination(activator,connected_background.linked_shuttle_controller.transit_marker_base) && connected_background.linked_shuttle_controller.start_flight(activator))
 					connected_background.update_owner(null)
 				return TRUE
 			else if(launch) //Go to target.
-				if(connected_background.linked_shuttle_controller.start_flight(caller))
+				if(connected_background.linked_shuttle_controller.start_flight(activator))
 					connected_background.update_owner(null)
 				return TRUE
 			else if(close)
@@ -293,11 +293,11 @@
 		if(connected_background.linked_pod)
 			if(launch)
 				var/turf/T = locate(connected_background.x_drop,connected_background.y_drop,connected_background.z_drop)
-				if(connected_background.linked_pod.set_state(caller,POD_LAUNCHING,T))
+				if(connected_background.linked_pod.set_state(activator,POD_LAUNCHING,T))
 					connected_background.update_owner(null)
 				return TRUE
 			else if(close)
-				connected_background.linked_pod.set_state(caller,POD_IDLE)
+				connected_background.linked_pod.set_state(activator,POD_IDLE)
 				connected_background.update_owner(null)
 				return TRUE
 

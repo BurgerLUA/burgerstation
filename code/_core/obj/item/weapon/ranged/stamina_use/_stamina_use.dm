@@ -13,7 +13,7 @@
 	use_loyalty_tag = TRUE
 	use_iff_tag = FALSE
 
-/obj/item/weapon/ranged/stamina_use/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
+/obj/item/weapon/ranged/stamina_use/can_gun_shoot(var/mob/activator,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
 
 	if(get_ammo_count() < 1)
 		return FALSE
@@ -35,12 +35,12 @@
 
 	return owner && cost_stamina ? FLOOR(owner.health.stamina_current / cost_stamina, 1) : 0
 
-/obj/item/weapon/ranged/stamina_use/handle_ammo(var/mob/caller,var/bullet_position=1)
+/obj/item/weapon/ranged/stamina_use/handle_ammo(var/mob/activator,var/bullet_position=1)
 
-	if(!is_advanced(caller))
+	if(!is_advanced(activator))
 		return ..()
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 	if(!A.health)
 		return ..()
 

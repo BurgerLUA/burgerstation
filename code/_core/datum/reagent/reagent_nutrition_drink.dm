@@ -20,7 +20,7 @@
 
 	value = 0.75
 
-/reagent/nutrition/water/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+/reagent/nutrition/water/on_splash(var/reagent_container/container,var/mob/activator,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()
 

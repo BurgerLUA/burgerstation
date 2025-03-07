@@ -14,7 +14,7 @@
 	particle_size = 0.1
 
 
-/reagent/lube/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+/reagent/lube/on_splash(var/reagent_container/container,var/mob/activator,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()
 
@@ -68,7 +68,7 @@
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/iron/act_explode(var/reagent_container/container,var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
-	var/volume_amount = -container.add_reagent(src.type,-container.volume_current,caller = owner) //Can't be bothered to get the exact amount needed to be removed as it is handled in the proc anyways.
+	var/volume_amount = -container.add_reagent(src.type,-container.volume_current,activator = owner) //Can't be bothered to get the exact amount needed to be removed as it is handled in the proc anyways.
 	var/shrapnel_amount = min(20,CEILING(volume_amount/3,1))
 	container.owner.shoot_projectile(
 		owner,
@@ -352,7 +352,7 @@
 
 	owner.tox_regen_buffer -= .*4*multiplier
 
-/reagent/space_cleaner/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+/reagent/space_cleaner/on_splash(var/reagent_container/container,var/mob/activator,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()
 

@@ -29,21 +29,21 @@ obj/item/clothing/back/storage/backpack/clown/bag_of_bombs/get_base_value()
 	. = ..()
 	. += 5000
 
-obj/item/clothing/back/storage/backpack/clown/bag_of_bombs/click_self(var/mob/caller,location,control,params)
+obj/item/clothing/back/storage/backpack/clown/bag_of_bombs/click_self(var/mob/activator,location,control,params)
 
-	if(is_advanced(caller))
-		var/mob/living/advanced/L = caller
+	if(is_advanced(activator))
+		var/mob/living/advanced/L = activator
 		var/obj/hud/inventory/I = src.loc
 		var/turf/T = get_turf(src)
 		if(T && I.worn)
 			INTERACT_CHECK
 			INTERACT_DELAY(5)
 			if(next_bomb >= world.time)
-				caller.to_chat(span("notice","\The [src.name] is recharging, please wait!"))
+				activator.to_chat(span("notice","\The [src.name] is recharging, please wait!"))
 				return TRUE
 			next_bomb = world.time + SECONDS_TO_DECISECONDS(4)
 			var/obj/item/slime_bomb/SB = new(T)
-			SB.owner = caller
+			SB.owner = activator
 			SB.loyalty_tag = L.loyalty_tag
 			INITIALIZE(SB)
 			GENERATE(SB)

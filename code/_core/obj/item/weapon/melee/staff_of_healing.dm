@@ -20,16 +20,16 @@
 
 	rarity = RARITY_LEGENDARY
 
-/obj/item/weapon/melee/staff_of_healing/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/staff_of_healing/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
 	if(!SSthinking.all_thinkers[src])
 		START_THINKING(src)
-		caller.to_chat(span("notice","You activate \the [src.name]'s passive healing effect."))
+		activator.to_chat(span("notice","You activate \the [src.name]'s passive healing effect."))
 	else
-		caller.to_chat(span("notice","You deactivate \the [src.name]'s passive healing effect."))
+		activator.to_chat(span("notice","You deactivate \the [src.name]'s passive healing effect."))
 		STOP_THINKING(src)
 
 	return TRUE

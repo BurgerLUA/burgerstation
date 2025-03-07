@@ -18,14 +18,14 @@
 
 	size = SIZE_1
 
-/obj/item/container/simple/can/click_self(var/mob/caller,location,control,params)
+/obj/item/container/simple/can/click_self(var/mob/activator,location,control,params)
 
 	if(open) return ..()
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
-	caller.visible_message(span("notice","\The [caller.name] opens \the [src.name]."),span("notice","You open \the [src.name]."))
+	activator.visible_message(span("notice","\The [activator.name] opens \the [src.name]."),span("notice","You open \the [src.name]."))
 	//TODO: Pop sounds for certain objects.
 	open = TRUE
 	allow_reagent_transfer_to = TRUE
@@ -122,16 +122,16 @@
 		. += div("danger","Wait, what the fuck? There is an explosive charge connected to the tab!")
 
 
-/obj/item/container/simple/can/dr_gibb/explosive/click_self(var/mob/caller,location,control,params)
+/obj/item/container/simple/can/dr_gibb/explosive/click_self(var/mob/activator,location,control,params)
 
 	. = ..()
 
-	if(. && explosive && open && is_living(caller))
+	if(. && explosive && open && is_living(activator))
 		var/turf/T = get_turf(src)
 		if(T)
 			T.visible_message(span("danger","You hear a mechanical click when you open the tab... oh fu-"))
-			var/mob/living/L = caller
-			explode(T,3,caller,src,L.loyalty_tag)
+			var/mob/living/L = activator
+			explode(T,3,activator,src,L.loyalty_tag)
 			explosive = FALSE
 
 

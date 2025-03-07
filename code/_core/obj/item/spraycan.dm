@@ -35,12 +35,12 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/spraycan/click_self(var/mob/caller,location,control,params)
+/obj/item/spraycan/click_self(var/mob/activator,location,control,params)
 
-	if(!caller || !caller.client)
+	if(!activator || !activator.client)
 		return TRUE
 
-	var/client/C = caller.client
+	var/client/C = activator.client
 
 	if(C.icon_request_details)
 		C.icon_request_details.Cut()
@@ -56,22 +56,22 @@
 
 	return TRUE
 
-/obj/item/spraycan/proc/on_upload_spray(var/client/caller,var/icon/desired_icon)
+/obj/item/spraycan/proc/on_upload_spray(var/client/activator,var/icon/desired_icon)
 
-	if(!caller || !caller.mob || get_dist(caller.mob,src) > 1)
+	if(!activator || !activator.mob || get_dist(activator.mob,src) > 1)
 		return FALSE
 
 	if(desired_spray)
 		qdel(desired_spray)
 
 	desired_spray = desired_icon
-	spray_owner = caller.ckey
+	spray_owner = activator.ckey
 
-	caller.to_chat(span("notice","Spray successfully set!"))
+	activator.to_chat(span("notice","Spray successfully set!"))
 
 	return TRUE
 
-/obj/item/spraycan/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/spraycan/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -82,16 +82,16 @@
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
 		if(cap_on)
-			caller.to_chat(span("warning","The cap is on!"))
+			activator.to_chat(span("warning","The cap is on!"))
 			return TRUE
 		if(!desired_spray)
-			caller.to_chat(span("warning","No spray selected."))
+			activator.to_chat(span("warning","No spray selected."))
 			return TRUE
 		if(existing_spray && !existing_spray.qdeleting)
 			qdel(existing_spray)
 		var/obj/effect/cleanable/spray/C = new(T)
 		C.icon = desired_spray
-		C.name = "\"art\" - by [caller.ckey]"
+		C.name = "\"art\" - by [activator.ckey]"
 		play_sound('sound/effects/spray.ogg',T)
 		existing_spray = C
 
@@ -99,21 +99,21 @@
 
 	. = ..()
 
-/obj/item/spraycan/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/spraycan/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_inventory(object))
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
-		toggle_cap(caller)
+		toggle_cap(activator)
 		return TRUE
 
 	. = ..()
 
 
-/obj/item/spraycan/proc/toggle_cap(var/mob/caller)
+/obj/item/spraycan/proc/toggle_cap(var/mob/activator)
 	cap_on = !cap_on
 	update_sprite()
-	caller.to_chat(span("notice","You [cap_on ? "add" : "remove"] \the [src.name]'s cap."))
+	activator.to_chat(span("notice","You [cap_on ? "add" : "remove"] \the [src.name]'s cap."))
 	return TRUE
 
 /obj/item/spraycan/update_icon()

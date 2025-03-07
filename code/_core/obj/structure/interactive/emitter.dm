@@ -68,7 +68,7 @@
 
 
 
-/obj/structure/interactive/emitter/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/emitter/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 
 
@@ -77,7 +77,7 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
 		active = !active
-		caller.visible_message(span("warning","\The [caller.name] turns \the [src.name] [active ? "on" : "off"]."),span("warning","You turn \the [src.name] [active ? "on" : "off"]."))
+		activator.visible_message(span("warning","\The [activator.name] turns \the [src.name] [active ? "on" : "off"]."),span("warning","You turn \the [src.name] [active ? "on" : "off"]."))
 		if(active) START_THINKING(src)
 		update_sprite()
 

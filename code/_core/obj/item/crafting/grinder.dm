@@ -24,7 +24,7 @@
 	value_burgerbux = 1
 
 
-/obj/item/crafting_bench/grinder/attempt_to_craft(var/mob/living/advanced/caller)
+/obj/item/crafting_bench/grinder/attempt_to_craft(var/mob/living/advanced/activator)
 
 	var/obj/item/C //Final slot container.
 
@@ -46,10 +46,10 @@
 				break
 
 	if(!C)
-		caller.to_chat(span("warning","You're missing a valid container in the product slot!"))
+		activator.to_chat(span("warning","You're missing a valid container in the product slot!"))
 		return FALSE
 
-	var/list/item_table = generate_crafting_table(caller,src)
+	var/list/item_table = generate_crafting_table(activator,src)
 
 	var/success = FALSE
 
@@ -76,11 +76,11 @@
 		if(should_delete)
 			qdel(I)
 		else
-			I.reagents.update_container(caller)
-			I.reagents.process_recipes(caller)
+			I.reagents.update_container(activator)
+			I.reagents.process_recipes(activator)
 
 	if(!success)
-		caller.to_chat(span("warning","There are no valid items to process!"))
+		activator.to_chat(span("warning","There are no valid items to process!"))
 		return FALSE
 
 	for(var/reagent_type in C.reagents.stored_reagents)
@@ -89,9 +89,9 @@
 		if(R.processed_reagent)
 			var/temperature = C.reagents.average_temperature
 			var/amount_removed = -C.reagents.add_reagent(reagent_type,-reagent_amount,TNULL,FALSE,FALSE)
-			C.reagents.add_reagent(R.processed_reagent,amount_removed,temperature,FALSE,FALSE,caller = caller)
+			C.reagents.add_reagent(R.processed_reagent,amount_removed,temperature,FALSE,FALSE,activator = activator)
 
-	C.reagents.update_container(caller)
-	C.reagents.process_recipes(caller)
+	C.reagents.update_container(activator)
+	C.reagents.process_recipes(activator)
 
 	return TRUE

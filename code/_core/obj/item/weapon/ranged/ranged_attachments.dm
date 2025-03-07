@@ -1,11 +1,11 @@
-/obj/item/weapon/ranged/proc/add_attachment(var/mob/caller,var/obj/item/attachment/A)
+/obj/item/weapon/ranged/proc/add_attachment(var/mob/activator,var/obj/item/attachment/A)
 
 	if(!length(attachment_whitelist))
-		caller.to_chat(span("warning","This weapon does not accept attachments!"))
+		activator.to_chat(span("warning","This weapon does not accept attachments!"))
 		return FALSE
 
 	if(!attachment_whitelist[A.type])
-		caller.to_chat(span("warning","\The [A.name] cannot fit on \the [src.name]!"))
+		activator.to_chat(span("warning","\The [A.name] cannot fit on \the [src.name]!"))
 		return FALSE
 
 	var/list/type_to_var = list(
@@ -25,13 +25,13 @@
 		var/obj/item/I
 		if(vars[v])
 			I = vars[v]
-			caller.visible_message(span("notice","\The [caller.name] swaps out \the [I.name] on \the [src.name] for \the [A.name]."),span("notice","You swap out \the [A.name] on \the [src.name] for \the [I.name]."))
+			activator.visible_message(span("notice","\The [activator.name] swaps out \the [I.name] on \the [src.name] for \the [A.name]."),span("notice","You swap out \the [A.name] on \the [src.name] for \the [I.name]."))
 			I.drop_item(get_turf(src))
 			vars[v] = null
 			if(is_inventory(A.loc))
 				INV = A.loc
 		else
-			caller.visible_message(span("notice","\The [caller.name] attaches \the [A.name] to \the [src.name]."),span("notice","You attach \the [A.name] to \the [src.name]."))
+			activator.visible_message(span("notice","\The [activator.name] attaches \the [A.name] to \the [src.name]."),span("notice","You attach \the [A.name] to \the [src.name]."))
 		A.drop_item(src)
 		vars[v] = A
 		update_sprite()
@@ -42,7 +42,7 @@
 
 	return FALSE
 
-/obj/item/weapon/ranged/proc/remove_attachment(var/mob/caller)
+/obj/item/weapon/ranged/proc/remove_attachment(var/mob/activator)
 
 	var/list/attachment_variables = list(
 		"attachment_barrel",
@@ -69,14 +69,14 @@
 
 	var/attachment_choice = input("What would you like to remove?","Attachment Removal") as null|anything in choice_list
 	if(!attachment_choice || attachment_choice == "Cancel")
-		caller.to_chat(span("notice","You decide not to remove anything."))
+		activator.to_chat(span("notice","You decide not to remove anything."))
 		return FALSE
 
 	attachment_choice = choice_list[attachment_choice]
 
 	var/obj/item/I = vars[attachment_choice]
 
-	caller.visible_message(span("notice","\The [caller.name] removes \the [I.name] from \the [src.name]."),span("notice","You remove \the [I.name] from \the [src.name]."))
+	activator.visible_message(span("notice","\The [activator.name] removes \the [I.name] from \the [src.name]."),span("notice","You remove \the [I.name] from \the [src.name]."))
 	I.drop_item(get_turf(src))
 	vars[attachment_choice] = null
 	update_sprite()
@@ -112,7 +112,7 @@
 	return TRUE
 
 
-/obj/item/weapon/ranged/get_examine_list(var/mob/caller)
+/obj/item/weapon/ranged/get_examine_list(var/mob/activator)
 
 	. = ..()
 

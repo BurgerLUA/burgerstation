@@ -125,11 +125,11 @@
 		. += div("notice","It contains [amount] [src.name]\s.")
 
 
-/obj/item/bullet_cartridge/proc/spend_bullet(var/mob/caller,var/bonus_misfire_chance=0)
+/obj/item/bullet_cartridge/proc/spend_bullet(var/mob/activator,var/bonus_misfire_chance=0)
 
 	if(!is_spent)
 		var/total_misfire_chance = bonus_misfire_chance + misfire_chance
-		if(total_misfire_chance && luck(list(caller,src,loc),total_misfire_chance,FALSE))
+		if(total_misfire_chance && luck(list(activator,src,loc),total_misfire_chance,FALSE))
 			return FALSE
 		is_spent = TRUE
 		plane = PLANE_JUNK
@@ -151,7 +151,7 @@
 
 	return ..()
 
-/obj/item/bullet_cartridge/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/transfer_target,location,control,params,var/talk = TRUE)
+/obj/item/bullet_cartridge/proc/transfer_src_to_bullet(var/mob/activator as mob,var/obj/item/bullet_cartridge/transfer_target,location,control,params,var/talk = TRUE)
 
 	if(src == transfer_target)
 		return FALSE
@@ -161,18 +161,18 @@
 
 	var/bullets_to_add = min(amount,transfer_target.amount_max - transfer_target.get_ammo_count())
 	if(bullets_to_add <= 0)
-		caller.to_chat(span("notice","You have difficulty holding this many bullets at once."))
+		activator.to_chat(span("notice","You have difficulty holding this many bullets at once."))
 		return FALSE
 
 	src.transfer_amount_to(transfer_target,bullets_to_add)
 	if(talk)
-		caller.to_chat(span("notice","You add [bullets_to_add] bullet\s into \the [transfer_target] pile."))
+		activator.to_chat(span("notice","You add [bullets_to_add] bullet\s into \the [transfer_target] pile."))
 
 	return TRUE
 
-/obj/item/bullet_cartridge/proc/transfer_src_to_magazine(var/mob/caller as mob,var/obj/item/magazine/transfer_target,location,control,params,var/messages = TRUE)
+/obj/item/bullet_cartridge/proc/transfer_src_to_magazine(var/mob/activator as mob,var/obj/item/magazine/transfer_target,location,control,params,var/messages = TRUE)
 
-	if(!transfer_target.can_load_magazine(caller,src))
+	if(!transfer_target.can_load_magazine(activator,src))
 		return FALSE
 
 	var/bullets_to_add = min(amount,transfer_target.bullet_count_max - transfer_target.get_ammo_count())
@@ -185,18 +185,18 @@
 		transfer_target.update_sprite()
 
 	if(messages)
-		caller.to_chat(span("notice","You insert [bullets_to_add] bullet\s into \the [transfer_target.name]."))
+		activator.to_chat(span("notice","You insert [bullets_to_add] bullet\s into \the [transfer_target.name]."))
 
 	return TRUE
 
-/obj/item/bullet_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/bullet_cartridge/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(is_magazine(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/obj/item/magazine/M = object
-		if(transfer_src_to_magazine(caller,M,location,control,params))
+		if(transfer_src_to_magazine(activator,M,location,control,params))
 			play_sound(bullet_insert_sound,get_turf(object),range_max=VIEW_RANGE*0.25)
 		return TRUE
 
@@ -205,22 +205,22 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/obj/item/weapon/ranged/bullet/G = object
-		if(caller.attack_flags & CONTROL_MOD_DISARM && istype(G.attachment_undermount,/obj/item/attachment/undermount/gun))
+		if(activator.attack_flags & CONTROL_MOD_DISARM && istype(G.attachment_undermount,/obj/item/attachment/undermount/gun))
 			var/obj/item/attachment/undermount/gun/AG = G.attachment_undermount
 			G = AG.stored_gun
 
 		if(G.bullet_time && G.bullet_time[src.type] > 0)
-			PROGRESS_BAR(caller,G,G.bullet_time[src.type],/obj/item/weapon/ranged/bullet/proc/accept_bullet,caller,src)
-			PROGRESS_BAR_CONDITIONS(caller,src,src::can_load_bullet_into(),caller,G)
+			PROGRESS_BAR(activator,G,G.bullet_time[src.type],/obj/item/weapon/ranged/bullet/proc/accept_bullet,activator,src)
+			PROGRESS_BAR_CONDITIONS(activator,src,src::can_load_bullet_into(),activator,G)
 		else
-			G.accept_bullet(caller,src)
+			G.accept_bullet(activator,src)
 
 		return TRUE
 
 	. = ..()
 
-/obj/item/bullet_cartridge/proc/can_load_bullet_into(var/mob/caller,var/obj/item/weapon/ranged/bullet/G) //Only used for bullettime. This feels like shitcode but whatever.
-	return src.can_caller_interact_with(caller,delay_checks=FALSE) && G.can_caller_interact_with(caller,delay_checks=FALSE)
+/obj/item/bullet_cartridge/proc/can_load_bullet_into(var/mob/activator,var/obj/item/weapon/ranged/bullet/G) //Only used for bullettime. This feels like shitcode but whatever.
+	return src.can_activator_interact_with(activator,delay_checks=FALSE) && G.can_activator_interact_with(activator,delay_checks=FALSE)
 
 
 /obj/item/bullet_cartridge/can_transfer_stacks_to(var/obj/item/target)

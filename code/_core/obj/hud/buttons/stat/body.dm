@@ -46,11 +46,11 @@
 			add_vis_content(I)
 		update()
 
-/obj/hud/button/stat/body/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/stat/body/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(is_living(caller))
-		var/mob/living/L = caller
-		var/damage_description = L.get_damage_description(caller)
+	if(is_living(activator))
+		var/mob/living/L = activator
+		var/damage_description = L.get_damage_description(activator)
 		if(damage_description)
 			L.to_chat(damage_description)
 

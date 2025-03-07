@@ -12,9 +12,9 @@
 	has_quick_function = FALSE
 
 
-/obj/hud/button/skip/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/skip/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
 	if(.)
-		caller.skip_cutscene = TRUE
+		activator.skip_cutscene = TRUE

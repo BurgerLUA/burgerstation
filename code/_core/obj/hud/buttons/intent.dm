@@ -19,12 +19,12 @@
 		active = L.intent == intent
 		update_sprite()
 
-/obj/hud/button/intent/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/intent/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_living(caller))
-		var/mob/living/L = caller
+	if(. && is_living(activator))
+		var/mob/living/L = activator
 		L.selected_intent = intent
 		L.update_intent()
 

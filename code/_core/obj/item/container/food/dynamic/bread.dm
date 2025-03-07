@@ -23,7 +23,7 @@
 	. = ..()
 	reagents.add_reagent(/reagent/nutrition/dough/flour/processed,30)
 
-/obj/item/container/edible/dynamic/bread/click_self(var/mob/caller,location,control,params)
+/obj/item/container/edible/dynamic/bread/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
@@ -36,13 +36,13 @@
 			raw_icon_state = "dough_ball"
 			cooked_icon_state = "bread"
 
-		caller.to_chat(span("notice","You reshape \the [src.name]."))
+		activator.to_chat(span("notice","You reshape \the [src.name]."))
 
 	update_sprite()
 
 	return TRUE
 
-/obj/item/container/edible/dynamic/bread/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/edible/dynamic/bread/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(icon_state == raw_icon_state && istype(object,/obj/item/container/edible/dynamic/bread)) //IT'S RAW.
 		var/obj/item/container/edible/dynamic/bread/B = object
@@ -52,13 +52,13 @@
 			INTERACT_DELAY(10)
 			var/amount_to_transfer = min(reagents.volume_current,B.reagents.volume_max - B.reagents.volume_current)
 			if(amount_to_transfer <= 0)
-				if(is_living(caller))
-					var/mob/living/L = caller
+				if(is_living(activator))
+					var/mob/living/L = activator
 					L.to_chat(span("warning","You can't add any more dough to \the [B.name]!"))
 				return TRUE
-			if(is_living(caller))
-				var/mob/living/L = caller
-				L.visible_message(span("notice","\The [caller.name] adds \the [name] to \the [B.name]."),span("notice","You add \the [name] to \the [B.name]."))
+			if(is_living(activator))
+				var/mob/living/L = activator
+				L.visible_message(span("notice","\The [activator.name] adds \the [name] to \the [B.name]."),span("notice","You add \the [name] to \the [B.name]."))
 			reagents.transfer_reagents_to(B.reagents,amount_to_transfer)
 			if(reagents.volume_current <= 0) qdel(src)
 			return TRUE

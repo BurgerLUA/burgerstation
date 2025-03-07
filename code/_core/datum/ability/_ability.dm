@@ -12,54 +12,54 @@
 
 	var/category
 
-/ability/proc/activate(var/mob/caller)
+/ability/proc/activate(var/mob/activator)
 	var/atom/target
 	var/list/params
 	var/location
-	if(caller.client)
-		target = caller.client.last_object
-		params = caller.client.last_params
-		location = caller.client.last_location
-	else if(is_living(caller))
-		var/mob/living/L = caller
+	if(activator.client)
+		target = activator.client.last_object
+		params = activator.client.last_params
+		location = activator.client.last_location
+	else if(is_living(activator))
+		var/mob/living/L = activator
 		if(L.ai)
 			target = L.ai.objective_attack
 			location = get_turf(L.ai.objective_attack)
 		params = list(PARAM_ICON_X=16,PARAM_ICON_Y=16)
-	if(!src.on_cast_pre(caller,target,location,params))
+	if(!src.on_cast_pre(activator,target,location,params))
 		return FALSE
-	return src.on_cast(caller,target,location,params)
+	return src.on_cast(activator,target,location,params)
 
-/ability/proc/is_active(var/mob/caller)
+/ability/proc/is_active(var/mob/activator)
 	return FALSE
 
-/ability/proc/on_cast_pre(var/mob/caller,var/atom/target,location,params)
+/ability/proc/on_cast_pre(var/mob/activator,var/atom/target,location,params)
 
 	if(world.time < cooldown_end)
 		return FALSE
 
 	switch(resource_type)
 		if(HEALTH)
-			if(caller.health && caller.health.health_current < cost)
+			if(activator.health && activator.health.health_current < cost)
 				return FALSE
-			caller.health.adjust_loss_smart(brute=-cost)
+			activator.health.adjust_loss_smart(brute=-cost)
 		if(STAMINA)
-			if(caller.health && caller.health.stamina_current < cost)
+			if(activator.health && activator.health.stamina_current < cost)
 				return FALSE
-			caller.health.adjust_stamina(-cost)
+			activator.health.adjust_stamina(-cost)
 		if(MANA)
-			if(caller.health && caller.health.mana_current < cost)
+			if(activator.health && activator.health.mana_current < cost)
 				return FALSE
-			caller.health.adjust_mana(-cost)
-	if(resource_type && is_living(caller))
-		var/mob/living/L = caller
+			activator.health.adjust_mana(-cost)
+	if(resource_type && is_living(activator))
+		var/mob/living/L = activator
 		QUEUE_HEALTH_UPDATE(L)
 
 	cooldown_end = world.time + cooldown
 
 	return TRUE
 
-/ability/proc/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/proc/on_cast(var/mob/activator,var/atom/target,location,params)
 	return TRUE
 
 

@@ -16,9 +16,9 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/weapon/melee/slaughterclaws/click_on_object(var/mob/caller,var/atom/object,location,control,params) //All blood costs are made with a level 50 VIT char in mind.
+/obj/item/weapon/melee/slaughterclaws/click_on_object(var/mob/activator,var/atom/object,location,control,params) //All blood costs are made with a level 50 VIT char in mind.
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 	if(!istype(L))
 		return FALSE
 

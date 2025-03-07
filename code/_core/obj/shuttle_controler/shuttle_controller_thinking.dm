@@ -15,8 +15,8 @@
 				return FALSE
 			if(progress_sound)
 				play_sound(progress_sound,src.loc,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
-				if(last_caller)
-					create_alert(VIEW_RANGE*3,src.loc,last_caller,ALERT_LEVEL_CAUTION)
+				if(last_activator)
+					create_alert(VIEW_RANGE*3,src.loc,last_activator,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_TRANSIT
 			time = 0
 
@@ -40,8 +40,8 @@
 			set_doors(TRUE,TRUE,TRUE) //Open all the doors!
 			if(end_sound)
 				play_sound(end_sound,src.loc,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
-				if(last_caller)
-					create_alert(VIEW_RANGE*3,src.loc,last_caller,ALERT_LEVEL_CAUTION)
+				if(last_activator)
+					create_alert(VIEW_RANGE*3,src.loc,last_activator,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_LANDED
 			time = 0
 

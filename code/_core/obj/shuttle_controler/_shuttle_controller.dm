@@ -28,8 +28,8 @@
 
 	initialize_type = INITIALIZE_LATE
 
-	///The last caller who interacted with this shuttle's launch, if any.
-	var/mob/last_caller = null
+	///The last activator who interacted with this shuttle's launch, if any.
+	var/mob/last_activator = null
 
 	var/start_sound = 'sound/effects/shuttle/hyperspace_begin.ogg'
 	var/progress_sound = 'sound/effects/shuttle/hyperspace_progress.ogg'
@@ -113,9 +113,9 @@
 
 	set_doors(TRUE,TRUE,TRUE) //Open and bolt all the doors!
 
-/obj/shuttle_controller/proc/set_destination(mob/caller, obj/marker/shuttle_landing/desired_marker)
+/obj/shuttle_controller/proc/set_destination(mob/activator, obj/marker/shuttle_landing/desired_marker)
 
-	if(!is_safe_to_land(caller,desired_marker))
+	if(!is_safe_to_land(activator,desired_marker))
 		return FALSE
 
 	src.transit_marker_destination = desired_marker

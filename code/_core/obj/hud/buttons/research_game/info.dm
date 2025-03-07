@@ -38,12 +38,12 @@
 	layer = LAYER_SCREEN_BLOOD+4
 	mouse_opacity = 1
 
-/obj/hud/button/research/info/quit/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/research/info/quit/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_living(caller))
-		var/mob/living/L = caller
+	if(. && is_living(activator))
+		var/mob/living/L = activator
 		L.toggle_research_game(TRUE,FALSE)
 
 	return TRUE

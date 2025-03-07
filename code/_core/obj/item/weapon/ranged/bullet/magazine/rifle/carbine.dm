@@ -80,7 +80,7 @@
 
 	rarity = RARITY_COMMON
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/handle_ammo(var/mob/activator)
 
 	var/old_stored_magazine = stored_magazine ? TRUE : FALSE
 	var/old_desired_ammo_count = stored_magazine ? CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*7, 1) : 0

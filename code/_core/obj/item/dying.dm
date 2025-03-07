@@ -1,4 +1,4 @@
-/obj/item/proc/dye_self(var/mob/caller,var/obj/item/D,var/dye_color,var/dye_strength=0.5)
+/obj/item/proc/dye_self(var/mob/activator,var/obj/item/D,var/dye_color,var/dye_strength=0.5)
 
 	if(!dye_color)
 		dye_color = "#FFFFFF"
@@ -7,11 +7,11 @@
 	INTERACT_CHECK_NO_DELAY(D)
 
 	if(!dyeable)
-		caller.to_chat(span("warning","\The [src.name] cannot be dyed."))
+		activator.to_chat(span("warning","\The [src.name] cannot be dyed."))
 		return FALSE
 
 	if(!can_save)
-		caller.to_chat(span("warning","You can't dye \the [src.name]! Try dying the main part of this clothing set."))
+		activator.to_chat(span("warning","You can't dye \the [src.name]! Try dying the main part of this clothing set."))
 		return FALSE
 
 	var/choice
@@ -39,7 +39,7 @@
 			choice = null
 
 	if(choice)
-		caller.to_chat(span("notice","You dye \the [src.name]."))
+		activator.to_chat(span("notice","You dye \the [src.name]."))
 		update_sprite()
 		if(is_inventory(src.loc))
 			var/obj/hud/inventory/I = src.loc
@@ -51,6 +51,6 @@
 
 		return TRUE
 	else
-		caller.to_chat(span("notice","You decide not to dye anything."))
+		activator.to_chat(span("notice","You decide not to dye anything."))
 
 	return FALSE

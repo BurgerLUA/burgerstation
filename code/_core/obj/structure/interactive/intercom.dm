@@ -39,7 +39,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/structure/interactive/intercom/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/structure/interactive/intercom/clicked_on_by_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(!stored_radio)
 		return ..()
@@ -51,12 +51,12 @@
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
-	if(caller.attack_flags & CONTROL_MOD_DISARM)
+	if(activator.attack_flags & CONTROL_MOD_DISARM)
 		stored_radio.receiving = !stored_radio.receiving
-		caller.to_chat(span("notice","You toggle the intercom receiver [stored_radio.receiving ? "on" : "off"]."))
+		activator.to_chat(span("notice","You toggle the intercom receiver [stored_radio.receiving ? "on" : "off"]."))
 	else
 		stored_radio.broadcasting = !stored_radio.broadcasting
-		caller.to_chat(span("notice","You toggle the intercom microphone [stored_radio.broadcasting ? "on" : "off"]."))
+		activator.to_chat(span("notice","You toggle the intercom microphone [stored_radio.broadcasting ? "on" : "off"]."))
 		icon_state = stored_radio.broadcasting ? "intercom_speak" : "intercom"
 
 	return TRUE

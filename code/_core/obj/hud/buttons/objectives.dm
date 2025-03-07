@@ -20,7 +20,7 @@
 	SSobj.all_objective_buttons -= src
 	return ..()
 
-/obj/hud/button/objectives/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/objectives/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 	. = ..()
-	caller.to_chat(SSgamemode.active_gamemode.objective_text)
+	activator.to_chat(SSgamemode.active_gamemode.objective_text)
 

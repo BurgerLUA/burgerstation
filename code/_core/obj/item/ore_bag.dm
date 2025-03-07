@@ -44,23 +44,23 @@
 	for(var/k in contained_ore)
 		ore_count += contained_ore[k]
 
-/obj/item/ore_bag/proc/can_scoop_up_ore(var/mob/caller,var/turf/T)
+/obj/item/ore_bag/proc/can_scoop_up_ore(var/mob/activator,var/turf/T)
 
-	if(get_dist(caller,T) > 1)
+	if(get_dist(activator,T) > 1)
 		return FALSE
 
 	if(!is_inventory(src.loc))
 		return FALSE
 
 	var/obj/hud/inventory/I = src.loc
-	if(I.owner != caller)
+	if(I.owner != activator)
 		return FALSE
 
 	return TRUE
 
 
 
-/obj/item/ore_bag/proc/scoop_up_ore(var/mob/caller,var/turf/T)
+/obj/item/ore_bag/proc/scoop_up_ore(var/mob/activator,var/turf/T)
 
 	var/did_transfer = FALSE
 	var/was_full = FALSE
@@ -90,18 +90,18 @@
 
 	if(did_transfer)
 		if(was_full || still_some_left)
-			caller.to_chat(span("notice","You pick up some of the ores on \the [T.name]."))
+			activator.to_chat(span("notice","You pick up some of the ores on \the [T.name]."))
 		else
-			caller.to_chat(span("notice","You pick up all of the ores on \the [T.name]."))
+			activator.to_chat(span("notice","You pick up all of the ores on \the [T.name]."))
 	else
-		caller.to_chat(span("warning","There was nothing to pick up on \the [T.name]!"))
+		activator.to_chat(span("warning","There was nothing to pick up on \the [T.name]!"))
 
 	if(still_some_left)
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),src::scoop_up_ore(),caller,T)
-		PROGRESS_BAR_CONDITIONS(caller,src,src::can_scoop_up_ore(),caller,T)
+		PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(1),src::scoop_up_ore(),activator,T)
+		PROGRESS_BAR_CONDITIONS(activator,src,src::can_scoop_up_ore(),activator,T)
 
 
-/obj/item/ore_bag/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/ore_bag/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -112,13 +112,13 @@
 		INTERACT_DELAY(5)
 		var/obj/structure/interactive/ore_box/OB = object
 		if(!length(src.contained_ore))
-			caller.to_chat(span("notice","There is no ore in \the [src.name] that can be put into \the [OB.name]."))
+			activator.to_chat(span("notice","There is no ore in \the [src.name] that can be put into \the [OB.name]."))
 			return TRUE
 		for(var/k in src.contained_ore)
 			OB.contained_ore[k] += src.contained_ore[k]
 		src.contained_ore.Cut()
 		ore_count = 0
-		caller.to_chat(span("notice","You transfer all the ore in \the [src.name] to \the [OB.name]."))
+		activator.to_chat(span("notice","You transfer all the ore in \the [src.name] to \the [OB.name]."))
 		return TRUE
 
 	var/turf/T = object
@@ -133,21 +133,21 @@
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
-	if(caller.attack_flags & CONTROL_MOD_DISARM)
+	if(activator.attack_flags & CONTROL_MOD_DISARM)
 		if(!length(contained_ore))
-			caller.to_chat(span("warning","There is no ore to dump!"))
+			activator.to_chat(span("warning","There is no ore to dump!"))
 			return TRUE
-		caller.to_chat(span("notice","You start dumping some ore..."))
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::dump_some_ore(),caller,T)
-		PROGRESS_BAR_CONDITIONS(caller,src,src::can_scoop_up_ore(),caller,T) //Not a typo.
+		activator.to_chat(span("notice","You start dumping some ore..."))
+		PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(3),src::dump_some_ore(),activator,T)
+		PROGRESS_BAR_CONDITIONS(activator,src,src::can_scoop_up_ore(),activator,T) //Not a typo.
 	else
-		scoop_up_ore(caller,T)
+		scoop_up_ore(activator,T)
 
 
 	return TRUE
 
 
-/obj/item/ore_bag/proc/dump_some_ore(var/mob/caller,var/turf/T)
+/obj/item/ore_bag/proc/dump_some_ore(var/mob/activator,var/turf/T)
 
 	var/ore_id = contained_ore[1]
 	for(var/i=1,i<=min(CEILING(contained_ore[ore_id]/3,1),30),i++)
@@ -165,11 +165,11 @@
 		contained_ore -= ore_id
 
 	if(!length(contained_ore))
-		caller.to_chat(span("notice","You finish dumping all the ore."))
+		activator.to_chat(span("notice","You finish dumping all the ore."))
 		return TRUE
 
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),src::dump_some_ore(),caller,T)
-	PROGRESS_BAR_CONDITIONS(caller,src,src::can_scoop_up_ore(),caller,T) //can_scoop_up_ore is not a typo. Pretty much the same thing.
+	PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(1),src::dump_some_ore(),activator,T)
+	PROGRESS_BAR_CONDITIONS(activator,src,src::can_scoop_up_ore(),activator,T) //can_scoop_up_ore is not a typo. Pretty much the same thing.
 
 	return TRUE
 

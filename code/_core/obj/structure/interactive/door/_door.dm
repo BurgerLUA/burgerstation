@@ -84,19 +84,19 @@ obj/structure/interactive/door/update_icon()
 			layer = LAYER_OBJ_DOOR_CLOSED
 			set_opacity(initial(opacity))
 
-obj/structure/interactive/door/proc/toggle(var/mob/caller,var/lock = FALSE,var/force = FALSE)
+obj/structure/interactive/door/proc/toggle(var/mob/activator,var/lock = FALSE,var/force = FALSE)
 	if(door_state == DOOR_STATE_OPENED)
-		close(caller)
+		close(activator)
 		return TRUE
 	else if(door_state == DOOR_STATE_CLOSED)
-		open(caller)
+		open(activator)
 		return TRUE
 	return FALSE
 
-obj/structure/interactive/door/proc/open(var/mob/caller,var/lock = FALSE,var/force = FALSE)
+obj/structure/interactive/door/proc/open(var/mob/activator,var/lock = FALSE,var/force = FALSE)
 	if(open_sound)
 		play_sound(open_sound,src.loc,range_max=VIEW_RANGE)
-		if(caller) create_alert(VIEW_RANGE,src.loc,caller,ALERT_LEVEL_NOISE)
+		if(activator) create_alert(VIEW_RANGE,src.loc,activator,ALERT_LEVEL_NOISE)
 	door_state = DOOR_STATE_OPENING_01
 	update_sprite()
 	spawn(open_time)
@@ -104,43 +104,43 @@ obj/structure/interactive/door/proc/open(var/mob/caller,var/lock = FALSE,var/for
 		update_sprite()
 
 
-obj/structure/interactive/door/proc/close(var/mob/caller,var/lock = FALSE,var/force = FALSE)
+obj/structure/interactive/door/proc/close(var/mob/activator,var/lock = FALSE,var/force = FALSE)
 	if(close_sound)
 		play_sound(close_sound,src.loc,range_max=VIEW_RANGE)
-		if(caller) create_alert(VIEW_RANGE,src.loc,caller,ALERT_LEVEL_NOISE)
+		if(activator) create_alert(VIEW_RANGE,src.loc,activator,ALERT_LEVEL_NOISE)
 	door_state = DOOR_STATE_CLOSING_01
 	update_sprite()
 	spawn(close_time)
 		door_state = DOOR_STATE_CLOSED
 		update_sprite()
 
-/obj/structure/interactive/door/proc/unlock(var/mob/caller,var/force = FALSE)
+/obj/structure/interactive/door/proc/unlock(var/mob/activator,var/force = FALSE)
 	locked = FALSE
 	if(initial(allow_path))
 		allow_path = TRUE
 	update_sprite()
 	return TRUE
 
-/obj/structure/interactive/door/proc/lock(var/mob/caller,var/force = FALSE)
+/obj/structure/interactive/door/proc/lock(var/mob/activator,var/force = FALSE)
 	locked = TRUE
 	allow_path = FALSE
 	update_sprite()
 	return TRUE
 
-obj/structure/interactive/door/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+obj/structure/interactive/door/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(1)
 
-	var/atom/A = check_interactables(caller,object,location,control,params)
-	if(A && A.clicked_on_by_object(caller,object,location,control,params))
+	var/atom/A = check_interactables(activator,object,location,control,params)
+	if(A && A.clicked_on_by_object(activator,object,location,control,params))
 		return TRUE
 
 	if(door_state == DOOR_STATE_OPENED && allow_manual_close)
-		close(caller)
+		close(activator)
 	else if(door_state == DOOR_STATE_CLOSED && allow_manual_open)
-		open(caller)
+		open(activator)
 
 	return TRUE
 

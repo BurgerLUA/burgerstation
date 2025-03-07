@@ -24,7 +24,7 @@
 		color = M.color
 	return ..()
 
-/obj/item/material/sheet/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/material/sheet/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -38,7 +38,7 @@
 			INITIALIZE(R)
 			GENERATE(R)
 			FINALIZE(R)
-			caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into some [R.name]s."),span("notice","You cut \the [src.name] into 4 [R.name]."))
+			activator.visible_message(span("notice","\The [activator.name] cuts some [src.name] into some [R.name]s."),span("notice","You cut \the [src.name] into 4 [R.name]."))
 			add_item_count(-1)
 			R.Move(get_turf(I))
 			return TRUE

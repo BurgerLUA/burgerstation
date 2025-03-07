@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(radio)
 	var/list/obj/item/device/signaller/all_signalers = list()
 
 //Radios should never be unclogged.
-/subsystem/radio/unclog(var/mob/caller)
+/subsystem/radio/unclog(var/mob/activator)
 	tick_rate = -1
 	. = ..()
 

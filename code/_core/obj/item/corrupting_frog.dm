@@ -9,7 +9,7 @@
 	value_burgerbux = 1
 	var/can_use = TRUE
 
-/obj/item/corrupting_frog/click_on_object(var/mob/caller, var/atom/object, location, control, params)
+/obj/item/corrupting_frog/click_on_object(var/mob/activator, var/atom/object, location, control, params)
 
 	if(!can_use || !is_item(object))
 		return ..()
@@ -20,11 +20,11 @@
 	INTERACT_CHECK_OBJECT
 
 	if(!I.can_save)
-		caller.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]! Try tempering the main part of this clothing set."))
+		activator.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]! Try tempering the main part of this clothing set."))
 		return FALSE
 
 	if(I.quality <= -1)
-		caller.to_chat(span("warning","\The [src.name] cannot be used with \the [I.name]!"))
+		activator.to_chat(span("warning","\The [src.name] cannot be used with \the [I.name]!"))
 		return FALSE
 
 	var/choice = input("Are you sure you want to corrupt \the [I.name]?","Corrupting Frog") as null|anything in list("Yes","No","Cancel")

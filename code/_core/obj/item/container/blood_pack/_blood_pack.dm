@@ -18,7 +18,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/container/blood_pack/feed(var/mob/caller,var/mob/living/target)
+/obj/item/container/blood_pack/feed(var/mob/activator,var/mob/living/target)
 	return FALSE
 
 /obj/item/container/blood_pack/drop_item(var/atom/desired_loc,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)
@@ -33,26 +33,26 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/container/blood_pack/proc/is_safe_to_attach(var/mob/living/caller,var/mob/living/target,var/messages=TRUE,var/desired_inject)
+/obj/item/container/blood_pack/proc/is_safe_to_attach(var/mob/living/activator,var/mob/living/target,var/messages=TRUE,var/desired_inject)
 
 	if(!isnum(desired_inject))
 		desired_inject = injecting
 
-	if(caller == target)
+	if(activator == target)
 		return TRUE
 
-	if(!allow_hostile_action(caller.loyalty_tag,target))
+	if(!allow_hostile_action(activator.loyalty_tag,target))
 		if(desired_inject)
 			if(reagents.contains_lethal)
-				if(messages) caller.to_chat(span("warning","Your loyalty tag prevents you from injecting lethal reagents!"))
+				if(messages) activator.to_chat(span("warning","Your loyalty tag prevents you from injecting lethal reagents!"))
 				return FALSE
 		else
-			if(messages) caller.to_chat(span("warning","Your loyalty tag prevents you from draining the blood of allies!"))
+			if(messages) activator.to_chat(span("warning","Your loyalty tag prevents you from draining the blood of allies!"))
 			return FALSE
 
 	return TRUE
 
-/obj/item/container/blood_pack/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/container/blood_pack/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(is_living(object))
 		INTERACT_CHECK
@@ -60,20 +60,20 @@
 		INTERACT_DELAY(1)
 		var/mob/living/L = object
 		if(attached_to == L)
-			detach(caller)
+			detach(activator)
 			return TRUE
 		if(attached_to) //This statement and the above is weird and I hate it.
-			detach(caller)
-		if(!is_living(caller) || is_safe_to_attach(caller,object))
-			try_attach(caller,object)
+			detach(activator)
+		if(!is_living(activator) || is_safe_to_attach(activator,object))
+			try_attach(activator,object)
 		return TRUE
 
 	return ..()
 
-/obj/item/container/blood_pack/proc/detach(var/mob/caller)
+/obj/item/container/blood_pack/proc/detach(var/mob/activator)
 	var/turf/T = get_turf(src)
-	if(caller)
-		T.visible_message(span("notice","\The [caller.name] detaches \the [src.name] from [attached_to.name]."))
+	if(activator)
+		T.visible_message(span("notice","\The [activator.name] detaches \the [src.name] from [attached_to.name]."))
 	else
 		T.visible_message(span("notice","\The [src.name] detaches itself from \the [attached_to.name]."))
 	attached_to = null
@@ -81,60 +81,60 @@
 	update_sprite()
 	return TRUE
 
-/obj/item/container/blood_pack/proc/attach(var/mob/caller,var/mob/living/target)
+/obj/item/container/blood_pack/proc/attach(var/mob/activator,var/mob/living/target)
 	draw_delay = initial(draw_delay)
 	var/turf/T = get_turf(src)
 	attached_to = target
-	T.visible_message(span("notice","\The [caller.name] attaches \the [src.name] to \the [attached_to.name]."),span("notice","You attach \the [src.name] to \the [attached_to.name]."))
+	T.visible_message(span("notice","\The [activator.name] attaches \the [src.name] to \the [attached_to.name]."),span("notice","You attach \the [src.name] to \the [attached_to.name]."))
 	START_THINKING(src)
 	update_sprite()
 	return TRUE
 
-/obj/item/container/blood_pack/click_self(var/mob/caller,location,control,params)
+/obj/item/container/blood_pack/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
-	if(!is_living(caller))
+	if(!is_living(activator))
 		return ..()
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 
 	if(L.is_busy())
 		return FALSE
 
-	if(caller.attack_flags & CONTROL_MOD_DISARM)
+	if(activator.attack_flags & CONTROL_MOD_DISARM)
 		if(attached_to)
-			detach(caller)
+			detach(activator)
 		else
-			caller.to_chat(span("warning","There is nothing to detach \the [src.name] from!"))
+			activator.to_chat(span("warning","There is nothing to detach \the [src.name] from!"))
 	else
-		if(!attached_to || is_safe_to_attach(caller,attached_to,desired_inject = !injecting))
+		if(!attached_to || is_safe_to_attach(activator,attached_to,desired_inject = !injecting))
 			injecting = !injecting
-			caller.to_chat(span("notice","You toggle \the [src.name] to [injecting ? "inject" : "draw"] its contents."))
+			activator.to_chat(span("notice","You toggle \the [src.name] to [injecting ? "inject" : "draw"] its contents."))
 			update_sprite()
 
 	return TRUE
 
-/obj/item/container/blood_pack/proc/try_attach(var/mob/caller,var/mob/living/target)
+/obj/item/container/blood_pack/proc/try_attach(var/mob/activator,var/mob/living/target)
 
-	if(!can_attach_to(caller,target))
+	if(!can_attach_to(activator,target))
 		return FALSE
 
-	caller.visible_message(span("warning","\The [caller.name] begins to attach \the [src.name] to \the [target.name]..."),span("notice","You begin to attach \the [src.name] to \the [target.name]..."))
+	activator.visible_message(span("warning","\The [activator.name] begins to attach \the [src.name] to \the [target.name]..."),span("notice","You begin to attach \the [src.name] to \the [target.name]..."))
 
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::attach(),caller,target)
-	PROGRESS_BAR_CONDITIONS(caller,src,src::can_attach_to(),caller,target)
+	PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(3),src::attach(),activator,target)
+	PROGRESS_BAR_CONDITIONS(activator,src,src::can_attach_to(),activator,target)
 
 	return TRUE
 
-/obj/item/container/blood_pack/proc/can_attach_to(var/mob/caller,var/mob/living/target)
+/obj/item/container/blood_pack/proc/can_attach_to(var/mob/activator,var/mob/living/target)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
 
 	if(!target.reagents)
-		caller.to_chat(span("warning","You can't find a way to attach \the [src.name] to \the [target.name]!"))
+		activator.to_chat(span("warning","You can't find a way to attach \the [src.name] to \the [target.name]!"))
 		return FALSE
 
 	return TRUE

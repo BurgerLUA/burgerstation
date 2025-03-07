@@ -19,9 +19,9 @@
 	SSshuttle.all_shuttle_landing_consoles += src
 	. = ..()
 
-/obj/structure/interactive/computer/console/shuttle_landing/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/computer/console/shuttle_landing/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 
 	if(!linked_marker)
 		return ..()
@@ -68,7 +68,7 @@
 
 		var/obj/shuttle_controller/SC = choices[desired_choice]
 		if(SC.state != SHUTTLE_STATE_LANDED)
-			caller.to_chat(span("notice","That shuttle is currently [SC.state]."))
+			activator.to_chat(span("notice","That shuttle is currently [SC.state]."))
 			continue
 
 		if(linked_marker.reserved_by_shuttle)
@@ -87,7 +87,7 @@
 
 		//Only choice: Yes.
 
-		if(SC.set_destination(caller,linked_marker) && SC.start_flight(caller))
+		if(SC.set_destination(activator,linked_marker) && SC.start_flight(activator))
 			return TRUE
 
 	. = ..()

@@ -46,31 +46,31 @@
 	trigger(attacker,src,-1,-1)
 	return TRUE
 
-/obj/item/device/signaller/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/device/signaller/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(signal_freq == -1 && signal_code == -1)
 		for(var/k in SSradio.all_signalers)
 			var/obj/item/device/signaller/S = k
 			if(S == src)
 				continue
-			S.trigger(caller,src,frequency_current,signal_current)
+			S.trigger(activator,src,frequency_current,signal_current)
 		return TRUE
 
 	if(loc && signal_freq == frequency_current && signal_code == signal_current)
-		loc.trigger(caller,src,-1,-1)
+		loc.trigger(activator,src,-1,-1)
 		return TRUE
 
 	return TRUE
 
-/obj/item/device/signaller/click_self(var/mob/caller,location,control,params)
+/obj/item/device/signaller/click_self(var/mob/activator,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 	mode = !mode
-	caller.to_chat(span("notice","You change the mode to [mode ? "frequency" : "signal"]."))
+	activator.to_chat(span("notice","You change the mode to [mode ? "frequency" : "signal"]."))
 	spam_fix_time = 0
 	return TRUE
 
-/obj/item/device/signaller/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/device/signaller/mouse_wheel_on_object(var/mob/activator,delta_x,delta_y,location,control,params)
 
 	var/fixed_delta = clamp(delta_y,-1,1)
 
@@ -78,20 +78,20 @@
 		var/old_frequency = frequency_current
 		frequency_current = clamp(frequency_current + 0.2*fixed_delta,frequency_min,frequency_max)
 		if(old_frequency == frequency_current)
-			caller.to_chat(span("notice","\The [src.name]'s frequency can't seem to go any [frequency_current == frequency_min ? "lower" : "higher"]."))
+			activator.to_chat(span("notice","\The [src.name]'s frequency can't seem to go any [frequency_current == frequency_min ? "lower" : "higher"]."))
 		else if(spam_fix_time <= world.time)
-			caller.to_chat(span("notice","You change \the [src.name]'s frequency to [frequency_current] kHz..."))
+			activator.to_chat(span("notice","You change \the [src.name]'s frequency to [frequency_current] kHz..."))
 		else
-			caller.to_chat(span("notice","...[frequency_current] kHz..."))
+			activator.to_chat(span("notice","...[frequency_current] kHz..."))
 	else
 		var/old_signal = signal_current
 		signal_current = clamp(signal_current + 1*fixed_delta,signal_min,signal_max)
 		if(old_signal == signal_current)
-			caller.to_chat(span("notice","\The [src.name]'s signal can't seem to go any [signal_current == signal_min ? "lower" : "higher"]."))
+			activator.to_chat(span("notice","\The [src.name]'s signal can't seem to go any [signal_current == signal_min ? "lower" : "higher"]."))
 		else if(spam_fix_time <= world.time)
-			caller.to_chat(span("notice","You change \the [src.name]'s signal to [signal_current]..."))
+			activator.to_chat(span("notice","You change \the [src.name]'s signal to [signal_current]..."))
 		else
-			caller.to_chat(span("notice","...[signal_current]..."))
+			activator.to_chat(span("notice","...[signal_current]..."))
 
 	spam_fix_time = world.time + 20
 

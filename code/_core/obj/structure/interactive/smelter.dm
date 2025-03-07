@@ -72,18 +72,18 @@
 		stack(T)
 	smelt()
 	return ..()
-/obj/structure/interactive/smelter/clicked_on_by_object(mob/caller, atom/object, location, control, params)
+/obj/structure/interactive/smelter/clicked_on_by_object(mob/activator, atom/object, location, control, params)
 	if(istype(object,/obj/item))
 		var/obj/item/T = object
 		if(T.flags_tool & FLAG_TOOL_WRENCH)
 			if(anchored)
-				caller.to_chat(span("notice","You un-anchor the smelter."))
+				activator.to_chat(span("notice","You un-anchor the smelter."))
 				anchored = FALSE
 			else
-				caller.to_chat(span("notice","You anchor the smelter."))
+				activator.to_chat(span("notice","You anchor the smelter."))
 				anchored = TRUE
 	else
 		for(var/obj/item/T in contents)
-			T.drop_item(get_turf(caller))
-		caller.to_chat(span("notice","You empty the smelter."))
+			T.drop_item(get_turf(activator))
+		activator.to_chat(span("notice","You empty the smelter."))
 	. = ..()

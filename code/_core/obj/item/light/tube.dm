@@ -6,7 +6,7 @@
 
 	weight = 0.25
 
-/obj/item/light/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/light/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(istype(object,light_type))
 		INTERACT_CHECK
@@ -22,7 +22,7 @@
 		L.desired_light_color = color
 		L.update_atom_light()
 		L.update_sprite()
-		caller.visible_message(span("notice","\The [caller.name] inserts \the [src.name] into \the [object.name]."),span("notice","You insert \the [src.name] into \the [object.name]."))
+		activator.visible_message(span("notice","\The [activator.name] inserts \the [src.name] into \the [object.name]."),span("notice","You insert \the [src.name] into \the [object.name]."))
 		qdel(src)
 		return TRUE
 

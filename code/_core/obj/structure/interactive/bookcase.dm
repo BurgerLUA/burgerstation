@@ -49,38 +49,38 @@
 	if(chance_of_scroll > 0)
 		icon_state = "[icon_state]-[chance_of_scroll]"
 
-/obj/structure/interactive/bookcase/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/bookcase/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(!is_inventory(object))
 		return ..()
 
-	if(can_search_case(caller))
-		caller.to_chat(span("notice","You start searching \the [src.name]..."))
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::search_case(),caller)
-		PROGRESS_BAR_CONDITIONS(caller,src,src::can_search_case(),caller)
+	if(can_search_case(activator))
+		activator.to_chat(span("notice","You start searching \the [src.name]..."))
+		PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(5),src::search_case(),activator)
+		PROGRESS_BAR_CONDITIONS(activator,src,src::can_search_case(),activator)
 
 	return TRUE
 
-/obj/structure/interactive/bookcase/proc/can_search_case(var/mob/caller)
+/obj/structure/interactive/bookcase/proc/can_search_case(var/mob/activator)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
 	if(chance_of_scroll <= 0)
-		caller.to_chat(span("warning","You don't think you'll find anything of use here."))
+		activator.to_chat(span("warning","You don't think you'll find anything of use here."))
 		return FALSE
 
 	if(prob(2))
-		caller.to_chat(span("notice",pick(stored_bookcase_phrases)))
+		activator.to_chat(span("notice",pick(stored_bookcase_phrases)))
 
 	return TRUE
 
-/obj/structure/interactive/bookcase/proc/search_case(var/mob/caller)
+/obj/structure/interactive/bookcase/proc/search_case(var/mob/activator)
 
 	if(prob(chance_of_scroll*10))
 		var/rarity = 0
 		var/mob/living/advanced/player/P
-		if(is_player(caller))
-			P = caller
+		if(is_player(activator))
+			P = activator
 			rarity = P.get_rarity()
 		var/turf/T = get_turf(src)
 		var/list/found_items = SPAWN_LOOT(/loot/random/scroll,T,rarity)
@@ -88,9 +88,9 @@
 			for(var/k in found_items)
 				var/obj/item/I = k
 				P.put_in_hands(I)
-		caller.to_chat(span("notice","Huh. You found something in \the [src.name]!"))
+		activator.to_chat(span("notice","Huh. You found something in \the [src.name]!"))
 	else
-		caller.to_chat(span("warning","You didn't find anything of use in \the [src.name]...."))
+		activator.to_chat(span("warning","You didn't find anything of use in \the [src.name]...."))
 
 	chance_of_scroll--
 	update_sprite()

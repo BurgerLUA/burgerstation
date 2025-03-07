@@ -68,11 +68,11 @@
 
 	return ..()
 
-/obj/item/legion_core/click_self(var/mob/caller,location,control,params)
-	click_on_object(caller,caller)
+/obj/item/legion_core/click_self(var/mob/activator,location,control,params)
+	click_on_object(activator,activator)
 	return TRUE
 
-/obj/item/legion_core/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/legion_core/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_living(object))
 
@@ -81,18 +81,18 @@
 		INTERACT_DELAY(10)
 
 		if(expiry_time == -1 && !stabilized)
-			caller.to_chat(span("warning","\The [src.name] has expired!"))
+			activator.to_chat(span("warning","\The [src.name] has expired!"))
 			return TRUE
 
 		var/mob/living/L = object
 		if(L.dead || !L.health)
-			caller.to_chat(span("warning","\The [src.name] only works on living beings!"))
+			activator.to_chat(span("warning","\The [src.name] only works on living beings!"))
 			return TRUE
 
-		if(caller == L)
-			caller.visible_message(span("notice","\The [caller.name] uses \the [src.name] to heal their wounds."),span("notice","You use \the [src.name] to heal your wounds."))
+		if(activator == L)
+			activator.visible_message(span("notice","\The [activator.name] uses \the [src.name] to heal their wounds."),span("notice","You use \the [src.name] to heal your wounds."))
 		else
-			caller.visible_message(span("notice","\The [caller.name] uses \the [src.name] to heal the wounds of \the [L.name]."),span("notice","You use \the [src.name] to heal the wounds of \the [L.name]."))
+			activator.visible_message(span("notice","\The [activator.name] uses \the [src.name] to heal the wounds of \the [L.name]."),span("notice","You use \the [src.name] to heal the wounds of \the [L.name]."))
 
 		L.health.adjust_loss_smart(brute=-100,burn=-100,tox=-100,oxy=-100,fatigue=-100,pain=-100,rad=-100,sanity=-100,mental=-100,organic=TRUE,robotic=FALSE)
 		L.to_chat(span("notice","You feel rejuvenated!"))
@@ -112,7 +112,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/legion_core_stabilizer/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/legion_core_stabilizer/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/legion_core))
 		INTERACT_CHECK
@@ -123,5 +123,5 @@
 		core.update_icon()
 		core.name = "stable legion core"
 		core.desc_extended = "A special regenerative yet decaying core that can be used to near-instantly restore the health of the target by a significant amount. One time use, and decays 10 minutes after being created. It has been preserved, keeping its healing abilities indefinitely."
-		caller.to_chat(span("notice","You inject [core.name] with the [object.name], preserving its healing abilities indefinitely."))
+		activator.to_chat(span("notice","You inject [core.name] with the [object.name], preserving its healing abilities indefinitely."))
 		qdel(src)

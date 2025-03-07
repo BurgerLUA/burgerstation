@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(horde)
 
 
 
-/subsystem/horde/unclog(var/mob/caller)
+/subsystem/horde/unclog(var/mob/activator)
 	enable = FALSE
 	. = ..()
 

@@ -200,8 +200,8 @@
 	return FALSE
 
 /*
-/turf/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	caller.face_atom(src)
+/turf/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
+	activator.face_atom(src)
 	return ..()
 */
 
@@ -346,10 +346,10 @@
 
 	return null
 
-/turf/proc/can_construct_on(var/atom/caller,var/obj/structure/structure_to_make = null)
-	if(!is_living(caller))
+/turf/proc/can_construct_on(var/atom/activator,var/obj/structure/structure_to_make = null)
+	if(!is_living(activator))
 		return FALSE
-	var/mob/living/C = caller
+	var/mob/living/C = activator
 	C.to_chat(span("warning","You cannot deploy on this turf!"))
 	return FALSE
 

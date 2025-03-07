@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(advanced_thinking)
 
 	tick_usage_max = 75
 
-/subsystem/advanced_thinking/unclog(var/mob/caller)
+/subsystem/advanced_thinking/unclog(var/mob/activator)
 	for(var/k in src.all_thinkers)
 		all_thinkers -= k
 	return ..()

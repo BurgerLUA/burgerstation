@@ -20,19 +20,19 @@
 
 	rarity = RARITY_MYTHICAL
 
-/obj/item/weapon/melee/sword/armblade/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/sword/armblade/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
-	var/mob/living/self = caller
+	var/mob/living/self = activator
 
 	if (next_scream > world.time)
-		caller.to_chat(span("danger","Your throat still hurts from screaming so loud!"))
+		activator.to_chat(span("danger","Your throat still hurts from screaming so loud!"))
 		return TRUE
 
 	if(self.has_status_effect(STAMCRIT) || self.health.stamina_current < 20)
-		caller.to_chat(span("danger","You're too tired to reshape your lungs!"))
+		activator.to_chat(span("danger","You're too tired to reshape your lungs!"))
 		return TRUE
 
 	var/turf/T = get_turf(src)

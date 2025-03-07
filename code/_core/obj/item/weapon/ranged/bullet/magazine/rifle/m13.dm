@@ -85,28 +85,28 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/m13/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/m13/load_new_bullet_from_magazine(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/rifle/m13/load_new_bullet_from_magazine(var/mob/activator)
 	. = ..()
 	if(!chambered_bullet && stored_magazine)
 		var/turf/T = get_turf(src)
 		play_sound('sound/weapons/ranged/generic/clip_ping.ogg',T)
-		eject_magazine(caller)
+		eject_magazine(activator)
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/m13/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+/obj/item/weapon/ranged/bullet/magazine/rifle/m13/clicked_on_by_object(var/mob/activator as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	if(stored_magazine && !wielded && is_inventory(object) && is_inventory(src.loc) && !caller.attack_flags) //Can't remove magazine normally.
+	if(stored_magazine && !wielded && is_inventory(object) && is_inventory(src.loc) && !activator.attack_flags) //Can't remove magazine normally.
 		return TRUE
 
 	. = ..()
 
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/m13/accept_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/B,var/silent=FALSE)
+/obj/item/weapon/ranged/bullet/magazine/rifle/m13/accept_bullet(var/mob/activator as mob,var/obj/item/bullet_cartridge/B,var/silent=FALSE)
 
 	if(!stored_magazine)
-		caller.to_chat(span("warning","You can't load \the [B.name] into \the [src.name] without a clip inserted!"))
+		activator.to_chat(span("warning","You can't load \the [B.name] into \the [src.name] without a clip inserted!"))
 		return FALSE
 
 	if(chambered_bullet)
-		return B.transfer_src_to_magazine(caller,stored_magazine)
+		return B.transfer_src_to_magazine(activator,stored_magazine)
 
 	. = ..()

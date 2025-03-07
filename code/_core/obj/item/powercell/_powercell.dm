@@ -15,12 +15,12 @@
 	weight = 2
 	has_quick_function = TRUE //allows batteries in the belt slots
 
-/obj/item/powercell/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/powercell/quick(var/mob/activator,var/atom/object,location,params)
 
-	if(!is_advanced(caller) || !is_inventory(src.loc))
+	if(!is_advanced(activator) || !is_inventory(src.loc))
 		return FALSE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 
 	return A.put_in_hands(src,params)
 
@@ -166,7 +166,7 @@
 
 	return ..()
 
-/obj/item/powercell/get_examine_list(var/mob/caller)
+/obj/item/powercell/get_examine_list(var/mob/activator)
 	return ..() + div("notice","It has [charge_current] out of [charge_max] charge remaining.")
 
 

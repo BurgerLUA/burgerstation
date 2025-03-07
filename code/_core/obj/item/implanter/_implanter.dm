@@ -39,9 +39,9 @@
 	. = ..()
 	. += div("notice","Details: [initial(stored_implant.desc_extended)]")
 
-/obj/item/implanter/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/implanter/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
-	if(caller != object || !is_advanced(caller))
+	if(activator != object || !is_advanced(activator))
 		return ..()
 
 	INTERACT_CHECK
@@ -49,10 +49,10 @@
 	INTERACT_DELAY(5)
 
 	if(!stored_implant)
-		caller.to_chat(span("warning","There is no implanter loaded in \the [src.name]!"))
+		activator.to_chat(span("warning","There is no implanter loaded in \the [src.name]!"))
 		return TRUE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 
 	var/initial_id = initial(stored_implant.id)
 
@@ -61,12 +61,12 @@
 			var/obj/item/organ/O = A.labeled_organs[initial_id]
 			A.remove_organ(O,get_turf(A))
 		else
-			caller.to_chat(span("warning","You already have an implant of that type!"))
+			activator.to_chat(span("warning","You already have an implant of that type!"))
 			return TRUE
 
 	var/obj/item/organ/internal/implant/added_implant = A.add_organ(stored_implant)
 	if(added_implant)
-		caller.visible_message(span("notice","\The [caller.name] implants something into their [added_implant.attached_organ.name]."),span("notice","You implant \the [added_implant.name] into your [added_implant.attached_organ.name]."))
+		activator.visible_message(span("notice","\The [activator.name] implants something into their [added_implant.attached_organ.name]."),span("notice","You implant \the [added_implant.name] into your [added_implant.attached_organ.name]."))
 		name = initial(name)
 		stored_implant = null
 

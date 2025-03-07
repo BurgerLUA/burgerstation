@@ -29,12 +29,12 @@
 
 	rarity = RARITY_COMMON
 
-/obj/item/magazine/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/magazine/quick(var/mob/activator,var/atom/object,location,params)
 
-	if(!is_advanced(caller) || !is_inventory(src.loc))
+	if(!is_advanced(activator) || !is_inventory(src.loc))
 		return FALSE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 
 	return A.put_in_hands(src,params)
 
@@ -93,58 +93,58 @@
 		var/amount = stored_bullets[k]
 		. += amount
 
-/obj/item/magazine/proc/can_load_magazine(var/mob/caller,var/obj/item/bullet_cartridge/B)
+/obj/item/magazine/proc/can_load_magazine(var/mob/activator,var/obj/item/bullet_cartridge/B)
 
 	if(B.is_spent)
-		caller?.to_chat(span("warning","The bullet is spent!"))
+		activator?.to_chat(span("warning","The bullet is spent!"))
 		return FALSE
 
 	if(src.bullet_count_max <= src.get_ammo_count())
-		caller?.to_chat(span("warning","The magazine is full."))
+		activator?.to_chat(span("warning","The magazine is full."))
 		return FALSE
 
 	if(B.bullet_length < bullet_length_min)
-		caller?.to_chat(span("warning","\The [B.name] is too short to be put inside \the [src.name]!"))
+		activator?.to_chat(span("warning","\The [B.name] is too short to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(B.bullet_length > bullet_length_max)
-		caller?.to_chat(span("warning","\The [B.name] is too long to be put inside \the [src.name]!"))
+		activator?.to_chat(span("warning","\The [B.name] is too long to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(B.bullet_diameter < bullet_diameter_min)
-		caller?.to_chat(span("warning","\The [B.name] is too narrow to be put inside \the [src.name]!"))
+		activator?.to_chat(span("warning","\The [B.name] is too narrow to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(B.bullet_diameter > bullet_diameter_max)
-		caller?.to_chat(span("warning","\The [B.name] is too wide to be put inside \the [src.name]!"))
+		activator?.to_chat(span("warning","\The [B.name] is too wide to be put inside \the [src.name]!"))
 		return FALSE
 
 	return TRUE
 
-/obj/item/magazine/proc/can_load_magazine_path(var/mob/caller,var/obj/item/bullet_cartridge/B)
+/obj/item/magazine/proc/can_load_magazine_path(var/mob/activator,var/obj/item/bullet_cartridge/B)
 
 	if(initial(B.is_spent))
-		caller?.to_chat(span("warning","The bullet is spent!"))
+		activator?.to_chat(span("warning","The bullet is spent!"))
 		return FALSE
 
 	if(src.bullet_count_max <= src.get_ammo_count())
-		caller?.to_chat(span("warning","The magazine is full."))
+		activator?.to_chat(span("warning","The magazine is full."))
 		return FALSE
 
 	if(initial(B.bullet_length) < bullet_length_min)
-		caller?.to_chat(span("warning","\The [B.name] is too short to be put inside \the [src.name]!"))
+		activator?.to_chat(span("warning","\The [B.name] is too short to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(initial(B.bullet_length) > bullet_length_max)
-		caller?.to_chat(span("warning","\The [B.name] is too long to be put inside \the [src.name]!"))
+		activator?.to_chat(span("warning","\The [B.name] is too long to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(initial(B.bullet_diameter) < bullet_diameter_min)
-		caller?.to_chat(span("warning","\The [B.name] is too narrow to be put inside \the [src.name]!"))
+		activator?.to_chat(span("warning","\The [B.name] is too narrow to be put inside \the [src.name]!"))
 		return FALSE
 
 	if(initial(B.bullet_diameter) > bullet_diameter_max)
-		caller?.to_chat(span("warning","\The [B.name] is too wide to be put inside \the [src.name]!"))
+		activator?.to_chat(span("warning","\The [B.name] is too wide to be put inside \the [src.name]!"))
 		return FALSE
 
 	return TRUE
@@ -154,7 +154,7 @@
 
 
 
-/obj/item/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/magazine/clicked_on_by_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(is_inventory(object) && length(stored_bullets))
 		INTERACT_CHECK
@@ -171,7 +171,7 @@
 			B.amount = 1
 			FINALIZE(B)
 			if(!I.add_object(B))
-				B.drop_item(get_turf(caller))
+				B.drop_item(get_turf(activator))
 			B.update_sprite()
 			update_sprite()
 
@@ -179,7 +179,7 @@
 
 	. = ..()
 
-/obj/item/magazine/click_self(var/mob/caller,location,control,params)
+/obj/item/magazine/click_self(var/mob/activator,location,control,params)
 
 	if(length(stored_bullets) && is_inventory(loc))
 		INTERACT_CHECK
@@ -192,7 +192,7 @@
 		INITIALIZE(B)
 		B.amount = 1
 		FINALIZE(B)
-		B.drop_item(get_turf(caller))
+		B.drop_item(get_turf(activator))
 		B.update_sprite()
 		src.update_sprite()
 		return TRUE
@@ -222,7 +222,7 @@
 		'sound/weapons/ranged/generic/mag_remove5.ogg'\
 	)
 
-/obj/item/magazine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/magazine/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/weapon/ranged/bullet/) && !istype(src,/obj/item/magazine/clip))
 		INTERACT_CHECK
@@ -230,10 +230,10 @@
 		INTERACT_DELAY(1)
 		var/obj/item/weapon/ranged/bullet/magazine/G = object
 		if(!weapon_whitelist[G.type])
-			if(caller) caller.to_chat(span("warning","You can't insert this type of magazine into \the [G]!"))
+			if(activator) activator.to_chat(span("warning","You can't insert this type of magazine into \the [G]!"))
 			return TRUE
 		if(G.stored_magazine)
-			G.eject_magazine(caller)
+			G.eject_magazine(activator)
 		src.drop_item(G)
 		G.stored_magazine = src
 		G.open = FALSE
@@ -257,13 +257,13 @@
 
 	icon_states = 0
 
-/obj/item/magazine/gold/can_load_magazine(var/mob/caller,var/obj/item/bullet_cartridge/B)
+/obj/item/magazine/gold/can_load_magazine(var/mob/activator,var/obj/item/bullet_cartridge/B)
 	return TRUE
 
-/obj/item/magazine/gold/can_load_magazine_path(var/mob/caller,var/obj/item/bullet_cartridge/B)
+/obj/item/magazine/gold/can_load_magazine_path(var/mob/activator,var/obj/item/bullet_cartridge/B)
 	return TRUE
 
-/obj/item/magazine/gold/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/magazine/gold/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/weapon/ranged/bullet/magazine))
 		INTERACT_CHECK
@@ -271,7 +271,7 @@
 		INTERACT_DELAY(1)
 		var/obj/item/weapon/ranged/bullet/magazine/G = object
 		if(G.stored_magazine)
-			G.eject_magazine(caller)
+			G.eject_magazine(activator)
 		src.drop_item(G)
 		G.stored_magazine = src
 		G.open = FALSE
@@ -279,7 +279,7 @@
 		stored_bullets.Cut()
 
 		if(!SSbalance.weapon_to_bullet[G.type])
-			caller.to_chat(span("warning","Could not find any valid bullets..."))
+			activator.to_chat(span("warning","Could not find any valid bullets..."))
 		else
 			stored_bullets[SSbalance.weapon_to_bullet[G.type]] = bullet_count_max
 

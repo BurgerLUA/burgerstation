@@ -81,11 +81,11 @@
 	I.plane = initial(plane)
 	add_underlay(I)
 
-/obj/structure/interactive/light_switch/proc/toggle(var/mob/caller)
+/obj/structure/interactive/light_switch/proc/toggle(var/mob/activator)
 
 	var/area/A = get_area(src)
 	if(!A || !A.linked_apc || !A.linked_apc.cell || !A.linked_apc.cell.charge_current)
-		caller.to_chat(span("warning","This doesn't seem to be working..."))
+		activator.to_chat(span("warning","This doesn't seem to be working..."))
 		return FALSE
 
 	play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE*0.5)
@@ -97,7 +97,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/light_switch/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/light_switch/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(next_interact >= world.time)
 		return TRUE
@@ -106,7 +106,7 @@
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
-	toggle(caller)
+	toggle(activator)
 
 	next_interact = world.time + LIGHTING_INTERVAL + 1
 

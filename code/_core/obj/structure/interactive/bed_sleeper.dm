@@ -69,7 +69,7 @@
 	I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
 	add_overlay(I)
 
-/obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/bed/sleeper/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(door_state == SLEEPER_CLOSING || door_state == SLEEPER_OPENING)
 		return TRUE
@@ -77,7 +77,7 @@
 	if(door_state == SLEEPER_CLOSED)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
-		open(caller)
+		open(activator)
 		return TRUE
 
 	. = ..()
@@ -88,39 +88,39 @@
 	if(door_state == SLEEPER_OPENED)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
-		close(caller)
+		close(activator)
 		return TRUE
 
 	return FALSE
 
-/obj/structure/interactive/bed/sleeper/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
+/obj/structure/interactive/bed/sleeper/buckle(var/mob/living/victim,var/mob/activator,var/silent=FALSE)
 
 	if(door_state != SLEEPER_OPENED)
 		return FALSE
 
 	return ..()
 
-/obj/structure/interactive/bed/sleeper/unbuckle(var/mob/caller,var/silent=FALSE,var/force=FALSE)
+/obj/structure/interactive/bed/sleeper/unbuckle(var/mob/activator,var/silent=FALSE,var/force=FALSE)
 
 	if(force)
 		return ..()
 
 	if(door_state == SLEEPER_CLOSED)
-		open(caller)
+		open(activator)
 		return FALSE
 	else if(door_state != SLEEPER_OPENED)
 		return FALSE
 
 	return ..()
 
-/obj/structure/interactive/bed/sleeper/proc/open(var/mob/caller)
+/obj/structure/interactive/bed/sleeper/proc/open(var/mob/activator)
 	if(open_sound)
 		play_sound(open_sound,src.loc,range_max=VIEW_RANGE)
 	door_state = SLEEPER_OPENING
 	flick("opening",src)
-	CALLBACK("on_open_\ref[src]",open_time,src,src::on_open(),caller)
+	CALLBACK("on_open_\ref[src]",open_time,src,src::on_open(),activator)
 
-/obj/structure/interactive/bed/sleeper/proc/on_open(var/mob/caller)
+/obj/structure/interactive/bed/sleeper/proc/on_open(var/mob/activator)
 	door_state = SLEEPER_OPENED
 	opened_time = 0
 	icon_state = "opened"
@@ -128,26 +128,26 @@
 	START_THINKING(src)
 	return TRUE
 
-/obj/structure/interactive/bed/sleeper/proc/on_close(var/mob/caller)
+/obj/structure/interactive/bed/sleeper/proc/on_close(var/mob/activator)
 	door_state = SLEEPER_CLOSED
 	opened_time = 0
 	icon_state = "closed"
 	check_collisions()
 	return TRUE
 
-/obj/structure/interactive/bed/sleeper/proc/can_buckle(var/mob/living/advanced/A,var/mob/caller)
+/obj/structure/interactive/bed/sleeper/proc/can_buckle(var/mob/living/advanced/A,var/mob/activator)
 	return TRUE
 
-/obj/structure/interactive/bed/sleeper/proc/close(var/mob/caller)
+/obj/structure/interactive/bed/sleeper/proc/close(var/mob/activator)
 	if(!buckled)
 		var/mob/living/advanced/A = locate() in get_turf(src)
-		if(A && can_buckle(A,caller))
-			buckle(A,caller)
+		if(A && can_buckle(A,activator))
+			buckle(A,activator)
 	if(close_sound)
 		play_sound(close_sound,src.loc,range_max=VIEW_RANGE)
 	door_state = SLEEPER_CLOSING
 	flick("closing",src)
-	CALLBACK("on_close_\ref[src]",close_time,src,src::on_close(),caller)
+	CALLBACK("on_close_\ref[src]",close_time,src,src::on_close(),activator)
 	STOP_THINKING(src)
 
 /obj/structure/interactive/bed/sleeper/think()

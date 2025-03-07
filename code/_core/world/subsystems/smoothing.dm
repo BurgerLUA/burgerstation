@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(smoothing)
 
 	var/list/seeds = list() //id = value
 
-/subsystem/smoothing/unclog(var/mob/caller)
+/subsystem/smoothing/unclog(var/mob/activator)
 	queued_smoothing_objs.Cut()
 	queued_smoothing_turfs.Cut()
 	. = ..()

@@ -58,23 +58,23 @@
 	if(stored_bullet)
 		. += bullet_count * SSbalance.stored_value[stored_bullet]
 
-/obj/item/bulletbox/get_examine_list(var/mob/caller)
+/obj/item/bulletbox/get_examine_list(var/mob/activator)
 	. = ..()
 	if(stored_bullet)
 		. += div("notice","It stores [initial(stored_bullet.name)] ([bullet_count]/[bullet_max] capacity).")
 
-/obj/item/bulletbox/click_self(var/mob/caller,location,control,params)
+/obj/item/bulletbox/click_self(var/mob/activator,location,control,params)
 
 	if(small || anchored)
 		return ..()
 
-	if(drop_item(get_turf(caller)) && set_anchored(TRUE))
+	if(drop_item(get_turf(activator)) && set_anchored(TRUE))
 		update_sprite()
 
 	return TRUE
 
 
-/obj/item/bulletbox/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/bulletbox/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/bullet_cartridge/))
 		INTERACT_CHECK
@@ -83,17 +83,17 @@
 		if(!stored_bullet)
 			if(ignore_custom_sprites)
 				if(B.type != initial(stored_bullet))
-					caller.to_chat(span("warning","It would be a bad idea to mix bullets up..."))
+					activator.to_chat(span("warning","It would be a bad idea to mix bullets up..."))
 					return TRUE
 			else if(stored_bullet)
 				if(B.type != stored_bullet)
-					caller.to_chat(span("warning","It would be a bad idea to mix bullets up..."))
+					activator.to_chat(span("warning","It would be a bad idea to mix bullets up..."))
 					return TRUE
 			var/bullets_to_add = min(B.amount,bullet_max)
 			set_stored_bullet(B.type)
 			bullets_to_add = abs(B.add_item_count(-bullets_to_add))
 			bullet_count += bullets_to_add
-			caller.to_chat(span("notice","You add [bullets_to_add] bullet\s to \the [src.name]."))
+			activator.to_chat(span("notice","You add [bullets_to_add] bullet\s to \the [src.name]."))
 			update_sprite()
 			return TRUE
 		if(B.type == stored_bullet)
@@ -102,17 +102,17 @@
 				return TRUE
 			bullets_to_add = abs(B.add_item_count(-bullets_to_add))
 			bullet_count += bullets_to_add
-			caller.to_chat(span("notice","You add [bullets_to_add] bullet\s to \the [src.name]."))
+			activator.to_chat(span("notice","You add [bullets_to_add] bullet\s to \the [src.name]."))
 			update_sprite()
 			return TRUE
-		caller.to_chat(span("warning","It would be a bad idea to mix bullets up..."))
+		activator.to_chat(span("warning","It would be a bad idea to mix bullets up..."))
 		return TRUE
 
-	if(!small && anchored && caller.attack_flags & CONTROL_MOD_DISARM && src.set_anchored(FALSE))
+	if(!small && anchored && activator.attack_flags & CONTROL_MOD_DISARM && src.set_anchored(FALSE))
 		INTERACT_CHECK
 		INTERACT_DELAY(5)
 		update_sprite()
-		caller.to_chat(span("notice","You pack up \the [src.name]."))
+		activator.to_chat(span("notice","You pack up \the [src.name]."))
 		return TRUE
 
 	if(!stored_bullet)
@@ -131,7 +131,7 @@
 		FINALIZE(BC)
 		I.add_object(BC)
 		bullet_count -= bullets_to_take
-		caller.to_chat(span("notice","You take [bullets_to_take] bullets from \the [src.name]."))
+		activator.to_chat(span("notice","You take [bullets_to_take] bullets from \the [src.name]."))
 		update_sprite()
 		return TRUE
 
@@ -139,7 +139,7 @@
 		INTERACT_CHECK
 		INTERACT_DELAY(5)
 		var/obj/item/magazine/M = object
-		if(!M.can_load_magazine_path(caller,src.stored_bullet))
+		if(!M.can_load_magazine_path(activator,src.stored_bullet))
 			return TRUE
 		var/bullets_to_take = min(bullet_count,M.bullet_count_max-M.get_ammo_count())
 		if(bullets_to_take <= 0)
@@ -147,7 +147,7 @@
 		M.stored_bullets[stored_bullet] += bullets_to_take
 		src.bullet_count -= bullets_to_take
 		M.update_sprite()
-		caller.to_chat(span("notice","You fill up \the [M.name] with [bullets_to_take] bullets from \the [src.name]."))
+		activator.to_chat(span("notice","You fill up \the [M.name] with [bullets_to_take] bullets from \the [src.name]."))
 		update_sprite()
 		return TRUE
 

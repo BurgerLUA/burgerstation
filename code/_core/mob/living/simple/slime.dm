@@ -163,7 +163,7 @@
 				var/turf/simulated/S = T
 				S.add_wet(100)
 
-/mob/living/simple/slime/create_override_contents(var/mob/living/caller) //What gets created when this mob is butchered.
+/mob/living/simple/slime/create_override_contents(var/mob/living/activator) //What gets created when this mob is butchered.
 	var/obj/item/slime_core/SC = new(src.loc)
 	SC.color = color
 	SC.alpha = alpha

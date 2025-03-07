@@ -23,7 +23,7 @@
 
 /*
 Old code. Maybe someone else will find a use for it....
-/obj/item/crafting/alchemy/attempt_to_craft(var/mob/living/advanced/caller)
+/obj/item/crafting/alchemy/attempt_to_craft(var/mob/living/advanced/activator)
 
 	var/obj/item/container/C //Final slot container.
 
@@ -34,10 +34,10 @@ Old code. Maybe someone else will find a use for it....
 			break
 
 	if(!C)
-		caller.to_chat(span("warning","You're missing a valid container in the product slot!"))
+		activator.to_chat(span("warning","You're missing a valid container in the product slot!"))
 		return FALSE
 
-	var/list/item_table = generate_crafting_table(caller,src)
+	var/list/item_table = generate_crafting_table(activator,src)
 
 	var/success = FALSE
 
@@ -63,24 +63,24 @@ Old code. Maybe someone else will find a use for it....
 			should_delete = TRUE
 
 		if(!length(reagents_list) && !(I.reagents && I.reagents.volume_current))
-			caller.to_chat(span("warning","\The [I.name] contains no suitable reagents!"))
+			activator.to_chat(span("warning","\The [I.name] contains no suitable reagents!"))
 			continue
 
 		for(var/k in reagents_list)
 			var/v = reagents_list[k]
-			C.reagents.add_reagent(k,v,TNULL,FALSE,FALSE,caller = caller)
+			C.reagents.add_reagent(k,v,TNULL,FALSE,FALSE,activator = activator)
 
 		if(I.reagents)
-			I.reagents.transfer_reagents_to(C.reagents,I.reagents.volume_current,FALSE, caller = caller)
+			I.reagents.transfer_reagents_to(C.reagents,I.reagents.volume_current,FALSE, activator = activator)
 
 		success = TRUE
 		if(should_delete)
 			qdel(I)
 		else if(I.reagents)
-			I.reagents.update_container(caller)
+			I.reagents.update_container(activator)
 
 	if(!success)
-		caller.to_chat(span("warning","There are no valid items to process!"))
+		activator.to_chat(span("warning","There are no valid items to process!"))
 		return FALSE
 
 	for(var/reagent_type in C.reagents.stored_reagents)
@@ -89,9 +89,9 @@ Old code. Maybe someone else will find a use for it....
 		if(R.processed_reagent)
 			var/temperature = C.reagents.average_temperature
 			C.reagents.remove_reagent(reagent_type,reagent_amount,FALSE)
-			C.reagents.add_reagent(R.processed_reagent,reagent_amount,temperature,FALSE,FALSE,caller = caller)
+			C.reagents.add_reagent(R.processed_reagent,reagent_amount,temperature,FALSE,FALSE,activator = activator)
 
-	C.reagents.update_container(caller)
+	C.reagents.update_container(activator)
 
 	return TRUE
 */

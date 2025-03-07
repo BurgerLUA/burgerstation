@@ -17,12 +17,12 @@
 	. = ..()
 	assoc_item = null
 
-/obj/hud/button/close_inventory/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/close_inventory/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
 	if(.)
-		assoc_item.close_inventory(caller)
+		assoc_item.close_inventory(activator)
 
 /obj/hud/button/hide_show_inventory
 	name = "toggle inventory"
@@ -35,7 +35,7 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/hide_show_inventory/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/hide_show_inventory/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -71,11 +71,11 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/close_inventory_defers/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/close_inventory_defers/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		A.clear_inventory_defers()
 

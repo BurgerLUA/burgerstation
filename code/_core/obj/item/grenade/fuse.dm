@@ -12,15 +12,15 @@
 	stored_trigger = T
 	open = FALSE
 
-/obj/item/grenade/fuse/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/grenade/fuse/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
 	. = ..()
 	if(!src.reagents)
 		return
 	var/loyalty
-	if(is_living(caller))
-		var/mob/living/L = caller
+	if(is_living(activator))
+		var/mob/living/L = activator
 		loyalty = L.loyalty_tag
-	src.reagents.act_explode(caller,src,get_turf(src),1,loyalty)
+	src.reagents.act_explode(activator,src,get_turf(src),1,loyalty)
 	if(stored_trigger)
 		qdel(stored_trigger)
 		stored_trigger = null

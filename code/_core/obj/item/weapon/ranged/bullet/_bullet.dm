@@ -46,7 +46,7 @@
 	QDEL_CUT(stored_bullets)
 	return ..()
 
-obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
+obj/item/weapon/ranged/bullet/handle_empty(var/mob/activator)
 	if(length(empty_sounds))
 		var/turf/T = get_turf(src)
 		play_sound(pick(empty_sounds),T,range_max = VIEW_RANGE*0.5,pitch=sound_pitch)
@@ -62,9 +62,9 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 
 	return 0.25 + clamp(1-result,0.25,1)*0.75
 
-/obj/item/weapon/ranged/bullet/proc/accept_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/B,var/silent=FALSE)
+/obj/item/weapon/ranged/bullet/proc/accept_bullet(var/mob/activator as mob,var/obj/item/bullet_cartridge/B,var/silent=FALSE)
 
-	if(can_load_chamber(caller,B))
+	if(can_load_chamber(activator,B))
 		if(B.amount <= 1)
 			B.drop_item(src)
 			src.chambered_bullet += B
@@ -78,7 +78,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 			B.add_item_count(-1)
 		. = TRUE
 
-	else if(src.can_load_stored(caller,B))
+	else if(src.can_load_stored(activator,B))
 		for(var/i=1,i<=length(src.stored_bullets),i++)
 			if(src.stored_bullets[i])
 				continue
@@ -104,7 +104,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 				var/obj/item/weapon/ranged/bullet/magazine/M = src
 				play_sound(M.get_cock_sound("forward"),T,range_max=VIEW_RANGE*0.5,pitch=sound_pitch)
 		else
-			caller?.to_chat(span("warning","You can't load \the [B.name] into \the [src.name]!"))
+			activator?.to_chat(span("warning","You can't load \the [B.name] into \the [src.name]!"))
 
 	return .
 
@@ -158,7 +158,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	return chambered_bullet ? chambered_bullet.damage_type : null
 
 
-/obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(var/mob/caller,var/atom/new_loc,var/play_sound=FALSE)
+/obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(var/mob/activator,var/atom/new_loc,var/play_sound=FALSE)
 
 	if(!chambered_bullet)
 		return FALSE
@@ -174,10 +174,10 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 		jam_chance *= 0.1 + 0.9*(heat_max ? heat_current/heat_max : 0)
 
 	if(jammed)
-		if(B.jam_chance < 100) caller.to_chat(span("notice","You unjam \the [src.name]!"))
+		if(B.jam_chance < 100) activator.to_chat(span("notice","You unjam \the [src.name]!"))
 		jammed = FALSE
-	else if(jam_chance && luck(list(B,src,caller),jam_chance,FALSE))
-		if(B.jam_chance < 100) caller.to_chat(span("danger","\The [src.name] jams!"))
+	else if(jam_chance && luck(list(B,src,activator),jam_chance,FALSE))
+		if(B.jam_chance < 100) activator.to_chat(span("danger","\The [src.name] jams!"))
 		jammed = TRUE
 		return FALSE
 
@@ -191,7 +191,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/proc/eject_stored_bullet(var/mob/caller,var/obj/item/bullet_cartridge/bullet_to_remove,var/new_loc,var/play_sound=FALSE)
+/obj/item/weapon/ranged/bullet/proc/eject_stored_bullet(var/mob/activator,var/obj/item/bullet_cartridge/bullet_to_remove,var/new_loc,var/play_sound=FALSE)
 
 	if(!(bullet_to_remove in stored_bullets))
 		return FALSE
@@ -212,27 +212,27 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	return bullet_to_remove
 
 
-/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets(var/mob/caller,var/new_loc,var/play_sound=FALSE)
+/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets(var/mob/activator,var/new_loc,var/play_sound=FALSE)
 
 	for(var/k in stored_bullets)
 		if(!k) continue
 		var/obj/item/bullet_cartridge/B = k
-		eject_stored_bullet(caller,B,new_loc,play_sound)
+		eject_stored_bullet(activator,B,new_loc,play_sound)
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets_spent(var/mob/caller,var/new_loc,var/play_sound=FALSE)
+/obj/item/weapon/ranged/bullet/proc/eject_stored_bullets_spent(var/mob/activator,var/new_loc,var/play_sound=FALSE)
 
 	for(var/k in stored_bullets)
 		if(!k) continue
 		var/obj/item/bullet_cartridge/B = k
 		if(!B.is_spent)
 			continue
-		eject_stored_bullet(caller,B,new_loc,play_sound)
+		eject_stored_bullet(activator,B,new_loc,play_sound)
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/proc/spend_chambered_bullet(var/mob/caller)
+/obj/item/weapon/ranged/bullet/proc/spend_chambered_bullet(var/mob/activator)
 
 	if(!chambered_bullet || chambered_bullet.is_spent)
 		return FALSE
@@ -243,13 +243,13 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	if(chambered_bullet.bullet_diameter != bullet_diameter_best)
 		misfire_chance += 50
 
-	. = chambered_bullet.spend_bullet(caller,misfire_chance)
+	. = chambered_bullet.spend_bullet(activator,misfire_chance)
 
 	if(chambered_bullet.qdeleting)
 		chambered_bullet = null
 
 
-/obj/item/weapon/ranged/bullet/proc/spend_stored_bullet(var/mob/caller,var/bullet_position = 1)
+/obj/item/weapon/ranged/bullet/proc/spend_stored_bullet(var/mob/activator,var/bullet_position = 1)
 
 	if(!length(stored_bullets) || !stored_bullets[bullet_position])
 		return FALSE
@@ -262,13 +262,13 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	if(B.bullet_diameter != bullet_diameter_best)
 		misfire_chance += 50
 
-	. = B.spend_bullet(caller,misfire_chance)
+	. = B.spend_bullet(activator,misfire_chance)
 
 	if(. && B.qdeleting)
 		stored_bullets[bullet_position] = null
 
-/obj/item/weapon/ranged/bullet/handle_ammo(var/mob/caller)
-	return spend_chambered_bullet(caller)
+/obj/item/weapon/ranged/bullet/handle_ammo(var/mob/activator)
+	return spend_chambered_bullet(activator)
 
 /obj/item/weapon/ranged/bullet/New()
 	. = ..()
@@ -283,14 +283,14 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 /obj/item/weapon/ranged/bullet/get_ammo_count()
 	return chambered_bullet ? 1 : 0
 
-/obj/item/weapon/ranged/bullet/proc/can_load_chamber(var/mob/caller,var/obj/item/bullet_cartridge/B) //B can be a type or a path.
+/obj/item/weapon/ranged/bullet/proc/can_load_chamber(var/mob/activator,var/obj/item/bullet_cartridge/B) //B can be a type or a path.
 
 	if(chambered_bullet)
-		caller?.to_chat(span("warning","There is already a chambered bullet inside \the [src.name]!"))
+		activator?.to_chat(span("warning","There is already a chambered bullet inside \the [src.name]!"))
 		return FALSE
 
 	if(!can_fit_bullet(B))
-		caller?.to_chat(span("warning","\The [initial(B.name)] can't fit inside \the [src.name]!"))
+		activator?.to_chat(span("warning","\The [initial(B.name)] can't fit inside \the [src.name]!"))
 		return FALSE
 
 	return TRUE
@@ -318,21 +318,21 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	return TRUE
 
 
-/obj/item/weapon/ranged/bullet/proc/can_load_stored(var/mob/caller,var/obj/item/bullet_cartridge/B)
+/obj/item/weapon/ranged/bullet/proc/can_load_stored(var/mob/activator,var/obj/item/bullet_cartridge/B)
 
 	if(!stored_bullets || !length(stored_bullets))
 		return FALSE
 
 	if(!can_fit_bullet(B))
-		caller?.to_chat(span("warning","\The [initial(B.name)] cannot fit inside \the [src.name]!"))
+		activator?.to_chat(span("warning","\The [initial(B.name)] cannot fit inside \the [src.name]!"))
 		return FALSE
 
 	if(!open)
-		caller?.to_chat(span("warning","You must open \the [src.name] first before loading it!"))
+		activator?.to_chat(span("warning","You must open \the [src.name] first before loading it!"))
 		return FALSE
 
 	if(get_real_length(stored_bullets) >= length(stored_bullets))
-		caller?.to_chat(span("warning","You can't fit any more bullets into \the [src.name]!"))
+		activator?.to_chat(span("warning","You can't fit any more bullets into \the [src.name]!"))
 		return FALSE
 
 	return TRUE

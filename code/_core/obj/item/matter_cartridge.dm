@@ -9,7 +9,7 @@
 	weight = 5
 
 
-/obj/item/matter_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/matter_cartridge/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 
 
@@ -19,7 +19,7 @@
 		INTERACT_DELAY(10)
 		var/obj/item/rcd/R = object
 		R.add_matter(R.matter_max)
-		caller.to_chat(span("notice","You refill \the [R.name]."))
+		activator.to_chat(span("notice","You refill \the [R.name]."))
 		qdel(src)
 		return TRUE
 

@@ -69,16 +69,16 @@
 		add_overlay(I)
 
 
-/obj/item/clothing/belt/belt_quiver/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/clothing/belt/belt_quiver/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/bullet_cartridge/arrow))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(2)
 		var/obj/item/bullet_cartridge/arrow/A = object
-		if(caller.attack_flags & CONTROL_MOD_DISARM)
+		if(activator.attack_flags & CONTROL_MOD_DISARM)
 			if(!stored_arrows[A.type])
-				caller.to_chat(span("warning","There are no arrows of that type left in \the [src.name]!"))
+				activator.to_chat(span("warning","There are no arrows of that type left in \the [src.name]!"))
 				return TRUE
 			var/amount_added = A.add_item_count(1)
 			if(amount_added)
@@ -100,21 +100,21 @@
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(2)
-		take_arrow(caller,object)
+		take_arrow(activator,object)
 
 
 	. = ..()
 
 
-/obj/item/clothing/belt/belt_quiver/proc/take_arrow(var/mob/caller,var/obj/hud/inventory/I)
+/obj/item/clothing/belt/belt_quiver/proc/take_arrow(var/mob/activator,var/obj/hud/inventory/I)
 	if(!length(stored_arrows))
-		caller.to_chat(span("warning","There are no arrows left!"))
+		activator.to_chat(span("warning","There are no arrows left!"))
 		return FALSE
 	var/obj/item/bullet_cartridge/arrow/A = pickweight(stored_arrows)
 	A = new A(get_turf(src))
 	A.amount = 1
 	stored_arrows[A.type] -= 1
-	caller.to_chat(span("notice","You take 1 arrow from \the [src.name]. There are [stored_arrows[A.type]] arrows left."))
+	activator.to_chat(span("notice","You take 1 arrow from \the [src.name]. There are [stored_arrows[A.type]] arrows left."))
 	if(stored_arrows[A.type] <= 0)
 		stored_arrows -= A.type
 	INITIALIZE(A)

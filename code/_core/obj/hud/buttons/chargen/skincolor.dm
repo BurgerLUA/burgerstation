@@ -20,12 +20,12 @@ mob/living/advanced/proc/handle_skincolor_chargen(var/desired_color,var/update_b
 
 	chargen_flags = CHARGEN_SKIN
 
-/obj/hud/button/chargen/skin_color/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/skin_color/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		var/desired_color = input("Skin Color","Skin Color",skin_color) as color|null
 		if(desired_color)
 			A.handle_skincolor_chargen(desired_color)

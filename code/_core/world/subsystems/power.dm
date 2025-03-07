@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(power)
 	var/power_id = 1
 
 
-/subsystem/power/unclog(var/mob/caller)
+/subsystem/power/unclog(var/mob/activator)
 	tick_rate = -1
 	. = ..()
 

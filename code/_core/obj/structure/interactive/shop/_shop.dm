@@ -126,16 +126,16 @@
 		. += div("notice","This item is being sold for [stored_item_cost] credits.")
 
 
-/obj/structure/interactive/shop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/shop/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(!is_player(caller) || !caller.client)
+	if(!is_player(activator) || !activator.client)
 		return ..()
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(1)
 
-	var/mob/living/advanced/player/P = caller
+	var/mob/living/advanced/player/P = activator
 	var/obj/hud/inventory/I = object
 
 	if(!is_inventory(object))
@@ -143,9 +143,9 @@
 		return TRUE
 
 	if(stored_item_burgerbux_cost)
-		var/savedata/client/globals/GD = GLOBALDATA(caller.client.ckey)
+		var/savedata/client/globals/GD = GLOBALDATA(activator.client.ckey)
 		if(!GD)
-			caller.to_chat(span("danger","Globaldata error detected. Report this to burger on discord with error code: Burgerbux."))
+			activator.to_chat(span("danger","Globaldata error detected. Report this to burger on discord with error code: Burgerbux."))
 			return TRUE
 		var/currency = GD.loaded_data["burgerbux"]
 		if(currency >= stored_item_burgerbux_cost && P.spend_burgerbux(stored_item_burgerbux_cost))

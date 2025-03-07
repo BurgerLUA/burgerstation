@@ -21,12 +21,12 @@
 	if(. && owner)
 		update_sprite()
 
-/obj/hud/button/thirst/get_examine_list(var/mob/caller)
+/obj/hud/button/thirst/get_examine_list(var/mob/activator)
 
 	. = ..()
 
-	if(is_living(caller))
-		var/mob/living/L = caller
+	if(is_living(activator))
+		var/mob/living/L = activator
 		var/hydration_mod = L.get_hydration_mod()
 
 		switch(hydration_mod)

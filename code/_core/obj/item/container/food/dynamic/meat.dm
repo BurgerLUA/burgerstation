@@ -19,19 +19,19 @@
 /obj/item/container/edible/dynamic/meat/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
-/obj/item/container/edible/dynamic/meat/click_self(var/mob/caller,location,control,params)
+/obj/item/container/edible/dynamic/meat/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
 
 	if(icon_state == "ground")
 		icon_state = "meatball"
-		caller.to_chat(span("notice","You reshape \the [src.name] into a meatball."))
+		activator.to_chat(span("notice","You reshape \the [src.name] into a meatball."))
 		pixel_height = 1
 		update_sprite()
 	else if(icon_state == "meatball")
 		icon_state = "patty"
-		caller.to_chat(span("notice","You reshape \the [src.name] into a patty."))
+		activator.to_chat(span("notice","You reshape \the [src.name] into a patty."))
 		pixel_height = 1
 		update_sprite()
 	else

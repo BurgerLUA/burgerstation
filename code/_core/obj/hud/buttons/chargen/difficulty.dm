@@ -22,12 +22,12 @@
 		chosen_difficulty = P.difficulty
 	. = ..()
 
-/obj/hud/button/chargen/difficulty/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/difficulty/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_player(caller))
-		var/mob/living/advanced/player/A = caller
+	if(. && is_player(activator))
+		var/mob/living/advanced/player/A = activator
 
 		var/difficulty_choice = input("What difficulty do you wish to change to?",chosen_difficulty) as null|anything in DIFFICULTY_ALL
 		if(!difficulty_choice)

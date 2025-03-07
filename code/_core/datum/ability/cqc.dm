@@ -12,10 +12,10 @@
 	cost = 10
 	cooldown = SECONDS_TO_DECISECONDS(4)
 
-/ability/cqc/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/cqc/on_cast(var/mob/activator,var/atom/target,location,params)
 
-	if(is_advanced(caller))
-		var/mob/living/advanced/L = caller
+	if(is_advanced(activator))
+		var/mob/living/advanced/L = activator
 		if(L.cqc_category == cqc_category_to_learn)
 			L.cqc_category = null
 		else
@@ -23,10 +23,10 @@
 
 	return TRUE
 
-/ability/cqc/is_active(var/mob/caller)
+/ability/cqc/is_active(var/mob/activator)
 
-	if(is_advanced(caller))
-		var/mob/living/advanced/L = caller
+	if(is_advanced(activator))
+		var/mob/living/advanced/L = activator
 		return L.cqc_category == cqc_category_to_learn
 
 	return FALSE

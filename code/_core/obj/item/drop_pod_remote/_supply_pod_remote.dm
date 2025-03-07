@@ -28,7 +28,7 @@
 	. *= charges
 	. += 100
 
-/obj/item/supply_remote/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/supply_remote/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(!is_turf(object) && !isturf(object.loc))
 		return TRUE
@@ -37,14 +37,14 @@
 	INTERACT_DELAY(10)
 
 	if(charges <= 0)
-		caller.to_chat(span("warning","There are no charges left in \the [src.name]!"))
+		activator.to_chat(span("warning","There are no charges left in \the [src.name]!"))
 		return TRUE
 
 	var/turf/T = get_turf(object)
 	var/area/A = T.loc
 
 	if(A.flags_area & FLAG_AREA_NO_CONSTRUCTION)
-		caller.to_chat(span("warning","Invalid landing zone!"))
+		activator.to_chat(span("warning","Invalid landing zone!"))
 		return TRUE
 
 	charges--

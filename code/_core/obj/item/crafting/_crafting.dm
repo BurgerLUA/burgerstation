@@ -30,13 +30,13 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/crafting_bench/click_self(var/mob/caller,location,control,params)
+/obj/item/crafting_bench/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
-	if(is_advanced(caller))
-		toggle_crafting(caller)
+	if(is_advanced(activator))
+		toggle_crafting(activator)
 
 /obj/item/crafting_bench/proc/toggle_crafting(var/mob/living/advanced/A)
 
@@ -91,9 +91,9 @@
 
 	return TRUE
 
-/obj/item/crafting_bench/proc/attempt_to_craft(var/mob/living/advanced/caller)
+/obj/item/crafting_bench/proc/attempt_to_craft(var/mob/living/advanced/activator)
 
-	var/list/item_table = generate_crafting_table(caller,src)
+	var/list/item_table = generate_crafting_table(activator,src)
 
 	for(var/k in SSrecipe.all_recipes)
 		var/recipe/R = k
@@ -101,7 +101,7 @@
 			continue
 		var/list/recipe_check = R.check_recipe(item_table,src)
 		if(length(recipe_check))
-			var/turf/T = get_turf(caller)
+			var/turf/T = get_turf(activator)
 			var/obj/item/I = new R.product(T)
 			INITIALIZE(I)
 			//No generate here.
@@ -110,11 +110,11 @@
 				for(var/r_id in R.product_reagents)
 					var/volume = R.product_reagents[r_id]
 					I.reagents.add_reagent(r_id,volume)
-			R.on_create(caller,src,I,recipe_check)
+			R.on_create(activator,src,I,recipe_check)
 			var/success = FALSE
 			for(var/obj/hud/inventory/crafting/result/product_slot in src.inventories)
 				if(!length(product_slot.contents))
-					product_slot.add_object(I,caller,FALSE)
+					product_slot.add_object(I,activator,FALSE)
 					success = TRUE
 					break
 				for(var/j in product_slot.contents)
@@ -131,6 +131,6 @@
 
 			return I
 
-	caller.to_chat(span("warning","You fail to craft anything..."))
+	activator.to_chat(span("warning","You fail to craft anything..."))
 
 	return FALSE

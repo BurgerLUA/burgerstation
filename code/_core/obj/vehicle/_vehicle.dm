@@ -79,23 +79,23 @@
 			B.update_owner(null)
 	return TRUE
 
-/mob/living/vehicle/proc/attach_equipment(var/mob/caller,var/obj/item/I)
+/mob/living/vehicle/proc/attach_equipment(var/mob/activator,var/obj/item/I)
 	if(I in equipment)
 		return FALSE
 	if(I.unremovable)
 		return FALSE
-	caller?.to_chat(span("notice","\The [caller.name] attaches \the [I.name] to \the [src.name]."),span("notice","You attach \the [I.name] to \the [src.name]."))
+	activator?.to_chat(span("notice","\The [activator.name] attaches \the [I.name] to \the [src.name]."),span("notice","You attach \the [I.name] to \the [src.name]."))
 	equipment += I
 	I.drop_item(src)
 	I.unremovable = TRUE
 	update_sprite()
 
-/mob/living/vehicle/proc/unattach_equipment(var/mob/caller,var/obj/item/I)
+/mob/living/vehicle/proc/unattach_equipment(var/mob/activator,var/obj/item/I)
 	if(!(I in equipment))
 		return FALSE
-	caller?.visible_message(span("notice","\The [caller.name] detaches \the [I.name] from \the [src.name]."),span("notice","You detach \the [I.name] from \the [src.name]."))
+	activator?.visible_message(span("notice","\The [activator.name] detaches \the [I.name] from \the [src.name]."),span("notice","You detach \the [I.name] from \the [src.name]."))
 	equipment -= I
-	I.force_move(get_turf(caller))
+	I.force_move(get_turf(activator))
 	I.unremovable = initial(I.unremovable)
 	update_sprite()
 
@@ -106,26 +106,26 @@
 	update_sprite()
 
 
-/mob/living/vehicle/proc/can_attach_weapon(var/mob/caller,var/obj/item/weapon/W)
+/mob/living/vehicle/proc/can_attach_weapon(var/mob/activator,var/obj/item/weapon/W)
 
 	if(ai || length(passengers))
-		caller?.to_chat(span("warning","You can't add this while it's in use!"))
+		activator?.to_chat(span("warning","You can't add this while it's in use!"))
 		return FALSE
 	if(length(equipment) >= 2)
-		caller?.to_chat(span("warning","You can't fit any more weapons on \the [src.name]!"))
+		activator?.to_chat(span("warning","You can't fit any more weapons on \the [src.name]!"))
 		return FALSE
 
 	return TRUE
 
-/mob/living/vehicle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/mob/living/vehicle/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(caller == src)
+	if(activator == src)
 		return ..()
 
 	DEFER_OBJECT
 
-	if(is_item(defer_object) && is_living(caller))
-		var/mob/living/L = caller
+	if(is_item(defer_object) && is_living(activator))
+		var/mob/living/L = activator
 		if(L.intent != INTENT_HARM)
 			var/obj/item/I = defer_object
 			if(I.flags_tool & FLAG_TOOL_WRENCH)
@@ -133,29 +133,29 @@
 				INTERACT_CHECK_OBJECT
 				INTERACT_DELAY(5)
 				if(ai || length(passengers))
-					caller.to_chat(span("warning","You can't remove this while it's in use!"))
+					activator.to_chat(span("warning","You can't remove this while it's in use!"))
 					return TRUE
 				if(!length(equipment))
-					caller.to_chat(span("warning","There is nothing to remove from \the [src.name]!"))
+					activator.to_chat(span("warning","There is nothing to remove from \the [src.name]!"))
 					return TRUE
 				var/atom/movable/choice = input("What would you like to remove?","Equipment Removal") as null|anything in equipment
 				if(choice && choice in equipment)
-					caller?.visible_message(span("notice","\The [caller.name] removes \the [choice.name] from \the [src.name]."),span("notice","You remove \the [choice.name] from \the [src.name]."))
-					unattach_equipment(caller,choice)
+					activator?.visible_message(span("notice","\The [activator.name] removes \the [choice.name] from \the [src.name]."),span("notice","You remove \the [choice.name] from \the [src.name]."))
+					unattach_equipment(activator,choice)
 				else
-					caller.to_chat(span("notice","You choose not to remove anything."))
+					activator.to_chat(span("notice","You choose not to remove anything."))
 				return TRUE
 
 	if(is_inventory(object))
-		if(!can_enter_vehicle(caller))
+		if(!can_enter_vehicle(activator))
 			return TRUE
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::enter_vehicle(),caller)
-		PROGRESS_BAR_CONDITIONS(caller,src,src::can_enter_vehicle(),caller)
+		PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(3),src::enter_vehicle(),activator)
+		PROGRESS_BAR_CONDITIONS(activator,src,src::can_enter_vehicle(),activator)
 		return TRUE
 
 	return ..()
 
-/mob/living/vehicle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/mob/living/vehicle/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(is_hud(object))
 		return ..()
@@ -165,13 +165,13 @@
 
 	if(params["left"])
 		if(length(equipment) >= 1)
-			equipment[1].click_on_object(caller,object,location,control,params)
+			equipment[1].click_on_object(activator,object,location,control,params)
 		else
 			src.do_say("No equipment found in slot 1!")
 
 	if(params["right"])
 		if(length(equipment) >= 2)
-			equipment[2].click_on_object(caller,object,location,control,params)
+			equipment[2].click_on_object(activator,object,location,control,params)
 		else
 			src.do_say("No equipment found in slot 2!")
 
@@ -263,22 +263,22 @@
 
 	return TRUE
 
-/mob/living/vehicle/proc/can_enter_vehicle(var/mob/caller)
+/mob/living/vehicle/proc/can_enter_vehicle(var/mob/activator)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
 	if(length(passengers) >= passengers_max)
-		caller.to_chat(span("warning","\The [src.name] is full!"))
+		activator.to_chat(span("warning","\The [src.name] is full!"))
 		return FALSE
 
-	if(!is_advanced(caller))
-		caller.to_chat(span("warning","You can't get inside \the [src.name]!"))
+	if(!is_advanced(activator))
+		activator.to_chat(span("warning","You can't get inside \the [src.name]!"))
 		return FALSE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 
 	if(loyalty_tag && loyalty_tag != A.loyalty_tag)
-		caller.to_chat(span("warning","ERROR: Unrecognized IFF tag."))
+		activator.to_chat(span("warning","ERROR: Unrecognized IFF tag."))
 		return FALSE
 
 	return TRUE

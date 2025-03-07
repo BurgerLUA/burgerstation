@@ -110,7 +110,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/ritual/proc/start_ritual(var/mob/caller)
+/obj/structure/interactive/ritual/proc/start_ritual(var/mob/activator)
 
 	for(var/mob/living/advanced/player/P in range(src,ritual_size))
 		if(!P || P.dead || P.qdeleting)
@@ -135,7 +135,7 @@
 			log_error("Could not start [src.get_debug_name()], no valid turfs!")
 			return FALSE
 
-	caller?.visible_message(span("danger","\The [caller.name] activates \the [src.name]!"),span("danger","You activate \the [src.name]!"))
+	activator?.visible_message(span("danger","\The [activator.name] activates \the [src.name]!"),span("danger","You activate \the [src.name]!"))
 	play_sound('sound/effects/ritual_start.ogg',get_turf(src))
 
 	enemy_type_to_spawn = pickweight(possible_ritual_spawns)
@@ -226,12 +226,12 @@
 					valid_turfs += T
 
 
-/obj/structure/interactive/ritual/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/ritual/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(!is_living(caller))
+	if(!is_living(activator))
 		return ..()
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 	if(!L.client)
 		return ..()
 

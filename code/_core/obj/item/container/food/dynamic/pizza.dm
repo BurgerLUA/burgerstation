@@ -119,7 +119,7 @@
 			FINALIZE(P)
 		qdel(src)
 
-/obj/item/container/edible/dynamic/pizza/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/edible/dynamic/pizza/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(!sliced && istype(object,/obj/item/container) && object.reagents && object.reagents.volume_current && !istype(object,/obj/item/container/edible/dynamic/pizza))
 		var/valid = FALSE
@@ -129,8 +129,8 @@
 				color_sauce = I.reagents.color
 			else
 				color_sauce = blend_colors(color_sauce,I.reagents.color,0.5) //Lazy, I know but it saves on vars and processing.
-			I.reagents.transfer_reagents_to(src.reagents_toppings,min(10,I.reagents.volume_current),caller = caller)
-			caller.to_chat(span("notice","You sauce up \the [initial(src.name)]."))
+			I.reagents.transfer_reagents_to(src.reagents_toppings,min(10,I.reagents.volume_current),activator = activator)
+			activator.to_chat(span("notice","You sauce up \the [initial(src.name)]."))
 			return TRUE
 		else if(istype(I,/obj/item/container/edible/dynamic/cheese))
 			if(!color_cheese)
@@ -152,11 +152,11 @@
 						topping_data["large"] += I.reagents.color
 		if(valid)
 			update_sprite()
-			caller.to_chat(span("notice","You add \the [I.name] to \the [initial(src.name)]."))
-			I.reagents.transfer_reagents_to(src.reagents_toppings,I.reagents.volume_current,caller = caller)
+			activator.to_chat(span("notice","You add \the [I.name] to \the [initial(src.name)]."))
+			I.reagents.transfer_reagents_to(src.reagents_toppings,I.reagents.volume_current,activator = activator)
 			qdel(I)
 		else
-			caller.to_chat(span("warning","You can't reasonably find a way to add \the [I.name] to \the [initial(src.name)]..."))
+			activator.to_chat(span("warning","You can't reasonably find a way to add \the [I.name] to \the [initial(src.name)]..."))
 
 		return TRUE
 

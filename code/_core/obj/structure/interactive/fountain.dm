@@ -74,9 +74,9 @@
 	return ..()
 
 
-/obj/structure/interactive/fountain/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/fountain/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 
 	if(filled)
 		INTERACT_CHECK
@@ -91,7 +91,7 @@
 				L.mana_regen_buffer = max(L.mana_regen_buffer,600)
 			if(3)
 				L.stamina_regen_buffer = max(L.stamina_regen_buffer,600)
-		visible_message(span("notice","\The [caller.name] activates \the [src.name]'s energies, replenishing themself."),span("notice","You activate \the [src.name]'s energies, replenishing yourself."))
+		visible_message(span("notice","\The [activator.name] activates \the [src.name]'s energies, replenishing themself."),span("notice","You activate \the [src.name]'s energies, replenishing yourself."))
 		filled = FALSE
 		update_sprite()
 		return TRUE

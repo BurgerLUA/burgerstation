@@ -48,9 +48,9 @@
 	all_subsystems += src
 	return TRUE
 
-/subsystem/proc/unclog(var/mob/caller)
-	if(caller.ckey)
-		broadcast_to_clients("SHITTERS CLOGGED: Subsystem [name] has been restarted by [caller.ckey].")
+/subsystem/proc/unclog(var/mob/activator)
+	if(activator.ckey)
+		broadcast_to_clients("SHITTERS CLOGGED: Subsystem [name] has been restarted by [activator.ckey].")
 	else
 		broadcast_to_clients("SHITTERS CLOGGED: Subsystem [name] has been restarted automatically by the server's failsafe.")
 	return TRUE

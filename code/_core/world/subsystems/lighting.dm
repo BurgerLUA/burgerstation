@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(lighting)
 
 
 
-/subsystem/lighting/unclog(var/mob/caller)
+/subsystem/lighting/unclog(var/mob/activator)
 
 	for(var/k in lighting_corners)
 		var/datum/D = k

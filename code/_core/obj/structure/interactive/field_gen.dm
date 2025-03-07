@@ -26,7 +26,7 @@
 	set_active(FALSE,force=TRUE)
 	. = ..()
 
-/obj/structure/interactive/field_generator/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/field_generator/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 	set_active(!active)
@@ -43,20 +43,20 @@
 	. = ..()
 	set_active(active,force=TRUE)
 
-/obj/structure/interactive/field_generator/proc/set_active(var/desired_active,var/force=FALSE,var/mob/caller) //caller is optional.
+/obj/structure/interactive/field_generator/proc/set_active(var/desired_active,var/force=FALSE,var/mob/activator) //activator is optional.
 
 	if(!force && desired_active == active)
 		return FALSE
 
 	if(desired_active && !anchored)
-		if(caller) caller.to_chat(span("warning","\The [src.name] must be secured firmly to the ground before it can turn on."))
+		if(activator) activator.to_chat(span("warning","\The [src.name] must be secured firmly to the ground before it can turn on."))
 		return FALSE
 
 	active = desired_active
 
-	if(caller)
-		caller.visible_message(
-			span("notice","\The [caller.name] turns [active ? "on" : "off"] \the [src.name]."),
+	if(activator)
+		activator.visible_message(
+			span("notice","\The [activator.name] turns [active ? "on" : "off"] \the [src.name]."),
 			span("notice","You turn [active ? "on" : "off"] \the [src.name].")
 		)
 	else

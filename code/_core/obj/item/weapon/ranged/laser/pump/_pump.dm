@@ -12,7 +12,7 @@
 /obj/item/weapon/ranged/energy/pump/get_charge_cost()
 	return initial(charge_cost)
 
-/obj/item/weapon/ranged/energy/pump/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/ranged/energy/pump/click_self(var/mob/activator,location,control,params)
 
 	if(next_shoot_time > world.time + 1)
 		return TRUE
@@ -26,7 +26,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/energy/pump/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/energy/pump/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -35,18 +35,18 @@
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
 			if(battery)
-				caller.to_chat(span("warning","You are unable to pry out \the [battery.name]."))
+				activator.to_chat(span("warning","You are unable to pry out \the [battery.name]."))
 			else
-				caller.to_chat(span("warning","There is nothing to pry out of \the [src.name]!"))
+				activator.to_chat(span("warning","There is nothing to pry out of \the [src.name]!"))
 			return TRUE
 
 	. = ..()
 
-/obj/item/weapon/ranged/energy/pump/proc/pump(var/mob/caller,var/silent=FALSE)
+/obj/item/weapon/ranged/energy/pump/proc/pump(var/mob/activator,var/silent=FALSE)
 
 	var/turf/T = get_turf(src)
 
-	caller?.to_chat(span("notice","You [action_name] \the [src]."))
+	activator?.to_chat(span("notice","You [action_name] \the [src]."))
 
 	if(istype(battery))
 		battery.charge_current = min(battery.charge_max,battery.charge_current+charge_per_pump)

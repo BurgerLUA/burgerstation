@@ -18,9 +18,9 @@
 		name = "[initial(name)] ([initial(stored_implant.name)])"
 
 
-/obj/structure/interactive/hand_implanter/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/hand_implanter/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(!is_advanced(caller))
+	if(!is_advanced(activator))
 		return ..()
 
 	INTERACT_CHECK
@@ -28,10 +28,10 @@
 	INTERACT_DELAY(5)
 
 	if(!stored_implant)
-		caller.to_chat(span("warning","There is no implanter loaded!"))
+		activator.to_chat(span("warning","There is no implanter loaded!"))
 		return TRUE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 
 	var/initial_id = initial(stored_implant.id)
 
@@ -39,21 +39,21 @@
 		if(removes_existing)
 			var/obj/item/organ/O = A.labeled_organs[initial_id]
 			if(O.type == stored_implant)
-				caller.to_chat(span("warning","You already have an implant of that type!"))
+				activator.to_chat(span("warning","You already have an implant of that type!"))
 				return TRUE
 			A.remove_organ(O,get_turf(A),TRUE)
 		else
-			caller.to_chat(span("warning","You already have an implant of that type!"))
+			activator.to_chat(span("warning","You already have an implant of that type!"))
 			return TRUE
 
 	var/obj/item/organ/internal/implant/added_implant = A.add_organ(stored_implant)
 	if(added_implant)
-		caller.visible_message(span("notice","\The [caller.name] implants something into their [added_implant.attached_organ.name]."),span("notice","You implant \the [added_implant.name] into your [added_implant.attached_organ.name]."))
+		activator.visible_message(span("notice","\The [activator.name] implants something into their [added_implant.attached_organ.name]."),span("notice","You implant \the [added_implant.name] into your [added_implant.attached_organ.name]."))
 		if(should_save_on_implant && is_player(A) && A.ckey_last)
 			var/savedata/client/mob/mobdata = MOBDATA(A.ckey_last)
 			if(mobdata) mobdata.save_character(A)
 	else
-		caller.to_chat(span("danger","There was an error adding your implant."))
+		activator.to_chat(span("danger","There was an error adding your implant."))
 
 	return TRUE
 

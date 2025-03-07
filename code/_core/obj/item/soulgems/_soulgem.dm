@@ -53,7 +53,7 @@
 	. = (300 + (total_charge * ( 100 / (SOUL_SIZE_GODLY+300) ))**2)*2
 	. = CEILING(.,1)
 
-/obj/item/soulgem/get_examine_list(var/mob/caller)
+/obj/item/soulgem/get_examine_list(var/mob/activator)
 	. = ..()
 	. += span("notice","It has a soul worth [total_charge] total charge.")
 	if(total_charge)
@@ -142,7 +142,7 @@
 
 
 
-/obj/item/soulgem/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/soulgem/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	//Capture Minions
 	if(is_living(object))
@@ -152,15 +152,15 @@
 		INTERACT_DELAY(1)
 
 		var/mob/living/L = object
-		if(L.minion_master != caller)
+		if(L.minion_master != activator)
 			return TRUE
 		if(L.qdeleting)
 			return TRUE
 		if(total_charge != 0)
-			caller.to_chat(span("warning","You need an empty soul gem in order to capture souls!"))
+			activator.to_chat(span("warning","You need an empty soul gem in order to capture souls!"))
 			return TRUE
 		if(initial(L.soul_size) > src.total_capacity)
-			caller.to_chat(span("warning","This soul is too large to be contained in \the [src.name]!"))
+			activator.to_chat(span("warning","This soul is too large to be contained in \the [src.name]!"))
 			return TRUE
 		total_charge = min(L.soul_size,total_capacity)
 		stored_soul_path = L.type
@@ -177,7 +177,7 @@
 		INTERACT_DELAY(1)
 
 		if(total_charge != 0)
-			caller.to_chat(span("warning","You need an empty soul gem in order to capture souls!"))
+			activator.to_chat(span("warning","You need an empty soul gem in order to capture souls!"))
 			return TRUE
 
 		var/obj/effect/temp/soul/S = object
@@ -185,13 +185,13 @@
 			return TRUE
 
 		if(S.soul_size > src.total_capacity)
-			caller.to_chat(span("warning","This soul is too large to be contained in \the [src.name]!"))
+			activator.to_chat(span("warning","This soul is too large to be contained in \the [src.name]!"))
 			return TRUE
 
 		total_charge = min(S.soul_size,total_capacity)
-		caller.visible_message(span("danger","\The [caller.name] traps \the [S.name] with \the [src.name]!"),span("warning","You trap \the [S.name] with \the [src.name]!"))
-		if(is_living(caller))
-			var/mob/living/L = caller
+		activator.visible_message(span("danger","\The [activator.name] traps \the [S.name] with \the [src.name]!"),span("warning","You trap \the [S.name] with \the [src.name]!"))
+		if(is_living(activator))
+			var/mob/living/L = activator
 			L.add_skill_xp(SKILL_SUMMONING,CEILING(S.soul_size*0.01,1))
 		stored_soul_path = S.soul_path
 		soul_gives_xp = TRUE
@@ -208,19 +208,19 @@
 
 		var/obj/item/weapon/ranged/magic/staff/S = object
 		if(total_charge)
-			caller.visible_message(span("notice","\The [caller.name] recharges \the [S.name] with \the [src.name]."),span("notice","You charge \the [S] with \the [src]."))
+			activator.visible_message(span("notice","\The [activator.name] recharges \the [S.name] with \the [src.name]."),span("notice","You charge \the [S] with \the [src]."))
 			S.total_charge += total_charge
 			total_charge -= total_charge
-			if(soul_gives_xp && is_living(caller))
-				var/mob/living/L = caller
+			if(soul_gives_xp && is_living(activator))
+				var/mob/living/L = activator
 				L.add_skill_xp(SKILL_SUMMONING,CEILING(total_charge*0.0025,1))
 			if(!do_not_consume && total_charge <= 0)
-				caller.to_chat(span("warning","\The [src] shatters!"))
+				activator.to_chat(span("warning","\The [src] shatters!"))
 				qdel(src)
 			else
 				stored_soul_path = null
 		else
-			caller.to_chat(span("warning","\The [src] is empty!"))
+			activator.to_chat(span("warning","\The [src] is empty!"))
 		update_sprite()
 
 		return TRUE

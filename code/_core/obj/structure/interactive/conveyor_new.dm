@@ -16,7 +16,7 @@
 	density = TRUE
 	anchored = TRUE
 
-/obj/structure/interactive/conveyor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/conveyor/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
@@ -25,19 +25,19 @@
 		var/obj/item/T = object
 		if(T.flags_tool & FLAG_TOOL_WRENCH)
 			if(anchored)
-				caller.to_chat(span("notice","You un-anchor the conveyor."))
+				activator.to_chat(span("notice","You un-anchor the conveyor."))
 				set_anchored(FALSE)
 				disable()
 			else
-				caller.to_chat(span("notice","You anchor the conveyor."))
+				activator.to_chat(span("notice","You anchor the conveyor."))
 				set_anchored(TRUE)
 				enable()
 
-	if(caller.movement_flags & MOVEMENT_WALKING)
+	if(activator.movement_flags & MOVEMENT_WALKING)
 		if(anchored)
-			caller.to_chat(span("warning","You need to unsecure \the [src.name] before rotating it!"))
+			activator.to_chat(span("warning","You need to unsecure \the [src.name] before rotating it!"))
 		else
-			caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
+			activator.visible_message(span("notice","\The [activator.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
 			set_dir(turn(dir,90))
 
 		update_conveyor()

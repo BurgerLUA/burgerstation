@@ -27,12 +27,12 @@
 	. = ..()
 
 
-/obj/structure/interactive/vr_shop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/vr_shop/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(!is_advanced(caller))
+	if(!is_advanced(activator))
 		return ..()
 
-	for(var/obj/hud/button/vendor_close/VC in caller.buttons)
+	for(var/obj/hud/button/vendor_close/VC in activator.buttons)
 		VC.close()
 		return ..()
 
@@ -47,14 +47,14 @@
 		var/obj/hud/button/vendor_defer/B = new
 		B.associated_vendor = V
 		B.name = V.name
-		B.update_owner(caller)
+		B.update_owner(activator)
 		B.screen_loc = "CENTER+[x_pos],CENTER+[y_pos]"
 		i++
 
 	var/obj/hud/button/vendor_close/V = new
-	V.update_owner(caller)
+	V.update_owner(activator)
 	V.screen_loc = "CENTER+[spacing+1],CENTER"
-	HOOK_ADD("post_move","\ref[V]_post_move",caller,V,/obj/hud/button/vendor_close/proc/close)
+	HOOK_ADD("post_move","\ref[V]_post_move",activator,V,/obj/hud/button/vendor_close/proc/close)
 
 	return TRUE
 

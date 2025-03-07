@@ -7,7 +7,7 @@
 	flags_temperature = REAGENT_TEMPERATURE_NO_AMBIENT
 
 
-/reagent_container/temp/update_container(var/mob/caller,var/update_owner = TRUE,var/force=FALSE)
+/reagent_container/temp/update_container(var/mob/activator,var/update_owner = TRUE,var/force=FALSE)
 
 	. = ..()
 

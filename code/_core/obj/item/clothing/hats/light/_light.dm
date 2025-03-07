@@ -29,7 +29,7 @@
 		desired_layer = worn_layer + 0.1
 	)
 
-/obj/item/clothing/head/light/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/head/light/click_self(var/mob/activator,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 	enabled = !enabled

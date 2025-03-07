@@ -39,10 +39,10 @@
 	if(connected_machine)
 		. += div("notice","It is connected to \the [connected_machine].")
 
-/obj/structure/interactive/wire/proc/find_wire_connection(var/mob/caller)
+/obj/structure/interactive/wire/proc/find_wire_connection(var/mob/activator)
 
 	if(connected_machine)
-		caller?.to_chat(span("warning","\The [src.name] is already connected to \a [connected_machine.name]! Remove it first before adding a new connection."))
+		activator?.to_chat(span("warning","\The [src.name] is already connected to \a [connected_machine.name]! Remove it first before adding a new connection."))
 		return FALSE
 
 	var/obj/structure/interactive/found_machine
@@ -53,13 +53,13 @@
 		break
 
 	if(!found_machine)
-		caller?.to_chat(span("warning","There is nothing to connect \the [src.name] to!"))
+		activator?.to_chat(span("warning","There is nothing to connect \the [src.name] to!"))
 		return FALSE
 
 	connected_machine = found_machine
 	connected_machine.connected_wire = src
 
-	caller?.to_chat(span("notice","You connect \the [src.name] to \the [connected_machine.name]."))
+	activator?.to_chat(span("notice","You connect \the [src.name] to \the [connected_machine.name]."))
 
 	if(power_network) power_network.add_wire(src) //This acts as an update.
 
@@ -88,7 +88,7 @@
 	. = ..()
 	connections.Cut()
 
-/obj/structure/interactive/wire/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/wire/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -101,11 +101,11 @@
 			INTERACT_CHECK
 			INTERACT_DELAY(10)
 			if(power_network)
-				caller.to_chat(span("notice","Network ID: \ref[power_network]."))
-				caller.to_chat(span("notice","Supply: [power_network.power_supply]w."))
-				caller.to_chat(span("notice","Draw: [power_network.power_draw]w."))
+				activator.to_chat(span("notice","Network ID: \ref[power_network]."))
+				activator.to_chat(span("notice","Supply: [power_network.power_supply]w."))
+				activator.to_chat(span("notice","Draw: [power_network.power_draw]w."))
 			else
-				caller.to_chat(span("warning","No power network detected!"))
+				activator.to_chat(span("warning","No power network detected!"))
 			return TRUE
 
 	. = ..()

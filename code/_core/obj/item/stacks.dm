@@ -80,9 +80,9 @@
 
 	return N
 
-/obj/item/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(try_transfer_reagents(caller,object,location,control,params))
+	if(try_transfer_reagents(activator,object,location,control,params))
 		return TRUE
 
 	if(is_item(object))
@@ -95,9 +95,9 @@
 				INTERACT_DELAY(1)
 				var/stacks_transfered = src.transfer_amount_to(I)
 				if(stacks_transfered)
-					caller.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [I.name]."))
+					activator.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [I.name]."))
 				else
-					caller.to_chat(span("warning","You can't transfer any more stacks to \the [I.name], it's full!"))
+					activator.to_chat(span("warning","You can't transfer any more stacks to \the [I.name], it's full!"))
 				return TRUE
 		else
 			//Transfering what we clicked on to src.
@@ -126,14 +126,14 @@
 						stacks_transfered += O.transfer_amount_to(src)
 
 				if(stacks_transfered)
-					caller.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [src.name]."))
+					activator.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [src.name]."))
 				else
-					caller.to_chat(span("warning","You can't transfer any more stacks to \the [src.name], it's full!"))
+					activator.to_chat(span("warning","You can't transfer any more stacks to \the [src.name], it's full!"))
 				return TRUE
 
 	return ..()
 
-/obj/item/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(object == src || amount <= 1 || !is_inventory(object) || !is_inventory(src.loc) || get_dist(src,object) > 1)
 		return ..()
@@ -141,8 +141,8 @@
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(1)
-	if(is_living(caller))
-		var/mob/living/L = caller
+	if(is_living(activator))
+		var/mob/living/L = activator
 		if(amount > 1 && CONTROL_MOD_DISARM && amount_max > 1)
 			var/choice = input("How much do you want to put in your other hand?","Amount to split",0) as num
 			var/splitamount = FLOOR(choice,1)
@@ -158,5 +158,5 @@
 				new_stack.force_move(get_turf(src))
 				src.transfer_amount_to(new_stack,splitamount)
 				I.add_object(new_stack)
-				caller.to_chat(span("notice","You split \the stack of [old_item_name]. The new stack now has [new_stack.amount]."))
+				activator.to_chat(span("notice","You split \the stack of [old_item_name]. The new stack now has [new_stack.amount]."))
 	return TRUE

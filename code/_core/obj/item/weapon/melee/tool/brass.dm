@@ -91,7 +91,7 @@ obj/item/weapon/melee/tool/brass/welder
 
 
 
-/obj/item/weapon/melee/tool/brass/welder/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/tool/brass/welder/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -99,16 +99,16 @@ obj/item/weapon/melee/tool/brass/welder
 	if(active)
 		active = FALSE
 		update_sprite()
-		caller.to_chat(span("notice","You turn \the [src.name] off."))
+		activator.to_chat(span("notice","You turn \the [src.name] off."))
 		STOP_THINKING(src)
 	else
 		if(fuel_current > 0)
 			active = TRUE
 			update_sprite()
-			caller.to_chat(span("notice","\The [src.name] turns on."))
+			activator.to_chat(span("notice","\The [src.name] turns on."))
 			START_THINKING(src)
 		else
-			caller.to_chat(span("warning","\The [src.name] doesn't seem to want to turn on..."))
+			activator.to_chat(span("warning","\The [src.name] doesn't seem to want to turn on..."))
 
 	return TRUE
 

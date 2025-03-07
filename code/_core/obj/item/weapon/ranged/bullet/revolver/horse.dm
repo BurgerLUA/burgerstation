@@ -81,11 +81,11 @@
 /obj/item/weapon/ranged/bullet/revolver/horse/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/revolver/horse/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/ranged/bullet/revolver/horse/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
 	rotate_cylinder(-1)
-	caller?.to_chat(span("notice","You rotate the cylinder backwards."))
+	activator?.to_chat(span("notice","You rotate the cylinder backwards."))
 	return TRUE

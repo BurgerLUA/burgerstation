@@ -22,32 +22,32 @@
 	linked_destination = locate() in world
 	return ..()
 
-/obj/item/herald_mirror/click_self(var/mob/caller,location,control,params)
+/obj/item/herald_mirror/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
-	if(!is_advanced(caller))
-		caller.to_chat(span("warning","You don't know how to use this..."))
+	if(!is_advanced(activator))
+		activator.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE
 
-	if(istype(caller,/mob/living/advanced/player/antagonist))
-		caller.to_chat(span("warning","It's probably not a good idea to use with your explosive implant..."))
+	if(istype(activator,/mob/living/advanced/player/antagonist))
+		activator.to_chat(span("warning","It's probably not a good idea to use with your explosive implant..."))
 		return TRUE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 
 	if(!can_teleport(A))
 		return FALSE
 
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::do_teleport(),A)
-	PROGRESS_BAR_CONDITIONS(caller,src,src::can_teleport(),A)
+	PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(5),src::do_teleport(),A)
+	PROGRESS_BAR_CONDITIONS(activator,src,src::can_teleport(),A)
 
 	return TRUE
 
 /obj/item/herald_mirror/proc/can_teleport(var/mob/living/advanced/A)
 
-	if(!can_caller_interact_with(A, delay_checks = FALSE)) // This is INTERACT_CHECK_NO_DELAY(x) but 516 friendly
+	if(!can_activator_interact_with(A, delay_checks = FALSE)) // This is INTERACT_CHECK_NO_DELAY(x) but 516 friendly
 		return FALSE
 
 	if(!linked_destination)

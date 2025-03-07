@@ -84,9 +84,9 @@
 
 	return TRUE
 
-/obj/structure/interactive/crate/chest/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/crate/chest/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(!is_advanced(caller))
+	if(!is_advanced(activator))
 		return TRUE
 
 	if(!open && locked)
@@ -96,10 +96,10 @@
 			if(current_user.dead || current_user.qdeleting || current_user.horizontal || !current_user.ckey)
 				boot_lockpicker()
 			else
-				caller.to_chat(span("notice","\The [current_user.name] is currently lockpicking this!"))
+				activator.to_chat(span("notice","\The [current_user.name] is currently lockpicking this!"))
 				return TRUE
 		//Begin lockpicking
-		create_lockpicker(caller)
+		create_lockpicker(activator)
 		return TRUE
 
 	. = ..()

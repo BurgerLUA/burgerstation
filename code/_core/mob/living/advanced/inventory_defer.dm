@@ -24,17 +24,17 @@
 
 	return B
 
-/mob/living/advanced/proc/examine_body_inventory(var/mob/living/advanced/caller) //caller wants to see inside src
+/mob/living/advanced/proc/examine_body_inventory(var/mob/living/advanced/activator) //activator wants to see inside src
 
-	if(!src.can_caller_interact_with(caller,distance_checks=FALSE))
+	if(!src.can_activator_interact_with(activator,distance_checks=FALSE))
 		return TRUE
 
 	INTERACT_DELAY(10)
 
-	if(!(caller in viewers(VIEW_RANGE,src)))
+	if(!(activator in viewers(VIEW_RANGE,src)))
 		return TRUE
 
-	caller.clear_inventory_defers() //Remove existing ones.
+	activator.clear_inventory_defers() //Remove existing ones.
 
 	var/s=0
 	for(var/k in inventories_by_id)
@@ -45,7 +45,7 @@
 			continue
 		if(I.ultra_persistant)
 			continue
-		caller.add_inventory_defer(I,s)
+		activator.add_inventory_defer(I,s)
 		s++
 
 	return TRUE

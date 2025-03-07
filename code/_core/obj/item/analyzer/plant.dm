@@ -7,10 +7,10 @@
 	icon_state = "inventory"
 	value = 100
 
-/obj/item/analyzer/plant/can_be_scanned(var/mob/caller,var/atom/target)
+/obj/item/analyzer/plant/can_be_scanned(var/mob/activator,var/atom/target)
 	return istype(target,/obj/structure/interactive/plant)
 
-/obj/item/analyzer/plant/on_scan(var/mob/caller,var/atom/target,location,control,params)
+/obj/item/analyzer/plant/on_scan(var/mob/activator,var/atom/target,location,control,params)
 
 	var/obj/structure/interactive/plant/P = target
 
@@ -26,7 +26,7 @@
 	planet_list += "Hydration: [CEILING(P.hydration,1)]/100"
 
 	for(var/k in planet_list)
-		caller.to_chat(span("debug",k))
+		activator.to_chat(span("debug",k))
 
 	next_scan = world.time + SECONDS_TO_DECISECONDS(1)
 

@@ -16,7 +16,7 @@
 
 	var/has_quick_function = FALSE
 
-/obj/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,params)
+/obj/proc/quick(var/mob/living/advanced/activator,var/atom/object,location,params)
 	return FALSE
 
 /obj/PreDestroy()

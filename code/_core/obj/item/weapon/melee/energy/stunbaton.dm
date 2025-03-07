@@ -12,7 +12,7 @@
 
 	rarity = RARITY_COMMON
 
-/obj/item/weapon/melee/energy/stunbaton/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/energy/stunbaton/click_self(var/mob/activator,location,control,params)
 
 	. = ..()
 

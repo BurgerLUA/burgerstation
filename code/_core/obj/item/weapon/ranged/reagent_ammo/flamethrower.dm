@@ -37,9 +37,9 @@
 /obj/item/weapon/ranged/reagent_ammo/flamethrower/get_base_value()
 	return 4000
 
-/obj/item/weapon/ranged/reagent_ammo/flamethrower/click_on_object(mob/caller, atom/object, location, control, params)
-	if((caller.attack_flags & CONTROL_MOD_DISARM) && wielded)
-		return airblast(caller,object,location,params)
+/obj/item/weapon/ranged/reagent_ammo/flamethrower/click_on_object(mob/activator, atom/object, location, control, params)
+	if((activator.attack_flags & CONTROL_MOD_DISARM) && wielded)
+		return airblast(activator,object,location,params)
 	. = ..()
 
 
@@ -59,7 +59,7 @@
 
 	return .
 
-/obj/item/weapon/ranged/reagent_ammo/flamethrower/shoot_projectile(atom/caller, atom/target, location, params, obj/projectile/projectile_to_use, damagetype/damage_type_to_use, icon_pos_x, icon_pos_y, accuracy_loss, projectile_speed_to_use, bullet_count_to_use, bullet_color, view_punch, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifier, base_spread, penetrations_left)
+/obj/item/weapon/ranged/reagent_ammo/flamethrower/shoot_projectile(atom/activator, atom/target, location, params, obj/projectile/projectile_to_use, damagetype/damage_type_to_use, icon_pos_x, icon_pos_y, accuracy_loss, projectile_speed_to_use, bullet_count_to_use, bullet_color, view_punch, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifier, base_spread, penetrations_left)
 
 	if(!reagents.volume_current)
 		return null
@@ -72,31 +72,31 @@
 		var/obj/projectile/P = k
 		P.damage_multiplier += average_flammability
 
-/obj/item/weapon/ranged/reagent_ammo/flamethrower/proc/airblast(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/reagent_ammo/flamethrower/proc/airblast(var/mob/activator,var/atom/object,location,params)
 
-	var/desired_dir = get_dir(caller,object)
-	var/turf/desired_loc = get_step(caller,desired_dir)
-	caller.set_dir(desired_dir)
+	var/desired_dir = get_dir(activator,object)
+	var/turf/desired_loc = get_step(activator,desired_dir)
+	activator.set_dir(desired_dir)
 
 	if(!desired_loc || get_ammo_count() < airblast_ammo_multiplier)
 		handle_empty()
 		return FALSE
 
 	var/loyalty_tag_to_use
-	if(is_living(caller))
-		var/mob/living/L = caller
+	if(is_living(activator))
+		var/mob/living/L = activator
 		if(L.loyalty_tag)
 			loyalty_tag_to_use = L.loyalty_tag
 
 	if(airblast_ammo_multiplier > 0)
-		reagents.remove_reagents(reagent_volume_per_shot*airblast_ammo_multiplier,check_recipes = FALSE,caller = caller)
+		reagents.remove_reagents(reagent_volume_per_shot*airblast_ammo_multiplier,check_recipes = FALSE,activator = activator)
 
-	var/obj/reflector/R = new /obj/reflector(desired_loc,caller,loyalty_tag_to_use,src.get_average_flammability()*10)
+	var/obj/reflector/R = new /obj/reflector(desired_loc,activator,loyalty_tag_to_use,src.get_average_flammability()*10)
 	R.set_dir(desired_dir)
 	INITIALIZE(R)
 	GENERATE(R)
 	FINALIZE(R)
-	play_shoot_sounds(caller,shoot_sounds)
+	play_shoot_sounds(activator,shoot_sounds)
 	return TRUE
 
 /obj/item/weapon/ranged/reagent_ammo/flamethrower/Generate()

@@ -38,15 +38,15 @@
 		I.transform = M
 		add_overlay(I)
 
-/obj/item/ability_learner/click_self(var/mob/caller)
+/obj/item/ability_learner/click_self(var/mob/activator)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
-	PROGRESS_BAR(caller,src,30,src::learn(),caller)
-	PROGRESS_BAR_CONDITIONS(caller,src,src::can_learn(),caller)
+	PROGRESS_BAR(activator,src,30,src::learn(),activator)
+	PROGRESS_BAR_CONDITIONS(activator,src,src::can_learn(),activator)
 
-	caller.to_chat(span("notice","You look into \the [src.name] and begin learning about [initial(stored_ability.name)]..."))
+	activator.to_chat(span("notice","You look into \the [src.name] and begin learning about [initial(stored_ability.name)]..."))
 
 	return TRUE
 

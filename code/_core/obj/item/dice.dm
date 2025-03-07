@@ -24,32 +24,32 @@
 	roll_dice(owner)
 	return ..()
 
-/obj/item/dice/proc/on_result(var/mob/caller,var/chosen_number,var/silent=FALSE)
+/obj/item/dice/proc/on_result(var/mob/activator,var/chosen_number,var/silent=FALSE)
 
 	if(!silent)
-		if(caller)
-			caller.visible_message(span("notice","\The [caller.name] rolls \the [src.name]. It lands on [chosen_number]."))
+		if(activator)
+			activator.visible_message(span("notice","\The [activator.name] rolls \the [src.name]. It lands on [chosen_number]."))
 		else
 			src.visible_message(span("notice","\The [src.name] rolls. It lands on [chosen_number]."))
 
 	return TRUE
 
-/obj/item/dice/proc/roll_dice(var/mob/caller,var/silent=FALSE)
+/obj/item/dice/proc/roll_dice(var/mob/activator,var/silent=FALSE)
 
 	var/chosen_number = rand(1,max_states)
 
-	on_result(caller,chosen_number,silent)
+	on_result(activator,chosen_number,silent)
 
 	icon_state = "[initial(icon_state)]-[chosen_number]"
 
 	return TRUE
 
-/obj/item/dice/click_self(var/mob/caller,location,control,params)
+/obj/item/dice/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
-	roll_dice(caller)
+	roll_dice(activator)
 
 	return TRUE
 
@@ -97,7 +97,7 @@
 	RUN_PARENT_SAFE
 	LOADVAR("used")
 
-/obj/item/dice/d20/cursed/roll_dice(var/mob/caller,var/silent=FALSE)
+/obj/item/dice/d20/cursed/roll_dice(var/mob/activator,var/silent=FALSE)
 
 	if(used)
 		icon_state = "[initial(icon_state)]-[used]"
@@ -105,12 +105,12 @@
 
 	return ..()
 
-/obj/item/dice/d20/cursed/on_result(var/mob/caller,var/chosen_number,var/silent=FALSE)
+/obj/item/dice/d20/cursed/on_result(var/mob/activator,var/chosen_number,var/silent=FALSE)
 
-	if(!caller || silent || !is_living(caller) || !caller.client)
+	if(!activator || silent || !is_living(activator) || !activator.client)
 		return ..()
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 
 	. = ..()
 

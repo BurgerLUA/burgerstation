@@ -36,13 +36,13 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/stamina_use/tentacle/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/ranged/stamina_use/tentacle/click_self(var/mob/activator,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 	toggle = !toggle
 	update_icon()
 	if(toggle)
-		caller.to_chat(span("notice","You will now drag your enemies."))
+		activator.to_chat(span("notice","You will now drag your enemies."))
 	else
-		caller.to_chat(span("notice","You will now drag yourself to your enemies."))
+		activator.to_chat(span("notice","You will now drag yourself to your enemies."))
 	return TRUE

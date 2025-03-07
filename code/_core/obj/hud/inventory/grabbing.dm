@@ -1,47 +1,47 @@
-/obj/hud/inventory/proc/grab_object(var/mob/caller as mob,var/atom/movable/object,location,control,params)
+/obj/hud/inventory/proc/grab_object(var/mob/activator as mob,var/atom/movable/object,location,control,params)
 
-	if(src.qdeleting || caller.qdeleting)
+	if(src.qdeleting || activator.qdeleting)
 		return FALSE
 
-	if(caller == object)
-		caller.to_chat(span("notice","You cannot grab yourself, ERP is against the rules!"))
+	if(activator == object)
+		activator.to_chat(span("notice","You cannot grab yourself, ERP is against the rules!"))
 		return FALSE
 
-	if(!ismovable(object) || !object.can_be_grabbed(caller))
+	if(!ismovable(object) || !object.can_be_grabbed(activator))
 		return FALSE
 
-	if(!is_turf(caller.loc))
+	if(!is_turf(activator.loc))
 		return FALSE
 
 	if(grabbed_object) //We already are grabbing something.
 		if(grabbed_object == object)
 			if(is_living(grabbed_object))
-				return reinforce_grab(caller)
+				return reinforce_grab(activator)
 			else
-				release_object(caller)
+				release_object(activator)
 				return TRUE
-		release_object(caller) //Release the old object, if any.
+		release_object(activator) //Release the old object, if any.
 
 	if(is_occupied())
-		caller.to_chat(span("notice","You need an empty hand to grab this!"))
+		activator.to_chat(span("notice","You need an empty hand to grab this!"))
 		return FALSE
 
-	if(get_dist(caller,object) > 1)
-		if(next_move > 0 || !caller.Move(get_step(caller.loc,get_dir(caller,object))))
-			caller.to_chat(span("notice","You're too far away!"))
+	if(get_dist(activator,object) > 1)
+		if(next_move > 0 || !activator.Move(get_step(activator.loc,get_dir(activator,object))))
+			activator.to_chat(span("notice","You're too far away!"))
 			return FALSE
 
 	if(object.grabbing_hand) //Someone else is grabbing already.
 		if(object.grabbing_hand.grab_level >= 2)
-			caller.to_chat(span("warning","\The [object.grabbing_hand.owner.name] has too strong of a grip on \the [object.name]!"))
+			activator.to_chat(span("warning","\The [object.grabbing_hand.owner.name] has too strong of a grip on \the [object.name]!"))
 			return FALSE
 		else
-			object.grabbing_hand.release_object(caller) //Steal the grab.
+			object.grabbing_hand.release_object(activator) //Steal the grab.
 
 	if(!object) //Possible race condition?
 		return FALSE
 
-	caller.set_dir(get_dir(caller,object))
+	activator.set_dir(get_dir(activator,object))
 	grabbed_object = object
 	grabbed_object.grabbing_hand = src
 	grab_time = world.time //To prevent instant agressive grab
@@ -53,14 +53,14 @@
 		var/mob/living/L = grabbed_object
 		L.handle_transform()
 		L.resist() //Forces hud update.
-		if(is_living(caller))
-			var/mob/living/LC = caller
+		if(is_living(activator))
+			var/mob/living/LC = activator
 			if(LC.has_status_effect(BUFF))
-				reinforce_grab(caller,force=TRUE) //Instant reinforced grab.
+				reinforce_grab(activator,force=TRUE) //Instant reinforced grab.
 
 	HOOK_CALL_ADV("grab_changed",owner,args)
 
-	caller.visible_message(span("warning","\The [caller.name] grabs \the [object.name]."),span("notice","You grab \the [object.name]."))
+	activator.visible_message(span("warning","\The [activator.name] grabs \the [object.name]."),span("notice","You grab \the [object.name]."))
 
 	return TRUE
 
@@ -88,16 +88,16 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/release_object(var/mob/caller)
+/obj/hud/inventory/proc/release_object(var/mob/activator)
 	if(!grabbed_object)
 		return FALSE
-	if(caller && owner)
-		if(caller == owner)
-			caller.to_chat(span("notice","You release \the [grabbed_object.name]."))
+	if(activator && owner)
+		if(activator == owner)
+			activator.to_chat(span("notice","You release \the [grabbed_object.name]."))
 		else
 			owner.visible_message(
-				span("danger","\The [caller.name] forces \the [owner.name] to release their grip on \the [grabbed_object.name]!"),
-				span("danger","\The [caller.name] forces you to release your grip on \the [grabbed_object.name]!")
+				span("danger","\The [activator.name] forces \the [owner.name] to release their grip on \the [grabbed_object.name]!"),
+				span("danger","\The [activator.name] forces you to release your grip on \the [grabbed_object.name]!")
 			)
 	var/mob/living/L
 	if(is_living(grabbed_object))
@@ -112,25 +112,25 @@
 	if(owner) HOOK_CALL_ADV("grab_changed",owner,args)
 	return TRUE
 
-/obj/hud/inventory/proc/can_grab(var/mob/caller,var/atom/movable/object)
+/obj/hud/inventory/proc/can_grab(var/mob/activator,var/atom/movable/object)
 
-	if(!object || !caller || object.qdeleting || caller.qdeleting)
+	if(!object || !activator || object.qdeleting || activator.qdeleting)
 		return FALSE
 
-	if(!caller.loc || !is_turf(caller.loc) || !object.loc || !is_turf(object.loc))
+	if(!activator.loc || !is_turf(activator.loc) || !object.loc || !is_turf(object.loc))
 		return FALSE
 
-	if(get_dist(caller,object) >= 2)
+	if(get_dist(activator,object) >= 2)
 		return FALSE
 
 	return TRUE
 
-/obj/hud/inventory/proc/reinforce_grab(var/mob/living/caller,var/force=FALSE)
+/obj/hud/inventory/proc/reinforce_grab(var/mob/living/activator,var/force=FALSE)
 
 	if(!grabbed_object)
 		CRASH("Tried calling reinforce_grab without a grabbed object!")
 
-	if(qdeleting || caller.qdeleting || grabbed_object.qdeleting)
+	if(qdeleting || activator.qdeleting || grabbed_object.qdeleting)
 		return FALSE
 
 	if(!force && world.time <= grab_time+SECONDS_TO_DECISECONDS(2)) //Prevents insta agressive-grab
@@ -141,7 +141,7 @@
 
 	var/mob/living/grabbed_living = grabbed_object
 
-	if(!allow_hostile_action(caller.loyalty_tag,grabbed_living))
+	if(!allow_hostile_action(activator.loyalty_tag,grabbed_living))
 		return FALSE
 
 	var/turf/T = grabbed_object.loc
@@ -149,8 +149,8 @@
 	if(!T || !is_turf(T))
 		return FALSE
 
-	caller.visible_message(
-		span("warning","\The [caller.name] tightens their grip on \the [grabbed_living.name]!"),
+	activator.visible_message(
+		span("warning","\The [activator.name] tightens their grip on \the [grabbed_living.name]!"),
 		span("warning","You tighten your grip on \the [grabbed_living.name]!")
 	)
 
@@ -159,8 +159,8 @@
 	grabbed_living.add_status_effect(DISARM)
 	grabbed_living.handle_transform()
 
-	if(caller.next_move <= 0)
-		caller.Move(T)
+	if(activator.next_move <= 0)
+		activator.Move(T)
 
 	update_overlays() //Changing the appearance of the inventory.
 

@@ -41,44 +41,44 @@
 		return TRUE
 	return ..()
 
-/obj/structure/interactive/barricade/proc/can_climb_over(var/mob/caller)
+/obj/structure/interactive/barricade/proc/can_climb_over(var/mob/activator)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
-	if(!is_living(caller))
+	if(!is_living(activator))
 		return FALSE
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 
 	if(L.horizontal)
-		caller.to_chat(span("warning","You need to be standing in order to climb over \the [src.name]!"))
+		activator.to_chat(span("warning","You need to be standing in order to climb over \the [src.name]!"))
 		return FALSE
 
 	return TRUE
 
-/obj/structure/interactive/barricade/proc/climb_over(var/mob/caller)
+/obj/structure/interactive/barricade/proc/climb_over(var/mob/activator)
 
-	climbers[caller] = TRUE
+	climbers[activator] = TRUE
 
-	if(caller.loc == src.loc)
-		caller.Move(get_step(src,src.dir))
+	if(activator.loc == src.loc)
+		activator.Move(get_step(src,src.dir))
 	else
-		caller.Move(src.loc)
+		activator.Move(src.loc)
 
-	climbers -= caller
+	climbers -= activator
 
 	return TRUE
 
 
-/obj/structure/interactive/barricade/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/barricade/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(is_advanced(caller) && is_inventory(object) && can_climb_over(caller))
+	if(is_advanced(activator) && is_inventory(object) && can_climb_over(activator))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(2),src::climb_over(),caller)
-		PROGRESS_BAR_CONDITIONS(caller,src,src::can_climb_over(),caller)
-		caller.visible_message(span("warning","\The [caller.name] begins climbing over \the [src.name]."),span("notice","You begin climbing over \the [src.name]."))
+		PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(2),src::climb_over(),activator)
+		PROGRESS_BAR_CONDITIONS(activator,src,src::can_climb_over(),activator)
+		activator.visible_message(span("warning","\The [activator.name] begins climbing over \the [src.name]."),span("notice","You begin climbing over \the [src.name]."))
 		return TRUE
 
 	return ..()

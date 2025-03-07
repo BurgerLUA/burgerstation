@@ -36,7 +36,7 @@
 			var/blood_to_steal = min(V.blood_volume,(A.blood_volume_max - A.blood_volume)) //it took blood, sweat and tears, but...
 			if(blood_to_steal > 0)
 				V.blood_volume -= blood_to_steal
-				A.reagents.add_reagent(reagent_to_add,volume_to_add,caller=attacker) //I successfully stole stolen bloodsteal code!
+				A.reagents.add_reagent(reagent_to_add,volume_to_add,activator=attacker) //I successfully stole stolen bloodsteal code!
 				play_sound('sound/effects/demon_consume.ogg',attacker_turf,range_max=VIEW_RANGE*0.5)
 
 		return ..()

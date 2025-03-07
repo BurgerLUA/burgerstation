@@ -22,8 +22,8 @@
 /obj/item/container/edible/pill/get_consume_size(var/mob/living/L)
 	return reagents.volume_current
 
-/obj/item/container/edible/pill/quick(var/mob/caller,var/atom/object,location,params)
-	return try_transfer_reagents(caller,caller,location,null,params)
+/obj/item/container/edible/pill/quick(var/mob/activator,var/atom/object,location,params)
+	return try_transfer_reagents(activator,activator,location,null,params)
 
 /obj/item/container/edible/pill/get_consume_verb()
 	return "swallow"

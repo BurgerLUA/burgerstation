@@ -53,7 +53,7 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/activator,location,control,params)
 
 	. = ..()
 
@@ -67,10 +67,10 @@
 
 	var/cock_type // = "flacid"
 
-	if(eject_chambered_bullet(caller,caller ? caller.loc : T,TRUE))
+	if(eject_chambered_bullet(activator,activator ? activator.loc : T,TRUE))
 		cock_type = "back"
 
-	if(load_new_bullet_from_magazine(caller))
+	if(load_new_bullet_from_magazine(activator))
 		cock_type = cock_type == "back" ? "both" : "forward"
 
 	if(cock_type)
@@ -82,11 +82,11 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/caller as mob)
+/obj/item/weapon/ranged/bullet/magazine/proc/eject_magazine(var/mob/activator as mob)
 
-	if(!stored_magazine) CRASH("[caller.get_debug_name()] tried to eject a magazine from [src.get_debug_name()], but there was no stored_magazine!")
+	if(!stored_magazine) CRASH("[activator.get_debug_name()] tried to eject a magazine from [src.get_debug_name()], but there was no stored_magazine!")
 
-	var/turf/T = get_turf(caller)
+	var/turf/T = get_turf(activator)
 
 	if(!T)
 		qdel(src)
@@ -102,15 +102,15 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+/obj/item/weapon/ranged/bullet/magazine/clicked_on_by_object(var/mob/activator as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	if(stored_magazine && !wielded && is_inventory(object) && is_inventory(src.loc) && !caller.attack_flags)
+	if(stored_magazine && !wielded && is_inventory(object) && is_inventory(src.loc) && !activator.attack_flags)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/obj/item/magazine/M = stored_magazine
 		var/obj/hud/inventory/I = object
-		eject_magazine(caller)
+		eject_magazine(activator)
 		if(!M || M.qdeleting)
 			stored_magazine = null //Something went terribly wrong.
 			return TRUE
@@ -119,7 +119,7 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/proc/load_new_bullet_from_magazine(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/proc/load_new_bullet_from_magazine(var/mob/activator)
 
 	var/obj/item/magazine/M = get_magazine()
 
@@ -146,15 +146,15 @@
 
 	return FALSE
 
-/obj/item/weapon/ranged/bullet/magazine/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/handle_ammo(var/mob/activator)
 
 	. = ..()
 
 	if(.)
 		if(chambered_bullet)
-			eject_chambered_bullet(caller,get_turf(src),TRUE)
+			eject_chambered_bullet(activator,get_turf(src),TRUE)
 		if(!requires_cock_each_shot)
-			load_new_bullet_from_magazine(caller)
+			load_new_bullet_from_magazine(activator)
 
 
 
@@ -168,7 +168,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/magazine/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
+/obj/item/weapon/ranged/bullet/magazine/play_shoot_sounds(var/mob/activator,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 
 	. = ..()
 

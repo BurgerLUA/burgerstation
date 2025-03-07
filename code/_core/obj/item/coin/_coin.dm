@@ -75,25 +75,25 @@
 	value = 2000
 	rarity = RARITY_UNCOMMON
 
-/obj/item/coin/cursed/click_self(var/mob/caller,location,control,params)
+/obj/item/coin/cursed/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
-	if(!caller)
+	if(!activator)
 		return ..()
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 
-	caller.to_chat(span("warning","You crush the coin in your hand, hoping for the best."))
+	activator.to_chat(span("warning","You crush the coin in your hand, hoping for the best."))
 	if(prob(50))
-		caller.to_chat(span("notice","You feel okay."))
+		activator.to_chat(span("notice","You feel okay."))
 	else if(prob(50))
 		L.add_attribute_xp(ATTRIBUTE_LUCK,1,FALSE)
-		caller.to_chat(span("notice","You feel luckier!"))
+		activator.to_chat(span("notice","You feel luckier!"))
 	else
 		L.add_attribute_xp(ATTRIBUTE_LUCK,-1,FALSE)
-		caller.to_chat(span("danger","You feel cursed..."))
+		activator.to_chat(span("danger","You feel cursed..."))
 	qdel(src)
 
 	return TRUE
@@ -109,25 +109,25 @@
 
 	value_burgerbux = 3
 
-/obj/item/coin/antag_token/click_self(var/mob/caller,location,control,params)
+/obj/item/coin/antag_token/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(30)
 
-	if(!is_player(caller))
+	if(!is_player(activator))
 		return FALSE
 
-	if(!caller.client)
+	if(!activator.client)
 		return FALSE //literally how
 
-	var/savedata/client/globals/GD = GLOBALDATA(caller.client.ckey)
+	var/savedata/client/globals/GD = GLOBALDATA(activator.client.ckey)
 
 	if(!GD)
-		caller.to_chat(span("warning","You don't know how to use this..."))
+		activator.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE
 
 	GD.loaded_data["antag_tokens"] += 1 //We don't save here because there might be an exploit where you don't save or something.
-	caller.to_chat(span("warning","Your antag token count has increased by 1! It is now [GD.loaded_data["antag_tokens"]]."))
+	activator.to_chat(span("warning","Your antag token count has increased by 1! It is now [GD.loaded_data["antag_tokens"]]."))
 	GD.save()
 	qdel(src)
 
@@ -143,28 +143,28 @@
 	rarity = RARITY_RARE
 
 
-/obj/item/coin/bananium/click_self(var/mob/caller,location,control,params)
+/obj/item/coin/bananium/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
-	if(!is_player(caller))
+	if(!is_player(activator))
 		return FALSE
 
-	var/mob/living/advanced/player/P = caller
+	var/mob/living/advanced/player/P = activator
 
 	if(P.loyalty_tag != "NanoTrasen")
-		caller.to_chat(span("notice","You don't know how to use this..."))
+		activator.to_chat(span("notice","You don't know how to use this..."))
 		return FALSE
 
 	var/turf/T = get_turf(src)
 	var/area/A = T.loc
 	if(A.area_identifier != "Burgerstation")
-		caller.to_chat(span("notice","The coin seems like it can't be crushed right now. Maybe try it on station?"))
+		activator.to_chat(span("notice","The coin seems like it can't be crushed right now. Maybe try it on station?"))
 		return FALSE
 
 	if(!length(clown_planet_markers))
-		caller.to_chat(span("notice","The coin seems like it can't be crushed right now."))
+		activator.to_chat(span("notice","The coin seems like it can't be crushed right now."))
 		return FALSE
 
 	var/obj/marker/clown_planet/M = pick(clown_planet_markers)

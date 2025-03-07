@@ -71,19 +71,19 @@
 	if(.)
 		transform = get_base_transform()
 
-/obj/structure/interactive/cannon/proc/insert_item(var/mob/living/caller,var/obj/item/I)
+/obj/structure/interactive/cannon/proc/insert_item(var/mob/living/activator,var/obj/item/I)
 	I.drop_item(src)
 	total_size += I.size
-	caller?.visible_message(span("notice","\The [caller.name] inserts \the [I.name] into \the [src.name]."),span("notice","You insert \the [I.name] into \the [src.name]."))
+	activator?.visible_message(span("notice","\The [activator.name] inserts \the [I.name] into \the [src.name]."),span("notice","You insert \the [I.name] into \the [src.name]."))
 	return TRUE
 
-/obj/structure/interactive/cannon/proc/fire(var/mob/living/caller)
+/obj/structure/interactive/cannon/proc/fire(var/mob/living/activator)
 
 	var/turf/T = get_step(src,dir)
 	if(!T)
 		return TRUE //Heh
 
-	var/loyalty_tag_to_use = caller ? caller.loyalty_tag : "Pirate"
+	var/loyalty_tag_to_use = activator ? activator.loyalty_tag : "Pirate"
 
 	var/main_angle = dir2angle(dir)
 	for(var/k in contents)
@@ -91,15 +91,15 @@
 		var/desired_angle = main_angle + rand(-10,10)
 		var/offset_x = sin(desired_angle)
 		var/offset_y = cos(desired_angle)
-		M.throw_self(caller,null,16,16,offset_x*(TILE_SIZE-1),offset_y*(TILE_SIZE-1),SECONDS_TO_DECISECONDS(4),VIEW_RANGE*3,loyalty_tag_to_use,10)
+		M.throw_self(activator,null,16,16,offset_x*(TILE_SIZE-1),offset_y*(TILE_SIZE-1),SECONDS_TO_DECISECONDS(4),VIEW_RANGE*3,loyalty_tag_to_use,10)
 
 	total_size = 0
 
 	play_sound('sound/weapons/ranged/misc/cannon_shot.ogg',T)
 
 	//Explosion effects.
-	explode(T,4,caller,src,loyalty_tag_to_use,src.dir,3)
-	smoke(T,3,SECONDS_TO_DECISECONDS(3),null,caller,100)
+	explode(T,4,activator,src,loyalty_tag_to_use,src.dir,3)
+	smoke(T,3,SECONDS_TO_DECISECONDS(3),null,activator,100)
 
 	has_fuse = FALSE
 	particles.spawning = 0
@@ -112,7 +112,7 @@
 		if(BT) src.Move(BT)
 
 
-/obj/structure/interactive/cannon/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/cannon/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
@@ -121,65 +121,65 @@
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 
 	if(is_item(defer_object))
 		var/obj/item/I = defer_object
 		if(istype(I,/obj/item/cannon_fuse))
 			if(has_fuse)
-				caller.to_chat(span("warning","\The [src.name] already has a fuse!"))
+				activator.to_chat(span("warning","\The [src.name] already has a fuse!"))
 				return TRUE
-			caller.visible_message(span("notice","\The [caller.name] inserts \the [I.name] into \the [src.name]."),span("notice","You insert \the [I.name] into \the [src.name]."))
+			activator.visible_message(span("notice","\The [activator.name] inserts \the [I.name] into \the [src.name]."),span("notice","You insert \the [I.name] into \the [src.name]."))
 			has_fuse = TRUE
 			qdel(I)
 			update_sprite()
 			return TRUE
 		if(L.intent == INTENT_DISARM || istype(I,/obj/item/cannonball))
-			if(!can_insert_item(caller,object))
+			if(!can_insert_item(activator,object))
 				return TRUE
-			caller.visible_message(span("notice","\The [caller.name] starts to insert \the [I.name] into \the [src.name]..."),span("notice","You start to insert \the [I.name] into \the [src.name]..."))
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::insert_item(),caller,I)
-			PROGRESS_BAR_CONDITIONS(caller,src,src::can_insert_item(),caller,I)
+			activator.visible_message(span("notice","\The [activator.name] starts to insert \the [I.name] into \the [src.name]..."),span("notice","You start to insert \the [I.name] into \the [src.name]..."))
+			PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(5),src::insert_item(),activator,I)
+			PROGRESS_BAR_CONDITIONS(activator,src,src::can_insert_item(),activator,I)
 			return TRUE
-		var/damagetype/desired_damage_type = I.get_damage_type(caller,src)
+		var/damagetype/desired_damage_type = I.get_damage_type(activator,src)
 		if(desired_damage_type)
 			var/damagetype/DT = SSdamagetype.all_damage_types[desired_damage_type]
 			if(DT && DT.attack_damage_base[HEAT])
-				caller.visible_message(span("danger","\The [caller.name] starts to light the fuse of \the [src.name] with \the [I.name]!"),span("warning","You start to light the fuse of \the [src.name] with \the [I.name]..."))
-				PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::light_fuse(),caller,I)
-				PROGRESS_BAR_CONDITIONS(caller,src,src::can_light_fuse(),caller,I)
+				activator.visible_message(span("danger","\The [activator.name] starts to light the fuse of \the [src.name] with \the [I.name]!"),span("warning","You start to light the fuse of \the [src.name] with \the [I.name]..."))
+				PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(3),src::light_fuse(),activator,I)
+				PROGRESS_BAR_CONDITIONS(activator,src,src::can_light_fuse(),activator,I)
 				return TRUE
 
 
 
-/obj/structure/interactive/cannon/proc/can_insert_item(var/mob/caller,var/obj/item/I)
+/obj/structure/interactive/cannon/proc/can_insert_item(var/mob/activator,var/obj/item/I)
 
-	if(caller)
+	if(activator)
 		INTERACT_CHECK_NO_DELAY(src)
 
 	if(!has_fuse)
-		caller?.to_chat(span("warning","\The [src.name] requires a fuse first!"))
+		activator?.to_chat(span("warning","\The [src.name] requires a fuse first!"))
 		return FALSE
 
 	if(I.size > SIZE_2)
-		caller?.to_chat(span("warning","\The [I.name] is too large to be put into \the [src.name]!"))
+		activator?.to_chat(span("warning","\The [I.name] is too large to be put into \the [src.name]!"))
 		return FALSE
 
 	if(total_size + I.size >= SIZE_2 + SIZE_1)
-		caller?.to_chat(span("warning","\The [src.name] is too full to accept \the [I.name]!"))
+		activator?.to_chat(span("warning","\The [src.name] is too full to accept \the [I.name]!"))
 		return FALSE
 
 	if(length(contents) >= 5)
-		caller?.to_chat(span("warning","\The [src.name] is too full to accept \the [I.name]!"))
+		activator?.to_chat(span("warning","\The [src.name] is too full to accept \the [I.name]!"))
 		return FALSE
 
-	if(caller)
+	if(activator)
 		var/obj/hud/inventory/INV = I.loc
 		if(!istype(INV))
-			caller.to_chat(span("warning","You need to be holding \the [I.name] to insert it into \the [src.name]!"))
+			activator.to_chat(span("warning","You need to be holding \the [I.name] to insert it into \the [src.name]!"))
 			return FALSE
-		if(INV.owner != caller || !INV.click_flags) //Must be holding.
-			caller.to_chat(span("warning","You need to be holding \the [I.name] to insert it into \the [src.name]!"))
+		if(INV.owner != activator || !INV.click_flags) //Must be holding.
+			activator.to_chat(span("warning","You need to be holding \the [I.name] to insert it into \the [src.name]!"))
 			return FALSE
 
 	return TRUE
@@ -190,32 +190,32 @@
 		var/image/I = new/image(icon,"fuse")
 		add_overlay(I)
 
-/obj/structure/interactive/cannon/proc/light_fuse(var/mob/living/caller)
-	caller.visible_message(span("danger","\The [caller.name] lights the fuse of \the [src.name]!"),span("danger","You light the fuse of \the [src.name]!"))
-	CALLBACK("\ref[src]_fire_cannon",SECONDS_TO_DECISECONDS(3),src,src::fire(),caller)
+/obj/structure/interactive/cannon/proc/light_fuse(var/mob/living/activator)
+	activator.visible_message(span("danger","\The [activator.name] lights the fuse of \the [src.name]!"),span("danger","You light the fuse of \the [src.name]!"))
+	CALLBACK("\ref[src]_fire_cannon",SECONDS_TO_DECISECONDS(3),src,src::fire(),activator)
 	update_sprite()
 	particles.spawning = 10
 	play_sound('sound/effects/fuse.ogg',get_turf(src))
 	return TRUE
 
-/obj/structure/interactive/cannon/proc/can_light_fuse(var/mob/caller,var/obj/item/I)
+/obj/structure/interactive/cannon/proc/can_light_fuse(var/mob/activator,var/obj/item/I)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
 	if(CALLBACK_EXISTS("\ref[src]_fire_cannon"))
-		caller?.to_chat(span("warning","\The [src.name] is already lit!"))
+		activator?.to_chat(span("warning","\The [src.name] is already lit!"))
 		return FALSE
 
 	if(!has_fuse)
-		caller?.to_chat(span("warning","\The [src.name] has no fuse to fire!"))
+		activator?.to_chat(span("warning","\The [src.name] has no fuse to fire!"))
 		return FALSE
 
 	var/obj/hud/inventory/INV = I.loc
 	if(!istype(INV))
-		caller.to_chat(span("warning","You need to be holding \the [I.name] to light \the [src.name]!"))
+		activator.to_chat(span("warning","You need to be holding \the [I.name] to light \the [src.name]!"))
 		return FALSE
-	if(INV.owner != caller || !INV.click_flags) //Must be holding.
-		caller.to_chat(span("warning","You need to be holding \the [I.name] to light \the [src.name]!"))
+	if(INV.owner != activator || !INV.click_flags) //Must be holding.
+		activator.to_chat(span("warning","You need to be holding \the [I.name] to light \the [src.name]!"))
 		return FALSE
 
 	return TRUE

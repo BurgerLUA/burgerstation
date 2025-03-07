@@ -33,15 +33,15 @@
 
 	return ..()
 
-/obj/structure/interactive/supplies/proc/open(var/mob/caller)
+/obj/structure/interactive/supplies/proc/open(var/mob/activator)
 
 	opened = TRUE
 	update_sprite()
 
 	if(loot)
 		var/rarity = 0
-		if(is_player(caller))
-			var/mob/living/advanced/player/P = caller
+		if(is_player(activator))
+			var/mob/living/advanced/player/P = activator
 			rarity = P.get_rarity()
 		for(var/i=1,i<=3,i++)
 			var/turf/actual_turf = locate(x+(i-1),y,z)
@@ -50,7 +50,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/supplies/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/supplies/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(5)

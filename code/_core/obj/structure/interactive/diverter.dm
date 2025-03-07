@@ -28,7 +28,7 @@
 
 	density = TRUE
 
-/obj/structure/interactive/diverter/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/diverter/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
@@ -38,24 +38,24 @@
 		var/obj/item/T = object
 		if(T.flags_tool & FLAG_TOOL_WRENCH)
 			if(anchored)
-				caller.to_chat(span("notice","You un-anchor the diverter."))
+				activator.to_chat(span("notice","You un-anchor the diverter."))
 				anchored = FALSE
 			else
-				caller.to_chat(span("notice","You anchor the diverter."))
+				activator.to_chat(span("notice","You anchor the diverter."))
 				anchored = TRUE
 		else if(T.flags_tool & FLAG_TOOL_MULTITOOL && mode == MODE_VALUE) // Should I REALLY make it need a multitool?
-			value_threshold = clamp(input(caller, "What do you want to set the threshold to?","[src]",value_threshold),-1,50000)
-			caller.to_chat(span("notice","You set the threshold to [value_threshold]."))
+			value_threshold = clamp(input(activator, "What do you want to set the threshold to?","[src]",value_threshold),-1,50000)
+			activator.to_chat(span("notice","You set the threshold to [value_threshold]."))
 	else
-		if(caller.attack_flags & CONTROL_MOD_DISARM)
+		if(activator.attack_flags & CONTROL_MOD_DISARM)
 			var/modes = list(MODE_NONE,MODE_VALUE,MODE_DENSITY,MODE_MATERIAL,MODE_LIVING,MODE_WEAPON,MODE_CRATE,MODE_BUTCHERABLE,"CANCEL")
-			var/whatmode = input(caller, "What do you want to set the mode to?","[src]",mode) as null|anything in modes
+			var/whatmode = input(activator, "What do you want to set the mode to?","[src]",mode) as null|anything in modes
 			if(whatmode == null || whatmode == "CANCEL")
 				return
 			mode = whatmode
 			name = "[initial(name)] ([mode])"
 		else
-			caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
+			activator.visible_message(span("notice","\The [activator.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
 			set_dir(turn(dir,90))
 
 			update_sprite()

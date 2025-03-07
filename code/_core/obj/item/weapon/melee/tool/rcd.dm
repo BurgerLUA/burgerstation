@@ -60,7 +60,7 @@
 		add_overlay(I)
 
 
-/obj/item/rcd/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/rcd/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -73,21 +73,21 @@
 
 		var/turf/T = get_turf(object)
 		if(!rcd_disk)
-			caller.to_chat(span("warning","ERROR: There is no construction disk loaded in \the [src.name]!"))
+			activator.to_chat(span("warning","ERROR: There is no construction disk loaded in \the [src.name]!"))
 			return TRUE
 		var/list/data = rcd_disk.data
 		if(!data || !data["object"] || !data["cost"] || !ispath(data["object"]))
-			caller.to_chat(span("warning","ERROR: Invalid construction disk!"))
+			activator.to_chat(span("warning","ERROR: Invalid construction disk!"))
 			return TRUE
 
-		if(ispath(data["object"],/turf/) ? !T.can_construct_on(caller,/obj/structure/interactive/construction/girder/) : !T.can_construct_on(caller,data["object"]))
+		if(ispath(data["object"],/turf/) ? !T.can_construct_on(activator,/obj/structure/interactive/construction/girder/) : !T.can_construct_on(activator,data["object"]))
 			return TRUE
 
 		var/matter_cost = data["cost"]
 		var/delay_time = 0
 
 		if(matter_cost && !spend_matter(matter_cost))
-			caller.to_chat(span("warning","You don't have enough matter to construct this! (You have [matter_current], [matter_cost] needed)."))
+			activator.to_chat(span("warning","You don't have enough matter to construct this! (You have [matter_current], [matter_cost] needed)."))
 			return TRUE
 
 		if(ispath(data["effect"]))
@@ -101,44 +101,44 @@
 		spawn(delay_time)
 			if(ispath(data["object"],/turf/))
 				T.change_turf(data["object"])
-				caller.to_chat(span("notice","You construct \a [T.name] with \the [src.name]."))
+				activator.to_chat(span("notice","You construct \a [T.name] with \the [src.name]."))
 			else
 				var/atom/A = data["object"]
 				A = new A(T)
 				INITIALIZE(A)
 				FINALIZE(A)
-				caller.to_chat(span("notice","You construct \a [A.name] with \the [src.name]."))
+				activator.to_chat(span("notice","You construct \a [A.name] with \the [src.name]."))
 
 		return TRUE
 
 	return ..()
 
-/obj/item/rcd/proc/insert_disk(var/mob/caller,var/obj/item/disk/desired_disk,var/silent=FALSE)
+/obj/item/rcd/proc/insert_disk(var/mob/activator,var/obj/item/disk/desired_disk,var/silent=FALSE)
 	if(rcd_disk)
-		if(caller && !silent) caller.to_chat(span("warning","There is already a [rcd_disk.name] installed in \the [src.name]!"))
+		if(activator && !silent) activator.to_chat(span("warning","There is already a [rcd_disk.name] installed in \the [src.name]!"))
 		return null
 	desired_disk.drop_item(src)
 	rcd_disk = desired_disk
-	if(caller && !silent) caller.visible_message(span("notice","\The [caller.name] inserts a disk into \the [src.name]."),span("notice","You insert \the [rcd_disk.name] into \the [src.name] and download the data onto the RCD."))
+	if(activator && !silent) activator.visible_message(span("notice","\The [activator.name] inserts a disk into \the [src.name]."),span("notice","You insert \the [rcd_disk.name] into \the [src.name] and download the data onto the RCD."))
 	return rcd_disk
 
-/obj/item/rcd/proc/eject_disk(var/mob/caller,var/silent=FALSE)
+/obj/item/rcd/proc/eject_disk(var/mob/activator,var/silent=FALSE)
 	if(!rcd_disk)
-		caller.to_chat(span("warning","There is no disk to eject from \the [src.name]!"))
+		activator.to_chat(span("warning","There is no disk to eject from \the [src.name]!"))
 		return null
-	if(caller && !silent) caller.visible_message(span("notice","\The [caller.name] removes a disk from \the [src.name]."),span("notice","You remove \the [rcd_disk.name] from \the [src.name]."))
+	if(activator && !silent) activator.visible_message(span("notice","\The [activator.name] removes a disk from \the [src.name]."),span("notice","You remove \the [rcd_disk.name] from \the [src.name]."))
 	rcd_disk.drop_item(get_turf(src))
 	. = rcd_disk
 	rcd_disk = null
 
-/obj/item/rcd/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+/obj/item/rcd/clicked_on_by_object(var/mob/activator as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
 	if(is_inventory(object) && rcd_disk)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
 		var/obj/hud/inventory/I = object
-		var/obj/item/disk/ejected_disk = eject_disk(caller)
+		var/obj/item/disk/ejected_disk = eject_disk(activator)
 		I.add_object(ejected_disk)
 		return TRUE
 
@@ -149,9 +149,9 @@
 		var/obj/hud/inventory/I = object.loc
 		var/obj/item/disk/D = object
 		var/obj/item/disk/old_disk
-		if(rcd_disk) old_disk = eject_disk(caller)
+		if(rcd_disk) old_disk = eject_disk(activator)
 		if(!rcd_disk)
-			insert_disk(caller,D)
+			insert_disk(activator,D)
 			if(old_disk) I.add_object(old_disk)
 		return TRUE
 

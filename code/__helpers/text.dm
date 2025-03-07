@@ -83,7 +83,7 @@
 
 	return input
 
-/proc/police_text(var/client/caller, var/input, var/min_length, var/max_length, var/capitalize = FALSE, var/periodize = FALSE, var/check_name = FALSE, var/check_characters = FALSE, var/encode = TRUE, var/trim=TRUE, var/extra=TRUE)
+/proc/police_text(var/client/activator, var/input, var/min_length, var/max_length, var/capitalize = FALSE, var/periodize = FALSE, var/check_name = FALSE, var/check_characters = FALSE, var/encode = TRUE, var/trim=TRUE, var/extra=TRUE)
 
 	if(!min_length)
 		min_length = 1
@@ -100,23 +100,23 @@
 	input = sanitize(input,max_length,encode=encode,trim=trim,extra=extra)
 
 	if(length(input) < min_length)
-		caller?.to_chat(span("danger","Your text was too short!"))
+		activator?.to_chat(span("danger","Your text was too short!"))
 		return FALSE
 
 	if(check_name && SSconfig && SSconfig.forbidden_characters_name && SSconfig.forbidden_characters_name.Find(input))
 		var/warning_to_send = CONFIG("FORBIDDEN_CHARACTERS_NAME_WARNING","That is not an acceptable name.")
 		if(warning_to_send)
-			caller?.to_chat(span("warning",warning_to_send))
+			activator?.to_chat(span("warning",warning_to_send))
 		return FALSE
 
 	if(check_characters && SSconfig && SSconfig.forbidden_characters && SSconfig.forbidden_characters.Find(input)) //Буквально 1984
 		var/warning_to_send = CONFIG("FORBIDDEN_CHARACTERS_WARNING","That is not an acceptable text.")
 		if(warning_to_send)
-			caller?.to_chat(span("warning",warning_to_send))
+			activator?.to_chat(span("warning",warning_to_send))
 		return FALSE
 
 	if(SSbadwords.has_badword(input))
-		caller?.to_chat(span("danger","Your text \"[input]\" contains one or more forbidden words and cannot be used."))
+		activator?.to_chat(span("danger","Your text \"[input]\" contains one or more forbidden words and cannot be used."))
 		return FALSE
 
 	return input

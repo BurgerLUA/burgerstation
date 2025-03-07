@@ -70,8 +70,8 @@
 	QDEL_NULL(stored_gun)
 	. = ..()
 
-/obj/item/attachment/undermount/gun/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	return stored_gun?.clicked_on_by_object(caller,object,location,control,params)
+/obj/item/attachment/undermount/gun/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
+	return stored_gun?.clicked_on_by_object(activator,object,location,control,params)
 
 /obj/item/attachment/undermount/gun/Generate()
 	if(stored_gun)
@@ -90,8 +90,8 @@
 	RUN_PARENT_SAFE
 	LOADATOM("stored_gun")
 
-/obj/item/attachment/undermount/gun/click_on_object_alt(var/mob/caller,var/atom/object,location,control,params)
-	return stored_gun.click_on_object(caller,object,location,control,params)
+/obj/item/attachment/undermount/gun/click_on_object_alt(var/mob/activator,var/atom/object,location,control,params)
+	return stored_gun.click_on_object(activator,object,location,control,params)
 
 
 /obj/item/attachment/undermount/gun/grenade_launcher

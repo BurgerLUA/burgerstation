@@ -31,36 +31,36 @@
 	else
 		. += span("notice","There are <b>[uses_left]</b> uses left.")
 
-/obj/item/tempering/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/tempering/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_item(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
-		if(caller.attack_flags & CONTROL_MOD_DISARM)
-			if(can_temper(caller,object))
-				on_temper(caller,object)
+		if(activator.attack_flags & CONTROL_MOD_DISARM)
+			if(can_temper(activator,object))
+				on_temper(activator,object)
 			return TRUE
 		else if(!is_inventory(object))
-			if(can_temper(caller,object))
+			if(can_temper(activator,object))
 				var/choice = input("Are you sure you want to temper \the [object.name]?","ALT+Click to skip this next time") as null|anything in list("Yes","No","Cancel")
 				if(choice == "Yes")
 					INTERACT_CHECK
 					INTERACT_CHECK_OBJECT
-					on_temper(caller,object)
+					on_temper(activator,object)
 					return TRUE
 
 	. = ..()
 
-/obj/item/tempering/proc/can_temper(var/mob/caller,var/obj/item/I)
+/obj/item/tempering/proc/can_temper(var/mob/activator,var/obj/item/I)
 
 	//Check if there are uses.
 	if(uses_left != -1 && uses_left <= 0)
-		caller.to_chat(span("warning","The [src.name] has no uses left!"))
+		activator.to_chat(span("warning","The [src.name] has no uses left!"))
 		return FALSE
 
 	//Check if the object can save.
 	if(!I.can_save)
-		caller.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]! Try tempering the main part of this clothing set."))
+		activator.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]! Try tempering the main part of this clothing set."))
 		return FALSE
 
 	//Check the type.
@@ -75,15 +75,15 @@
 		is_valid_object = TRUE
 
 	if(!is_valid_object)
-		caller.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]!"))
+		activator.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]!"))
 		return FALSE
 
 	return TRUE
 
-/obj/item/tempering/proc/on_temper(var/mob/caller,var/obj/item/I)
+/obj/item/tempering/proc/on_temper(var/mob/activator,var/obj/item/I)
 
-	caller.visible_message(
-		span("notice","\The [caller.name] improves \the [I.name] with \the [src.name]."),
+	activator.visible_message(
+		span("notice","\The [activator.name] improves \the [I.name] with \the [src.name]."),
 		span("notice","You improve \the [I.name] with \the [src.name].")
 	)
 

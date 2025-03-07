@@ -21,7 +21,7 @@
 	. *= uses_left / initial(uses_left)
 	. = CEILING(.,1)
 
-/obj/item/enchanting_chalk/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/enchanting_chalk/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -30,7 +30,7 @@
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		caller.visible_message(span("warning","\The [caller.name] clears \the [object.name] with \the [src.name]."),span("notice","You clear \the [object.name] with \the [src.name]."))
+		activator.visible_message(span("warning","\The [activator.name] clears \the [object.name] with \the [src.name]."),span("notice","You clear \the [object.name] with \the [src.name]."))
 		qdel(object)
 		return TRUE
 
@@ -42,22 +42,22 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 
-		if(caller.loc != T)
-			caller.to_chat(span("warning","You must draw the rune at your location!"))
+		if(activator.loc != T)
+			activator.to_chat(span("warning","You must draw the rune at your location!"))
 			return TRUE
 
 		for(var/k in DIRECTIONS_ALL)
 			var/turf/T2 = get_step(T,k)
 			var/atom/occupied = T2.is_occupied(PLANE_FLOOR_ATTACHMENT)
 			if(occupied)
-				caller.to_chat(span("warning","You can't draw an enchantment circle here, \the [occupied.name] is in the way!"))
+				activator.to_chat(span("warning","You can't draw an enchantment circle here, \the [occupied.name] is in the way!"))
 				return TRUE
 
 		var/obj/structure/interactive/enchantment_circle/EC = new(T)
 		INITIALIZE(EC)
 		GENERATE(EC)
 		FINALIZE(EC)
-		caller.visible_message(span("notice","\The [caller.name] touches \the [T.name] with \the [src.name], magically creating \a [EC.name]."),span("notice","You touch \the [T.name] with \the [src.name], magically creating \a [EC.name]."))
+		activator.visible_message(span("notice","\The [activator.name] touches \the [T.name] with \the [src.name], magically creating \a [EC.name]."),span("notice","You touch \the [T.name] with \the [src.name], magically creating \a [EC.name]."))
 		uses_left--
 		if(uses_left <= 0)
 			qdel(src)

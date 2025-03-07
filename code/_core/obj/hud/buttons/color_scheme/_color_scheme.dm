@@ -17,12 +17,12 @@ var/global/static/list/obj/hud/button/color_scheme_buttons = list(
 
 	has_quick_function = FALSE
 
-/obj/hud/button/close_color_scheme/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/close_color_scheme/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller) && caller.client && caller.client.settings)
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator) && activator.client && activator.client.settings)
+		var/mob/living/advanced/A = activator
 		A.remove_color_scheme_buttons()
 		A.client.settings.save()
 
@@ -35,12 +35,12 @@ var/global/static/list/obj/hud/button/color_scheme_buttons = list(
 
 	has_quick_function = FALSE
 
-/obj/hud/button/default_color_scheme/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/default_color_scheme/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller) && caller.client && caller.client.settings && caller.client.settings.loaded_data)
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator) && activator.client && activator.client.settings && activator.client.settings.loaded_data)
+		var/mob/living/advanced/A = activator
 		A.client.settings.loaded_data["hud_colors"] = DEFAULT_COLORS
 
 		for(var/k in A.buttons)
@@ -72,12 +72,12 @@ var/global/static/list/obj/hud/button/color_scheme_buttons = list(
 
 	has_quick_function = FALSE
 
-/obj/hud/button/color_scheme/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/color_scheme/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller) && caller.client && caller.client.settings && caller.client.settings.loaded_data)
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator) && activator.client && activator.client.settings && activator.client.settings.loaded_data)
+		var/mob/living/advanced/A = activator
 		var/desired_color = input("Skin Color","Skin Color",A.client.settings.loaded_data["hud_colors"][color_id]) as color|null
 		if(desired_color)
 			A.client.settings.loaded_data["hud_colors"][color_id] = desired_color

@@ -13,7 +13,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/marker/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/marker/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(!is_item(object) || object == src)
 		return ..()
@@ -24,7 +24,7 @@
 	var/obj/item/I = object
 
 	if(!I.can_rename)
-		caller.to_chat(span("warning","\The [src.name] cannot be renamed..."))
+		activator.to_chat(span("warning","\The [src.name] cannot be renamed..."))
 		return TRUE
 
 	var/confrim = input("Are you sure you wish to rename \the [I.name]? The marker will be spent after this operation!","Marker Rename","Cancel") as null|anything in list("Yes","No","Cancel")
@@ -35,7 +35,7 @@
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 
-	caller.to_chat(span("danger","Note that abuse of the rename feature will result in a ban."))
+	activator.to_chat(span("danger","Note that abuse of the rename feature will result in a ban."))
 
 	var/desired_name = input("What would you like to rename \the [I.name] to? Enter nothing to cancel.","Rename Item.",I.name) as text
 
@@ -45,7 +45,7 @@
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 
-	desired_name = police_text(caller.client,desired_name,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
+	desired_name = police_text(activator.client,desired_name,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
 
 	if(!desired_name)
 		return TRUE
@@ -53,13 +53,13 @@
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 
-	caller.visible_message(span("notice","\The [caller.name] renames \the [I.name] to [desired_name]."),span("notice","You rename \the [I.name] to [desired_name]."))
+	activator.visible_message(span("notice","\The [activator.name] renames \the [I.name] to [desired_name]."),span("notice","You rename \the [I.name] to [desired_name]."))
 
-	log_admin("[caller.get_debug_name()] renamed \"[I.name]\" to \"[desired_name]\".")
+	log_admin("[activator.get_debug_name()] renamed \"[I.name]\" to \"[desired_name]\".")
 
 	I.name = desired_name
 
-	caller.to_chat(span("warning","\The [src] is spent."))
+	activator.to_chat(span("warning","\The [src] is spent."))
 	qdel(src)
 
 	return TRUE

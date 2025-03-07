@@ -45,7 +45,7 @@
 /obj/item/weapon/ranged/energy/abductor/get_skill_spread(var/mob/living/L)
 	return max(0,0.05 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/energy/abductor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/energy/abductor/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -54,9 +54,9 @@
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
 			if(battery)
-				caller.to_chat(span("warning","You are unable to pry out \the [battery.name]."))
+				activator.to_chat(span("warning","You are unable to pry out \the [battery.name]."))
 			else
-				caller.to_chat(span("warning","There is nothing to pry out of \the [src.name]!"))
+				activator.to_chat(span("warning","There is nothing to pry out of \the [src.name]!"))
 			return TRUE
 
 	. = ..()

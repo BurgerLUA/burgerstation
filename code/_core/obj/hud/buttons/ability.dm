@@ -41,9 +41,9 @@
 	QDEL_NULL(ability)
 	. = ..()
 
-/obj/hud/button/ability/proc/activate(var/mob/caller)
+/obj/hud/button/ability/proc/activate(var/mob/activator)
 
-	if(ability && ability.activate(caller))
+	if(ability && ability.activate(activator))
 		animate(src,color="#00FF00",time=1,flags=ANIMATION_PARALLEL)
 		START_THINKING(src)
 	else
@@ -52,7 +52,7 @@
 	animate(color="#FFFFFF",time=5)
 
 	if(ability && ability.toggle)
-		for(var/obj/hud/button/ability/B in caller.buttons)
+		for(var/obj/hud/button/ability/B in activator.buttons)
 			if(!B.ability || B.ability.category != src.ability.category)
 				continue
 			B.update_sprite()

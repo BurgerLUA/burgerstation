@@ -55,16 +55,16 @@
 	SSshuttle.all_drop_pods += src
 	return ..()
 
-/obj/structure/interactive/drop_pod/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/drop_pod/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
 	if(state == POD_IDLE) //Lets rock!
-		set_state(caller,POD_PRE_LAUNCH)
+		set_state(activator,POD_PRE_LAUNCH)
 		return TRUE
-	else if(state == POD_PRE_LAUNCH && (caller in contents)) //OH GOD OH FUCK CANCEL.
-		set_state(caller,POD_IDLE)
+	else if(state == POD_PRE_LAUNCH && (activator in contents)) //OH GOD OH FUCK CANCEL.
+		set_state(activator,POD_IDLE)
 		return TRUE
 
 	return ..()
@@ -84,12 +84,12 @@
 	return ..()
 
 
-/obj/structure/interactive/drop_pod/proc/set_state(var/mob/caller,var/desired_state,var/turf/desired_loc) //desired_loc is optional, same with caller.
+/obj/structure/interactive/drop_pod/proc/set_state(var/mob/activator,var/desired_state,var/turf/desired_loc) //desired_loc is optional, same with activator.
 
 	if(state == desired_state)
 		return FALSE
 
-	if(caller && !is_advanced(caller))
+	if(activator && !is_advanced(activator))
 		return FALSE
 
 	switch(desired_state)
@@ -99,55 +99,55 @@
 				var/atom/movable/M = k
 				M.force_move(src.loc)
 		if(POD_PRE_LAUNCH) //Someone tries to move inside.
-			if(!caller || caller.loc != src.loc)
+			if(!activator || activator.loc != src.loc)
 				return FALSE
-			var/obj/hud/button/map_background/M_background = locate() in caller.buttons
+			var/obj/hud/button/map_background/M_background = locate() in activator.buttons
 			if(M_background)
-				caller.to_chat(span("warning","Close your current map to enter \the [src.name]!"))
+				activator.to_chat(span("warning","Close your current map to enter \the [src.name]!"))
 				return FALSE
-			if(!caller.Move(src))
+			if(!activator.Move(src))
 				return FALSE
-			M_background = new(caller,desired_pod=src)
-			M_background.update_owner(caller)
+			M_background = new(activator,desired_pod=src)
+			M_background.update_owner(activator)
 			icon_state = "pod_closed"
 		if(POD_LAUNCHING) //IT BEGINS. We're launching now.
 			if(!SSgamemode.active_gamemode.allow_launch)
-				caller.to_chat(span("warning","Invalid drop location: NanoTrasen has deemed it's unsafe to launch at this time!"))
+				activator.to_chat(span("warning","Invalid drop location: NanoTrasen has deemed it's unsafe to launch at this time!"))
 				return FALSE
 			if(!desired_loc)
-				caller.to_chat(span("warning","Invalid drop location: No drop location selected."))
+				activator.to_chat(span("warning","Invalid drop location: No drop location selected."))
 				return FALSE
 			for(var/d in DIRECTIONS_ALL)
 				var/turf/T = get_step(desired_loc,d)
 				if(!T || T.has_dense_atom)
-					caller.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
+					activator.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
 					return FALSE
 				if(!T.is_safe() || !T.can_move_to())
-					caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
+					activator.to_chat(span("warning","Invalid drop location: Unsafe area."))
 					return FALSE
 				var/area/A = T.loc
 				if(A.interior)
-					caller.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
+					activator.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
 					return FALSE
 			icon_state = "none"
 			flick("drop_anim",src)
-			CALLBACK("set_state_\ref[src]",3,src,src::set_state(),caller,POD_LAUNCHED,desired_loc)
+			CALLBACK("set_state_\ref[src]",3,src,src::set_state(),activator,POD_LAUNCHED,desired_loc)
 			play_sound('sound/machines/blastdoor.ogg',get_turf(src))
 		if(POD_LAUNCHED)
 			icon_state = "none"
-			CALLBACK("set_state_\ref[src]",20,src,src::set_state(),caller,POD_LANDING,desired_loc)
+			CALLBACK("set_state_\ref[src]",20,src,src::set_state(),activator,POD_LANDING,desired_loc)
 		if(POD_LANDING)
 			SSshuttle.drop_pod_turfs += get_turf(src)
 			force_move(desired_loc)
 			pixel_z = TILE_SIZE*20
 			icon_state = "pod_air"
 			animate(src,pixel_z = 0,time=20)
-			CALLBACK("set_state_\ref[src]",20,src,src::set_state(),caller,POD_LANDED,desired_loc)
+			CALLBACK("set_state_\ref[src]",20,src,src::set_state(),activator,POD_LANDED,desired_loc)
 			play_sound('sound/machines/droppod_landing.ogg',get_turf(src))
 		if(POD_LANDED)
 			icon_state = "pod_closed"
 			flick("land_anim",src)
-			CALLBACK("set_state_\ref[src]",50,src,src::set_state(),caller,POD_OPENING,desired_loc)
+			CALLBACK("set_state_\ref[src]",50,src,src::set_state(),activator,POD_OPENING,desired_loc)
 			explode(desired_loc,3,src,src,"NanoTrasen")
 		if(POD_OPENING)
 			play_sound('sound/machines/droppod_land.ogg',get_turf(src))
@@ -155,7 +155,7 @@
 			for(var/k in contents)
 				var/atom/movable/M = k
 				M.force_move(src.loc)
-			CALLBACK("set_state_\ref[src]",ttl,src,src::set_state(),caller,POD_DESTROY,desired_loc)
+			CALLBACK("set_state_\ref[src]",ttl,src,src::set_state(),activator,POD_DESTROY,desired_loc)
 		if(POD_DESTROY)
 			qdel(src)
 	state = desired_state

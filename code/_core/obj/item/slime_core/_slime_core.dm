@@ -16,14 +16,14 @@
 	generate_name()
 	return ..()
 
-/obj/item/slime_core/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/slime_core/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(is_item(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/obj/item/I = object
-		I.dye_self(caller,src,src.color,alpha/255)
+		I.dye_self(activator,src,src.color,alpha/255)
 		return TRUE
 
 	. = ..()
@@ -54,10 +54,10 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/slime_core/custom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/slime_core/custom/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(is_item(object))
-		var/mob/E = caller
+		var/mob/E = activator
 		var/obj/item/O = object
 		if(E.attack_flags & CONTROL_MOD_DISARM && O.dyeable)
 			var/choice
@@ -67,18 +67,18 @@
 					INTERACT_CHECK_NO_DELAY(src)
 					INTERACT_CHECK_NO_DELAY(object)
 					color = O.polymorphs[choice]
-					caller.to_chat(span("notice","You copy \the color from \the [O.name]."))
+					activator.to_chat(span("notice","You copy \the color from \the [O.name]."))
 				return TRUE
 			else
 				INTERACT_CHECK_NO_DELAY(src)
 				INTERACT_CHECK_NO_DELAY(object)
 				color = O.color
-				caller.to_chat(span("notice","You copy \the color from \the [O.name]."))
+				activator.to_chat(span("notice","You copy \the color from \the [O.name]."))
 				return TRUE
 
 	. = ..()
 
-/obj/item/slime_core/custom/click_self(var/mob/caller,location,control,params)
+/obj/item/slime_core/custom/click_self(var/mob/activator,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 	var/choice = input("What would you like the color to be?", null, color) as color|null

@@ -94,9 +94,9 @@
 	if(newloc != src)
 		vis_contents -= exiter
 
-/obj/item/plate/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/plate/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(caller.attack_flags & CONTROL_MOD_DISARM && !broken)
+	if(activator.attack_flags & CONTROL_MOD_DISARM && !broken)
 		INTERACT_CHECK
 		INTERACT_DELAY(30)
 		var/list/byond_is_weird = list()
@@ -117,10 +117,10 @@
 			if(I == spawned_item)
 				continue
 			if(spawned_item && spawned_item.reagents && I.reagents)
-				I.reagents.transfer_reagents_to(spawned_item.reagents,I.reagents.volume_current,caller=caller)
+				I.reagents.transfer_reagents_to(spawned_item.reagents,I.reagents.volume_current,activator=activator)
 			qdel(I)
 
-		caller.to_chat(span("notice","You've created \a [R.name]! Bon appétit!"))
+		activator.to_chat(span("notice","You've created \a [R.name]! Bon appétit!"))
 
 		return TRUE
 

@@ -7,12 +7,12 @@
 	icon_state = "inventory"
 	value = 450
 
-/obj/item/analyzer/value/can_be_scanned(var/mob/caller,var/atom/target)
+/obj/item/analyzer/value/can_be_scanned(var/mob/activator,var/atom/target)
 	return ismovable(target)
 
-/obj/item/analyzer/value/on_scan(var/mob/caller,var/atom/target,location,control,params)
+/obj/item/analyzer/value/on_scan(var/mob/activator,var/atom/target,location,control,params)
 	var/atom/movable/M = target
 	var/calculated_value = M.get_value()
-	caller.to_chat(span("notice","\The [target.name]'s total value and its contents is worth [nice_number(CEILING(calculated_value,1))] credits(s)."))
+	activator.to_chat(span("notice","\The [target.name]'s total value and its contents is worth [nice_number(CEILING(calculated_value,1))] credits(s)."))
 	next_scan = world.time + SECONDS_TO_DECISECONDS(4)
 	return TRUE

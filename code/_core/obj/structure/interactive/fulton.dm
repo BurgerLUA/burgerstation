@@ -106,37 +106,37 @@
 	stored_movable = null
 	qdel(src)
 
-/obj/structure/interactive/fulton/proc/can_be_extracted(var/mob/caller,var/atom/movable/M)
+/obj/structure/interactive/fulton/proc/can_be_extracted(var/mob/activator,var/atom/movable/M)
 
 	if(is_player(M))
 		var/mob/living/advanced/player/P = M
 		if(P.loyalty_tag == "NanoTrasen" && P.dead)
-			caller.to_chat(span("warning","NanoTrasen doesn't accept dead crewmembers!"))
+			activator.to_chat(span("warning","NanoTrasen doesn't accept dead crewmembers!"))
 			return FALSE
 		return TRUE
 
 	if(!M.is_safe_to_delete(check_loc = FALSE))
-		caller.to_chat(span("warning","Something seems to be preventing \the [M.name] from being extracted..."))
+		activator.to_chat(span("warning","Something seems to be preventing \the [M.name] from being extracted..."))
 		return FALSE
 
 	if(istype(M,/obj/structure/interactive/artifact))
-		caller.to_chat(span("warning","\The [M.name] is far to heavy to be lifted by \the Fulton System! "))
+		activator.to_chat(span("warning","\The [M.name] is far to heavy to be lifted by \the Fulton System! "))
 		return FALSE
 	return TRUE
 
-/obj/structure/interactive/fulton/proc/add_movable(var/mob/caller,var/atom/movable/M)
+/obj/structure/interactive/fulton/proc/add_movable(var/mob/activator,var/atom/movable/M)
 
 	if(stored_movable)
 		return FALSE
 
-	owner = caller
+	owner = activator
 	stored_movable = M
 	M.force_move(src)
 	update_sprite()
 
-	caller.visible_message(span("danger","\The [caller.name] attaches \the [src.name] to \the [M.name]."),span("warning","You attach \the [src.name] to \the [M.name]."))
+	activator.visible_message(span("danger","\The [activator.name] attaches \the [src.name] to \the [M.name]."),span("warning","You attach \the [src.name] to \the [M.name]."))
 
-	if(can_be_extracted(caller,M))
+	if(can_be_extracted(activator,M))
 		if(is_living(M))
 			var/mob/living/L = M
 			if(!L.dead)

@@ -18,42 +18,42 @@
 			var/area/A = get_area(M)
 			if(A) . += span("notice","Using this will teleport you to \the [A.name].")
 
-/obj/item/portal_scroll/quick(var/mob/caller,var/atom/object,location,params)
-	click_self(caller)
+/obj/item/portal_scroll/quick(var/mob/activator,var/atom/object,location,params)
+	click_self(activator)
 
-/obj/item/portal_scroll/click_self(var/mob/caller,location,control,params)
+/obj/item/portal_scroll/click_self(var/mob/activator,location,control,params)
 
-	if(!is_player(caller) || !caller.client)
-		caller.to_chat(span("warning","You don't know how to use this..."))
+	if(!is_player(activator) || !activator.client)
+		activator.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE
 
-	var/mob/living/advanced/player/P = caller
+	var/mob/living/advanced/player/P = activator
 
 	if(!P.z)
-		caller.to_chat(span("warning","You can't use this here!"))
+		activator.to_chat(span("warning","You can't use this here!"))
 		return TRUE
 
 	var/area/A = P.loc.loc
 	if(A.area_identifier != "Mission")
-		caller.to_chat(span("warning","You can't use this here!"))
+		activator.to_chat(span("warning","You can't use this here!"))
 		return TRUE
 
 	if(enable_friendly_fire)
-		caller.to_chat(span("warning","This doesn't seem to be working for some reason..."))
+		activator.to_chat(span("warning","This doesn't seem to be working for some reason..."))
 		return TRUE
 
 	if(!P.loyalty_tag || !portal_markers[P.loyalty_tag])
-		caller.to_chat(span("warning","You don't know how to use this..."))
+		activator.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE
 
 	if(!length(portal_markers[P.loyalty_tag]))
-		caller.to_chat(span("warning","Failed to create a portal... there are too many portals that exist already!"))
+		activator.to_chat(span("warning","Failed to create a portal... there are too many portals that exist already!"))
 		return TRUE
 
 	P.clear_portals()
 
 	var/turf/T = get_turf(src)
-	var/turf/T2 = get_step(T,caller.dir)
+	var/turf/T2 = get_step(T,activator.dir)
 	if(T2.can_move_to())
 		T = T2
 
@@ -61,7 +61,7 @@
 	var/turf/PMT = get_turf(PM)
 
 	if(!T || !PMT)
-		caller.to_chat(span("warning","Failed to create a portal. Something horribly went wrong."))
+		activator.to_chat(span("warning","Failed to create a portal. Something horribly went wrong."))
 		return TRUE
 
 	var/obj/effect/temp/portal/start_portal = new(T,SECONDS_TO_DECISECONDS(300))

@@ -38,23 +38,23 @@
 	allowed_users?.Cut()
 	return ..()
 
-/obj/structure/interactive/boss_loot/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/boss_loot/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 	SPAM_CHECK(10)
 
-	if(is_inventory(object) && is_player(caller))
-		var/mob/living/advanced/player/P = caller
+	if(is_inventory(object) && is_player(activator))
+		var/mob/living/advanced/player/P = activator
 		var/rarity = P.get_rarity()
-		caller.to_chat(span("warning","You carefully reach in to gently touch \the [src.name]..."))
+		activator.to_chat(span("warning","You carefully reach in to gently touch \the [src.name]..."))
 		if(icon_state == "wishranter_off")
-			caller.to_chat(span("warning","The power of \the [src.name] seems to have faded..."))
+			activator.to_chat(span("warning","The power of \the [src.name] seems to have faded..."))
 			return TRUE
-		if(!(caller in allowed_users))
-			caller.to_chat(span("warning","\The [src.name] seems to find you unworthy of its reward..."))
+		if(!(activator in allowed_users))
+			activator.to_chat(span("warning","\The [src.name] seems to find you unworthy of its reward..."))
 			return TRUE
-		var/turf/T = get_turf(caller)
+		var/turf/T = get_turf(activator)
 		var/list/atom/created_loot = SPAWN_LOOT(loot_to_give,T,rarity)
 		if(!length(created_loot))
 			log_error("Warning: Wishgranter had invalid loot ([loot_to_give]).")
@@ -64,12 +64,12 @@
 			if(I.quality != -1)
 				I.quality = 100 + min(round(5 + ((rand(1,1000)*0.0025)**4),5),40)
 
-		caller.to_chat(span("warning","\The [src.name] grants you a [created_loot[1].name]!"))
+		activator.to_chat(span("warning","\The [src.name] grants you a [created_loot[1].name]!"))
 		play_sound('sound/effects/wishgranter.ogg', T, range_max = VIEW_RANGE)
 		var/obj/hud/inventory/I = object
 		if(is_item(created_loot[1]))
 			I.add_object(created_loot[1])
-		allowed_users -= caller
+		allowed_users -= activator
 		return TRUE
 
 	return ..()

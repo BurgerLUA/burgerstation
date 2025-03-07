@@ -13,12 +13,12 @@
 /obj/hud/button/menu/selection
 	var/command_to_run
 
-/obj/hud/button/menu/selection/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/menu/selection/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && caller.client && command_to_run)
-		winset(caller.client,null,"command=[command_to_run]")
+	if(. && activator.client && command_to_run)
+		winset(activator.client,null,"command=[command_to_run]")
 
 
 /obj/hud/button/menu/selection/New(var/desired_loc)

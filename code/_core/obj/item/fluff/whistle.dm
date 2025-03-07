@@ -14,7 +14,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/whistle/click_self(var/mob/caller,location,control,params)
+/obj/item/whistle/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(30)
@@ -23,7 +23,7 @@
 
 	play_sound('sound/effects/whistle.ogg',T,range_min=VIEW_RANGE*0.25,range_max=VIEW_RANGE*2,pitch=RAND_PRECISE(0.95,1.05))
 
-	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_CAUTION)
+	create_alert(VIEW_RANGE,T,activator,ALERT_LEVEL_CAUTION)
 
 	return TRUE
 

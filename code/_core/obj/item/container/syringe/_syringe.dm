@@ -42,7 +42,7 @@
 	if(can_inject && can_draw)
 		LOADVAR("injecting")
 
-/obj/item/container/syringe/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/container/syringe/mouse_wheel_on_object(var/mob/activator,delta_x,delta_y,location,control,params)
 
 	if(!adjustable)
 		return ..()
@@ -64,9 +64,9 @@
 	//Normal operation.
 	if(last_amount != inject_amount_desired)
 		if(spam_fix_time <= world.time)
-			caller.to_chat(span("notice","You change \the [src.name]'s injection limit to [inject_amount_desired]u..."))
+			activator.to_chat(span("notice","You change \the [src.name]'s injection limit to [inject_amount_desired]u..."))
 		else
-			caller.to_chat(span("notice","...[inject_amount_desired]u..."))
+			activator.to_chat(span("notice","...[inject_amount_desired]u..."))
 
 	spam_fix_time = world.time + 20
 
@@ -94,7 +94,7 @@
 
 	update_sprite()
 
-/obj/item/container/syringe/click_self(var/mob/caller,location,control,params)
+/obj/item/container/syringe/click_self(var/mob/activator,location,control,params)
 
 	if(can_inject && can_draw)
 		INTERACT_CHECK
@@ -105,33 +105,33 @@
 
 	. = ..()
 
-/obj/item/container/syringe/proc/can_inject(var/mob/caller,var/atom/target)
+/obj/item/container/syringe/proc/can_inject(var/mob/activator,var/atom/target)
 
-	if(!caller || !target)
+	if(!activator || !target)
 		return FALSE
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
 
 	if(quality <= 0)
-		caller.to_chat(span("warning","\The [src.name] is too broken to be used!"))
+		activator.to_chat(span("warning","\The [src.name] is too broken to be used!"))
 		return FALSE
 
 	if(!target.reagents)
-		caller.to_chat(span("warning","You can't target \the [target.name]!"))
+		activator.to_chat(span("warning","You can't target \the [target.name]!"))
 		return FALSE
 
 	if(injecting)
 		if(reagents.volume_current <= 0)
-			caller.to_chat(span("warning","\The [src.name] is empty!"))
+			activator.to_chat(span("warning","\The [src.name] is empty!"))
 			return FALSE
 	else
 		if(reagents.volume_current >= reagents.volume_max)
-			caller.to_chat(span("warning","\The [src.name] is full!"))
+			activator.to_chat(span("warning","\The [src.name] is full!"))
 			return FALSE
 
-	if(is_living(caller))
-		var/mob/living/attacker = caller
+	if(is_living(activator))
+		var/mob/living/attacker = activator
 
 		var/mob/living/victim
 		if(is_living(target))
@@ -157,19 +157,19 @@
 
 	return TRUE
 
-/obj/item/container/syringe/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/container/syringe/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
 
 	var/atom/victim = object
 
-	if(is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		var/list/new_x_y = A.get_current_target_cords(params)
 		params[PARAM_ICON_X] = new_x_y[1]
 		params[PARAM_ICON_Y] = new_x_y[2]
-		object = object.get_object_to_damage(caller,src,null,params,TRUE,TRUE)
+		object = object.get_object_to_damage(activator,src,null,params,TRUE,TRUE)
 
 	if(!object.reagents)
 		return ..()
@@ -179,26 +179,26 @@
 	INTERACT_DELAY(1)
 
 	if(istype(object,/obj/item/container/))
-		inject(caller,object,injecting ? inject_amount_desired : -inject_amount_desired)
+		inject(activator,object,injecting ? inject_amount_desired : -inject_amount_desired)
 		return TRUE
 
-	if(can_inject(caller,object))
+	if(can_inject(activator,object))
 
 		var/self_inject = FALSE
 
 		var/real_object_name = object.name
 		if(victim != object)
 			real_object_name = "[victim.name]'s [object.name]"
-			if(victim == caller)
+			if(victim == activator)
 				self_inject = TRUE
 
 		var/transfer_amount = 0
 		if(injecting)
 			transfer_amount = inject_amount_desired
-			if(!stealthy) caller.visible_message(span("danger","\The [caller.name] tries to inject \the [real_object_name] with \the [src.name]!"),span("warning","You try to inject \the [real_object_name] with \the [src.name]."))
+			if(!stealthy) activator.visible_message(span("danger","\The [activator.name] tries to inject \the [real_object_name] with \the [src.name]!"),span("warning","You try to inject \the [real_object_name] with \the [src.name]."))
 		else
 			transfer_amount = -inject_amount_desired
-			if(!stealthy) caller.visible_message(span("danger","\The [caller.name] tries to draw blood from \the [real_object_name] with \the [src.name]!"),span("warnning","You try to draw blood from \the [real_object_name] with \the [src.name]."))
+			if(!stealthy) activator.visible_message(span("danger","\The [activator.name] tries to draw blood from \the [real_object_name] with \the [src.name]!"),span("warnning","You try to draw blood from \the [real_object_name] with \the [src.name]."))
 
 		if(injection_time > 0)
 			var/injection_time_to_use = injection_time
@@ -206,32 +206,32 @@
 				injection_time_to_use *= 0.5
 			if(!injecting)
 				injection_time_to_use *= 2
-			PROGRESS_BAR(caller,src,injection_time_to_use,src::inject(),caller,object,transfer_amount)
-			PROGRESS_BAR_CONDITIONS(caller,src,src::can_inject(),caller,object)
+			PROGRESS_BAR(activator,src,injection_time_to_use,src::inject(),activator,object,transfer_amount)
+			PROGRESS_BAR_CONDITIONS(activator,src,src::can_inject(),activator,object)
 		else
-			inject(caller,object,transfer_amount)
+			inject(activator,object,transfer_amount)
 
 
 	return TRUE
 
-/obj/item/container/syringe/proc/inject(var/mob/caller,var/atom/object,var/amount=5)
+/obj/item/container/syringe/proc/inject(var/mob/activator,var/atom/object,var/amount=5)
 
 	if(amount < 0) //Draw
 		if(is_organ(object)) //Targeting an organ.
 			if(is_living(object.loc)) //We're drawing, so just draw blood from the owner instead.
 				var/mob/living/L = object.loc
-				L.draw_blood(caller,src,-amount)
+				L.draw_blood(activator,src,-amount)
 			else
-				caller.to_chat(span("warning","You can't seem to find a way to draw anything from \the [object] with \the [src]!"))
+				activator.to_chat(span("warning","You can't seem to find a way to draw anything from \the [object] with \the [src]!"))
 		else if(is_living(object)) //Living object with blood, hopefully.
 			var/mob/living/L = object
-			L.draw_blood(caller,src,-amount)
+			L.draw_blood(activator,src,-amount)
 		else if(object.reagents) //Non-organ object with reagents.
-			var/transfer_amount = object.reagents.transfer_reagents_to(reagents,-amount, caller = caller)
+			var/transfer_amount = object.reagents.transfer_reagents_to(reagents,-amount, activator = activator)
 			if(transfer_amount)
-				caller.visible_message(span("warning","\The [caller.name] draws liquid from \the [object.name]."),span("notice","You draw [transfer_amount] units of liquid from \the [object.name]."))
+				activator.visible_message(span("warning","\The [activator.name] draws liquid from \the [object.name]."),span("notice","You draw [transfer_amount] units of liquid from \the [object.name]."))
 		else
-			caller.to_chat(span("warning","You can't seem to find a way to draw anything from \the [object.name] with \the [src.name]!"))
+			activator.to_chat(span("warning","You can't seem to find a way to draw anything from \the [object.name] with \the [src.name]!"))
 		if(!injecting && reagents.volume_current >= reagents.volume_max && can_inject)
 			injecting = TRUE
 			update_sprite()
@@ -242,13 +242,13 @@
 		if(is_organ(object_to_inject) && is_living(object_to_inject.loc)) //Targeting an organ. We're injecting into the blood stream.
 			object_to_inject = object_to_inject.loc
 		if(object_to_inject.reagents && object_to_inject.reagents.volume_current + amount <= object_to_inject.reagents.volume_max) //We're not too picky about what we inject.
-			var/transfer_amount = reagents.transfer_reagents_to(object_to_inject.reagents,amount, caller = caller)
+			var/transfer_amount = reagents.transfer_reagents_to(object_to_inject.reagents,amount, activator = activator)
 			if(transfer_amount)
 				if(injection_sound)
 					play_sound(injection_sound,get_turf(src))
-				caller.visible_message(span("warning","\The [caller.name] injects \the [src.name] into \the [object.name]."),span("notice","You inject [transfer_amount] units of liquid into \the [object.name]."))
+				activator.visible_message(span("warning","\The [activator.name] injects \the [src.name] into \the [object.name]."),span("notice","You inject [transfer_amount] units of liquid into \the [object.name]."))
 		else
-			caller.to_chat(span("warning","You can't seem to find a way to inject \the [object.name] with \the [src.name]!"))
+			activator.to_chat(span("warning","You can't seem to find a way to inject \the [object.name] with \the [src.name]!"))
 		if(injecting && reagents.volume_current <= 0 && can_draw)
 			injecting = FALSE
 			update_sprite()

@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(report)
 	var/next_report = 0
 	var/profiling = 0
 
-/subsystem/report/unclog(var/mob/caller)
+/subsystem/report/unclog(var/mob/activator)
 	tick_rate = -1
 	. = ..()
 

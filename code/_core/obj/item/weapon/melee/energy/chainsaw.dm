@@ -38,23 +38,23 @@
 
 	return ..()
 
-/obj/item/weapon/melee/energy/chainsaw/proc/can_start(var/mob/caller)
+/obj/item/weapon/melee/energy/chainsaw/proc/can_start(var/mob/activator)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
 	if(!is_inventory(src.loc))
-		caller.to_chat(span("warning","You need to be holding the chainsaw in order to start it!"))
+		activator.to_chat(span("warning","You need to be holding the chainsaw in order to start it!"))
 		return FALSE
 
 	var/obj/hud/inventory/I = src.loc
 	if(!I.click_flags)
-		caller.to_chat(span("warning","You need to be holding the chainsaw in order to start it!"))
+		activator.to_chat(span("warning","You need to be holding the chainsaw in order to start it!"))
 		return FALSE
 
 	return TRUE
 
 
-/obj/item/weapon/melee/energy/chainsaw/proc/start(var/mob/caller)
+/obj/item/weapon/melee/energy/chainsaw/proc/start(var/mob/activator)
 	enabled = TRUE
 	START_THINKING(src)
 	damage_type = damage_type_on
@@ -62,7 +62,7 @@
 	update_sprite()
 	return TRUE
 
-/obj/item/weapon/melee/energy/chainsaw/proc/stop(var/mob/caller)
+/obj/item/weapon/melee/energy/chainsaw/proc/stop(var/mob/activator)
 	enabled = FALSE
 	STOP_THINKING(src)
 	damage_type = initial(damage_type)
@@ -70,44 +70,44 @@
 	update_sprite()
 	return TRUE
 
-/obj/item/weapon/melee/energy/chainsaw/proc/pull_chain(var/mob/caller)
+/obj/item/weapon/melee/energy/chainsaw/proc/pull_chain(var/mob/activator)
 
 	if(prob(25))
-		start(caller)
+		start(activator)
 	else
-		try_start(caller)
+		try_start(activator)
 
 	return TRUE
 
-/obj/item/weapon/melee/energy/chainsaw/proc/try_start(var/mob/caller)
-	if(caller.is_busy())
-		caller.to_chat(span("warning","You're already busy with a task!"))
+/obj/item/weapon/melee/energy/chainsaw/proc/try_start(var/mob/activator)
+	if(activator.is_busy())
+		activator.to_chat(span("warning","You're already busy with a task!"))
 		return FALSE
 
-	PROGRESS_BAR(caller,src,20,src::pull_chain(),caller)
-	PROGRESS_BAR_CONDITIONS(caller,src,	src::can_start(),caller)
+	PROGRESS_BAR(activator,src,20,src::pull_chain(),activator)
+	PROGRESS_BAR_CONDITIONS(activator,src,	src::can_start(),activator)
 	play_sound('sound/weapons/melee/chainsaw/pull.ogg',get_turf(src),range_max=VIEW_RANGE)
 
 	return TRUE
 
-/obj/item/weapon/melee/energy/chainsaw/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/energy/chainsaw/click_self(var/mob/activator,location,control,params)
 
-	if(is_living(caller))
-		var/mob/living/L = caller
+	if(is_living(activator))
+		var/mob/living/L = activator
 		if(L.ai)
 			if(enabled)
-				stop(caller)
+				stop(activator)
 			else
-				start(caller)
+				start(activator)
 			return TRUE
 
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
 
 	if(enabled)
-		stop(caller)
+		stop(activator)
 	else
-		try_start(caller)
+		try_start(activator)
 
 	return TRUE
 

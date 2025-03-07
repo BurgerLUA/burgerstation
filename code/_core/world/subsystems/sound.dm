@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(sound)
 
 	var/list/sound_cache = list()
 
-/subsystem/sound/unclog(var/mob/caller)
+/subsystem/sound/unclog(var/mob/activator)
 	for(var/k in active_sounds)
 		var/sound/S = k
 		active_sounds -= k

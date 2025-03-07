@@ -57,7 +57,7 @@
 			var/image/I = new/image(icon,"bullet_[CEILING(bullet_count/step,1)]")
 			add_overlay(I)
 
-/obj/item/clothing/belt/bandoliers/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/clothing/belt/bandoliers/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(istype(object,bullet_type))
 		INTERACT_CHECK
@@ -66,15 +66,15 @@
 
 		var/obj/item/bullet_cartridge/C = object
 
-		if(caller.attack_flags & CONTROL_MOD_DISARM)
+		if(activator.attack_flags & CONTROL_MOD_DISARM)
 			if(!stored_bullets[C.type])
-				caller.to_chat(span("warning","There are no charges of that type left in \the [src.name]!"))
+				activator.to_chat(span("warning","There are no charges of that type left in \the [src.name]!"))
 				return TRUE
 			var/amount_added = C.add_item_count(1)
 			if(amount_added)
 				stored_bullets[C.type] -= amount_added
 				bullet_count -= amount_added
-				caller.to_chat(span("notice","You add a charge to your hand. There are [stored_bullets[C.type]] charges of that type left."))
+				activator.to_chat(span("notice","You add a charge to your hand. There are [stored_bullets[C.type]] charges of that type left."))
 				if(stored_bullets[C.type] <= 0)
 					stored_bullets -= C.type
 				update_sprite()
@@ -97,7 +97,7 @@
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(2)
-		caller.to_chat(span("warning","This type of bullet won't fit into the [src.name]!"))
+		activator.to_chat(span("warning","This type of bullet won't fit into the [src.name]!"))
 		return TRUE
 
 	if(istype(object,/obj/hud/inventory))
@@ -106,19 +106,19 @@
 		INTERACT_DELAY(2)
 
 		if(!length(stored_bullets))
-			caller.to_chat(span("warning","There are no bullets left!"))
+			activator.to_chat(span("warning","There are no bullets left!"))
 			return TRUE
 
 		var/obj/hud/inventory/I = object
 		var/obj/item/bullet_cartridge/C = pickweight(stored_bullets)
 		C = new C(get_turf(src))
 		var/amount_to_grab = 1
-		if(caller.attack_flags & CONTROL_MOD_DISARM)
+		if(activator.attack_flags & CONTROL_MOD_DISARM)
 			amount_to_grab = min(stored_bullets[C.type],C.amount_max)
 		C.amount = amount_to_grab
 		stored_bullets[C.type] -= amount_to_grab
 		update_bullet_count()
-		caller.to_chat(span("notice","You take [amount_to_grab] bullet\s from \the [src.name]. There are [stored_bullets[C.type]] bullets of that type left."))
+		activator.to_chat(span("notice","You take [amount_to_grab] bullet\s from \the [src.name]. There are [stored_bullets[C.type]] bullets of that type left."))
 		if(stored_bullets[C.type] <= 0)
 			stored_bullets -= C.type
 		INITIALIZE(C)
@@ -129,15 +129,15 @@
 
 	. = ..()
 
-// /obj/item/clothing/belt/bandoliers/proc/take_bullet(var/mob/caller,var/obj/hud/inventory/I)//This proc is for the AI to be able to use bullets from the bag (DOES NOT WORK, kept it here in case someone wanted to try and figure that out)
+// /obj/item/clothing/belt/bandoliers/proc/take_bullet(var/mob/activator,var/obj/hud/inventory/I)//This proc is for the AI to be able to use bullets from the bag (DOES NOT WORK, kept it here in case someone wanted to try and figure that out)
 //	if(!length(stored_bullets))
-//		caller.to_chat(span("warning","There are no charges left!"))
+//		activator.to_chat(span("warning","There are no charges left!"))
 //		return FALSE
 //	var/obj/item/bullet_cartridge/C = pickweight(stored_bullets)
 //	C = new C(get_turf(src))
 //	C.amount = 1
 //	stored_bullets[C.type] -= 1
-//	caller.to_chat(span("notice","You take 1 charge from \the [src.name]. There are [stored_bullets[C.type]] charges left."))
+//	activator.to_chat(span("notice","You take 1 charge from \the [src.name]. There are [stored_bullets[C.type]] charges left."))
 //	if(stored_bullets[C.type] <= 0)
 //		stored_bullets -= C.type
 //	INITIALIZE(C)

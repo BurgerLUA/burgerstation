@@ -23,15 +23,15 @@
 
 	var/locked //Accepts a string if it's locked.
 
-/obj/hud/button/vendor/get_examine_list(var/mob/caller)
+/obj/hud/button/vendor/get_examine_list(var/mob/activator)
 	if(!associated_item)
 		return ..()
-	return associated_item.get_examine_list(caller)
+	return associated_item.get_examine_list(activator)
 
-/obj/hud/button/vendor/get_examine_details_list(var/mob/caller)
+/obj/hud/button/vendor/get_examine_details_list(var/mob/activator)
 	if(!associated_item)
 		return ..()
-	return associated_item.get_examine_details_list(caller)
+	return associated_item.get_examine_details_list(activator)
 
 /obj/hud/button/vendor/Destroy()
 	associated_item = null
@@ -134,7 +134,7 @@
 	else
 		color = initial(color)
 
-/obj/hud/button/vendor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/vendor/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	SPAM_CHECK(5)
 
@@ -148,10 +148,10 @@
 	if(.)
 
 		if(locked)
-			caller.to_chat(span("warning","You haven't unlocked that yet: [locked]"))
+			activator.to_chat(span("warning","You haven't unlocked that yet: [locked]"))
 			return TRUE
 
-		var/obj/item/I = associated_vendor.purchase_item(caller,params,associated_item,associated_cost)
+		var/obj/item/I = associated_vendor.purchase_item(activator,params,associated_item,associated_cost)
 
 		if(!I || I.qdeleting && !is_item(I)) //Sometimes the item is abstract.
 			return TRUE
@@ -159,12 +159,12 @@
 		if(object && is_item(object) && I.can_transfer_stacks_to(object))
 			var/stacks_transfered = I.transfer_amount_to(object)
 			if(stacks_transfered)
-				caller.to_chat(span("notice","You restock \the [object.name] with [stacks_transfered] stacks."))
+				activator.to_chat(span("notice","You restock \the [object.name] with [stacks_transfered] stacks."))
 			else
-				caller.to_chat(span("warning","You can't restock \the [src.name], it's full!"))
+				activator.to_chat(span("warning","You can't restock \the [src.name], it's full!"))
 
-		if(is_advanced(caller))
-			var/mob/living/advanced/A = caller
+		if(is_advanced(activator))
+			var/mob/living/advanced/A = activator
 			if(!(A.movement_flags & MOVEMENT_RUNNING && I.quick_equip(A)))
 				A.put_in_hands(I,params)
 
@@ -180,11 +180,11 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/close_vendor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/close_vendor/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_player(caller))
-		var/mob/living/advanced/player/P = caller
+	if(. && is_player(activator))
+		var/mob/living/advanced/player/P = activator
 		P.set_structure_unactive()
 

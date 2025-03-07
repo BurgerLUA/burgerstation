@@ -45,12 +45,12 @@
 	QDEL_NULL(linked_gun)
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/misc/browning/handle_empty(var/obj/caller)
+/obj/item/weapon/ranged/bullet/magazine/misc/browning/handle_empty(var/obj/activator)
 	next_shoot_time = max(next_shoot_time,world.time + 20)
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/misc/browning/handle_ammo(var/obj/caller)
-	if(!chambered_bullet) load_new_bullet_from_magazine(caller)
+/obj/item/weapon/ranged/bullet/magazine/misc/browning/handle_ammo(var/obj/activator)
+	if(!chambered_bullet) load_new_bullet_from_magazine(activator)
 	linked_gun.mag_check()
 	return ..()
 
@@ -72,9 +72,9 @@
 	return max(0,0.075 - (0.1 * L.get_skill_power(SKILL_RANGED)))
 
 
-/obj/item/weapon/ranged/bullet/magazine/misc/browning/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
-	if(angle2dir_cardinal(get_angle(caller,object))==linked_gun.dir)
+/obj/item/weapon/ranged/bullet/magazine/misc/browning/can_owner_shoot(var/mob/activator,var/atom/object,location,params)
+	if(angle2dir_cardinal(get_angle(activator,object))==linked_gun.dir)
 		return TRUE
 	else
-		caller.to_chat(span("warning","Your finger slips!"))
+		activator.to_chat(span("warning","Your finger slips!"))
 	return FALSE

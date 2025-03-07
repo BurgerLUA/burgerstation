@@ -38,16 +38,16 @@
 	explode(get_turf(src),1,src,src)
 	return TRUE
 
-/obj/structure/interactive/crate/closet/supply_pod/close(var/mob/caller)
+/obj/structure/interactive/crate/closet/supply_pod/close(var/mob/activator)
 
-	if(caller && auto_open)
+	if(activator && auto_open)
 		return FALSE
 
 	return ..()
 
-/obj/structure/interactive/crate/closet/supply_pod/open(var/mob/caller)
+/obj/structure/interactive/crate/closet/supply_pod/open(var/mob/activator)
 
-	if(caller && auto_open)
+	if(activator && auto_open)
 		return FALSE
 
 	. = ..()

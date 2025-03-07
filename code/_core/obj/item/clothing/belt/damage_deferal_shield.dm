@@ -66,16 +66,16 @@
 	QDEL_NULL(shield_overlay)
 	. = ..()
 
-/obj/item/clothing/belt/damage_deferal_shield/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/belt/damage_deferal_shield/click_self(var/mob/activator,location,control,params)
 
 	if(CALLBACK_EXISTS("\ref[src]_disable_shield"))
-		caller.to_chat(span("notice","You toggle \the [src.name] off and manually cycle the shield."))
+		activator.to_chat(span("notice","You toggle \the [src.name] off and manually cycle the shield."))
 		CALLBACK_REMOVE("\ref[src]_disable_shield")
 		disable_shield()
 	else if(CALLBACK_EXISTS("\ref[src]_cooldown_end"))
-		caller.to_chat(span("warning","The interface flickers an error as it is still cooling down!"))
+		activator.to_chat(span("warning","The interface flickers an error as it is still cooling down!"))
 	else
-		caller.to_chat(span("notice","You toggle \the [src.name] on and activate the shield."))
+		activator.to_chat(span("notice","You toggle \the [src.name] on and activate the shield."))
 		CALLBACK("\ref[src]_disable_shield",active_time,src,src::disable_shield()) //Activate the shield!
 
 	update_sprite()

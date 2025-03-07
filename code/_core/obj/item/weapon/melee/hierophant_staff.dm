@@ -26,7 +26,7 @@
 	. = ..()
 	. += 4000
 
-/obj/item/weapon/melee/hierophant_staff/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/melee/hierophant_staff/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -36,11 +36,11 @@
 		if(T)
 			var/area/A = T.loc
 			if(A.flags_area & FLAG_AREA_NO_TELEPORT)
-				caller.to_chat(span("danger","\The [src.name]'s magic doesn't seem to work here!"))
+				activator.to_chat(span("danger","\The [src.name]'s magic doesn't seem to work here!"))
 				return TRUE
-			var/obj/effect/temp/hazard/hierophant/targeted/H = new(get_turf(caller),7,caller)
+			var/obj/effect/temp/hazard/hierophant/targeted/H = new(get_turf(activator),7,activator)
 			H.copy_delay = 1
-			H.dir = caller.dir
+			H.dir = activator.dir
 			H.target = T
 			H.should_teleport = TRUE
 			next_teleport_command = world.time + SECONDS_TO_DECISECONDS(4)

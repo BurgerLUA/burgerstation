@@ -20,14 +20,14 @@
 
 	return ..()
 
-/obj/structure/interactive/plastic_flaps/clicked_on_by_object(mob/caller, atom/object, location, control, params)
+/obj/structure/interactive/plastic_flaps/clicked_on_by_object(mob/activator, atom/object, location, control, params)
 	if(istype(object,/obj/item))
 		var/obj/item/T = object
 		if(T.flags_tool & FLAG_TOOL_WRENCH)
 			if(anchored)
-				caller.to_chat(span("notice","You un-anchor the flaps."))
+				activator.to_chat(span("notice","You un-anchor the flaps."))
 				anchored = FALSE
 			else
-				caller.to_chat(span("notice","You anchor the flaps."))
+				activator.to_chat(span("notice","You anchor the flaps."))
 				anchored = TRUE
 	. = ..()

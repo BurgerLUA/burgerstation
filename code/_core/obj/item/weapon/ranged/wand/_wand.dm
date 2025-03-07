@@ -200,15 +200,15 @@
 	LOADVAR("sockets")
 	LOADLISTATOM("socketed_supportgems")
 
-/obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
+/obj/item/weapon/ranged/wand/shoot(var/mob/activator,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 	if(!socketed_spellgem)
 		return FALSE
 	damage_multiplier *= src.get_quality_mod()
-	return socketed_spellgem.shoot(caller,object,location,params,damage_multiplier,click_called)
+	return socketed_spellgem.shoot(activator,object,location,params,damage_multiplier,click_called)
 
-/obj/item/weapon/ranged/wand/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/wand/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(is_inventory(object) && caller.attack_flags & CONTROL_MOD_DISARM)
+	if(is_inventory(object) && activator.attack_flags & CONTROL_MOD_DISARM)
 
 		INTERACT_CHECK
 
@@ -221,25 +221,25 @@
 
 		var/desired_removal = input("What gem would you like to remove?","Gem Removal","Cancel") as null|anything in objects_to_remove
 		if(desired_removal == "Cancel" || !desired_removal)
-			caller.to_chat(span("notice","You decide not to remove anything."))
+			activator.to_chat(span("notice","You decide not to remove anything."))
 			return TRUE
 		var/obj/item/G = desired_removal
 		if(G.loc != src)
-			caller.to_chat(span("warning","That's not there anymore!"))
+			activator.to_chat(span("warning","That's not there anymore!"))
 			return TRUE
 		if(G == socketed_spellgem)
 			var/obj/item/weapon/ranged/spellgem/old_spellgem = G
 			socketed_spellgem = null
-			G.drop_item(get_turf(caller))
+			G.drop_item(get_turf(activator))
 			I.add_object(G)
-			caller.to_chat(span("notice","You remove \the [G.name] from \the [src.name]."))
+			activator.to_chat(span("notice","You remove \the [G.name] from \the [src.name]."))
 			update_sprite()
 			old_spellgem.update_attachment_stats()
 			return TRUE
 		socketed_supportgems -= G
-		G.drop_item(get_turf(caller))
+		G.drop_item(get_turf(activator))
 		I.add_object(G)
-		caller.to_chat(span("notice","You remove \the [G.name] from \the [src.name]."))
+		activator.to_chat(span("notice","You remove \the [G.name] from \the [src.name]."))
 		update_sprite()
 		socketed_spellgem?.update_attachment_stats()
 		return TRUE
@@ -255,9 +255,9 @@
 			socketed_spellgem.update_attachment_stats()
 		if(I)
 			I.add_object(socketed_spellgem)
-			caller.to_chat(span("notice","You replace \the [socketed_spellgem.name] with \the [SG.name]."))
+			activator.to_chat(span("notice","You replace \the [socketed_spellgem.name] with \the [SG.name]."))
 		else
-			caller.to_chat(span("notice","You insert \the [SG.name] into \the [src.name]."))
+			activator.to_chat(span("notice","You insert \the [SG.name] into \the [src.name]."))
 		socketed_spellgem = SG
 		SG.drop_item(src)
 		update_sprite()
@@ -269,11 +269,11 @@
 		INTERACT_DELAY(5)
 		var/obj/item/supportgem/G = object
 		if(length(socketed_supportgems) >= sockets)
-			caller.to_chat(span("warning","There aren't enough sockets to support \the [G.name]!"))
+			activator.to_chat(span("warning","There aren't enough sockets to support \the [G.name]!"))
 			return TRUE
 		socketed_supportgems += G
 		G.drop_item(src)
-		caller.to_chat(span("notice","You insert \the [G.name] into \the [src.name]."))
+		activator.to_chat(span("notice","You insert \the [G.name] into \the [src.name]."))
 		update_sprite()
 		socketed_spellgem?.update_attachment_stats()
 		return TRUE

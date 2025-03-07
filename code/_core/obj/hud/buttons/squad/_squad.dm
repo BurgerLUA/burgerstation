@@ -23,12 +23,12 @@
 
 	return ..()
 
-/obj/hud/button/squad/main/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/squad/main/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_player(caller))
-		var/mob/living/advanced/player/P = caller
+	if(. && is_player(activator))
+		var/mob/living/advanced/player/P = activator
 
 		if(length(SSsquad.all_squads))
 
@@ -63,7 +63,7 @@
 					S.add_member(P)
 					update_sprite()
 				else
-					caller.to_chat(span("danger","For some reason that squad doesn't exist. Please tell burger you can't join the squad [answer]."))
+					activator.to_chat(span("danger","For some reason that squad doesn't exist. Please tell burger you can't join the squad [answer]."))
 
 		else
 			var/answer = input("There aren't any squads available to join. Would you like to create a squad?","Squad Creation","Cancel") in list("Yes","No","Cancel")

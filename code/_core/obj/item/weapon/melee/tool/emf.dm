@@ -81,7 +81,7 @@
 	SSghost.all_emf_trackers -= src
 	return ..()
 
-/obj/item/emf/click_self(var/mob/caller,location,control,params)
+/obj/item/emf/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -89,7 +89,7 @@
 
 	active = !active
 
-	caller.to_chat(span("notice","You turn [active ? "on" : "off"] \the [src.name]."))
+	activator.to_chat(span("notice","You turn [active ? "on" : "off"] \the [src.name]."))
 
 	play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE*0.25)
 

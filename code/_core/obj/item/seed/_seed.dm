@@ -88,7 +88,7 @@
 	LOADVAR("delete_after_harvest")
 
 
-/obj/item/seed/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/seed/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_turf(object))
 		INTERACT_CHECK
@@ -97,7 +97,7 @@
 		var/turf/T = object
 		var/plant_type/P = SSbotany.all_plant_types[plant_type]
 		if(!P.allowed_turfs[T.type])
-			caller.to_chat(span("warning","You can't plant \the [src.name] on \the [T.name]."))
+			activator.to_chat(span("warning","You can't plant \the [src.name] on \the [T.name]."))
 			return TRUE
 		var/obj/structure/interactive/plant/PL = new(T)
 		PL.plant_type = plant_type
@@ -113,7 +113,7 @@
 		FINALIZE(PL)
 		if(!PL.dead && !PL.qdeleting)
 			PL.set_active(TRUE)
-		caller.visible_message(span("notice","\The [caller.name] plants \the [src.name] in \the [T.name], creating a [PL.name]."),span("notice","You plant \the [src.name] in \the [T.name], creating \a [PL.name]."))
+		activator.visible_message(span("notice","\The [activator.name] plants \the [src.name] in \the [T.name], creating a [PL.name]."),span("notice","You plant \the [src.name] in \the [T.name], creating \a [PL.name]."))
 		qdel(src)
 		return TRUE
 

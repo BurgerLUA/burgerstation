@@ -99,13 +99,13 @@
 
 	return ..()
 
-/obj/structure/interactive/crate/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/crate/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(!(caller.attack_flags & CONTROL_MOD_GRAB))
+	if(!(activator.attack_flags & CONTROL_MOD_GRAB))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		toggle(caller)
+		toggle(activator)
 		return TRUE
 
 	return ..()
@@ -128,8 +128,8 @@
 
 	return ..()
 
-/obj/structure/interactive/crate/proc/toggle(var/mob/caller)
-	return open ? close(caller) : open(caller)
+/obj/structure/interactive/crate/proc/toggle(var/mob/activator)
+	return open ? close(activator) : open(activator)
 
 /obj/structure/interactive/crate/proc/can_store(var/atom/movable/M)
 	if(M.anchored)
@@ -152,7 +152,7 @@
 			return TRUE
 	return FALSE
 
-/obj/structure/interactive/crate/proc/close(var/mob/caller)
+/obj/structure/interactive/crate/proc/close(var/mob/activator)
 
 	if(qdeleting)
 		return FALSE
@@ -161,7 +161,7 @@
 		return FALSE
 
 	if(!src.z)
-		if(loc) caller?.to_chat(span("warning","\The [loc.name] is preventing \the [src.name] from being closed!"))
+		if(loc) activator?.to_chat(span("warning","\The [loc.name] is preventing \the [src.name] from being closed!"))
 		return FALSE
 
 	var/atom/blocking
@@ -172,7 +172,7 @@
 			break
 
 	if(blocking)
-		caller.to_chat(span("warning","\The [blocking.name] is preventing \the [src.name] from being closed!"))
+		activator.to_chat(span("warning","\The [blocking.name] is preventing \the [src.name] from being closed!"))
 		return FALSE
 
 	var/total_size = 0
@@ -198,16 +198,16 @@
 
 	return TRUE
 
-/obj/structure/interactive/crate/proc/open(var/mob/caller)
+/obj/structure/interactive/crate/proc/open(var/mob/activator)
 
 	if(!src.z)
-		if(loc) caller?.to_chat(span("warning","\The [loc.name] is preventing \the [src.name] from being opened!"))
+		if(loc) activator?.to_chat(span("warning","\The [loc.name] is preventing \the [src.name] from being opened!"))
 		return FALSE
 
 	if(loot)
 		var/rarity = 0
-		if(is_player(caller))
-			var/mob/living/advanced/player/P = caller
+		if(is_player(activator))
+			var/mob/living/advanced/player/P = activator
 			rarity = P.get_rarity()
 		SPAWN_LOOT(loot,src.loc,rarity)
 		loot = null

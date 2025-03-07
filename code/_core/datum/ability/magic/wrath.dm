@@ -7,7 +7,7 @@
 
 
 
-/ability/magic/wrath/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/magic/wrath/on_cast(var/mob/activator,var/atom/target,location,params)
 
 	. = ..()
 
@@ -21,11 +21,11 @@
 		L.alpha = 255 - i*5
 
 	var/desired_loyalty_tag
-	if(is_living(caller))
-		var/mob/living/L = caller
+	if(is_living(activator))
+		var/mob/living/L = activator
 		desired_loyalty_tag = L.loyalty_tag
 
-	explode(T,2,caller,caller,desired_loyalty_tag)
-	emp(T,2,caller,caller,desired_loyalty_tag)
-	firebomb(T,2,caller,caller,desired_loyalty_tag)
-	smoke(T,10,10,null,caller,100)
+	explode(T,2,activator,activator,desired_loyalty_tag)
+	emp(T,2,activator,activator,desired_loyalty_tag)
+	firebomb(T,2,activator,activator,desired_loyalty_tag)
+	smoke(T,10,10,null,activator,100)

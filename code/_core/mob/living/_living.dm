@@ -759,18 +759,18 @@
 	D.process_damage(source,src,source,object_to_damage,owner,magnitude)
 	return TRUE
 
-/mob/living/proc/draw_blood(var/mob/caller,var/atom/needle,var/amount=0,var/messages = TRUE)
+/mob/living/proc/draw_blood(var/mob/activator,var/atom/needle,var/amount=0,var/messages = TRUE)
 
 	if(!blood_type || !min(amount,blood_volume))
-		if(messages) caller?.to_chat(span("warning","There is no blood to draw!"))
+		if(messages) activator?.to_chat(span("warning","There is no blood to draw!"))
 		return FALSE
 
-	var/amount_added = needle.reagents.add_reagent(blood_type,min(amount,blood_volume),caller = caller)
+	var/amount_added = needle.reagents.add_reagent(blood_type,min(amount,blood_volume),activator = activator)
 	blood_volume = max(0,blood_volume-amount_added)
 	QUEUE_HEALTH_UPDATE(src)
 
 	if(messages)
-		caller?.visible_message(span("notice","\The [caller.name] draws some blood from \the [src.name]."),span("notice","You drew [amount_added]u of blood from \the [src.name]."))
+		activator?.visible_message(span("notice","\The [activator.name] draws some blood from \the [src.name]."),span("notice","You drew [amount_added]u of blood from \the [src.name]."))
 
 	return amount_added
 

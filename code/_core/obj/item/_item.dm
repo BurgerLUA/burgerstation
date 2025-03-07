@@ -182,7 +182,7 @@
 
 	var/unlock_requirement //Accepts a string, which is a prerequiste to unlock this to purchase in vendors.
 
-/obj/item/proc/can_unlock(var/mob/caller)
+/obj/item/proc/can_unlock(var/mob/activator)
 	return TRUE
 
 /obj/item/PreDestroy()
@@ -307,7 +307,7 @@
 
 	return ..()
 
-/obj/item/proc/can_add_object_to_src_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE) //Can we add object to src?
+/obj/item/proc/can_add_object_to_src_inventory(var/mob/activator,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE) //Can we add object to src?
 
 	if(!length(inventories))
 		return null
@@ -327,7 +327,7 @@
 
 	return null
 
-/obj/item/proc/add_object_to_src_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE,var/silent=FALSE) //We add the object to this item's inventory.
+/obj/item/proc/add_object_to_src_inventory(var/mob/activator,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE,var/silent=FALSE) //We add the object to this item's inventory.
 
 	if(!length(inventories))
 		return FALSE
@@ -337,14 +337,14 @@
 
 	var/did_add = FALSE
 	while(!object.qdeleting)
-		var/obj/result = src.can_add_object_to_src_inventory(caller,object,FALSE,bypass)
+		var/obj/result = src.can_add_object_to_src_inventory(activator,object,FALSE,bypass)
 		if(!result)
 			break
 		if(is_inventory(result))
 			var/obj/hud/inventory/found_inventory = result
 			found_inventory.add_object(object,enable_messages,bypass,silent=silent)
-			if(caller && enable_messages)
-				caller.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
+			if(activator && enable_messages)
+				activator.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
 			return TRUE //No need to loop.
 		if(is_item(result))
 			var/obj/item/I = result
@@ -353,15 +353,15 @@
 
 	if(did_add)
 		if(object.qdeleting) //Means that the stacks were likely transfered to another object.
-			if(caller && enable_messages)
-				caller.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
+			if(activator && enable_messages)
+				activator.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
 			return TRUE
-		if(caller && enable_messages)
-			caller.to_chat(span("notice","You stuff some of \the [object.name] in \the [src.name]."))
+		if(activator && enable_messages)
+			activator.to_chat(span("notice","You stuff some of \the [object.name] in \the [src.name]."))
 		return TRUE
 
-	if(caller && enable_messages)
-		caller.to_chat(span("warning","You don't have enough inventory space inside \the [src.name] to hold \the [object.name]!"))
+	if(activator && enable_messages)
+		activator.to_chat(span("warning","You don't have enough inventory space inside \the [src.name] to hold \the [object.name]!"))
 
 	return FALSE
 
@@ -642,8 +642,8 @@
 
 	return TRUE
 
-/obj/item/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
-	last_interacted = caller
+/obj/item/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
+	last_interacted = activator
 	. = ..()
 
 /obj/item/proc/get_reagents_to_consume(var/mob/living/consumer)
@@ -659,29 +659,29 @@
 			var/species/S = SSspecies.all_species[A.species]
 			. = S.bite_size
 
-/obj/item/proc/feed(var/mob/caller,var/mob/living/target)
+/obj/item/proc/feed(var/mob/activator,var/mob/living/target)
 	var/reagent_container/R = get_reagents_to_consume(target)
 	if(!R)
 		return FALSE
-	R.consume(caller,target)
+	R.consume(activator,target)
 	return TRUE
 
-/obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object,var/location,var/control,var/params)
+/obj/item/proc/try_transfer_reagents(var/mob/activator,var/atom/object,var/location,var/control,var/params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 
-	var/self_feed = caller == object
+	var/self_feed = activator == object
 
-	if(is_living(caller) && allow_reagent_transfer_from)
-		var/mob/living/L = caller
+	if(is_living(activator) && allow_reagent_transfer_from)
+		var/mob/living/L = activator
 		if(L.attack_flags & CONTROL_MOD_DISARM) //SPLASH
-			reagents.splash(caller,object,reagents.volume_current,FALSE,0.75)
+			reagents.splash(activator,object,reagents.volume_current,FALSE,0.75)
 			return TRUE
 
-	if(can_feed(caller,object))
-		PROGRESS_BAR(caller,src,self_feed ? BASE_FEED_TIME_SELF : BASE_FEED_TIME,src::feed(),caller,object)
-		PROGRESS_BAR_CONDITIONS(caller,src,src::can_feed(),caller,object)
+	if(can_feed(activator,object))
+		PROGRESS_BAR(activator,src,self_feed ? BASE_FEED_TIME_SELF : BASE_FEED_TIME,src::feed(),activator,object)
+		PROGRESS_BAR_CONDITIONS(activator,src,src::can_feed(),activator,object)
 		return TRUE
 
 	if(object.reagents)
@@ -689,30 +689,30 @@
 		//TODO: Add liquid transfer sounds.
 		if(object.allow_reagent_transfer_to && allow_reagent_transfer_from)
 			if(reagents.volume_current <= 0)
-				caller.to_chat(span("warning","\The [src.name] is empty!"))
+				activator.to_chat(span("warning","\The [src.name] is empty!"))
 				return FALSE
 			if(object.reagents.volume_current >= object.reagents.volume_max)
-				caller.to_chat(span("warning","\The [object.name] is full!"))
+				activator.to_chat(span("warning","\The [object.name] is full!"))
 				return FALSE
-			var/actual_transfer_amount = reagents.transfer_reagents_to(object.reagents,transfer_amount, caller = caller)
-			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [object]."))
-			play_sound('sound/items/consumables/pourwater.ogg',get_turf(caller),range_max=VIEW_RANGE*0.5)
+			var/actual_transfer_amount = reagents.transfer_reagents_to(object.reagents,transfer_amount, activator = activator)
+			activator.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [object]."))
+			play_sound('sound/items/consumables/pourwater.ogg',get_turf(activator),range_max=VIEW_RANGE*0.5)
 			return TRUE
 		else if(object.allow_reagent_transfer_from && allow_reagent_transfer_to)
 			if(object.reagents.volume_current <= 0)
-				caller.to_chat(span("warning","\The [object.name] is empty!"))
+				activator.to_chat(span("warning","\The [object.name] is empty!"))
 				return FALSE
 			if(reagents.volume_current >= reagents.volume_max)
-				caller.to_chat(span("warning","\The [src.name] is full!"))
+				activator.to_chat(span("warning","\The [src.name] is full!"))
 				return FALSE
-			var/actual_transfer_amount = object.reagents.transfer_reagents_to(reagents,transfer_amount, caller = caller)
-			caller.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [src]."))
-			play_sound('sound/items/consumables/pourwater.ogg',get_turf(caller),range_max=VIEW_RANGE*0.5)
+			var/actual_transfer_amount = object.reagents.transfer_reagents_to(reagents,transfer_amount, activator = activator)
+			activator.to_chat(span("notice","You transfer [actual_transfer_amount] units of liquid to \the [src]."))
+			play_sound('sound/items/consumables/pourwater.ogg',get_turf(activator),range_max=VIEW_RANGE*0.5)
 			return TRUE
 
 	return FALSE
 
-/obj/item/proc/can_feed(var/mob/caller,var/atom/target)
+/obj/item/proc/can_feed(var/mob/activator,var/atom/target)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
@@ -726,22 +726,22 @@
 	var/mob/living/L = target
 
 	if(L.dead)
-		caller.to_chat(span("warning","\The [L.name] is dead!"))
+		activator.to_chat(span("warning","\The [L.name] is dead!"))
 		return FALSE
 
 	if(!reagents.volume_current)
-		caller.to_chat(span("notice","\The [src.name] is empty!"))
+		activator.to_chat(span("notice","\The [src.name] is empty!"))
 		return FALSE
 
 	if(L.is_stuffed())
-		if(caller == L)
-			caller.to_chat(span("warning","You can't eat anymore! You're stuffed!"))
+		if(activator == L)
+			activator.to_chat(span("warning","You can't eat anymore! You're stuffed!"))
 		else
-			caller.to_chat(span("warning","You can't forcefeed [L.name] anymore! They're stuffed!"))
+			activator.to_chat(span("warning","You can't forcefeed [L.name] anymore! They're stuffed!"))
 		return FALSE
 
-	if(is_living(caller))
-		var/mob/living/C = caller
+	if(is_living(activator))
+		var/mob/living/C = activator
 		if(C.attack_flags & CONTROL_MOD_DISARM) //Splash
 			return FALSE
 		if(reagents.contains_lethal && L != C && !allow_hostile_action(C.loyalty_tag,L))

@@ -85,7 +85,7 @@
 	icon_state = "[active]"
 	return ..()
 
-/obj/structure/interactive/enchantment_circle/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/structure/interactive/enchantment_circle/clicked_on_by_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
@@ -93,7 +93,7 @@
 
 	set_active(!active)
 
-	caller.visible_message(span("notice","\The [caller.name] [active ? "activates" : "deactivates"] \the [src.name]."))
+	activator.visible_message(span("notice","\The [activator.name] [active ? "activates" : "deactivates"] \the [src.name]."))
 
 	return TRUE
 
@@ -107,7 +107,7 @@
 		if(I) . += I
 
 
-/obj/structure/interactive/enchantment_circle/proc/try_enchant(var/mob/living/caller)
+/obj/structure/interactive/enchantment_circle/proc/try_enchant(var/mob/living/activator)
 
 	var/obj/item/soulgem/soulgem = locate() in stored_items
 	var/obj/item/weapon/weapon_to_enchant = locate() in stored_items
@@ -122,15 +122,15 @@
 
 
 	if(!soulgem || !soulgem.total_charge || !weapon_to_enchant || weapon_to_enchant.enchantment || !stored_book.stored_enchantment)
-		caller.visible_message(span("warning","\The [src.name] reacts to [caller.name]'s words... but slowly fizzles out."),span("warning","\The [src.name] reacts to your words... but slowly fizzles out."))
+		activator.visible_message(span("warning","\The [src.name] reacts to [activator.name]'s words... but slowly fizzles out."),span("warning","\The [src.name] reacts to your words... but slowly fizzles out."))
 		return FALSE
 
-	caller.visible_message(span("danger","\The [src.name] reacts to [caller.name]'s words!"),span("warning","\The [src.name] reacts to your words!"))
+	activator.visible_message(span("danger","\The [src.name] reacts to [activator.name]'s words!"),span("warning","\The [src.name] reacts to your words!"))
 
 	weapon_to_enchant.enchantment = new stored_book.stored_enchantment
-	var/experience_to_give = weapon_to_enchant.enchantment.generate_stats(caller,weapon_to_enchant,soulgem)
+	var/experience_to_give = weapon_to_enchant.enchantment.generate_stats(activator,weapon_to_enchant,soulgem)
 	weapon_to_enchant.visible_message(span("notice","\The [weapon_to_enchant.name] shines brightly as it's new enchantment is applied."))
-	caller.add_skill_xp(SKILL_SUMMONING,experience_to_give)
+	activator.add_skill_xp(SKILL_SUMMONING,experience_to_give)
 	if(soulgem.do_not_consume)
 		soulgem.total_charge = 0
 	else

@@ -104,7 +104,7 @@
 	if(inject_amount)
 		for(var/k in inject_amount)
 			var/v = inject_amount[k]
-			target.reagents.add_reagent(k,v,caller=src)
+			target.reagents.add_reagent(k,v,activator=src)
 
 		target.visible_message(span("danger","\The [src.name] injects \the [target.name] with the hypospray."),span("danger","\The [src.name] injects you with the hypospray."))
 

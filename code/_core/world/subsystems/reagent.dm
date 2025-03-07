@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(reagent)
 
 	var/list/valid_random_reagents = list()
 
-/subsystem/reagent/unclog(var/mob/caller)
+/subsystem/reagent/unclog(var/mob/activator)
 	tick_rate = -1
 	. = ..()
 

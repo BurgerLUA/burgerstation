@@ -9,7 +9,7 @@
 
 	tier_type = "pistol"
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/pistol/handle_ammo(var/mob/activator)
 
 	var/old_chambered_bullet = chambered_bullet ? TRUE : FALSE
 	var/old_stored_magazine = stored_magazine ? TRUE : FALSE

@@ -1,56 +1,56 @@
-/obj/item/clothing/click_on_object(var/mob/caller,var/atom/object,location,control,params) //When we attack something with the clothes
+/obj/item/clothing/click_on_object(var/mob/activator,var/atom/object,location,control,params) //When we attack something with the clothes
 
-	if(is_advanced(caller) && caller == object) //Auto-equip.
+	if(is_advanced(activator) && activator == object) //Auto-equip.
 		//No interaction delay needed.
-		quick_equip(caller,ignore_held=TRUE,ignore_dynamic=TRUE)
+		quick_equip(activator,ignore_held=TRUE,ignore_dynamic=TRUE)
 		return TRUE
 
 	return ..()
 
 
-/obj/item/clothing/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/click_self(var/mob/activator,location,control,params)
 
-	if(length(additional_clothing_stored) && is_advanced(caller) && is_inventory(src.loc))
+	if(length(additional_clothing_stored) && is_advanced(activator) && is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
 		if(I.worn)
 			INTERACT_CHECK
 			INTERACT_DELAY(5)
-			equip_additional_clothing(caller)
+			equip_additional_clothing(activator)
 			return TRUE
 
 	. = ..()
 
-/obj/item/proc/quick_equip(var/mob/living/advanced/caller,var/ignore_hands = FALSE,var/ignore_worn=FALSE,var/ignore_held=FALSE,var/ignore_dynamic=FALSE,var/debug=FALSE,var/silent=FALSE)
+/obj/item/proc/quick_equip(var/mob/living/advanced/activator,var/ignore_hands = FALSE,var/ignore_worn=FALSE,var/ignore_held=FALSE,var/ignore_dynamic=FALSE,var/debug=FALSE,var/silent=FALSE)
 
 	var/obj/hud/inventory/best_inventory_wear
 	var/obj/hud/inventory/best_inventory_equip
 
-	for(var/k in caller.inventories_by_id)
-		var/obj/hud/inventory/I = caller.inventories_by_id[k]
+	for(var/k in activator.inventories_by_id)
+		var/obj/hud/inventory/I = activator.inventories_by_id[k]
 		if(!I || I.qdeleting || !I.loc || I.loc.qdeleting)
 			continue
 		if(I.click_flags && ignore_hands)
 			continue
 		if(!I.allow_quick_equip)
 			continue
-		if(!ignore_worn && I.worn && (!best_inventory_wear || I.priority >= best_inventory_wear.priority) && can_be_worn(caller,I) && I.can_slot_object(src))
+		if(!ignore_worn && I.worn && (!best_inventory_wear || I.priority >= best_inventory_wear.priority) && can_be_worn(activator,I) && I.can_slot_object(src))
 			best_inventory_wear = I
 			continue
 		if(I.should_add_to_advanced) //Non-dynamic
-			if(!ignore_held && (!best_inventory_equip || I.priority >= best_inventory_equip.priority) && can_be_held(caller,I) && I.can_slot_object(src))
+			if(!ignore_held && (!best_inventory_equip || I.priority >= best_inventory_equip.priority) && can_be_held(activator,I) && I.can_slot_object(src))
 				best_inventory_equip = I
 				continue
 		else
-			if(!ignore_dynamic && (!best_inventory_equip || I.priority >= best_inventory_equip.priority) && can_be_held(caller,I) && I.can_slot_object(src))
+			if(!ignore_dynamic && (!best_inventory_equip || I.priority >= best_inventory_equip.priority) && can_be_held(activator,I) && I.can_slot_object(src))
 				best_inventory_equip = I
 				continue
 
 	if(best_inventory_wear)
-		if(debug) log_debug("(WEAR) Best inventory found for [caller.get_debug_name()]: [best_inventory_wear.get_debug_name()].")
+		if(debug) log_debug("(WEAR) Best inventory found for [activator.get_debug_name()]: [best_inventory_wear.get_debug_name()].")
 		return best_inventory_wear.add_object(src,silent=silent)
 
 	if(best_inventory_equip)
-		if(debug) log_debug("(EQUIP) Best inventory found for [caller.get_debug_name()]: [best_inventory_equip.get_debug_name()].")
+		if(debug) log_debug("(EQUIP) Best inventory found for [activator.get_debug_name()]: [best_inventory_equip.get_debug_name()].")
 		return best_inventory_equip.add_object(src,silent=silent)
 
 	return FALSE

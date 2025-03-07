@@ -55,7 +55,7 @@
 	paddle_right.linked_defib = src
 	return ..()
 
-/obj/item/defib/proc/on_paddle(var/mob/caller)
+/obj/item/defib/proc/on_paddle(var/mob/activator)
 
 	if(!paddle_left.placed_target_ref || !paddle_right.placed_target_ref || paddle_left.placed_target_ref != paddle_right.placed_target_ref)
 		return FALSE
@@ -66,34 +66,34 @@
 
 	var/turf/T = get_turf(target)
 
-	caller.visible_message(span("danger","\The [caller.name] charges up \the [src.name]..."),span("warning","You charge up \the [src.name]..."))
+	activator.visible_message(span("danger","\The [activator.name] charges up \the [src.name]..."),span("warning","You charge up \the [src.name]..."))
 
 	play_sound('sound/items/defib/defib_charge.ogg',T,range_max=VIEW_RANGE)
-	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
+	create_alert(VIEW_RANGE,T,activator,ALERT_LEVEL_NOISE)
 
 	paddle_left.placed_target_ref = null
 	paddle_right.placed_target_ref = null
 
-	PROGRESS_BAR(caller,src,30,src::defib_target(),caller,target)
-	PROGRESS_BAR_CONDITIONS(caller,src,src::can_defib_target(),caller,target)
+	PROGRESS_BAR(activator,src,30,src::defib_target(),activator,target)
+	PROGRESS_BAR_CONDITIONS(activator,src,src::can_defib_target(),activator,target)
 
 	return TRUE
 
-/obj/item/defib/proc/can_defib_target(var/mob/caller,var/mob/living/target)
+/obj/item/defib/proc/can_defib_target(var/mob/activator,var/mob/living/target)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
 
 	return TRUE
 
-/obj/item/defib/proc/defib_target(var/mob/caller,var/mob/living/target)
+/obj/item/defib/proc/defib_target(var/mob/activator,var/mob/living/target)
 
 	var/turf/T = get_turf(target)
 
-	caller.visible_message(span("notice","\The [caller.name] shocks \the [target.name] with \the [src.name]!"),span("notice","You shock \the [target.name] with \the [src.name]!"))
+	activator.visible_message(span("notice","\The [activator.name] shocks \the [target.name] with \the [src.name]!"),span("notice","You shock \the [target.name] with \the [src.name]!"))
 
 	play_sound('sound/items/defib/defib_zap.ogg',T,range_max=VIEW_RANGE)
-	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
+	create_alert(VIEW_RANGE,T,activator,ALERT_LEVEL_NOISE)
 
 	var/target_dead = target.dead || target.has_status_effect(CRIT)
 
@@ -103,18 +103,18 @@
 	if(target.check_death() || (target.dead && !target.is_player_controlled()) || target.suicide)
 		target.visible_message(span("warning","Nothing happens..."))
 		play_sound('sound/items/defib/defib_failed.ogg',T,range_max=VIEW_RANGE)
-		create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
+		create_alert(VIEW_RANGE,T,activator,ALERT_LEVEL_NOISE)
 		return FALSE
 
 	play_sound('sound/items/defib/defib_ready.ogg',T,range_max=VIEW_RANGE*0.5)
-	create_alert(VIEW_RANGE*0.5,T,caller,ALERT_LEVEL_NOISE)
+	create_alert(VIEW_RANGE*0.5,T,activator,ALERT_LEVEL_NOISE)
 
 	if(target_dead) //Was dead
 		target.revive()
-		caller.visible_message(span("danger","\The [target.name] jolts to life!"))
+		activator.visible_message(span("danger","\The [target.name] jolts to life!"))
 		/* TODO, CHECK THE JOB INSTEAD.
-		if(money && is_player(caller) && is_player(target))
-			var/mob/living/advanced/player/PC = caller
+		if(money && is_player(activator) && is_player(target))
+			var/mob/living/advanced/player/PC = activator
 			var/mob/living/advanced/player/PT = target
 			if(PC.loyalty_tag == PT.loyalty_tag)
 				var/charged_amount = PT.adjust_currency(-500)
@@ -129,7 +129,7 @@
 			if(A.labeled_organs[BODY_TORSO])
 				target_to_damage = A.labeled_organs[BODY_TORSO]
 		if(target_to_damage.health)
-			var/damage_to_deal = (caller == target) ? 50 : 20
+			var/damage_to_deal = (activator == target) ? 50 : 20
 			target.add_status_effect(ADRENALINE,50,100)
 			target.add_status_effect(STUN,20,20)
 			if(target_to_damage.health.organic)
@@ -140,15 +140,15 @@
 
 	return TRUE
 
-/obj/item/defib/click_self(var/mob/caller,location,control,params)
+/obj/item/defib/click_self(var/mob/activator,location,control,params)
 
-	if(!is_advanced(caller))
+	if(!is_advanced(activator))
 		return FALSE
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 
 	. = FALSE
 	if(paddle_left in src.contents)
@@ -194,19 +194,19 @@
 	linked_defib = null
 	. = ..()
 
-/obj/item/defib_paddle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/defib_paddle/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(is_inventory(object))
 		return ..()
 
-	if(caller.is_busy())
+	if(activator.is_busy())
 		return TRUE
 
 	if(!linked_defib)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		caller.to_chat(span("danger","Paddle error detected. Tell burger how you encountered this bug."))
+		activator.to_chat(span("danger","Paddle error detected. Tell burger how you encountered this bug."))
 		return TRUE
 
 	if(object == linked_defib)
@@ -220,12 +220,12 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		if(placed_target_ref == "\ref[object]")
-			caller.visible_message(span("notice","\The [caller.name] removes \a [src.name] from [object.name]'s chest..."),span("warning","You remove \the [src.name] from \the [object.name]'s chest..."))
+			activator.visible_message(span("notice","\The [activator.name] removes \a [src.name] from [object.name]'s chest..."),span("warning","You remove \the [src.name] from \the [object.name]'s chest..."))
 			placed_target_ref = null
 		else
-			caller.visible_message(span("danger","\The [caller.name] places \a [src.name] on [object.name]'s chest..."),span("warning","You place \the [src.name] on \the [object.name]'s chest..."))
+			activator.visible_message(span("danger","\The [activator.name] places \a [src.name] on [object.name]'s chest..."),span("warning","You place \the [src.name] on \the [object.name]'s chest..."))
 			placed_target_ref = "\ref[object]"
-			linked_defib.on_paddle(caller)
+			linked_defib.on_paddle(activator)
 		return TRUE
 
 	return ..()

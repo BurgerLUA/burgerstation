@@ -8,13 +8,13 @@
 
 	density = TRUE
 
-/obj/structure/interactive/ore_storage/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/ore_storage/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
-	caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
+	activator.visible_message(span("notice","\The [activator.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
 	set_dir(turn(dir,90))
 
 	update_sprite()
@@ -48,7 +48,7 @@
 	return ..()
 
 
-/obj/structure/interactive/ore_storage/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/ore_storage/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 
 

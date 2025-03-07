@@ -15,8 +15,8 @@
 
 	value = 80
 
-/obj/item/lighter/click_self(var/mob/caller,location,control,params)
-	set_lit(!lit,caller)
+/obj/item/lighter/click_self(var/mob/activator,location,control,params)
+	set_lit(!lit,activator)
 	return TRUE
 
 /obj/item/lighter/update_sprite()
@@ -32,7 +32,7 @@
 		set_light_sprite(FALSE)
 	return TRUE
 
-/obj/item/lighter/proc/set_lit(var/desired_lit,var/mob/caller)
+/obj/item/lighter/proc/set_lit(var/desired_lit,var/mob/activator)
 
 	if(desired_lit == lit)
 		return FALSE
@@ -42,8 +42,8 @@
 	update_sprite()
 	update_atom_light()
 
-	if(caller)
-		caller.to_chat(span("notice","You [lit ? "open" : "close"] \the [src.name]."))
+	if(activator)
+		activator.to_chat(span("notice","You [lit ? "open" : "close"] \the [src.name]."))
 
 	return TRUE
 

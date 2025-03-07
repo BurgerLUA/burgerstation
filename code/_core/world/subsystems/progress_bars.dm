@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(progressbars)
 	tick_usage_max = 95
 
 
-/subsystem/progressbars/unclog(var/mob/caller)
+/subsystem/progressbars/unclog(var/mob/activator)
 
 	for(var/k in all_progress_bars)
 		if(!k)

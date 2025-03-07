@@ -75,11 +75,11 @@
 /obj/structure/interactive/statue/debug/
 	color = "#FFCC69"
 
-/obj/structure/interactive/statue/debug/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/statue/debug/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 	. = ..()
 	offset_x = 0
 	offset_y = 17
-	set_stored_object(caller)
+	set_stored_object(activator)
 
 
 /obj/structure/interactive/statue/director/

@@ -20,12 +20,12 @@ mob/living/advanced/proc/handle_glow_chargen(var/desired_color,var/update_blends
 
 	chargen_flags = CHARGEN_GLOW
 
-/obj/hud/button/chargen/glow/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/glow/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		var/desired_color = input("Glow Color","Glow Color",glow_color) as color|null
 		if(desired_color)
 			A.handle_glow_chargen(desired_color)

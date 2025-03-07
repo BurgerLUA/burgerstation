@@ -23,18 +23,18 @@
 	return ..()
 
 
-/obj/hud/button/chargen/change_name/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/change_name/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(is_player(caller) && caller.client)
-		var/mob/living/advanced/player/P = caller
+	if(is_player(activator) && activator.client)
+		var/mob/living/advanced/player/P = activator
 
 		var/choice = input(P,"What would you like your name to be?","Name Change",P.real_name) as text|null
 
 		if(!choice) return
 
-		if(caller.client)
+		if(activator.client)
 			choice = police_text(P.client,choice,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
 
 		if(!choice) return

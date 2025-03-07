@@ -25,17 +25,17 @@
 	for(var/obj/item/I in src.contents)
 		. += I.get_value()
 
-/obj/item/grenade/device/special/timed/blackhole/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/grenade/device/special/timed/blackhole/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
 
 	. = ..()
 
 	var/turf/T = get_turf(src)
 
-	if(!is_advanced(caller))
+	if(!is_advanced(activator))
 		visible_message(span("warning","\The [src.name] fails to deploy!"))
 		return TRUE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 
 	anchored = TRUE
 
@@ -47,7 +47,7 @@
 	suck(A,6)
 
 
-/obj/item/grenade/device/special/timed/blackhole/proc/suck(var/mob/living/advanced/caller,var/sucks_left=0)
+/obj/item/grenade/device/special/timed/blackhole/proc/suck(var/mob/living/advanced/activator,var/sucks_left=0)
 
 
 	var/turf/T = get_turf(src)
@@ -74,10 +74,10 @@
 		play_sound('sound/effects/portal_suck.ogg',T)
 
 	if(sucks_left > 0)
-		CALLBACK("\ref[src]_suck",8,src,src::suck(),caller,sucks_left-1)
+		CALLBACK("\ref[src]_suck",8,src,src::suck(),activator,sucks_left-1)
 	else
-		if(is_player(caller))
-			var/mob/living/advanced/player/P = caller
+		if(is_player(activator))
+			var/mob/living/advanced/player/P = activator
 			var/value_of_contents = src.get_value() * 0.25
 			value_of_contents = CEILING(value_of_contents,1)
 			P.to_chat(span("notice","You've earned [value_of_contents] credits for that [src.name]."))
@@ -92,17 +92,17 @@
 	marker_color = COLOR_GREEN_LIGHT
 	value = 400
 
-/obj/item/grenade/device/special/timed/decoy/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/grenade/device/special/timed/decoy/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
 
 	. = ..()
 
 	var/turf/T = get_turf(src)
 
-	if(!is_advanced(caller))
+	if(!is_advanced(activator))
 		visible_message(span("warning","\The [src.name] fails to deploy!"))
 		return TRUE
 
-	var/mob/living/advanced/A = caller
+	var/mob/living/advanced/A = activator
 
 	var/mob/living/simple/hologram/D = new(T)
 	INITIALIZE(D)
@@ -121,7 +121,7 @@
 	marker_color = COLOR_RED
 	value = 200
 
-/obj/item/grenade/device/special/timed/barrier/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/grenade/device/special/timed/barrier/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
 
 	. = ..()
 
@@ -157,7 +157,7 @@
 			M.Move(pick(good_turfs))
 
 		var/obj/structure/interactive/barrier/B = new(T)
-		B.creator_ckey = caller.ckey ? caller.ckey : "#null"
+		B.creator_ckey = activator.ckey ? activator.ckey : "#null"
 		INITIALIZE(B)
 		GENERATE(B)
 		FINALIZE(B)
@@ -178,7 +178,7 @@
 	marker_color = COLOR_GOLD
 	value = 300
 
-/obj/item/grenade/device/special/timed/shell/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/grenade/device/special/timed/shell/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
 
 	. = ..()
 
@@ -227,7 +227,7 @@
 			has_a_bad_turf = TRUE
 		else
 			var/obj/structure/metal_foam/F = new(D)
-			F.creator_ckey = caller.ckey ? caller.ckey : "#null"
+			F.creator_ckey = activator.ckey ? activator.ckey : "#null"
 			INITIALIZE(F)
 			GENERATE(F)
 			FINALIZE(F)
@@ -235,7 +235,7 @@
 
 	if(has_a_bad_turf && !T.has_dense_atom)
 		var/obj/structure/metal_foam/F = new(T)
-		F.creator_ckey = caller.ckey ? caller.ckey : "#null"
+		F.creator_ckey = activator.ckey ? activator.ckey : "#null"
 		INITIALIZE(F)
 		GENERATE(F)
 		FINALIZE(F)

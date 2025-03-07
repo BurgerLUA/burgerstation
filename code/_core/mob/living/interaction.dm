@@ -64,9 +64,9 @@ mob/living/on_left_down(object,location,control,params)
 
 	return TRUE
 
-/mob/living/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/mob/living/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
-	if(caller == src && (object == src || is_inventory(object)))
+	if(activator == src && (object == src || is_inventory(object)))
 		resist()
 		return TRUE
 

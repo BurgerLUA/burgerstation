@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(living)
 	var/list/all_mobs_with_clients = list()
 	var/list/all_mobs_with_clients_by_z = list()
 
-/subsystem/living/unclog(var/mob/caller)
+/subsystem/living/unclog(var/mob/activator)
 
 	for(var/k in processing_mobs)
 		var/mob/living/L = k

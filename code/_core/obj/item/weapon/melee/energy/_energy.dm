@@ -16,7 +16,7 @@
 	. = ..()
 	if(enabled) . += span("notice","It is active.")
 
-/obj/item/weapon/melee/energy/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/energy/click_self(var/mob/activator,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(3)
 	enabled = !enabled
@@ -55,7 +55,7 @@
 	return ..()
 
 
-/obj/item/weapon/melee/energy/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/weapon/melee/energy/clicked_on_by_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 
 
@@ -68,7 +68,7 @@
 
 			var/choice = input("What do you want to change the color of \the [src.name]?","Color Selection") as null|anything in polymorphs
 			if(!choice)
-				caller.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
+				activator.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
 				return TRUE
 
 			INTERACT_CHECK
@@ -81,12 +81,12 @@
 			INTERACT_DELAY(5)
 
 			if(!choice_color)
-				caller.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
+				activator.to_chat(span("notice","You decide not to change \the [src.name]'s color."))
 				return TRUE
 
 			color = choice_color
 			polymorphs[choice] = polymorphs[choice]
-			caller.to_chat(span("notice","You change \the [src.name]'s color."))
+			activator.to_chat(span("notice","You change \the [src.name]'s color."))
 			update_sprite()
 
 			return TRUE

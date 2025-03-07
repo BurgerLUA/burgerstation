@@ -24,7 +24,7 @@
 	can_draw = FALSE
 	can_inject = TRUE
 
-/obj/item/container/syringe/hypospray/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/syringe/hypospray/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(!object.reagents)
 		return ..()
@@ -33,19 +33,19 @@
 	INTERACT_DELAY(5)
 
 	if(!istype(object,/obj/item/container/simple/beaker/bottle/hypospray))
-		caller.to_chat(span("warning","You don't know how to put \the [object.name] into \the [src.name]... maybe a special container will work?"))
+		activator.to_chat(span("warning","You don't know how to put \the [object.name] into \the [src.name]... maybe a special container will work?"))
 		return TRUE
 
 	var/obj/item/container/simple/beaker/bottle/hypospray/H = object
 	if(H.spent)
-		caller.to_chat(span("warning","\The [H.name]'s gas canister is spent and cannot inject its contents!"))
+		activator.to_chat(span("warning","\The [H.name]'s gas canister is spent and cannot inject its contents!"))
 		return TRUE
 	H.spent = TRUE
 
 	if(H.reagents.transfer_reagents_to(src.reagents))
-		caller.to_chat(span("notice","You insert \the [H.name] into \the [src.name], activating the pressurized gas."))
+		activator.to_chat(span("notice","You insert \the [H.name] into \the [src.name], activating the pressurized gas."))
 	else
-		caller.to_chat(span("warning","You insert \the [H.name] into \the [src.name], activating the pressurized gas, but the reagents fail to transfer into \the [src.name]!"))
+		activator.to_chat(span("warning","You insert \the [H.name] into \the [src.name], activating the pressurized gas, but the reagents fail to transfer into \the [src.name]!"))
 
 	return TRUE
 

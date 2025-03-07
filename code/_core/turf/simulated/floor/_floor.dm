@@ -57,11 +57,11 @@
 
 
 
-/turf/simulated/floor/can_construct_on(var/atom/caller,var/obj/structure/structure_to_make = null)
+/turf/simulated/floor/can_construct_on(var/atom/activator,var/obj/structure/structure_to_make = null)
 
-	if(!is_living(caller))
+	if(!is_living(activator))
 		return FALSE
-	var/mob/living/C = caller
+	var/mob/living/C = activator
 	if(get_dist(C,src) > 1)
 		C.to_chat(span("warning","You're too far away!"))
 		return FALSE

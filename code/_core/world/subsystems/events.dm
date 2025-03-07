@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(events)
 
 	var/enable = FALSE
 
-/subsystem/events/unclog(var/mob/caller)
+/subsystem/events/unclog(var/mob/activator)
 
 	for(var/k in all_events_active)
 		var/event/E = k

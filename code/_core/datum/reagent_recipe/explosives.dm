@@ -13,14 +13,14 @@
 
 	results = list()
 
-/reagent_recipe/explosion/emp/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+/reagent_recipe/explosion/emp/on_react(var/mob/activator,var/reagent_container/container,var/magnitude)
 
 	var/tag_to_use
-	if(is_living(caller))
-		var/mob/living/L = caller
+	if(is_living(activator))
+		var/mob/living/L = activator
 		tag_to_use = L.loyalty_tag
 
-	emp(get_turf(container.owner),magnitude/20,caller,container.owner,tag_to_use)
+	emp(get_turf(container.owner),magnitude/20,activator,container.owner,tag_to_use)
 
 	return TRUE
 
@@ -38,7 +38,7 @@
 
 	secret = TRUE
 
-/reagent_recipe/explosion/holy_water_potassium/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+/reagent_recipe/explosion/holy_water_potassium/on_react(var/mob/activator,var/reagent_container/container,var/magnitude)
 
 	var/turf/explosion_location = get_turf(container.owner)
 
@@ -49,17 +49,17 @@
 	var/explosion_power = round( ((magnitude ** 0.3) * 0.5) + magnitude*0.025, 0.01)
 
 	var/tag_to_use
-	if(is_living(caller))
-		var/mob/living/L = caller
+	if(is_living(activator))
+		var/mob/living/L = activator
 		tag_to_use = L.loyalty_tag
 
-	explode(explosion_location,explosion_power,caller,container.owner,tag_to_use)
+	explode(explosion_location,explosion_power,activator,container.owner,tag_to_use)
 	smoke(
 		explosion_location,
 		magnitude*0.05*2,
 		40,
 		container,
-		caller
+		activator
 	)
 
 	return TRUE
@@ -78,7 +78,7 @@
 
 	results = list()
 
-/reagent_recipe/explosion/water_potassium/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+/reagent_recipe/explosion/water_potassium/on_react(var/mob/activator,var/reagent_container/container,var/magnitude)
 
 	var/turf/explosion_location = get_turf(container.owner)
 
@@ -89,17 +89,17 @@
 	var/explosion_power = round( ((magnitude ** 0.3) * 0.5) + magnitude*0.025, 0.01)
 
 	var/tag_to_use
-	if(is_living(caller))
-		var/mob/living/L = caller
+	if(is_living(activator))
+		var/mob/living/L = activator
 		tag_to_use = L.loyalty_tag
 
-	explode(explosion_location,explosion_power,caller,container.owner,tag_to_use)
+	explode(explosion_location,explosion_power,activator,container.owner,tag_to_use)
 	smoke(
 		explosion_location,
 		magnitude*0.05,
 		40,
 		container,
-		caller
+		activator
 	)
 
 	return TRUE
@@ -115,14 +115,14 @@
 	)
 	results = list()
 
-/reagent_recipe/explosion/smoke/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+/reagent_recipe/explosion/smoke/on_react(var/mob/activator,var/reagent_container/container,var/magnitude)
 	var/turf/T = get_turf(container.owner)
 	smoke(
 		T,
 		magnitude*0.4,
 		40 + magnitude*1.5,
 		container,
-		caller
+		activator
 	)
 	return TRUE
 
@@ -162,7 +162,7 @@
 	)
 	results = list()
 
-/reagent_recipe/explosion/oxygen_phoron_reaction/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+/reagent_recipe/explosion/oxygen_phoron_reaction/on_react(var/mob/activator,var/reagent_container/container,var/magnitude)
 	container.average_temperature += 1000 //1000 regardless.
 	container.process_temperature() //Will turn it into a fireball.
 	return TRUE

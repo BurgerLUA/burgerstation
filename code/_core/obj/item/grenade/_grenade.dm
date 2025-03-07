@@ -55,12 +55,12 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/grenade/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/grenade/quick(var/mob/activator,var/atom/object,location,params)
 
-	if(!is_living(caller) || !object)
+	if(!is_living(activator) || !object)
 		return FALSE
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 	var/vel_x = object.x - L.x
 	var/vel_y = object.y - L.y
 	var/highest = max(abs(vel_x),abs(vel_y))
@@ -75,7 +75,7 @@
 	vel_x *= BULLET_SPEED_LARGE_PROJECTILE
 	vel_y *= BULLET_SPEED_LARGE_PROJECTILE
 
-	src.click_self(caller)
+	src.click_self(activator)
 	src.drop_item(get_turf(L),silent=TRUE)
 	src.throw_self(
 		L,
@@ -173,7 +173,7 @@
 
 	return ..()
 
-/obj/item/grenade/click_self(var/mob/caller,location,control,params)
+/obj/item/grenade/click_self(var/mob/activator,location,control,params)
 
 	if(spent)
 		return ..()
@@ -181,15 +181,15 @@
 	INTERACT_CHECK
 
 	if(stored_trigger)
-		stored_trigger.click_self(caller)
+		stored_trigger.click_self(activator)
 
-	last_interacted = caller
+	last_interacted = activator
 
 	update_sprite()
 
 	return TRUE
 
-/obj/item/grenade/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/grenade/clicked_on_by_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(spent)
 		return ..()
@@ -201,10 +201,10 @@
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
 			if(max_containers <= 0)
-				caller.to_chat(span("warning","There is nothing to unscrew on \the [src.name]!"))
+				activator.to_chat(span("warning","There is nothing to unscrew on \the [src.name]!"))
 				return TRUE
 			open = !open
-			caller.to_chat(span("notice","You [open ? "unscrew" : "screw"] the screws on \the [src.name], [open ? "unsecuring" : "securing"] it."))
+			activator.to_chat(span("notice","You [open ? "unscrew" : "screw"] the screws on \the [src.name], [open ? "unsecuring" : "securing"] it."))
 			return TRUE
 		else if(I.reagents && I.allow_reagent_transfer_from)
 			INTERACT_CHECK
@@ -212,18 +212,18 @@
 			INTERACT_DELAY(5)
 			if(!open)
 				if(max_containers > 0)
-					caller.to_chat(span("warning","\The [src.name] needs to be unscrewed with a screwdriver before you add containers!"))
+					activator.to_chat(span("warning","\The [src.name] needs to be unscrewed with a screwdriver before you add containers!"))
 				return TRUE
 			if(length(stored_containers) >= max_containers)
-				caller.to_chat(span("warning","You can't fit any more contains in \the [src.name]!"))
+				activator.to_chat(span("warning","You can't fit any more contains in \the [src.name]!"))
 				return TRUE
 			var/obj/item/container/simple/B = object
 			if(B.size > src.size)
-				caller.to_chat(span("warning","\The [B.name] is too large to be put into \the [src.name]!"))
+				activator.to_chat(span("warning","\The [B.name] is too large to be put into \the [src.name]!"))
 				return TRUE
 			B.drop_item(src)
 			stored_containers += B
-			caller.visible_message(span("notice","\The [caller.name] fits \the [object.name] into \the [src.name]."),span("notice","You fit \the [object.name] inside \the [src.name]."))
+			activator.visible_message(span("notice","\The [activator.name] fits \the [object.name] into \the [src.name]."),span("notice","You fit \the [object.name] inside \the [src.name]."))
 			update_sprite()
 			return TRUE
 		else if(istype(object,/obj/item/device/))
@@ -231,18 +231,18 @@
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
 			if(!open)
-				caller.to_chat(span("warning","\The [src.name] needs to be unscrewed with a screwdriver before you add trigger devices!"))
+				activator.to_chat(span("warning","\The [src.name] needs to be unscrewed with a screwdriver before you add trigger devices!"))
 				return TRUE
 			if(stored_trigger)
-				caller.to_chat(span("warning","There is already a [stored_trigger.name] inside \the [src.name]!"))
+				activator.to_chat(span("warning","There is already a [stored_trigger.name] inside \the [src.name]!"))
 				return TRUE
 			var/obj/item/device/T = object
 			if(T.size > src.size)
-				caller.to_chat(span("warning","\The [T.name] is too large to be put into \the [src.name]!"))
+				activator.to_chat(span("warning","\The [T.name] is too large to be put into \the [src.name]!"))
 				return TRUE
 			T.drop_item(src)
 			stored_trigger = T
-			caller.visible_message(span("notice","\The [caller.name] fits \the [object.name] into \the [src.name]."),span("notice","You fit \the [object.name] inside \the [src.name]."))
+			activator.visible_message(span("notice","\The [activator.name] fits \the [object.name] into \the [src.name]."),span("notice","You fit \the [object.name] inside \the [src.name]."))
 			update_sprite()
 			return TRUE
 	else if(is_inventory(object))
@@ -250,34 +250,34 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
 		if(!open)
-			caller.to_chat(span("warning","\The [src.name] needs to be unscrewed with a screwdriver before you remove its contents!"))
+			activator.to_chat(span("warning","\The [src.name] needs to be unscrewed with a screwdriver before you remove its contents!"))
 			return TRUE
 		var/obj/hud/inventory/I = object
 		if(length(stored_containers))
 			var/obj/item/container/simple/beaker/selected_beaker = stored_containers[length(stored_containers)]
 			if(I.add_object(selected_beaker))
-				caller.visible_message(span("notice","\The [caller.name] removes \the [selected_beaker.name] from \the [src.name]."),span("notice","You remove \the [selected_beaker.name] from \the [src.name]."))
+				activator.visible_message(span("notice","\The [activator.name] removes \the [selected_beaker.name] from \the [src.name]."),span("notice","You remove \the [selected_beaker.name] from \the [src.name]."))
 				stored_containers -= selected_beaker
 				update_sprite()
 			else
-				caller.to_chat(span("warning","You need an empty hand in ordet to remove \the [selected_beaker.name]!"))
+				activator.to_chat(span("warning","You need an empty hand in ordet to remove \the [selected_beaker.name]!"))
 		else if(stored_trigger)
 			if(stored_trigger.active)
-				caller.to_chat(span("danger","You must defuse \the [stored_trigger.name] first before removing \the [stored_trigger.name]!"))
+				activator.to_chat(span("danger","You must defuse \the [stored_trigger.name] first before removing \the [stored_trigger.name]!"))
 				return TRUE
 			else if(I.add_object(stored_trigger))
-				caller.visible_message(span("notice","\The [caller.name] removes \the [stored_trigger.name] from \the [src.name]."),span("notice","You remove \the [stored_trigger.name] from \the [src.name]."))
+				activator.visible_message(span("notice","\The [activator.name] removes \the [stored_trigger.name] from \the [src.name]."),span("notice","You remove \the [stored_trigger.name] from \the [src.name]."))
 				stored_trigger = null
 				update_sprite()
 			else
-				caller.to_chat(span("warning","You need an empty hand in ordet to remove \the [stored_trigger.name]!"))
+				activator.to_chat(span("warning","You need an empty hand in ordet to remove \the [stored_trigger.name]!"))
 		else
-			caller.to_chat(span("warning","There is nothing to remove from \the [src.name]!"))
+			activator.to_chat(span("warning","There is nothing to remove from \the [src.name]!"))
 		return TRUE
 
 	return ..()
 
-/obj/item/grenade/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/grenade/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(is_inventory(loc))
 		drop_item()
@@ -292,17 +292,17 @@
 
 	for(var/k in stored_containers)
 		var/obj/item/container/simple/beaker/B = k
-		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE, caller = caller)
-		B.reagents.update_container(caller)
-		B.reagents.process_recipes(caller)
+		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE, activator = activator)
+		B.reagents.update_container(activator)
+		B.reagents.process_recipes(activator)
 
 	spent = TRUE
 
 	value = get_base_value()
 
 	if(src.reagents)
-		src.reagents.update_container(caller)
-		src.reagents.process_recipes(caller)
+		src.reagents.update_container(activator)
+		src.reagents.process_recipes(activator)
 
 	update_sprite()
 

@@ -30,7 +30,7 @@
 
 
 
-/obj/item/container/spray/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/container/spray/click_on_object(var/mob/activator as mob,var/atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -39,21 +39,21 @@
 		var/obj/item/container/healing/M = object
 		var/reagent_transfer = min(5,reagents.volume_current)
 		if(reagent_transfer <= 0)
-			caller.to_chat(span("warning","\The [src.name] is empty!"))
+			activator.to_chat(span("warning","\The [src.name] is empty!"))
 			return TRUE
 		if(M.reagents.volume_current >= M.reagents.volume_max)
-			caller.to_chat(span("warning","\The [M.name] is full!"))
+			activator.to_chat(span("warning","\The [M.name] is full!"))
 			return TRUE
-		reagents.transfer_reagents_to(M.reagents,reagent_transfer, caller = caller)
-		caller.visible_message(span("warning","\The [caller.name] sprays \the [M.name] with \the [src.name], infusing it."),span("notice","You spray \the [M.name] with \the [src.name], infusing it."))
+		reagents.transfer_reagents_to(M.reagents,reagent_transfer, activator = activator)
+		activator.visible_message(span("warning","\The [activator.name] sprays \the [M.name] with \the [src.name], infusing it."),span("notice","You spray \the [M.name] with \the [src.name], infusing it."))
 		return TRUE
 
-	if(is_advanced(object) && is_advanced(caller))
+	if(is_advanced(object) && is_advanced(activator))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(2)
 		var/mob/living/advanced/victim = object
-		var/mob/living/advanced/attacker = caller
+		var/mob/living/advanced/attacker = activator
 
 		if(victim != attacker && reagents.contains_lethal && !allow_hostile_action(attacker.loyalty_tag,victim))
 			attacker.to_chat(span("warning","Your loyalty tag prevents you from harming \the [victim.name]!"))
@@ -71,15 +71,15 @@
 
 		var/reagent_transfer = min(5,reagents.volume_current)
 		if(reagent_transfer <= 0)
-			caller.to_chat(span("warning","\The [src.name] is empty!"))
+			activator.to_chat(span("warning","\The [src.name] is empty!"))
 			return TRUE
 
-		reagents.transfer_reagents_to(O.reagents,reagent_transfer, caller = caller)
+		reagents.transfer_reagents_to(O.reagents,reagent_transfer, activator = activator)
 
-		if(caller == O.loc)
-			caller.visible_message(span("notice","\The [caller.name] sprays their [O.name] with \the [src]."),span("notice","You spray your [O.name] with \the [src.name]."))
+		if(activator == O.loc)
+			activator.visible_message(span("notice","\The [activator.name] sprays their [O.name] with \the [src]."),span("notice","You spray your [O.name] with \the [src.name]."))
 		else
-			caller.visible_message(span("warning","\The [caller.name] sprays \the [O.loc.name]'s [O.name] with \the [src]."),span("notice","You spray \the [O.loc.name]'s [O.name] with \the [src.name]."))
+			activator.visible_message(span("warning","\The [activator.name] sprays \the [O.loc.name]'s [O.name] with \the [src]."),span("notice","You spray \the [O.loc.name]'s [O.name] with \the [src.name]."))
 
 		update_sprite()
 

@@ -19,7 +19,7 @@
 	var/shoot_alert_to_use = ALERT_LEVEL_CAUTION
 
 
-/ability/magic/projectile/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/magic/projectile/on_cast(var/mob/activator,var/atom/target,location,params)
 
 	var/icon_pos_x = params[PARAM_ICON_X]
 	var/icon_pos_y = params[PARAM_ICON_Y]
@@ -29,13 +29,13 @@
 
 	var/desired_base_spread = 0
 
-	if(is_living(caller))
-		var/mob/living/L = caller
+	if(is_living(activator))
+		var/mob/living/L = activator
 		desired_iff_tag = L.iff_tag
 		desired_loyalty_tag = L.loyalty_tag
 
-	caller.shoot_projectile(
-		caller,
+	activator.shoot_projectile(
+		activator,
 		target,
 		location,
 		params,
@@ -57,13 +57,13 @@
 	)
 
 	if(shoot_sound)
-		var/turf/T = get_turf(caller)
+		var/turf/T = get_turf(activator)
 		play_sound(shoot_sound,T,range_min = VIEW_RANGE*0.5, range_max=VIEW_RANGE + ZOOM_RANGE*3,tracked = "\ref[src]")
 		if(shoot_alert_to_use)
-			var/use_caller = TRUE
-			if(is_living(caller))
-				var/mob/living/L = caller
-				if(L.ai) use_caller = FALSE
-			create_alert(VIEW_RANGE + ZOOM_RANGE*3,T,use_caller ? caller : null,shoot_alert_to_use)
+			var/use_activator = TRUE
+			if(is_living(activator))
+				var/mob/living/L = activator
+				if(L.ai) use_activator = FALSE
+			create_alert(VIEW_RANGE + ZOOM_RANGE*3,T,use_activator ? activator : null,shoot_alert_to_use)
 
 	return TRUE

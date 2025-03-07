@@ -10,7 +10,7 @@ obj/structure/interactive/shower
 
 	reagents = /reagent_container/shower
 
-obj/structure/interactive/shower/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+obj/structure/interactive/shower/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

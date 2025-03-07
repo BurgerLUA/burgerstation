@@ -1,4 +1,4 @@
-/obj/item/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/click_on_object(var/mob/activator,var/atom/object,location,control,params)
 
 	if(is_container)
 		var/turf/found_turf
@@ -6,7 +6,7 @@
 			found_turf = object
 		else if(is_turf(object.loc))
 			if(is_item(object))
-				if(..() || object.clicked_on_by_object(caller,src,location,control,params))
+				if(..() || object.clicked_on_by_object(activator,src,location,control,params))
 					return TRUE
 			found_turf = object.loc
 		if(found_turf)
@@ -17,24 +17,24 @@
 			var/found_object = FALSE
 			for(var/obj/item/I in found_turf.contents)
 				found_object = TRUE
-				if(!src.add_object_to_src_inventory(caller,I,enable_messages=FALSE,bypass=FALSE,silent=TRUE))
+				if(!src.add_object_to_src_inventory(activator,I,enable_messages=FALSE,bypass=FALSE,silent=TRUE))
 					continue
 				result = TRUE
 			if(result)
-				caller.to_chat(span("notice","You shove everything you can into \the [src.name]."))
+				activator.to_chat(span("notice","You shove everything you can into \the [src.name]."))
 			else
 				if(!found_object)
-					caller.to_chat(span("notice","There is nothing on \the [found_turf.name] to add to \the [src.name]."))
+					activator.to_chat(span("notice","There is nothing on \the [found_turf.name] to add to \the [src.name]."))
 				else
-					caller.to_chat(span("notice","You can't seem to fit anything on the [found_turf.name] to \the [src.name]."))
+					activator.to_chat(span("notice","You can't seem to fit anything on the [found_turf.name] to \the [src.name]."))
 			return TRUE
 
 	. = ..()
 
-/obj/item/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+/obj/item/clicked_on_by_object(var/mob/activator as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	if(caller.attack_flags & CONTROL_MOD_DISARM)
-		return src.click_self(caller,location,control,params)
+	if(activator.attack_flags & CONTROL_MOD_DISARM)
+		return src.click_self(activator,location,control,params)
 
 	if(is_inventory(object) && additional_clothing_parent)
 		INTERACT_CHECK
@@ -47,37 +47,37 @@
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		var/obj/item/I = object
-		if(src.add_object_to_src_inventory(caller,I))
+		if(src.add_object_to_src_inventory(activator,I))
 			INTERACT_DELAY(1)
 			return TRUE
 
 	. = ..()
 
 
-/obj/item/click_self(var/mob/caller,location,control,params)
+/obj/item/click_self(var/mob/activator,location,control,params)
 
 	if(!length(inventories))
 		return FALSE
 
-	if(!is_advanced(caller))
+	if(!is_advanced(activator))
 		return FALSE
 
-	if(can_interact_with_inventory(caller))
+	if(can_interact_with_inventory(activator))
 		INTERACT_CHECK
 		INTERACT_DELAY(1)
-		if(caller == inventory_user)
+		if(activator == inventory_user)
 			close_inventory(inventory_user)
 		else
-			open_inventory(caller)
+			open_inventory(activator)
 		return TRUE
 
 	return FALSE
 
 
-/obj/item/proc/can_interact_with_inventory(var/mob/living/advanced/caller)
+/obj/item/proc/can_interact_with_inventory(var/mob/living/advanced/activator)
 
-	if(inventory_user && inventory_user != caller)
-		caller.to_chat(span("warning","\The [inventory_user.name] is using \the [src.name]!"))
+	if(inventory_user && inventory_user != activator)
+		activator.to_chat(span("warning","\The [inventory_user.name] is using \the [src.name]!"))
 		return FALSE
 
 	return TRUE
@@ -158,45 +158,45 @@
 
 	return TRUE
 
-/obj/item/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
+/obj/item/drop_on_object(var/mob/activator,var/atom/object,location,control,params) //Src is dragged to object
 
-	if(!can_be_dragged(caller))
+	if(!can_be_dragged(activator))
 		return TRUE
 
-	if(is_inventory(object.loc) && object.loc.dropped_on_by_object(caller,src,location,control,params))
+	if(is_inventory(object.loc) && object.loc.dropped_on_by_object(activator,src,location,control,params))
 		return TRUE
 
 	if(is_floor(object) || istype(object,/obj/structure/table))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		var/turf/T = get_turf(object)
-		if(is_container && can_dump_contents(caller,T))
+		if(is_container && can_dump_contents(activator,T))
 			INTERACT_DELAY(10)
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::dump_contents(),caller,T)
-			PROGRESS_BAR_CONDITIONS(caller,src,src::can_dump_contents(),caller,T)
-			caller.visible_message(span("notice","\The [caller.name] starts to empty the contents of \the [src.name]..."),span("notice","You start to empty the contents of \the [src.name] onto \the [object.name]..."))
+			PROGRESS_BAR(activator,src,SECONDS_TO_DECISECONDS(3),src::dump_contents(),activator,T)
+			PROGRESS_BAR_CONDITIONS(activator,src,src::can_dump_contents(),activator,T)
+			activator.visible_message(span("notice","\The [activator.name] starts to empty the contents of \the [src.name]..."),span("notice","You start to empty the contents of \the [src.name] onto \the [object.name]..."))
 		else
 			INTERACT_DELAY(1)
 			src.drop_item(T)
 		return TRUE
 
-	if(caller == object)
-		return click_self(caller)
+	if(activator == object)
+		return click_self(activator)
 
 	. = ..()
 
-/obj/item/proc/can_be_dragged(var/mob/caller)
+/obj/item/proc/can_be_dragged(var/mob/activator)
 	if(additional_clothing_parent)
 		return FALSE
 	return TRUE
 
 
-/obj/item/proc/dump_single_content(var/mob/caller,var/obj/item/I,var/turf/target_turf)
+/obj/item/proc/dump_single_content(var/mob/activator,var/obj/item/I,var/turf/target_turf)
 
-	if(!caller || !target_turf || !I)
+	if(!activator || !target_turf || !I)
 		return FALSE
 
-	if(get_dist(caller,target_turf) > 1)
+	if(get_dist(activator,target_turf) > 1)
 		return FALSE
 
 	if(!is_inventory(I.loc))
@@ -209,7 +209,7 @@
 
 	return TRUE
 
-/obj/item/proc/can_dump_contents(var/mob/caller,var/turf/target_turf)
+/obj/item/proc/can_dump_contents(var/mob/activator,var/turf/target_turf)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target_turf)
@@ -217,17 +217,17 @@
 	return TRUE
 
 
-/obj/item/proc/dump_contents(var/mob/caller,var/turf/target_turf)
+/obj/item/proc/dump_contents(var/mob/activator,var/turf/target_turf)
 
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
 		for(var/i in I.contents)
 			CHECK_TICK(50,FPS_SERVER)
 			var/obj/item/I2 = i
-			if(!dump_single_content(caller,I2,target_turf))
+			if(!dump_single_content(activator,I2,target_turf))
 				break
 
-	caller.visible_message(span("notice","\The [caller.name] dumps out the contents of \the [src.name] onto \the [target_turf.name]."),span("notice","You dump out the contents of \the [src.name] onto \the [target_turf.name]."))
+	activator.visible_message(span("notice","\The [activator.name] dumps out the contents of \the [src.name] onto \the [target_turf.name]."),span("notice","You dump out the contents of \the [src.name] onto \the [target_turf.name]."))
 
 	return TRUE
 

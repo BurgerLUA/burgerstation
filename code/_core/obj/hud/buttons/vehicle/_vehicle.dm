@@ -52,12 +52,12 @@
 	icon_state = "eject"
 	screen_loc = "RIGHT,BOTTOM:12+2"
 
-/obj/hud/button/vehicle/eject/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/vehicle/eject/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
+	if(. && is_advanced(activator))
+		var/mob/living/advanced/A = activator
 		if(A.driving)
 			A.driving.exit_vehicle(A,get_turf(A.driving))
 

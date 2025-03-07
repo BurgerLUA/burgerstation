@@ -91,7 +91,7 @@
 
 	desired_light_power = 0
 
-/obj/structure/interactive/scanner/living/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/structure/interactive/scanner/living/trigger(var/mob/activator,var/atom/source,var/signal_freq,var/signal_code)
 
 	for(var/mob/living/L in loc.contents)
 		source.trigger(L,src,signal_freq,signal_code)

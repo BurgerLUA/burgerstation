@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(vote)
 
 	var/list/active_votes = list()
 
-/subsystem/vote/unclog(var/mob/caller)
+/subsystem/vote/unclog(var/mob/activator)
 
 	for(var/k in active_votes)
 		var/vote/V = k

@@ -33,15 +33,15 @@
 
 	size = SIZE_0
 
-/obj/item/container/cigarette/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/cigarette/clicked_on_by_object(var/mob/activator,var/atom/object,location,control,params)
 	if(!lit)
-		var/damagetype/DT = SSdamagetype.all_damage_types[object.get_damage_type(caller,src)]
+		var/damagetype/DT = SSdamagetype.all_damage_types[object.get_damage_type(activator,src)]
 		if(DT.attack_damage_base[HEAT] || DT.attack_damage_base[LASER])
 			set_lit(TRUE)
 			return TRUE
 	. = ..()
 
-/obj/item/container/cigarette/feed(var/mob/caller,var/mob/living/target)
+/obj/item/container/cigarette/feed(var/mob/activator,var/mob/living/target)
 	return FALSE
 
 /obj/item/container/cigarette/get_damage_type(var/atom/attacker,var/atom/victim)
@@ -98,7 +98,7 @@
 	if(istype(src.loc,/obj/hud/inventory/organs/face))
 		var/obj/hud/inventory/organs/face/I = src.loc
 		if(I.owner && I.owner.reagents)
-			reagents.transfer_reagents_to(I.owner.reagents,consume_amount*multiplier,caller=I.owner,include_abstract=TRUE)
+			reagents.transfer_reagents_to(I.owner.reagents,consume_amount*multiplier,activator=I.owner,include_abstract=TRUE)
 			return TRUE
 	reagents.splash(null,get_turf(src),consume_amount*0.25,TRUE,1) //Just remove the reagents if there is no one to add it to.
 	return TRUE

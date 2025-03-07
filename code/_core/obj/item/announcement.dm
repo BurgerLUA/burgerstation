@@ -22,22 +22,22 @@ var/global/next_announcement = 0
 
 	rarity = RARITY_RARE
 
-/obj/item/announcement/proc/can_use(var/mob/caller)
+/obj/item/announcement/proc/can_use(var/mob/activator)
 	return TRUE
 
-/obj/item/announcement/click_self(var/mob/caller,location,control,params)
+/obj/item/announcement/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
-	if(!caller.client)
+	if(!activator.client)
 		return FALSE
 
-	if(!can_use(caller))
+	if(!can_use(activator))
 		return FALSE
 
 	if(next_announcement > world.time)
-		caller.to_chat(span("warning","Please wait [DECISECONDS_TO_SECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
+		activator.to_chat(span("warning","Please wait [DECISECONDS_TO_SECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
 		return FALSE
 
 	var/message = input("What should the message be?", "Message", stored_message) as message | null
@@ -50,30 +50,30 @@ var/global/next_announcement = 0
 	stored_message = message
 
 	if(!message)
-		caller.to_chat(span("notice","You decide not to use the device."))
+		activator.to_chat(span("notice","You decide not to use the device."))
 		return FALSE
 
-	message = police_text(caller.client,message,check_characters=TRUE)
+	message = police_text(activator.client,message,check_characters=TRUE)
 
 	if(!message)
-		caller.to_chat(span("notice","You decide not to use the device."))
+		activator.to_chat(span("notice","You decide not to use the device."))
 		return FALSE
 
-	if(get_turf(caller) != get_turf(src))
-		caller.to_chat(span("warning","You're too far away!"))
+	if(get_turf(activator) != get_turf(src))
+		activator.to_chat(span("warning","You're too far away!"))
 		return FALSE
 
 	if(!sender)
 		sender = "Central Command Portable Announcement System."
 
 	if(!title)
-		title = "Message from [caller.name]"
+		title = "Message from [activator.name]"
 
 	if(print_owner)
-		message = "[message]<br> -[caller.name]"
+		message = "[message]<br> -[activator.name]"
 
 	if(next_announcement > world.time)
-		caller.to_chat(span("warning","Please wait [DECISECONDS_TO_SECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
+		activator.to_chat(span("warning","Please wait [DECISECONDS_TO_SECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
 		return FALSE
 
 	announce(sender,title,message,sound_to_play=sound_to_play)
@@ -94,13 +94,13 @@ var/global/next_announcement = 0
 	value = 500
 	sound_to_play = 'sound/alert/warning.ogg'
 
-/obj/item/announcement/syndicate/can_use(var/mob/caller)
+/obj/item/announcement/syndicate/can_use(var/mob/activator)
 
-	if(!is_living(caller))
-		caller.to_chat(span("warning","You don't seem to know how to use this..."))
+	if(!is_living(activator))
+		activator.to_chat(span("warning","You don't seem to know how to use this..."))
 		return FALSE
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 	if(L.loyalty_tag != "Syndicate")
 		L.to_chat(span("warning","You don't seem to know how to use this..."))
 		return FALSE
@@ -116,13 +116,13 @@ var/global/next_announcement = 0
 	value = 500
 	sound_to_play = 'sound/alert/warning.ogg'
 
-/obj/item/announcement/wizard/can_use(var/mob/caller)
+/obj/item/announcement/wizard/can_use(var/mob/activator)
 
-	if(!is_living(caller))
-		caller.to_chat(span("warning","You don't seem to know how to use this..."))
+	if(!is_living(activator))
+		activator.to_chat(span("warning","You don't seem to know how to use this..."))
 		return FALSE
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 	if(L.loyalty_tag != "Wizard Federation")
 		L.to_chat(span("warning","You don't seem to know how to use this..."))
 		return FALSE
@@ -137,13 +137,13 @@ var/global/next_announcement = 0
 	value = 500
 	var/sounds_to_play = list('sound/alert/rev_pda_1.ogg','sound/alert/rev_pda_2.ogg','sound/alert/rev_pda_3.ogg','sound/alert/rev_pda_4.ogg')
 
-/obj/item/announcement/rev/can_use(var/mob/caller)
+/obj/item/announcement/rev/can_use(var/mob/activator)
 
-	if(!is_living(caller))
-		caller.to_chat(span("warning","You don't seem to know how to use this..."))
+	if(!is_living(activator))
+		activator.to_chat(span("warning","You don't seem to know how to use this..."))
 		return FALSE
 
-	var/mob/living/L = caller
+	var/mob/living/L = activator
 	if(L.loyalty_tag != "Revolutionary")
 		L.to_chat(span("warning","You don't seem to know how to use this..."))
 		return FALSE
@@ -151,19 +151,19 @@ var/global/next_announcement = 0
 	return TRUE
 
 //This is fucking horrible but it works so I don't care
-/obj/item/announcement/rev/click_self(var/mob/caller,location,control,params)
+/obj/item/announcement/rev/click_self(var/mob/activator,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
-	if(!caller.client)
+	if(!activator.client)
 		return FALSE
 
-	if(!can_use(caller))
+	if(!can_use(activator))
 		return FALSE
 
 	if(next_announcement > world.time)
-		caller.to_chat(span("warning","Please wait [DECISECONDS_TO_SECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
+		activator.to_chat(span("warning","Please wait [DECISECONDS_TO_SECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
 		return FALSE
 
 	var/message = input("What should the message be?", "Message", stored_message) as message | null
@@ -176,30 +176,30 @@ var/global/next_announcement = 0
 	stored_message = message
 
 	if(!message)
-		caller.to_chat(span("notice","You decide not to use the device."))
+		activator.to_chat(span("notice","You decide not to use the device."))
 		return FALSE
 
-	message = police_text(caller.client,message,check_characters=TRUE)
+	message = police_text(activator.client,message,check_characters=TRUE)
 
 	if(!message)
-		caller.to_chat(span("notice","You decide not to use the device."))
+		activator.to_chat(span("notice","You decide not to use the device."))
 		return FALSE
 
-	if(get_turf(caller) != get_turf(src))
-		caller.to_chat(span("warning","You're too far away!"))
+	if(get_turf(activator) != get_turf(src))
+		activator.to_chat(span("warning","You're too far away!"))
 		return FALSE
 
 	if(!sender)
 		sender = "Central Command Portable Announcement System."
 
 	if(!title)
-		title = "Message from [caller.name]"
+		title = "Message from [activator.name]"
 
 	if(print_owner)
-		message = "[message]<br> -[caller.name]"
+		message = "[message]<br> -[activator.name]"
 
 	if(next_announcement > world.time)
-		caller.to_chat(span("warning","Please wait [DECISECONDS_TO_SECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
+		activator.to_chat(span("warning","Please wait [DECISECONDS_TO_SECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
 		return FALSE
 
 	announce(sender,title,message,sound_to_play=pick(sounds_to_play))

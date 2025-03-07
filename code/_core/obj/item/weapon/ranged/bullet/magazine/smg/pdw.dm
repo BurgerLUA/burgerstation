@@ -83,7 +83,7 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/magazine/smg/pdw/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/smg/pdw/handle_ammo(var/mob/activator)
 
 	var/old_stored_magazine = stored_magazine ? TRUE : FALSE
 	var/old_desired_ammo_count = stored_magazine ? CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*5, 1) : 0
