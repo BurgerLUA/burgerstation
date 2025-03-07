@@ -111,6 +111,44 @@
 		caller.to_chat(span("notice","The ammo box has been restocked with [bullets_to_add] [initial(bullet_to_create.name)]."))
 		return TRUE
 
+	if(istype(object,/obj/item/clothing/belt/bandoliers)) //Allows bandolier type items to be restocked using a premium restocker
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
+		if(!premium)
+			caller.to_chat(span("warning","Only non-surplus ammo restockers can restock bags and belts!"))
+			return TRUE
+		var/obj/item/clothing/belt/bandoliers/B = object
+		var/obj/item/bullet_cartridge/bullet_to_create = premium || !B.bullet_type ? B.bullet_type_premium : B.bullet_type
+		var/bullets_to_add = B.max_bullets - B.bullet_count
+		if(B.can_be_restocked)
+			if(bullets_to_add <= 0)
+				caller.to_chat(span("warning","The belt is already full!"))
+				return TRUE
+			if(B.next_regen > world.time)
+				caller.to_chat(span("warning","That belt was just filled! Please wait [CEILING(DECISECONDS_TO_SECONDS(B.next_regen-world.time),1)] seconds!"))
+				return TRUE
+			if(premium)
+				var/value_per_bullet = SSbalance.stored_value[bullet_to_create]
+				if(value_per_bullet*bullets_to_add > currency_left)
+					caller.to_chat(span("warning","\The [src.name] doesn't have enough credits stored to complete this operation!"))
+					return TRUE
+				else
+					currency_left -= value_per_bullet*bullets_to_add
+					if(!B.stored_bullets[bullet_to_create.type])
+						B.stored_bullets[bullet_to_create.type] = bullets_to_add
+						B.update_bullet_count()
+					else
+						B.stored_bullets[bullet_to_create.type] += bullets_to_add
+						B.update_bullet_count()
+		else
+			caller.to_chat(span("warning","That belt can't be restocked with a restocker!"))
+			return TRUE
+		B.next_regen = world.time + SECONDS_TO_DECISECONDS(120)
+		B.update_icon()
+		B.update_sprite()
+		caller.to_chat(span("notice","The belt has been restocked with [bullets_to_add] bullets."))
+
 	return ..()
 
 /obj/structure/interactive/restocker/ammo/premium
