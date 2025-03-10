@@ -28,9 +28,24 @@
 	value = 40
 
 /obj/item/magazine/sniper_20mm/du
+	name = "20x117mm DU sniper magazine"
 	ammo = /obj/item/bullet_cartridge/sniper_20/du
 	icon_state = "20_DU"
-	prem_restock_ammo = /obj/item/bullet_cartridge/sniper_20
+	rarity = RARITY_RARE
+	value = 120
+	value_burgerbux = 1
+
+/obj/item/magazine/sniper_20mm/hei
+	name = "20x117mm HEI sniper magazine"
+	ammo = /obj/item/bullet_cartridge/sniper_20/hei
+	icon_state = "20_HEI"
+	rarity = RARITY_RARE
+	value = 120
+	value_burgerbux = 1
+/obj/item/magazine/sniper_20mm/hei/sap
+	name = "20x117mm SAPHEI sniper magazine"
+	ammo = /obj/item/bullet_cartridge/sniper_20/hei/sap
+	icon_state = "20_SAPHEI"
 	rarity = RARITY_RARE
 	value = 120
 	value_burgerbux = 1
