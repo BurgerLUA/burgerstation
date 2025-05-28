@@ -4,16 +4,15 @@
 	color = "#FFFFFF"
 	alpha = 255
 
-	metabolism_blood = 0.5
-	metabolism_stomach = 0.05
+	metabolism_blood = 0
+	metabolism_stomach = 0
 
 	var/nutrition_normal_amount = 0 //Per unit
 	var/nutrition_fast_amount = 0 //Per unit
 	var/nutrition_quality_amount = 0 //Per unit.
-
-
 	var/hydration_amount = 0 //Per unit
-	var/heal_factor = 2 //Per unit.
+
+	var/heal_amount = 2 //Per unit.
 
 	value = 1 //Acts as a multiplier.
 
@@ -43,11 +42,20 @@
 	if(nutrition_normal_amount + nutrition_fast_amount + nutrition_quality_amount < 0)
 		log_error("Warning: [src.type] had a negative total nutritional value!")
 
+	if(metabolism_stomach <= 0)
+		metabolism_stomach = (0.01 + max(0,hydration_amount) + max(0,nutrition_normal_amount)/20 + max(0,nutrition_quality_amount)/10) / (1 + max(0,nutrition_fast_amount)/8)
+		if(metabolism_stomach <= 0.001)
+			metabolism_stomach = 0.001
 
+	if(metabolism_blood <= 0)
+		metabolism_blood = metabolism_stomach*0.1
+		if(metabolism_blood <= 0.001)
+			metabolism_blood = 0.001
 
+	value *= 0.1 + max(0.1,(abs(nutrition_normal_amount)+abs(nutrition_quality_amount)*4+abs(nutrition_fast_amount)*0.25)*0.035) + max(0,hydration_amount*0.015) + max(0,heal_amount) + max(0,0.05*flavor_strength)
 
-	value *= 0.1 + max(0.1,(abs(nutrition_normal_amount)+abs(nutrition_quality_amount)*4+abs(nutrition_fast_amount)*0.25)*0.035) + max(0,hydration_amount*0.015) + max(0,heal_factor) + max(0,0.05*flavor_strength)
 	. = ..()
+
 	value = CEILING(value,0.01)
 
 /reagent/nutrition/on_splash(var/reagent_container/container,var/mob/activator,var/atom/target,var/volume_to_splash,var/strength_mod=1)
@@ -107,8 +115,8 @@
 					for(var/k in skill_experience_per_nutrition)
 						owner.add_skill_xp(k,skill_experience_per_nutrition[k]*nutrition_quality_amount*.*multiplier)
 
-		if(heal_factor && owner && owner.health)
-			var/amount_to_heal = heal_factor*.*multiplier
+		if(heal_amount && owner && owner.health)
+			var/amount_to_heal = heal_amount*.*multiplier
 			if(amount_to_heal < 0 && is_advanced(owner)) //Amount to heal is negative.
 				var/mob/living/advanced/A = owner
 				var/species/S = SPECIES(A.species)
@@ -116,8 +124,8 @@
 					amount_to_heal = 0 //Not affected by bad food.
 			//Do healing.
 			if(amount_to_heal > 0)
-				owner.brute_regen_buffer += amount_to_heal
-				owner.burn_regen_buffer += amount_to_heal
+				owner.brute_regen_buffer += amount_to_heal*0.5
+				owner.burn_regen_buffer += amount_to_heal*0.5
 
 				if(owner.blood_volume < owner.blood_volume_max)
 					owner.blood_volume = clamp(owner.blood_volume + amount_to_heal,0,owner.blood_volume_max)

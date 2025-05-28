@@ -27,24 +27,24 @@
 
 	lethal = TRUE
 
-	heal_factor = -10
+	heal_amount = -10
 
 /reagent/nutrition/bad_meat/chicken
 	heated_reagent_temp = 340
 	flags_flavor = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_RAW | FLAG_FLAVOR_CHICKEN
-	heal_factor = -15
+	heal_amount = -15
 
 /reagent/nutrition/bad_meat/fish
 	heated_reagent_temp = 325
 	flags_flavor = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_RAW | FLAG_FLAVOR_FISH
-	heal_factor = -5
+	heal_amount = -5
 
 /reagent/nutrition/bad_meat/insect
 	heated_reagent_temp = 360
 	flags_flavor = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_RAW
-	heal_factor = -10
+	heal_amount = -10
 
 /reagent/nutrition/bad_meat/ancient
 	heated_reagent_temp = 350
 	flags_flavor = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_RAW | FLAG_FLAVOR_NECRO
-	heal_factor = -10
+	heal_amount = -10

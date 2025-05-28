@@ -13,7 +13,7 @@
 	var/adrenaline_strength = 100
 	var/stamina_strength = 10
 
-	heal_factor = 0
+	heal_amount = 0
 
 /reagent/nutrition/energy/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()

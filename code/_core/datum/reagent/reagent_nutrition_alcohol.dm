@@ -15,7 +15,7 @@
 
 	var/power = 100 //Also known as alcohol by volume.
 
-	heal_factor = 0
+	heal_amount = 0
 
 	value = 3
 
@@ -220,7 +220,7 @@
 
 	flavor = "hearty punch"
 	flavor_strength = 3
-	heal_factor = 4
+	heal_amount = 4
 
 	power = 30
 

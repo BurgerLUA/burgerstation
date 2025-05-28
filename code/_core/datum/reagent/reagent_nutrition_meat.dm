@@ -13,7 +13,7 @@
 
 	liquid = 0.3
 
-	heal_factor = 10
+	heal_amount = 10
 
 	flags_reagent = FLAG_REAGENT_FAT
 
@@ -191,7 +191,7 @@
 	nutrition_normal_amount = 10
 	nutrition_quality_amount = 0
 
-	heal_factor = 5
+	heal_amount = 5
 
 	flavor = "raw meat"
 
@@ -233,7 +233,7 @@
 	nutrition_quality_amount = 0
 
 
-	heal_factor = 5
+	heal_amount = 5
 
 	flavor = "raw meat"
 
@@ -262,7 +262,7 @@
 	nutrition_fast_amount = 5
 	nutrition_normal_amount = 15
 	nutrition_quality_amount = 0
-	heal_factor = 5
+	heal_amount = 5
 
 	flavor = "raw tangy meat"
 
@@ -292,7 +292,7 @@
 	nutrition_fast_amount = 5
 	nutrition_normal_amount = 10
 	nutrition_quality_amount = 5
-	heal_factor = 2
+	heal_amount = 2
 
 	flavor = "raw chicken"
 
@@ -322,7 +322,7 @@
 	nutrition_fast_amount = 0
 	nutrition_normal_amount = 20
 	nutrition_quality_amount = 0
-	heal_factor = 5
+	heal_amount = 5
 
 	flavor = "mistakes"
 
@@ -354,7 +354,7 @@
 	nutrition_fast_amount = 0
 	nutrition_normal_amount = 15
 	nutrition_quality_amount = 5
-	heal_factor = 10
+	heal_amount = 10
 
 	flavor = "sour dirt"
 
@@ -388,7 +388,7 @@
 	nutrition_fast_amount = 5
 	nutrition_normal_amount = 0
 	nutrition_quality_amount = 15
-	heal_factor = 10
+	heal_amount = 10
 
 	flavor = "sour dirt"
 
@@ -424,7 +424,7 @@
 	nutrition_fast_amount = 5
 	nutrition_normal_amount = 0
 	nutrition_quality_amount = 20
-	heal_factor = 10
+	heal_amount = 10
 
 	flavor = "brains"
 
@@ -459,7 +459,7 @@
 	nutrition_fast_amount = 0
 	nutrition_normal_amount = 5
 	nutrition_quality_amount = 15
-	heal_factor = 5
+	heal_amount = 5
 
 	flavor = "tough raw jerky"
 
@@ -496,7 +496,7 @@
 	nutrition_fast_amount = 0
 	nutrition_normal_amount = 0
 	nutrition_quality_amount = 0
-	heal_factor = 0
+	heal_amount = 0
 
 	flavor = "rocks"
 
@@ -512,7 +512,7 @@
 	nutrition_fast_amount = 5
 	nutrition_normal_amount = 15
 	nutrition_quality_amount = 0
-	heal_factor = 10
+	heal_amount = 10
 
 	flavor = "filet mignon"
 
@@ -538,7 +538,7 @@
 	nutrition_normal_amount = 10
 	nutrition_quality_amount = 0
 
-	heal_factor = 5
+	heal_amount = 5
 
 	flavor = "hair"
 
@@ -569,7 +569,7 @@
 	nutrition_normal_amount = 0
 	nutrition_quality_amount = 15
 
-	heal_factor = 20
+	heal_amount = 20
 
 	flavor = "unbearable meat"
 
@@ -599,7 +599,7 @@
 	nutrition_fast_amount = 5
 	nutrition_normal_amount = 10
 	nutrition_quality_amount = 5
-	heal_factor = 5
+	heal_amount = 5
 
 	flavor = "ice"
 
@@ -630,7 +630,7 @@
 	nutrition_normal_amount = 5
 	nutrition_quality_amount = 10
 
-	heal_factor = 5
+	heal_amount = 5
 
 	heated_reagent = /reagent/nutrition/meat/fish/cooked
 
@@ -659,7 +659,7 @@
 	nutrition_normal_amount = 5
 	nutrition_quality_amount = 15
 
-	heal_factor = 10
+	heal_amount = 10
 
 	heated_reagent = /reagent/nutrition/meat/fish/quality/cooked
 
@@ -690,7 +690,7 @@
 	nutrition_normal_amount = 10
 	nutrition_quality_amount = 5
 
-	heal_factor = 5
+	heal_amount = 5
 
 	flavor = "seashells"
 
@@ -722,7 +722,7 @@
 	nutrition_normal_amount = 5
 	nutrition_quality_amount = 10
 
-	heal_factor = 5
+	heal_amount = 5
 
 	flavor = "seashells"
 
@@ -751,7 +751,7 @@
 	nutrition_normal_amount = 10
 	nutrition_quality_amount = 5
 
-	heal_factor = 1
+	heal_amount = 1
 
 	flavor = "egg white"
 
@@ -764,6 +764,6 @@
 	nutrition_normal_amount = 10
 	nutrition_quality_amount = 10
 
-	heal_factor = 10
+	heal_amount = 10
 
 	flavor = "egg yolk"
