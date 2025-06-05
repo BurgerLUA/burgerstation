@@ -81,15 +81,10 @@
 	if(armor_rating <= 0) //Negative armor rating means bonus damage.
 		return damage_dealt * (1 + (-armor_rating/200))
 
-	var/a = armor_rating
-	var/d = damage_dealt
-	var/c = 0.85 //Cooefient
-	var/m = 200 //Ideal armor rating to negative c (as a percent) damage.
-
 	if(armor_rating >= m)
 		return d*(1-c)
 
-	return  ((1-c*0.5)*d) + (d*cos(a*(1/m)*180)*c*0.5)
+	return 0.575*damage_dealt + damage_dealt*cos(armor_rating*0.9)*0.425
 
 
 //Experimental graph: https://www.desmos.com/calculator/tsnxztlg8s
