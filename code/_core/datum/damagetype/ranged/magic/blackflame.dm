@@ -1,31 +1,29 @@
 /damagetype/ranged/magic/blackflame/
 	attack_damage_base = list(
 		HEAT = 30,
-		ARCANE = 10,
-		DARK = 10
+		DARK = 20
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 20,
-		ATTRIBUTE_VITALITY = 30
+
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = list(ARCANE,HEAT),
-		ATTRIBUTE_VITALITY = DARK
+
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = 20,
 		SKILL_PRAYER = 30,
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC = list(HEAT,ARCANE),
 		SKILL_PRAYER = DARK
 	)
 
-	force_attacker_armor_calculations_with = DARK
+	damage_magic_type_consideration = list(
+		HEAT = DARK,
+		DARK = DARK
+	)
 
 /damagetype/ranged/magic/blackflame/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 

@@ -80,6 +80,12 @@
 		SANITY = 0
 	)
 
+	var/list/damage_magic_type_consideration = list(
+
+
+
+	)
+
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	var/list/attack_damage_penetration = list()
 
@@ -114,10 +120,6 @@
 	var/debug = FALSE
 
 	var/list/defense_bonuses = list()
-
-	var/ignore_armor_bonus_damage = FALSE
-
-	var/force_attacker_armor_calculations_with
 
 	var/attack_delay = 10 //Time, in deciseconds. Attack delay with dex is 100
 	var/attack_delay_max = 20 //Time, in deciseconds. Attack delay with dex is 0
@@ -571,23 +573,38 @@
 				damage_to_deal[k] = v * total_damage
 
 	for(var/damage_type in damage_to_deal)
+
 		if(!damage_type)
 			continue
+
+		var/victim_defense = defense_rating_victim[damage_type]
+
 		if(debug) log_debug("Calculating [damage_type]...")
 		if(debug) log_debug("Initial [damage_type] damage: [damage_to_deal[damage_type]].")
-		if(!ignore_armor_bonus_damage && (force_attacker_armor_calculations_with || damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
-			var/armor_damage_type_to_use = force_attacker_armor_calculations_with ? force_attacker_armor_calculations_with : damage_type
-			if(defense_rating_attacker[armor_damage_type_to_use] && IS_INFINITY(defense_rating_attacker[damage_type])) //Don't do any damage if we are immune that type (arcane, holy, and dark only).
+
+		if(length(damage_magic_type_consideration) && damage_magic_type_consideration[damage_type])
+			var/armor_damage_type_to_use = damage_magic_type_consideration[damage_type]
+			if(debug) log_debug("Checking [armor_damage_type_to_use] attacker values due to consideration.")
+			if(defense_rating_attacker[armor_damage_type_to_use] && IS_INFINITY(defense_rating_attacker[armor_damage_type_to_use])) //If the attacker is immune, don't bother.
 				damage_to_deal[damage_type] = 0
 				continue
+			if(defense_rating_victim[armor_damage_type_to_use] && armor_damage_type_to_use != damage_type) //Avoid double calculations.
+				if(IS_INFINITY(defense_rating_victim[armor_damage_type_to_use]))
+					damage_to_deal[damage_type] = 0
+					continue
+				victim_defense += defense_rating_victim[armor_damage_type_to_use] //Double/hybrid defense.
+				if(debug) log_debug("Adding an additional [defense_rating_victim[armor_damage_type_to_use]] defense due to consideration.")
 			if(attacker.health && is_advanced(attacker))
 				var/mob/living/advanced/A = attacker
-				if(A.overall_clothing_defense_rating[armor_damage_type_to_use])
+				if(A.overall_clothing_defense_rating[armor_damage_type_to_use]) //Check attacker's overall defense rating for that damage type.
+					if(IS_INFINITY(A.overall_clothing_defense_rating[armor_damage_type_to_use]))
+						continue
 					var/damage_bonus = A.overall_clothing_defense_rating[armor_damage_type_to_use]*0.01
 					if(!A.ckey_last && damage_bonus > 1) //AI get less of a bonus.
 						damage_bonus = max(1,damage_bonus*0.5)
 					damage_to_deal[damage_type] *= clamp(damage_bonus,0.15,2)  //Deal 1% more damage per 100 resist of attacker, max of 100% more damage, with a minimum of 85% less damage.
 					if(debug) log_debug("Victim's new [damage_type] damage taken due to attacker's [armor_damage_type_to_use] armor rating: [damage_to_deal[damage_type]].")
+
 		if(damage_type != FATIGUE && block_multiplier > 0)
 			if(debug) log_debug("Calculating [damage_type] with blocking...")
 			var/blocked_damage = block_multiplier * damage_to_deal[damage_type]
@@ -595,13 +612,13 @@
 			fatigue_damage += blocked_damage*0.5
 			damage_blocked_with_shield += blocked_damage
 		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier * stealth_multiplier //Before armor calculations.
-		if(debug) log_debug("Post-bonus [damage_type] damage: [old_damage_amount].")
-		var/victim_defense = defense_rating_victim[damage_type]
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
 		if(IS_INFINITY(victim_defense)) //Defense is infinite. No point in calculating further damage or armor. Even if penetration is infinity.
 			damage_to_deal[damage_type] = 0
 			if(debug) log_debug("Victim has infinite [damage_type] defense. No damage can be dealt.")
 			continue
+
+		if(debug) log_debug("Post-bonus [damage_type] damage: [old_damage_amount].")
 
 		if(debug) log_debug("Victim's [damage_type] defense before penetration calculations: [victim_defense].")
 

@@ -19,7 +19,9 @@
 		SKILL_MAGIC = SHOCK
 	)
 
-	force_attacker_armor_calculations_with = ARCANE
+	damage_magic_type_consideration = list(
+		SHOCK = ARCANE
+	)
 
 /damagetype/ranged/magic/tesla_shock
 
@@ -44,4 +46,6 @@
 		SKILL_MAGIC = SHOCK
 	)
 
-	force_attacker_armor_calculations_with = ARCANE
+	damage_magic_type_consideration = list(
+		SHOCK = ARCANE
+	)

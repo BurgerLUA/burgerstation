@@ -20,4 +20,7 @@
 		SKILL_MAGIC = ARCANE
 	)
 
-	force_attacker_armor_calculations_with = ARCANE
+	damage_magic_type_consideration = list(
+		SHOCK = ARCANE,
+		ARCANE = ARCANE
+	)

@@ -16,7 +16,10 @@
 		SKILL_PRAYER = list(BLUNT,HOLY)
 	)
 
-	force_attacker_armor_calculations_with = HOLY
+	damage_magic_type_consideration = list(
+		BLUNT = HOLY,
+		HOLY = HOLY
+	)
 
 	crit_multiplier = 2
 

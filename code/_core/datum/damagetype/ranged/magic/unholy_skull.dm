@@ -17,4 +17,8 @@
 		SKILL_PRAYER = DARK
 	)
 
-	force_attacker_armor_calculations_with = DARK
+	damage_magic_type_consideration = list(
+		BLUNT = DARK,
+		BOMB = DARK,
+		DARK = DARK
+	)

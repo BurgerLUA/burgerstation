@@ -37,7 +37,10 @@
 				if(final_armor_to_use > 0) //Target has armor.
 					final_armor_to_use = max(0,final_armor_to_use - penetration)
 				//Negative armor means a damage multiplier (handled in calculate_damage_with_armor)
-		if(!ignore_armor_bonus_damage && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
-			damage *= clamp(1 + self_armor_to_use*0.01,0,2)
+		if(length(damage_magic_type_consideration) && damage_magic_type_consideration[damage_type])
+			if(IS_INFINITY(self_armor_to_use))
+				damage = 0
+			else
+				damage *= clamp(self_armor_to_use*0.01,0.15,2)
 		. += calculate_damage_with_armor(damage*damage_mod,final_armor_to_use)
 

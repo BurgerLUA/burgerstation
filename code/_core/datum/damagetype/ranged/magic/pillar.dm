@@ -1,30 +1,23 @@
 /damagetype/ranged/magic/pillar
 	attack_damage_base = list(
 		BLUNT = 280,
-		HEAT = 40,
-		ARCANE = 0,
-		DARK = 0
 	)
 
-	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 60,
-	)
+	attribute_stats = list()
 
-	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = ARCANE
-	)
+	attribute_damage = list()
 
 	skill_stats = list(
-		SKILL_MAGIC = 100,
 		SKILL_PRAYER = 100
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC = ARCANE,
-		SKILL_PRAYER = DARK
+		SKILL_PRAYER = BLUNT
 	)
 
-	force_attacker_armor_calculations_with = DARK
+	damage_magic_type_consideration = list(
+		BLUNT = DARK,
+	)
 
 /damagetype/ranged/magic/pillar/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 

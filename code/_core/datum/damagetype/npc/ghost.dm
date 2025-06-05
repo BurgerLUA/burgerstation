@@ -16,8 +16,6 @@
 	impact_sounds = list()
 	impact_sounds_flesh = list()
 
-	ignore_armor_bonus_damage = TRUE
-
 	can_be_parried = FALSE
 
 	attack_delay = 1

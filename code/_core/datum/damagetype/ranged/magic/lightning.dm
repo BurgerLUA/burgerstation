@@ -16,4 +16,7 @@
 		SKILL_PRAYER = HOLY
 	)
 
-	force_attacker_armor_calculations_with = HOLY
+	damage_magic_type_consideration = list(
+		SHOCK = HOLY,
+		HOLY = HOLY
+	)
