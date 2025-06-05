@@ -81,8 +81,8 @@
 	if(armor_rating <= 0) //Negative armor rating means bonus damage.
 		return damage_dealt * (1 + (-armor_rating/200))
 
-	if(armor_rating >= m)
-		return d*(1-c)
+	if(armor_rating >= 200)
+		return damage_dealt*0.15
 
 	return 0.575*damage_dealt + damage_dealt*cos(armor_rating*0.9)*0.425
 
