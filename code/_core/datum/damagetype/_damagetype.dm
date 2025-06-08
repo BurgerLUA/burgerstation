@@ -583,27 +583,27 @@
 		if(debug) log_debug("Initial [damage_type] damage: [damage_to_deal[damage_type]].")
 
 		if(length(damage_magic_type_consideration) && damage_magic_type_consideration[damage_type])
-			var/armor_damage_type_to_use = damage_magic_type_consideration[damage_type]
-			if(debug) log_debug("Checking [armor_damage_type_to_use] attacker values due to consideration.")
-			if(defense_rating_attacker[armor_damage_type_to_use] && IS_INFINITY(defense_rating_attacker[armor_damage_type_to_use])) //If the attacker is immune, don't bother.
+			var/consideration_damage_type = damage_magic_type_consideration[damage_type]
+			if(debug) log_debug("Checking [consideration_damage_type] attacker values due to consideration.")
+			if(defense_rating_attacker[consideration_damage_type] && IS_INFINITY(defense_rating_attacker[consideration_damage_type])) //If the attacker is immune, don't bother.
 				damage_to_deal[damage_type] = 0
 				continue
-			if(defense_rating_victim[armor_damage_type_to_use] && armor_damage_type_to_use != damage_type) //Avoid double calculations.
-				if(IS_INFINITY(defense_rating_victim[armor_damage_type_to_use]))
+			if(defense_rating_victim[consideration_damage_type] && consideration_damage_type != damage_type) //Avoid double calculations.
+				if(IS_INFINITY(defense_rating_victim[consideration_damage_type]))
 					damage_to_deal[damage_type] = 0
 					continue
-				victim_defense += defense_rating_victim[armor_damage_type_to_use] //Double/hybrid defense.
-				if(debug) log_debug("Adding an additional [defense_rating_victim[armor_damage_type_to_use]] defense due to consideration.")
+				victim_defense += defense_rating_victim[consideration_damage_type] //Double/hybrid defense.
+				if(debug) log_debug("Adding an additional [defense_rating_victim[consideration_damage_type]] defense due to consideration.")
 			if(attacker.health && is_advanced(attacker))
 				var/mob/living/advanced/A = attacker
-				if(A.overall_clothing_defense_rating[armor_damage_type_to_use]) //Check attacker's overall defense rating for that damage type.
-					if(IS_INFINITY(A.overall_clothing_defense_rating[armor_damage_type_to_use]))
+				if(A.overall_clothing_defense_rating[consideration_damage_type]) //Check attacker's overall defense rating for that damage type.
+					if(IS_INFINITY(A.overall_clothing_defense_rating[consideration_damage_type]))
 						continue
-					var/damage_bonus = A.overall_clothing_defense_rating[armor_damage_type_to_use]*0.01
+					var/damage_bonus = A.overall_clothing_defense_rating[consideration_damage_type]*0.01
 					if(!A.ckey_last && damage_bonus > 1) //AI get less of a bonus.
 						damage_bonus = max(1,damage_bonus*0.5)
 					damage_to_deal[damage_type] *= clamp(damage_bonus,0.15,2)  //Deal 1% more damage per 100 resist of attacker, max of 100% more damage, with a minimum of 85% less damage.
-					if(debug) log_debug("Victim's new [damage_type] damage taken due to attacker's [armor_damage_type_to_use] armor rating: [damage_to_deal[damage_type]].")
+					if(debug) log_debug("Victim's new [damage_type] damage taken due to attacker's overall [consideration_damage_type] armor rating: [damage_to_deal[damage_type]].")
 
 		if(damage_type != FATIGUE && block_multiplier > 0)
 			if(debug) log_debug("Calculating [damage_type] with blocking...")
