@@ -97,16 +97,16 @@
 
 
 		if(hydration_amount)
-			owner.add_hydration(hydration_amount*.*multiplier)
+			owner.add_hydration(hydration_amount*.*multiplier*0.5)
 
 		if(nutrition_fast_amount)
 			owner.add_nutrition_fast(nutrition_fast_amount*.*multiplier)
 
 		if(nutrition_normal_amount)
-			owner.add_nutrition_normal(nutrition_fast_amount*.*multiplier)
+			owner.add_nutrition_normal(nutrition_fast_amount*.*multiplier*0.5)
 
 		if(nutrition_quality_amount)
-			owner.add_nutrition_quality(nutrition_quality_amount)
+			owner.add_nutrition_quality(nutrition_quality_amount*.*multiplier*0.5)
 			if(nutrition_quality_amount > 0 && owner.client)
 				if(length(attribute_experience_per_nutrition))
 					for(var/k in attribute_experience_per_nutrition)

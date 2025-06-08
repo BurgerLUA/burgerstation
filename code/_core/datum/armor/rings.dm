@@ -1,15 +1,35 @@
+/armor/ring/copper
+	defense_rating = list(
+		BLADE = 5,
+		BLUNT = 5,
+		PIERCE = 5,
+		LASER = 5,
+		ARCANE = 5,
+		HEAT = 5,
+		COLD = 5,
+		SHOCK = 5,
+		ACID = 5,
+		BOMB = 5,
+		BIO = 5,
+		RAD = 5,
+		HOLY = 5,
+		DARK = 5
+	)
+
 /armor/ring/minor_defense
 	defense_rating = list(
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10
 	)
+
 /armor/ring/defense
 	defense_rating = list(
 		BLADE = 15,
 		BLUNT = 15,
 		PIERCE = 15
 	)
+
 /armor/ring/major_defense
 	defense_rating = list(
 		BLADE = 20,
@@ -178,10 +198,4 @@
 		PAIN = 10,
 		ION = 10,
 		SANITY = -100
-	)
-/armor/ring/copper
-	defense_rating = list(
-		BRUTE = 5,
-		BURN = 5,
-		TOX = 5
 	)
