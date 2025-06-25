@@ -22,25 +22,25 @@
 	return .
 
 /mob/living/proc/add_hydration(var/amount)
-	var/multiplier = amount > 0 ? max(0.5,2 - hydration/hydration_max) : 0
+	var/multiplier = amount > 0 ? max(0.5,2 - hydration/hydration_max) : 1
 	var/amount_to_add = clamp(amount*multiplier,-hydration,hydration_max-hydration)
 	hydration += amount_to_add
 	return amount_to_add
 
 /mob/living/proc/add_nutrition_normal(var/amount)
-	var/multiplier = amount > 0 ? max(0.5,2 - nutrition_normal/nutrition_max) : 0
+	var/multiplier = amount > 0 ? max(0.5,2 - nutrition_normal/nutrition_max) : 1
 	var/amount_to_add = clamp(amount*multiplier,-nutrition_normal,nutrition_max_hard-nutrition_normal)
 	nutrition_normal += amount_to_add
 	return amount_to_add
 
 /mob/living/proc/add_nutrition_quality(var/amount)
-	var/multiplier = amount > 0 ? max(0.5,2 - nutrition_quality/nutrition_max) : 0
+	var/multiplier = amount > 0 ? max(0.5,2 - nutrition_quality/nutrition_max) : 1
 	var/amount_to_add = clamp(amount*multiplier,-nutrition_quality,nutrition_max_hard-nutrition_quality)
 	nutrition_quality += amount_to_add
 	return amount_to_add
 
 /mob/living/proc/add_nutrition_fast(var/amount)
-	var/multiplier = amount > 0 ? max(0.5,2 - nutrition_fast/nutrition_max) : 0
+	var/multiplier = amount > 0 ? max(0.5,2 - nutrition_fast/nutrition_max) : 1
 	var/amount_to_add = clamp(amount*multiplier,-nutrition_fast,nutrition_max_hard-nutrition_fast)
 	nutrition_fast += amount_to_add
 	return amount_to_add
