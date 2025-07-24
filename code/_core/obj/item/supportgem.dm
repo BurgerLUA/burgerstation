@@ -12,6 +12,7 @@
 	var/power_per_quality = 0 //Above 100.
 
 	quality = 100
+	quality_max = 175
 
 	color = "#FFFFFF"
 	var/color_2 = "#FFFFFF"

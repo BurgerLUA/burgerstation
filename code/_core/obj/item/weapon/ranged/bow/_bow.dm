@@ -3,6 +3,7 @@
 	icon_state = "inventory"
 
 	requires_bullets = TRUE
+	quality_max = 175
 
 	shoot_sounds = list(
 		'sound/weapons/ranged/bow/fire.ogg'

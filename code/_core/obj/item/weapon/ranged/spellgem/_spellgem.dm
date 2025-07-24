@@ -9,6 +9,7 @@
 	var/color_3 = null //Outline
 
 	var/spread_per_shot = 5 //Angle to add per shot.
+	quality_max = 175
 
 	automatic = TRUE
 

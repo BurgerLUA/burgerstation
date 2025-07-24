@@ -23,7 +23,7 @@
 		activator.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]! Try tempering the main part of this clothing set."))
 		return FALSE
 
-	if(I.quality <= -1)
+	if(!I.can_adjust_quality())
 		activator.to_chat(span("warning","\The [src.name] cannot be used with \the [I.name]!"))
 		return FALSE
 
@@ -39,13 +39,8 @@
 
 	can_use = FALSE
 
+	I.adjust_quality(rand(1, I.quality_max) - I.quality, 200)
 	play_sound('sound/weapons/magic/zap_large.ogg',get_turf(src))
-
-	I.adjust_quality(rand(1, 200) - I.quality)
-
-	if(is_clothing(I))
-		var/obj/item/clothing/C = I
-		C.sync_additional_clothing()
 
 	qdel(src)
 

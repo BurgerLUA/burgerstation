@@ -1,6 +1,7 @@
 obj/item/weapon/melee
 	name = "Melee Weapon"
 	desc = "A melee weapon"
+	quality_max = 175
 
 	drop_sound = 'sound/items/drop/sword.ogg'
 

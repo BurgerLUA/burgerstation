@@ -7,7 +7,6 @@
 
 	var/increase = 5
 	var/minimum = 100
-	var/maximum = 125
 
 	var/uses_left = 1 //How many times can this object be used to improve something? Set to -1 for infinity.
 

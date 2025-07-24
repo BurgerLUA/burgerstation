@@ -16,6 +16,7 @@
 	use_iff_tag = TRUE
 
 	damage_mod = 1
+	quality_max = 175
 
 	var/charge_icon_state_count = 0
 	var/old_charge_icon_state
