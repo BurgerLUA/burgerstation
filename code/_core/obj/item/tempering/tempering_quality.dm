@@ -20,10 +20,6 @@
 		activator.to_chat(span("warning","\The [I.name] cannot be improved!"))
 		return FALSE
 
-	if(I.quality >= I.quality_max)
-		activator.to_chat(span("warning","\The [I.name] cannot be improved any further!"))
-		return FALSE
-
 	return ..()
 
 /obj/item/tempering/quality/get_examine_list(var/mob/examiner)
