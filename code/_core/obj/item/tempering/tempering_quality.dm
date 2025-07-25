@@ -27,11 +27,14 @@
 	. += span("notice","Increases the quality of [item_type_name] by [increase]%, with a minimum of [minimum]%.")
 
 /obj/item/tempering/quality/on_temper(var/mob/activator, var/obj/item/I)
-	I.adjust_quality((I.quality + increase) > minimum ? increase : minimum - I.quality)
+	if((I.quality + increase) > minimum)
+		I.adjust_quality(increase)
+	else
+		I.adjust_quality(minimum - I.quality)
 	return ..()
 
 /obj/item/tempering/quality/general
-	name = "advanced repair kitaaaa"
+	name = "advanced repair kit"
 	desc = "Your gear is your life. Take care of it!"
 	desc_extended = "A collection of scrap, tools, and generally useful materials that can help you maintain the condition any sort of item."
 	icon_state = "repair_kit"
@@ -92,7 +95,7 @@
 	temper_whitelist = list(
 		/obj/item/weapon/ranged/bullet,
 		/obj/item/weapon/ranged/energy,
-		/obj/item/weapon/ranged/reagent_ammo/,
+		/obj/item/weapon/ranged/reagent_ammo,
 		/obj/item/weapon/ranged/bow,
 	)
 	value = 1000

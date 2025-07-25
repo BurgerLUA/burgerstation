@@ -20,14 +20,13 @@
 	return TRUE
 
 /obj/item/proc/adjust_quality(var/quality_to_add = 0, var/maximum_quality = quality_max)
-	. = can_adjust_quality(maximum_quality)
-	if(!.)
-		return .
+	if(!can_adjust_quality(maximum_quality))
+		return FALSE
 
 	var/original_quality = quality
 	var/original_damage_num = get_damage_icon_number()
 
-	quality = min(FLOOR(quality + quality_to_add,0.01), maximum_quality)
+	quality = clamp(FLOOR(quality + quality_to_add, 0.01), 0, maximum_quality)
 
 	if(original_quality > 0 && quality <= 0)
 		visible_message(span("danger","\The [src.name] breaks!"))
