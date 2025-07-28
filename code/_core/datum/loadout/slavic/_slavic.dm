@@ -187,7 +187,7 @@
 
 		/obj/item/clothing/belt/storage/colored/black,
 
-		/obj/item/clothing/overwear/armor/slavticool,
+		/obj/item/clothing/overwear/hardsuit/skat,
 		/obj/item/clothing/overwear/coat/hos/revfficer,
 
 		/obj/item/clothing/head/hat/ushanka,

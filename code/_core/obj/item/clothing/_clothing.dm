@@ -43,7 +43,6 @@
 	var/list/mob_values_mul
 
 	quality = 100
-	quality_max = 175
 
 	inventory_sounds = list(
 		'sound/effects/inventory/rustle1.ogg',
@@ -52,6 +51,8 @@
 		'sound/effects/inventory/rustle4.ogg',
 		'sound/effects/inventory/rustle5.ogg'
 	)
+
+	can_corrupt = TRUE
 
 
 /obj/item/clothing/on_equip(var/atom/old_location,var/silent=FALSE)

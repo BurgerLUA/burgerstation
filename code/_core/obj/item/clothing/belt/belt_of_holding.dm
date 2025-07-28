@@ -6,6 +6,8 @@
 	value_burgerbux = 1
 	is_container = TRUE
 
+	rarity = RARITY_MYTHICAL
+
 	dynamic_inventory_count = MAX_INVENTORY_X * 2
 
 	size = MAX_INVENTORY_X*SIZE_3
@@ -15,3 +17,7 @@
 	armor = /armor/leather
 
 	value = 1000
+
+/obj/item/clothing/belt/holding/get_base_value()
+	. = ..()
+	. += 1500

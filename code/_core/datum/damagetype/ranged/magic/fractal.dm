@@ -1,8 +1,8 @@
 /damagetype/ranged/magic/fractal
 	attack_damage_base = list(
-		BLADE = 40,
-		HEAT = 40,
-		ARCANE = 60
+		BLADE = 30,
+		HEAT = 20,
+		ARCANE = 10
 	)
 
 	attribute_stats = list(

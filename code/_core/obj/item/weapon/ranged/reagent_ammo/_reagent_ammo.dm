@@ -1,6 +1,5 @@
 /obj/item/weapon/ranged/reagent_ammo/
 	var/reagent_volume_per_shot = 0 //reagents from reagent container to remove per-shot.
-	quality_max = 175
 
 /obj/item/weapon/ranged/reagent_ammo/get_ammo_count()
 

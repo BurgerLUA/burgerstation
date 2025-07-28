@@ -66,15 +66,15 @@
 /reagent/New(var/desired_loc)
 
 	if(metabolism_stomach > 0 && metabolism_stomach < REAGENT_ROUNDING)
-		log_error("Warning: [src.type] had too low of a metabolism_stomach value ([metabolism_stomach]) and was adjusted to [REAGENT_ROUNDING].")
+		//log_error("Warning: [src.type] had too low of a metabolism_stomach value ([metabolism_stomach]) and was adjusted to [REAGENT_ROUNDING].")
 		metabolism_stomach = max(metabolism_stomach,REAGENT_ROUNDING)
 
 	if(metabolism_blood > 0 && metabolism_blood < REAGENT_ROUNDING)
-		log_error("Warning: [src.type] had too low of a metabolism_blood value ([metabolism_blood]) and was adjusted to [REAGENT_ROUNDING].")
+		//log_error("Warning: [src.type] had too low of a metabolism_blood value ([metabolism_blood]) and was adjusted to [REAGENT_ROUNDING].")
 		metabolism_blood = max(metabolism_blood,REAGENT_ROUNDING)
 
 	if(metabolism_skin > 0 && metabolism_skin < REAGENT_ROUNDING)
-		log_error("Warning: [src.type] had too low of a metabolism_skin value ([metabolism_skin]) and was adjusted to [REAGENT_ROUNDING].")
+		//log_error("Warning: [src.type] had too low of a metabolism_skin value ([metabolism_skin]) and was adjusted to [REAGENT_ROUNDING].")
 		metabolism_stomach = max(metabolism_skin,REAGENT_ROUNDING)
 
 	. = ..()

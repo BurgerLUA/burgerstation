@@ -599,7 +599,7 @@
 				owner.to_chat(span("notice","\The [I.name] doesn't fit on \the [src.loc.name]!"))
 			return FALSE
 
-		if(item_slot_mod & (SLOT_MOD_LEFT | SLOT_MOD_RIGHT) && !((I.item_slot_mod & SLOT_MOD_RIGHT) && (I.item_slot_mod & SLOT_MOD_LEFT)))
+		if(item_slot_mod & (SLOT_MOD_LEFT | SLOT_MOD_RIGHT) && !((I.item_slot_mod & SLOT_MOD_RIGHT) && (I.item_slot_mod & SLOT_MOD_LEFT))) //has left or right ,but not both.
 			var/is_right_hand = item_slot_mod & SLOT_MOD_RIGHT
 			var/is_right_item = I.item_slot_mod & SLOT_MOD_RIGHT
 			if(is_right_hand != is_right_item)
@@ -621,7 +621,7 @@
 					var/obj/item/clothing/existing_clothing = k
 					if(!is_clothing(existing_clothing))
 						continue
-					if(existing_clothing.item_slot_layer < I.item_slot_layer)
+					if(existing_clothing.item_slot_layer && existing_clothing.item_slot_layer < I.item_slot_layer)
 						continue
 					if(messages) owner.to_chat(span("warning","\The [existing_clothing.name] prevents you from wearing \the [I.name]!"))
 					return FALSE

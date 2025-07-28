@@ -177,7 +177,7 @@
 			if(opacity)
 				T.has_opaque_atom = TRUE
 			if(density && !abstract)
-				T.has_dense_atom = "/atom/movable/Finalize() [src.type]"
+				T.has_dense_atom = TRUE
 
 	value = get_base_value()
 

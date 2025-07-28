@@ -390,6 +390,8 @@
 
 	size = 0.015
 
+	value = 1
+
 /obj/item/bullet_cartridge/pistol_45holy/surplus
 	name = "\improper surplus Holy .45 pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/holybullet/surplus

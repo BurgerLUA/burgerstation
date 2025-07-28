@@ -1,4 +1,4 @@
-/mob/living/advanced/citizen
+/mob/living/advanced/npc/citizen
 	name = "solarian citizen"
 	desc = "RIP."
 
@@ -20,7 +20,7 @@
 	gender = MALE
 	sex = MALE
 
-/mob/living/advanced/citizen/female
+/mob/living/advanced/npc/citizen/female
 
 	loadout = /loadout/citizen/female
 

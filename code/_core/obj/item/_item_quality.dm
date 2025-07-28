@@ -10,23 +10,26 @@
 		return 0
 	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)
 
-/obj/item/proc/can_adjust_quality(var/quality_to_check = quality_max)
-	if(quality == -1)
-		return FALSE
+/obj/item/proc/can_adjust_quality()
 
-	if(quality >= quality_to_check) //Cannot add or remove quality.
+	if(quality == -1)
 		return FALSE
 
 	return TRUE
 
-/obj/item/proc/adjust_quality(var/quality_to_add = 0, var/maximum_quality = quality_max)
-	if(!can_adjust_quality(maximum_quality))
+/obj/item/proc/adjust_quality(var/quality_to_add = 0)
+	set_quality(quality + quality_to_add)
+	return TRUE
+
+/obj/item/proc/set_quality(var/quality_to_set=100,var/force=FALSE)
+
+	if(!force && !can_adjust_quality())
 		return FALSE
 
 	var/original_quality = quality
 	var/original_damage_num = get_damage_icon_number()
 
-	quality = clamp(FLOOR(quality + quality_to_add, 0.01), 0, maximum_quality)
+	quality = clamp(FLOOR(quality_to_set, 0.01), 0, quality_max)
 
 	if(original_quality > 0 && quality <= 0)
 		visible_message(span("danger","\The [src.name] breaks!"))
@@ -40,18 +43,20 @@
 
 	return TRUE
 
-/obj/item/proc/set_quality_max(var/desired_quality_max=100)
+/obj/item/proc/adjust_quality_max(var/quality_to_add = 0)
+	set_quality_max(quality_max + quality_to_add)
+	return TRUE
 
-	if(quality == -1)
+/obj/item/proc/set_quality_max(var/quality_to_set=100,var/force=FALSE)
+
+	if(!force && !can_adjust_quality())
 		return FALSE
 
-	quality_max = desired_quality_max
-	quality = min(quality,desired_quality_max)
+	quality_max = clamp(quality_to_set,0,200)
 
-	update_sprite()
-	update_quality_overlay()
+	set_quality(quality,force=TRUE) //This will update it.
 
-	value = get_base_value()
+	return TRUE
 
 /obj/item/proc/update_quality_overlay(var/desired_damage_num = get_damage_icon_number())
 

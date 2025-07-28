@@ -8,7 +8,6 @@
 /loot/supply_crate/medicine
 	loot_table_guaranteed = list(
 		/loot/medicine/pack
-
 	)
 
 /loot/supply_crate/all

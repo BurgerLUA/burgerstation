@@ -141,7 +141,7 @@
 			weapon.health.adjust_loss_smart(burn=400)
 		else if(is_item(weapon))
 			var/obj/item/I = weapon
-			I.adjust_quality(-200)
+			I.adjust_quality(-1000)
 
 		if((damage_table[BLADE] && !damage_table[BLUNT]) || damage_table[BLADE] > damage_table[BLUNT]) //Cut
 			attacker.visible_message(span("warning","\The [attacker.name] takes a slice of supermatter shard from \the [src.name] using a [weapon.name]."),span("warning","You take a slice of supermatter shard from \the [src.name] using \the [weapon.name]."))

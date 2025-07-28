@@ -24,3 +24,8 @@
 	item_slot = SLOT_HEAD | SLOT_FACE
 
 	rarity = RARITY_LEGENDARY
+
+
+/obj/item/clothing/mask/godlike/get_base_value()
+	. = ..()
+	. += 25000

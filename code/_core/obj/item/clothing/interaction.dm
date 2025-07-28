@@ -27,11 +27,9 @@
 
 	for(var/k in activator.inventories_by_id)
 		var/obj/hud/inventory/I = activator.inventories_by_id[k]
-		if(!I || I.qdeleting || !I.loc || I.loc.qdeleting)
+		if(!I || I.qdeleting || !I.loc || I.loc.qdeleting || !I.allow_quick_equip)
 			continue
-		if(I.click_flags && ignore_hands)
-			continue
-		if(!I.allow_quick_equip)
+		if((I.click_flags & (LEFT_HAND | RIGHT_HAND)) && ignore_hands)
 			continue
 		if(!ignore_worn && I.worn && (!best_inventory_wear || I.priority >= best_inventory_wear.priority) && can_be_worn(activator,I) && I.can_slot_object(src))
 			best_inventory_wear = I

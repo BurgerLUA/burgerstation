@@ -24,8 +24,8 @@
 
 	size = SIZE_0
 	var/weight = 0 //DEPRICATED
-	var/quality = -1 //-1 means quality isn't used.
-	var/quality_max = 100 //Maximum possible quality for this item.
+	var/quality = -1 //-1 means quality isn't used. Note that 100 quality means normal quality, and 200 quality means double quality.
+	var/quality_max = 100 //Maximum possible quality for this item. This is generated in loadouts and loot.
 	var/rarity = RARITY_COMMON //Arbitrary Value
 	var/tier = -1 //-1 means not set.
 	var/tier_type
@@ -181,6 +181,9 @@
 	var/can_negate_damage = FALSE
 
 	var/unlock_requirement //Accepts a string, which is a prerequiste to unlock this to purchase in vendors.
+
+	var/can_corrupt = FALSE
+
 
 /obj/item/proc/can_unlock(var/mob/activator)
 	return TRUE
@@ -484,17 +487,20 @@
 		else if(quality_max > 0)
 			. += div("rarity bad","<b>Surplus</b>")
 		else
-			. += div("rarity bad","<b>Unsalvagable</b>")
+			. += div("rarity bad","<b>UNSALVAGEABLE</b>")
+
+		var/display_quality = FLOOR(quality,1)
+		var/display_quality_max = FLOOR(quality_max,1)
 
 		//Current Quality
 		if(quality >= 200)
-			. += div("rarity legendary","<b>Condition</b>: [FLOOR(quality,1)]%")
+			. += div("rarity legendary","<b>Condition</b>: [display_quality]% / [display_quality_max]%")
 		else if(quality > 100)
-			. += div("rarity good","<b>Condition</b>: [FLOOR(quality,1)]%")
+			. += div("rarity good","<b>Condition</b>: [display_quality]% / [display_quality_max]%")
 		else if(quality > 60)
-			. += div("rarity common","<b>Condition</b>: [FLOOR(quality,1)]%")
-		else if(quality > 0)
-			. += div("rarity bad","<b>Condition</b>: [FLOOR(quality,1)]%")
+			. += div("rarity common","<b>Condition</b>: [display_quality]% / [display_quality_max]%")
+		else if(quality >= 0)
+			. += div("rarity bad","<b>Condition</b>: [display_quality]% / [display_quality_max]%")
 		else
 			. += div("rarity bad","<b>Condition</b>: BROKEN")
 
@@ -878,3 +884,66 @@
 			add_object_to_src_inventory(null,I,enable_messages=FALSE,bypass=TRUE,silent=TRUE)
 	. = ..()
 
+/obj/item/proc/corrupt() //Change the object into a subtype of itself, or its parent type.
+
+	if(!can_corrupt)
+		return null
+
+	var/list/obj/item/possible_objects = list()
+
+	var/highest_value = 0
+
+	for(var/obj/item/I as null|anything in (typesof(src.parent_type) - src.type))
+		var/found_value = SSbalance.stored_value[I]
+		if(!found_value || found_value <= 0)
+			continue
+		if(!initial(I.icon_state) || initial(I.icon_state) == "")
+			continue
+		if(initial(I.no_drop))
+			continue
+		if(!initial(I.can_save))
+			continue
+		if(initial(I.value) <= 0)
+			continue
+		possible_objects[I] = found_value
+		if(found_value > highest_value)
+			highest_value = found_value
+
+	var/parent_type_length = length(possible_objects)
+
+	for(var/obj/item/I as null|anything in subtypesof(src.type))
+		var/found_value = SSbalance.stored_value[I]
+		if(!found_value || found_value <= 0)
+			continue
+		if(!initial(I.icon_state) || initial(I.icon_state) == "")
+			continue
+		if(initial(I.no_drop))
+			continue
+		if(!initial(I.can_save))
+			continue
+		if(initial(I.value) <= 0)
+			continue
+		possible_objects[I] = found_value / (parent_type_length*0.25) //Much more likely to transform into subtypes of itself, assuming it has a decent spread.
+		if(found_value > highest_value)
+			highest_value = found_value
+
+	if(!length(possible_objects))
+		return null
+
+	for(var/k in possible_objects) //Weight the value properly.
+		possible_objects[k] = CEILING( highest_value / possible_objects[k], 1)
+
+	var/turf/T = get_turf(src)
+
+	if(!T)
+		return null
+
+	var/obj/item/new_item = pickweight(possible_objects)
+	new_item = new new_item(T)
+	INITIALIZE(new_item)
+	GENERATE(new_item)
+	FINALIZE(new_item)
+
+	qdel(src)
+
+	return new_item

@@ -19,14 +19,15 @@
 
 	rarity = RARITY_MYTHICAL
 
+	var/type_to_give
 	var/level_to_give = 3
 
 /obj/item/experience_scroll/Finalize()
 	. = ..()
 	update_sprite()
 
-/obj/item/experience_scroll/get_base_value()
-	return level_to_give*300
+/obj/item/experience_scroll/get_base_value() //Subtypes should calculate this.
+	return 0
 
 /obj/item/experience_scroll/update_overlays()
 	. = ..()

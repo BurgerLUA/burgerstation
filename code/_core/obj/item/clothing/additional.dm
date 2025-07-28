@@ -41,8 +41,17 @@
 
 	return TRUE
 
-/obj/item/clothing/adjust_quality(var/quality_to_add = 0)
+
+/obj/item/clothing/set_quality(var/quality_to_set=100,var/force=FALSE)
+
 	. = ..()
-	if(.)
-		for(var/obj/item/C as anything in additional_clothing_stored)
-			C.quality = quality
+
+	for(var/obj/item/C as anything in additional_clothing_stored)
+		C.set_quality(quality_to_set,force=TRUE)
+
+/obj/item/clothing/set_quality_max(var/quality_to_set=100,var/force=FALSE)
+
+	. = ..()
+
+	for(var/obj/item/C as anything in additional_clothing_stored)
+		C.set_quality_max(quality_to_set,force=TRUE)

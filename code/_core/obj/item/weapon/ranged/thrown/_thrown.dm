@@ -7,7 +7,6 @@
 
 	amount = 1
 	amount_max = 1
-	quality_max = 175
 
 	projectile = /obj/projectile/thrown //Always needs to be thrown
 	shoot_sounds = list('sound/effects/fwoosh.ogg')

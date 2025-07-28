@@ -24,7 +24,6 @@
 
 	size = SIZE_3
 
-	quality_max = 190
 	quality = 100
 
 	uses_until_condition_fall = 1

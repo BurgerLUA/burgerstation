@@ -1,7 +1,6 @@
 obj/item/weapon/unarmed
 	name = "Unarmed Weapon"
 	desc = "An unarmed weapon"
-	quality_max = 175
 
 	drop_sound = 'sound/items/drop/sword.ogg'
 

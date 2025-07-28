@@ -26,10 +26,8 @@
 
 
 /obj/item/supply_crate/get_base_value()
-	if(!loot)
+	if(!loot || !SSloot || !SSloot.initialized)
 		return 0
-	if(!SSloot || !SSloot.initialized)
-		return null
 	var/loot/L = LOOT(loot)
 	return CEILING(L.average_value * 1.25,100)
 

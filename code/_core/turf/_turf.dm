@@ -45,7 +45,7 @@
 	has_dense_atom = FALSE
 
 	if(density)
-		has_dense_atom = "recalculate_atom_density() inherent turf density"
+		has_dense_atom = TRUE
 		return TRUE
 
 	for(var/k in src.contents)
@@ -53,7 +53,7 @@
 		if(M.abstract)
 			continue
 		if(M.density)
-			has_dense_atom = "recalculate_atom_density() [M.type]"
+			has_dense_atom = TRUE
 			break
 
 	return TRUE
@@ -192,7 +192,7 @@
 		has_opaque_atom = TRUE
 
 	if(density)
-		has_dense_atom = "/turf/New() inherent density"
+		has_dense_atom = TRUE
 
 
 /turf/PreDestroy()
@@ -270,7 +270,7 @@
 	*/
 
 	if(enterer.density && !enterer.abstract)
-		has_dense_atom = "/turf/Entered() [enterer.type]."
+		has_dense_atom = TRUE
 
 /turf/Exited(var/atom/movable/exiter,var/atom/new_loc)
 

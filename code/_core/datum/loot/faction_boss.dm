@@ -11,13 +11,16 @@
 		/obj/item/storage/blood_box/holy_grenades = 1,
 		/obj/item/weapon/ranged/magic/spellblade/runesword = 1,
 		/obj/item/container/syringe/medipen/adminomnizine = 1,
-		/obj/item/weapon/ranged/magic/staff/lavaland = 1
+		/obj/item/weapon/ranged/magic/staff/lavaland = 1,
+		/obj/item/weapon/ranged/spellgem/fractal = 1,
+
 	)
 
 /loot/lavaland/contract
 	loot_table = list(
 		/obj/item/clothing/back/storage/backpack/bluespace = 1,
 		/obj/item/clothing/back/storage/satchel/bluespace = 1,
+		/obj/item/clothing/belt/holding = 1,
 		/obj/item/weapon/melee/energy/plightbringer = 1,
 		/obj/item/dice/d20/cursed = 1,
 		/obj/item/weapon/ranged/spellgem/pillar = 1,

@@ -29,7 +29,6 @@
 	var/bullet_diameter_max = -1
 
 	uses_until_condition_fall = 50 // ~5000 rounds.
-	quality_max = 175
 
 	use_iff_tag = TRUE
 

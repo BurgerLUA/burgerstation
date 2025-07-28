@@ -2,7 +2,7 @@
 	name = "Mission - Syndicate"
 	gamemode_horde_data = /horde_data/syndicate
 
-	interior_corpse_type = /mob/living/advanced/citizen
+	interior_corpse_type = /mob/living/advanced/npc/citizen
 	exterior_corpse_type = /mob/living/advanced/npc/nanotrasen
 
 /gamemode/mission/syndicate/add_objectives()
@@ -32,7 +32,7 @@
 	name = "Mission - Xenomorphs + Soldiers"
 	gamemode_horde_data = /horde_data/xeno_plus_soliders
 
-	interior_corpse_type = /mob/living/advanced/citizen
+	interior_corpse_type = /mob/living/advanced/npc/citizen
 	exterior_corpse_type = /mob/living/advanced/npc/space_soldier
 
 /gamemode/mission/xeno/add_objectives()
@@ -44,7 +44,7 @@
 	name = "Mission - Revolutionaries"
 	gamemode_horde_data = /horde_data/revolutionary
 
-	interior_corpse_type = /mob/living/advanced/citizen
+	interior_corpse_type = /mob/living/advanced/npc/citizen
 	exterior_corpse_type = /mob/living/advanced/npc/space_soldier
 
 /gamemode/mission/revolutionaries/add_objectives()
@@ -56,7 +56,7 @@
 	name = "Mission - Raging Mages"
 	gamemode_horde_data = /horde_data/raging_mages
 
-	interior_corpse_type = /mob/living/advanced/citizen
+	interior_corpse_type = /mob/living/advanced/npc/citizen
 	exterior_corpse_type = /mob/living/advanced/npc/nanotrasen
 
 /gamemode/mission/raging_mages/add_objectives()

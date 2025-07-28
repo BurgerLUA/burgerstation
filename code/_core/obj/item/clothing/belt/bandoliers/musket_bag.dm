@@ -27,8 +27,10 @@
 	return max_bullets*3
 
 /obj/item/clothing/belt/bandoliers/musket_bag/basic/Generate()
+	. = ..()
 	stored_bullets[/obj/item/bullet_cartridge/flintlock] = rand(20,30)
 	bullet_count = stored_bullets[/obj/item/bullet_cartridge/flintlock]
 
 /obj/item/clothing/belt/bandoliers/musket_bag/premium/Generate()
+	. = ..()
 	stored_bullets[/obj/item/bullet_cartridge/flintlock/premium] = rand(20,30)

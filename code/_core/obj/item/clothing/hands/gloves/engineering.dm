@@ -19,6 +19,8 @@
 
 	can_save = FALSE
 
+	item_slot_layer = 3
+
 /obj/item/clothing/hands/gloves/engineering/left
 	name = "left engineering rig glove"
 	desc = "Spacewalk with these."
