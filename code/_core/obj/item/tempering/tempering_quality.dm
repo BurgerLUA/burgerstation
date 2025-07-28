@@ -16,23 +16,22 @@
 
 /obj/item/tempering/quality/can_temper(var/mob/activator,var/obj/item/I)
 
-	if(I.quality <= -1)
+	if(!I.can_adjust_quality())
 		activator.to_chat(span("warning","\The [I.name] cannot be improved!"))
-		return FALSE
-
-	if(I.quality >= maximum)
-		activator.to_chat(span("warning","\The [I.name] cannot be improved any further!"))
 		return FALSE
 
 	return ..()
 
 /obj/item/tempering/quality/get_examine_list(var/mob/examiner)
 	. = ..()
-	. += span("notice","Increases the quality of [item_type_name] by [increase]%, up to [maximum]%, with a minimum of [minimum]%.")
+	. += span("notice","Increases the quality of [item_type_name] by [increase]%, with a minimum of [minimum]%.")
 
-/obj/item/tempering/quality/on_temper(var/mob/activator,var/obj/item/I)
-	I.quality = clamp(I.quality + increase,minimum,maximum)
-	. = ..()
+/obj/item/tempering/quality/on_temper(var/mob/activator, var/obj/item/I)
+	if((I.quality + increase) > minimum)
+		I.adjust_quality(increase)
+	else
+		I.adjust_quality(minimum - I.quality)
+	return ..()
 
 /obj/item/tempering/quality/general
 	name = "advanced repair kit"
@@ -42,11 +41,20 @@
 
 	increase = 25
 	minimum = 50
-	maximum = 100
 
 	temper_whitelist = /obj/item
 
 	value = 400
+
+/obj/item/tempering/quality/general/can_temper(var/mob/activator,var/obj/item/I)
+	if(I.quality >= 100) // We exist only to repair
+		return FALSE
+
+	return ..()
+
+/obj/item/tempering/quality/general/on_temper(var/mob/activator,var/obj/item/I)
+	. = ..()
+	I.quality = min(I.quality, 100)
 
 /obj/item/tempering/quality/melee
 	name = "chef's whetstone"
@@ -56,9 +64,8 @@
 
 	increase = 5
 	minimum = 100
-	maximum = 175
 
-	temper_whitelist = list(/obj/item/weapon/melee,/obj/item/weapon/unarmed,/obj/item/weapon/ranged/thrown)
+	temper_whitelist = list(/obj/item/weapon/melee, /obj/item/weapon/unarmed, /obj/item/weapon/ranged/thrown)
 
 	value = 500
 
@@ -70,7 +77,6 @@
 
 	increase = 5
 	minimum = 100
-	maximum = 175
 
 	temper_whitelist = /obj/item/clothing
 	value = 750
@@ -85,9 +91,13 @@
 
 	increase = 5
 	minimum = 100
-	maximum = 175
 
-	temper_whitelist = list(/obj/item/weapon/ranged/bullet,/obj/item/weapon/ranged/energy, /obj/item/weapon/ranged/reagent_ammo/,/obj/item/weapon/ranged/bow)
+	temper_whitelist = list(
+		/obj/item/weapon/ranged/bullet,
+		/obj/item/weapon/ranged/energy,
+		/obj/item/weapon/ranged/reagent_ammo,
+		/obj/item/weapon/ranged/bow,
+	)
 	value = 1000
 
 /obj/item/tempering/quality/ranged/energy
@@ -98,7 +108,6 @@
 
 	increase = 10
 	minimum = 100
-	maximum = 175
 
 	temper_whitelist = /obj/item/weapon/ranged/energy
 	value = 3000
@@ -111,13 +120,12 @@
 
 	increase = 5
 	minimum = 100
-	maximum = 175
 
-	temper_whitelist = list(/obj/item/weapon/ranged/spellgem,/obj/item/weapon/ranged/wand,/obj/item/supportgem)
+	temper_whitelist = list(/obj/item/weapon/ranged/spellgem, /obj/item/weapon/ranged/wand, /obj/item/supportgem)
 	value = 1250
 
 /obj/item/tempering/quality/ranged/magic/on_temper(var/mob/activator,var/obj/item/I)
 	. = ..()
-	if(istype(I,/obj/item/supportgem))
+	if(istype(I, /obj/item/supportgem))
 		var/obj/item/supportgem/SG = I
 		SG.update_support_stats()

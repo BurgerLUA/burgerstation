@@ -43,6 +43,7 @@
 	var/list/mob_values_mul
 
 	quality = 100
+	quality_max = 175
 
 	inventory_sounds = list(
 		'sound/effects/inventory/rustle1.ogg',

@@ -10,18 +10,23 @@
 		return 0
 	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)
 
-/obj/item/proc/adjust_quality(var/quality_to_add=0)
-
+/obj/item/proc/can_adjust_quality(var/quality_to_check = quality_max)
 	if(quality == -1)
 		return FALSE
 
-	if(quality >= quality_max) //Cannot add or remove quality.
-		return TRUE
+	if(quality >= quality_to_check) //Cannot add or remove quality.
+		return FALSE
+
+	return TRUE
+
+/obj/item/proc/adjust_quality(var/quality_to_add = 0, var/maximum_quality = quality_max)
+	if(!can_adjust_quality(maximum_quality))
+		return FALSE
 
 	var/original_quality = quality
 	var/original_damage_num = get_damage_icon_number()
 
-	quality = FLOOR(quality + quality_to_add,0.01)
+	quality = clamp(FLOOR(quality + quality_to_add, 0.01), 0, maximum_quality)
 
 	if(original_quality > 0 && quality <= 0)
 		visible_message(span("danger","\The [src.name] breaks!"))

@@ -10,6 +10,7 @@
 	var/list/obj/item/supportgem/socketed_supportgems = list()
 
 	automatic = TRUE
+	quality_max = 175
 
 	var/wand_damage_multiplier = 1
 

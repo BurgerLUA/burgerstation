@@ -6,7 +6,7 @@
 
 	increase = 1
 	minimum = 50
-	maximum = 100
+	var/maximum = 100
 
 	temper_whitelist = /obj/item/
 

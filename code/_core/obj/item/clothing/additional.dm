@@ -31,8 +31,7 @@
 
 /obj/item/clothing/proc/sync_additional_clothing()
 
-	for(var/k in additional_clothing_stored)
-		var/obj/item/C = k
+	for(var/obj/item/C as anything in additional_clothing_stored)
 		C.color = color
 		C.quality = quality
 		C.polymorphs = polymorphs
@@ -41,3 +40,9 @@
 		C.update_sprite()
 
 	return TRUE
+
+/obj/item/clothing/adjust_quality(var/quality_to_add = 0)
+	. = ..()
+	if(.)
+		for(var/obj/item/C as anything in additional_clothing_stored)
+			C.quality = quality
