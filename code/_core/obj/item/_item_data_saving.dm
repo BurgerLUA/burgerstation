@@ -1,4 +1,4 @@
-c/obj/item/proc/get_blend_data()
+/obj/item/proc/get_blend_data()
 
 	. = list()
 
