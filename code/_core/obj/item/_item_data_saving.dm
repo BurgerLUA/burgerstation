@@ -1,4 +1,4 @@
-/obj/item/proc/get_blend_data()
+c/obj/item/proc/get_blend_data()
 
 	. = list()
 
@@ -134,19 +134,15 @@
 	if(reagents && length(reagents.stored_reagents))
 		.["reagents"] = reagents.stored_reagents
 
-
 	if(quality != -1)
 		var/desired_quality = quality
 		if(died)
-			desired_quality *= 0.75
-			desired_quality -= 25
-			desired_quality = FLOOR(desired_quality,1)
-			desired_quality = clamp(desired_quality,0,300)
+			desired_quality = FLOOR( max(desired_quality*0.75 - 25,0), 1 )
 
-		if(desired_quality != initial(quality))
+		if(desired_quality != initial(quality)) //Quality is different than what's in code.
 			.["quality"] = desired_quality
 
-		if(quality_max != desired_quality && quality_max != initial(quality_max))
+		if(quality_max != desired_quality || quality_max != initial(quality_max)) //Maximum quality is different from current quality, or maximum quality is different from what's in code.
 			.["quality_max"] = quality_max
 
 	if(luck && luck != initial(luck))
@@ -207,7 +203,7 @@
 		if(object_data["quality_max"])
 			quality_max = clamp(object_data["quality_max"],0,200)
 		else
-			quality_max = max(quality_max,quality)
+			quality_max = max(quality_max,quality) //Get the largest between these two.
 
 	if(object_data["luck"])
 		luck = object_data["luck"]

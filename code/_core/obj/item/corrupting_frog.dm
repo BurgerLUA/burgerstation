@@ -37,12 +37,11 @@
 	if(!can_use) //Prevents race conditions.
 		return FALSE
 
-	if(target.quality < 0 || target.no_drop || !target.can_save || !target.can_corrupt)
+	if(target.no_drop || !target.can_save || !target.can_corrupt)
 		activator.to_chat(span("warning","You can't use \the [src.name] on \the [target.name]... perhaps try a different object."))
 		return FALSE
 
-
-	if(!isturf(target))
+	if(!isturf(target.loc))
 		activator.to_chat(span("warning","Put \the [src.name] on the ground before trying to corrupt it!"))
 		return FALSE
 
