@@ -41,6 +41,7 @@
 		reward = new reward(src)
 		if(reward.quality != -1)
 			reward.quality = rand(100,200)
+			reward.quality_max = reward.quality
 		INITIALIZE(reward)
 		GENERATE(reward)
 		FINALIZE(reward)

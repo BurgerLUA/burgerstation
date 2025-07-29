@@ -134,13 +134,20 @@
 	if(reagents && length(reagents.stored_reagents))
 		.["reagents"] = reagents.stored_reagents
 
-	var/desired_quality = quality
-	if(died)
-		desired_quality *= 0.75
-		desired_quality -= 25
-		desired_quality = FLOOR(desired_quality,1)
-	if(desired_quality != initial(quality))
-		.["quality"] = clamp(desired_quality,0,300)
+
+	if(quality != -1)
+		var/desired_quality = quality
+		if(died)
+			desired_quality *= 0.75
+			desired_quality -= 25
+			desired_quality = FLOOR(desired_quality,1)
+			desired_quality = clamp(desired_quality,0,300)
+
+		if(desired_quality != initial(quality))
+			.["quality"] = desired_quality
+
+		if(quality_max != desired_quality && quality_max != initial(quality_max))
+			.["quality_max"] = quality_max
 
 	if(luck && luck != initial(luck))
 		.["luck"] = luck
@@ -194,8 +201,14 @@
 		amount = object_data["amount"]
 	if(object_data["delete_on_drop"])
 		delete_on_drop = TRUE
-	if(object_data["quality"] && quality != -1)
-		quality = clamp(object_data["quality"],0,200)
+	if(quality != -1)
+		if(object_data["quality"])
+			quality = clamp(object_data["quality"],0,200)
+		if(object_data["quality_max"])
+			quality_max = clamp(object_data["quality_max"],0,200)
+		else
+			quality_max = max(quality_max,quality)
+
 	if(object_data["luck"])
 		luck = object_data["luck"]
 

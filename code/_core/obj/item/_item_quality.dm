@@ -17,8 +17,8 @@
 
 	return TRUE
 
-/obj/item/proc/adjust_quality(var/quality_to_add = 0)
-	set_quality(quality + quality_to_add)
+/obj/item/proc/adjust_quality(var/quality_to_add = 0,var/force=FALSE)
+	set_quality(quality + quality_to_add,force)
 	return TRUE
 
 /obj/item/proc/set_quality(var/quality_to_set=100,var/force=FALSE)
@@ -43,8 +43,8 @@
 
 	return TRUE
 
-/obj/item/proc/adjust_quality_max(var/quality_to_add = 0)
-	set_quality_max(quality_max + quality_to_add)
+/obj/item/proc/adjust_quality_max(var/quality_to_add = 0,var/force=FALSE)
+	set_quality_max(quality_max + quality_to_add,force)
 	return TRUE
 
 /obj/item/proc/set_quality_max(var/quality_to_set=100,var/force=FALSE)

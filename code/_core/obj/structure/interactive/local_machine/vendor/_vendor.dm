@@ -71,6 +71,7 @@
 		modify_item(created,stored_object)
 		if(created.uses_until_condition_fall > 0)
 			created.quality = max(0,created.quality - rand(25,75))
+			created.quality_max = created.quality
 		INITIALIZE(created)
 		GENERATE(created)
 		FINALIZE(created)

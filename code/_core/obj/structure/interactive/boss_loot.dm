@@ -63,6 +63,7 @@
 			// https://www.desmos.com/calculator/78f8zulsjq
 			if(I.quality != -1)
 				I.quality = 100 + min(round(5 + ((rand(1,1000)*0.0025)**4),5),40)
+				I.quality_max = I.quality
 
 		activator.to_chat(span("warning","\The [src.name] grants you a [created_loot[1].name]!"))
 		play_sound('sound/effects/wishgranter.ogg', T, range_max = VIEW_RANGE)
