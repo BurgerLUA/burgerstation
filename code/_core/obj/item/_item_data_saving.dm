@@ -142,7 +142,7 @@
 		if(desired_quality != initial(quality)) //Quality is different than what's in code.
 			.["quality"] = desired_quality
 
-		if(quality_max != desired_quality || quality_max != initial(quality_max)) //Maximum quality is different from current quality, or maximum quality is different from what's in code.
+		if(quality_max != initial(quality_max)) //Maximum quality is different from what's in code.
 			.["quality_max"] = quality_max
 
 	if(luck && luck != initial(luck))
