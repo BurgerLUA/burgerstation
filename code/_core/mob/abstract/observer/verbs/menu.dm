@@ -95,7 +95,7 @@ var/global/antag_count = 0
 		if(mobdata.create_new_character(character_id))
 			var/turf/T = get_turf(pick(chargen_spawnpoints))
 			if(T)
-				var/mob/living/advanced/player/P = new(locate(1,1,1),client)
+				var/mob/living/advanced/player/P = new(DEBUG_TURF,client)
 				P.start_chargen()
 				P.save_id = character_id
 				P.tutorial = TRUE

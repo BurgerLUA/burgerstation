@@ -18,7 +18,7 @@
 	if(!buckled_object && tutorial && A.flags_area & FLAG_AREA_TUTORIAL)
 		var/question = input("Are you sure you want to cancel character creation? Your character won't be saved, and it will be deleted from the game.") in list("Yes","No")
 		if(question == "Yes" && A.flags_area & FLAG_AREA_TUTORIAL)
-			client.make_ghost(get_turf(src))
+			make_ghost()
 			qdel(src)
 			return TRUE
 	else if(can_save(A))

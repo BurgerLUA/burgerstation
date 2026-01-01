@@ -16,8 +16,8 @@
 					var/savedata/client/mob/mobdata = MOBDATA(ckey)
 					if(mobdata)
 						mobdata.save_character(P)
+					P.make_ghost()
 					qdel(P)
-					make_ghost(S.loc)
 					return TRUE
 				return FALSE
 

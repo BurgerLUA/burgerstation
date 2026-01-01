@@ -292,7 +292,7 @@ SUBSYSTEM_DEF(balance)
 
 	fdel(BALANCE_LOG_PATH)
 
-	var/turf/T = locate(1,1,1)
+	var/turf/T = DEBUG_TURF
 
 	var/list/stuff_to_delete = list()
 

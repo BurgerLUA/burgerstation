@@ -34,8 +34,7 @@
 /obj/item/organ/internal/brain/on_organ_remove(var/mob/living/advanced/old_owner)
 	. = ..()
 	if(!old_owner.qdeleting && !old_owner.changing)
-		if(old_owner.client)
-			old_owner.client.make_ghost()
+		old_owner.make_ghost()
 		old_owner.death()
 
 

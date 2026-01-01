@@ -20,25 +20,7 @@
 			. = M
 			//No break here as ckey_last needs a priority.
 
-/client/proc/make_ghost(var/turf/desired_loc)
-
-	if(!desired_loc && mob)
-		desired_loc = get_turf(mob)
-
-	if(!desired_loc)
-		desired_loc = FALLBACK_TURF
-
-	if(mob)
-		mob.ckey_last = null
-		if(mob.fallback_mob)
-			control_mob(mob.fallback_mob)
-			return TRUE
-
-	var/mob/abstract/observer/ghost/O = new(desired_loc,src)
-	INITIALIZE(O)
-	FINALIZE(O)
-
-/client/proc/make_observer(var/turf/desired_loc)
+/client/proc/make_menu_observer(var/turf/desired_loc)
 
 	if(mob)
 		mob.ckey_last = null

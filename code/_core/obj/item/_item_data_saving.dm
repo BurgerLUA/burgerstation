@@ -280,8 +280,6 @@
 		if(!istype(I))
 			log_error("Tried saving invalid item ([I ? I : "NULL"]) in an inventory!")
 			continue
-		if(died && (src.flags_hud & FLAG_HUD_MOB) && !src.ultra_persistant && !I.save_on_death)
-			continue
 		var/result = I.save_item_data(P,save_inventory,died,loadout)
 		.[i] = result ? result : null //Forces null
 

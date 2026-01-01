@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(cargo)
 
 /subsystem/cargo/Initialize()
 
-	var/turf/T = locate(1,1,1)
+	var/turf/T = DEBUG_TURF
 
 	for(var/k in possible_orders)
 		var/atom/movable/P = k

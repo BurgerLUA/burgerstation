@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(damagetype)
 
 	log_subsystem(name,"Initialized [length(SSdamagetype.all_damage_types)] damage types.")
 
-	CREATE(/mob/abstract/melee_checker,locate(1,1,1))
+	CREATE(/mob/abstract/melee_checker,DEBUG_TURF)
 
 	return ..()
 

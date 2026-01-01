@@ -26,6 +26,6 @@ mob/living/advanced/player/proc/can_save(var/area/A)
 	if(!mobdata)
 		return FALSE
 	mobdata.save_character(src)
-	if(client) client.make_ghost(get_turf(src))
+	make_ghost()
 	qdel(src)
 	return TRUE

@@ -217,9 +217,9 @@ var/global/regex/guest_regex = regex(@'guest-\d+$',"m")
 		control_mob(found_mob)
 	else
 		if(world_state == STATE_RUNNING)
-			make_observer(locate(1,1,1))
+			make_menu_observer(FALLBACK_TURF)
 		else
-			make_observer(null)
+			make_menu_observer(null)
 		var/player_limit_config = CONFIG("PLAYER_LIMIT",0)
 		if(player_limit_config > 0 && length(SSclient.all_clients) > player_limit_config)
 			//Too many cooks!

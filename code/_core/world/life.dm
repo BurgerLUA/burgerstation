@@ -115,7 +115,7 @@
 	if(length(lobby_positions))
 		move_turf = get_turf(pick(lobby_positions))
 	else
-		move_turf = locate(1,1,1)
+		move_turf = FALLBACK_TURF
 
 	for(var/mob/abstract/observer/menu/O in SSliving.all_mobs_with_clients)
 		O.force_move(move_turf)

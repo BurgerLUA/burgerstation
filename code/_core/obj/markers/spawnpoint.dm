@@ -7,6 +7,7 @@ var/global/list/horde_spawnpoints = list()
 var/global/list/free_for_all_spawnpoints = list()
 var/global/list/tdm_spawnpoints = list()
 var/global/list/vr_lobby_spawnpoints = list()
+var/global/list/medical_spawnpoints = list()
 
 /obj/marker/spawnpoint
 	name = "GENERATEPOINT"
@@ -17,6 +18,14 @@ var/global/list/vr_lobby_spawnpoints = list()
 
 /obj/marker/spawnpoint/ghost/New(var/desired_loc)
 	observer_spawnpoints += get_turf(src)
+	. = ..()
+
+/obj/marker/spawnpoint/medical
+	name = "medical spawnpoint"
+	desc = "This is where nanotrasen players respawn."
+
+/obj/marker/spawnpoint/medical/New(var/desired_loc)
+	medical_spawnpoints += get_turf(src)
 	. = ..()
 
 /obj/marker/spawnpoint/chargen

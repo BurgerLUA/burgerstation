@@ -88,7 +88,7 @@
 	if(!silent && !qdeleting && client)
 		client.to_chat(span("danger","<h1>You died!</h1>"))
 		client.to_chat(span("danger","Your death is not the end. Someone may come along and revive you, or you can be cloned again by ghosting and loading your current character."))
-		client.to_chat(span("danger","Be warned, if you choose to be cloned or you suffer from brain death, you will need to retrieve your items!."))
+		client.to_chat(span("danger","Be warned, if you choose to be cloned or you suffer from brain death, your corpse won't be able to be revived!"))
 
 	return TRUE
 
@@ -586,16 +586,43 @@ mob/living/proc/on_life_slow()
 	return TRUE
 
 
-/mob/living/proc/make_unrevivable() //only applies to players.
-
-	if(client)
-		var/client/C = client
-		var/turf/T = get_turf(src)
-		C.make_ghost(T ? T : locate(FLOOR(world.maxx/2,1),FLOOR(world.maxy/2,1),1))
-		C.to_chat(span("danger","You have suffered brain death and can no longer be revived..."))
-	else
-		src.ckey_last = null
+/mob/living/proc/make_unrevivable()
 
 	CALLBACK_REMOVE("\ref[src]_make_unrevivable")
 
+	to_chat(span("danger","You have suffered brain death and can no longer be revived..."))
+
+	make_ghost()
+
 	return TRUE
+
+/mob/living/advanced/player/make_unrevivable()
+
+	CALLBACK_REMOVE("\ref[src]_make_unrevivable")
+
+	to_chat(span("danger","You have suffered brain death and can no longer be revived..."))
+
+	create_grave_and_respawn()
+
+	return TRUE
+
+/mob/proc/make_ghost(var/turf/desired_loc)
+
+	if(!desired_loc)
+		var/turf/T = get_turf(src)
+		if(T)
+			desired_loc = T
+		else
+			desired_loc = FALLBACK_TURF
+
+	ckey_last = null
+
+	if(client)
+		if(fallback_mob)
+			client.control_mob(fallback_mob)
+			return
+
+		var/mob/abstract/observer/ghost/O = new(desired_loc,client)
+		INITIALIZE(O)
+		FINALIZE(O)
+

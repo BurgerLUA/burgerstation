@@ -12,7 +12,7 @@
 	if(A.flags_area & FLAG_AREA_TUTORIAL)
 		var/question = input("Are you sure you want to cancel character creation? Your character won't be saved, and it will be deleted from the game.") in list("Yes","No")
 		if(question == "Yes" && A.flags_area & FLAG_AREA_TUTORIAL)
-			client.make_ghost(get_turf(src))
+			make_ghost()
 			qdel(src)
 			return TRUE
 		return FALSE
@@ -27,7 +27,7 @@
 		death(TRUE)
 		visible_message(span("danger","[src.name] kills themselves!"),span("danger","You kill yourself!"))
 		suicide = TRUE
-		client.make_ghost(get_turf(src))
+		make_unrevivable()
 
 /mob/living/verb/set_intent_harm()
 	set category = "Game"

@@ -8,6 +8,8 @@
 /status_effect/zombie/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
 	if(!is_advanced(victim))
 		return FALSE
+	if(is_player(victim))
+		return FALSE
 	var/mob/living/advanced/A = victim
 	var/obj/item/organ/head/H = A.labeled_organs[BODY_HEAD]
 	if(!H || !H.health)
@@ -101,9 +103,7 @@
 		A.ai = new /ai/advanced/zombie(null,A)
 		A.ai.active = FALSE //I know this feels like shitcode but *dab
 
-	if(A.client)
-		T = get_turf(A)
-		A.client.make_ghost(T ? T : FALLBACK_TURF)
+	A.make_ghost()
 
 	A.ckey_last = null
 

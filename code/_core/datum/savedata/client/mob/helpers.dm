@@ -202,7 +202,7 @@ var/global/allow_loading = TRUE
 		amount_to_add = FLOOR(amount_to_add,1)
 		GD.loaded_data["stored_experience"][s_id] += amount_to_add
 
-	A.client?.make_ghost(get_turf(A))
+	A.make_ghost()
 
 	qdel(A)
 

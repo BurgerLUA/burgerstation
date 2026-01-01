@@ -1,6 +1,7 @@
 //Basic config settings for developers
 
 #define FALLBACK_TURF locate(VIEW_RANGE+1,VIEW_RANGE+1,1) //This shouldn't be touched unless you know what you're doing.
+#define DEBUG_TURF locate(1,1,1)
 
 #define WORLD_SIZE 500 //This shouldn't be touched unless you know what you're doing.
 #define TILE_SIZE 32 //This shouldn't be touched unless you know what you're doing

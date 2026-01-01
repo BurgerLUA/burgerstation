@@ -133,8 +133,7 @@
 
 	if(client)
 		log_error("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
-		var/turf/T = get_turf(src)
-		client.make_ghost(T ? T : FALLBACK_TURF)
+		make_ghost()
 
 	for(var/k in health_elements)
 		var/obj/hud/button/B = health_elements[k]

@@ -2,7 +2,7 @@
 #define DEATH_BOX_LIMIT 5
 
 /proc/save_deathboxes()
-	var/turf/T = locate(1,1,1)
+	var/turf/T = DEBUG_TURF
 
 	var/list/savedata/client/death_box/db_data_to_save = list()
 
