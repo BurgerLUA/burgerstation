@@ -1,0 +1,5 @@
+https://github.com/tgstation/rust-g/releases
+
+Since the compiled .so files are fucking massive (100MB!), you're going to have to download it yourself from github.
+
+Sorry, nothing I can really do about it since github doesn't let me commit 100MB+ files.
