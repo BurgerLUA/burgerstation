@@ -10,15 +10,14 @@
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
-
-	if(!is_player(activator))
+	if(!is_player(activator) || !P.ckey)
 		return TRUE
 
 	var/mob/living/advanced/player/P = activator
 
 	var/list/possible_graves = list()
 
-	var/string_check = "[P.ckey]_[P.real_name]"
+	var/string_check = "[P.ckey]"
 
 	for(var/obj/structure/interactive/grave/G as anything in all_graves)
 		if(!length(G.storage_data))
