@@ -215,8 +215,6 @@
 
 		/obj/item/clothing/head/hat/wizard/real/syndicate,
 
-		/obj/item/clothing/overwear/armor/molded_armor/black,
-
 		/obj/item/clothing/back/storage/satchel/poly/syndicate{loot_to_generate=/loot/syndicate/bag},
 
 		/loot/random/gun/wand,

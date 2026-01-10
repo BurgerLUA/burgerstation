@@ -2,68 +2,81 @@
 #define DEATH_BOX_LIMIT 5
 
 /proc/save_deathboxes()
-	var/turf/T = DEBUG_TURF
 
 	var/list/savedata/client/death_box/db_data_to_save = list()
 
 	var/list/saved_player_count = list()
 
-	var/total_items_saved = 0
-	for(var/k in SSliving.dead_player_mobs)
-		var/mob/living/advanced/player/P = k
-		if(!P)
-			log_error("Could not save a player as they didn't exist!")
-			continue
-		if(P.qdeleting)
-			log_error("Could not save [P.name](Ckey: [P.death_ckey ? P.death_ckey : "NULL"]) as it was deleting.")
-			continue
-		if(!P.allow_save)
-			continue
-		if(!P.death_ckey)
-			if(P.dead)
-				log_error("ERROR: Could not save [P.get_debug_name()] as it didn't have a death_ckey assigned!")
+	for(var/obj/structure/interactive/grave/G as anything in all_graves)
+
+		for(var/owner_ckey in G.storage_data)
+
+			var/savedata/client/death_box/DB = SSclient.ckey_to_death_box_data[owner_ckey]
+			if(!DB)
+				log_error("FATAL ERROR: Could not save deathbox belonging to [owner_ckey] as there was no death box data assigned to it!")
+				continue
+
+			if(!saved_player_count[owner_ckey])
+				saved_player_count[owner_ckey] = 1
+			else if(saved_player_count[owner_ckey] > DEATH_BOX_LIMIT)
+				continue
 			else
-				log_error("ERROR: Did not save [P.get_debug_name()] as it wasn't dead despite being in global list dead_player_mobs.")
-			continue
-		var/savedata/client/death_box/DB = SSclient.ckey_to_death_box_data[P.death_ckey]
-		if(!DB)
-			log_error("ERROR: Could not save [P.name](Ckey: [P.death_ckey ? P.death_ckey : "NULL"]) as there was no death box data assigned to it!")
-			continue
-		if(!saved_player_count[P.death_ckey])
-			saved_player_count[P.death_ckey] = 1
-		else if(saved_player_count[P.death_ckey] > 5)
-			continue
-		else
-			saved_player_count[P.death_ckey] += 1
+				saved_player_count[owner_ckey] += 1
 
-		var/list/dropped_items = P.drop_all_items(T)
-		var/area/A = get_area(P)
-		var/list/data_list = list()
-		data_list["name"] = "[P]"
-		data_list["death_area"] = "[A]"
-		data_list["round_id"] = SSlogging.round_id
-		data_list["inventory"] = list()
-		data_list["value"] = 0
-		for(var/j in dropped_items)
-			var/obj/item/I = j
-			if(!I || I.queue_delete_immune || I.qdeleting)
-				continue //This is mostly used for the secure universal storage.
-			data_list["inventory"] += list(I.save_item_data(P))
-			data_list["value"] += CEILING(I.get_value(),1)
-			total_items_saved++
+			var/list/data_list = list()
+			data_list["death_area"] = "[get_area(G)]"
+			data_list["round_id"] = SSlogging.round_id
+			data_list["inventory"] = list()
+			data_list["value"] = 0
+
+			var/list/storage_holders = G.storage_data[owner_ckey]
+
+			if(!length(storage_holders))
+				log_error("FATAL ERROR: Did not find any storage holders in [G.get_debug_name()] for [owner_ckey]!")
+				continue
+
+			for(var/obj/item/structure_storage/holder as anything in storage_holders)
+
+				if(!length(holder.inventories))
+					log_error("FATAL ERROR: Did not find any inventories inside a storage holder in [G.get_debug_name()] for [owner_ckey]!")
+					continue
+
+				for(var/obj/hud/inventory/INV as anything in holder.inventories)
+					if(!length(INV.contents))
+						continue
+
+					var/list/found_inventory_data = INV.save_inventory_data(null)
+					if(!length(found_inventory_data))
+						log_error("FATAL ERROR: An inventory slot did not return any valid inventory data for [owner_ckey] despite having contents in inventory!")
+						continue
+
+					data_list["inventory"] += found_inventory_data
+					CHECK_TICK_HARD
+
+				if(length(data_list["inventory"]))
+
+					data_list["value"] += holder.get_value()
+
+					if(data_list["value"] <= 0)
+						continue
+
+					data_list["value"] = CEILING(data_list["value"]*0.25,1)
+
+					data_list["value"] += 1000 //The fee
+					DB.loaded_data += list(data_list)
+					db_data_to_save |= DB
+
+
+				CHECK_TICK_HARD
+
 			CHECK_TICK_HARD
-		if(length(data_list["inventory"]))
-			DB.loaded_data += list(data_list)
-			data_list["value"] = CEILING(data_list["value"]*0.25,1) + 1000
-			db_data_to_save |= DB
-		CHECK_TICK_HARD
 
-	log_debug("Saving [length(db_data_to_save)] death box instances with [total_items_saved] items saved.")
+	log_debug("Saving [length(db_data_to_save)] death box instances.")
 
 	for(var/k in db_data_to_save)
-		CHECK_TICK_HARD
 		var/savedata/client/death_box/DB = k
 		DB.save()
+		CHECK_TICK_HARD
 
 /proc/load_deathbox(var/mob/living/advanced/player/P,var/atom/A)
 
@@ -91,7 +104,7 @@
 	var/instance = 1
 	for(var/k in DB.loaded_data)
 		var/list/DI = k //death_instance
-		var/final_string = "[DI["name"]], [DI["death_area"]], Round ID: [DI["round_id"]], [DI["value"]] credits"
+		var/final_string = "#[instance]: [DI["death_area"]], Round ID: [DI["round_id"]], [DI["value"]] credits"
 		valid_choices[final_string] = DI
 		instance_list[final_string] = instance
 		instance++
@@ -146,7 +159,7 @@
 
 	DB.save()
 
-	P.to_chat(span("notice","You purchase a deathbox.."))
+	P.to_chat(span("notice","You purchase a deathbox."))
 
 	return created_box
 

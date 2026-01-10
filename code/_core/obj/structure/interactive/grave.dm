@@ -14,7 +14,7 @@ var/global/list/all_graves = list()
 	// "[owner_name]_[owner_ckey]" = storage
 	var/list/storage_data = list()
 
-	anchored = TRUE
+	anchored = 2
 
 /obj/structure/interactive/grave/New(var/desired_loc)
 	. = ..()
@@ -40,7 +40,7 @@ var/global/list/all_graves = list()
 	return FALSE
 
 /obj/structure/interactive/grave/on_crush(var/message=TRUE)
-	CRASH("ERROR: Tried crushing a grave object; something that should NEVER be crushed!")
+	return FALSE
 
 /obj/structure/interactive/grave/PreDestroy()
 	CRASH("ERROR: Tried deleting a grave object; something that should NEVER be deleted!")
@@ -57,29 +57,34 @@ var/global/list/all_graves = list()
 		log_error("FATAL ERROR: Could not create grave for [P.get_debug_name()]!")
 		return null
 
-	var/final_string = "[owner_ckey]_[P.real_name]"
-
-	if(!storage_data[final_string])
-		storage_data[final_string] = list()
+	if(!storage_data[owner_ckey])
+		storage_data[owner_ckey] = list()
 
 	var/obj/item/structure_storage/storage = new(src)
 	storage.dynamic_inventory_count = desired_slots
 	INITIALIZE(storage)
 	GENERATE(storage)
 	FINALIZE(storage)
-	storage_data[final_string] += storage
+	storage_data[owner_ckey] += storage
 	return storage
 
 /obj/structure/interactive/grave/proc/get_storage_for(var/mob/living/advanced/player/P)
 
-	var/final_string = "[P.ckey_last]_[P.real_name]"
+	var/owner_ckey
+	if(P.ckey_last)
+		owner_ckey = P.ckey_last
+	else if(P.death_ckey)
+		owner_ckey = P.death_ckey
 
-	if(!length(storage_data) || !storage_data[final_string] || !length(storage_data[final_string]))
+	if(!owner_ckey)
+		return null
+
+	if(!length(storage_data) || !storage_data[owner_ckey] || !length(storage_data[owner_ckey]))
 		return null
 
 	. = list()
 
-	for(var/obj/item/structure_storage/found_storage as anything in storage_data[final_string])
+	for(var/obj/item/structure_storage/found_storage as anything in storage_data[owner_ckey])
 		for(var/obj/hud/inventory/found_inventory in found_storage.inventories)
 			if(!length(found_inventory.contents))
 				continue

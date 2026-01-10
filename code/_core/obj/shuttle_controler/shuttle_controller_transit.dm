@@ -65,8 +65,6 @@
 				if(!O || O.qdeleting)
 					continue
 				O.on_crush()
-				if(!O.qdeleting)
-					log_error("Warning: [O.get_debug_name()] was a crushed attached object, but it's not deleting!")
 				CHECK_TICK(75,FPS_SERVER)
 
 		for(var/k in T_to_replace.contents) //"CRUSH" everything in the destination turf. First pass.

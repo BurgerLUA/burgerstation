@@ -91,11 +91,11 @@
 /obj/item/proc/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 
 	if(!can_save && !length(inventories))
-		P.to_chat(span("warning","Notice: \The [src.name] could not be saved."))
+		if(P) P.to_chat(span("warning","Notice: \The [src.name] could not be saved."))
 		return null
 
 	if(loadout && !SSbalance.can_save_loadout[src.type])
-		P.to_chat(span("warning","Notice: \The [src.name] could not be stored in the loadout system because it isn't a standard item."))
+		if(P) P.to_chat(span("warning","Notice: \The [src.name] could not be stored in the loadout system because it isn't a standard item."))
 		return null
 
 	. = list()
@@ -214,14 +214,20 @@
 
 
 /obj/item/proc/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+
+	if(reagents && reagents.volume_current > 0)
+		log_error("Warning: Tried calling load_item_data_post on an item with reagents with already initialized reagents!")
+		return TRUE
+
 	if(length(object_data["reagents"]))
 		for(var/r_id in object_data["reagents"])
 			var/volume = object_data["reagents"][r_id]
 			var/reagent/R_path = text2path(r_id)
 			if(!R_path)
-				log_error("LOAD ERROR: Tried loading an invalid reagent [r_id]!")
+				log_error("LOAD ERROR: Tried loading an invalid reagent: \"[r_id]\"! (Is Text: [istext(r_id)])")
 				continue
 			reagents.add_reagent(R_path,volume)
+
 	return TRUE
 
 /obj/hud/inventory/proc/load_inventory_data(var/mob/living/advanced/player/P,var/list/inventory_data,var/loadout=FALSE) //Setting the data found.

@@ -26,7 +26,8 @@
 		var/list/storage_grouping = G.storage_data[string_check]
 		if(!storage_grouping || !length(storage_grouping))
 			continue
-
+		if(!can_track(G))
+			continue
 		var/total_items = 0
 		for(var/obj/item/structure_storage/found_storage as anything in storage_grouping)
 			if(!length(found_storage.inventories))
