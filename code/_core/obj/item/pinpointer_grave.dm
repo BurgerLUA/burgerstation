@@ -10,10 +10,13 @@
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
-	if(!is_player(activator) || !P.ckey)
+	if(!is_player(activator))
 		return TRUE
 
 	var/mob/living/advanced/player/P = activator
+
+	if(!P.ckey)
+		return TRUE
 
 	var/list/possible_graves = list()
 
