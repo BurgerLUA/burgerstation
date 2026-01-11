@@ -21,7 +21,7 @@
 
 /obj/effect/temp/smoke
 	name = "smoke"
-	mouse_opacity = 1
+	mouse_opacity = 0
 	icon = 'icons/obj/effects/smoke.dmi'
 	icon_state = "layer_1"
 	duration = SECONDS_TO_DECISECONDS(30)
