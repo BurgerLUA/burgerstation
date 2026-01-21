@@ -30,5 +30,23 @@
 
 /obj/item/bullet_cartridge/sniper_20/du
 	name = "\improper DU 20x117mm sniper round"
+	desc_extended = "For guns that require 20x117mm ammo. This one has a depleted uranium tip."
 	rarity = RARITY_RARE
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_20/du
+
+/obj/item/bullet_cartridge/sniper_20/hei
+	name = "\improper HEI 20x117mm sniper round"
+	desc = "For when you absolutely, positively, without a doubt want something to die."
+	desc_extended = "For guns that require 20x117mm ammo. This one is packed with explosives and an incendiary mixture. Its payload makes cycling unreliable, however."
+	icon = 'icons/obj/item/bullet/20mm_hei.dmi'
+	rarity = RARITY_RARE
+	damage_type_bullet = /damagetype/ranged/bullet/sniper_20/hei
+	jam_chance = 100
+	penetrations = 0
+	value = 10
+
+/obj/item/bullet_cartridge/sniper_20/hei/sap
+	name = "\improper SAPHEI 20x117mm sniper round"
+	desc_extended = "For guns that require 20x117mm ammo. This one is packed with explosives, an incendiary mixture and a tungsten penetrator. Its payload makes cycling unreliable, however."
+	icon = 'icons/obj/item/bullet/20mm_saphei.dmi'
+	damage_type_bullet = /damagetype/ranged/bullet/sniper_20/hei/sap
