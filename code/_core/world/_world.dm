@@ -85,9 +85,6 @@ var/global/world_state = STATE_STARTING
 
 	sleep_offline = initial(sleep_offline)
 
-	if(world.port != 0 && !length(SSadmin.stored_user_ranks))
-		world.log << "FATAL ERROR: Failed to properly load and initalize user ranks. Restarting!"
-		Reboot(0)
 
 /world/Topic(T,Addr,Master,Keys)
 	TGS_TOPIC
