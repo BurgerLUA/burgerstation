@@ -166,6 +166,7 @@
 #include "code\_core\area\mission\prefabs\house.dm"
 #include "code\_core\area\mission\prefabs\misc.dm"
 #include "code\_core\area\mission\prefabs\sol_base.dm"
+#include "code\_core\area\mission\prefabs\syndicate_megafortress.dm"
 #include "code\_core\area\shuttle\_shuttle.dm"
 #include "code\_core\area\space\_space.dm"
 #include "code\_core\atom\_atom.dm"
