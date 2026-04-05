@@ -73,7 +73,7 @@
 
 	increase = 5
 	minimum = 100
-	increase_maximum = 1
+	increase_maximum = 5
 
 	temper_whitelist = list(/obj/item/weapon/melee, /obj/item/weapon/unarmed, /obj/item/weapon/ranged/thrown)
 
@@ -87,7 +87,7 @@
 
 	increase = 5
 	minimum = 100
-	increase_maximum = 1
+	increase_maximum = 5
 
 	temper_whitelist = /obj/item/clothing
 	value = 750
@@ -102,7 +102,7 @@
 
 	increase = 5
 	minimum = 100
-	increase_maximum = 1
+	increase_maximum = 5
 
 	temper_whitelist = list(
 		/obj/item/weapon/ranged/bullet,
@@ -119,7 +119,7 @@
 
 	increase = 10
 	minimum = 100
-	increase_maximum = 1
+	increase_maximum = 5
 
 	temper_whitelist = /obj/item/weapon/ranged/energy
 	value = 3000
@@ -132,7 +132,7 @@
 
 	increase = 5
 	minimum = 100
-	increase_maximum = 1
+	increase_maximum = 5
 
 	temper_whitelist = list(/obj/item/weapon/ranged/spellgem, /obj/item/weapon/ranged/wand, /obj/item/supportgem)
 	value = 1250
