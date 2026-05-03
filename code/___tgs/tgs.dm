@@ -11,7 +11,7 @@
 #ifndef TGS_EXTERNAL_CONFIGURATION
 
 // Consumers MUST comment this out once you've filled in the below and are not using [TGS_EXTERNAL_CONFIGURATION].
-#error TGS API unconfigured
+//#error TGS API unconfigured
 
 // Consumers MUST uncomment this if you wish to allow the game to interact with TGS version 3.
 // This will raise the minimum required security level of your game to TGS_SECURITY_TRUSTED due to it utilizing call()().

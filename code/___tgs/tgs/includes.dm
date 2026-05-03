@@ -20,4 +20,3 @@
 #include "v5\serializers.dm"
 #include "v5\topic.dm"
 #include "v5\undefs.dm"
-#include "v5\__interop_version.dm"
