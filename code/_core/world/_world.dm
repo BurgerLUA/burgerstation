@@ -34,9 +34,9 @@ var/global/world_state = STATE_STARTING
 	__detect_rust_g()
 
 	if(!rustg_get_version())
-		world.log << "FATAL ERROR: Failed to properly load and initalize rust-g. Rebooting!"
+		world.log << "FATAL ERROR: Failed to properly load and initalize rust-g. Shutting down!"
 		sleep(10)
-		Reboot(0)
+		shutdown()
 		return
 
 	TgsNew(new /datum/tgs_event_handler, TGS_SECURITY_TRUSTED)
