@@ -15,9 +15,10 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
-#include "code\__tgs_defines.dm"
 #include "code\__version_check.dm"
-#include "code\tgs.dm"
+#include "code\___tgs\_tgs_defines.dm"
+#include "code\___tgs\tgs.dm"
+#include "code\___tgs\tgs\includes.dm"
 #include "code\__defines\_config.dm"
 #include "code\__defines\_defines.dm"
 #include "code\__defines\_paths.dm"
@@ -2422,7 +2423,6 @@
 #include "code\addons\lighting\lighting_source.dm"
 #include "code\addons\lighting\lighting_turf.dm"
 #include "code\addons\lighting\~lighting_undef.dm"
-#include "code\tgs\includes.dm"
 #include "interface\interface.dm"
 #include "interface\interface.dmf"
 #include "scripts\macro.dms"

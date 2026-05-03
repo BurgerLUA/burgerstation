@@ -13,7 +13,7 @@ var/global/world_state = STATE_STARTING
 	map_format = TOPDOWN_MAP
 	movement_mode = TILE_MOVEMENT_MODE
 
-	sleep_offline = FALSE
+	sleep_offline = TRUE
 
 	name = "Burgerstation 13"
 	hub = "Exadv1.spacestation13"
@@ -34,9 +34,12 @@ var/global/world_state = STATE_STARTING
 	__detect_rust_g()
 
 	if(!rustg_get_version())
-		world.log << "FATAL ERROR: Failed to properly load and initalize rust-g. Restarting!"
+		world.log << "FATAL ERROR: Failed to properly load and initalize rust-g. Rebooting!"
+		sleep(10)
 		Reboot(0)
 		return
+
+	TgsNew(new /datum/tgs_event_handler, TGS_SECURITY_TRUSTED)
 
 	//TODO: Unfuck this.
 	createtypecache(/loot)
@@ -75,13 +78,11 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/turf/unsimulated)
 	createtypecache(/reagent/nutrition)
 
-
 	. = ..()
 
-	src.TgsNew(new /datum/tgs_event_handler, TGS_SECURITY_TRUSTED)
+	TgsInitializationComplete()
 
 	life()
-	TgsInitializationComplete()
 
 	sleep_offline = initial(sleep_offline)
 
@@ -142,13 +143,9 @@ var/global/world_state = STATE_STARTING
 	return TRUE
 
 /world/Reboot(reason)
-	rustg_log_close_all()
-	sleep(1)
 	TgsReboot()
-	sleep(1)
+	rustg_log_close_all()
 	. = ..()
-
-
 
 /proc/save_all_globals()
 	for(var/k in SSclient.all_clients)
