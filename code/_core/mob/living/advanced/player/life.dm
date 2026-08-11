@@ -70,19 +70,16 @@
 		return null
 
 	var/list/items_to_store = list()
-	for(var/obj/item/I as anything in worn_objects)
+	for(var/obj/item/I as anything in worn_objects + held_objects)
 		var/obj/hud/inventory/where_worn = astype(I.loc)
 		// We are in a space that is persistant and shouldnt be stolen from so its there when we respawn
 		if(where_worn?.ultra_persistant)
+			to_chat(span("danger","Your [I.name] was protected from gravestone collection."))
 			continue
 		if(I.save_on_death)
 			continue
 		items_to_store += I
 
-	for(var/obj/item/I as anything in held_objects)
-		if(I.save_on_death)
-			continue
-		items_to_store += I
 
 	if(!length(items_to_store))
 		return null
