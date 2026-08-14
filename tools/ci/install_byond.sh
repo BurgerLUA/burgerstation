@@ -11,13 +11,7 @@ else
   rm -rf "$HOME/BYOND"
   mkdir -p "$HOME/BYOND"
   cd "$HOME/BYOND"
-  if ! curl --fail --connect-timeout 2 --max-time 10 "https://byond-builds.dm-lang.org/${BYOND_MAJOR_VERSION}/${BYOND_MAJOR_VERSION}.${BYOND_MINOR_VERSION}_byond_linux.zip" -o byond.zip; then
-      echo "Mirror download failed, falling back to byond.com"
-      if ! curl --fail --connect-timeout 2 --max-time 10 "http://www.byond.com/download/build/${BYOND_MAJOR_VERSION}/${BYOND_MAJOR_VERSION}.${BYOND_MINOR_VERSION}_byond_linux.zip" -o byond.zip; then
-          echo "BYOND download failed too :("
-          exit 1
-      fi
-  fi
+  curl --fail --connect-timeout 2 --max-time 10 "http://www.byond.com/download/build/${BYOND_MAJOR_VERSION}/${BYOND_MAJOR_VERSION}.${BYOND_MINOR_VERSION}_byond_linux.zip" -o byond.zip
   unzip byond.zip
   rm byond.zip
   cd byond
