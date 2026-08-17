@@ -25,3 +25,5 @@
 	queue_delete_immune = TRUE
 
 	can_save_loadout = FALSE
+
+	save_on_death = TRUE
